@@ -1,0 +1,1324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Improved Digital Image Correlation (DIC) -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/43073-improved-digital-image-correlation--dic-" rel="canonical">
+<meta content="Improved Digital Image Correlation (DIC) - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/43073-improved-digital-image-correlation--dic-" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/48563/original.jpg" property="og:image"><meta content="Calculate full-field displacements and strains from a set of images with a random speckle pattern." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F43073-improved-digital-image-correlation--dic-" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F43073-improved-digital-image-correlation--dic-" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/18645" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=43073" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-" class="manifest_title">Improved Digital Image Correlation (DIC)</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/FEM_strains_setup_GUI_compatible.m" class="function" title="Function">...
+</a><span class="description">This function uses the grid information from the DIC correlation and
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/grid_DU_Gauss_avg_close_pts.m" class="function" title="Function">...
+</a><span class="description">Calculate the grid points at the averaged Gauss quadrature points:
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/average_line_GUI_compatible.m" class="function" title="Function">...
+</a><span class="description">This function averages the DIC data over a line scan
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/Gauss_Quad.m" class="function" title="Function">Gauss_Quad(varargin)
+</a><span class="description">Function "Gauss_Quad" returns the quadrature points for an element of quadrature order N_Quad_Order 
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/ParforProgressStarter2.m" class="function" title="Function">ParforProgressStarter2(s,...</a><span class="description">Starter function for parfor progress-monitor, that will automatically </span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/ParforProgressStressTest2.m" class="function" title="Function">ParforProgressStressTest2(N)</a><span class="description">Stress test for 'ParforProgressStarter2'. In case of timeouts, you can</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/Shape_Funct_LH.m" class="function" title="Function">Shape_Funct_LH(N_Elem_Ord...</a><span class="description">Function "Shape_Funct" computes the shape function vectors Nhat and DNhat
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/grid_DU_Gauss_avg_close_pts_center.m" class="function" title="Function">[N_pts_Gauss_avg_center,g...</a><span class="description">Eliminate points on the edge of the domain / keep only points in the center of the domain:
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/delete_grid_boundaries.m" class="function" title="Function">[N_pts_new,gridx,gridy,gr...</a><span class="description">This function removes grid points that are too close to the edge of the
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/load_correlation_data_GUI_compatible.m" class="function" title="Function">[grid_setup,corr_setup,gr...</a><span class="description">Load the parameters from the grid setup
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/load_computed_data.m" class="function" title="Function">[grid_setup,reduction,cor...</a><span class="description">Load the data that was computed with "compute_data" function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/grid_reduced_setup_fun.m" class="function" title="Function">[gridx_reduced,gridy_redu...</a><span class="description">This function setups up the reduced grid information, correlates the
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/automate_image_GUI_compatible.m" class="function" title="Function">[validx,validy]=automate_...</a><span class="description">This code shifts the control points specified by gridx and gridy by
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/average_image.m" class="function" title="Function">average_image(data_DIC)
+</a><span class="description">This function averages sorted DIC data over the entire image
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/calc_derivatives_GUI_compatible.m" class="function" title="Function">calc_derivatives_GUI_comp...</a><span class="description">This function calculates the four displacement gradients (du/dx, du/dy,
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/calc_disp.m" class="function" title="Function">calc_disp(grid_param,corr...</a><span class="description">Find the reference image:
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/calc_disp_reduced.m" class="function" title="Function">calc_disp_reduced(...
+</a><span class="description">Calculate the average displacements of reduced correlation
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/calc_strains_GUI_compatible.m" class="function" title="Function">calc_strains_GUI_compatib...</a><span class="description">This function calculates the strains based on the displacement derivatives
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/calc_strains_loop.m" class="function" title="Function">calc_strains_loop(i,dispx...</a><span class="description">Get the the displacements for the i'th image
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/compute_data_GUI.m" class="function" title="Function">compute_data_GUI(varargin)</a><span class="description">COMPUTE_DATA_GUI M-file for compute_data_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/correlate_images_GUI.m" class="function" title="Function">correlate_images_GUI(vara...</a><span class="description">Initialize GUI</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/cpcorr_mod.m" class="function" title="Function">cpcorr_mod(varargin)</a><span class="description">CPCORR Tune control point locations using cross-correlation. </span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/data_avg_GUI_compatible.m" class="function" title="Function">data_avg_GUI_compatible(f...</a><span class="description">This function plots the averaged DIC data
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/deformed_grid.m" class="function" title="Function">deformed_grid(...
+</a><span class="description">This function computes the deformed grid for each image based on the
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/delete_data_GUI.m" class="function" title="Function">delete_data_GUI(varargin)</a><span class="description">DELETE_DATA_GUI MATLAB code for delete_data_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/disp_avg_GUI.m" class="function" title="Function">disp_avg_GUI(varargin)</a><span class="description">DISP_AVG_GUI M-file for disp_avg_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/disp_line_scan_GUI.m" class="function" title="Function">disp_line_scan_GUI(varargin)</a><span class="description">DISP_LINE_SCAN_GUI M-file for disp_line_scan_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/disp_patch_contour_GUI.m" class="function" title="Function">disp_patch_contour_GUI(va...</a><span class="description">DISP_PATCH_CONTOUR_GUI M-file for disp_patch_contour_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/dispgrad_avg_GUI.m" class="function" title="Function">dispgrad_avg_GUI(varargin)</a><span class="description">DISPGRAD_AVG_GUI M-file for dispgrad_avg_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/dispgrad_line_scan_GUI.m" class="function" title="Function">dispgrad_line_scan_GUI(va...</a><span class="description">DISPGRAD_LINE_SCAN_GUI M-file for dispgrad_line_scan_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/dispgrad_patch_contour_GUI.m" class="function" title="Function">dispgrad_patch_contour_GU...</a><span class="description">DISPGRAD_PATCH_CONTOUR_GUI M-file for dispgrad_patch_contour_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/findpeak.m" class="function" title="Function">findpeak(f,subpixel)</a><span class="description">FINDPEAK Find extremum of matrix.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/freezeColors.m" class="function" title="Function">freezeColors(varargin)</a><span class="description">freezeColors  Lock colors of plot, enabling multiple colormaps per figure. (v2.3)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/get_matlab_version.m" class="function" title="Function">get_matlab_version()</a><span class="description">EOF</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/grid_correlation.m" class="function" title="Function">grid_correlation(gridx_re...</a><span class="description">This function correlates the reduced grid (if there is one) with the full
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/grid_generator_GUI_compatible_3.m" class="function" title="Function">grid_generator_GUI_compat...</a><span class="description">Prompt the user to open the base image to define the grid on
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/grid_setup_fun.m" class="function" title="Function">grid_setup_fun(grid_setup...</a><span class="description">This function setups up the full grid information for the correlation process
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/image_setup_GUI.m" class="function" title="Function">image_setup_GUI(varargin)</a><span class="description">IMAGE_SETUP_GUI M-file for image_setup_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/line_scan_GUI_compatible.m" class="function" title="Function">line_scan_GUI_compatible(...</a><span class="description">This function takes either the displacement data (dispx and dispy) OR the
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/menu_mod.m" class="function" title="Function">menu_mod(xHeader,varargin)</a><span class="description">MENU   Generate a menu of choices for user input.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/movie_GUI.m" class="function" title="Function">movie_GUI(varargin)</a><span class="description">MOVIE_GUI MATLAB code for movie_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/normal_distribution.m" class="function" title="Function">normal_distribution(cente...</a><span class="description">This function creates a matrix that has a "box" structure
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/pad_disp.m" class="function" title="Function">pad_disp(N_row,N_col,...
+</a><span class="description">This function pads the disp matrices around the border, to reduce edge
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/patch_contour_GUI_compatible.m" class="function" title="Function">patch_contour_GUI_compati...</a><span class="description">Get the patch contour parameters:
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/patch_contour_movie.m" class="function" title="Function">patch_contour_movie(figpo...</a><span class="description">Get the patch contour parameters:
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/patch_contour_movie_preview.m" class="function" title="Function">patch_contour_movie_previ...</a><span class="description">Get the patch contour parameters:
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/pool_size.m" class="function" title="Function">pool_size()</a><span class="description">POOL_SIZE - temporary hack to return size of current MATLABPOOL</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/print_error_red.m" class="function" title="Function">print_error_red(msg, tab_...</a><span class="description">show error in red</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/smooth_disp.m" class="function" title="Function">smooth_disp(...
+</a><span class="description">This function uses the smoothing algorithm that the user decides to smooth
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/smooth_moving_average.m" class="function" title="Function">smooth_moving_average(...
+</a><span class="description">This function smoothes the displacement data based on a moving average
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/strain_avg_Gauss_close_pts_center.m" class="function" title="Function">strain_avg_Gauss_close_pt...</a><span class="description">Given the displacement gradients at each quadrature point of each element,
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/strain_elem.m" class="function" title="Function">strain_elem(N_Dim,N_Elem,...</a><span class="description">This function calculates the displacement gradients at the quadrature points of the element.  
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/vector_field_GUI.m" class="function" title="Function">vector_field_GUI(varargin)</a><span class="description">VECTOR_FIELD_GUI M-file for vector_field_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/vector_field_GUI_compatible.m" class="function" title="Function">vector_field_GUI_compatib...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/visualize_data_GUI.m" class="function" title="Function">visualize_data_GUI(varargin)</a><span class="description">VISUALIZE_DATA_GUI M-file for visualize_data_GUI.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/ParforProgress2.m" class="class" title="Class">ParforProgress2</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content//Matlab%20DIC%20files/ParforProgressConsole2.m" class="class" title="Class">ParforProgressConsole2</a><span class="description">do NOT use this object by itself!</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-/content/Matlab_based_DIC_code___Version_1___130814_EJ.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">5.0</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">7</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">230 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 6.95 MB</span>
+          <span id="fileid">File ID: #43073</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/9280/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Improved Digital Image Correlation (DIC)</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      14 Aug 2013
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-09-23">23 Sep 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Calculate full-field displacements and strains from a set of images with a random speckle pattern.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F43073-improved-digital-image-correlation--dic-&amp;watching=43073" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Digital Image Correlation (DIC) is an optical, 
+non-contact method to measure full-field displacements and strains. The 
+only requirement is that the test specimen has a random speckle pattern 
+on its surface, either generated by the experimentalist (i.e. random 
+paint pattern) or occurring naturally (i.e. surface texture at large 
+magnifications). There is no inherent length scale to DIC - by choosing 
+the appropriate magnification of images and the corresponding speckle 
+size, DIC can be used to measure displacements from the meter scale to 
+the micron scale.</p>
+
+<p>This set of Matlab .m files forms a complete DIC code. Given a set of
+ images taken periodically during deformation of a specimen, this code 
+will analyze the images and output full-field displacements and full 
+field strains over the field of view captured in the images. In contrast
+ to commercially available DIC software, this code can be fully 
+customized by the user by editing the .m files directly.</p>
+
+<p>Comments and questions about the code are welcomed. Please contact the author, Elizabeth Jones, at <a href="mailto:ElizabethMCJones@gmail.com">ElizabethMCJones@gmail.com</a>.</p>
+
+<p>If you would like to cite this code, please use the following two 
+citations.  The first is a peer-reviewed article in Experimental 
+Mechanics that describes the basic algorithms used in the code.  The 
+second refers readers to this website, so that this DIC code can be more
+ freely disseminated.</p>
+
+<p>Jones E.M.C., Silberstein M.N., White, S.R., Sottos, N.R.  In Situ 
+Measurements of Strains in Composite Battery Electrodes during 
+Electrochemical Cycling.  Experimental Mechanics (2014) 54:971-985</p>
+
+<p>Jones E.M.C. Improved digital image correlation (2013). <a href="http://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-">http://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-</a>
+</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/7943-freezecolors---unfreezecolors">Freeze Colors / Unfreeze Colors</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/35609-matlab-parforprogress2">Matlab Parfor Progress2</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/12413-digital-image-correlation-and-tracking">Digital Image Correlation And Tracking</a> inspired <i>this file.</i></p>
+      
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/image/" id="product_link_Image Processing Toolbox">Image Processing Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/parallel-computing/" id="product_link_Parallel Computing Toolbox">Parallel Computing Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/statistics/" id="product_link_Statistics Toolbox">Statistics Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 8.0 (R2012b)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>This code has been tested on a PC running Matlab 2012b, and on both a PC and a Mac running Matlab 2011a.</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F43073-improved-digital-image-correlation--dic-">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22cpcorr%22" rel="nofollow">cpcorr</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22crosscorrelation+coefficient%22" rel="nofollow">crosscorrelation coefficient</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22digital+image+correlation%22" rel="nofollow">digital image correlation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22experimental+mechanics%22" rel="nofollow">experimental mechanics</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22finite+element+shape+functions%22" rel="nofollow">finite element shape functions</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22fullfield+displacements%22" rel="nofollow">fullfield displacements</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22fullfield+strains%22" rel="nofollow">fullfield strains</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22gui%22" rel="nofollow">gui</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22image+processing%22" rel="nofollow">image processing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22noncontact%22" rel="nofollow">noncontact</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22optical%22" rel="nofollow">optical</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="43073" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/43073-improved-digital-image-correlation--dic-" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F43073-improved-digital-image-correlation--dic-">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(20)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">11 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jorge,</p>
+
+<p>Yes, you can get the average values from the plot generated using the
+ "Spatial Average" function.  Simply save the plot, close out of the 
+GUI, open the plot, and then use the following code:</p>
+
+<p>ax = gca; %Gets the current axis
+<br>objs = get(ax,'children'); %Gets the objects of the current axis
+<br>y_data = get(objs,'ydata'); %Gets the y-data from the objects, i.e. the average strain values</p>
+
+<p>The above method is a general method that you can use to get the data
+ from any plot in Matlab.  I have considered making an option directly 
+in the GUI to save the data as a .mat file in addition to plotting the 
+data, but as of now, I have not implemented this functionality.  
+However, the method described above will work with little extra effort.</p>
+
+<p>Thank,
+<br>Elizabeth</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/491923">jorge</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Elizabeth,</p>
+
+<p>I would like to know if it´s possible to get a list of average values
+ of strain over entire images. i mean, can i get the values of the 
+average strain plotted in spatial Average plots?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/463102">Alberto</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yes, thank you very much Elizabeth! More or less I've managed to get what I wanted.</p>
+
+<p>Best,</p>
+
+<p>Alberto.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alberto,</p>
+
+<p>I am not familiar with the PIVMat Toolbox, so I am not sure what the 
+best way is to reformat the data from my DIC code for use with the 
+PIVMat Toolbox.  However, from your description, it looks like you need 
+the x- and y-coordinates of the control points and the u- and v- 
+components of the displacements.  (I assume you want the displacement 
+components when you say velocity components?)  The grid coordinates are 
+found in the .mat file “grid_data”, and the displacement components are 
+found in the .mat file “disp_raw_data” (for the raw correlation data) 
+and “disp_smooth_data” (for the smoothed displacement field, if you have
+ run “compute_data_GUI”).  Does this provide the information you need?</p>
+
+<p>Cheers,
+<br>Elizabeth
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/463102">Alberto</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Elizabeth!</p>
+
+<p>I am using your code so as to then post process the vector field with
+ PIVMat Toolbox to reconstruct the height of the surface, but the latter
+ (in particular, the function 'plotvec.m') requires an specific format 
+for the .mat files to work. It includes the x and y coordinates, the x 
+and y velocity components, etc. :</p>
+
+<p>For vector fields, the PIVMat structure F contains the following fields: 
+<br>   x,y            vectors containing the X and Y coordinates 
+<br>   vx,vy (vz)  matrices of the x, y (and z) components of the velocity 
+<br>   ysign        string, upward or downward Y axis 
+<br>   namevx, unitvx, namex, unitx...   strings 
+<br>   name        name of the VEC/VC7 file from which originates V 
+<br>   setname   name of the parent directory (called 'SET' in DaVis) 
+<br>   Attributes  Additional informations from DaVis (see getattribute) 
+<br>   choice      An array of 6 integers, giving the 1st, 2nd, 3rd, 4th
+ choice vectors, the number of filled/processed vectors and the number 
+of missing vectors. 
+<br>   history     Remind from which command V has been obtained </p>
+
+<p>Do you know if there is a simple way to get this format from the 
+files your code provide? If not, could you tell me in which files I can 
+find the information I need?</p>
+
+<p>Thank you in advance.</p>
+
+<p>Best regards,</p>
+
+<p>Alberto.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/433962">Deborah</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much Elizabeth! </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Deborah,</p>
+
+<p>Poisson's ratio is the negative of the ratio of the axial strain to 
+the transverse strain when a specimen is undergoing uniaxial tension or 
+uniaxial compression.  If the direction of force is, for example, in the
+ y-direction, then Poisson's ratio = -e_yy / e_xx.  Assuming you don't 
+have plastic deformation, using the large strains (E_yy and E_xx) will 
+give the same result.</p>
+
+<p>To access the small and large strains, load "DU_data" into your 
+workspace.  All of the strain matrices are in the structures 
+"large_strain" and "small_strain".</p>
+
+<p>Cheers,
+<br>Elizabeth</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/433962">Deborah</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Elizabeth!</p>
+
+<p>I wanted to know if it is possible to calculate the poisson's ratio 
+from the large strain and small strain values, Exx, Eyy and exx, eyy. </p>
+
+<p>hope to hear from you soon! </p>
+
+<p>thank you, 
+<br>Deborah </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/408108">Marcraven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi again Elisabeth,</p>
+
+<p>Thank you for your previous answer, that was exactly what I needed.</p>
+
+<p>I expose my new doubts:</p>
+
+<p>In the dispx_raw and dispy_raw matrixes, the element number 1 is the 
+top left and the last is the bottom right of the correlation? If so: The
+ sequence is row by row or column by column?</p>
+
+<p>I am trying to remove the rigid body displacement from my correlation
+ by taking the first element displacement and substract it from every 
+other element displacement in every image.
+<br>This would theoretically give me just the relative displacement between the first element and the rest. Am I right?</p>
+
+<p>Best regards,</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/408108">Marcraven</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/441589">Di</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Stephen,</p>
+
+<p>You have the choice to run the code in serial mode or in parallel 
+mode.  The benefit to running the code in parallel mode is the reduced 
+computation time, but it does require the Parallel Computing Toolbox.  
+If you do not have the Parallel Computing Toolbox, you may run the code 
+in serial mode.  You'll get the same results, but it will take longer to
+ process large batches of images.</p>
+
+<p>Thanks,
+<br>Elizabeth
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/419098">Stephen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Elizabeth,</p>
+
+<p>I am using a student license of MATLAB, and I do not have the 
+parallel computing toolbox.  Is the parallel computing merely an option,
+ or will I require the toolbox to run the code at all? </p>
+
+<p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Marcraven,</p>
+
+<p>Thanks for your interest in my DIC code.  There are two principle 
+displacement data files.  The first, disp_raw_data.mat, is generated 
+when you run “correlate_images_GUI”, and is a calculation of the 
+displacements before any smoothing has been done.  These displacements 
+are in terms of pixels.  The second, disp_smooth_data.mat, is generated 
+when you run “compute_data_GUI.”  These displacements are scaled and 
+smoothed according to the parameters you set in “compute_data_GUI.”</p>
+
+<p>To work with the raw displacements, type “load disp_raw_data” in the 
+command window.  Two variables, dispx_raw and dispy_raw, should now be 
+in your workspace.  These matrices are the horizontal (x) and vertical 
+(y) displacements respectively.  The rows of the matrices represent the 
+control points from your correlation, and the columns represent the 
+images that you correlated.  For example, the x-displacements for image 5
+ would be the entire column 5 of dispx_raw.  </p>
+
+<p>Similarly, to work with the scaled and smoothed displacements, type 
+“load disp_smooth_data” into the command window, and the two variables 
+dispx_smooth and dispy_smooth will be in your workspace.</p>
+
+<p>Please let me know if you have further questions.</p>
+
+<p>Sincerely,
+<br>Elizabeth
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/408108">Marcraven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Elizabeth!</p>
+
+<p>I have been using your code for the last two weeks and it is great! Thanks a lot.</p>
+
+<p>By the way, I would like to use the displacement matrix to calculate 
+the error of the correlation (max error and average). How is the 
+displacement matrix called in your code?</p>
+
+<p>Thanks a lot</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Mikhail,</p>
+
+<p>Thank you for your comments and suggestions.  Most of the areas you 
+suggest for improvement are parts of the code that I personally don’t 
+use frequently (such as the delete_data_GUI, any stress calculations, 
+correcting for rigid body motion in the displacements), and therefore 
+they have not received as much attention as other portions of the code. 
+ You are always welcome to modify the code yourself, and if you’d like, 
+I’d be happy to post any improvements to this site, so that other users 
+can benefit as well.  </p>
+
+<p>Concerning your first comment, you need to be careful when performing
+ multiple correlations on one set of images.  You always need to set 
+your working directory to the folder containing the images you wish to 
+correlate, but after a correlation is complete, you can move all the 
+data files generated during the correlation to a new folder.  I 
+recommend always starting a correlation with no files from previous 
+correlations in the working folder.  This will prevent you from seeing 
+results from a previous correlation when you are trying to view results 
+from a current correlation.  Please let me know if you have further 
+questions regarding this part of the code.</p>
+
+<p>Thank you,
+<br>Elizabeth
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/397111">Mikhail Seleznev</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello, Elizabeth!</p>
+
+<p>Thank you very much for this work, you've done a great job!</p>
+
+<p>I just wanted to add some notes/questions as a "non-professional" 
+user, so may be someone will have a time for code improvement. Or find 
+what I've didn't.</p>
+
+<p>1. When you want to see the full-image correlation results (after 
+initial guess finding), Visualize_data_GUI shows the results of previous
+ calculations. So you have to start compute_data_GUI "blind", then 
+visualize_data_GUI switch to the new result.</p>
+
+<p>2 . There is no possibility of displacement correction (this function
+ is present, for example, in VEDDAC software). It allows to remove the 
+object moving component from the displacement data and consider only 
+deformation-related displacement. Of course this function does not 
+affect the calculation of deformation, but you can't estimate the 
+deformation-related displacement, which is negligibly small against 
+sample shift.</p>
+
+<p>3 . Code delete_data_GUI is not very  convenient to use:
+<br>- can't undo the action: one mistake and you have to start over;
+<br>- There is only one tool removing items - a task corners of the rectangle ;
+<br>- can't zoom in ;
+<br>- The images are not visible behind a dense grid;</p>
+
+<p>4 It would be great to count stress tensor in the end. The code 
+should be easy: we just need a strain tensor, Young's modulus and 
+Poisson coefficient</p>
+
+<p>Best regards,
+<br>Mikhail.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For users of Matlab 2013a and 2013b:</p>
+
+<p>A change between Matlab 2012b, which was used to write this code, and
+ 2013a/b causes the progress bar during the correlation of the images to
+ not work properly when operating in parallel mode.  To fix this issue, 
+please download the latest version of the progress bar code from File 
+Exchange number 35609 
+(http://www.mathworks.com/matlabcentral/fileexchange/35609) and replace 
+the progress bar files included with the DIC codes with the new ones.</p>
+
+<p>Thanks,
+<br>Elizabeth</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241661">Elizabeth Jones</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Miguel,</p>
+
+<p>We talked via email, but I wanted to share my comments with other users of this code.</p>
+
+<p>1.  Concerning choosing an appropriate subset size when using DIC, it
+ is typically a subjective process, like I described in Sec. 5.3 and 
+Sec. 6.4 of the documentation included with this code.  There are, 
+however, research efforts that look into more objective methods for 
+determining the appropriate subset size, such as the references shown 
+below.  Note that this is not an exhaustive reference list on this 
+topic.  </p>
+
+<p>Yaofeng, S. and Pang, J.H.L. Optics and Lasers in Engineering 45 (2007) 967-974</p>
+
+<p>Pan, B., et. al. Optics Express 16 (2008) 7037-7048</p>
+
+<p>2.  If your sample does not cover the entire image, then you can 
+select your grid of control points only over your region of interest.  
+There is no reason to have control points on the image background.</p>
+
+<p>3.  The coefficient of thermal expansion of a material is a material 
+property.  I do not understand your comment about adjusting the CTE of 
+copper.</p>
+
+<p>Cheers,
+<br>Elizabeth</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/239802">Miguelcm90</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Friends, </p>
+
+<p>I am a student user of this code. I would like to have more 
+information about how it is the best way to decide the subset size. I am
+ measuring the coeficient of thermal expansion of diferent materials, 
+and this code is useful to calculate the displacements. It shows me 
+clearly how are the displacements, but I have not too much idea how to 
+decide and adapt the subset. </p>
+
+<p>I am using pictures of 4272x2482 px Resolution.</p>
+
+<p>In this picture is located the sample, so the grid is not in full 
+picture. Should I do another thing instead correlate the full picture?.</p>
+
+<p>Also, I know the CTE of Copper, which is 16 ppm/K but to be honest, I
+ do not know how to adjust this parameter, or I have to correlate in 
+another way.</p>
+
+<p>Any help is welcome,  and heartfelt thanks, </p>
+
+<p>Miguel</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">15 Aug 2013</td>
+                  <td><p>130814 - Edited the acknowledgements.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">23 Sep 2014</td>
+                  <td><p>130814 - Edited the acknowledgements.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415493709703&amp;cv=7&amp;fst=1415493709703&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D15%26sort%3Ddate_desc_updated%26term%3D&amp;vis=2"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

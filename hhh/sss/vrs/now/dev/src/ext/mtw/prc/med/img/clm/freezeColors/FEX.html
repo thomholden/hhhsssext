@@ -1,0 +1,3965 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>freezeColors / unfreezeColors -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/7943-freezecolors---unfreezecolors" rel="canonical">
+<meta content="freezeColors / unfreezeColors - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/7943-freezecolors---unfreezecolors" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/23192/original.jpg" property="og:image"><meta content="Use multiple colormaps per figure! Version 2, now works for many types of objects, not only images." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F7943-freezecolors---unfreezecolors" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F7943-freezecolors---unfreezecolors" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/10079" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=7943" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/7943-freezecolors---unfreezecolors" class="manifest_title">freezeColors / unfreezeColors</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/7943-freezecolors---unfreezecolors/content//freezeColors/freezeColors.m" class="function" title="Function">freezeColors(varargin)</a><span class="description">freezeColors  Lock colors of plot, enabling multiple colormaps per figure. (v2.3)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/7943-freezecolors---unfreezecolors/content//freezeColors/unfreezeColors.m" class="function" title="Function">unfreezeColors(h)</a><span class="description">unfreezeColors  Restore colors of a plot to original indexed color. (v2.3)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/7943-freezecolors---unfreezecolors/content//freezeColors/Contents.m" class="script" title="Script">Contents.m</a><span class="description">Functions enabling use of multiple colormaps per figure.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/7943-freezecolors---unfreezecolors/content//freezeColors/test/test_main.m" class="script" title="Script">test_main.m</a><span class="description">test_main Test freezeColors / unfreezeColors</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/7943-freezecolors---unfreezecolors/content/freezeColors_v23_cbfreeze.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:93.72540000000001%;">
+                <p>4.68627</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.7</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">109</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">581 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 146 KB</span>
+          <span id="fileid">File ID: #7943</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/4485/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">freezeColors / unfreezeColors</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      28 Jun 2005
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2010-09-14">14 Sep 2010</span>)
+      </span>
+  </p>
+
+  <p id="summary">Use multiple colormaps per figure! Version 2, now works for many types of objects, not only images.</p>
+
+    <div id="editorsnote">
+      <h3>Editor's Notes:</h3>
+      <p></p><p>This file was selected as MATLAB Central <a href="http://blogs.mathworks.com/pick/2009/07/24/using-multiple-colormaps-in-a-single-figure/">Pick of the Week</a></p><p></p>
+    </div>
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F7943-freezecolors---unfreezecolors&amp;watching=7943" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Version 2.3, 3/2007
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*What's NEW: 9/2010, A colorbar solution)</p>
+
+<p>Problem: There is only one colormap per figure, so all plots share the same colormap. Often one wants different colormaps.</p>
+
+<p>Solution: This function pair provides an easy way to have plots using different colomaps in the same figure.</p>
+
+<p>Example:
+<br>subplot(2,1,1)
+<br>imagesc(peaks)
+<br>colormap hot
+<br>freezeColors     %freeze this plot's colormap</p>
+
+<p>subplot(2,1,2)
+<br>colormap hsv     % won't change any frozen plots!
+<br>surf(peaks)
+<br>freezeColors
+<br>etc...</p>
+
+<p>**** COLORBAR WORKAROUND (NEW 9/2010) ****
+<br>** Note: in recent versions of MATLAB the colorbar is reinitialized
+<br>** whenever you call COLORMAP, which undoes the effects of freezeColors. 
+<br>**
+<br>** Suggested solution: Use the function CBFREEZE, by 
+<br>** Carlos Adrian Vargas Aguilera, located in the fileexchange
+<br>** <a href="http://www.mathworks.com/matlabcentral/fileexchange/24371">http://www.mathworks.com/matlabcentral/fileexchange/24371</a></p>
+
+<p>%usage
+<br>h=colorbar; cbfreeze(h), or simply cbfreeze(colorbar)</p>
+
+<p>%Colorbar workaround example
+<br>imagesc(peaks)
+<br>freezeColors
+<br>cbfreeze(colorbar)</p>
+
+<p>Since Carlos has made a nice solution, I have chosen not to duplicate his efforts. Please use his fine code.
+<br>****</p>
+
+<p>FUNCTIONS</p>
+
+<p>freezeColors     Freeze colors of plots, making them immune to later 
+changes in the colormap. Converts colors of many graphics objects 
+(images, surfaces, scattergroups, bar plots, patches, etc--anything 
+using indexed CData) to [r g b] truecolor.</p>
+
+<p>unfreezeColors     Reverses the effects of freezeColors. Restores the
+ original indexed color data, allowing the colormap and caxis to again 
+affect the plots.</p>
+
+<p>Demo &amp; Documentation in freezeColors_pub.html, test in test/test_main.m.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/48332-automated-phenotyping-of-mouse-behavior">Automated Phenotyping Of Mouse Behavior</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/43073-improved-digital-image-correlation--dic-">Improved Digital Image Correlation (Dic)</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/14157-shaded-pseudo-color">Shaded Pseudo Color</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/20516-imagescnan-m-v2-1--aug-2009-">Imagescnan.M V2.1 (Aug 2009)</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/35354-multiple-colormaps">Multiple Colormaps</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/40103-statmask--overlay-image-with-coloured-statistical-mask">Statmask: Overlay Image With Coloured Statistical Mask</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/42255-neural-data-toolbox--ndtb-">Neural Data Toolbox (Nd Tb)</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/46874-rgbmap-color-maps">Rgbmap Color Maps</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.10 (R2010a)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Tested under: 7.0.1, 7.3, 7.4, 2009a, 2010a
+Newer versions must use &gt;&gt; cbfreeze to properly freeze colorbars</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F7943-freezecolors---unfreezecolors">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22annotation%22" rel="nofollow">annotation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22caxis%22" rel="nofollow">caxis</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22colorbar%22" rel="nofollow">colorbar</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22colormap%22" rel="nofollow">colormap</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22customization%22" rel="nofollow">customization</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22figure%22" rel="nofollow">figure</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22image%22" rel="nofollow">image</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22imagesc%22" rel="nofollow">imagesc</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22index%22" rel="nofollow">index</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22pick+of+the+week%22" rel="nofollow">pick of the week</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22potw%22" rel="nofollow">potw</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22surf%22" rel="nofollow">surf</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22surface%22" rel="nofollow">surface</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="7943" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/7943-freezecolors---unfreezecolors" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F7943-freezecolors---unfreezecolors">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(157)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">07 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/514670">TAY</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>the program crash when i try to use
+ th cbfreeze(h,'off'), anyone encounter this problem? This function is 
+very useful, thank you author!!
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/260146">Matt Eicholtz</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/506554">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Does not work for me when using scatter in 2014a; erases the points on the plot when I call it. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/83564">Simon Henin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Worked like a charm. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/489582">laurent grare</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It seems that when plotting a scatter plot, the function does not work if the input data are rows (size(x) = [1 m]).
+<br>A simple re-arrangement of the data into columns fixes this issue.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/493676">Tarun Narayan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Matlab makes this process so complicated, but these scripts simplify everything tremendously.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/208158">Joris Kampman</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/223344">Danny Allen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is so useful - many thanks !</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/128723">Dan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for this excellent code. 
+I've used it many times without problems, but just ran into a problem 
+today.  I have a colormap with five colors.  When I use freezeColors, it
+ does in fact freeze the colors, but it reduces the number of colors 
+from five to four.  Any suggestions on how to fix this?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/128723">Dan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/99509">Catherine</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Freezecolor was just what I needed 
+to plot contours over map data and I have used it for a while. However, 
+in MatLab 2012a and later freezing contourm results no longer works 
+without some modification. There is a listener associated with this plot
+ that remaps all the color levels whenever the colormap is changed 
+thereby undoing the freezecolor changes.I solved this problem by 
+switching the parent of all the countour's children from its hggroup 
+typed parent to that of the parent axis. This disassociates the contour 
+from the hggroup listener. This works for my application so far.</p>
+
+<p>Scatterm does not have this listener and freezcolor works great, 
+however, I came across one small error for an unusual case. If there is 
+only one point in the scatter plot (my plots depend on user clicks and 
+sometime degenerate to this point) then the color is of the wrong 
+dimensionallity. The listener in scatterm that is triggered when the 
+color is frozen has code that checks if the first dimension of cdata is 1
+ then the second dimension must be 3 or it will be ignored - not 
+colored. The structure freezecolor passes in is 1x1x3. I put a check in 
+freezecolor for object types ~patch (scatterm plots are hggroup type) 
+that if size(realcolor,1)==1 then realcolor=squeeze(realcolor)'.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/461507">Oscar Chen</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/302676">Felipe Orellana</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>
+ Hi John Iversen,</p>
+
+<p>  My name is Felipe Orellana, a graduate student at UC Berkeley. I 
+work in Geophysics, doing numerical simulations in plate tectonics.</p>
+
+<p>  Man, thanks a lot for your code, it's very helpful.</p>
+
+<p>grateful for your submission,</p>
+
+<p>Felipe</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/302676">Felipe Orellana</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>
+ Hi John Iversen,</p>
+
+<p>  My name is Felipe Orellana, a graduate student at UC Berkeley. I 
+work in Geophysics, doing numerical simulations in plate tectonics.</p>
+
+<p>  Man, thanks a lot for your code, it's very helpful.</p>
+
+<p>grateful for your submission,</p>
+
+<p>Felipe 
+<br> 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/437568">Abdallah</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I don't know how to use it for GUIs. I have already downloaded the file. 
+<br>My code is:
+<br>switch str{val};
+<br>    case 'Sphere'
+<br>         [sx,sy,sz]=sphere(20);
+<br>         ss=surf(handles.axes4,sx,sy,sz);
+<br>         colormap copper;
+<br>         daspect([20 20 20]);
+<br>         freezeColors(ss);
+<br>    case 'Contour'
+<br>         cx=rand(7,7);
+<br>         cy=rand(7,7).*sin(cx);
+<br>         cz=rand(7,7).*cos(cy).^0.00005;
+<br>         cc=contour3(handles.axes4,cx,cy,cz);
+<br>         colormap spring;
+<br>         freezeColors(cc);</p>
+
+<p>The error I get is:
+<br>Undefined function 'freezeColors' for input arguments of type 'double'</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/423795">MJ</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/433377">Jorge Real</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/107620">ZZL Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/420171">Carola</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for this very useful function. I love to use it. </p>
+
+<p>However I seem to have a little problem with it. I'm using it with 
+contourf with user-defined contour lines, and somehow the coloring of 
+the fields changes when applying freezeColors while the colors of the 
+colorbar remain the same with cbfreeze. To me it seems it has to do with
+ the contour interval being a decimal number instead of an integer, but 
+maybe there is another cause?</p>
+
+<p>Here is a simple example of when it happens:</p>
+
+<p>Z = peaks;
+<br>dc = 14/8;
+<br>c = -4:dc:10;
+<br>figure
+<br>subplot(1,2,1)
+<br>contourf(Z,c)
+<br>caxis([min(c) max(c)])
+<br>colormap(jet(8))
+<br>h=colorbar;
+<br>freezeColors
+<br>cbfreeze(h)
+<br>title('freezed colors')
+<br>subplot(1,2,2)
+<br>contourf(Z,c)
+<br>caxis([min(c) max(c)])
+<br>colormap(jet(8))
+<br>h=colorbar;
+<br>title('no freeze')
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/220918">Edward Byers</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works well with subplots</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/397019">Klaus Mayer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, very nice contribution.
+<br>I had a problem using the code in a gui environment. The problem is,
+ that the current axis is not always that axis which is used for 
+plotting, if you define an axis property in the plot command. You may 
+than use freezeColors(axis_handle). But the caxis command in the code 
+does not use that axis_handle. Therefor I changed in line 86:  cax=caxis
+ to cax=caxis(h). Than everything works fine.
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/138876">Pegah Hosseini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi everyone. I found out how to 
+freeze the colorbar as well. Actually, I got my answer from the 
+test_main.m file of this submission. You should download cbfreeze.m and 
+cbhandle.m (by Carlos Adrian Vargas Aguilera) and freeze your colorbar 
+with these functions. Just make sure to download cbhandle.m as well or 
+MATLAB will give you some handle errors.</p>
+
+<p>example:
+<br>load clown
+<br>figure
+<br>subplot(1,2,1)
+<br>imagesc(X)
+<br>colormap(gray)
+<br>freezeColors
+<br>h=colorbar;
+<br>cbfreeze(h)
+<br>subplot(1,2,2)
+<br>imagesc(X)
+<br>colormap(jet)
+<br>freezeColors
+<br>h=colorbar;
+<br>cbfreeze(h)
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/138876">Pegah Hosseini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi. This is great. 
+<br>I have the same problem as Fedor. The colorbars that I add to my 
+plots all have the same colors of the last entry for colormap. So now, 
+my jet colormap has a gray colorbar.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/383032">Fedor</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi. Very nice submission.
+<br>The only problem I have encountered is that when I create bar plots,
+ legend colors for different subplots doesn't follow the "frozen" 
+colormap. And all legends are colored according to the last "frozen" 
+colormap.
+<br>I use Matlab R2010a. Has anyone else experienced the same problem?
+<br>Thank a lot!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/84140">Jim K</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/120383">kaiba Wong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have a problem with freeze 
+color..can someone please help. When I use it, the color of the plot 
+takes the color from the subsequent plot </p>
+
+<p>figure;subplot(3,1,1)
+<br>scatter(DiffPeP,DiffTWT_33_sh,40,DiffTWT_33_sh,'filled')
+<br>colorbar('peer',subplot(3,1,1));
+<br>set(gcf,'Colormap',mycmapTS)
+<br>caxis([-0.5 1]);
+<br>freezeColors(caxis)
+<br>cbfreeze;
+<br>cblabel('DiffTS','fontsize',10); 
+<br>        
+<br>        subplot(3,1,2)
+<br>        scatter(DiffSo,DiffTWT_33_sh_F,40,DiffTWT_33_sh_F,'filled')
+<br>        set(gcf,'Colormap',mycmap_s)
+<br>        colorbar('peer',subplot(3,1,2));
+<br>        caxis([-0.2 0]) 
+<br>         freezeColors 
+<br>         cbfreeze;
+<br>         cblabel('DiffTS','fontsize',10);
+<br>        
+<br>       subplot(3,1,3)
+<br>        scatter(DiffPeP,DiffSo,40,DiffTWT_33_sh_new,'filled')
+<br>        axis([-2500 1000 -0.4 0.4])
+<br>        colorbar('peer',subplot(3,1,3));
+<br>        set(gcf,'Colormap',mycmapTS)
+<br>         caxis([-0.5 1]) 
+<br>          cblabel('DiffTS','fontsize',10);
+<br>       
+<br>    Can someone please point out why is it not working? Thank you so much      </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/367748">Danielle Ripsman</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/225623">Chad Greene</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Does exactly what I wanted it to do with one simple command.  Brilliant. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/369989">Onassis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Wonderful submission. I have been 
+looking for something like this for months. I have a little problem 
+though. Using freezecolors and cbfreeze combination in MATLAB (R2010b) 
+works fine on my subplots but I get the same colorbars in the different 
+subplots.
+<br>In fact I get this following warning message:
+<br>Warning: You seem to be attempting to freeze a colorbar. This no longerworks. Please read the help for
+<br>freezeColors for the solution.
+<br>I would be glad if a workaround could be suggested
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56984">Jan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Often wondered how to do that. Very cool</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56984">Jan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232454">Chris McGraw</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great code! One issue I noticed 
+though is that representations of logical/binary data (at least using 
+imagesc function) cannot be frozen using   'freezeColor' -- you must 
+convert them to non-binary for it to have its effect, e.g. 
+double(myBinaryData). No error is thrown or generated if binary data is 
+used, it simply fails to freeze (took me 20 minutes to determine what 
+was going wrong). This is not the first code I've noticed that behaves 
+oddly (unexpected results, no errors generated) around logicals, so it 
+might be more of a Matlab issue than the code itself. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232454">Chris McGraw</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129766">Arturo Moncada-Torres</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62972">Gaurav Rayal</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is so useful.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/128196">Martina Callaghan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks! Super useful.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/229865">Edmund Brekke</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great file. Makes my contourplots 
+much nicer than what would have been otherwise possible. But it doesn't 
+seem to work with matlab2tikz.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/145299">Liaofan Lin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/145299">Liaofan Lin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/248115">Adam</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/182712">Suti</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/303485">Richard Sims</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great piece of code! if anyone 
+knows how to preserve the alpha command so i can keep the adjusted 
+transparencies i would be extremely grateful!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/314885">Espa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot for this very useful piece of code!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/176426">Jakob Sievers</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Incredibly useful!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290747">Manuel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi!
+<br>I was recommended to use this file in order to save all the intensity values of an image.
+<br>Reading the documentation I can see that it saves all the pixel info
+ because the program is able to freeze and unfreeze the image and to 
+restore it.</p>
+
+<p>My questions are: Does the program save the info of each pixel (Index
+ or Intensity Value, and position) when is asked to freeze it? Does the 
+program save this info in any variable?</p>
+
+<p>Thank you in advance and congratulations for your program. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/225911">Muhammet</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/296667">Rems</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello,
+<br>I have three binary masks that I want to display in one figure with 
+three different color maps. However I always get the same color for the 
+three masks, the function freezeColors is apparently not working for 
+binary logical maps even after applying the change proposed by Mircea 
+Ionescu (17 Oct 2011). Can somebody help?	</p>
+
+<p>Here is my code</p>
+
+<p>subplot(1,3,1);imshow(Binary_Mask_1,map1)
+<br>freezeColors
+<br>subplot(1,3,2);imshow(Binary_Mask_2,map2)
+<br>freezeColors
+<br>subplot(1,3,3);imshow(Binary_Mask_3,map3)
+<br>freezeColors</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/206866">Drew Compston</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This function worked well for me 
+using R2012a and imagesc and surf. Haven't tried for other types of 
+plots like scatter (in one of the comments).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello from the author.</p>
+
+<p>I'm sorry people are having trouble with newer versions of Matlab. 
+They keep changing things under the hood, in the name of progress.</p>
+
+<p>I'm willing to help try to fix things, but it'll only work if you the users send more _details_.  For starters:
+<br>What exactly doesn't work?
+<br>What is the error (if there is one)?
+<br>What do you expect vs. what do you see?
+<br>Important: Please send me simple demo code that demonstrates your 
+problem. Simplify your code to the minimum that still shows the problem.
+ This is invaluable.</p>
+
+<p>It seems like a number of problems are focussed around the mapping 
+toolbox. Please verify if you see the same problems if you instead use 
+the standard graphics functions? That is, replace contourm and scatterm 
+with contour and scatter, for example.</p>
+
+<p>I would like to keep freezeColors working for everyone, but can only do so with your help.</p>
+
+<p>You can send me these things off list at iversen AT nsi.edu.</p>
+
+<p>Thanks,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello from the author.</p>
+
+<p>I'm sorry people are having trouble with newer versions of Matlab. 
+They keep changing things under the hood, in the name of progress.</p>
+
+<p>I'm willing to help try to fix things, but it'll only work if you the users send more _details_.  For starters:
+<br>What exactly doesn't work?
+<br>What is the error (if there is one)?
+<br>What do you expect vs. what do you see?
+<br>Important: Please send me simple demo code that demonstrates your 
+problem. Simplify your code to the minimum that still shows the problem.
+ This is invaluable.</p>
+
+<p>It seems like a number of problems are focussed around the mapping 
+toolbox. Please verify if you see the same problems if you instead use 
+the standard graphics functions? That is, replace contourm and scatterm 
+with contour and scatter, for example.</p>
+
+<p>I would like to keep freezeColors working for everyone, but can only do so with your help.</p>
+
+<p>You can send me these things off list at iversen AT nsi.edu.</p>
+
+<p>Thanks,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/291155">Emil Lundberg</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/44040">Eran Mukamel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This doesn't work in R2012a - any updates/fixes?  It would be much appreciated!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/229193">Damith Jinasena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot mate! This is something I have tried for months but couldn't achieve. Your solution is awesome</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/229193">Damith Jinasena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot mate! This is something I have tried for months but couldn't achieve. Your solution is awesome</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/229193">Damith Jinasena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot mate! This is something I have tried for months but couldn't achieve. Your solution is awesome</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/229193">Damith Jinasena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot mate! This is something I have tried for months but couldn't achieve. Your solution is awesome</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/182832">Miche</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great stuff! Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/173671">maryline bawedin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I found the trick. Actually I was 
+plotting 3 subplots: 1 surfc + 2 contourf, and it doesn't work but when I
+ changed the order as following:
+<br>2 contourf + 1 surfc (i.e. surfc at the end)
+<br>It works... very mysterious</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/189777">Brad</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Problems with this function in  r2012a - </p>
+
+<p>I am still having problems getting this to work in release 2012a.  I 
+have tried Lucio's solution, but it didn't work.  I have a subroutine 
+that plots a contourm map, and passes out the handles of the axes, the 
+contours and the figure.  I then call freezeColor in the main routine, 
+and I have tried addressing this to all three of those handles - 
+different results, but none are desired (and none are right as they were
+ in release 2009b)!</p>
+
+<p>addressing the axes handle - I get two color bars with the desired 
+color maps, but the contours which are plotted first all change to 
+black.  </p>
+
+<p>Addressing the contour handle - generates an error "Error using get - Invalid Handle"</p>
+
+<p>Addressing the Figure handle - I get the same color bar for the 
+contourm plot and the scatterm plot, but the contours all turn black 
+(they are over the maximum of the second colormap).</p>
+
+<p>Any solutions?  Any new functions out there?  This was fantastic 
+before the GD version change - but I notice John has posted anything in a
+ while...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102855">Phillip</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fantastic! They should add something like this to the official Matlab release.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/254951">Lucio</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ok, I solved it.</p>
+
+<p>I had to use</p>
+
+<p>sc_h = scatter(...)
+<br>freezeColors(sc_h)</p>
+
+<p>instead of</p>
+
+<p>freezeColors</p>
+
+<p>although I confirm that the second way was alright also with previous Matlab versions (but not anymore).</p>
+
+<p>Sorry for the double comment.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/254951">Lucio</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm having the same issue as Brad. </p>
+
+<p>FreezeColors used to work with Matlab2009b and Matlab2011a, but now it works no more on the same code with Matlab2012a.</p>
+
+<p>The line that makes my scatter plot disappear is</p>
+
+<p>set(hh,'CData',realcolor);</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/254519">Georg</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Love this script and rely on it 
+heavily. However I stumbled upon an issue, when using two axis in a 
+figure, the caxis scaling would use the wrong axis and thus produce an 
+erronenous scaling of the color.</p>
+
+<p>A simple cax = caxis(h); in line 86 solved that for me</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/189777">Brad</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am having an issue with release 
+2012a.  My code was written and employed FreezeColors as well as 
+cbfreeze in release 2009a.  FreezeColors no longer works - all of my 
+contourm lines go black when I use scatterm to plot points on top.  Is 
+anyone experiencing similar issues?  I haven't changed the code, but it 
+doesn't work anymore.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93480">Giovanni Ughi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great tool! Thx for sharing!
+<br> 
+<br>One issue:
+<br>working with a GUI, calling
+<br>--freezeColors(h)
+<br>generates an error.</p>
+
+<p>Need to call:
+<br>--axes(h)
+<br>--freezeColors
+<br>to solve the issue.
+<br>Any idea about this? Possible to fix?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93480">Giovanni Ughi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great tool! Thx for sharing!
+<br> 
+<br>One issue:
+<br>working with a GUI, calling
+<br>--freezeColors(h)
+<br>generates an error.</p>
+
+<p>Need to call:
+<br>--axes(h)
+<br>--freezeColors
+<br>to solve the issue.
+<br>Any idea about this? Possible to fix?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93480">Giovanni Ughi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great tool! Thx for sharing!
+<br> 
+<br>One issue:
+<br>working with a GUI, calling
+<br>--freezeColors(h)
+<br>generates an error.</p>
+
+<p>Need to call:
+<br>--axes(h)
+<br>--freezeColors
+<br>to solve the issue.
+<br>Any idea about this? Possible to fix?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74530">Martin Richard</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/206373">Zhou</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much!!!!!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>== from the Author ==</p>
+
+<p>Hi everyone. Happy New Year! </p>
+
+<p>I wanted to belatedly comment on the problem people are having with 
+eps/pdf exports ending up with pixellated text and lines. It's a bummer.
+ Unfortunately, I believe this is an underlying feature of Matlab. 
+Matlab has three methods for rendering plots, and this has an effect on 
+printing to files, too. See "Impact of Rendering Method on the Output" 
+at 
+http://www.mathworks.com/help/techdoc/creating_plots/f3-103236.html#f3-103452</p>
+
+<p>In short, even if you print to a vector format like 'eps' or 'pdf' 
+matlab will save _bitmaps_! The only exception is when using render mode
+ 'painters'. If you open these resulting eps/pdf in a vector program 
+like Illustrator you'll see the file is in fact a bunch of bitmap 
+'strips'. It would be so much better if Matlab saved the image parts of 
+your figure as bitmaps but kept the lines and text as crisp vectors. 
+Please contact Mathworks to complain/suggest this.</p>
+
+<p>=Workarounds=</p>
+
+<p>First, try</p>
+
+<p>&gt;&gt; set(gcf,'renderer','painters') </p>
+
+<p>on your plots and see if you like the result. If so, you're golden: 
+With the 'painters' renderer will you get what you want--a vector format
+ output with text (and presumably lines--I haven't verified this) as 
+vector objects. However, you will lose many effects like transparency, 
+lighting, etc, and some more advanced plots you will see an error as 
+they cannot be rendered in this mode. </p>
+
+<p>Otherwise, the workaround is to specify a _resolution_ when you print to eps or pdf:</p>
+
+<p>&gt;&gt; print(gcf,'-depsc','-r600','file.eps')</p>
+
+<p>It'll still just output a bitmap, but at least the text and contours 
+will be rendered smoothly (at 600 ppi in this case. Use a higher number 
+for even smoother results). The default is in fact '-r72' which is why 
+you have been getting pixellated text and lines. </p>
+
+<p>In this case, there's really no point in printing to eps or pdf, so you might as well use 'tiff' or another true bitmap format:</p>
+
+<p>&gt;&gt; print(gcf,'-dtiff','-r600','file.tiff')</p>
+
+<p>I tested this out on Koos Spee's nice example, and using R2010a. 
+Hopefully this generalizes and helps people out. Let me know if so/not. 
+Thanks, John</p>
+
+<p>PS. Thank you for bug fixes (Mircea &amp; Subhaneil). I'll upload a new version eventually...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/206334">Nicolas Weiss</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice script, but the fact that you 
+cannot export eps files is a big downside. I found a workaround to this 
+with the info posted here: 
+http://www.mathworks.nl/support/tech-notes/1200/1215.html</p>
+
+<p>Specifically, I wanted to plot a contour in the same axis as a gray scale image. This is an example of how to do this:</p>
+
+<p>%Define the colormap 
+<br>colormap([gray(64);jet(64)])</p>
+
+<p>data = 255.*rand(100);
+<br>data2 = peaks(100);</p>
+
+<p>h(1) = imagesc(data);
+<br>hold on
+<br>[C,h(2)] = contour(data2);
+<br>hold off</p>
+
+<p>m = 64;  % 64-elements is each colormap</p>
+
+<p>cmin = min(data(:));
+<br>cmax = max(data(:));
+<br>C1 = min(m,round((m-1)*(data-cmin)/(cmax-cmin))+1); </p>
+
+<p>cmin = min(data2(:));
+<br>cmax = max(data2(:));
+<br>C2 = min(m,round((m-1)*(data2-cmin)/(cmax-cmin))+1);
+<br>C2 = m+C2;</p>
+
+<p>set(h(1),'CData',C1);
+<br>set(h(2),'ZData',C2);
+<br> 
+<br>caxis([min(C1(:)) max(C2(:))])</p>
+
+<p>%Fix the color bar so that it only dispalys the colors of the contour 
+<br>colorbar('YLim',[65,128],'YTickLabel',[10 20 30 40 50 60])</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/204582">Vincent</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34958">Mircea Ionescu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great tool.
+<br>One issue: this function does not work with logical data. 
+<br>Modifying line 196 from:
+<br>if ~isempty(g.CData) &amp;&amp; (isnumeric(g.CData)|| islogical(g.CData)) &amp;&amp; size(g.CData,3)==1, 
+<br>to :
+<br>if ~isempty(g.CData) &amp;&amp; isnumeric(g.CData) &amp;&amp; size(g.CData,3)==1, </p>
+
+<p>solves the issue.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/171156">Andrew</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101523">Carl</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/168743">Maria</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello! Thank you John, this is a 
+fantastic function. However I'm experiencing the same issues that 
+Yongmin Jiang (May 2007) and Koos Spee (Mar 2010). Did anybody find a 
+solution for this? I normally print my contour plots in epsc or pdf and 
+they look very sharp and smooth and when I use freezeColors the contours
+ and axis labels become very smudged and pixellated. This is very 
+frustrating as creating subplots works so much better for me than 
+individual figures. Did anybody find a solution to this? I played around
+ with resolutions and different file formats to no avail.</p>
+
+<p>Thank you!</p>
+
+<p>Maria </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/165622">Eva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Brilliant function- thanks John.</p>
+
+<p>However, I'm having an interesting problem with it when using 
+contourf.  If I run the following code line-by-line (ie: cutting and 
+pasting each line into the command window one at a time), I get the 
+correct image.  If I copy and paste all lines of the code together into 
+the command window, I get a completely different image.  Note that this 
+is NOT the case with imagesc, surf, etc.</p>
+
+<p>figure</p>
+
+<p>subplot(2,1,1)
+<br>contourf(peaks)
+<br>colormap hot
+<br>freezeColors </p>
+
+<p>subplot(2,1,2)
+<br>colormap hsv 
+<br>contourf(peaks)
+<br>freezeColors </p>
+
+<p>Why is this?  Any ideas for how to fix it so that I don't have to run my code line-by-line?</p>
+
+<p>Thanks much!
+<br>-Eva</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/115785">Hassan Naseri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>THANKS INDEEED</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/141995">Farzaneh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I have a question, I would highly appreciate anyone's help as this thing is getting on my nerve!!!</p>
+
+<p>I am using freezecolors, I find it very helpful however there is something about it :
+<br>I want to see the "index" of each pixel of my image when I use the "Data Cursor" bottom. </p>
+
+<p>However after I apply freezecolors to my image I only see the "x" , 
+"y" , and "RGB" values of each pixel but not the "index" value! </p>
+
+<p>I was wondering if there is a way that I can see the "index" value as well?</p>
+
+<p>Thanks so much,
+<br>~F
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72234">Sieun</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/135225">olim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great package John! Thank you very much...
+<br>In my case its extremely useful overlaying severla meshs in one figure, with different colorbars.
+<br>However, it just turned out there might be some issues with the print command.
+<br>I always used saveas so far to save my figures to eps format. Now, 
+as I just found out, for printing vector graphics from commands like 
+pcolor or mesh you do better using the print command with the -painters 
+option,e.g.</p>
+
+<p>print(gcf,'-depsc', '-painters', '-r72', 'test1.eps');</p>
+
+<p>If I use this on a mesh plot with several mesh layers, constructed 
+with the freezeColors command before, the print function will only print
+ out a figure with the last mesh plotted mesh layer. Is this a known 
+issue or is there a simple fix for it.</p>
+
+<p>Cheers
+<br>O</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/41781">Fran</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for the answer, Irene. Did it work?</p>
+
+<p>Eef, this is not something I can reproduce. freezeColors doesn't 
+touch the labels, so it is a side effect of some sort. It could be a 
+matlab bug due to change in the figure's renderer--I see similar 
+problems when converting (set(gcf,'renender',...) between rendering 
+modes. If you can narrow it down to the specific line in freezeColors 
+that causes the change, it could give you a clue on what to ask 
+mathworks about.</p>
+
+<p>Matthias: The example you give works fine here. What is the error 
+you're seeing? If you're having a problem with cbfreeze, you'll have to 
+ask its author for help.</p>
+
+<p>Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/95782">Matthias Pospiech</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It save the colors if the current 
+plot, but the colorbar is wrong. Using cbfreeze only gives error of 
+invlaid handle for colorbar handle, so this does not work</p>
+
+<p>hcb1 = colorbar('location','EastOutside');
+<br>freezeColors;
+<br>cbfreeze(hcb1);</p>
+
+<p>This way it is not usable to me, any fix would be highly appreciated</p></span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116486">Irene Laiz</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>To the author: great job!! Thanks so much for this wonderful routine!!</p>
+
+<p>To Sophie's post (15 Nov 2010): There's a simple way to work around 
+your problem by simply eliminating the handles after "colormap". I've 
+modified your code below:</p>
+
+<p>load clown;
+<br>figure('position',[100 100 500 500]),</p>
+
+<p>h1 = axes('position',[0.1 0.1 0.4 0.4]);
+<br>set(h1,'visible','on');
+<br>colormap('jet');
+<br>imagesc(X); %Without handles
+<br>freezeColors; %Without handles</p>
+
+<p>h2 = axes('position',[0.6 0.1 0.4 0.4]);
+<br>set(h2,'visible','on');
+<br>colormap('gray');
+<br>imshow(mat2gray(X)); %Without handles
+<br>freezeColors; %Without handles</p>
+
+<p>Hope this helps!!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/44898">Sophie</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It's a really useful work! But I have a question. This script will work only with subplots?</p>
+
+<p>Because I tried with handles and I do not obtain what I wish:</p>
+
+<p>load clown;
+<br>figure('position',[100 100 500 500]), </p>
+
+<p>h1 = axes('position',[0.1 0.1 0.4 0.4]); 
+<br>set(h1,'visible','on');
+<br>colormap('jet');
+<br>h1 = imagesc(X);
+<br>ext_freezeColors(h1);</p>
+
+<p>h2 = axes('position',[0.6 0.1 0.4 0.4]);
+<br>set(h2,'visible','on');
+<br>colormap('gray');
+<br>h2 = imshow(mat2gray(X));
+<br>ext_freezeColors(h2);</p>
+
+<p>The two images that I obtain are both gray:-(</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/114448">Eef Joosten</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great function! </p>
+
+<p>But is there a solution for the upwards shifting of the first letter of the Ylabel while using freezeColors? 
+<br>Simple example: 
+<br>imagesc(linspace(0,10)); xlabel('Time (ms)'); ylabel('Frequency (Hz)'); freezeColors</p>
+
+<p>I experience this in windows and unix. Also, it doesn't matter if I 
+use ylabel or any vertical text string. It does not happen with xlabel 
+and horizontal text strings. Any help would be greatly appreciated. 
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/90330">Li</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is an extremely useful function. </p>
+
+<p>Unfortunately, it froze my Matlab program every time I run it. I had to force quit Matlab to run another code. </p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/108429">Subhaneil</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great function. I needed to make one small change to get it to work properly, Line 86:
+<br>previous:
+<br>cax = caxis;
+<br>new:
+<br>cax = caxis(h);</p>
+
+<p>This made sure it got caxis from the correct axis.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello, I have uploaded a new version of freezeColors. </p>
+
+<p>Changes: The main change is in documentation, finalizing the 
+suggestion to use cbfreeze to freeze colorbars. There is also a fix to a
+ problem in which caxis was changed in contourf plots.</p>
+
+<p>I would enjoy hear about the kind of work users of this function are 
+doing, and see examples of its use. (my email address is contained in 
+the functions).</p>
+
+<p>Thank you, John Iversen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/107936">Howard Schoeberlein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent utility. With 
+experimentation, I found freezeColors can be called once for multiple 
+axes with the same colormap and scale. I'm making a movie with a lot of 
+graphics elements, so speed is an important consideration. Any 
+additional insights on how to speed up the process welcome 
+(howard.schoeberlein@jhuapl.edu) </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104067">Faisal Shahzad</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>where do i need to put unzipped folder in order to use this function?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100665">Adam</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great function! Is there any way to
+ preserve alphamap data on images? Once I call freezeColors, the 
+alphamap data is still present but not displayed.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/99509">Catherine</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A note on my submission above - I 
+realized setting CLimMode back to auto only worked because I had already
+ frozen the colorbar using cbfreeze . If it is not already frozen, when 
+CLimMod is reset to auto the colorbar loses its limits (undoing the 
+whole purpose of line 159)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/99509">Catherine</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This function was just what I 
+needed for a contouring GUI I have where the user can contour selectable
+ datasets on a map. However, I found that the contour levels got stuck 
+to that of the first contour even though it had been deleted.</p>
+
+<p> I found that at line 159 where the CLim data for the parent is 
+restored  this set the CLimMode to manual vs. auto. The CLim data held 
+the data limits for the contour. Successive contours used these limits 
+even though the data was not in this range. </p>
+
+<p>Adding a line to reset the CLimMode back to auto solves this.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56538">feili li</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>this is so amazing!  i have been looking for a way to solve colormap problem for a while.  thank you John!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 May 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/59645">Nora</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just what I need. Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93576">Weixin LI</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great file!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>====From the Author====</p>
+
+<p>Hello everyone. I'm glad this function has been useful. </p>
+
+<p>One noted problem is that freezeColors no longer works for colorbars.
+ I am writing to say I have decided not to fix this because there is 
+another function that solves the problem...</p>
+
+<p>The problem:
+<br>In newer versions, Matlab reinitializes colorbars behind the scenes 
+every time CAXIS or COLORMAP is called. This deletes the frozen 
+colorbar, undoing the work of freezeColors. They're trying to be 
+helpful...</p>
+
+<p>A solution:
+<br>As noted above by David, there's an option that has worked for 
+people, the function CBFREEZE by Carlos Adrian Vargas Aguilera. It is 
+available at:</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/24371-colormap-and-colorbar-utilities-sep-2009</p>
+
+<p>I don't think there's any point in reduplicating his good work, so I 
+will update the description to recommend the following usage:</p>
+
+<p>%EXAMPLE
+<br>subplot(1,2,1)
+<br>colormap hot
+<br>imagesc(peaks)
+<br>freezeColors      %freezes plot's colors, as usual
+<br>colorbar
+<br>cbfreeze            %freezes colors of any colorbars</p>
+
+<p>subplot(1,2,2)
+<br>colormap jet
+<br>imagesc(peaks)
+<br>freezeColors
+<br>colorbar
+<br>cbfreeze</p>
+
+<p>Please let me know if this works/doesn't work for you. I'll update the description and sample code at some point.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32545">Koos Spee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Got the same problem as Yongmin Jiang  (May 2007).  Made a quick example (as no solution has yet been posted).</p>
+
+<p>%%</p>
+
+<p>clear all
+<br>close all hidden
+<br>clc</p>
+
+<p>%%</p>
+
+<p>p=peaks(10);</p>
+
+<p>%% </p>
+
+<p>FigureWidth=400;
+<br>FigureHeight=200;</p>
+
+<p>hFig=figure;
+<br>set(gcf, 'Position', [400 400 FigureWidth FigureHeight], 'PaperUnits', 'Points',...,
+<br>    'PaperSize', [FigureWidth FigureHeight])</p>
+
+<p>subplot('position', [0.1 0.2 0.40 0.70])
+<br>imagesc(p)
+<br>colormap('hsv')
+<br>freezeColors;
+<br>title('Not so nice', 'FontName', 'Arial', 'FontSize', 8');</p>
+
+<p>subplot('position', [0.55 0.2 0.40 0.70])
+<br>imagesc(p)
+<br>title('Not so nice I', 'FontName', 'Verdana', 'FontSize', 6');
+<br>xlabel('XLabel Test','FontSize', 6');
+<br>colormap('bone')
+<br>freezeColors;</p>
+
+<p>%%</p>
+
+<p>Name='foo';</p>
+
+<p>    fillPage(gcf, 'margins', [0 0 0 0], 'papersize', [FigureWidth FigureHeight]); 
+<br>% ttp://www.mathworks.com/matlabcentral/fileexchange/16566-fillpage</p>
+
+<p>    fi=strcat(Name,'.eps');
+<br>    print(gcf,'-depsc',fi)
+<br>    
+<br>    
+<br>    print(gcf,'-dpng','-r500','foo.png')
+<br>    
+<br>    dos(['epstopdf ', fi]);
+<br>    
+<br>    fprintf('done!\n Figure saved\n')</p>
+
+<p>%%</p>
+
+<p>Any idea to prevent the 'bitmapping' of labels/ticks?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/71667">Samoline1 Linke</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is it possible that I specify 
+colors for ranges and always use those colors e.g. 0.2 -0.4 should 
+always be represented by red color?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62159">Reyna</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/57946">Annette</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/63558">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi everybody! </p>
+
+<p>For people having problem with the fixing of the colorbar (not only the colormap) I suggest you the combination with cbfreeze:</p>
+
+<p>colorbar('location','SouthOutside');                                    
+<br>freezeColors;                                  
+<br>cbfreeze</p>
+
+<p>which worked fine for me!</p>
+
+<p>David.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fix for error pointed out by Daniel Armyr (11Aug): "image; freezeColors"</p>
+
+<p>after the line:         idx = cdata;
+<br>&gt;insert the line:      idx = floor(idx);</p>
+
+<p>This will take care of the problem. Thanks for pointing it out.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/15477">Ian Howat</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/63558">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello</p>
+
+<p>I using the freezing colorbars with 'v6' as you said. But this way I 
+cannot define the location of the colorbar. Is there any simple solution
+ for it. If I use </p>
+
+<p>hc = colorbar('location',...)
+<br>freezeColors(hc)</p>
+
+<p>it doesn't work anymore as 'v6' is missing...</p>
+
+<p>Any ideas?</p>
+
+<p>Thanks a lot,</p>
+
+<p>David
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/63823">Pearl</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/25696">Daniel Armyr</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Neat program, but I found a bug:
+<br>Running the following line:
+<br>&gt;&gt;image; freezeColors</p>
+
+<p>gives the following error message:
+<br>??? Subscript indices must either be real positive integers or logicals.</p>
+
+<p>Error in ==&gt; freezeColors at 136
+<br>        c = cmap(idx,i);</p>
+
+<p>Placing a breakpoint and looking at idx on the line in question 
+reveals that idx consists of floating point numbers and not integers at 
+that point. </p>
+
+<p>Unfortunately, I do not have enough of an understanding of the program to present a fix.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/63767">Nazatul Naquiah Ahba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>cool! helps to solve my problem! :D</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/18787">John Iversen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>** WORKAROUND FOR PROBLEMS WITH COLORBARS **</p>
+
+<p>I'm really sorry not to respond earlier--I had no idea about the recent posts! </p>
+
+<p>There is a workaround for the problem with freezing colorbars:</p>
+
+<p>     freezeColors(colorbar('v6'))</p>
+
+<p>It works for me as of 2009a, so I expect it will work for other earlier versions.</p>
+
+<p>To silence the warning messages, 
+<br> 
+<br>    warning('off','MATLAB:colorbar:DeprecatedV6Argument')</p>
+
+<p>should be run (once per session--put it in 'startup.m')</p>
+
+<p>I hope this helps. Please let me know if not.</p>
+
+<p>Best regards,</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56040">Emanuele Ruffaldi</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/59570">Daniel Golden</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great little tool, that doesn't work on colorbars in the latest version of Matlab.</p>
+
+<p>Liam, it would be great if you could post your quick fix!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 May 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56054">Jochen Rau</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Had some problems with two axes, 
+one image in each with a colormap with 255 entries. Using freezeColors a
+ wrong color number is detected which results in distorted images. </p>
+
+<p>adding a (h) behind colormap in line 81 and caxis in line 83 solves this, so that the lines look like: 
+<br>81: cmap = colormap(h);
+<br>83: cax = caxis(h);</p>
+
+<p>Nevertheless: Excellent work!
+<br>This fixes a Matlab flaw (colormap should be an image or axes property).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43602">Alessio Rucci</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, I'm trying to plot in the same 
+figure (not in different subplot of thesame image) two different data 
+with different colorbar, but if I use freezeColor it doesen't work....</p>
+
+<p>[X,Y]=meshgrid(-10:10,-20:20);
+<br>Z1=sqrt((X/10).^2+(Y/10).^2)+2;
+<br>Z2=sqrt((X/10).^2+(Y/10).^2)-2;</p>
+
+<p>figure,contour3(X,Y,Z1); axis xy; colormap hsv;
+<br>freezeColors; freezeColors(colorbar);
+<br>hold on;contour3(X,Y,Z2); axis xy; colormap jet;
+<br>freezeColors; freezeColors(colorbar);</p>
+
+<p>is it possible to have both the colorbars, one for each data?</p>
+
+<p>Thaks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30831">Arnaud Laurent</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks, you solved my problem! Nice work.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/50852">Sebastian Thiele</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent Work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33766">Anthony Lamb</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very good tool John. Unfortunately 
+when used to have two color maps and colorbars on the same plot is seems
+ to change my surface plot colors to those that match the OpenGL 
+renderer.. The colorbars are ok it's just that little hick up... Any 
+suggestions on a fix????
+<br>Oh.. Liam I'd like to get my hands on your quick fix as well..</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43038">Liam Harrington-Missin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>To follow up: The problem is when 
+you change the colormap and not easily solved in the freezeColors / 
+unfreezeColors. I have created a simple fixme to get round it which I 
+can provide if anyone needs it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43038">Liam Harrington-Missin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Like Jody I have been having issues with the colorbar. I can't seem to get them to stick to selected colormaps, I'm using R2007b</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/17701">Jody Klymak</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>To follow up: colorbar.m appears to
+ redraw the image when the colormap is updated.  There is a callback to 
+"FigureChangedColor" that erases the old image and makes a new one.  So 
+the cdata that was set in the old colorbar is erased and replaced when 
+colormap is called.  Not sure how to get around it. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/17701">Jody Klymak</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yes I can't figure out how to make 2008a/b colorbars freeze either.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Oct 2008</span></td>
+        <td>
+          <span class="author">
+            MARSSET Bruno
+          </span>
+        </td>
+        <td><span class="comment"><p>We had to drape P wave velocities values over seismic amplitudes, therefore we needed two different colormaps.
+<br>Playing arount with freezeColors and Transparency did the trick !
+<br>Many thatks
+<br>Bruno MARSSET </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            David Lei
+          </span>
+        </td>
+        <td><span class="comment"><p>unfortunatly I got an errormessage after executing the demoprogram. I have got Matlab 6.5. Is this the problem?</p>
+
+<p>-------------------------------------------
+<br>subplot(2,1,1); imagesc(peaks); colormap hot; freezeColors</p>
+
+<p>subplot(2,1,2); imagesc(peaks); colormap jet; freezeColors</p>
+
+<p>??? Error using ==&gt; nargchk
+<br>Too many input arguments.</p>
+
+<p>Error in ==&gt; D:\MATLAB6p5\work\freezeColors.m (checkArgs)
+<br>On line 206  ==&gt; error(nargchk(0,3,nargs,'struct'))</p>
+
+<p>Error in ==&gt; D:\MATLAB6p5\work\freezeColors.m
+<br>On line 75  ==&gt; [h, nancolor] = checkArgs(varargin);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            Frank Leone
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot, does exactly what I 
+wanted. An additional feature, obvious but not mentioned, that it is 
+also usable to use multiple colormaps within one set of axes using. For 
+example:</p>
+
+<p>plot (...)
+<br>colormap (...)
+<br>freezeColors
+<br>hold on;
+<br>plot (...)
+<br>colormap (...)</p>
+
+<p>It is rather slow though for big plots, but that isn't a real problem.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            Ting-Chieh Lin
+          </span>
+        </td>
+        <td><span class="comment"><p>This code is very useful. However, it seems works only for the colormap. The colorbar cannot work in Matlab 2008a.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            Carlos Adrian Vargas Aguilera
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent function John. I just 
+submited a function that frozen the colorbar map too for MATLAB 2007B, 
+you should check it out: IMAGESCNAN</p>
+
+<p>Carlos</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 May 2008</span></td>
+        <td>
+          <span class="author">
+            Irian O
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jan 2008</span></td>
+        <td>
+          <span class="author">
+            Eduardo Gonzalez
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent, but it did not work on colorbars in Matlab R2007b</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Sep 2007</span></td>
+        <td>
+          <span class="author">
+            Leo B
+          </span>
+        </td>
+        <td><span class="comment"><p>Great job!
+<br>Works great for plotting different plots and colormaps with hold on in the same figure and axes.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Sep 2007</span></td>
+        <td>
+          <span class="author">
+            Bram van Hoof
+          </span>
+        </td>
+        <td><span class="comment"><p>Seems like an excellent way to solve this exact same problem that i have had!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Aug 2007</span></td>
+        <td>
+          <span class="author">
+            Jiank L
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks, great. but it seems that it
+ can not work with `set' command, only work with 'imagesc', etc. so when
+ plotting pic. in a for loop, we have to use multiple 'plot', but not 
+'set'. Maybe one can add a handle in freezeColors? :</p>
+
+<p>      %set(im3,'CData',cee1);
+<br>      imagesc(cee1);
+<br>      colormap(hot); 
+<br>      freezeColors; 
+<br>      freezeColors(colorbar);   
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jun 2007</span></td>
+        <td>
+          <span class="author">
+            Ryan Van Fleet
+          </span>
+        </td>
+        <td><span class="comment"><p>The perfect fix to my problem my 
+multi-color-mapping problem.  Very Handy.  I had to comment two lines 
+out of the freeze file that produced errors.  After that worked great.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jun 2007</span></td>
+        <td>
+          <span class="author">
+            Damien G
+          </span>
+        </td>
+        <td><span class="comment"><p>I can now superimpose a color 
+pseudocolor plot on another one containing a gray-scale colormap. It 
+works, it's great. Many thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2007</span></td>
+        <td>
+          <span class="author">
+            Frank Bahr
+          </span>
+        </td>
+        <td><span class="comment"><p>This is exactly what I was looking for. Thank you, guys!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 May 2007</span></td>
+        <td>
+          <span class="author">
+            John Iversen
+          </span>
+        </td>
+        <td><span class="comment"><p>Yongmin, Unfortunately, those 
+issues sound like general issues with Matlab graphics, not freezeColors.
+ I have not encountered such problems, but if you have an example, I can
+ look at it to see if there is a workaround. However, you may have 
+better luck contacting Mathworks support directly.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 May 2007</span></td>
+        <td>
+          <span class="author">
+            Yongmin Jiang
+          </span>
+        </td>
+        <td><span class="comment"><p>Another side effect is the text of 
+the figure is going to bitmap as well(does't look good), and when you 
+save the figure in .eps, .jpg or other format, the picture quality is 
+not as good, and the size of the figure is big.     </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            Chris K
+          </span>
+        </td>
+        <td><span class="comment"><p>Oops, apologies! I just noticed the freezeColors(colorbar) option. Now I'm satisfied!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            Chris K
+          </span>
+        </td>
+        <td><span class="comment"><p>A really great tool, but I am 
+having a problem where the  colormap of the colorbar of the first 
+subplot is reset to the colormap of the second subplot. Any suggestions?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            John Iversen
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>Thanks for the comment. My apologies. I noticed this problem as well,
+ and it has been fixed. However, the newest version is not up yet. 
+Please check back in a few days. In the meantime, I'm happy to email the
+ newer version to you.</p>
+
+<p>John Iversen
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            Andrew Stevens
+          </span>
+        </td>
+        <td><span class="comment"><p>It is a good attempt at patching a fundamental problem in ML.  </p>
+
+<p>However, when I try to use it with a colorbar, the function resets 
+the scale of the colorbar to go between 0 and 1.  The same thing appears
+ to happen in the author's demo. </p>
+
+<p>Does anyone know how to get around this problem?  I tried first 
+freezing the colorbar and then the axis and vice-versa (without luck).  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            Gleb Tcheslavski
+          </span>
+        </td>
+        <td><span class="comment"><p>very handi! Thank's!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Feb 2007</span></td>
+        <td>
+          <span class="author">
+            Anne Marie treguier
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            M C
+          </span>
+        </td>
+        <td><span class="comment"><p>Very good, useful function.  Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Dec 2006</span></td>
+        <td>
+          <span class="author">
+            Samuel Tucker
+          </span>
+        </td>
+        <td><span class="comment"><p>very sweet... also appears to work for R13.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Nov 2006</span></td>
+        <td>
+          <span class="author">
+            p p
+          </span>
+        </td>
+        <td><span class="comment"><p>Is there a version for matlab R13 ?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Oct 2006</span></td>
+        <td>
+          <span class="author">
+            J Roering
+          </span>
+        </td>
+        <td><span class="comment"><p>simple, easy, works perfectly, THANKS for saving from the "CLim" script offered with the matlab help section.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Sep 2006</span></td>
+        <td>
+          <span class="author">
+            John Iversen
+          </span>
+        </td>
+        <td><span class="comment"><p>Note from author: 
+<br>A second, updated version (2.1) uploaded 9/5/06. I realized v2 
+didn't freeze colors of bar plots, so that was added. Comments welcome.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jul 2006</span></td>
+        <td>
+          <span class="author">
+            Darren M
+          </span>
+        </td>
+        <td><span class="comment"><p>Was bashing my head off the wall 
+trying to get a grayscale image to be beside a hot and 2 personalized 
+colormaps for a publication.  Thanks much!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Jun 2006</span></td>
+        <td>
+          <span class="author">
+            Mike L
+          </span>
+        </td>
+        <td><span class="comment"><p>It's just what I need and does the job very nicely.  Excellent script.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            John Iversen
+          </span>
+        </td>
+        <td><span class="comment"><p>From the author:
+<br>A change was made to allow freezeColors to work with scaled, integer images. </p>
+
+<p>Thanks to O. Yamashita for suggesting this. </p>
+
+<p>The new version will appear in a few days (once reviewed by the Mathworks). In the meantime, the corrected line reads:
+<br> idx = ceil( (double(cdata) - cax(1)) / (cax(2)-cax(1)) * nColors);</p>
+
+<p>Thank you for the interest.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            O Yamashita
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a very nice tool!!
+<br>BTW, there may be a bug on line59,
+<br>  idx = ceil( (cdata - cax(1)) / (cax(2)-cax(1)) * nColors);</p>
+
+<p>when 'cdata' is of type "uint", many entries of (cdata - cax(1)) / 
+(cax(2)-cax(1)) could be zeros. This can be avoid by changing to</p>
+
+<p>idx = ceil( (cdata - cax(1))*nColors / (cax(2)-cax(1)));</p>
+
+<p>Hope this helps.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            A. Brunner
+          </span>
+        </td>
+        <td><span class="comment"><p>What a nice tool. I was about to start writing my own little program, but why re-inventing the wheel?</p>
+
+<p>Thank you for saving me time and nerves!</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Nov 2005</span></td>
+        <td>
+          <span class="author">
+            Anita D
+          </span>
+        </td>
+        <td><span class="comment"><p>ahh, it freezes the colorbars too! took me forever to figure out, but is awesome!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Nov 2005</span></td>
+        <td>
+          <span class="author">
+            Anita D
+          </span>
+        </td>
+        <td><span class="comment"><p>really great, thank you so much, you saved my gui! now if i could only freeze the colorbars...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Aug 2005</span></td>
+        <td>
+          <span class="author">
+            Anil Seth
+          </span>
+        </td>
+        <td><span class="comment"><p>What a fine file this is.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jul 2005</span></td>
+        <td>
+          <span class="author">
+            PB '
+          </span>
+        </td>
+        <td><span class="comment"><p>Well done! This is absolutely one of my all time favourites in the file exchange. /PB</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">28 Nov 2005</td>
+                  <td><p>Additional usage info was requested for freezing a colorbar</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 Apr 2006</td>
+                  <td><p>Allow freezeColors to correctly handle scaled integer cdata. Thanks to O. Yamashita for pointing this need out.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Sep 2006</td>
+                  <td><p>New version, now works on all graphics objects, whereas before it worked only on images.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Sep 2006</td>
+                  <td><p>Add handling of some standard hggroup-based plot types: bar (bargroups), scatter (scattergroups).</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Sep 2006</td>
+                  <td><p>Bug fix.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">16 Jul 2009</td>
+                  <td><p>Added workaround for problem freezing colorbars</p></td>
+                </tr>
+                <tr>
+                  <td class="date">14 Sep 2010</td>
+                  <td><p>Change documentation to suggest using cbfreeze to freeze colorbars
+<br>Fix to preserve caxis for objects within hggroups (e.g. contourf)</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416125750353&amp;cv=7&amp;fst=1416125750353&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=2&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/7943-freezecolors---unfreezecolors&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D2%26sort%3Dratings_desc%26term%3DFile+Exchange+Select&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

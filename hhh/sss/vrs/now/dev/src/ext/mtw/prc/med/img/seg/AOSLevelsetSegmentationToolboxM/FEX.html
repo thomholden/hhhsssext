@@ -1,0 +1,2380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>2D/3D image segmentation toolbox -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/24998-2d-3d-image-segmentation-toolbox" rel="canonical">
+<meta content="2D/3D image segmentation toolbox - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/24998-2d-3d-image-segmentation-toolbox" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/43266/original.jpg" property="og:image"><meta content="2D/3D image segmentation using level-set based active contour/surface with AOS scheme" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24998-2d-3d-image-segmentation-toolbox" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24998-2d-3d-image-segmentation-toolbox" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/16542" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=24998" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox" class="manifest_title">2D/3D image segmentation toolbox</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_ChanVese_model.m" class="function" title="Function">ac_ChanVese_model(I, phi,...</a><span class="description">FUNCTION U = AC_CHANVESE_MODEL(I, U, SMOOTH_WEIGHT, IMAGE_WEIGHT, ...
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_GAC_model.m" class="function" title="Function">ac_GAC_model(g, phi, coun...</a><span class="description">FUNCTION U = AC_GAC_MODEL(G, U, COUNTOUR_WEIGHT, EXPANSION_WEIGHT, ...
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_SDF_2D.m" class="function" title="Function">ac_SDF_2D(type, dims, var...</a><span class="description">FUNCTION U = AC_SDF_2D(TYPE, DIMS, VARARGIN)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_curvature_flow_AOS.m" class="function" title="Function">ac_curvature_flow_AOS(u, ...</a><span class="description">FUNCTION U = AC_CURVATURE_FLOW_AOS(U, DELTA_T, N_ITERS)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_div_AOS.m" class="function" title="Function">ac_div_AOS(phi, varargin)
+</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/private/ac_div_AOS_1D.m" class="function" title="Function">ac_div_AOS_1D(phi, g, del...</a><span class="description">AOS (additive opterator splitting) scheme for solving PDE equations in
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/private/ac_div_AOS_2D.m" class="function" title="Function">ac_div_AOS_2D(phi, g, del...</a><span class="description">AOS (additive opterator splitting) scheme for solving PDE equations in</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/private/ac_div_AOS_3D.m" class="function" title="Function">ac_div_AOS_3D(phi, g, del...</a><span class="description">AOS (additive opterator splitting) scheme for solving PDE equations in
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_gaussian_kernel.m" class="function" title="Function">ac_gaussian_kernel(dims, C)
+</a><span class="description">FUNCTION K = AC_GAUSSIAN_KERNEL(DIMS, C)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_gradient_map.m" class="function" title="Function">ac_gradient_map(I, alpha,...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_hybrid_model.m" class="function" title="Function">ac_hybrid_model(P, phi, p...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_laplacian_AOS.m" class="function" title="Function">ac_laplacian_AOS(u, delta...</a><span class="description">FUNCTION U = AC_LAPLACIAN_AOS(U, DELTA_T, N_ITERS)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_linear_diffusion_AOS.m" class="function" title="Function">ac_linear_diffusion_AOS(p...</a><span class="description">U = AC_LINEAR_DIFFUSION_AOS(U, DELTA_T, N_ITERS)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/ac_reinit.m" class="function" title="Function">ac_reinit(u)
+</a><span class="description">FUNCTION U_SDF = AC_REINIT(U)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/private/ac_tridiagonal_Thomas.m" class="function" title="Function">ac_tridiagonal_Thomas(var...</a><span class="description">Example:
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/private/zy_extract_pt_from_contours.m" class="function" title="Function">zy_extract_pt_from_contou...</a><span class="description">PT = ZY_EXTRACT_PT_FROM_CONTOURS(C) 
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/zy_plot_contours.m" class="function" title="Function">zy_plot_contours(c, varar...</a><span class="description">[H, CONTOUR_PT] = ZY_PLOT_CONTOURS(C, VARARGIN)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/mex/compile_mex_codes.m" class="script" title="Script">compile_mex_codes.m</a><span class="description">mex ac_fast_marching_3d_dll.cpp
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/test_ChanVese_model_3d.m" class="script" title="Script">test_ChanVese_model_3d.m</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content//AOSLevelsetSegmentationToolboxM/test_hybrid_model_3d.m" class="script" title="Script">test_hybrid_model_3d.m</a></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox/content/AOSLevelsetSegmentationToolboxM.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:91.6666%;">
+                <p>4.58333</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.6</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">24</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">380 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 3.23 MB</span>
+          <span id="fileid">File ID: #24998</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/8088/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">2D/3D image segmentation toolbox</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      11 Aug 2009
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-01-28">28 Jan 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">2D/3D image segmentation using level-set based active contour/surface with AOS scheme</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F24998-2d-3d-image-segmentation-toolbox&amp;watching=24998" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>&nbsp;Features of the toolbox: 
+<br>(1)	The toolbox includes classic level-set methods such as geodesic 
+active contours (GAC), Chan-Vese model and a hybrid model combining the 
+boundary and regional terms.
+<br>(2)	All the methods are implemented with the semi-implicit solver 
+AOS which can guarantee the stability of the numerical methods even with
+ very large time steps, thus boosting the efficiency for level-set based
+ segmentation.
+<br>(3)	All the methods can be applied to 2D and 3D data.</p></td>
+          </tr>
+
+          
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/image/" id="product_link_Image Processing Toolbox">Image Processing Toolbox</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.2 (R2006a)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24998-2d-3d-image-segmentation-toolbox">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%222d+and+3d+fast+marching%22" rel="nofollow">2d and 3d fast marching</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%222d+image+segmation%22" rel="nofollow">2d image segmation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%222d3d+image+segmentation%22" rel="nofollow">2d3d image segmentation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22active+contoursurface%22" rel="nofollow">active contoursurface</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22and+3d+fast+marching%22" rel="nofollow">and 3d fast marching</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22aos%22" rel="nofollow">aos</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22chanvese+model%22" rel="nofollow">chanvese model</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22curvature+flow%22" rel="nofollow">curvature flow</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22geodesica+active+contour%22" rel="nofollow">geodesica active contour</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hybrid+snake+model%22" rel="nofollow">hybrid snake model</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22image+processing%22" rel="nofollow">image processing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22implicit+method%22" rel="nofollow">implicit method</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22levelset%22" rel="nofollow">levelset</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22pde%22" rel="nofollow">pde</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22snake%22" rel="nofollow">snake</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22toolbox%22" rel="nofollow">toolbox</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="24998" type="hidden">
+        <div class="multicomplete"><input class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/24998-2d-3d-image-segmentation-toolbox" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24998-2d-3d-image-segmentation-toolbox">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(65)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">20 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/485631">Ander Biguri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Really good, it lacks a bit of documentation though. Good job here</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/486769">Mr.Tee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>i am using active contour without edge to detect built-up areas in satellite images.
+<br>how to measure its accuracy?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/445011">Luis Lopez</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/414585">Fernando Amat</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am using R2012b with Windows 7 
+64-bit and MS Visual Studio 2010 and it works out of the box (both 
+compiling the mex files and running the test code). Great job and 
+extremely useful, especially since it also works for 3D data.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/396123">Shirin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>
+Hi Yan 
+<br>Thanks very much for sharing.
+<br> 
+<br>I want to compile the code on Windows. However, it seems like the link given in "readme.txt" 
+<br>"http://ecson.org/resources/active_contour_segmentation.html"
+<br>doesn't work any more. </p>
+
+<p>Could you tell me how to access the version for WINDOWS? </p>
+
+<p>Thanks in advance</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/413926">Darya</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan
+<br>Thanks a lot for sharing this useful toolbox. I am trying to use 
+chan_vase_model for my MRI data which are 3D but since contour showing 
+is possible only for 2D case. I was wondering how can I set the 
+parameters and be sure that the correct area has been selected ? i.e is 
+there anyway to see how the code is actually working in 3D case?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/403910">mei</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi yan
+<br>Thank you so much for sharing of this toolbox.I have a quesetion.I 
+tried to apply the ac_hybrid_model on the color image,but the 
+initialization parameters were not fit.So have you done some work on the
+ 2D image ,and how to set the initialization parameters.Do you have any 
+skills?
+<br>Thank you a lot!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/369031">Omar Al Okashi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Sir
+<br>Thank you so much for you sharing of this great work.. I tried to run it but I can not, this what happen with me:
+<br>1- I run it on Windows 7
+<br>2- I used mex -setup and I select " Microsoft Visual C++ 2010  " as a compiler.
+<br>3- I included data to path.
+<br>4- I save the whole folder for toolbox outside matlab.</p>
+
+<p>5- I end with this error when I tried to compile mex :
+<br>??? Error using ==&gt; mex at 208
+<br>Unable to complete successfully.</p>
+
+<p>Error in ==&gt; compile_mex_codes at 1
+<br>mex ac_tridiagonal_Thomas_dll.cpp</p>
+
+<p>Can you please help me in this issue.</p>
+
+<p>With My Regards...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/361256">luna</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi
+<br>I run this code in matlab R2011 and I set different compilers using 
+mex -setup,but when I run compile_mex_codes I get this error:
+<br> Error: Could not find the compiler "wcl386" on the DOS path. 
+<br>         Use mex -setup to configure your environment properly. 
+<br> 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\R2011A\BIN\MEX.PL: Error: Unable to locate compiler. 
+<br> 
+<br>??? Error using ==&gt; mex at 208
+<br>Unable to complete successfully.</p>
+
+<p>Error in ==&gt; compile_mex_codes at 1
+<br>mex ac_tridiagonal_Thomas_dll.cpp</p>
+
+<p>what should I do?
+<br>help plz
+<br>thx</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31639">Anton Semechko</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Incredible work! Thank you very much for making this available!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/323331">Christian Wuerslin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan,</p>
+
+<p>great code. I have one suggestion though: In your CV reinit process, 
+you implemented a very efficient distance transform. However, for 
+performance reasons, you don't compute the values for the edges of the 
+matrix (always 0). Thus I would suggest, you pad the input matrix with 
+0s and then un-pad the output matrix of this step:</p>
+
+<p>u0 = y_binary_boundary_detection(uint8(u&gt;0));
+<br>u0 = padarray(u0, [1 1 1]); % padding
+<br>u0 = ac_distance_transform_3d(u0);
+<br>u0 = u0(2:end-1, 2:end-1, 2:end-1); % un-padding
+<br>u = u0.*sign(u);</p>
+
+<p>Cheers, Christian</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121994">Peter</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/245879">Vincent Jaouen</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/315886">Negar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yuri,
+<br>You need to compile the mex folder contents first.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/260316">Yuri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Has anybody found a solution for this message:</p>
+
+<p>Undefined function or method 'zy_binary_boundary_detection' for input arguments of type 'uint8'?</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/145796">aboomnea</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi 
+<br>i got error when i run the code
+<br>please 
+<br>can u tell me the steps so a i can run without any errors 
+<br>i
+<br>it is a lot of comments 
+<br>please help</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232921">max</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/71619">Timothy Cale</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yan: </p>
+
+<p>I hope you can help with a compilation issue.</p>
+
+<p>I am running (64bit) ubuntu 10.04 (vm on fusion 4.3 on a newish MacBook Pro), and I am having a problem compiling: </p>
+
+<p>Upon typing "compile_mex_codes", I get:</p>
+
+<p>mex:  ac_tridiagonal_Thomas_dll.cpp  not a normal file or does not exist.</p>
+
+<p>Error using mex (line 206)
+<br>Unable to complete successfully.</p>
+
+<p>Error in compile_mex_codes (line 1)
+<br>mex ac_tridiagonal_Thomas_dll.cpp</p>
+
+<p>Note that I ran "mex -setup", though I have compiled mex files 
+successfully before). It looks like (assuming is see my vm as a 
+"glnxa64"). I have g++ selected, as you indicated in earlier post(s). I 
+am not sure about the flags . . .</p>
+
+<p>I am using "gcc/g++/gfortran" v. 4.4.3, while mex is apparently 
+supported with 4.3.4, but I had no problems in previous mex 
+compilations.(I am fairly new to Matlab, let alone mex files.)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/207804">xiao zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Yan
+<br>Thanks very much for sharing.
+<br>I want to compile the code on Windows. However, it seems like the 
+link given in "readme.txt" 
+--http://ecson.org/resources/active_contour_segmentation.html doesn't 
+work any more.
+<br>Could you tell me how to access the version for WINDOWS? Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/202317">Doctor61</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan, I tried to run the compile_mex_codes.m in matlab and I got this errors: </p>
+
+<p>??? Error using ==&gt; mex at 222
+<br>Unable to complete successfully.</p>
+
+<p>Error in ==&gt; compile_mex_codes at 1
+<br>mex ac_tridiagonal_Thomas_dll.cpp</p>
+
+<p>Could you help me with this? Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/196380">Matlabooo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>where can i download this file never found it</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/188468">Brent</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yan,
+<br>I am trying to use the ChanVese model to pick out a 3D image of data
+ that does not have a sharp edge.  In fact, the brightness value per 3D 
+pixel just gradually increases toward the center of the image.  ChanVese
+ is supposed to be able to do this per the reference, but I have not had
+ success.  Any advice?</p>
+
+<p>I have been trying to relate the smooth_weight and image_weight 
+parameters to the parameters in the reference (u,v,lambda1,lambda2).  
+The image_weight seems to correspond to the lamdas (where lamda1 = 
+lamda2).  In the reference by Chan &amp; Vese typically a value of one 
+is used, but matlab crashes with a standard exception error when I put 
+in a value any greater than 0.01.  </p>
+
+<p>Does the smooth_weight relate to u an v somehow?</p>
+
+<p>Thanks for any advice you can offer.</p>
+
+<p>Brent</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/190423">Lol communication</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hello Yan 
+<br>I'd like to ask u about MATLAB CODE
+<br>for Estimating 3D human body pose from 2D Static Images PLZ can u help me! ? </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160302">Ido</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Yan Zhang,
+<br>I compiled the cpp files and got all the mex files generated by 
+'compile_mex_codes.m'. However, when I run the example at the top of 
+'ac_GAC_model.m' I get a segmentation fault (see errors below). Could 
+you give me any tips on how to Solve this problem?</p>
+
+<p>Regards, Ido</p>
+
+<p>------------------------------------------------------------------------
+<br>       Segmentation violation detected at Mon Aug 15 13:56:04 2011
+<br>------------------------------------------------------------------------</p>
+
+<p>Configuration:
+<br>  MATLAB Version:   7.11.0.584 (R2010b)
+<br>  MATLAB License:   305704
+<br>  Operating System: Microsoft Windows 7
+<br>  Window System:    Version 6.1 (Build 7600)
+<br>  Processor ID:     x86 Family 6 Model 7 Stepping 10, GenuineIntel
+<br>  Virtual Machine:  Java 1.6.0_17-b04 with Sun Microsystems Inc. Java HotSpot(TM) Client VM mixed mode
+<br>  Default Encoding:  windows-1252</p>
+
+<p>Fault Count: 1</p>
+
+<p>Abnormal termination:</p>
+
+<p>Register State (from fault):
+<br>  EAX = 1cc20020  EBX = 09fbfe80
+<br>  ECX = 1cc6a190  EDX = 2177a190
+<br>  ESP = 00c2acf8  EBP = 00c2ad10
+<br>  ESI = 26c2a020  EDI = 00002306
+<br> 
+<br>  EIP = 0d651283  EFL = 00210206
+<br> 
+<br>   CS = 0000001b   DS = 00000023   SS = 00000023
+<br>   ES = 00000023   FS = 0000003b   GS = 00000000</p>
+
+<p>Stack Trace (from fault):
+<br>[  0] 0x0d651283 
+C:/Views/Development/MD.BVA.prj/medical/BVA/CollidingFrontsSegmentation/AOSLevelsetSegmentationToolboxM/private/ac_tridiagonal_Thomas_dll.mexw32+00004739
+ ???+000000
+<br>[  1] 0x0d6513b2 
+C:/Views/Development/MD.BVA.prj/medical/BVA/CollidingFrontsSegmentation/AOSLevelsetSegmentationToolboxM/private/ac_tridiagonal_Thomas_dll.mexw32+00005042
+ ( mexFunction+000130 )
+<br>[  2] 0x7b833394 C:/Program Files/MATLAB/R2010b/bin/win32/libmex.dll+00013204 ( mexRunMexFile+000132 )
+<br>[  3] 0x7b832199 C:/Program Files/MATLAB/R2010b/bin/win32/libmex.dll+00008601 ( inSwapMexfileReader+000201 )
+<br>[  4] 0x7b832391 C:/Program Files/MATLAB/R2010b/bin/win32/libmex.dll+00009105 ( inSwapMexfileReader+000705 )
+<br>[  5] 0x7a29b0f9 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045305 ( Mfh_file::dispatch_fh+000249 )
+<br>[  6] 0x7a29b384 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045956 ( Mfunction_handle::dispatch+000420 )
+<br>[  7] 0x7aa42881 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00534657 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+384993 )
+<br>[  8] 0x7aa2fc9a C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00457882 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+308218 )
+<br>[  9] 0x7aa24bc9 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00412617 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+262953 )
+<br>[ 10] 0x7ace7eda C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+03309274 ( TabContext::FindCompletion+003382 )
+<br>[ 11] 0x7aa18b10 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00363280 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+213616 )
+<br>[ 12] 0x7aa1b7f1 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00374769 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+225105 )
+<br>[ 13] 0x7aa1e17e C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00385406 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+235742 )
+<br>[ 14] 0x7aa343c7 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476103 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326439 )
+<br>[ 15] 0x7aa344eb C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476395 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326731 )
+<br>[ 16] 0x7aa2556c C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00415084 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+265420 )
+<br>[ 17] 0x7aa243f2 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00410610 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+260946 )
+<br>[ 18] 0x7aa2f747 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456519 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306855 )
+<br>[ 19] 0x7aa2f7c9 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456649 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306985 )
+<br>[ 20] 0x7a29b0f9 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045305 ( Mfh_file::dispatch_fh+000249 )
+<br>[ 21] 0x7a29b384 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045956 ( Mfunction_handle::dispatch+000420 )
+<br>[ 22] 0x7aa42881 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00534657 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+384993 )
+<br>[ 23] 0x7aa2fc9a C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00457882 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+308218 )
+<br>[ 24] 0x7aa24bc9 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00412617 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+262953 )
+<br>[ 25] 0x7ace7eda C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+03309274 ( TabContext::FindCompletion+003382 )
+<br>[ 26] 0x7aa18b10 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00363280 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+213616 )
+<br>[ 27] 0x7aa1b7f1 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00374769 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+225105 )
+<br>[ 28] 0x7aa1e17e C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00385406 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+235742 )
+<br>[ 29] 0x7aa343c7 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476103 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326439 )
+<br>[ 30] 0x7aa344eb C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476395 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326731 )
+<br>[ 31] 0x7aa2556c C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00415084 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+265420 )
+<br>[ 32] 0x7aa243f2 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00410610 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+260946 )
+<br>[ 33] 0x7aa2f747 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456519 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306855 )
+<br>[ 34] 0x7aa2f7c9 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456649 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306985 )
+<br>[ 35] 0x7a29b0f9 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045305 ( Mfh_file::dispatch_fh+000249 )
+<br>[ 36] 0x7a29b384 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045956 ( Mfunction_handle::dispatch+000420 )
+<br>[ 37] 0x7aa206c2 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00394946 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+245282 )
+<br>[ 38] 0x7aa1e369 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00385897 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+236233 )
+<br>[ 39] 0x7aa343c7 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476103 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326439 )
+<br>[ 40] 0x7aa344eb C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476395 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326731 )
+<br>[ 41] 0x7aa2556c C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00415084 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+265420 )
+<br>[ 42] 0x7aa243f2 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00410610 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+260946 )
+<br>[ 43] 0x7aa2f747 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456519 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306855 )
+<br>[ 44] 0x7aa2f7c9 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456649 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306985 )
+<br>[ 45] 0x7a29b0f9 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045305 ( Mfh_file::dispatch_fh+000249 )
+<br>[ 46] 0x7a29b384 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045956 ( Mfunction_handle::dispatch+000420 )
+<br>[ 47] 0x7aa206c2 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00394946 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+245282 )
+<br>[ 48] 0x7aa1e369 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00385897 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+236233 )
+<br>[ 49] 0x7aa343c7 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476103 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326439 )
+<br>[ 50] 0x7aa344eb C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476395 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326731 )
+<br>[ 51] 0x7aa2556c C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00415084 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+265420 )
+<br>[ 52] 0x7aa243f2 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00410610 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+260946 )
+<br>[ 53] 0x7aa2f747 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456519 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306855 )
+<br>[ 54] 0x7aa2f7c9 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456649 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306985 )
+<br>[ 55] 0x7a29b0f9 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045305 ( Mfh_file::dispatch_fh+000249 )
+<br>[ 56] 0x7a29b384 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045956 ( Mfunction_handle::dispatch+000420 )
+<br>[ 57] 0x7aa206c2 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00394946 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+245282 )
+<br>[ 58] 0x7a9cbef6 C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00048886 ( MStackWatermark::MStackWatermark+028486 )
+<br>[ 59] 0x7aa1f721 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00390945 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+241281 )
+<br>[ 60] 0x7aa343c7 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476103 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326439 )
+<br>[ 61] 0x7aa344eb C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00476395 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+326731 )
+<br>[ 62] 0x7aa2556c C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00415084 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+265420 )
+<br>[ 63] 0x7aa243f2 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00410610 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+260946 )
+<br>[ 64] 0x7aa2f747 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456519 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306855 )
+<br>[ 65] 0x7aa2f7c9 C:/Program 
+Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00456649 ( 
+MathWorks::MException::MExceptionEnvelope::MExceptionEnvelope+306985 )
+<br>[ 66] 0x7a29b0f9 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045305 ( Mfh_file::dispatch_fh+000249 )
+<br>[ 67] 0x7a29b384 C:/Program Files/MATLAB/R2010b/bin/win32/m_dispatcher.dll+00045956 ( Mfunction_handle::dispatch+000420 )
+<br>[ 68] 0x7aa8f0d6 C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00848086 ( inAnonymousFunction+001158 )
+<br>[ 69] 0x7aa8fc46 C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00851014 ( inMainLoopIdle+000662 )
+<br>[ 70] 0x7a9d68d5 C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00092373 ( inFullFevalFcn+003445 )
+<br>[ 71] 0x7aa9010f C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00852239 ( inMainLoopIdle+001887 )
+<br>[ 72] 0x7aa90159 C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00852313 ( inMainLoopIdle+001961 )
+<br>[ 73] 0x7aa9017e C:/Program Files/MATLAB/R2010b/bin/win32/m_interpreter.dll+00852350 ( inEvalCmdWithLocalReturn+000030 )
+<br>[ 74] 0x78346cd3 C:/Program Files/MATLAB/R2010b/bin/win32/libmwbridge.dll+00027859 ( mnInitializeParser+000179 )
+<br>[ 75] 0x7834ab3f C:/Program Files/MATLAB/R2010b/bin/win32/libmwbridge.dll+00043839 ( mnParser+000495 )
+<br>[ 76] 0x7a3eb423   C:/Program 
+Files/MATLAB/R2010b/bin/win32/mcr.dll+00177187 ( 
+mcrInstance::mnParser_on_interpreter_thread+000051 )
+<br>[ 77] 0x7a3d44c2   C:/Program 
+Files/MATLAB/R2010b/bin/win32/mcr.dll+00083138 ( 
+mvm::detail::RecursiveScopedMcrLock::~RecursiveScopedMcrLock+034226 )
+<br>[ 78] 0x7a3d4595   C:/Program 
+Files/MATLAB/R2010b/bin/win32/mcr.dll+00083349 ( 
+mvm::detail::RecursiveScopedMcrLock::~RecursiveScopedMcrLock+034437 )
+<br>[ 79] 0x7a3d2148   C:/Program 
+Files/MATLAB/R2010b/bin/win32/mcr.dll+00074056 ( 
+mvm::detail::RecursiveScopedMcrLock::~RecursiveScopedMcrLock+025144 )
+<br>[ 80] 0x7b558e21   C:/Program Files/MATLAB/R2010b/bin/win32/uiw.dll+00298529 ( UIW_IsUserMessage+000129 )
+<br>[ 81] 0x7b5593cf   C:/Program Files/MATLAB/R2010b/bin/win32/uiw.dll+00299983 ( ws_ProcessPendingEventsWaitForWindows+000303 )
+<br>[ 82] 0x75cb6e6e                     C:/Windows/system32/USER32.dll+00224878 ( SetWindowsHookExA+000116 )
+<br>[ 83] 0x75c931eb                     C:/Windows/system32/USER32.dll+00078315 ( GetClassNameW+000078 )
+<br>[ 84] 0x75c94260                     C:/Windows/system32/USER32.dll+00082528 ( ChangeWindowMessageFilter+000102 )
+<br>[ 85] 0x7785642e                      C:/Windows/SYSTEM32/ntdll.dll+00287790 ( KiUserCallbackDispatcher+000046 )
+<br>[ 86] 0x03a6344b                      C:/Windows/pcdrm/NSCCOR03.DLL+00078923 ( ???+000000 )
+<br>[ 87] 0x7b52e67f   C:/Program Files/MATLAB/R2010b/bin/win32/uiw.dll+00124543 ( UIW_SetCurrentDialog+000655 )
+<br>[ 88] 0x7b55a4e5   C:/Program Files/MATLAB/R2010b/bin/win32/uiw.dll+00304357 ( ws_FreeSystemFont+000485 )
+<br>[ 89] 0x7a0a1b07 C:/Program Files/MATLAB/R2010b/bin/win32/libuij.dll+00137991 ( sysq::ws_ppeHook::~ws_ppeHook+006887 )
+<br>[ 90] 0x7a0a21da C:/Program Files/MATLAB/R2010b/bin/win32/libuij.dll+00139738 ( sysq::ws_ppeHook::~ws_ppeHook+008634 )
+<br>[ 91] 0x7a0a3183 C:/Program Files/MATLAB/R2010b/bin/win32/libuij.dll+00143747 ( svWS_CommitDatabaseUpdates+002051 )
+<br>[ 92] 0x7a0a3a43 C:/Program Files/MATLAB/R2010b/bin/win32/libuij.dll+00145987 ( svWS_CommitDatabaseUpdates+004291 )
+<br>[ 93] 0x7a0a3c36 C:/Program Files/MATLAB/R2010b/bin/win32/libuij.dll+00146486 ( svWS_CommitDatabaseUpdates+004790 )
+<br>[ 94] 0x7a0a3d24 C:/Program Files/MATLAB/R2010b/bin/win32/libuij.dll+00146724 ( svWS_CommitDatabaseUpdates+005028 )
+<br>[ 95] 0x7a0a3ea2 C:/Program Files/MATLAB/R2010b/bin/win32/libuij.dll+00147106 ( UIJ_WS_ProcessPendingEvents+000018 )
+<br>[ 96] 0x7a3d4e3a   C:/Program 
+Files/MATLAB/R2010b/bin/win32/mcr.dll+00085562 ( 
+mvm::detail::RecursiveScopedMcrLock::~RecursiveScopedMcrLock+036650 )
+<br>[ 97] 0x7a3d506d   C:/Program 
+Files/MATLAB/R2010b/bin/win32/mcr.dll+00086125 ( 
+mvm::detail::RecursiveScopedMcrLock::~RecursiveScopedMcrLock+037213 )
+<br>[ 98] 0x7a3d531c   C:/Program Files/MATLAB/R2010b/bin/win32/mcr.dll+00086812 ( mcr_invoke_on_interpreter_thread+000220 )
+<br>[ 99] 0x7a3d5a4c   C:/Program Files/MATLAB/R2010b/bin/win32/mcr.dll+00088652 ( mcr_invoke_on_interpreter_thread+002060 )
+<br>[100] 0x00406202 C:/Program Files/MATLAB/R2010b/bin/win32/MATLAB.exe+00025090 ( ???+000000 )
+<br>[101] 0x004062c5 C:/Program Files/MATLAB/R2010b/bin/win32/MATLAB.exe+00025285 ( ???+000000 )
+<br>[102] 0x0040638d C:/Program Files/MATLAB/R2010b/bin/win32/MATLAB.exe+00025485 ( ???+000000 )
+<br>[103] 0x00406834 C:/Program Files/MATLAB/R2010b/bin/win32/MATLAB.exe+00026676 ( ???+000000 )
+<br>[104] 0x77781194                   C:/Windows/system32/kernel32.dll+00332180 ( BaseThreadInitThunk+000018 )
+<br>[105] 0x7786b495                      C:/Windows/SYSTEM32/ntdll.dll+00373909 ( RtlInitializeExceptionChain+000099 )
+<br>[106] 0x7786b468                      C:/Windows/SYSTEM32/ntdll.dll+00373864 ( RtlInitializeExceptionChain+000054 )</p>
+
+<p>This error was detected while a MEX-file was running. If the MEX-file
+<br>is not an official MathWorks function, please examine its source code
+<br>for errors. Please consult the External Interfaces Guide for information
+<br>on debugging MEX-files.</p>
+
+<p>If this problem is reproducible, please submit a Service Request via:
+<br>    http://www.mathworks.com/support/contact_us/</p>
+
+<p>A technical support engineer might contact you with further information.</p>
+
+<p>Thank you for your help. MATLAB may attempt to recover, but even if recovery appears successful,
+<br>we recommend that you save your workspace and restart MATLAB as soon as possible.</p>
+
+<p>Caught MathWorks::System::FatalException</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/151855">Helen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>I have one question about this program. Is is possible to segment 
+more than one class in an image? Or do you have any suggestion what to 
+change in the code that make it possible?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/84496">mimi phuong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Yan Zhang,
+<br>I have the same problem as Aureline,which as:
+<br>??? Undefined function or method 'zy_binary_boundary_detection' for input arguments of type 'uint8'.
+<br>Could you please give me some idea? I also typed "computer" in Matlab and got the GLNX86 for Ubuntu version...
+<br>Thanks for your help!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101864">emilie</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello,</p>
+
+<p>I tried to compile the file "compile_mex_codes.m" but it it doesn't 
+work correctly. It can not compile "zy_binary_boundary_detection.c". The
+ following error appears:</p>
+
+<p>??? Error using ==&gt; mex at 208
+<br>Unable to complete successfully.</p>
+
+<p>Error in ==&gt; compile_mex_codes at 4
+<br>mex zy_binary_boundary_detection.c</p>
+
+<p>Could you please help me. Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72365">Preeti</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sir
+<br> I am not able to compile the mex file. Got the following errors:
+<br>lcc preprocessor warning: 
+C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp:95
+ No newline at end of file 
+<br>Error 
+C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp:
+ 7  syntax error; found `unsigned' expecting `;' 
+<br>Error 
+C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp:
+ 7  syntax error; found `unsigned' expecting `;' 
+<br>Error 
+C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp:
+ 7  syntax error; found `unsigned' expecting `)' 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 7  skipping `unsigned' `long' `int' 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 7  undeclared identifier `i' 
+<br>Warning C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 7  Statement has no effect 
+<br>Warning C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 7  unreachable code 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 7  syntax error; found `)' expecting `;' 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 7  illegal statement termination 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 7  skipping `)' 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 19  undeclared identifier `new' 
+<br>Error 
+C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp:
+ 19  operands of = have illegal types `pointer to double' and `int' 
+<br>Warning C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 19   possible usage of new before definition 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 19  syntax error; found `double' expecting `;' 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 19  integer expression must be constant 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 19  missing identifier 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 51  undeclared identifier `delete' 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 51  illegal expression 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 51  syntax error; found `yy' expecting `]' 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 51  type error: pointer expected 
+<br>Warning C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 51  Statement has no effect 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 51  syntax error; found `yy' expecting `;' 
+<br>Warning C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 51  Statement has no effect 
+<br>Warning 
+C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp:
+ 51   possible usage of delete before definition 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 71  illegal statement termination 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 71  skipping `double' 
+<br>Error C:\PROGRA~1\MATLAB\R2008B\WORK\AOSLEV~1\MEX\ac_tridiagonal_Thomas_dll.cpp: 71  too many errors 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\R2008B\BIN\MEX.PL: Error: Compile of 'ac_tridiagonal_Thomas_dll.cpp' failed. 
+<br> 
+<br>??? Error using ==&gt; mex at 213
+<br>Unable to complete successfully.</p>
+
+<p>Error in ==&gt; compile_mex_codes at 1
+<br>mex ac_tridiagonal_Thomas_dll.cpp</p>
+
+<p>Error in ==&gt; run at 57
+<br>          evalin('caller', [s ';']);</p>
+
+<p>please comment!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/89170">KSRaj Raj</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 May 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96038">Yan Jianping</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello,Yan  Zhang.  when I used compile_mex_codes to compile, I met the following errors:</p>
+
+<p>C:\DOCUME~1\yanjpphd\LOCALS~1\Temp\mex_933260AC-1398-46B6-6CA4-9F6BBF3212F4\ac_tridiagonal_Thomas_dll.obj  
+<br>LINK : fatal error LNK1104: cannot open file "ac_tridiagonal_Thomas_dll.mexw32" 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\R2007B\BIN\MEX.PL: Error: Link of 'ac_tridiagonal_Thomas_dll.mexw32' failed. 
+<br> 
+<br>??? Error using ==&gt; mex at 208
+<br>Unable to complete successfully.</p>
+
+<p>Error in ==&gt; compile_mex_codes at 1
+<br>mex ac_tridiagonal_Thomas_dll.cpp</p>
+
+<p>Thanks for your help!
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>To Aureline,</p>
+
+<p>Please type 'computer' in matlab and let me know what the result is. 
+The precompiled version only works for 32bit windows system, yours may 
+be 64bit.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/89312">Aureline</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Yan, it seems you have done a great job here.</p>
+
+<p>I cannot test your toolbox for now, I am using your pre-compiled version available on your website.
+<br>When I try to run one of the test files, I get the error
+<br>"Undefined function or method 'zy_binary_boundary_detection' for input arguments of type 'uint8'".
+<br>I have tried to get rid of the uint8 conversion in the ac_reinit file, but I still can't make the test run.
+<br>I am using 2010 version of Matlab, maybe the problem comes from here. Do you have any idea ?
+<br>Thanks a lot.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Stefan</p>
+
+<p>Thanks a lot for sharing your invaluable experience! I guess this 
+might be the reason why the toolbox fails to work on 64-bit operating 
+system as reported before. I promise to correct this bug once I have 
+access on 64-bit machine. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93933">Stefan L.</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>In fact a very useful tool.</p>
+
+<p>I first used this toolbox in MATLAB R2008a and it worked pretty fine.
+ Short time ago I switched to MATLAB R2009b (Windows 7, 64bit) and when 
+using the tool I received one of the following errors:</p>
+
+<p>Error type 1:</p>
+
+<p>??? Error using ==&gt; contourc
+<br>Input matrix contains no finite values - unable to calculate contours</p>
+
+<p>Error in ==&gt; contours at 57
+<br>CS=contourc(varargin{numarg_for_call});</p>
+
+<p>Error in ==&gt; ac_hybrid_model at 90
+<br>        c = contours(phi,[0,0]);</p>
+
+<p>Error type 2:</p>
+
+<p>MATLAB System Error
+<br>MATLAB has encountered an internal problem and needs to close.</p>
+
+<p>Details:
+<br>MATLAB crash file:C:\Users\Stefan\AppData\Local\Temp\matlab_crash_dump.3776
+<br>------------------------------------------------------------------------
+<br>       Segmentation violation detected at Fri Apr 23 16:08:01 2010
+<br>------------------------------------------------------------------------
+<br>Configuration:
+<br>  MATLAB Version:   7.9.0.529 (R2009b)
+<br>  MATLAB License:   161051
+<br>  Operating System: Microsoft Windows Vista
+<br>  Window System:    Version 6.1 (Build 7600)
+<br>  Processor ID:     x86 Family 6 Model 7 Stepping 6, GenuineIntel
+<br>  Virtual Machine:  Java 1.6.0_12-b04 with Sun Microsystems Inc. Java HotSpot(TM) 64-Bit Server VM mixed mode
+<br>  Default Encoding:  windows-1252</p>
+
+<p>Fault Count: 1</p>
+
+<p>Stack Trace:
+<br>  [  0] 000000007CEC59AB                libmx.dll+022955 (mxCreateDoubleMatrix_730+000027)
+<br>  [  1] 00000000369313A2 ac_tridiagonal_Thomas_dll.mexw64+005026 (mexFunction+000274)</p>
+
+<p>At last I tracked down the problem in the MATLAB - bwdist() function 
+which is used in the functions ac_reinit and ac_SDF_2D. In R2008a it 
+returned an array of type double, in R2009b it returns an array of type 
+single (despite the fact the documentation says it should be double).</p>
+
+<p>After changing the line 25 in ac_reinit.m from
+<br>u = bwdist(u0).*sign(u);	to u = double(bwdist(u0)).*sign(u);</p>
+
+<p>and the lines 82, 91 and 120 in ac_SDF_2D.m from
+<br>phi = -bwdist(phi);     to     phi = -double(bwdist(phi));
+<br>phi = radius - bwdist(phi);     to     phi = radius - double(bwdist(phi));
+<br>phi = bwdist(phi);     to     phi = double(bwdist(phi));</p>
+
+<p>everything worked fine again.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/92804">Amir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>good job! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/87097">baoyun li</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dr. Zhang: </p>
+
+<p>Seems you renitilize level set at each step. 
+<br>However, if not using narrow band, reintilization is very time 
+consumming. Can I reinilized by narrowband and still use your AOS codes?</p>
+
+<p>If use narrowband, how should I use AOS? I read the "fast geodesic 
+levelset" paper, but don't understand how to apply AOS on Narrow band.</p>
+
+<p>Thanks
+<br>Baoyun</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86469">Mark Brophy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan, thanks very much for the great software.</p>
+
+<p>I am using your geodesic active contour model for 3d reconstruction. 
+ My problem is that I am having trouble updating the 'g' values on the 
+surface.  I have attempted to extract the surface using both Matlab's 
+built-in isosurface and zy_binary_boundary_detection(uint8(phi&gt;0)), 
+but both of these commands only return a subset of the points on the 
+surface.  Basically, when I evolve the 3d surface, only a subset of the 
+points 'move', so to speak.</p>
+
+<p>Do you know how I might all points on the surface?</p>
+
+<p>Cheers,
+<br>-Mark</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/81812">adel khelifi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan Zhang, 
+<br>i'm use Windows system, 
+<br>when I used compile_mex_codes to compile, I met the following errors:</p>
+
+<p>Error: Compile of 'ac_tridiagonal_Thomas_dll.cpp' failed. 
+<br> ??? Error using ==&gt; mex at 221
+<br>Unable to complete successfully.
+<br>Error in ==&gt; compile_mex_codes at 1
+<br>mex ac_tridiagonal_Thomas_dll.cpp
+<br>Error in ==&gt; run at 57
+<br>          evalin('caller', [s ';']);
+<br>****************************************************************
+<br>i'm read this message
+<br>""a more complete version of the toolbox can be downloaded from the following link:
+<br>http://ecson.org/resources/software/_AOSLevelsetSegmentationToolbox.zip ""</p>
+
+<p>please help me.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>To Yusuke,</p>
+
+<p>The toolbox contains a AOS solver for the PDE in the form of u_t = 
+div( g |\nabla u| ). This is a challenging problem because using 
+explicit finite difference method (FDM) can cause unstability if the 
+time step is too large. </p>
+
+<p>For the PDE you mentioned,  simple explicit FDM  such as 
+<br>u_(k+1) = u_k + delta_t * div(V) 
+<br>should be working no matter how large delta_t is (of course the 
+accuracy will be affected). The above scheme can be easily implemented 
+in Matlab. </p>
+
+<p>Hope this can help.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>To Jenny,</p>
+
+<p>The figure you mentioned was produced by a visualization software 
+called Amira. As far as I know, the current matlab graphic toolbox 
+doesn't support volume rendering. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/83937">Yusuke Yoshiyasu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan Zhang, 
+<br>Thanks for the toolbox. i have a question. If i want to apply your 
+code to flux maximizing flow, where should i change? i think what i have
+ to do is to change u_t = div(\nabla u) to u_t = div(\nabla I) or u_t = 
+div(V), where I is some input image and V is vector field.
+<br>Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/82965">Kai</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan Zhang,
+<br>the GAC and the hybrid model does not work anymore. I changed my 
+environment to windows 7 (64bit). When I run the examples in 
+ac_GAC_model.m and ac_hybrid_model.m, I get the following error message:
+ "MATLAB has encountered an internal problem and needs to close". 
+<br>Everything works fine on Mac and 32bit Windows. The crash_dump says a
+ "Segmentation violation detected" in ac_tridiagonal_Thomas_dll.mexw64. 
+<br>Has anyone else this error?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73278">Jenny</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi ,Yan Zhang.Can I ask how did you
+ get the results of Fig.5 in your paper "Medical Image Segmentation 
+Using New Hybrid Level-Set Method",Did you use matlab or other tools to 
+get the translucent head?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alex,</p>
+
+<p>The problem has been fully discussed before, please see the previous 
+comments for the details. In brief, go to the source file 
+ac_distance_transform_3d.cpp, and get rid of the string in 
+std::exception. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/76292">Alex Kararg</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Cannot compile running the compile_mex_codes.m . The output is :</p>
+
+<p>expr: syntax error
+<br>/Applications/MATLAB_R2008a/bin/util/mex/mexutil.sh: line 13: [: too many arguments
+<br>ld warning: duplicate dylib /Applications/MATLAB_R2008a/bin/maci/libz.1.dylib
+<br>ld warning: duplicate dylib /Applications/MATLAB_R2008a/bin/maci/libz.1.dylib
+<br>ld warning: duplicate dylib /Applications/MATLAB_R2008a/bin/maci/libz.1.dylib
+<br>ld warning: duplicate dylib /Applications/MATLAB_R2008a/bin/maci/libz.1.dylib
+<br>ld warning: duplicate dylib /Applications/MATLAB_R2008a/bin/maci/libz.1.dylib
+<br>BinaryHeap.h: In member function 'void 
+CBinaryHeapMinSort&lt;IndexType, WeightType&gt;::Insert(IndexType, 
+WeightType) [with IndexType = int, WeightType = double]':
+<br>ac_distance_transform_3d.cpp:27:   instantiated from 'void 
+DistanceTransform3D(const InputType*, OutputType*, const int*) [with 
+InputType = unsigned char, OutputType = double]'
+<br>ac_distance_transform_3d.cpp:115:   instantiated from here
+<br>BinaryHeap.h:56: error: no matching function for call to 'std::exception::exception(const char [1])'
+<br>/usr/include/c++/4.0.0/exception:57: note: candidates are: std::exception::exception()
+<br>/usr/include/c++/4.0.0/exception:55: note:                 std::exception::exception(const std::exception&amp;)</p>
+
+<p>    mex: compile of ' "ac_distance_transform_3d.cpp"' failed.</p>
+
+<p>??? Error using ==&gt; mex at 207
+<br>Unable to complete successfully.</p>
+
+<p>Error in ==&gt; compile_mex_codes at 7
+<br>mex ac_distance_transform_3d.cpp</p>
+
+<p>Any help to run the compile_mex_codes.m would be really appreciated. Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/76149">Khin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan Zhang, When I read your 
+'test_ChanVese_model_3d.m' and 'test_hybrid_model_3d.m', I have a 
+problem that cannot read head_ct.mat file. It's showing error "??? Error
+ using ==&gt; load  Unable to read MAT file head_ct.mat. File may be 
+corrupt." is it because of version different? I am using Matlab 6.5 
+please advise. thanks </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73278">Jenny</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,Zhang yan.Thank you for your 
+toolbox.I have a problem.I'm trying to use your box to segment my own 
+MRI head datas which are a series of JPEG or DICOM forms.Is your tool 
+possible to segment this form of data.Or I must convert these formats to
+ the supported formats.And how to?Thank you very much!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Eran, </p>
+
+<p>To answer your first question, let' s use u to represent the level-set, normally we use curvature flow to smooth the curve
+<br>u_t = div(\nabla u/|\nabla u|)
+<br>In my implementation, I do this in two steps: 
+<br>(1) Make |\nabla u| = 1 using reinitialization (ac_reinit).
+<br>(2) With (1) the above equation can be simplified to 
+<br>u_t = div(\nabla u) = \del u (the Laplacian of u)
+<br>which describes the linear diffusion of the level-set.
+<br>It's more efficient than solving the more general PDE
+<br>u_t = div(g \nabla u/|\nabla u|) 
+<br>which leads to the answer to your second question --- you should 
+look into the codes in "ac_GAC_model" (AOS implementation for geodesic 
+active contour) that tells exactly how to integrate edge information. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/71907">Eran Ukwatta</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan Zhang,
+<br> Thanks for the code.   By the way, I have a question. I am used to 
+computing divergence of the level set function for the smoothness term. 
+However in your code what I fould is linear diffusion. Are these two 
+different things?  
+<br>I also would like to add the edge based information to the chan-vese
+ method for 3D segmentation. Is that straightforward as modifying the 
+following evolving equation in the function  "ac_ChanVese_model"  ? </p>
+
+<p>phi = phi + delta_t*image_weight*((I-mu_out).^2 - (I-mu_in).^2); </p>
+
+<p>Thanks. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31883">jichao zhao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Could you provide your paper? I try to get your paper online, but it seems I can not. thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35405">Cris Luengo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a great starting point to explore active contours, thanks for the code!</p>
+
+<p>On Marco's point 1: if you pass GCC the  -std=c99  option it will 
+allow the C++ style comments. They have only recently been added to the 
+ANSI C standard. I agree that using /* */ comments is more portable.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Marco,</p>
+
+<p>Thanks for your advices. For your Point 1, it's a strange problem, 
+the file did pass my gcc 4.4 compiler on MacOSX. Then I tried to compile
+ it on Ubuntu with the same compiler and it failed as you pointed out. 
+As for Point 2, it's totally my fault.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/51722">Marco</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan,</p>
+
+<p>I tried to compile your toolbox on a linux system using gcc and still
+ got some errors. I guess it would help linux people if you changed the 
+following:</p>
+
+<p>1. The comments in zy_binary_boundary_detection.c are not in ANSI C 
+style. I know that double slashes are widely used, but in my case, I had
+ to change all comments to be included in /* */ pairs. To make your code
+ more widely compatible, changing this might help.
+<br>2. The error using  std::exception is still there, because in 
+BinaryHeap.c, line 56, you still pass an empty string to it. Replacing 
+<br> throw std::exception("");
+<br>by
+<br> throw std::exception();
+<br>solved this for me. </p>
+
+<p>After changing these two issues, everything compiled on my debian and R2008b.
+<br>Apart from that, thanks for sharing your code.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Ning. One more thing: please don't use LCC compiler, it only supports C, NOT C++.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Ning. Can you tell me which 
+compiler are you using? It looks to me that the compiler doesn't support
+ C++ (can't recognize keywords 'new', 'delete' and operator overloads). 
+If you are using gcc, make sure link to the standard c++ library using 
+'-lstdc++' or directly use g++. </p>
+
+<p>If you are using Windows system, a more complete version of the toolbox can be downloaded from the following link: 
+<br>http://ecson.org/resources/software/_AOSLevelsetSegmentationToolbox.zip
+<br>which includes all the pre-compiled mex files in the right place 
+meaning you can use the toolbox directly without having to compile the 
+c++ source files by yourself. </p>
+
+<p>Hope this can help.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/42452">Ning</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan,thx for the quick reply. I 
+followed the instruction, but when i tried to run the compile_mex_codes,
+ it can not get through, i attached the msg it gave out, could you tell 
+me how to solve this? Thx again.</p>
+
+<p> lcc preprocessor warning: ac_tridiagonal_Thomas_dll.cpp:95 No newline at end of file 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 7  syntax error; found `unsigned' expecting `;' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 7  syntax error; found `unsigned' expecting `;' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 7  syntax error; found `unsigned' expecting `)' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 7  skipping `unsigned' `long' `int' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 7  undeclared identifier `i' 
+<br>Warning ac_tridiagonal_Thomas_dll.cpp: 7  Statement has no effect 
+<br>Warning ac_tridiagonal_Thomas_dll.cpp: 7  unreachable code 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 7  syntax error; found `)' expecting `;' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 7  illegal statement termination 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 7  skipping `)' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 19  undeclared identifier `new' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 19  operands of = have illegal types `pointer to double' and `int' 
+<br>Warning ac_tridiagonal_Thomas_dll.cpp: 19   possible usage of new before definition 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 19  syntax error; found `double' expecting `;' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 19  integer expression must be constant 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 19  missing identifier 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 51  undeclared identifier `delete' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 51  illegal expression 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 51  syntax error; found `yy' expecting `]' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 51  type error: pointer expected 
+<br>Warning ac_tridiagonal_Thomas_dll.cpp: 51  Statement has no effect 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 51  syntax error; found `yy' expecting `;' 
+<br>Warning ac_tridiagonal_Thomas_dll.cpp: 51  Statement has no effect 
+<br>Warning ac_tridiagonal_Thomas_dll.cpp: 51   possible usage of delete before definition 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 71  illegal statement termination 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 71  skipping `double' 
+<br>Error ac_tridiagonal_Thomas_dll.cpp: 71  too many errors 
+<br> 
+<br>  C:\PROGRAM FILES\MATLAB\R2006A\BIN\MEX.PL: Error: Compile of 'ac_tridiagonal_Thomas_dll.cpp' failed. 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Ning. Please read the 
+'readme.txt' file in the package, all the essential messages are there. 
+Basically, (1) unzip the package and open matlab (2) in the matlab 
+environment, go to the 'mex' folder and run 'compile_mex_codes', all the
+ mex files will be automatically compiled and moved to the right 
+directory. If this is your first time using the mex function, make sure 
+to use 'mex -setup' command in the matlab command window to select an 
+appropriate c++ compiler (MSVC, GCC or whatever).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/42452">Ning</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yan, i am new to the mex feature, could you tell me how to install your toolbox?
+<br>Thx!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/38222">Ahmed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>i downloaded the pre-compiled 
+version and it worked, the thing is the documentation is not enough for 
+me and i don't quite understand the different variables used and the 
+inputs too</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Jichao. To fix the problem:
+<br>(1) Open BinaryHeap.h in the "mex" folder
+<br>(2) Locate "std::exception" in the file  
+<br>(3) Get rid of the string "CFastMarching: Heap overflow!" (It works 
+fine for MSVC, but for GCC std::exception class doesn't accept argument 
+for its constructor.)
+<br>(4) Run compile_all_codes.m.</p>
+
+<p>Please don't hesitate to contact me if there are any further questions.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31883">jichao zhao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Zhang Yan. Yes when I used compile_mex_codes to compile, I met the following errors:</p>
+
+<p>BinaryHeap.h: In member function 'void 
+CBinaryHeapMinSort&lt;IndexType, WeightType&gt;::Insert(IndexType, 
+WeightType) [with IndexType = int, WeightType = double]':
+<br>ac_distance_transform_3d.cpp:25:   instantiated from 'void 
+DistanceTransform3D(const InputType*, OutputType*, const int*) [with 
+InputType = unsigned char, OutputType = double]'
+<br>ac_distance_transform_3d.cpp:106:   instantiated from here
+<br>BinaryHeap.h:50: error: no matching function for call to 'std::exception::exception(const char [30])'
+<br>/usr/include/c++/4.2/exception:59: note: candidates are: std::exception::exception()
+<br>/usr/include/c++/4.2/exception:57: note:                 std::exception::exception(const std::exception&amp;)</p>
+
+<p>    mex: compile of 'ac_distance_transform_3d.cpp' failed.</p>
+
+<p>Thanks for any hint so that I can fix it and use your package, cheers, jichao
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/45577">Jackson Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Exellent Work. *****</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65850">Yan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jichao, can you tell me which compiler you are using and provide more information about the errors?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/13308">Sebastien PARIS</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works fine. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31883">jichao zhao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It seems quite cool, but when I compiled mex, and I met some errors. Do not know how to fix it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">03 Sep 2009</td>
+                  <td><p>A problem has been fixed for GCC complier.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Jan 2013</td>
+                  <td><p>Another bug has been fixed related to the matlab "bwlabel" function having single-type output in 64-bit version. </p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416029680800&amp;cv=7&amp;fst=1416029680800&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/24998-2d-3d-image-segmentation-toolbox&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D127%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

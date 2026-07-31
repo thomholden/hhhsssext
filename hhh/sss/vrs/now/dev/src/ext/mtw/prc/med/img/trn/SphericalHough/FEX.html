@@ -1,0 +1,827 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Spherical hough transform for 3D images -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/48219-spherical-hough-transform-for-3d-images" rel="canonical">
+<meta content="Spherical hough transform for 3D images - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/48219-spherical-hough-transform-for-3d-images" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/59008/original.jpg" property="og:image"><meta content="SphericalHough detects spherical structures from 3D images - determines object center and radius" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F48219-spherical-hough-transform-for-3d-images" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F48219-spherical-hough-transform-for-3d-images" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/63705" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=48219" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images" class="manifest_title">Spherical hough transform for 3D images</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/isint.m" class="function" title="Function">TF=isint(A)</a><span class="description">ISINT  True for integer elements.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/readmrgui.m" class="function" title="Function">[args,workspaceVar]=readm...</a><span class="description">READMRGUI Determine readmr arguments using a GUI</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SphericalHough.m" class="function" title="Function">[center_img,sphere_img,sp...</a><span class="description">SPHERICALHOUGH detects spherical structures from 3D images. Determines </span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/bluegrad.m" class="function" title="Function">[cmap]=bluegrad(n,startVa...</a><span class="description">BLUEGRAD Generate colormap of blue with increasing intensity.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/bluneg.m" class="function" title="Function">[cmap]=bluneg(n)</a><span class="description">BLUNEG Generate colormap of bright cyan fading to dark blue.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/blupos.m" class="function" title="Function">[cmap]=blupos(n)</a><span class="description">BLUPOS Generate colormap of dark blue fading to bright cyan.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/cyangrad.m" class="function" title="Function">[cmap]=cyangrad(n,startVa...</a><span class="description">CYANGRAD Generate colormap of cyan with increasing intensity.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/greengrad.m" class="function" title="Function">[cmap]=greengrad(n,startV...</a><span class="description">GREENGRAD Generate colormap of green with increasing intensity.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/magentagrad.m" class="function" title="Function">[cmap]=magentagrad(n,star...</a><span class="description">MAGENTAGRAD Generate colormap of magenta with increasing intensity.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/redgrad.m" class="function" title="Function">[cmap]=redgrad(n,startVal...</a><span class="description">REDGRAD Generate colormap of red with increasing intensity.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/redneg.m" class="function" title="Function">[cmap]=redneg(n)</a><span class="description">REDNEG Generate colormap of bright yellow fading to dark red.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/redpos.m" class="function" title="Function">[cmap]=redpos(n)</a><span class="description">REDPOS Generate colormap of dark red fading to bright yellow.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/yellowgrad.m" class="function" title="Function">[cmap]=yellowgrad(n,start...</a><span class="description">YELLOWGRAD Generate colormap of yellow with increasing intensity.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/fopenlocation.m" class="function" title="Function">[fids,messages]=fopenloca...</a><span class="description">FOPENLOCATION Return open file identifiers corresponding to given URI(s)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/loadlocation.m" class="function" title="Function">[filenames,messages]=load...</a><span class="description">LOADLOCATION Return local filename corresponding to given URI(s)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/isdicom.m" class="function" title="Function">[flag,msg]=isdicom(filena...</a><span class="description">ISDICOM - Check if a file is a DICOM image file</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/minmax.m" class="function" title="Function">[minA,maxA]=minmax(A)</a><span class="description">MINMAX Return min and max of noncomplex, nonsparse array of doubles.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/getorientation.m" class="function" title="Function">[rasflag,obliqueflag,comm...</a><span class="description">GETORIENTATION Determine orientation of specified image volume.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/private/grablocation.m" class="function" title="Function">[retvals,messages]=grablo...</a><span class="description">GRABLOCATION Return file ids or local filenames corresponding to given URI(s)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/fileroot.m" class="function" title="Function">[root,emsg]=fileroot(fName)</a><span class="description">FILEROOT Returns the root directory from a file name.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/reorient.m" class="function" title="Function">[srsOut,flipMsg]=reorient...</a><span class="description">REORIENT Generate an different orthogonal orientation of specified image volume(s).</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/orthosrs.m" class="function" title="Function">[srs_ax,srs_cor,srs_sag]=...</a><span class="description">ORTHOSRS Generate other 2 orthogonal volumes from specified MR volume(s).</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/affine.m" class="function" title="Function">affine(old_img, old_M, ne...</a><span class="description">Using 2D or 3D affine matrix to rotate, translate, scale, reflect and
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/index.m" class="function" title="Function">b=index(a,varargin)</a><span class="description">INDEX  Return values of matrix at subscripts.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/bipolar.m" class="function" title="Function">bipolar(M, lo, hi, contra...</a><span class="description">BIPOLAR returns an M-by-3 matrix containing a blue-red colormap, in
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/bresenham_line3d.m" class="function" title="Function">bresenham_line3d(P1, P2, ...</a><span class="description">Generate X Y Z coordinates of a 3D Bresenham's line between
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/buildmex.m" class="function" title="Function">buildmex(externPath,libxm...</a><span class="description">buildmex - Build MEX files for BIAC General Toolbox</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/bxhabsorb.m" class="function" title="Function">bxhabsorb(varargin)</a><span class="description">BXHABSORB - Creates BXH file from input data files and optional format info</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/splitstr.m" class="function" title="Function">cStr=splitstr(str,delim)</a><span class="description">SPLITSTR Split string into a cell array of string.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/clip_nii.m" class="function" title="Function">clip_nii(nii, opt)
+</a><span class="description">CLIP_NII: Clip the NIfTI volume from any of the 6 sides
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/collapse_nii_scan.m" class="function" title="Function">collapse_nii_scan(scan_pa...</a><span class="description">Collapse multiple single-scan NIFTI files into a multiple-scan NIFTI file
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/convertmrstructtobxh.m" class="function" title="Function">convertmrstructtobxh(mrst...</a><span class="description">CONVERTMRSTRUCTTOBXH -- Take an mr struct and convert what we can to BXH</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/getbounds.m" class="function" title="Function">corners=getbounds(srs)</a><span class="description">GETBOUNDS - Find the bounding box of an image volume</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/readbxhdata.m" class="function" title="Function">data=readbxhdata(bxhref,r...</a><span class="description">READBXHDATA - Read data specified by BXH header file</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/mrinfo2datarec.m" class="function" title="Function">datarec=mrinfo2datarec(va...</a><span class="description">MRINFO2DATAREC Convert a MR header to a BXH datarec structure</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/private/deleteoncloserel.m" class="function" title="Function">deleteoncloserel(handle)</a><span class="description">DELETEONCLOSEREL - Release a handle used for marking a file "delete on close"</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/errorbox.m" class="function" title="Function">errorbox(errString,errTit...</a><span class="description">ERRORBOX Display error message in dialog box.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/expand_nii_scan.m" class="function" title="Function">expand_nii_scan(filename,...</a><span class="description">Expand a multiple-scan NIFTI file into multiple single-scan NIFTI files
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/extra_nii_hdr.m" class="function" title="Function">extra_nii_hdr(hdr)
+</a><span class="description">Decode extra NIFTI header information into hdr.extra
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/showsrs.m" class="function" title="Function">figureh=showsrs(srs,cmap)</a><span class="description">SHOWSRS Display MR series in a window with a scroll bar.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/showsrs2.m" class="function" title="Function">figureh=showsrs2(varargin)</a><span class="description">SHOWSRS2 Display MR series in a window with a scroll bar.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/flip_lr.m" class="function" title="Function">flip_lr(original_fn, flip...</a><span class="description">When you load any ANALYZE or NIfTI file with 'load_nii.m', and view
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/autodetectmr.m" class="function" title="Function">format=autodetectmr(filen...</a><span class="description">AUTODETECTMR Attempt to detect the format of an mr file</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/get_nii_frame.m" class="function" title="Function">get_nii_frame(filename)
+</a><span class="description">Return time frame of a NIFTI dataset. Support both *.nii and 
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/getparentfigure.m" class="function" title="Function">getparentfigure(handle)</a><span class="description">getparentfigure - return the parent figure for the passed handle</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/private/deleteonclose.m" class="function" title="Function">handle=deleteonclose(file...</a><span class="description">DELETEONCLOSE - Immediately marks a file for deletion when it is closed.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/private/deleteoncloseacq.m" class="function" title="Function">handle=deleteoncloseacq(f...</a><span class="description">DELETEONCLOSEACQ - Acquire a handle for marking a file "delete on close"</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/readbxhhdr.m" class="function" title="Function">hdr=readbxhhdr(bxhfile)</a><span class="description">READBXHHDR - Read BXH header information</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/progbar.m" class="function" title="Function">hout=progbar(arg1,arg2,arg3)</a><span class="description">PROGBAR Create/update progress bar.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/datarec2mrinfo.m" class="function" title="Function">info=datarec2mrinfo(datarec)</a><span class="description">DATAREC2MRINFO Convert a BXH datarec structure into a MR descriptor</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_nii.m" class="function" title="Function">load_nii(filename, img_id...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_nii_ext.m" class="function" title="Function">load_nii_ext(filename)
+</a><span class="description">Load NIFTI header extension after its header is loaded using load_nii_hdr.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_nii_hdr.m" class="function" title="Function">load_nii_hdr(fileprefix)
+</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_untouch0_nii_hdr.m" class="function" title="Function">load_nii_hdr(fileprefix, ...</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_untouch_nii_hdr.m" class="function" title="Function">load_nii_hdr(fileprefix, ...</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_nii_img.m" class="function" title="Function">load_nii_img(hdr,filetype...</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_untouch_header_only.m" class="function" title="Function">load_untouch_header_only(...</a><span class="description">Load NIfTI / Analyze header without applying any appropriate affine
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_untouch_nii.m" class="function" title="Function">load_untouch_nii(filename...</a><span class="description">Load NIFTI or ANALYZE dataset, but not applying any appropriate affine
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/load_untouch_nii_img.m" class="function" title="Function">load_untouch_nii_img(hdr,...</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/make_ana.m" class="function" title="Function">make_ana(varargin)
+</a><span class="description">Make ANALYZE 7.5 data structure specified by a 3D or 4D matrix.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/make_nii.m" class="function" title="Function">make_nii(varargin)
+</a><span class="description">Make NIfTI structure specified by an N-D matrix. Usually, N is 3 for 
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/mat_into_hdr.m" class="function" title="Function">mat_into_hdr(files)
+</a><span class="description">MAT_INTO_HDR  The old versions of SPM (any version before SPM5) store
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/createmrstruct.m" class="function" title="Function">mrstruct=createmrstruct(d...</a><span class="description">CREATEMRSTRUCT Create a valid MR struct from a given N-dimensional array</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/filename2url.m" class="function" title="Function">newURL=filename2url(fileo...</a><span class="description">FILENAME2URL - get valid URL from rel. or abs. filename or URI</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/ordfilt3.m" class="function" title="Function">ordfilt3(V0,ord,winSize,p...</a><span class="description">ordfilt3:    Performs 3D order-statistic filtering on 3D volumetric data.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/showsrs2_cfgtrans.m" class="function" title="Function">outputFig_h=showsrs2_cfgt...</a><span class="description">SHOWSRS2_CFGTRANS - GUI to control transparency of each overlay in showsrs2</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/pad_nii.m" class="function" title="Function">pad_nii(nii, opt)
+</a><span class="description">PAD_NII: Pad the NIfTI volume from any of the 6 sides
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/ras2direction.m" class="function" title="Function">ras2direction(rasflag)</a><span class="description">RAS2DIRECTION Create direction vectors from specified RAS orientation</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/readmrhdr.m" class="function" title="Function">readmrhdr(imgFilename,for...</a><span class="description">READMRHDR Read the format from the header file for an MR image</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/readxml.m" class="function" title="Function">readxml(varargin)</a><span class="description">READXML XML reader, using libxml2.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/reslice_nii.m" class="function" title="Function">reslice_nii(old_fn, new_f...</a><span class="description">The basic application of the 'reslice_nii.m' program is to perform
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/isrelpath.m" class="function" title="Function">ret=isrelpath(fName)</a><span class="description">ISRELPATH Is file name base on a relative path?</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/rri_file_menu.m" class="function" title="Function">rri_file_menu(action, var...</a><span class="description">Imbed a file menu to any figure. If file menu exist, it will append
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/rri_orient.m" class="function" title="Function">rri_orient(nii, varargin)
+</a><span class="description">Convert image of different orientations to standard Analyze orientation
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/rri_orient_ui.m" class="function" title="Function">rri_orient_ui(varargin)
+</a><span class="description">Return orientation of the current image:
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/rri_select_file.m" class="function" title="Function">rri_select_file(varargin)
+</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/rri_xhair.m" class="function" title="Function">rri_xhair(varargin)
+</a><span class="description">rri_xhair: create a pair of full_cross_hair at point [x y] in
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/rri_zoom_menu.m" class="function" title="Function">rri_zoom_menu(fig)
+</a><span class="description">Imbed a zoom menu to any figure.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/trim.m" class="function" title="Function">s1=trim(s)</a><span class="description">TRIM   Remove leading and trailing blanks.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/save_nii.m" class="function" title="Function">save_nii(nii, fileprefix,...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/save_nii_ext.m" class="function" title="Function">save_nii_ext(ext, fid)
+</a><span class="description">Save NIFTI header extension.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/save_nii_hdr.m" class="function" title="Function">save_nii_hdr(hdr, fid)
+</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/save_untouch0_nii_hdr.m" class="function" title="Function">save_nii_hdr(hdr, fid)
+</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/save_untouch_nii_hdr.m" class="function" title="Function">save_nii_hdr(hdr, fid)
+</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/save_untouch_header_only.m" class="function" title="Function">save_untouch_header_only(...</a><span class="description">This function is only used to save Analyze or NIfTI header that is
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/save_untouch_nii.m" class="function" title="Function">save_untouch_nii(nii, fil...</a><span class="description">Save NIFTI or ANALYZE dataset that is loaded by "load_untouch_nii.m".
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/save_untouch_slice.m" class="function" title="Function">save_untouch_slice(slice,...</a><span class="description">Save back to the original image with a portion of slices that was
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/scaled2rgb.m" class="function" title="Function">scaled2rgb(a,cm,clim)</a><span class="description">SCALED2RGB Convert scaled image to RGB image.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/showsrs2_cfg.m" class="function" title="Function">showsrs2_cfg(varargin)</a><span class="description">SHOWSRS2_CFG Application M-file for showsrs2_cfg.fig</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/name2spec.m" class="function" title="Function">spec=name2spec(name)</a><span class="description">NAME2SPEC Convert MR series name to specifier.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/dicomread_slicewithcheck.m" class="function" title="Function">srs=dicomread_slicewithch...</a><span class="description">DICOMREAD_SLICEWITHCHECK - Read a DICOM slice from an image file and check its parameters</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/unxform_nii.m" class="function" title="Function">unxform_nii(nii, inblock)
+</a><span class="description">Undo the flipping and rotations performed by xform_nii; spit back only
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/cindex.m" class="function" title="Function">varargout=cindex(a,varargin)</a><span class="description">CINDEX Return values of cell array at subscripts.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/readmr.m" class="function" title="Function">varargout=readmr(varargin)</a><span class="description">READMR Read MR images from filename or structure.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/writemr.m" class="function" title="Function">varargout=writemr(varargin)</a><span class="description">WRITEMR Write MR images from structure.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/verify_nii_ext.m" class="function" title="Function">verify_nii_ext(ext)
+</a><span class="description">Verify NIFTI header extension to make sure that each extension section
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/scale3.m" class="function" title="Function">vi=scale3(v,xs,ys,zs)</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/view_nii.m" class="function" title="Function">view_nii(varargin)
+</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/view_nii_menu.m" class="function" title="Function">view_nii_menu(fig, vararg...</a><span class="description">Imbed Zoom, Interp, and Info menu to view_nii window.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/writexml.m" class="function" title="Function">writexml(xmlstruct, filen...</a><span class="description">WRITEXML XML writer, using libxml2.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_NIfTI_20140122/xform_nii.m" class="function" title="Function">xform_nii(nii, tolerance,...</a><span class="description">internal function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/xpathquery.m" class="function" title="Function">xpathquery(xml,query_string)</a><span class="description">XPATHQUERY - Query an XML structure for a field using XPath</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/@url/url.m" class="class" title="Class">url(varargin)</a><span class="description">URL - an alternative to java.net.URL</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/Contents.m" class="script" title="Script">Contents.m</a><span class="description">BIAC General Toolbox</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/general/trilinear.m" class="script" title="Script">trilinear.m</a><span class="description">TRILINEAR Trilinear interpolation of 3-D array.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SUPPORT_biactools_0.93/mr/Contents.m" class="script" title="Script">Contents.m</a><span class="description">BIAC MR Toolbox</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/Example.m" class="script" title="Script">Example.m</a><span class="description">EXAMPLE demonstrates SphericalHough to detect spherical objects from 3D </span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images/content/SphericalHough.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <a id="ratelink" href="#comments">Be the first to rate this file!</a>
+          <span id="downloads">55 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 2.4 MB</span>
+          <span id="fileid">File ID: #48219</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/22980/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Spherical hough transform for 3D images</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/294209">Luke Xie</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      22 Oct 2014
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-10-22">22 Oct 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">SphericalHough detects spherical structures from 3D images - determines object center and radius</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F48219-spherical-hough-transform-for-3d-images&amp;watching=48219" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>SPHERICALHOUGH detects spherical structures from 3D 
+images. Determines object centers and radii and outputs image mask of 
+centers and spheres. This hough transform is based on the gradient field
+ of the image. The code is heavily based off of Circular Hough Transform
+ by Tao Peng (see info below).
+<br>&nbsp;
+<br>&nbsp;
+<br>USAGE:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;[center_img,sphere_img,sphcen2,sphrad]=SPHERICALHOUGH(
+<br>&nbsp;&nbsp;&nbsp;&nbsp;img,radrange,grdthres,fltrLM_R,multirad,obj_cint)
+<br>&nbsp;
+<br>&nbsp;
+<br>EXAMPLE:
+<br>&nbsp;
+<br>Run Example.m to see demonstration of SphericalHough on 3D MRI data 
+of a rat kidney. It demonstrates the detection of kidney glomeruli, 
+which are roughly spherical at 31x31x31 um^3 resolution. The expected 
+radii are between 2 to 7 pixels. Example data is from the following 
+article: MRH of age-related nephropathy, Tox Path, 2012 Jul;40(5):764-78
+ (<a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3515870">http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3515870</a>)
+<br>Supplemental material is also available on CIVMspace: <a href="http://www.civm.duhs.duke.edu/lx201107">http://www.civm.duhs.duke.edu/lx201107</a>
+<br>Essential support functions are included for the example. Complete support functions can be found at the websites below:
+<br>SphericalHough <a href="http://www.mathworks.com/matlabcentral/fileexchange/48219">http://www.mathworks.com/matlabcentral/fileexchange/48219</a>
+<br>ordfilt3 <a href="http://www.mathworks.com/matlabcentral/fileexchange/22044">http://www.mathworks.com/matlabcentral/fileexchange/22044</a>
+<br>load_nii <a href="http://www.mathworks.com/matlabcentral/fileexchange/8797">http://www.mathworks.com/matlabcentral/fileexchange/8797</a> 
+<br>showsrs2 <a href="http://wiki.biac.duke.edu/biac:tools">http://wiki.biac.duke.edu/biac:tools</a>
+<br>&nbsp;
+<br>&nbsp;
+<br>2007_03_07 original Circular Hough Transform by Yao Peng
+<br>2010_08_25 Spherical Hough Transform by Brian Hulette
+<br>2014_10_20 simpification, filtration, image mapping, classifiers, and example by Luke Xie</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/9168-detect-circles-with-various-radii-in-grayscale-image-via-hough-transform">Detect Circles With Various Radii In Grayscale Image Via Hough Transform</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/22044-ordfilt3">Ordfilt3</a> inspired <i>this file.</i></p>
+      
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 8.0 (R2012b)
+            </td>
+          </tr>
+
+            <tr>
+              <td class="label">MATLAB Search Path</td>
+              <td><pre class="path_list">/
+/SUPPORT_NIfTI_20140122
+/SUPPORT_biactools_0.93
+/SUPPORT_biactools_0.93/general
+/SUPPORT_biactools_0.93/mr
+/__MACOSX
+/__MACOSX/SUPPORT_NIfTI_20140122
+/__MACOSX/SUPPORT_biactools_0.93
+/__MACOSX/SUPPORT_biactools_0.93/general
+/__MACOSX/SUPPORT_biactools_0.93/mr</pre></td>
+            </tr>
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F48219-spherical-hough-transform-for-3d-images">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%223d%22" rel="nofollow">3d</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22center%22" rel="nofollow">center</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22circle%22" rel="nofollow">circle</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hough+transform%22" rel="nofollow">hough transform</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22image+analysis%22" rel="nofollow">image analysis</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22image+processing%22" rel="nofollow">image processing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22image+segmentation%22" rel="nofollow">image segmentation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22morphology%22" rel="nofollow">morphology</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22radius%22" rel="nofollow">radius</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22sphere%22" rel="nofollow">sphere</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="48219" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/48219-spherical-hough-transform-for-3d-images" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F48219-spherical-hough-transform-for-3d-images">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">22 Oct 2014</td>
+                  <td><p>added more input validation, changed gradient threshold input to a ratio, inverted object center intensity threshold</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415403002830&amp;cv=7&amp;fst=1415403002830&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=2&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/48219-spherical-hough-transform-for-3d-images&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D6%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

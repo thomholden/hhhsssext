@@ -1,0 +1,3089 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>inpaint_nans -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/4551-inpaint-nans" rel="canonical">
+<meta content="inpaint_nans - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/4551-inpaint-nans" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/39243/original.jpg" property="og:image"><meta content="Interpolates (&amp; extrapolates) NaN elements in a 2d array." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F4551-inpaint-nans" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F4551-inpaint-nans" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/15169" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=4551" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans" class="manifest_title">inpaint_nans</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans/content//Inpaint_nans/inpaint_nans.m" class="function" title="Function">(nn(:,1)&lt;1)|(nn(:,1)&gt;n)|(...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans/content//Inpaint_nans/inpaint_nans_bc.m" class="function" title="Function">valid{ind};
+end
+
+end</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans/content//Inpaint_nans/inpaint_nans_demo.m" class="script" title="Script">inpaint_nans_demo.m</a><span class="description">Surface Fit Artifact Removal</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans/content//Inpaint_nans/demo/inpaint_nans_demo_old.m" class="script" title="Script">inpaint_nans_demo_old.m</a><span class="description">Surface fit artifact removal</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans/content//Inpaint_nans/doc/methods_of_inpaint_nans.m" class="script" title="Script">methods_of_inpaint_nans.m</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans/content//Inpaint_nans/test/test_main.m" class="script" title="Script">test_main.m</a><span class="description">Repair to an image with 50% random artifacts</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans/content/Inpaint_nans.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:99.7334%;">
+                <p>4.98667</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">5.0</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">83</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">426 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 273 KB</span>
+          <span id="fileid">File ID: #4551</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/7364/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">inpaint_nans</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      29 Feb 2004
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2012-08-13">13 Aug 2012</span>)
+      </span>
+  </p>
+
+  <p id="summary">Interpolates (&amp; extrapolates) NaN elements in a 2d array.</p>
+
+    <div id="editorsnote">
+      <h3>Editor's Notes:</h3>
+      <p></p><p><br>This is a <b>File Exchange Select</b> file. <br><br></p>
+
+<p>Select files are submissions that have been peer-reviewed and approved as meeting a high standard of utility and quality.</p><p></p>
+    </div>
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F4551-inpaint-nans&amp;watching=4551" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Interpolate NaN elements in a 2-d array using non-NaN
+ elements. Can also extrapolate, as it does not use a triangulation of 
+the data. Inpaint_nans offers several different approaches to the 
+interpolation, which give tradeoffs in accuracy versus speed and memory 
+required. All the methods currently found in inpaint_nans are based on 
+sparse linear algebra and PDE discretizations. In essence, a PDE is 
+solved to be consistent with the information supplied.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/37323-vector-field-tb">Vector Field Tb</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/10902-pivmat-3-02">Piv Mat 3.02</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/27485-boundedline--line-plots-with-shaded-error-confidence-intervals">Boundedline: Line Plots With Shaded Error/Confidence Intervals</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/45028-pivsuite">Pi Vsuite</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/27659-pivlab-time-resolved-particle-image-velocimetry--piv--tool">Pi Vlab   Time Resolved Particle Image Velocimetry (Piv) Tool</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/48332-automated-phenotyping-of-mouse-behavior">Automated Phenotyping Of Mouse Behavior</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/21214-inpainting-nan-elements-in-3-d">Inpainting Nan Elements In 3 D</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/27994-inpaint-over-missing-data-in-1-d--2-d--3-d--n-d-arrays">Inpaint Over Missing Data In 1 D, 2 D, 3 D,... N D Arrays</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/45837-three-variables-multilevel-design-of-experiment">Three Variables Multilevel Design Of Experiment</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/48324-repnan">Repnan</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 5.2 (R10)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Written in version 5.2, tested up to release 14 SP1</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F4551-inpaint-nans">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22extrapolation%22" rel="nofollow">extrapolation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22inpainting%22" rel="nofollow">inpainting</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22interpolation%22" rel="nofollow">interpolation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22missing+values%22" rel="nofollow">missing values</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22nan%22" rel="nofollow">nan</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22nans%22" rel="nofollow">nans</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22replace%22" rel="nofollow">replace</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="4551" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/4551-inpaint-nans" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F4551-inpaint-nans">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(134)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">24 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/516312">Jan-Philipp Roth</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This has saved my day. Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/476322">Yorum</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Citing files on the FEX has come up
+ often, enough so that we had a discussion about it, and came up with 
+several schemes that seem viable. Find them at this link:</p>
+
+<p>http://blogs.mathworks.com/community/2010/12/13/citing-file-exchange-submissions/</p>
+
+<p>All you need do is modify the citation style you prefer to fit inpaint_nans, instead of gridfit.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/376977">Poulomi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>how to cite this work in papers ? Want to cite.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/376977">Poulomi</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/485631">Ander Biguri</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/487103">Ivy</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/487103">Ivy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John, your code is very useful 
+for my work. I want to cite it in my paper, could you please tell me how
+ to cite it properly? Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/473251">Egor</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yeah, sorry. Was talking about method 3. On my test imagesest it gives best results.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>No. A biharmonic is only one of the options. It is not even the default method due to a slower speed.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/473251">Egor</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Seems like this method was used - http://www.ima.umn.edu/~damelin/biharmonic</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/145833">Kaiyu</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/253255">Raul</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/439107">Karthik Karri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I don't know how to thank you. I have been struggling to this on my own. Thanks a lot!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/367853">Tiberius</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/87141">Ivan Brezani</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just what I was looking for. Excellent job.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/156447">Debejyo Chakraborty</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent job. Why not write a proper pdf document with all the equations? Is there a publication associated to this?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Harish - sorry but I never wrote a paper, just used a logical idea to solve a problem that I had at the time. </p>
+
+<p>There are inpainting papers that describe the general idea of 
+inpainting using PDE models, but as I recall, those are usually 
+Navier-Stokes based, nonlinear in some form depending on which terms 
+they included. Those schemes were usually also proprietary. While that 
+has some benefits in terms of the set of solutions that are admitted, 
+the nonlinearity is a serious cost.</p>
+
+<p>You can view the main scheme in this code as such an inpainting 
+scheme, since there is a diffusion term in the NS equations. The nice 
+thing is if we use pure diffusion to solve the problem, it becomes well 
+posed and very easy to solve as a sparse large scale linear system of 
+equations.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/194536">harish</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can someone link me to the mathematical background/papers that this code is based upon ? Would be of much help.Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@arnold - You've described an iterative mode filter.</p>
+
+<p>While you may think it feels similar to inpaint_nans, but as John has
+ said, it's actually a completely different type of problem in the one 
+way that matters - how to solve it (iteratively rather than linear 
+algebra).</p>
+
+<p>I suggest you give it a shot yourself - just work out how to:</p>
+
+<p>1. Find a "border" NaN pixel
+<br>2. Find the mode of its neighbours
+<br>3. Fill it in
+<br>4. Repeat.</p>
+
+<p>That would be a start. You can also find hints here which point to a faster and more stable implementation involving filters:
+<br>http://www.mathworks.com/matlabcentral/answers/46916</p>
+
+<p>In order to use that, you'll want to run the filter over the whole 
+image, and then "pack" the border NaN pixels back into the original and 
+repeat.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/108246">arnold</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks John. I understand what you 
+are getting at but I do think that there can be a good approach which 
+should gives a unique answer in almost any case (filling a nan area from
+ the outside in i.e.). I disagree, that a random pick (from adjacent 
+values with same occurence) would be unsatisfactory. I actually think 
+it's the right thing to do if you don't have more information, since all
+ it is is noise. </p>
+
+<p>What kind of assumptions can be made of course primarily depends on the specific problem/dataset.</p>
+
+<p>Thanks anyways, as usual some fine code of yours!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Arnold - Thank you for your input, 
+however your goal is not well-posed, in the sense that there may often 
+be no unique answer and a random choice seems unsatisfactory. As well, 
+since a linear algebraic solution will not be viable for this nonlinear 
+goal, one would need to consider each missing element, then perusing its
+ neighbors.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/108246">arnold</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>nice function, thanks.
+<br>I could use a method which replaces a nan by the most common, 
+discrete (!) neighbor value. I can think of various applications for 
+that. 
+<br>For instance: I have an array containing blobs with n discrete 
+values [1,2,3,4...n] with some data missing at the intersections of 
+those "areas". It makes no sense to fill the nan-gaps with an 
+interpolated value.</p>
+
+<p>I think this wouldn't be too hard to add. Either immediate neighbor 
+analysis or even a defined distance weighting, bu the fill should be the
+ exact value of one of the neighbors.</p>
+
+<p>cheers</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hamed - I'm sorry, but I don't do 
+consulting in the comments. This is not the place for it. I told you 
+what you need to do, and what I told you was not to simply run that 
+included demo script, but to read it and to learn how to use this tool 
+to solve your problems.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/379615">hamed abdulaziz</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I ran inpaint_nans and there is no 
+problem but what I need to do is inpainting on the JPEG images(not 
+surface),so I tried to run test_main but I am always have this error 
+message!,any help for this purpose?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Look at the examples I've provided 
+with this tool. In there, I show how one can apply inpaint_nans to an 
+image. In fact, I do exactly that. But you will need to use the tool as 
+it is designed. Simply throwing an arbitrary jpg file at it will not 
+work unless you do as I show.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hamed - this has nothing to do with
+ JPEG files. Try to run the _example_ from inpaint_nans, and you'll see 
+that it currently won't work for you either. This is because (as the 
+error message suggests) the inpain_nans.m file is not currently on your 
+path. You need to make sure inpain_nans is on your path.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/379615">hamed abdulaziz</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very Mr. John D'Errico,my
+ problem is : I have dermoscopy image (skin images)which contains a hair
+ I want to remove this hair by inpainting methods,for this purpose I 
+downloaded inpaint_nans , but this code does not work with JPG image 
+type?could you guide me please thank you in advance.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hamed - So you need to download inpaint_nans and place it on your search path.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/379615">hamed abdulaziz</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Mr. John D'Errico,you did excellent job.
+<br>I have an image of type JPG when I run test_main on it I have this error :</p>
+
+<p>Undefined function 'inpaint_nans' for input arguments of type
+<br>'double'.
+<br>thanks in advance</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Oh, maybe not enough info for that second typo. It's on line 141:
+<br>[bcclass,errorclass] = validstring(arg,valid);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice indeed. I've been using 
+inpaint_nans for a while and was thinking of how to apply cyclic 
+boundary constraints... all I needed to do was check a bit closer and 
+see that this already exists. Very well done.</p>
+
+<p>And John, just a note that there are a couple of typos in inpaint_nans_bc:</p>
+
+<p>1. Help lines 1:3 spell nans as nsns.
+<br>2. "arg" should be "bcclass"</p>
+
+<p>Finally, while using toroid BCs for my current application works just
+ fine, the physical reality of my problem is more like a cylinder (ie, 
+first and last columns should be treated as adjacent, whereas the 
+remaining elements on the first and last rows can be left without 
+constraint). Any thoughts on whether this functionality can be 
+implemented easily? I *think* it would just be a case similar to toroid 
+but with a different talks_to list for the first and last rows.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry. inpaint_nans will 
+interpolate all the nan elements in your array from the remainder. You 
+will need to find the gaps of interest, then use a tool like interp1, 
+interpolating only those gaps you have identified. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/383491">Karolina</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>I wanted to ask if it's possible to use inpaint_nans only to 
+interpolate small gaps, sya I want to interpolate only if there is 5 or 
+less consecutive nans in a column.
+<br>Thanks in advance for your responce!
+<br>Karolina</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dimitry - I'm sorry, but I lack the
+ time or the energy to go into an in-depth discussion, nor do I really 
+wish to put that much depth into the comments.</p>
+
+<p>If you have read through the code, you will have seen many comments 
+about del^4, often also called the biharmonic operator. I'm pretty sure 
+that if you make the effort to derive a discretization of del^4, you 
+might find some interesting coefficients.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/382757">Dimitry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Mr. John D'Errico,
+<br>Please let me know how does method 3 and 4 work and how do they 
+solve for the NaN using those interpolation techniques, and what the 
+algorithm does in those methods. In addition, when I was using method 3 
+to solve for some NaN’s , I noticed that method 3 is trying to 
+interpolate my data with NaN present values in there. I have noticed 
+while going thought the code and I became confused with some of the 
+code, please let me know what is going on after if nl&gt;0, where you 
+are solving for the sparse matrix and you have a bunch of constants in 
+the equation
+<br> “fda=sparse(repmat(all_list(L,1),1,13), ...
+<br>repmat(all_list(L,1),1,13) + ...
+<br>  repmat([-2*n,-n-1,-n,-n+1,-2,-1,0,1,2,n-1,n,n+1,2*n],nl,1), ...
+<br>                 repmat([1 2 -8 2 1 -8 20 -8 1 2 -8 2 1],nl,1),nm,nm);”
+<br>Please let me know what do those constants do and why did you select
+ them. Lastly please let me know if you can in-depth on how does method 3
+ and 4 work.</p>
+
+<p>-D
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/382757">Dimitry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry  not Eric but John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/146729">besbesmany besbesmany</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>what is the algorithms used in details, is there description about methods used in details?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/368912">Mohamadreza</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I used the code for error 
+concealment on video transmission, but I don't know how to support the 
+method and formulas behind that, I'd be thankful if you could provide me
+ the algorithm and mathematical model  which is used for interpolation
+<br>Thanks in advance </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/358665">Han</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/358665">Han</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>works pretty well and it's fast!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/248218">Chris Betters</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>David - inpaint_nans will fill in 
+all nan elements. However, the springs method (method 4) does what I 
+think you wish to see. It will do a CONSTANT extrapolation, to the 
+extent that is possible to achieve in two dimensions.</p>
+
+<p>Thus, in one dimension,  we can easily see what a constant 
+extrapolant will look like. It takes on the value of the extremal point 
+on the curve. However, imagine a non-convex blob of a surface with two 
+independent variables, that changes value around the perimeter? Here you
+ must decide which path to follow outwards from that blob. Depending on 
+you you proceed outwards, a constant extrapolant would differ. 
+Inpaint_nans tries to resolve that conflict smoothly.</p>
+
+<p>Finally, there is the case of intrapolation. This is where you have 
+large internal holes in your array. Here inpaint_nans (with any method, 
+including method 4) will fill in the hole as smoothly as possible.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/165110">David C</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/165110">David C</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/165110">David C</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How do I stop extrapolation (interpolation only)?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/155796">Hans</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/132097">MoDu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excelent code, does it's job admirably. I used it for radio signals and algorithm 4 was great.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I had to do some repairs, to better
+ handle vector input. I don't know if this is version related, as vector
+ input was working in the past. I just sent in the new version.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/61651">Oleg Komarov</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A=[14.0985; 2.5852; NaN];</p>
+
+<p>inpaint_nans(A,2)</p>
+
+<p>Subscript indices must either be real positive integers or logicals.
+<br>Error in inpaint_nans (line 239)
+<br>    fda(nm,[nm,nm-1,nm-n])=[-2 1 1];</p>
+
+<p>If I supply A as a row vector works fine.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>No, I don't use multiple regression
+ techniques in here. There are some explanations provided with the code.
+ all I can do is suggest you read them.</p>
+
+<p>You don't need to be doing classical inpainting on an image to use 
+this code. In fact, it was not designed for that class of problem at 
+all. Any 1-d or 2-d array with NaN elements in it where you wish to 
+interpolate them from their neighboring points will work.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243756">Isti</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>did you use the multiple regression
+ for this? would you tell me how the method works? i have the problem 
+with imputation the NaNs in the matrix too, but it's not about digital 
+painting at all :( i hope it will works on my own too.
+<br>thanks before</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243756">Isti</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>did you use the multiple regression for this? would you tell me how the method works? thanks before</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/238019">Laurence</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>fantastic, thanks John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Well, it has been many years since I wrote that tool, but why not start with the finite difference approximation for del^4?</p>
+
+<p>http://en.wikipedia.org/wiki/Biharmonic_equation</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/238019">Laurence</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Really helpful code, thanks.  A 
+couple of questions which hopefully someone can answer for me.  Looking 
+through the different methods, I think I understand roughly what's 
+happening (though correct me if I'm wrong), but I am unsure where the 
+coefficients for the higher order pde's come from. </p>
+
+<p>For methods 0,1 &amp; 2 a set of linear equations are formulated then
+ solved from the partial derivatives derived from the discrete Laplacian
+ approximation / finite element method (to give rise to the 
+co-efficients for 2nd order [1 -2 1]) in each plane.  I think I 
+understand this and why the sum of the partial derivatives are set to 0 
+etc.</p>
+
+<p>For method 3, how are the co-efficients calculated/derived for the 
+4th (del^4) order pde's? The co-efficients in the code are [1 2 -8 2 1 
+-8 20 -8 1 2 -8 2 1] and uses a 5x5 diamond structure but looking the 
+algorithm and background research I can't see how they have been 
+composed.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/238019">Laurence</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232080">Sobhan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>After 5 hours of searching and testing finally this one helped! Thanks so much</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For the answer to your questions, 
+you need to dive more deeply into the equations, and how they arise. The
+ factor of 2 you found actually appears to be correct and consistent in 
+context.</p>
+
+<p>If you prefer to make up any of a variety of arbitrary equations that
+ make sense to you, of course you can get any result you like. The fact 
+is, that will need to wait until you write your own code.</p>
+
+<p>I'm sorry, but sitting here arguing with someone who has not bothered
+ to understand the underlying code that a factor of 2 should or should 
+not belong seems silly to me. For some reason you seem to be trying to 
+reverse engineer the underlying equations from a few coefficients, and 
+are then deciding if they make sense to you, without actually expending 
+the effort. It is the wrong direction to go when you are trying to 
+understand a piece of software. Start from the beginning, not the end.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/54979">Willem-Jan de Goeij</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Actually, I made a mistake. I've mixed two examples I was looking at.</p>
+
+<p>The average of 2 and 0 is of course 1.
+<br>So I would pick 1 as a solution.</p>
+
+<p>What I see in your code is that the problem above is solved by the following set of equations:</p>
+
+<p>2 x = 1+3 = 4
+<br>  x = 10+6+4 - 4*5 = 0</p>
+
+<p>The least squares solution for this set of equations, is indeed x=1.6.
+<br>But why is the first equation multiplied by 2?</p>
+
+<p>If you keep the factor for x in both equations equal to one, you get</p>
+
+<p>x = (1+3)/2 = 2
+<br>x = 10+6+4-4*5 = 0</p>
+
+<p>This gives x=1 as least squares solution.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Willem - Personally, I think that 
+1.57982346157884756363579013421232435 is a slightly better value, 
+although I am willing to negotiate on the last few digits. My point is, 
+you are apparently trying to second guess the value predicted by less 
+than 10% on a very uncertain value. How many angels can fit on the head 
+of a pin anyway?</p>
+
+<p>So feel perfectly free to pick whatever value you like there, when 
+you write your own code. The value that was generated is the one 
+consistent with the equations I specified, including the boundary 
+conditions I chose. While those equations make some rational sense, I've
+ won't claim that the predictions inpaint_nans makes are perfect, or 
+that it will make all users blissfully happy. That would be impossible 
+anyway, and I'm just too busy counting angels.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/54979">Willem-Jan de Goeij</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A =
+<br>     1     4     7
+<br>   NaN     5    10
+<br>     3     6    11</p>
+
+<p>Lets call the NaN value x.</p>
+
+<p>Your function gives x=1.6.
+<br>I think x=1.5 is more logical, how about you?</p>
+
+<p>If we look at the first column, we have x=0.5*(1+3). ==&gt; x=2
+<br>If we look at the 5, we have
+<br>5=0.25*(x+10+4+6). ==&gt; x=0</p>
+
+<p>If we average these values, we have x=1.5.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/215315">jianfeng</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Good job!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/146231">S K</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have a 2D data, last few rows 
+have NaNs. I used your function to fill them up. I had a result. Then I 
+created another matrix such that x=[x; flipud(x)] and then again used 
+your function to fill the holes. In both the case, I get the same values
+ in place of NaNs. I was hoping in the second case that the values will 
+be more smoother. Please let me know if its possible. Thanks a lot. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/146231">S K</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/209582">Tomas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I will definitely look up gridfit - thanks a lot!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>inpaint_nans does not allow the 
+idea of a non-uniform grid, making it perhaps more efficient and simpler
+ to use. However, one could use gridfit under those circumstances, which
+ DOES allow a general spacing. Of course, gridfit does not presume the 
+data is sacrosanct as does inpaint_nans, but those deviations from a 
+true interpolant will often be small if you use a relatively small 
+smoothness parameter.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/209582">Tomas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent job!</p>
+
+<p>One question however, would it be possible to use method 4 (i.e. the 
+one with "springs") on data where the spacing between columns and rows 
+are not the same? (One example is if the x-axis (along the columns) is 
+non-linear so that the spring to the right is weaker than the oppsite 
+spring to the left.)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/128636">David Provencher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ok, I suspected this might be the case. I was already doing what you suggest, but I figured I might ask just in case.</p>
+
+<p>Thanks for your answer!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>NaNs of a different color? I.e., 
+two types of NaN. My only suggestion is to allow them all to be 
+estimated, and then convert those you wish to remain NaN back into NaNs.</p>
+
+<p>If you don't do that, then you may be unable to estimate other NaN elements that may lie in the same neighborhood.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/128636">David Provencher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works great!</p>
+
+<p>I'm wondering if there would be a way to exclude some NaNs from the 
+interpolation (to keep them as NaNs). At the moment, I'm masking the 
+results away, but I'd rather exclude them altogether. I thought about 
+modifying nan_list and known_list, but it seems to me I'd run onto 
+problems if the input matrix wasn't "full".  Any help on this?
+<br>Thanks</p>
+
+<p>(I'm using inpaint-nans in a stereo vision application to interpolate
+ holes in the disparity maps. However, the images from which I compute 
+disparity maps may have very large regions of invalid pixels which I 
+don't need/want to interpolate). </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/168043">Cameron Sparr</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>works great! Could use an updated example image.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/196352">Patrick Jackman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello John
+<br>I have been looking at your inpainting algorithm as an option for 
+coping with missing data in a three dimensional matrix. Do you have a 
+three dimensional version of the algorithm that you can share with us? 
+If not could you give some tips on how to modify the two dimensional 
+version?
+<br>Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/196352">Patrick Jackman</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/196352">Patrick Jackman</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>(I resolved Kaah's problem by e-mail.)</p>
+
+<p>As for Paulo, this is not an inpaint_nans issue. You are asking how 
+to get imwrite to write out a one channel (grayscale) image? I'm not 
+really sure what you don't understand here, but I think you need to do a
+ quick read of the help for imwrite (a simple function, although the 
+help is admittedly long.) Or perhaps you don't understand what a 
+grayscale image is, or how to convert it back to a 3 channel image 
+(although still grayscale)? In any event, this is not an inpaint_nans 
+problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/141317">Paulo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>great work!  i am using your work 
+in my project but i am getting problems on how to save the output. when 
+showing the output, it needs square bracketts,[] in IMSHOW command. but 
+how to do it in IMWRITE? thanks!</p>
+
+<p>irisImage = imread('C:\test.bmp'); irisImageGrayScale = rgb2gray(irisImage);</p>
+
+<p>                irisImageGrayScale = double(irisImageGrayScale);
+<br>		irisImageGrayScale(irisImageGrayScale&gt;170) = nan;
+<br>		irisImageGrayScale2 = inpaint_nans(irisImageGrayScale);
+<br>		irisImageGrayScale2(irisImageGrayScale2&lt;0)=0;
+<br>		irisImageGrayScale2(irisImageGrayScale2&gt;255)=255;</p>
+
+<p>        figure;imshow(irisImageGrayScale2,[])</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have no idea what you are doing 
+wrong. The following tests show absolutely no problems, with any of the 
+methods. I tested it for sparse or full inputs.</p>
+
+<p>&gt;&gt; A = rand(100);
+<br>&gt;&gt; A(rand(100)&gt;.5) = nan;
+<br>&gt;&gt; B = inpaint_nans(A,3);
+<br>&gt;&gt; B = inpaint_nans(sparse(A),3);</p>
+
+<p>Please send me an e-mail with an example that shows your problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/185010">Kaah</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great m-file. Thanks immensely for this.</p>
+
+<p>When I tried using method 3, I got this error message from MATLAB:</p>
+
+<p> Error using ==&gt; sparse
+<br>Index into matrix must be positive.</p>
+
+<p>Error in ==&gt; inpaint_nans at 291
+<br>    fda=fda+sparse(repmat(all_list(L,1),1,5), ...</p>
+
+<p>Please could someone help explain why this occurs?
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102856">Claire</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>THANK YOU!!!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121967">Michael Völker</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/180545">Vineet Mehta</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very helpful function!!
+<br>Does it work if the meshgrid is not evenly spaced? I imagine it 
+won't. Is there anything i can do to deal with this other than removing 
+data an uneven increments and making sure n and m are evenly spaced?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/60736">TAFKARS</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Good work, much appreciated</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/176524">Trevor</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works graeat</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/161571">Venkateswara Rao Narukull</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent job...this is what exactly I needed</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/139949">Tobias Kienzler</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/109136">Tannistha</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks a lot, i created a matrix using griddata  and had no idea how to get rid of the NaN values</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129116">Matt Patten</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129116">Matt Patten</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Absolutely perfect!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121437">Francis Esmonde-White</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is one of the most useful 
+functions I have seen on the file exchange. It would be nice to have 
+variable window-sizes, for various image-processing methods. I'll come 
+back and rate it once I have used it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/115637">Paolo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>good work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Actually, it is not the size of the
+ matrix that matters, as much as how many NaNs are to be inpainted, and 
+the location of those nan elements. And of course, if you are running 64
+ bit matlab, much larger problems can be processed. The method used will
+ be crucial too.</p>
+
+<p>I ran a quick test on a machine with a new CPU (R2010b, 64 bit 
+matlab, 4 cores, 8 gigs of ram) compared to the one I originally wrote 
+the code on. The test case was a 1000x1000 array with 50% randomly 
+inserted nan elements - it took only a few seconds to interpolate for 
+most methods.</p>
+
+<p>&gt;&gt; [x,y] =meshgrid(1:1000);
+<br>&gt;&gt; z = exp((x+y)/1000);
+<br>&gt;&gt; zap = rand(size(x)) &lt; .5;
+<br>&gt;&gt; z(zap) =NaN;</p>
+
+<p>&gt;&gt; tic,zhat = inpaint_nans(z,0);toc
+<br>Elapsed time is 8.251664 seconds.</p>
+
+<p>&gt;&gt; tic,zhat = inpaint_nans(z,1);toc
+<br>Elapsed time is 6.098041 seconds.</p>
+
+<p>&gt;&gt; tic,zhat = inpaint_nans(z,2);toc
+<br>Elapsed time is 2.293744 seconds.</p>
+
+<p>&gt;&gt; tic,zhat = inpaint_nans(z,3);toc
+<br>Elapsed time is 35.743856 seconds.</p>
+
+<p>&gt;&gt; tic,zhat = inpaint_nans(z,4);toc
+<br>Elapsed time is 3.057140 seconds.</p>
+
+<p>Method 3 is the most memory intensive. It used all the cores, and on 
+this test, roughly 2 gig of system ram was used. The less intensive 
+methods used considerably less than 1 gig of ram on this test. In any 
+case, I find it impressive that MATLAB is able to solve the required 
+linear system of equations with roughly 500,000 unknowns in that period 
+of time.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103709">Daniel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fantastic program. Exactly what I needed. </p>
+
+<p>What is the largest 2d matrix which inpaint_nans can handle? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/59727">Nitin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 May 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93756">Alexandra</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62947">Bryant Svedin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>That would be awesome if you could do that. I would greatly appreciate it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It would be fairly easy to re-write
+ this for a single method of interpolation to allow for some variety of 
+periodic boundary conditions. But I think the class described by you are
+ really toroidal BCs, not correctly spherical, as you point out. If they
+ are an adequate approximation for your problem, I would be able to post
+ a modified version for this specific problem.</p>
+
+<p>The problem with true spherical BCs at the poles is that all the 
+elements along the top edge of the array should be identical. I could 
+probably implement such a BC though by adding a single phantom node at 
+each of the north and south poles.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62947">Bryant Svedin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is exactly what I needed. Thank you.</p>
+
+<p>I do have one suggestion though. I have geographical data that I am 
+interpolating using this script and then plotting using meshm and it 
+works great except that the left and right edges of the matrix are 
+actually the same point on the earth so I have had to put copies of the 
+same matrix on both the left right and and rotated copies on the top and
+ bottom to get the interpolation to "wrap around" and then remove those 
+extra parts. While this works great for the data around the equator the 
+interpolation is not correct around the poles, because the top row of 
+the square matrix is in reality the same point on the earth.
+<br>So my suggestion (unless there is already a way to do this) is to 
+make this or a new program that will inpaint nans for a geolocated 
+square matrix. That would be incredibly usefull.</p>
+
+<p>(If anyone knows already how to do this, please let me know)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72336">Raghavendra</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/68686">Jon</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/57011">Andrey Rubshtein</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 May 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58416">Stefan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello, I recently started studying 
+ about inpainting and i ran across Mr. D'Errico's program and I have to 
+say it's pretty cool, tried it on a few pics of mine and i wase pleased 
+with the results.
+<br>I need some help about understanding the basic theory on the 
+subject, how the elliptic PDE's are implemented in inpainting etc.  and 
+if anyone could give me a hint on where i could find some books, 
+documents on the matter i would be very grateful. Regards</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 May 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58416">Stefan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/49590">Stuart</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/50793">Karel</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32938">Randall Lawerence</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John, I saw in your zip file how 
+you are thinking of removing method 5. Let me make a counter suggestion:
+ expand it. I can think many of reasons and applications where a 
+neighborhood average would be useful. In terms of expansion: Well, you 
+could allow for the size of the neighborhood, its orientation (forward, 
+backward, center), and the function (sum, mean, var, mode, etc.) to be 
+passed as additional arguments. Either way, this function is very useful
+ and I use it often in place of standard Matlab functions.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30774">Kenneth Eaton</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Marco,</p>
+
+<p>If you want more specific information about the methods than what is 
+in the help documentation, you would have to either delve into the code 
+itself or have John explain it to you.</p>
+
+<p>Also, the word "lies" is a conjugation of the verb "to lay", not a 
+noun meaning "falsehoods". To rewrite my statement in another way: 
+"...the misunderstanding is a result of your own misinterpretation."</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30774">Kenneth Eaton</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Marco,</p>
+
+<p>You appear to have completely missed the point of this function. It 
+is designed to REMOVE NaNs appearing in a matrix, overwriting those 
+values with interpolated values obtained from neighboring entries. You 
+seem to think that John is arbitrarily redefining what NaN is... he is 
+not, because that would be a silly waste of time. The numbers he 
+computes to REPLACE the NaNs are approximated from the surrounding 
+values with a number of different methods.</p>
+
+<p>As far as some of the errors you got, John could probably place error
+ checks in the function to allow for a more graceful and informative 
+exit. However, there's no reason you would/should ever enter some of 
+those arguments in the first place. For example, entering a scalar NaN 
+is silly, since the program has no nearby non-NaN elements to use for 
+extrapolating replacement values.</p>
+
+<p>This submission certainly doesn't deserve the low rating you gave it,
+ especially since the misunderstanding lies with your own 
+misinterpretation of what it does.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33529">alain boyer</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31830">V. Poor</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30774">Kenneth Eaton</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Oct 2008</span></td>
+        <td>
+          <span class="author">
+            Frederic Moisy
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you once again John,
+<br>exactly what I needed.</p>
+
+<p>Please TMW: include this in next release of matlab!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            Sherif Abd El-Gawad
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot and Good Contribution</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Aug 2008</span></td>
+        <td>
+          <span class="author">
+            E E
+          </span>
+        </td>
+        <td><span class="comment"><p>Comment=[T H A N NaN  Y O U  V E NaN Y  M NaN NaN H];</p>
+
+<p>[M,N] = size(Comment);
+<br> for k = 1:length(M);
+<br> Comment=inpaint_nans(Comment);
+<br> end</p>
+
+<p>Comment=
+<br>         T H A N K  Y O U  V E R Y  M U C H</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Apr 2008</span></td>
+        <td>
+          <span class="author">
+            Bob Field
+          </span>
+        </td>
+        <td><span class="comment"><p>Magical</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Mar 2008</span></td>
+        <td>
+          <span class="author">
+            Carlos Adrián Vargas Aguilera
+          </span>
+        </td>
+        <td><span class="comment"><p>Here you have my 5 stars... Congratulations, and thanks for sharing it...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            D. G.
+          </span>
+        </td>
+        <td><span class="comment"><p>Simply excellent. Nothing to declare.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Dec 2007</span></td>
+        <td>
+          <span class="author">
+            Sara Alexander
+          </span>
+        </td>
+        <td><span class="comment"><p>Really helpful with minimal fuss!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2007</span></td>
+        <td>
+          <span class="author">
+            martin klöppel
+          </span>
+        </td>
+        <td><span class="comment"><p>realy useful</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Sep 2007</span></td>
+        <td>
+          <span class="author">
+            Emily Spahn
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you! This does exactly what I was hoping it would!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            Amar chawla
+          </span>
+        </td>
+        <td><span class="comment"><p>Great piece of work! really helped....</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Oct 2006</span></td>
+        <td>
+          <span class="author">
+            mario fiorini
+          </span>
+        </td>
+        <td><span class="comment"><p>great!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Aug 2006</span></td>
+        <td>
+          <span class="author">
+            Mike Kadour
+          </span>
+        </td>
+        <td><span class="comment"><p>Just what I was looking for!  Many thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            Ian Howat
+          </span>
+        </td>
+        <td><span class="comment"><p>very fast, thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            Rajeev Srivastava
+          </span>
+        </td>
+        <td><span class="comment"><p>excellent work.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            sacrosancttayyar sacrosancttayyar
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Jun 2005</span></td>
+        <td>
+          <span class="author">
+            Cris C.
+          </span>
+        </td>
+        <td><span class="comment"><p>Really a good work. Thank you.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Feb 2005</span></td>
+        <td>
+          <span class="author">
+            K. Sturm
+          </span>
+        </td>
+        <td><span class="comment"><p>Well done !</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Dec 2004</span></td>
+        <td>
+          <span class="author">
+            gok gok
+          </span>
+        </td>
+        <td><span class="comment"><p>how to handle non-rectangular areas? Triangle for example.
+<br>I'm getting holes from DELAUNAY and your routine will be very helpful to fix this bug.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Oct 2004</span></td>
+        <td>
+          <span class="author">
+            jing tian
+          </span>
+        </td>
+        <td><span class="comment"><p>excellent!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Oct 2004</span></td>
+        <td>
+          <span class="author">
+            d d
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Aug 2004</span></td>
+        <td>
+          <span class="author">
+            Tom Reiser
+          </span>
+        </td>
+        <td><span class="comment"><p>I love it!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jun 2004</span></td>
+        <td>
+          <span class="author">
+            Evan Zamir
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice! Especially method 4 using the virtual springs.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Mar 2004</span></td>
+        <td>
+          <span class="author">
+            Urs Schwarz (us)
+          </span>
+        </td>
+        <td><span class="comment"><p>A very useful and meticulously 
+coded, data-driven function. A must to look at and learn from for 
+anybody who is working with incomplete 2D data sets, in particular, 
+dirty images.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">18 Jul 2005</td>
+                  <td><p>This version of inpaint_nans will also handle 
+<br>inpainting (interpolating/extrapolating) simple 
+<br>vectors with NaN elements.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Apr 2006</td>
+                  <td><p>Release 2:
+<br>Bug fix for method 5. Clean up help. Add HTML, screenshot, examples, demo comparison to griddata.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">13 Aug 2012</td>
+                  <td><p>Repaired problems for vector input.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416124820112&amp;cv=7&amp;fst=1416124820112&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/4551-inpaint-nans&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D152%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

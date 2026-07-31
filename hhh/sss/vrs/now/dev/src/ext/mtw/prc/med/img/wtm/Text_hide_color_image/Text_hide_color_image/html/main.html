@@ -1,0 +1,371 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HIDING MULTIPLE TEXT PAGES INTO A COLOR IMAGE</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-08-18"><meta name="DC.source" content="main.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>HIDING MULTIPLE TEXT PAGES INTO A COLOR IMAGE</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">About me</a></li><li><a href="#2">About this Program</a></li><li><a href="#3">Tips to use my program</a></li><li><a href="#4">Part One: Get the Inputs</a></li><li><a href="#5">Part Two: Image Encoding</a></li><li><a href="#6">Part Three: Recovery of Text image</a></li><li><a href="#7">Part Four: Edge Tappering</a></li><li><a href="#8">Part Five: Store the Outputs</a></li></ul></div><h2>About me<a name="1"></a></h2><div><ul><li><b>A. Cherma Rajan</b> ,(2003-2007 Batch),</li><li>B.E.,Electronics and Communication Engineering,</li><li>Madurai-625 001,</li><li>India.</li><li><b>E-mail:</b> chermarajan [at] yahoo [dot] co [dot] in</li></ul></div><h2>About this Program<a name="2"></a></h2><p>This program has the ability to embed/hide multiple text images in any color image. The encoded text images can be seamlessly recoverable. The key advantage in this coding algorithm is, the embedded text image does not create any visible marks on the color image. Thus the text data cannot be identified by naked eyes. This ensures secure way of transferring confidential data through widely available Color image as a data carrier. This method can be utilized in web pages, e-mail and media.</p><h2>Tips to use my program<a name="3"></a></h2><div><ul><li>For better results use 24-bit lossless image format (ex. bmp, tif) as the Text image</li><li>Use larger resolution Images (&gt; 512 x 512)</li><li>Avoid usage of small size fonts</li><li>All Images (both Color and Text) must be same in resolution</li><li>Text data should be converted to bitmap image (bmp) before execution</li><li>Text data should be monochrome(Black letters) ,color text leads to undesire results</li><li>Store processed image output in any lossless format (ex. bmp, tif)</li><li>Modify the location of the images used in this program as per your Local drive</li></ul></div><h2>Part One: Get the Inputs<a name="4"></a></h2><p>This part read the input images (1 Color image + 6 Text images) from the local drive. Change the path of the image mentioned in imread() function as per your input location.</p><pre class="codeinput">clc;
+close <span class="string">all</span>;
+clear <span class="string">all</span>;
+tic;
+<span class="comment">% Image input</span>
+im_in = imread(<span class="string">'F:\Cherma\Animal.jpg'</span>);<span class="comment">% Color image</span>
+size_temp = size(im_in);
+
+<span class="comment">% Text inputs</span>
+im_tx = imread(<span class="string">'F:\Cherma\1.bmp'</span>);  <span class="comment">% Text page 1</span>
+<span class="keyword">if</span>( ~isequal(size_temp, size(im_tx)) )
+    error(<span class="string">'All Input Images must be equal in size'</span>);
+<span class="keyword">end</span>
+size_temp = size(im_tx);
+im_in_tx1(:,:,1) = im_tx(:,:,1);
+
+im_tx = imread(<span class="string">'F:\Cherma\2.bmp'</span>);  <span class="comment">% Text page 2</span>
+<span class="keyword">if</span>( ~isequal(size_temp, size(im_tx)) )
+    error(<span class="string">'All Input Images must be equal in size'</span>);
+<span class="keyword">end</span>
+size_temp = size(im_tx);
+im_in_tx2(:,:,1) = im_tx(:,:,1);
+
+im_tx = imread(<span class="string">'F:\Cherma\3.bmp'</span>);  <span class="comment">% Text page 3</span>
+<span class="keyword">if</span>( ~isequal(size_temp, size(im_tx)) )
+    error(<span class="string">'All Input Images must be equal in size'</span>);
+<span class="keyword">end</span>
+size_temp = size(im_tx);
+im_in_tx1(:,:,2) = im_tx(:,:,1);
+
+im_tx = imread(<span class="string">'F:\Cherma\4.bmp'</span>);  <span class="comment">% Text page 4</span>
+<span class="keyword">if</span>( ~isequal(size_temp, size(im_tx)) )
+    error(<span class="string">'All Input Images must be equal in size'</span>);
+<span class="keyword">end</span>
+size_temp = size(im_tx);
+im_in_tx2(:,:,2) = im_tx(:,:,1);
+
+im_tx = imread(<span class="string">'F:\Cherma\5.bmp'</span>);  <span class="comment">% Text page 5</span>
+<span class="keyword">if</span>( ~isequal(size_temp, size(im_tx)) )
+    error(<span class="string">'All Input Images must be equal in size'</span>);
+<span class="keyword">end</span>
+size_temp = size(im_tx);
+im_in_tx1(:,:,3) = im_tx(:,:,1);
+
+im_tx = imread(<span class="string">'F:\Cherma\6.bmp'</span>);  <span class="comment">% Text page 6</span>
+<span class="keyword">if</span>( ~isequal(size_temp, size(im_tx)) )
+    error(<span class="string">'All Input Images must be equal in size'</span>);
+<span class="keyword">end</span>
+size_temp = size(im_tx);
+im_in_tx2(:,:,3) = im_tx(:,:,1);
+
+clear <span class="string">im_tx</span>;
+figure(1);
+<span class="comment">% Show inputs</span>
+subplot(2,3,1);imshow(im_in_tx1(:,:,1));title({<span class="string">'Text to be Encoded'</span>;<span class="string">'Page 1'</span>});
+subplot(2,3,2);imshow(im_in_tx2(:,:,1));title(<span class="string">'Page 2'</span>);
+subplot(2,3,3);imshow(im_in_tx1(:,:,2));title(<span class="string">'Page 3'</span>);
+subplot(2,3,4);imshow(im_in_tx2(:,:,2));title(<span class="string">'Page 4'</span>);
+subplot(2,3,5);imshow(im_in_tx1(:,:,3));title(<span class="string">'Page 5'</span>);
+subplot(2,3,6);imshow(im_in_tx2(:,:,3));title(<span class="string">'Page 6'</span>);
+</pre><img vspace="5" hspace="5" src="main_01.png" alt=""> <h2>Part Two: Image Encoding<a name="5"></a></h2><p>In this part, Text images are encoded with a Color image. At first, an image plane is formed by interleaving pixels from two different Text images. Suppose a pixel of location (m,n) is taken from Text image 1, the next pixel location (m,n+1) is taken from Text image 2. This operation is performed by alterim() funtion. The same method is applied on rest of the Text images(2,3,4,5 and 6) and the image planes are formed.</p><p>The next step is to watermark the interleaved text image planes into Color image. In this step, the Text image data bits are coded as the LSB of Color image. LSB is chosen to hide text information as LSB of an image is least significant. Altering the bit does not affect the visual quality of th Image. Information of the Text image is grouped to two segments. Pixels less than 128 are grouped as 'segment 0' and pixels more than or equal to 128 are grouped as 'segment 1'. If a Text image pixel is grouped as 'segment 0' then the colocated pixel LSB bit in Color image is set as 'bit 0' and vice versa. The same operation is repeated for all other Text images generated before and coded as a LSB bit of each plane of the Color image.</p><div><ul><li>Text images 1 and 2 coded as LSB of Red plane in Color image</li><li>Text images 3 and 4 coded as LSB of Green plane in Color image</li><li>Text images 5 and 6 coded as LSB of Blue plane in Color image</li></ul></div><p><b>NOTE:</b> In bmp 24 bit format, each color pixels are represented by 8-bits. LSB of each color plane is considered for this encoding. Change the path of output image mentioned in imwrite() function as per your local drive.</p><pre class="codeinput"><span class="comment">% Arrange Text images in interleaved manner two per Color plane</span>
+im_in_tx1 = altertxt(im_in_tx1,im_in_tx2);
+
+<span class="comment">% Hide Text images in Color image</span>
+im_wm = hidetxt(im_in,im_in_tx1);
+
+figure(2);subplot(1,2,1);
+imshow(im_in);
+title({<span class="string">'Color image'</span>;<span class="string">'(Before Encoding)'</span>});
+figure(2);subplot(1,2,2);
+imshow(im_wm);
+title({<span class="string">'Watermarked image'</span>;<span class="string">'(After Encoding)'</span>});
+clear <span class="string">im_in</span> <span class="string">im_in_tx1</span> <span class="string">im_in_tx2</span>;
+
+<span class="comment">% Write watermarked image after Encode</span>
+imwrite(im_wm,<span class="string">'F:\Cherma\wm.bmp'</span>);
+</pre><img vspace="5" hspace="5" src="main_02.png" alt=""> <h2>Part Three: Recovery of Text image<a name="6"></a></h2><p>This part performs the reverse operation of encoding. At first, the Text images are extracted from the LSB bit of the Color image which obtained from the previous process. The extracted Text image is combination of two Text images arranged in interleaved manner. Three image planes are obtained from this function txtxtract() The next step is to deinterleave these Text planes and to form the two Text images seperately. This operation is performed by the function imxtract(). This operation is repeated for rest of the Text planes to get the final Text images.</p><p><b>NOTE:</b> Change the path of image specified in imread() as per your local drive.</p><pre class="codeinput"><span class="comment">% Read watermarked image to Decode</span>
+im_wm = imread(<span class="string">'F:\Cherma\wm.bmp'</span>);
+
+<span class="comment">% Extract Text images from each Color plane</span>
+im_xtr = extracttxt(im_wm);
+<span class="comment">% Separate pair of Text images from each plane of extracted Text image</span>
+[im_out_tx1 im_out_tx2] = separatetxt(im_xtr);
+
+clear <span class="string">im_wm</span> <span class="string">im_xtr</span>;
+</pre><h2>Part Four: Edge Tappering<a name="7"></a></h2><p>This part is the final step of this program. The images obtained from the previous step is not tappered. Edge tappering is required as half of the Text image pixels are interpolated from the adjacent pixels. All the decoded text images are smoothen by fspecial() function available in MATLAB.</p><pre class="codeinput">PSF = fspecial(<span class="string">'laplacian'</span>);
+im_out_tx1(:,:,1) = medfilt2(edgetaper(im_out_tx1(:,:,1),PSF));
+im_out_tx2(:,:,1) = medfilt2(edgetaper(im_out_tx2(:,:,1),PSF));
+im_out_tx1(:,:,2) = medfilt2(edgetaper(im_out_tx1(:,:,2),PSF));
+im_out_tx2(:,:,2) = medfilt2(edgetaper(im_out_tx2(:,:,2),PSF));
+im_out_tx1(:,:,3) = medfilt2(edgetaper(im_out_tx1(:,:,3),PSF));
+im_out_tx2(:,:,3) = medfilt2(edgetaper(im_out_tx2(:,:,3),PSF));
+
+toc;
+</pre><pre class="codeoutput">Elapsed time is 2.237473 seconds.
+</pre><h2>Part Five: Store the Outputs<a name="8"></a></h2><p>This part stores the output text images to the local drive.</p><p><b>NOTE:</b> Change the path of the image mentioned in imwrite() function as per your output location.</p><pre class="codeinput">figure(3);
+
+subplot(2,3,1);imshow(im_out_tx1(:,:,1));title({<span class="string">'Extracted Text'</span>;<span class="string">'Page 1'</span>});
+subplot(2,3,2);imshow(im_out_tx2(:,:,1));title(<span class="string">'Page 2'</span>);
+subplot(2,3,3);imshow(im_out_tx1(:,:,2));title(<span class="string">'Page 3'</span>);
+subplot(2,3,4);imshow(im_out_tx2(:,:,2));title(<span class="string">'Page 4'</span>);
+subplot(2,3,5);imshow(im_out_tx1(:,:,3));title(<span class="string">'Page 5'</span>);
+subplot(2,3,6);imshow(im_out_tx2(:,:,3));title(<span class="string">'Page 6'</span>);
+
+imwrite(im_out_tx1(:,:,1),<span class="string">'F:\Cherma\1_recov.bmp'</span>);
+imwrite(im_out_tx2(:,:,1),<span class="string">'F:\Cherma\2_recov.bmp'</span>);
+imwrite(im_out_tx1(:,:,2),<span class="string">'F:\Cherma\3_recov.bmp'</span>);
+imwrite(im_out_tx2(:,:,2),<span class="string">'F:\Cherma\4_recov.bmp'</span>);
+imwrite(im_out_tx1(:,:,3),<span class="string">'F:\Cherma\5_recov.bmp'</span>);
+imwrite(im_out_tx2(:,:,3),<span class="string">'F:\Cherma\6_recov.bmp'</span>);
+</pre><img vspace="5" hspace="5" src="main_03.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% HIDING MULTIPLE TEXT PAGES INTO A COLOR IMAGE
+%% About me
+% * *A. Cherma Rajan* ,(2003-2007 Batch),
+% * B.E.,Electronics and Communication Engineering,
+% * Madurai-625 001,
+% * India.
+% * *E-mail:* chermarajan [at] yahoo [dot] co [dot] in
+%
+%% About this Program
+% This program has the ability to embed/hide multiple text images in any color image. 
+% The encoded text images can be seamlessly recoverable. The key advantage in this 
+% coding algorithm is, the embedded text image does not create any visible marks 
+% on the color image. Thus the text data cannot be identified by naked eyes. This ensures 
+% secure way of transferring confidential data through widely available Color image as
+% a data carrier. This method can be utilized in web pages, e-mail and media.
+% 
+%% Tips to use my program
+% * For better results use 24-bit lossless image format (ex. bmp, tif) as the Text image
+% * Use larger resolution Images (> 512 x 512)
+% * Avoid usage of small size fonts
+% * All Images (both Color and Text) must be same in resolution
+% * Text data should be converted to bitmap image (bmp) before execution
+% * Text data should be monochrome(Black letters) ,color text leads to undesire results
+% * Store processed image output in any lossless format (ex. bmp, tif)
+% * Modify the location of the images used in this program as per your Local drive
+
+%% Part One: Get the Inputs
+% This part read the input images (1 Color image + 6 Text images) from the local 
+% drive. Change the path of the image mentioned in imread() function as per 
+% your input location.
+clc;
+close all;
+clear all;
+tic;
+% Image input
+im_in = imread('F:\Cherma\Animal.jpg');% Color image
+size_temp = size(im_in);
+
+% Text inputs
+im_tx = imread('F:\Cherma\1.bmp');  % Text page 1
+if( ~isequal(size_temp, size(im_tx)) )
+    error('All Input Images must be equal in size');
+end
+size_temp = size(im_tx);
+im_in_tx1(:,:,1) = im_tx(:,:,1);
+
+im_tx = imread('F:\Cherma\2.bmp');  % Text page 2
+if( ~isequal(size_temp, size(im_tx)) )
+    error('All Input Images must be equal in size');
+end
+size_temp = size(im_tx);
+im_in_tx2(:,:,1) = im_tx(:,:,1);
+
+im_tx = imread('F:\Cherma\3.bmp');  % Text page 3
+if( ~isequal(size_temp, size(im_tx)) )
+    error('All Input Images must be equal in size');
+end
+size_temp = size(im_tx);
+im_in_tx1(:,:,2) = im_tx(:,:,1);
+
+im_tx = imread('F:\Cherma\4.bmp');  % Text page 4
+if( ~isequal(size_temp, size(im_tx)) )
+    error('All Input Images must be equal in size');
+end
+size_temp = size(im_tx);
+im_in_tx2(:,:,2) = im_tx(:,:,1);
+
+im_tx = imread('F:\Cherma\5.bmp');  % Text page 5
+if( ~isequal(size_temp, size(im_tx)) )
+    error('All Input Images must be equal in size');
+end
+size_temp = size(im_tx);
+im_in_tx1(:,:,3) = im_tx(:,:,1);
+
+im_tx = imread('F:\Cherma\6.bmp');  % Text page 6
+if( ~isequal(size_temp, size(im_tx)) )
+    error('All Input Images must be equal in size');
+end
+size_temp = size(im_tx);
+im_in_tx2(:,:,3) = im_tx(:,:,1);
+
+clear im_tx;
+figure(1);
+% Show inputs
+subplot(2,3,1);imshow(im_in_tx1(:,:,1));title({'Text to be Encoded';'Page 1'});
+subplot(2,3,2);imshow(im_in_tx2(:,:,1));title('Page 2');
+subplot(2,3,3);imshow(im_in_tx1(:,:,2));title('Page 3');
+subplot(2,3,4);imshow(im_in_tx2(:,:,2));title('Page 4');
+subplot(2,3,5);imshow(im_in_tx1(:,:,3));title('Page 5');
+subplot(2,3,6);imshow(im_in_tx2(:,:,3));title('Page 6');
+
+%% Part Two: Image Encoding
+% In this part, Text images are encoded with a Color image. At first, an image
+% plane is formed by interleaving pixels from two different Text images. Suppose a
+% pixel of location (m,n) is taken from Text image 1, the next pixel location (m,n+1)
+% is taken from Text image 2. This operation is performed by alterim() funtion. The same
+% method is applied on rest of the Text images(2,3,4,5 and 6) and the image planes are 
+% formed. 
+% 
+% The next step is to watermark the interleaved text image planes into Color image.
+% In this step, the Text image data bits are coded as the LSB of Color image. LSB
+% is chosen to hide text information as LSB of an image is least significant. Altering  
+% the bit does not affect the visual quality of th Image. Information of the Text image 
+% is grouped to two segments. Pixels less than 128 are grouped as 'segment 0'
+% and pixels more than or equal to 128 are grouped as 'segment 1'. If a Text image
+% pixel is grouped as 'segment 0' then the colocated pixel LSB bit in Color image
+% is set as 'bit 0' and vice versa. The same operation is repeated for all other Text
+% images generated before and coded as a LSB bit of each plane of the Color image.
+%
+% * Text images 1 and 2 coded as LSB of Red plane in Color image
+% * Text images 3 and 4 coded as LSB of Green plane in Color image
+% * Text images 5 and 6 coded as LSB of Blue plane in Color image
+% 
+% *NOTE:* In bmp 24 bit format, each color pixels are represented by 8-bits. LSB of 
+% each color plane is considered for this encoding. Change the path of output 
+% image mentioned in imwrite() function as per your local drive.
+
+% Arrange Text images in interleaved manner two per Color plane 
+im_in_tx1 = altertxt(im_in_tx1,im_in_tx2);
+
+% Hide Text images in Color image
+im_wm = hidetxt(im_in,im_in_tx1);
+
+figure(2);subplot(1,2,1);
+imshow(im_in);
+title({'Color image';'(Before Encoding)'});
+figure(2);subplot(1,2,2);
+imshow(im_wm);
+title({'Watermarked image';'(After Encoding)'});
+clear im_in im_in_tx1 im_in_tx2;
+
+% Write watermarked image after Encode
+imwrite(im_wm,'F:\Cherma\wm.bmp');
+
+%% Part Three: Recovery of Text image
+% This part performs the reverse operation of encoding. At first, the Text images are 
+% extracted from the LSB bit of the Color image which obtained from the previous 
+% process. The extracted Text image is combination of two Text images arranged in 
+% interleaved manner. Three image planes are obtained from this function txtxtract()
+% The next step is to deinterleave these Text planes and to form the two Text 
+% images seperately. This operation is performed by the function imxtract(). 
+% This operation is repeated for rest of the Text planes to get the final Text images.
+%
+% *NOTE:* Change the path of image specified in imread() as per your local drive.
+
+% Read watermarked image to Decode
+im_wm = imread('F:\Cherma\wm.bmp');
+
+% Extract Text images from each Color plane
+im_xtr = extracttxt(im_wm);
+% Separate pair of Text images from each plane of extracted Text image
+[im_out_tx1 im_out_tx2] = separatetxt(im_xtr);
+
+clear im_wm im_xtr;
+%% Part Four: Edge Tappering
+% This part is the final step of this program. The images obtained from
+% the previous step is not tappered. Edge tappering is required as half of
+% the Text image pixels are interpolated from the adjacent pixels. All the decoded
+% text images are smoothen by fspecial() function available in MATLAB.
+
+PSF = fspecial('laplacian');
+im_out_tx1(:,:,1) = medfilt2(edgetaper(im_out_tx1(:,:,1),PSF));
+im_out_tx2(:,:,1) = medfilt2(edgetaper(im_out_tx2(:,:,1),PSF));
+im_out_tx1(:,:,2) = medfilt2(edgetaper(im_out_tx1(:,:,2),PSF));
+im_out_tx2(:,:,2) = medfilt2(edgetaper(im_out_tx2(:,:,2),PSF));
+im_out_tx1(:,:,3) = medfilt2(edgetaper(im_out_tx1(:,:,3),PSF));
+im_out_tx2(:,:,3) = medfilt2(edgetaper(im_out_tx2(:,:,3),PSF));
+
+toc;
+%% Part Five: Store the Outputs
+% This part stores the output text images to the local drive.
+%
+% *NOTE:* Change the path of the image mentioned in imwrite() function as per
+% your output location.
+figure(3);
+
+subplot(2,3,1);imshow(im_out_tx1(:,:,1));title({'Extracted Text';'Page 1'});
+subplot(2,3,2);imshow(im_out_tx2(:,:,1));title('Page 2');
+subplot(2,3,3);imshow(im_out_tx1(:,:,2));title('Page 3');
+subplot(2,3,4);imshow(im_out_tx2(:,:,2));title('Page 4');
+subplot(2,3,5);imshow(im_out_tx1(:,:,3));title('Page 5');
+subplot(2,3,6);imshow(im_out_tx2(:,:,3));title('Page 6');
+
+imwrite(im_out_tx1(:,:,1),'F:\Cherma\1_recov.bmp');
+imwrite(im_out_tx2(:,:,1),'F:\Cherma\2_recov.bmp');
+imwrite(im_out_tx1(:,:,2),'F:\Cherma\3_recov.bmp');
+imwrite(im_out_tx2(:,:,2),'F:\Cherma\4_recov.bmp');
+imwrite(im_out_tx1(:,:,3),'F:\Cherma\5_recov.bmp');
+imwrite(im_out_tx2(:,:,3),'F:\Cherma\6_recov.bmp');
+
+##### SOURCE END #####
+--></body></html>

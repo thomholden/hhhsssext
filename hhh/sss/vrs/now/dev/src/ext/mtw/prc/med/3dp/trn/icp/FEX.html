@@ -1,0 +1,1853 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Iterative Closest Point -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27804-iterative-closest-point" rel="canonical">
+<meta content="Iterative Closest Point - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27804-iterative-closest-point" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/43242/original.jpg" property="og:image"><meta content="An implementation of various ICP (iterative closest point) features. " property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27804-iterative-closest-point" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27804-iterative-closest-point" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/16513" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=27804" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/27804-iterative-closest-point" class="manifest_title">Iterative Closest Point</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27804-iterative-closest-point/content//icp.m" class="function" title="Function">icp(q,p,varargin)</a><span class="description">Perform the Iterative Closest Point algorithm on three dimensional point</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27804-iterative-closest-point/content//demo.m" class="script" title="Script">demo.m</a><span class="description">demo.m</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/27804-iterative-closest-point/content/icp.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:95.8334%;">
+                <p>4.79167</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.8</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">29</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">308 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 8.82 KB</span>
+          <span id="fileid">File ID: #27804</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/8079/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Iterative Closest Point</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      30 May 2010
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-01-25">25 Jan 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">An implementation of various ICP (iterative closest point) features. </p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F27804-iterative-closest-point&amp;watching=27804" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>The ICP algorithm takes two point clouds as an input 
+and return the rigid transformation (rotation matrix R and translation 
+vector T), that best aligns the point clouds.</p>
+
+<p>Example:
+<br>[R,T] = icp(q,p,10);</p>
+
+<p>Aligns the points of p to the points q with 10 iterations of the algorithm.
+<br>The transformation is then applied using
+<br>R*p + repmat(T,1,length(p));</p>
+
+<p>The file has implemented both point to point and point to plane as 
+well as a couple of other features such as extrapolation, weighting 
+functions, edge point rejection, etc.</p>
+
+<p>For an introductory text on the ICP algorithm and the implemented variants, see <a href="http://www2.imm.dtu.dk/%7Ejakw/publications/bscthesis.pdf">http://www2.imm.dtu.dk/~jakw/publications/bscthesis.pdf</a></p>
+
+<p>Hans Martin Kjer &amp; Jakob Wilm -- Evaluation of surface registration algorithms for PET motion correction</p></td>
+          </tr>
+
+          
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/statistics/" id="product_link_Statistics Toolbox">Statistics Toolbox</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.14 (R2012a)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>For kDtree matching, the Statistics Toolbox v. 7.3 or higher is needed.</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27804-iterative-closest-point">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22bestfit%22" rel="nofollow">bestfit</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22icp%22" rel="nofollow">icp</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22iterative+closest+point%22" rel="nofollow">iterative closest point</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22matching%22" rel="nofollow">matching</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22registration%22" rel="nofollow">registration</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="27804" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/27804-iterative-closest-point" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27804-iterative-closest-point">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(63)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">30 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/515897">dhara</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>excellent work and detail description and supported pdf make it soo good....
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/358056">Sudhanshu Nahata</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice and descriptive function. Error plot was icing on the cake!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/81296">xiangz ?</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi! Jakob. When I tried the 
+parameter "weight" and gave a 1xn weight vector, it responsed : w is not
+ a 'function_handle'. Did I get it right that I have to provide a 
+weightting function here? or a weight vector is just enough.</p>
+
+<p>btw, excellent code! thank you very much! It's really inspiring!</p>
+
+<p>Regards!
+<br>Brant.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/511386">peng</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>i don't know why i can not preview this content type.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/511386">peng</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/423979">Jan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>works realy great on my application.
+<br>Can you may tell me the order of the rotations ? Is it: R(z)*R(y)*R(x)* P ?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/463357">liang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>alright, problem solved..
+<br>Thx</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/442831">Francesco</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jakob, thank you for your answer in such short time.
+<br>I found that in my case of study kD-tree may be the best choice. 
+<br>I'm actually trying to check how the algorithm is working on my 
+clouds: is there a way to visulize the points that the algorithm choose 
+as corresponding points on the two clouds? </p>
+
+<p>thank you</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ NS: directly this is not 
+possible. Currently, the orthogonal Procrustes problem is solved, and 
+hence a 6DOF transformation found in every iteration. If you have an 
+analytical solution for the constrained case, you could plug that in 
+instead, or use LM-optimization, which allows you to formulate the error
+ function quite freely.
+<br>@ Francesco: it depends a bit on your definition of speed. kD-tree 
+is good, and yields the same deterministic output as brute force search.
+ Point to plane is a bit more costly per-iteration, but can yield faster
+ convergence, and hence faster speed. It really depends, I recommend you
+ do timing with your data.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/442831">Francesco</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Which options are recommended to maximize speed of the algorithm?</p>
+
+<p>Thank you.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/463645">N S</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey jakob, someone asked similar 
+question before but i would like to ask it again for my own purpose. Is 
+it possible to have your icp algorithm constrained to only translation 
+and also constrained to only translation in a specific direction? 
+Regards,N.S</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/463645">N S</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/463645">N S</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jakob, I tried to improve my 
+results by changing the matching method to "kd tree", "Delaunay", "brute
+ force". but it did not change my results. could you please tell me what
+ could be the reason? Regards, Nazila</p>
+
+<p> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/462917">Guangpeng Yan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/462323">Jinzheng Sha</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/430081">Praful Managoli</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey jakob ... I jus want to know 
+the function call for your this ICP algorithm. Can you please take two 
+3D matrix data or images as example and show exactly we need to call 
+this ICP function?? I'm badly in need of it. So please help me out!! .. </p>
+
+<p>I tried to call this function using two CT scan images. But I'm facing alot of problem in function call. 
+<br>Please help me out .</p>
+
+<p>Thanx jakob!! </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/408576">Haixing</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@arnold: this implementation was coded and tested for 3D data. That said, you might succeed by setting all z-coodinates to one.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/108246">arnold</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>is there a way to use this with two dimensional data?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/328157">Geoffrey</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/173196">dberm22</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Exactly what I was looking for! Perfect!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74568">Tim Zaman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I found that the implementation 
+found here: 
+http://www.mathworks.com/matlabcentral/fileexchange/24301-finite-iterative-closest-point
+ performs better.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74568">Tim Zaman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Only works for simulated data. Real
+ data needs a super high overlap already. Method works not as it should,
+ it is more like iterative-most-overlap algorithm instead of closes 
+point.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/286293">ocelote</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/286293">ocelote</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It seems working but only if the 
+model and data are similar. I have an object AB (3D) composed of A and 
+B. I am using AB as a model and A as data, but in this case A becomes 
+twice bigger in order to fit AB ???</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/286293">ocelote</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It seems working but only if the 
+model and data are similar. I have an object AB (3D) composed of A and 
+B. I am using AB as a model and A as data, but in this case A becomes 
+twice bigger in order to fit AB ???</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/286293">ocelote</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It seems working but only if the 
+model and data are similar. I have an object AB (3D) composed of A and 
+B. I am using AB as a model and A as data, but in this case A becomes 
+twice bigger in order to fit AB ???</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/207497">Anurag Sai</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Tomasz: Thanks for your comment! I
+ have updated the function with your modification. I agree with you that
+ this is a good way to ensure a plausible rotation matrix!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/278283">Tomasz Malisiewicz</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jakob and Hans,</p>
+
+<p>I've enjoyed using your code, but for a certain application I'm 
+working on, I extracted your eq_point function inside icp.m and found 
+what might be an issue.</p>
+
+<p>There are some scenarios where the returned rotation matrix has 
+det(R)==-1, and for my application this is an issue.  I understand that 
+in many real-world datasets this might never come up, but the fix seems 
+easy.</p>
+
+<p>It has already been noted that the closed form SVD-based solution you
+ are using for [R,T] estimation from correspondences can sometimes be 
+problematic.</p>
+
+<p>You can checkout the following classic paper from Umeyama:
+<br>http://www.stanford.edu/class/cs273/refs/umeyama.pdf</p>
+
+<p>my solution was to change on line of eq_point to do the following:
+<br>R = V*diag([1 1 det(U*V')])*U';</p>
+
+<p>I haven't thoroughly tested this, but it *seems* to fix the problem for me.</p>
+
+<p>Cheers and happy hacking,
+<br>Dr. Tomasz Malisiewicz
+<br>MIT CSAIL Postdoctoral Research Scholar</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/268710">Bhavani</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ahhh, p and q are (3 x m) and (3 x 
+n). My dataset was (m x 3). Think thats sorted. But now I get another 
+error : I replaced all the tilde's with 'dummy' but there seems to be a 
+division by zero error. I now get this response : 
+<br>??? Error using ==&gt; svd
+<br>Input to SVD must not contain NaN or Inf.
+<br>Error in ==&gt; icp&gt;eq_point at 345
+<br>[U,dummy,V] = svd(N); % singular value decomposition</p>
+
+<p>Error in ==&gt; icp at 231
+<br>            [R,T] = eq_point(q(:,q_idx),pt(:,p_idx), weights(p_idx));</p>
+
+<p>What do I do here?I have real 3D point clouds to register. Thanks again for your code and help
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/259797">Jaden</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Your code is working great for me! 
+(It turns out that the random noise adding was causing my initial 
+problem). However, it only seems to work well when the matching is close
+ -- does it have a place to input an initial guess so that it works 
+better?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Mark Brophy:
+<br>Thank you very much for pointing this out. I discovered that the 
+kNearestNeighbors was missing altogether, and that kNN searching is 
+supported only in Stat. Toolbox v. 7.5 or higher. 
+<br>I added the missing sub function and updated the code, which should be available in about 24 hours.</p>
+
+<p>/Jakob</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Pietro Pala:
+<br>I think you might be mistaking accuracy for robustness. 
+<br>You are basically trying to register planes, and there is very little chance of converging with your data. 
+<br>Try:
+<br>z(x,y) = 50*exp(-(x-25.0).^2 ./400.0 -(y-25.0).^2 ./400.0);</p>
+
+<p>/Jakob</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jaden:
+<br>I believe that everything in the algorithm is deterministic. 
+However, I do not know the details of Mathwork's kD-tree implementation,
+ and there might be some fuzziness. 
+<br>You are not showing the code you run, so I have no chance to tell what exactly is going wrong. 
+<br>Same results with 'Matching' == 'bruteForce' ?</p>
+
+<p>/Jakob</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86469">Mark Brophy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jakob, when you run icp without 
+version 7.3 of the statistics package while using the 'plane' option, it
+ bombs out on the calculation of the normal.</p>
+
+<p>It appears that the stats package returns the knn in a different format than the kNearestNeighbors method.</p>
+
+<p> Error using ==&gt; minus
+<br>Matrix dimensions must agree.</p>
+
+<p>Error in ==&gt; icp&gt;lsqnormest at 547
+<br>    P = (x - repmat(p_bar,1,k)) *
+<br>    transpose(x -
+<br>    repmat(p_bar,1,k)); %spd matrix
+<br>    P</p>
+
+<p>Error in ==&gt; icp at 160
+<br>    arg.Normals = lsqnormest(q,4);
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/259797">Jaden</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello -- the ICP code seems to be 
+working great, even with 2D inputs, except that I keep getting this 
+error when I run the icp code in a loop (and it doesn't happen at the 
+same iteration of the loop every time, sometimes at 86, 102, 106, 107, 
+109, and more) even with the same variables and settings and data.</p>
+
+<p>Error code:</p>
+
+<p>??? Error using ==&gt; KDTreeSearcher.knnsearch at 165 Complex data is not allowed.</p>
+
+<p>Error in ==&gt; icp&gt;match_kDtree at 335 [match mindist] = knnsearch(kdOBJ,transpose(p));</p>
+
+<p>Error in ==&gt; icp at 289 [~, mindist] = match_kDtree(q,pt,kdOBJ);</p>
+
+<p>Error in ==&gt; testing_icp_movie at 37 [Ricp Ticp ER t] = icp(M, D, 50,'Matching', 'kDtree', 'Extrapolation',true);</p>
+
+<p>Error in ==&gt; overallprogramming_Try2 at 39 testing_icp_movie;</p>
+
+<p>Any ideas? Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/258870">Pietro Pala</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm trying to test the accuracy of 
+this routine on a known point distribution: model points are the [x y z]
+ coordinates of a Gaussian function; data points are obtained by 
+translating by T the (x,y) coordinates of the model points (data = model
+ + repmat([1.5 1.5 0], size(model,1), 1)). Even for small values of T 
+the routine cannot converge to the optimum. Here is the code used for 
+the test:</p>
+
+<p>k=0;
+<br>for x=1:50
+<br>    for y=1:50
+<br>        z(x,y) = exp(-(single(x) -25.0).^2 ./400.0 -(single(y)-25.0).^2 ./400.0);
+<br>        k = k+1;
+<br>        model(k,:)=[x y z(x,y)];
+<br>    end
+<br>end</p>
+
+<p>surf(double([1:50]), double([1:50]), double(z));</p>
+
+<p>data = model + repmat([15.5 15.5 0], size(model,1), 1);</p>
+
+<p>[TR, TT, ER] = icp(double(model'), double(data'), 20)</p>
+
+<p>Any suggestion? Thx</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Goran: make sure the file is in the Matlab path. Matlab 2007a/b should work.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/255245">Goran</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jakob, every time I try to run---</p>
+
+<p>[Ricp Ticp ER t] = icp(M, D, 15); </p>
+
+<p>I get an error:  ??? Undefined function or method 'icp' for input arguments of type 'double'.</p>
+
+<p> Can you tell me what is the problem, I have 2007 matlab, maybe the icp function don't exist in my case??</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Walter: inp, DT, kdOBJ, etc. are all scope managed, so there is no memory leak.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/54540">Walter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jacob your code is very helpful.
+<br>BTW I noticed  two memory leaks.
+<br>One is in the implementation of GlTree, I will post in that 
+FileExchange. The other is in the usage of  inputParser.  You should 
+clear the object inp. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sebastian,
+<br>thank you for letting me know. I have corrected the link, and will 
+re-add the rmat2quat function ASAP. It will go through Mathworks review 
+and should be available tomorrow. 
+<br>To constrain the ICP to certain DOF, I do not believe there is a 
+closed form solution for that kind of Procrustes problem, but you should
+ check the literature. 
+<br>My idea would be that you either modify eq_point() or eq_plane() and
+ remove the 'unwanted' DOF from R and T after estimation (this is 
+somewhat hackish). Or you could use eq_lmaPoint() which performs 
+non-linear optimization on the parameters, so you can basically model 
+anything there (this might be slow).
+<br>Alternatively you could pose the whole fitting procedure a 
+non-linear optimization problem, which can actually be competitive with 
+ICP. See: Andrew W. Fitzgibbon. Robust registration of 2d and 3d point 
+sets. Image and Vision Computing, 21(13-14):1145–1153, 2003.
+<br>Regards,
+<br>Jakob</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129661">Sebastian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Jakob,
+<br>Because your ICP implementation was featured in the recent MATLAB 
+Digest - Mai&nbsp;2012 newsletter, I revisited it to see if updates are 
+available. I noticed in your new version that you forgot to include the 
+'rmat2quat' function in your icp.m file. You can reproduce the error if 
+you enable Extrapolation in your demo.m file, e.g. line 57.</p>
+
+<p>For my current work I would like to integrate some additional 
+constraints like the ones mentioned in Joachims comment from 20 Feb 
+2012. Do you think this is possible with your framework?</p>
+
+<p>Greetings from Germany
+<br>Sebastian</p>
+
+<p>P.S. The link to the introductory text in the description is broken (page not found by DTU).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Mithun, 
+<br>scaling is not solved for, only translation and rotation (6 d.o.f. rigid transform).
+<br>Regards</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/208045">Mithun</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Does this algorithm include the scaling ICP?
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/225789">Kevin Matzen</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/224304">Joachim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Jakob,
+<br>very nice work. Thx a lot for it.
+<br>I have some special boundary conditions here which i am not sure how to implement and fit to your code.</p>
+
+<p>I need to fix certain degrees of freedom during the ICP. As an 
+example I would like to allow the result to be a translation only in X/Y
+ direction and a rotation around Z-Axis.</p>
+
+<p>Do you or anybody else know how to easily integrate such a feature into the code?</p>
+
+<p>Thx in advance!
+<br>All the best,
+<br>joachim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35441">ucd puri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Many Thanks- this was very helpful. Kind Regards.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello ucd puri,</p>
+
+<p>in your case, Matlab complaints about the following line (226 in icp.m):
+<br>[~, idx] = sort(mindist);
+<br>This is probably due to the fact that older versions of Matlab don't
+ understand the tilde (~) as a way of discarding a certain output 
+variable. You can either update to a newer version of Matlab or use a 
+dummy output (you will have to do this at several places inside the 
+code), e.g.:
+<br>[dummy, idx] = sort(mindist);</p>
+
+<p>Regards, 
+<br>Jakob</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35441">ucd puri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jakob
+<br>I am getting the following error when I run demo file. Any suggestions. many thanks.
+<br>------------------------------
+<br>??? Error: File: icp.m Line: 226 Column: 11
+<br>Expression or statement is incorrect--possibly unbalanced (, {, or [.</p>
+
+<p>Error in ==&gt; demo at 57
+<br>[Ricp Ticp ER t] = icp(M, D, 15);
+<br>-------------------------------------</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131246">Huang Chun-Hsiang</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/55237">Axel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Posted the comment to quickly. The argument checking seems to be fine. It is coherent with the rest of the code.</p>
+
+<p>Sorry for the confusion</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/55237">Axel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>There seems to exist a little bug in your function arguments parsing. The line:
+<br>inp.addParamValue('Normals', [], @(x)isreal(x) &amp;&amp; size(x,1) == 3);
+<br>seems to check dimensions differently from what the help states.
+<br>Shouldn't instead read:
+<br>inp.addParamValue('Normals', [], @(x)isreal(x) &amp;&amp; size(x,2) == 3;</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/42010">Ben</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can it be used for 2D point sets registration?  It raised error message asking for 3D data.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/66052">wb fan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,Jakob,
+<br>Demo.m is very helpful, but it doesn't tell me how to use the other 
+setting( Normals, Weight, Triangulation...).Could you please show me 
+some more sample code.
+<br>Thanks for the great work. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104607">Harivinod N</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129661">Sebastian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Jakob,
+<br>I've looked at different Matlab ICP-packages and yours is the 
+fastest and most flexible so far. I just wanted to point out a little 
+typo.</p>
+
+<p>In the documentation [line 50] you write: Minimize {point} | plane | lmaPoint
+<br>But in the code [line 123] you check for: validMinimize = {'point','plane','lma_point'};</p>
+
+<p>Thanks for the great package.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For kDtree matching, the Statistics Toolbox v. 7.3 is needed.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31371">Dengwen Zhou</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Jakob Wilm 
+<br> 
+<br>The code package is very good! but misses KDTreeSearcher.m.</p>
+
+<p>Can you update it?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86818">Jakob Wilm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for your interest. The missing function (rms_error.m) has now been added.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104607">Harivinod N</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am also getting the similar error as mention by Michel(30 Jul 2010). It will be helpful, if this is fixed. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103951">Michael H</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Looks very good, but I can't get icp.m to run as I think it is missing the rms_error function.  Am I doing something wrong? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">05 Jun 2010</td>
+                  <td><p>Added link to thesis.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 Aug 2010</td>
+                  <td><p>Added rms_error and added a screenshot.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">24 Jun 2011</td>
+                  <td><p>Corrected a typo in icp.m (as pointed out in the comments, thanks!)</p></td>
+                </tr>
+                <tr>
+                  <td class="date">24 Jul 2011</td>
+                  <td><p>Combined functions in one file and added a demo script.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">23 May 2012</td>
+                  <td><p>Corrected link to thesis.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">24 May 2012</td>
+                  <td><p>Updated icp.m with a missing sub function.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Jul 2012</td>
+                  <td><p>* Added a missing sub function: k_nearest_neighbors
+<br>* Fixed a bug in the lsqnorest sub function
+<br>* Removed GLTree reference because it is not available any longer
+<br>* Updated the examples to be clearer</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Aug 2012</td>
+                  <td><p>Clearing the input parser object due to memory leaks (in older Matlab versions?) -- thanks, Walter!</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 Sep 2012</td>
+                  <td><p>Modified Orthogonal Procrustes to prevent non-plausible rotation matrix (det(R) should be +1). 
+<br>-- Thank you, Tomasz!</p></td>
+                </tr>
+                <tr>
+                  <td class="date">25 Jan 2013</td>
+                  <td><p>Replaced the link to the thesis.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416086902606&amp;cv=7&amp;fst=1416086902606&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=2&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/27804-iterative-closest-point&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D128%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>
