@@ -1,0 +1,1537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>queryMySQL -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F28237-querymysql" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F28237-querymysql" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=28237" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql" class="manifest_title">queryMySQL</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql/content/queryMySQL/db2mat.m" class="function" title="Function">db2mat(db,indices,imps)
+</a>
+            <span class="description">function [devData err] = db2mat(db,indices,imps)
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql/content/queryMySQL/mat2db.m" class="function" title="Function">mat2db(fileName,db,indices,im...</a>
+            <span class="description">function err = mat2db(fileName,db,indices,imps)
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql/content/queryMySQL/src/+edu/+stanford/+covert/+db/Database.m" class="class" title="Class">edu.stanford.covert.db.Databa...</a>
+            <span class="description">Interface for querying a database</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql/content/queryMySQL/src/+edu/+stanford/+covert/+db/MySQLDatabase.m" class="class" title="Class">edu.stanford.covert.db.MySQLD...</a>
+            <span class="description">Class for querying a MySQL database. This is a Java ODBC wrapper.</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql/content/queryMySQL/src_test/+edu/+stanford/+covert/+db/MySQLDatabase_Test.m" class="class" title="Class">edu.stanford.covert.db.MySQLD...</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql/content/queryMySQL/queryExample.m" class="script" title="Script">queryExample.m</a>
+            
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              5.0
+              <span class="divider"> | </span>
+              <a href="#feedback">10 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">75 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 672 KB</span>
+          <span id="fileid">File ID: #28237</span>
+        </div>
+
+        <div id="details">
+          <h1>queryMySQL</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">19 Jul 2010 </span>
+              <span id="date_updated">(Updated 22 Jun 2012)</span>
+          </p>
+
+
+
+          <p id="summary">Platform independent MySQL database solution with blob support.</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F28237-querymysql&amp;watching=28237" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Platform independent MySQL database solution with blob support. </p>
+
+<p>Only requires MATLAB &gt;= 2008a (to support classes). Note: the code
+ could be refactored to work with MATLAB &lt; 2008a. Doesn't require any
+ MathWorks toolboxes.</p></td>
+          </tr>
+  
+            <tr>
+              <td class="label">Acknowledgements</td>
+              <td>
+                  <p>The author wishes to acknowledge the following in the creation of this submission:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/17897-access-a-mysql-database">Access a MySQL database</a>
+                <br>
+              </p></td>
+            </tr>
+        
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="http://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.13 (R2011b)
+            </td>
+          </tr>
+  
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Requires MATLAB &gt;= 2008a. Note: could be refactored
+ to support MATLAB &lt; 2008a. Does not require the Mathworks' database 
+toolbox.</td>
+            </tr>
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+export%22" rel="nofollow">data export(4)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+import%22" rel="nofollow">data import</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22database%22" rel="nofollow">database</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22javalangoutofmemoryerror%22" rel="nofollow">javalangoutofmemoryerror</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mysql%22" rel="nofollow">mysql(2)</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(39)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">01 Dec 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/276730">Joshua</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Edit: as a workaround, I nested the function call and added the path before calling the function. For example:</p>
+
+<p>function dataExporter(db,host)
+<br>addpath(fullfile(pwd, 'src'));
+<br>exportMysqlData(db,host);</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">01 Dec 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/276730">Joshua</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Works great but I'm having a similar 
+problem. I have to manually add the "src" directory to get it to work. 
+It hasn't been a problem but now that I'm trying to execute it from a 
+command line, I need to modify the path within the function. </p>
+
+<p>I think it may be a problem with MATLAB. It throws a "syntax error" 
+for the import command before running the code, assuming that the path 
+is static.</p>
+
+<p>To see what I'm talking about, try to enable a breakpoint while "src" directory is not in the path.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">06 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi George,</p>
+
+<p>Unfortunately our server was attacked recently and I had to lock it 
+down. This means the examples won't work anymore. You'll need to run 
+them on your own MySQL server. The necessary schema is in test.sql.</p>
+
+<p>Best.
+<br>Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">06 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi George,</p>
+
+<p>I should also add that you are correct that MATLAB requires that 
+classes be imported after addpath statements are executed. MATLAB will 
+complain if you run the commands together until you've set the path. I 
+usually work around this by setting the MATLAB path at the beginning of 
+the session and then never setting the path inside any other function.</p>
+
+<p>Best.
+<br>Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">06 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/122133">George</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This fails for me. 
+<br>Running Matlab R2012a, Win64. 
+<br>When I run the "queryExample.m" code, it returns error:  </p>
+
+<p>&gt;&gt; queryExample
+<br>"Error: File: queryExample.m Line: 6 Column: 8
+<br>Arguments to IMPORT must either end with ".*"
+<br> or else specify a fully qualified class name:
+<br> "edu.stanford.covert.db.MySQLDatabase" fails this test."</p>
+
+<p>If I run each of the command separately, e.g. 
+<br>&gt;&gt; addpath(fullfile(pwd, 'src'))
+<br>&gt;&gt; javaaddpath('lib/mysql-connector-java-5.1.6/mysql-connector-java-5.1.6-bin.jar')
+<br>&gt;&gt; import edu.stanford.covert.db.MySQLDatabase</p>
+
+<p>I do not get the error above.  However, then the code fails on the subsequent step: 
+<br>"
+<br>&gt;&gt; db = MySQLDatabase('covertlab.stanford.edu', 'test', 'test', 'test')
+<br>Warning: The following error was caught while executing
+<br>'edu.stanford.covert.db.MySQLDatabase' class destructor:
+<br>Attempt to reference field of non-structure array. 
+<br>Error using edu.stanford.covert.db.MySQLDatabase/open (line 411)
+<br>Java exception occurred:
+<br>com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link
+<br>failure</p>
+
+<p>Last packet sent to the server was 0 ms ago.</p>
+
+<p>	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</p>
+
+<p>	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)</p>
+
+<p>...
+<br>"
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/191684">Agustin</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Jonathan,</p>
+
+<p>Finally, I have fixed the issue. I's was my fault.</p>
+
+<p>I was doing the import of the java class in each iteration. And the java memory in Matlab was running out.</p>
+
+<p>Now, It's running fine.</p>
+
+<p>Many thanks. It's a great job.</p>
+
+<p>Regards.
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">18 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Agustin,</p>
+
+<p>I just tried this example where I repeatedly open and close connections without any issues. </p>
+
+<p>for i = 1:1000
+<br>    db = MySQLDatabase('covertlab.stanford.edu', 'test', 'test', 'test');
+<br>    db.prepareStatement('select * from tinytest where id=1');
+<br>    result = db.query();
+<br>    assert(~isequal(-1, result));
+<br>    db.close()
+<br>end</p>
+
+<p>Are you working with the most recent version of the code (downloaded 
+after June 22)? I recently changed the way database connections are 
+created based on a suggestion from Matteo. Perhaps you won't have the 
+issue with the newer version.</p>
+
+<p>I'm not sure what the issue is. What happens if you keep the 
+connection open rather than reopening it for each query? I can try to 
+help if you can provide a more complete example of the problem.</p>
+
+<p>Best.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">18 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/191684">Agustin</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Jonathan,</p>
+
+<p>It's no problem of machine memory. We have enough.</p>
+
+<p>I have a database with data from hundreds of users and I do 27 queries on each of them. All the queries are 'Select'.</p>
+
+<p>For each user, I open and close the connection to the database.</p>
+
+<p>When I am in the 25th user, I get this error and Matlab crashes. My Matlab version is 7.11 (R2010b).</p>
+
+<p>Do you have any idea?</p>
+
+<p>Thanks
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">17 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Agustin,</p>
+
+<p>I just successfully tried this example with a relatively table result
+ set containing 10,000 rows. Are you working with a very large table or 
+on a machine without much memory?</p>
+
+<p>- Jonathan</p>
+
+<p>CREATE TABLE `tinytest` (
+<br>  `id` int(11) NOT NULL,
+<br>  `datatiny` tinyint(4) default NULL,
+<br>  `datasmall` smallint(6) default NULL,
+<br>  `datamedium` mediumint(9) default NULL,
+<br>  `dataint` int(11) default NULL,
+<br>  `databigint` bigint(20) default NULL,
+<br>  PRIMARY KEY  (`id`)
+<br>) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci</p>
+
+<p>sql = 'INSERT INTO `test`.`tinytest` (`id`, `datatiny`, `datasmall`, `datamedium`, `dataint`, `databigint`) VALUES ';
+<br>for i = 2:10000
+<br>    sql = [sql sprintf('(%d, %d, %d, %d, %d, %d), ', i, i, i, i, i, i)];
+<br>end
+<br>sql = sql(1:end-2);</p>
+
+<p>db = MySQLDatabase('covertlab.stanford.edu', 'test', 'test', 'test');
+<br>db.prepareStatement(sql);
+<br>db.query();</p>
+
+<p>for i = 1:10
+<br>    db.prepareStatement('select * from tinytest');
+<br>    result = db.query();
+<br>    assert(~isequal(-1, result));
+<br>end</p>
+
+<p>db.close();</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Agustin,</p>
+
+<p>I can try to help. Can you please clarify your example. What should the result set look like?</p>
+
+<p>Best.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">17 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/191684">Agustin</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/191684">Agustin</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Jonathan</p>
+
+<p>Thanks for your help. The problem with the tinyint issue is fixed.</p>
+
+<p>But, now, there is a problem of lack of memory.</p>
+
+<p>After several queries I get the following error:</p>
+
+<p>"Error using ==&gt; MySQLDatabase&gt;SQLDatabase.open at...
+<br>Java exception occurred:
+<br>java.sql.SQLException: java.lang.OutOfMemoryError: PermGen space..."</p>
+
+<p>This is an example of the queries:</p>
+
+<p>"st3= strcat('SELECT * FROM',' `',tablesq_sm(14),'`');
+<br>db.prepareStatement(char(st3(1)));
+<br>fieldsqacc = db.query();
+<br>assert(~isequal(-1, fieldsqacc));
+<br>"</p>
+
+<p>Every time that I change the subject, I close and reopen the database.</p>
+
+<p>"db = MySQLDatabase(...
+<br>db.close();"</p>
+
+<p>Do you know where is the problem?</p>
+
+<p>Thanks in advance!
+</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">28 Jun 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/262164">Benedict</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">12 Jun 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Matteo post deserves a shoutout. I 
+originally tried to create a connection without a java wrapper, but 
+couldn't find a way to achieve this. Great work Matteo for figuring this
+ out and sharing it.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">12 Jun 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Matteo,</p>
+
+<p>Thanks for the suggestion. I'll incorporate this into the next release.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">12 Jun 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/258278">Matteo Broggi</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Great toolbox!</p>
+
+<p>I have a suggestion for a possible modification. 
+<br>I managed to avoid the use of the external java wrapper and use only
+ Matlab calls. I modified the private method open() to do this. In this 
+way, you need to set only the mysql jdbc driver in the classpath.</p>
+
+<p>Best,</p>
+
+<p>Matteo</p>
+
+<p>function open(this)
+<br>  try
+<br>    properties = java.util.Properties();
+<br>     properties.setProperty('user',this.userName);
+<br>    properties.setProperty('password',this.password);
+<br>    driver = javaObjectEDT('com.mysql.jdbc.Driver');
+<br>    url = ['jdbc:mysql://' this.hostName '/' this.schema];
+<br>    this.dbConn = driver.connect(url,properties);
+<br>  catch exception
+<br>     throw(MException('MySQLDatabase:mysqlError', char(exception.message)));
+<br>  end
+<br>end</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">07 Jun 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/257265">Pierre</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">30 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Samuel and/or Agustin,</p>
+
+<p>I just posted an update which should fix the tinyint issue. Let me know if you have other datatype issues.</p>
+
+<p>Best.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">30 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Samuel and/or Agustin,</p>
+
+<p>I can try to help you if you can provide an example of your SQL code.</p>
+
+<p>Best.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">29 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/34787">Samuel Hurley</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This is excellent! I spent all night 
+trying to get Oracle's MySQL Connector/J working with no luck, and this 
+package took literally 5 minutes to set up!</p>
+
+<p>I also had a problem, like Agustin, with trying to query 
+single-character fields from a database (getTiny). I fortunately did not
+ need to query that particular table for my purposes, so everything is 
+great for me.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Agustin,</p>
+
+<p>I can try to help. Can you provide more information about the problem? An example query would be helpful.</p>
+
+<p>Best.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">08 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/191684">Agustin</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Jonathan,</p>
+
+<p>I had a problem trying to import data from a table. The data is type 
+number with a single character. The problem is with the method getTiny 
+for com.mysql.jdbc.JDBC4ResultSet</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/191684">Agustin</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/245726">Joe Kuehl</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Jonathan or whom ever,  I am very new
+ to mysql and working with databases.  Can anyone please provide an 
+alternative example of querymysql which accesses some public data base? 
+ It would be a great benefit to me.  Thank you </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">06 Mar 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>The library requires MATLAB R2009B 
+(7.11) or newer. MATLAB 2008a-2009a can be used if you replace the "~" 
+on lines 379 and 391 of MySQLDatabase.m with "junk". To use the code 
+with yet older versions of MATLAB you would need to restructure the code
+ to not use modern style classes.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">01 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/117908">Nicolas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>yep, matlab must be at least 7.12</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">24 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/214554">Florian Koehler</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>An addition to my last comment. I think I know better where the error has to be:
+<br>queryMySQl works for me with Matlab 7.13
+<br>but not with Matlab 7.05. I think it depends on the import function which is different in Matlab 7.05.
+<br>Does anyone know how to use queryMySQL with Matlab 7.05? How does the import ... command look like?
+<br>A solution would be great.
+<br>Thank you,
+<br>Florian</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">23 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/214554">Florian Koehler</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Jonathan,
+<br>thank you very much for your help. Everything is working now on my 
+pc. Now I want to install this function also on another pc. 
+Unfortunatelly there I have another problem: 
+<br>When I finally do:
+<br>&gt;&gt; import edu.stanford.covert.db.MySQLDatabase;
+<br>I get an error:
+<br>??? Error using ==&gt; import
+<br>Arguments to IMPORT must either end with '.*' or else specify
+<br>a fully qualified class name: edu.stanford.covert.db.MySQLDatabase</p>
+
+<p>I did everything in the same way as I did it on the other pc. But 
+somehow this error occurs. It would be great if you could help me once 
+more.</p>
+
+<p>Thank you very much for everything,
+<br>cheers,
+<br>Florian</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Florian,</p>
+
+<p>I'm glad you were able to get MySQL to work. If you weren't I was 
+going to suggest first making sure you can connect with a program like 
+MySQL workbench (http://www.mysql.com/products/workbench/). It sounded 
+like you might have a permissions or firewall issue.</p>
+
+<p>Best of luck.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">13 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/214554">Florian Koehler</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Jonathan,
+<br>sorry for my last comment! It worked! :-)
+<br>When I repeated exactly what I wrote it worked! Yipee!
+<br>Thank you very much for your help and for your program!!!
+<br>Cheers,
+<br>Florian</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">12 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Florian,</p>
+
+<p>Its definitely possible to connect to another machine. Just replace 
+the first argument to MySQLDatabase with the IP address or hostname of 
+your server. On Windows you can get a server's ip address by running the
+ command ipconfig. On Linux you can get your IP address by running 
+ifconfig.</p>
+
+<p>Best.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">12 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/214554">Florian Koehler</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">12 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/214554">Florian Koehler</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hello,
+<br>thank you very much for this very nice program! It's great.</p>
+
+<p>Nevertheless I have a question:
+<br>Is it possible (with this program) to connect to a MySQL database 
+which is located on another pc (it's not a special server but a common 
+pc)?
+<br>If yes, what do I have to write for the hostname in:
+<br>db = MySQLDatabase('???','test_schema','root','rootPasswordBla');</p>
+
+<p>Would be great if you could help me!
+<br>Thanks,
+<br>Florian</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">21 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/173557">Manoj Gudi</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@Jon
+<br>Thanks for the prompt and detailed reply,
+<br>I did this exactly in my previous attempt too but I am still getting this error in command window when I run queryExample-
+<br>________________________________
+<br>queryExample</p>
+
+<p>Warning: Directory access failure: C:\Users\manoj\C:\Users\manoj\Desktop\queryMySQL\src. </p>
+
+<p>&gt; In path at 110</p>
+
+<p>  In addpath at 87</p>
+
+<p>  In queryExample at 2</p>
+
+<p>??? Error using ==&gt; chkprops at 18</p>
+
+<p>Invalid database property: ' prepareStatement '.</p>
+
+<p>Error in ==&gt; database.get at 36</p>
+
+<p>  p = chkprops(c,p,prps);</p>
+
+<p>Error in ==&gt; database.subsref at 17</p>
+
+<p>        B = get(A,S(idx).subs);</p>
+
+<p>Error in ==&gt; queryExample at 38</p>
+
+<p>db.prepareStatement('UPDATE test SET DATA = "{F}" WHERE id = "{Si}"', fname, 10001);</p>
+
+<p> 
+<br>________________________________</p>
+
+<p>I am using WAMP for MYSQL; my problems may be silly, but I'll be glad if you can solve them</p>
+
+<p>Regards
+<br>Manoj G</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">20 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Manoj,</p>
+
+<p>Here are instructions on how to use this library. I've tested these with MATLAB 2010b on Windows and linux.</p>
+
+<p>1. Unzip the files and save them to your computer eg, 'C:\Users\jkarr\Documents\queryMySQL'</p>
+
+<p>2. Open MATLAB, add queryMySQL to MATLAB path
+<br>&gt;&gt; addpath('C:\Users\jkarr\Documents\queryMySQL\src');
+<br>&gt;&gt; javaaddpath('C:\Users\jkarr\Documents\queryMySQL\src\+edu\+stanford\+covert\+db');
+<br>&gt;&gt; javaaddpath('C:\Users\jkarr\Documents\queryMySQL\lib\mysql-connector-java-5.1.6\mysql-connector-java-5.1.6-bin.jar');</p>
+
+<p>3. Import query class 
+<br>&gt;&gt; import edu.stanford.covert.db.MySQLDatabase;</p>
+
+<p>4. Create database connection
+<br>&gt;&gt; db = MySQLDatabase('', '', '', '');</p>
+
+<p>5. Run Queries
+<br>db.prepareStatement('');
+<br>[result, colNames] = db.query();</p>
+
+<p>6. Cleanup
+<br>db.close();</p>
+
+<p>queryExample.m outlines all of these steps and provides examples of how to run queries.</p>
+
+<p>Best.
+<br>- Jonathan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">20 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/173557">Manoj Gudi</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hello, 
+<br>I m quite new to MATLAB and I want to use this library,</p>
+
+<p>Please can somebody explain in detail how to setup/install this, (I am using MATLAB 7.11 2010b with Windows 7)</p>
+
+<p>Thanks in advance </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">09 Feb 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/118232">Alex Harper</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">28 Sep 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/109093">Syed</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Jonathan,</p>
+
+<p>I ran this on my Mac and I am getting error saying:</p>
+
+<p>??? Reference to non-existent element of a cell array.
+<br>Error in ==&gt; queryMySQL at 98
+<br>         switch columTypes{i}{1}</p>
+
+<p>any idea what could than be.</p>
+
+<p>Another thing is that it is connecting to Database and giving me the 
+right column names for the table but it is giving error on this 
+particular line. i tried to fix it but not working so I though you might
+ know the problem</p>
+
+<p>Thanks
+<br>Sid</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Sep 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/109289">Eric Patterson</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Much easier to get set up than mym.m.
+ It worked well for my queries that returned few results, but it did not
+ scale well for larger return sets. For example, one query I tried runs 
+in 1.5 seconds in the MySQL browser, but using queryMySQL.m it took over
+ 2 minutes. As many of my queries return millions of results, I'll have 
+to stick with mym.m.</p>
+
+<p>I assume there's some java overhead somewhere, but that's just naive speculation.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/28237-querymysql">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr class="title">
+              <th colspan="2"><span class="heading">Updates</span></th>
+            </tr>
+              <tr>
+                <td class="date">19 Jul 2010</td>
+                <td><p>Added tags.</p></td>
+              </tr>
+              <tr>
+                <td class="date">16 Aug 2010</td>
+                <td><p>Corrected javaaddpath for MySQLLoader class in example usage in queryMySQL.m</p></td>
+              </tr>
+              <tr>
+                <td class="date">25 May 2011</td>
+                <td><p>Now uses MATLAB classes</p></td>
+              </tr>
+              <tr>
+                <td class="date">06 Jun 2011</td>
+                <td><p>Adding definitions of example tables and stored 
+procedures. Properly casting returned blobs -- thanks to Jonathon 
+parish. Added support for column names with non-alphanumeric characters 
+-- thanks to Hachi Manzur.</p></td>
+              </tr>
+              <tr>
+                <td class="date">30 May 2012</td>
+                <td><p>Fixed support for date, time, datetime, and tiny data types.</p></td>
+              </tr>
+              <tr>
+                <td class="date">12 Jun 2012</td>
+                <td><p>1) Now returned bigint as (u)int64 rather than double -- thanks Pierre Martineau for the suggestion.
+<br>2) Now creating database connection with using an external java wrapper -- thanks Matteo Broggi.</p></td>
+              </tr>
+              <tr>
+                <td class="date">22 Jun 2012</td>
+                <td><p>Adding email for contributor Matteo Broggi</p></td>
+              </tr>
+          </tbody></table>
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+export%22" rel="nofollow">data export</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a></td>
+        <td>19 Jul 2010 12:05:02</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+import%22" rel="nofollow">data import</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a></td>
+        <td>19 Jul 2010 12:05:02</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mysql%22" rel="nofollow">mysql</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a></td>
+        <td>19 Jul 2010 12:33:36</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22database%22" rel="nofollow">database</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a></td>
+        <td>19 Jul 2010 12:33:36</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102860">Jonathan Karr</a></td>
+        <td>19 Jul 2010 12:33:36</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+export%22" rel="nofollow">data export</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/221618">eric</a></td>
+        <td>10 Feb 2012 07:23:44</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+export%22" rel="nofollow">data export</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/105819">Cyrus Eierud</a></td>
+        <td>06 May 2012 23:44:42</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+export%22" rel="nofollow">data export</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/191684">Agustin</a></td>
+        <td>08 May 2012 04:15:01</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22javalangoutofmemoryerror%22" rel="nofollow">javalangoutofmemoryerror</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/191684">Agustin</a></td>
+        <td>17 Jul 2012 04:26:16</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mysql%22" rel="nofollow">mysql</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/56219">SeongHo Ju</a></td>
+        <td>20 Nov 2012 04:43:33</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

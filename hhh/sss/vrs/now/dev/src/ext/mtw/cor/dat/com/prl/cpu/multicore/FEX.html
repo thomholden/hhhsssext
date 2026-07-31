@@ -1,0 +1,2578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Multicore - Parallel processing on multiple cores -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/13775-multicore-parallel-processing-on-multiple-cores" rel="canonical">
+<meta content="Multicore - Parallel processing on multiple cores - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/13775-multicore-parallel-processing-on-multiple-cores" property="og:url"><meta content="This package provides parallel processing on multiple cores/machines." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F13775-multicore-parallel-processing-on-multiple-cores" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F13775-multicore-parallel-processing-on-multiple-cores" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/57706" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=13775" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores" class="manifest_title">Multicore - Parallel processing on multiple cores</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//chompsep.m" class="function" title="Function">chompsep(str)
+</a><span class="description">CHOMPSEP  Remove file separator at end of string.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//concatpath.m" class="function" title="Function">concatpath(varargin)
+</a><span class="description">CONCATPATH  Concatenate file parts with correct file separator.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//datenum2.m" class="function" title="Function">datenum2.m</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//deletewithsemaphores.m" class="function" title="Function">deletewithsemaphores(file...</a><span class="description">DELETEWITHSEMAPHORES  Delete files using semaphors.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//displayerrorstruct.m" class="function" title="Function">displayerrorstruct(errorS...</a><span class="description">DISPLAYERRORSTRUCT  Display structure returned by function lasterror.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//existfile.m" class="function" title="Function">existfile(fileName)
+</a><span class="description">EXISTFILE  Check for file existence.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//findfiles.m" class="function" title="Function">findfiles(varargin)
+</a><span class="description">FINDFILES  Recursively search directory for files.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//generateemptyfile.m" class="function" title="Function">generateemptyfile(fileName)
+</a><span class="description">GENERATEEMPTYFILE  Generate empty file.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//getfiledate.m" class="function" title="Function">getfiledate(fileNameIn)
+</a><span class="description">GETFILEDATE  Get file modification date as serial date number.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//gethostname.m" class="function" title="Function">gethostname
+</a><span class="description">GETHOSTNAME  Get host name.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//getusername.m" class="function" title="Function">getusername
+</a><span class="description">GETUSERNAME  Get user name.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//mbdelete.m" class="function" title="Function">mbdelete(fileName, showWa...</a><span class="description">MBDELETE  Delete file and check possible warnings.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//mbload.m" class="function" title="Function">mbload(fileName, varNameC...</a><span class="description">MBLOAD  Load variables from file and check possible warnings/errors.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//mbtime.m" class="function" title="Function">mbtime
+</a><span class="description">MBTIME  Return serial date number converted to seconds
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//multicoredemo.m" class="function" title="Function">multicoredemo(multicoreDir)
+</a><span class="description">MULTICOREDEMO  Introduction to parallel processing on multiple cores.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//postprocessdemo.m" class="function" title="Function">postprocessdemo(postProcS...</a><span class="description">POSTPROCESSDEMO  Example for a user-defined postprocessing function.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//regexptokens.m" class="function" title="Function">regexptokens(str, expr)
+</a><span class="description">REGEXPTOKENS  Get tokens using regular expressions.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//removefilesemaphore.m" class="function" title="Function">removefilesemaphore(semap...</a><span class="description">REMOVEFILESEMAPHORE  Remove semaphore after file access.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//setfilesemaphore.m" class="function" title="Function">setfilesemaphore(fileList...</a><span class="description">SETFILESEMAPHORE  Set semaphore for exclusive file access.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//startmulticoremaster.m" class="function" title="Function">startmulticoremaster(func...</a><span class="description">STARTMULTICOREMASTER  Start multicore master process.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//startmulticoreslave.m" class="function" title="Function">startmulticoreslave(multi...</a><span class="description">STARTMULTICORESLAVE  Start multi-core processing slave process.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//tempdir2.m" class="function" title="Function">tempdir2</a><span class="description">TEMPDIR2  Return temporary directory.</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//testfun.m" class="function" title="Function">testfun(timeInSeconds, x)
+</a><span class="description">TESTFUN  Do something stupid that takes some time to compute.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//textwrap2.m" class="function" title="Function">textwrap2(stringIn, nOfCo...</a><span class="description">TEXTWRAP2  Wrap text string.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//translatedatestr.m" class="function" title="Function">translatedatestr.m</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content//userfeedback.m" class="function" title="Function">userfeedback(packageName,...</a><span class="description">USERFEEDBACK  Ask user for feedback after frequent function starts.
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores/content/multicore%202014-07-20.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:94.8276%;">
+                <p>4.74138</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.7</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">68</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">132 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 44.6 KB</span>
+          <span id="fileid">File ID: #13775</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">Multicore - Parallel processing on multiple cores</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/26973">Markus Buehren</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      26 Jan 2007
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-07-21">21 Jul 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">This package provides parallel processing on multiple cores/machines.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F13775-multicore-parallel-processing-on-multiple-cores&amp;watching=13775" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This package provides parallel processing on multiple
+ cores on a single machine or on multiple machines that have access to a
+ common directory.
+<br>If you have multiple function calls that are independent of each other, and you can reformulate your code as </p>
+
+<p>for k = 1:numel(parameterCell)
+<br>&nbsp;&nbsp;resultCell{k} = myfun(parameterCell{k});
+<br>end</p>
+
+<p>then, replacing the loop by</p>
+
+<p>resultCell = startmulticoremaster(@myfun, parameterCell);</p>
+
+<p>allows you to evaluate your loop in parallel. All you need to do is 
+to start as many additional Matlab sessions/processes as you want slaves
+ to work, and to run</p>
+
+<p>startmulticoreslave</p>
+
+<p>in those additional Matlab sessions.</p>
+
+<p>Everything is programmed in plain and platform-independent Matlab - 
+no toolboxes are used, no compilation of mex-files is necessary.</p>
+
+<p>Please get started with 1. the documentation in file multicore.html, 
+2. the help lines of function startmulticoremaster.m and 3. the demo 
+function multicoredemo.m.</p>
+
+<p>Discuss with other users here: <a href="http://groups.yahoo.com/group/multicore_for_matlab">http://groups.yahoo.com/group/multicore_for_matlab</a></p>
+
+<p>I have spent many hours to develop this package. If you would like to
+ let me know that you appreciate my work, you can do so by leaving a 
+donation: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=GPUZTN4K63NRY">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=GPUZTN4K63NRY</a></p>
+
+<p>Keywords: Parallel processing, distributed computing, multiple cores.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/44077-batch-job">Batch Job</a>.</p>
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.5 (R2007b)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F13775-multicore-parallel-processing-on-multiple-cores">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22distributed+computing%22" rel="nofollow">distributed computing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22distributed+processing%22" rel="nofollow">distributed processing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multicore+processing%22" rel="nofollow">multicore processing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multiple+core%22" rel="nofollow">multiple core</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22parallel+computing%22" rel="nofollow">parallel computing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22parallel+processing%22" rel="nofollow">parallel processing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22remote%22" rel="nofollow">remote</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="13775" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/13775-multicore-parallel-processing-on-multiple-cores" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F13775-multicore-parallel-processing-on-multiple-cores">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(82)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">13 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/242596">Hiroyuki</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/364538">Charles Harrison</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Scratch my first suggestion on my last post.  I just read David's post below and was not aware of the -nodisplay flag.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/509240">Rami</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent function. It was really helpful for me in the case of multi-objective optimization</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/26973">Markus Buehren</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Theo,</p>
+
+<p>the different Matlab processes communicate via the file system in the
+ multicore package. All function input and output arguments are saved 
+to/read from the file system. In your example, the multicore master 
+process will save 100 files of about 8 MB (1 million doubles) to the 
+disk which are read by the slaves. The overhead is in this case clearly 
+larger than the benefit of the parallel processing.</p>
+
+<p>For further dicussion, please use the Yahoo group: http://groups.yahoo.com/group/multicore_for_matlab</p>
+
+<p>Yours
+<br>Markus</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/506428">Theo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>When I try to run the following piece of code:</p>
+
+<p>clear all;
+<br>for ii=1:100
+<br>heavy_cell{ii}=rand(1000,1000);
+<br>end
+<br>myfun=@inv;
+<br>resultCell = cell(size(heavy_cell));
+<br>tic
+<br>for k=1:numel(heavy_cell)
+<br>  resultCell{k} = myfun(heavy_cell{k});
+<br>end
+<br>toc
+<br>clear resultCell;
+<br>tic
+<br>resultCell = startmulticoremaster(@inv, heavy_cell);
+<br>toc</p>
+
+<p>I end up with :</p>
+
+<p>Elapsed time is 26.412324 seconds.
+<br>Elapsed time is 111.729816 seconds.</p>
+
+<p>The later being the result of the parallel processing. I take I must be missing something here. Could someone elaborate please?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/492109">Kilian Thomas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice package.
+<br>Works perfectly for me.</p>
+
+<p>Moreover, author answers your questions fast and well.</p>
+
+<p>Good job thank you</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/447616">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I added this bit of code to 
+startmulticoremaster so that it automatically starts the appropriate 
+amount of slaves (make sure your path is setup properly so that it can 
+find startmulticoreslave.m upon startup):</p>
+
+<p>% Start slaves:
+<br>max_instances = 4;
+<br>[status,result] = system('tasklist /FI "imagename eq matlab.exe" /fo table /nh');
+<br>currently_running = length(strfind(result,'MATLAB.exe'));</p>
+
+<p>for i = 1:(max_instances-currently_running)
+<br>    !"C:\Program Files\MATLAB\R2013b\bin\matlab.exe" -nodisplay -nosplash -nodesktop -r "run('startmulticoreslave.m');exit;"
+<br>end</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386431">Erd</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Package is quite useful. If it was 
+not using variable transfer based on files but direct memory, then it 
+would have been much more useful. Currently it takes a while for the 
+parallel processes to start, since there is a large overhead</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/273103">David T_</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/307067">Yulin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I test this code and compared with parfor </p>
+
+<p>Elapsed time running STARTMULTICOREMASTER: 4.80 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 4.72 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 4.70 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 4.69 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 4.70 seconds.
+<br>Elapsed time without slave support:        20.84 seconds.</p>
+
+<p>and with parfor only
+<br>Elapsed time running TESTFUN with parfor only:     3.21 seconds.</p>
+
+<p>it seems that parfor is more powerful and simple to use.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/262425">Alan Mackay</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful tool for running 
+parallel sessions.  With a few minor tweaks to code, primiarly 
+additional 'set up' and 'clean up' functions to handle opening and 
+closing minimalist slave sessions, I have run this across multiple cores
+ on the same machine and across multiple machines too.</p>
+
+<p>Currently running this quite happily with ~23/24 sessions.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/262425">Alan Mackay</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/298842">Tim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great, works exactly as described! 
+It's a bit ridiculous that this functionality isn't included natively in
+ Matlab considering how much we pay for the software.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67164">haidi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, has anyone been successful 
+using this package for a larger scale. In my case, it actually does not 
+work very well when running on 100 cores. For some reasons the slave got
+ stuck in a loop with the message "Ignoring old semaphore of file"??? 
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67164">haidi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great work!! 
+<br>Is there a way to use this package without having to manually starting Matlab? 
+<br>The reason I ask the question is as follows. I use Torque to submit 
+to a cluster of 16 nodes, each node having 64 cores. However, I cannot 
+start multiple matlab instances in a single node (even it has 64 cores).
+ Your help is greatly appreciated!!! Many thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/217817">Pink_panther</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I activated only 3 slaves. Demo works great on my 8 core laptop! Be sure each session has path set to see the multicore folder.</p>
+
+<p>&gt;&gt; multicoredemo
+<br>Elapsed time running STARTMULTICOREMASTER: 7.04 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 7.39 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 7.35 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 6.74 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 6.77 seconds.
+<br>Elapsed time without slave support:        20.86 seconds.
+<br>Elapsed time running TESTFUN directly:     19.84 seconds.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/217817">Pink_panther</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/217817">Pink_panther</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/268371">Phil Corbishley</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works very well, thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/203450">Rohit Verma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I tried running my function 
+simultaneously with 3 different datasets together, but the slave 
+processes doesnt do anything and the time is the same as if I am running
+ without it.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/203450">Rohit Verma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can I use it for running multiple 
+processes accessing the same function using different parameter cell. 
+Please note that the function takes in image input in each call. Will 
+that be a problem ?</p>
+
+<p>Thanks very nice code </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/83989">Zhanhong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great Package! Definitely useful for multicore CPUs. I have a 6 core AMD. It's such a pain if MATLAB can't run parallel.
+<br>I have a demo tip for newbies:
+<br>If you want to see the effect, make sure your function have to run 
+at least several times on the input cell. If your function only has one 
+input, all the slave sessions will be doing nothing because the function
+ is already running on master. You'd probably want to make your input 
+into segments to make all the slaves run simultaneously.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/197726">laoya</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The tool is really powerful. I want to know if we can develop a similar tool by Fortran or C language. There are two reasons:
+<br>1) since every master and slave program need a matlab window, it is 
+too expensive to buy multiple licenses of Matlab to run on different 
+machines;
+<br>2) the slave program is launched by matlab, which will also need 
+more than 100 MB memory, however, maybe the slave program only need to 
+launch another external execute program with different parameters. Write
+ a pure master/pure program will decrease the memory usage greatly.</p>
+
+<p>Thanks,
+<br>Zhanhgong Tang</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/76405">Jason D</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/132229">Christopher Carr</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/132229">Christopher Carr</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/132229">Christopher Carr</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/156831">Giovanni Bracco</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Simply wonderful!
+<br>I have an optimization problem -including several launches of a 
+Simulink model- running on a single core in a little more than 30 hours.
+ By reformulating the problem as required by the Marcus' scripts (half a
+ day work) I'm currently using five Windows PCs with a total of 14 cores
+ and carrying out the simulation in 3.1 hours.
+<br>Thank you!!!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/156831">Giovanni Bracco</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/112826">Xinghua Lou</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Markus,</p>
+
+<p>Great work!</p>
+
+<p>I may have one suggestion: the file I/O becomes a bottleneck in my 
+application since saving the meta-data of a task (large image sequences)
+ costs almost as much time as processing the task. Maybe it helps a lot 
+if the file I/O can be replace by shared memory functions and there is a
+ new Matlab library for use: 
+http://www.mathworks.com/matlabcentral/fileexchange/28572-sharedmatrix. I
+ think it is a perfect complement to your library.</p>
+
+<p>Best,
+<br>Xinghua</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/108926">Darin McCoy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>nevermind my previous comment.....i didnt read the instructions :)</p>
+
+<p>5 stars for the m file and 6 stars for customer service. Thanks Markus!
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/108926">Darin McCoy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>No improvement running the multicoredemo.m file</p>
+
+<p>Elapsed time running STARTMULTICOREMASTER: 21.53 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 21.67 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 21.31 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 21.31 seconds.
+<br>Elapsed time running STARTMULTICOREMASTER: 21.30 seconds.
+<br>Elapsed time without slave support:        21.14 seconds.
+<br>Elapsed time running TESTFUN directly:     20.00 seconds.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/119316">Johnny Ta</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>awesome. you're my savior. the code works like charm!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/90351">Torfinn</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for these tools, they are vastly useful and will save me much time.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101674">Hamid Badi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101674">Hamid Badi</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/70898">Robert Stead</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm having problems with the 
+lasterror function in this code. There appear to be several instances 
+where the lasterror function is passed a string 'reset' as an input 
+argument, but the function lasterror is only defined for inputs of 
+structure type. This causes errors at several points in the code, and I 
+am unable to run the multicoredemo routine. I'm sure this is something 
+I'm doing wrong, but I'd be grateful if someone could help me!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/75208">Karl</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Markus,</p>
+
+<p>first of all -- you've developed a great tool that helps me a lot 
+with my simulations in the field of audio signal processing. Seeing my 
+dual quad core at 100% (instead of 13%) load warms my heart :).</p>
+
+<p>Well, I'm not sure whether I'm getting something wrong here, but I 
+had some problems when the function that is executed by the 
+multicoremaster() (and the slaves) has more than one return value. It 
+seems that in this case all but the first return values get lost. I 
+applied a little trick that I found out about some time ago to solve 
+this problem:
+<br>Everytime that feval() is called (in startmulticoremaster() and startmulticoreslave() ) I added something like this:</p>
+
+<p>N_returnValues = nargout(functionHandleCell{k});
+<br>clear('returnValue'); % this is dirty! The next call doesn't work
+<br>     % without clearing  "returnValue" beforehand if
+<br>     % N_returnValues==1. If it's greater-&gt;no
+<br>     % problem (even without clearing
+<br>     % "returnValue")
+<br>[returnValue{1:N_returnValues}] = feval(functionHandleCell{k}, parameterCell{k}{:}); % ha!
+<br>resultCell{k} = returnValue;</p>
+
+<p>Doing so, the resultsCell that is returned from 
+startmulticoremaster() is always a cell -- even if the called function 
+has only one return value...</p>
+
+<p>I hope this is of any value to anybody and that I'm not causing 
+trouble by posting this hack :). I'm always open to learn a better 
+solution....</p>
+
+<p>Cheers, and thanks again for Multicore!</p>
+
+<p>    Karl</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/75208">Karl</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73835">DAdler</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much for this great 
+tool! I started using your code  a few of months ago, and I must say it 
+saved me lots of hours of work. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/46399">Johannes Wunsch</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Awesome tool, I use it for fitting a
+ computationally expensive financial model and it works just great. 
+Thanks a lot for publishing it!! Johannes</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/69421">Amir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have little bit of problem 
+running the master and slave processes over the network. I am not sure 
+how to share the folder over a linux network!
+<br>Anybody can help?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67113">German</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>sorry just missed to start a second matlab session with "startmulticoreslave". 
+<br>Great code.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67113">German</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello, when i am running the multicoredemo, only the master is working, but not the slave. What am i doing wrong? 
+<br>multithreading unabled/ is set to one core.
+<br>I use a duo core processor with windows vista and Matlab 7.8.0 R2009a 64-bit.
+<br>Thank you very much.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/64373">Nir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great Work !
+<br>Speeds up my work more than twice on a quad computer. Not much change had to be done in order to use it. 
+<br>Thanks 
+<br>Nir</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/59423">Thomas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great tool!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/49789">dpb10</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/52024">Richard</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Brilliant tool! Great being able to
+ sit back and watch a progress bar sliding along as a room full of 
+computers gets to work doing your simulation.</p>
+
+<p>I have a question though - what dimensions are typically used for 
+parameterCell? I've tried doing some large multidimensional runs (e.g. 
+4x150x10) and things seemed to grind to a halt - I'm still looking into 
+it, just wondered if the dimensions I'm using are typical or too large.</p>
+
+<p>Cheers. Great work,
+<br>Richard.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34660">Richard Crozier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fantastic program, and particularly
+ suited to my work with genetic algorithms. There is one mnor error I've
+ noticed though. In startmulticoreslave, if you activate debug mode you 
+reach the following line (77):</p>
+
+<p>fileNr = str2double(regexptokens(parameterFileName,...
+<br>'parameters_\d+_(\d+)\.mat'));</p>
+
+<p>But there is no regexptokens function, at least there isn't in R2007a
+ or R2007b or R2008a. My solution is to replace this with the following 
+lines (although I'm sure someone could come up with something more 
+robust and/or elegent).</p>
+
+<p>fileNrCell = regexp(parameterFileName,'parameters_\d+_(\d+)\.mat', 'tokens');</p>
+
+<p>fileNr = str2double(fileNrCell{1});</p>
+
+<p>The program is excellent though, thanks again!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/26973">Markus Buehren</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have opened a discussion group for the Multicore package on Yahoo. Please join and discuss with other users!</p>
+
+<p>http://groups.yahoo.com/group/multicore_for_matlab/</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/44892">Moody</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've been using multicore for a 
+while now and its absolutely excellent. I'm running on 5 dual xeon x5460
+ as well as a couple of quad core boxes. </p>
+
+<p>I was wondering if anyone compared performance of this toolbox with 
+the parfor parallel computing matlab toolbox. Are they comparable?</p>
+
+<p>I believe I'm bottlenecked now due to the hard disk I/O, so I was 
+looking at the in memory possibilities of this or potentially upgrading 
+my hd's to solid state to reduce the overhead. </p>
+
+<p>BTW, I also tried precreating all the mat files once instead of doing
+ multiple loops to reduce the I/O. Unfortunately, that didn't help as 
+much as I hoped.</p>
+
+<p>Don't get me wrong though, this is much, much, much faster than single threading, but as always we need to keep pushing :).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33940">Andrew Scott</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43502">Jordi Arnabat</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for this great contribution, it's very useful.</p>
+
+<p>Correction:
+<br>I've used in under a grid of computers running different OS: 
+GNU/Linux, Mac and Windows (XP).  When the shared folder is on a network
+ computer (not mapped to a local drive, for example: 
+\\servername\sharedfolder); Windows systems fail trying to delete the 
+semaphores, causing the master process run forever.</p>
+
+<p>The solution I found is to slightly modify compsep.m and concatpath.m as follows:</p>
+
+<p>_______________________________________________________
+<br>function str = chompsep(str)
+<br>unix_sep = '/';
+<br>pc_sep   = '\';</p>
+
+<p>if isunix &amp;&amp; str(1)==pc_sep
+<br>    str = strrep(str, pc_sep, unix_sep);
+<br>elseif ispc &amp;&amp; str(1)==unix_sep
+<br>    str = strrep(str, unix_sep, pc_sep);
+<br>end</p>
+
+<p>if ~isempty(str) &amp;&amp; (str(end) == unix_sep || str(end) == pc_sep)
+<br>	str(end) = '';
+<br>end </p>
+
+<p>_______________________________________________________
+<br>function str = concatpath(varargin)
+<br>unix_sep = '/';
+<br>pc_sep   = '\';</p>
+
+<p>str = '';
+<br>for n=1:nargin
+<br>	curStr = varargin{n};
+<br>	str = fullfile(str, chompsep(curStr));
+<br>end</p>
+
+<p>if isunix &amp;&amp; str(1)==pc_sep
+<br>    str = strrep(str, pc_sep, unix_sep);
+<br>elseif ispc &amp;&amp; str(1)==unix_sep
+<br>    str = strrep(str, unix_sep, pc_sep);
+<br>end
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/27024">Vasilis Kapetanidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you! This works just fine and
+ now I have 100% CPU usage on all 4 cores! By measuring the elapsed time
+ it seems that it runs about 3.4 times faster than with a single matlab 
+doing all the work, so that's about 85% efficient on my quad-core</p>
+
+<p>now, if only this could run on a single multi-core machine with only one matlab instance running</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37259">Arturo Serrano</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37259">Arturo Serrano</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I got the same problem as Rohaly. 
+When master ends the computation, and there is a slave still working, 
+the master computes the remaining job again, yielding an extra 
+iteration. 
+<br>The solution is to set MAXMASTEREVALUATIONS, with all its drawbacks,
+ since i understand that this isn't a bug rather than a problem not 
+knowing if the slave got interrupted.</p>
+
+<p>BTW, it works like a charm.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40258">Marcio Sales</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I tested the functions on two dual 
+core machines. I had great gain when paralellizing processing between 
+the processors of dual core machine or between the two machines using a 
+single processor in each. However, I had no significant gain when trying
+ to using both processors on both machines. Is that because the gain of 
+using more processors is being reduced by increased load of data 
+recording when you add more processors/machines? Also, there are times 
+when I get an error in which one of the workers can't delete the 
+temporary files and this seems to happen more frequently when you 
+increase the number of workers. Is anyone having the same issues? My two
+ machines run Vista 64bits.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40190">Janos Rohaly</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It seems there is the possibility 
+for master and slave to simultaneously evaluate the same set of 
+parameters. For example, if slave starts evaluating a slow process, 
+master can catch up, and there is nothing to prevent it to start the 
+very same computation since slave hasn't generated the result file yet. 
+There is also a bug in setfilesemaphore.m. dirStruct(k).datenum in line 
+78 should be datenum(dirStruct(k).date).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            Bruno Cordani
+          </span>
+        </td>
+        <td><span class="comment"><p>Great!!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            M H
+          </span>
+        </td>
+        <td><span class="comment"><p>Its absolutely excellent. Am using 
+it now on my quad core machine and am probably going to buy another quad
+ core just to see my models run so quickly. :)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            Robert Turner
+          </span>
+        </td>
+        <td><span class="comment"><p>Brilliant library. Works like a charm</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jun 2008</span></td>
+        <td>
+          <span class="author">
+            uju jbl
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 May 2008</span></td>
+        <td>
+          <span class="author">
+            Jun Kim
+          </span>
+        </td>
+        <td><span class="comment"><p>This process works very well. For 
+my model estimation, I was able to cut the execution time in a drastic 
+manner. Also Markus was kind and was very responsive to my question.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            Markus Buehren
+          </span>
+        </td>
+        <td><span class="comment"><p>&gt; An option for avoiding the use of the 
+<br>&gt; master core is desirable</p>
+
+<p>The option is already existing: You can use the input parameter MAXMASTEREVALUATIONS and set it to zero.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            Igor S
+          </span>
+        </td>
+        <td><span class="comment"><p>An option for avoiding the use of the master core is desirable
+<br>Indeed if one slave process terminates or crushes the entiere 
+process continues but if by chance the iteration that crushes is on the 
+master core all the process is compromised </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jan 2008</span></td>
+        <td>
+          <span class="author">
+            igor scardanzan
+          </span>
+        </td>
+        <td><span class="comment"><p>great , just some difficulties to 
+kill the slave : the process persists and CNTR C does not work . one 
+should await the execution end  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Dec 2007</span></td>
+        <td>
+          <span class="author">
+            A. S.
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks, very useful. 
+Synchronization is not optimal (for example, the master shouldn't start 
+working on a task if a slave is already working on it), but still a 
+great program.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Dec 2007</span></td>
+        <td>
+          <span class="author">
+            Andrea Soldan
+          </span>
+        </td>
+        <td><span class="comment"><p></p>
+
+<p>very useful and it works excellently.
+<br>much more than the distribuited computing toolbox provided by Matlab (which is very hard to use).
+<br>my SO is Linux, and i'm working with 4 workers ( 2 dual-core processors)</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Oct 2007</span></td>
+        <td>
+          <span class="author">
+            David Brown
+          </span>
+        </td>
+        <td><span class="comment"><p>Works excellently.  It would be nice to see this turned into a fully-guided setup to use this.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Oct 2007</span></td>
+        <td>
+          <span class="author">
+            Huy Bui
+          </span>
+        </td>
+        <td><span class="comment"><p>Multicore works quite well overall.
+ I got a bug though. I make a mistake in parameterCell. The slave 
+processes all die because of that. When I tried to exit all slave 
+processes &amp; start again, the same error causing slave processes dead
+ appears again &amp; again.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Aug 2007</span></td>
+        <td>
+          <span class="author">
+            Kevin Thom
+          </span>
+        </td>
+        <td><span class="comment"><p>Awesome program ... I have run it 
+successfully using anywhere from 4 processors on one machine to 10 
+processors on 5 machines ... it makes a whole range of computationally 
+expensive projects feasible in MATLAB. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Aug 2007</span></td>
+        <td>
+          <span class="author">
+            happy matlabuser
+          </span>
+        </td>
+        <td><span class="comment"><p>Ran it with 8 processors across 6 
+machines, and it works beautifully.  Unfortunately, if you kill one or 
+more processors, the master processor MUST do that job.  Since the jobs 
+are long for my problem, it's better to kill everything in that 
+situation and finish everything at the command line.  The master starts 
+at the top of the list, and the slaves start at the bottom.  When they 
+meet somewhere in the middle, the master will always redo one of the 
+jobs.  I don't think the code will be efficient for a very large number 
+of very small jobs (correct me if I'm wrong); so, I recommend making 
+jobs medium length, (total run time)/(10*(# of processors)) for example.
+  For my problem, these are fairly  minor concerns.  The author did a 
+great job with this code -- easily saving me hours of work -- thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jun 2007</span></td>
+        <td>
+          <span class="author">
+            Markus Buehren
+          </span>
+        </td>
+        <td><span class="comment"><p>Yes and no: The slave process 
+should create the directory if it is not existing (I have updated that).
+ However, you can start the slave processes whenever you like! You can 
+also interrupt and restart them while the master is running.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 May 2007</span></td>
+        <td>
+          <span class="author">
+            Darren 3M
+          </span>
+        </td>
+        <td><span class="comment"><p>Brilliant use of the filesystem to 
+share the load.  It's not quite 2x increase but on a quick cluster test I
+ got an increase of 4x with 5CPU's so 80% efficient.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Mar 2007</span></td>
+        <td>
+          <span class="author">
+            schena gianni
+          </span>
+        </td>
+        <td><span class="comment"><p>on dual-processor Intel Xeon based machines  it halfs calculation time i.e. it cuts by a factor 2 ! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            Michal Kvasnicka
+          </span>
+        </td>
+        <td><span class="comment"><p>Wow!!! After the few hours of hard 
+experimentation with MULTICORE I finally learned how to use this code 
+for parallel running on my four core PC. This is realy good and useful 
+tool for distributed computing!!!</p>
+
+<p>1. Informational text in the demo must be extended to detailed description how to run "tesfun" in parallel regime.
+<br>2. Some work must be done to minimize interprocess communication 
+overhead, which may be very itensive (25% of the overall load) in some 
+cases.</p>
+
+<p>Good work!!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            Michal Kvasnicka
+          </span>
+        </td>
+        <td><span class="comment"><p>I am not able to reproduce any improvment from sequential to parallel (multicore) realization of the testing demo code. </p>
+
+<p>I would go as far as to say, that parallel (multi-core) realization is slower then sequential in some cases.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            William Renaud
+          </span>
+        </td>
+        <td><span class="comment"><p>Would it be possible to make this 
+compatible with Octave? Due to licensing restrictions it is difficult 
+for many people to have numerous Matlab instances available.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            Zhijun Wang
+          </span>
+        </td>
+        <td><span class="comment"><p>Corrections:</p>
+
+<p>I tested the programn to see whether this program can improve  parallel processing in a single machine with the following code:</p>
+
+<p>______________________
+<br>N=20;
+<br>for m = 1:10
+<br>tic
+<br>  for z = 1:N
+<br>      testfun(z)
+<br>  end
+<br> toc
+<br>end
+<br>__________________________</p>
+
+<p>Results show the program do not improve anything comparing with my code in a single  machine!</p>
+
+<p>So I rate again </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            Zhijun Wang
+          </span>
+        </td>
+        <td><span class="comment"><p>Parallel processing on multiple cores in a single machine is very useful!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            lucia Come
+          </span>
+        </td>
+        <td><span class="comment"><p>long due as standard matlab capability 
+<br>does it work also with scrits or only with functions ?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            Michal Kvasnicka
+          </span>
+        </td>
+        <td><span class="comment"><p>The demo should be more 
+selfdescriptive. Comparison with single core demo running is  very 
+important for parallelization impact evaluation. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">26 Jan 2007</td>
+                  <td><p>bad line breaks in description...</p></td>
+                </tr>
+                <tr>
+                  <td class="date">29 Jan 2007</td>
+                  <td><p>Informational text added to demo, improvements in file access organization.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 May 2007</td>
+                  <td><p>Updated info due to new Matlab multicore functionality.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">29 May 2007</td>
+                  <td><p>Another note about multithreading</p></td>
+                </tr>
+                <tr>
+                  <td class="date">30 May 2007</td>
+                  <td><p>Update of documentation contained in zip file, no changes to source code.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">15 Jun 2007</td>
+                  <td><p>Slave process will now create the temporary directory if it is not existing.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">22 Jun 2007</td>
+                  <td><p>There was a subfunction missing (which is only executed after a write error).</p></td>
+                </tr>
+                <tr>
+                  <td class="date">22 Jun 2007</td>
+                  <td><p>Yet another small update.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">25 Sep 2007</td>
+                  <td><p>Improved support for small numbers of very long function evaluations.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">12 Oct 2007</td>
+                  <td><p>A file was missing - sorry.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">14 Nov 2007</td>
+                  <td><p>Update of contact information in documentation.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">14 Nov 2007</td>
+                  <td><p>Old e-mail address removed from help comments of m-files.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">03 Nov 2008</td>
+                  <td><p>Subfunction datenum2 was not needed.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">15 Dec 2008</td>
+                  <td><p>Semaphore stuff improved.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Dec 2008</td>
+                  <td><p>Forgot to include file chompsep.m</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 Dec 2008</td>
+                  <td><p>Semaphore mechanism improved.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Jan 2009</td>
+                  <td><p>Introduced parameter EVALSATONCE which causes 
+the multicore package to do several function evaluations after each 
+other before saving/loading and thus reducing the communication 
+overhead. Demo function MULTICOREDEMO heavily commented.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">18 Jan 2009</td>
+                  <td><p>I have nearly re-written both master and slave 
+in order to make the package even more robust and to reduce the overhead
+ for inter-process communication.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">27 Jan 2009</td>
+                  <td><p>Another change to the semaphore mechanism.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">22 Feb 2009</td>
+                  <td><p>File regexptokens.m added.
+<br>Dicussion group created: <a href="http://groups.yahoo.com/group/multicore_for_matlab">http://groups.yahoo.com/group/multicore_for_matlab</a></p></td>
+                </tr>
+                <tr>
+                  <td class="date">09 Mar 2009</td>
+                  <td><p>If a slave is killed during working on a job, 
+the master will now generate the parameter file of that job again 
+instead of working on the file himself. This will increase performance 
+in certain situations.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Mar 2009</td>
+                  <td><p>Added an optional waitbar.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 Mar 2009</td>
+                  <td><p>Added estimation of time left in waitbar.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Apr 2009</td>
+                  <td><p>Using system-dependent file separators in paths again. Waitbar shows progress during parameter file generation now.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Apr 2009</td>
+                  <td><p>Two bugs fixed, one regarding the waitbar, one regarding the semaphore mechanism.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Apr 2009</td>
+                  <td><p>In each multicore run, "clear functions" is now called once to ensure that changes to m-files take effect.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">12 Apr 2009</td>
+                  <td><p>Call to "clear functions" now in master and slaves, bug fixed.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">13 Apr 2009</td>
+                  <td><p>File displayerrorstruct.m was missing.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">15 Apr 2009</td>
+                  <td><p>Bug fixed.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Jun 2009</td>
+                  <td><p>Estimation of time left changed, post-processing function introduced.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">19 Jun 2009</td>
+                  <td><p>Structure being passed to post-processing function changed (still undocumented feature)</p></td>
+                </tr>
+                <tr>
+                  <td class="date">25 Aug 2009</td>
+                  <td><p>Small changes to documentation and gethostname.m</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Mar 2010</td>
+                  <td><p>Bugfix.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 Apr 2011</td>
+                  <td><p>Only E-mail changed in html document.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">04 Jul 2011</td>
+                  <td><p>Description modified to make it more concise.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">04 Jul 2011</td>
+                  <td><p>Links in help lines corrected.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Jul 2011</td>
+                  <td><p>Description changed again.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">29 Aug 2011</td>
+                  <td><p>Overhead resulting from expanding the function handle cell reduced.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">29 Aug 2011</td>
+                  <td><p>Typo fixed.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">30 Aug 2011</td>
+                  <td><p>Typo fixed.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">12 Sep 2011</td>
+                  <td><p>Bugfix: calling startmulticoremaster.m without settings works now.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">18 Sep 2011</td>
+                  <td><p>New features: 
+<br>1. Slave settings can be set via command line argument. 
+<br>2. Slave Matlab process can be quit after a given time in seconds.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">14 Jan 2013</td>
+                  <td><p>Performance improvement - especially when using a large number of slaves</p></td>
+                </tr>
+                <tr>
+                  <td class="date">16 Jan 2013</td>
+                  <td><p>Added parfor-loop to demo.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 Jul 2014</td>
+                  <td><p>Performance improvement especially for projects using many slave processes.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415597130380&amp;cv=7&amp;fst=1415597130380&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/13775-multicore-parallel-processing-on-multiple-cores&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D29%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

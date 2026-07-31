@@ -1,0 +1,3074 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>TDMS Reader -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/30023-tdms-reader" rel="canonical">
+<meta content="TDMS Reader - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/30023-tdms-reader" property="og:url"><meta content="Read TDMS files v1 &amp; v2 without DLL
+Current Version: 2.5
+" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30023-tdms-reader" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30023-tdms-reader" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/15039" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=30023" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader" class="manifest_title">TDMS Reader</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/private/TDMS_TODO_List.m" class="function" title="Function">TDMS_TODO_List
+</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/TDMS_dataToGroupChanStruct_v1.m" class="function" title="Function">TDMS_dataToGroupChanStruc...</a><span class="description">TDMS_dataToGroupChanStruct_v1  
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/TDMS_dataToGroupChanStruct_v2.m" class="function" title="Function">TDMS_dataToGroupChanStruc...</a><span class="description">TDMS_dataToGroupChanStruct_v2  Converts output into tiered structure
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/TDMS_dataToGroupChanStruct_v3.m" class="function" title="Function">TDMS_dataToGroupChanStruc...</a><span class="description">TDMS_dataToGroupChanStruct_v3  
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/TDMS_dataToGroupChanStruct_v4.m" class="function" title="Function">TDMS_dataToGroupChanStruc...</a><span class="description">TDMS_dataToGroupChanStruct_v4  
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_genvarname2.m" class="function" title="Function">TDMS_genvarname2(string,r...</a><span class="description">GENVARNAME2: Outputs a valid variable name VARNAME
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_getDataSize.m" class="function" title="Function">TDMS_getDataSize(dataType)
+</a><span class="description">TDMS_getDataSize  Returns data size in bytes
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_getDataTypeName.m" class="function" title="Function">TDMS_getDataTypeName(data...</a><span class="description">TDMS_getDataTypeName  Returns a string indicating dataType
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_getGroupChanNames.m" class="function" title="Function">TDMS_getGroupChanNames(me...</a><span class="description">TDMS_getGroupChanNames  Small function to get group/channel names from paths
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_getPropValue.m" class="function" title="Function">TDMS_getPropValue(fid,pro...</a><span class="description">TDMS_getPropValue  Returns the property value given the Labview DataType
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/TDMS_getStruct.m" class="function" title="Function">TDMS_getStruct(filePath,s...</a><span class="description">TDMS_getStruct  A wrapper for simplifying data retrieval from TDMS_readTDMSFile
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_getTypeSeekSizes.m" class="function" title="Function">TDMS_getTypeSeekSizes
+</a><span class="description">TDMS_getTypeSeekSizes  Returns information for fread and fseek
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_handleGetDataOption.m" class="function" title="Function">TDMS_handleGetDataOption(...</a><span class="description">TDMS_handleGetDataOption  Processes input options 
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_initData.m" class="function" title="Function">TDMS_initData(dataType,nS...</a><span class="description">TDMS_initData  Initializes raw data arrays
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_preprocessFile.m" class="function" title="Function">TDMS_preprocessFile(fid,t...</a><span class="description">TDMS_preprocessFile  Populates props and gets segment information
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_processLeadIn.m" class="function" title="Function">TDMS_processLeadIn(fid,la...</a><span class="description">TDMS_processLeadIn  Reads the "Lead In" portion of the data segment</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/TDMS_readChannelOrGroup.m" class="function" title="Function">TDMS_readChannelOrGroup(T...</a><span class="description">TDMS_readChannelOrGroup  Return data from a specific channel or group of channels
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_readFileHelper_v1.m" class="function" title="Function">TDMS_readFileHelper_v1(fi...</a><span class="description">TDMS_readFileHelper_v1
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_readFileHelper_v2.m" class="function" title="Function">TDMS_readFileHelper_v2(fi...</a><span class="description">TDMS_readFileHelper_v2
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/TDMS_readTDMSFile.m" class="function" title="Function">TDMS_readTDMSFile(tdmsFil...</a><span class="description">TDMS_readTDMSFile  Reads TDMS file and does minimal processing to obtain output
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_retrievingSubsets.m" class="function" title="Function">TDMS_retrievingSubsets
+</a><span class="description">TDMS_retrievingSubsets  Documentation for retrieving subsets of raw data from TDMS_readTDMSFile
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/private/TDMS_Documentation.m" class="script" title="Script">TDMS_Documentation.m</a><span class="description">TDMS_Documentation
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/private/TDMS_VERSION_INFO.m" class="script" title="Script">TDMS_VERSION_INFO.m</a><span class="description">TDMS_VERSION_INFO
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/private/TDMS_exampleFunctionCalls.m" class="script" title="Script">TDMS_exampleFunctionCalls.m</a><span class="description">The following is some example code of calls that can be made
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/private/TDMS_fileFormatNotes.m" class="script" title="Script">TDMS_fileFormatNotes.m</a><span class="description">TDMS_fileFormatNotes
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content//v2p5/tdmsSubfunctions/TDMS_rawDAQMx.m" class="script" title="Script">TDMS_rawDAQMx.m</a></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader/content/Version_2p5_Final.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:95.5556%;">
+                <p>4.77778</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.8</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">23</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">188 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 47.7 KB</span>
+          <span id="fileid">File ID: #30023</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">TDMS Reader</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      13 Jan 2011
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2012-07-30">30 Jul 2012</span>)
+      </span>
+  </p>
+
+  <p id="summary">Read TDMS files v1 &amp; v2 without DLL
+Current Version: 2.5
+</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F30023-tdms-reader&amp;watching=30023" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Reads TDMS files into Matlab. </p>
+
+<p>Advantages:
+<br>&nbsp;&nbsp;&nbsp;- supports reading v2 files
+<br>&nbsp;&nbsp;&nbsp;- doesn't require the NI DLL, thus it doesn't require 32bit windows
+<br>&nbsp;&nbsp;&nbsp;- supports interleaved data
+<br>&nbsp;&nbsp;&nbsp;- allows only reading names &amp; properties to get a quick feel for what is in the file
+<br>&nbsp;&nbsp;&nbsp;- allows reading specific subsets of the data for limited memory usage</p></td>
+          </tr>
+
+          
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.10 (R2010a)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30023-tdms-reader">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22convert%22" rel="nofollow">convert</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22data+import%22" rel="nofollow">data import</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22labview%22" rel="nofollow">labview</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22tdms%22" rel="nofollow">tdms</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22toolbox%22" rel="nofollow">toolbox</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="30023" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/30023-tdms-reader" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30023-tdms-reader">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(99)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">23 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/479305">Stefan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jim,
+<br>I also have the 'Unexpected lead in header' error but when I try the fix you mention:
+<br>'This problem can be fixed by replacing the error you are seeing with: 
+<br>flags = []; 
+<br>info = []; 
+<br>eof_error = true; 
+<br>return;'</p>
+
+<p>I get an error:
+<br>WARNING: File was not closed properly.
+<br>Data will most likely be missing at the end of the file
+<br>In an assignment  A(:) = B, the number of elements in A and B must be the same.</p>
+
+<p>Error in TDMS_readFileHelper_v1 (line 148)
+<br>                            data{I_object}(startI:endI) =
+<br>                            fread(fid,numValuesAvailable,precisionType{dataType});</p>
+
+<p>Error in TDMS_readTDMSFile (line 252)
+<br>    data = TDMS_readFileHelper_v1(fid,optionStruct,metaStruct,paramsStruct);</p>
+
+<p>Error in TDMS_getStruct (line 57)
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>Any idea?
+<br>Stefan</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Benoît</p>
+
+<p>  I have no idea what would be causing the problem you are 
+referencing. Can you send me an example file that has this problem? I'll
+ send a private message with more details.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/472910">Benoit</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jim,</p>
+
+<p>Thanks for your job.
+<br>I tried to use your code, and I don't have any error, but the file I
+ get is empty. My original file is 70Mo, and the final one is only 10Mo.
+<br>Do you have any clue to help me ?
+<br>Thanks a lot.</p>
+
+<p>Benoît</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@David</p>
+
+<p>  I've really wanted to change that interface for a while :/</p>
+
+<p>  The issue is that the input should be a structure ARRAY that contains strings.</p>
+
+<p>getStruct.group = '6120'; 
+<br>getStruct.channel = 'Untitled 3'; </p>
+
+<p>Feel free to email if you need more help.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/379570">David DeVilbiss</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jim, </p>
+
+<p>back on 22-Feb-2014, Joe Cuschieri had a question concerning reading 
+in segments of data using your functions.  I'm getting the same errors. 
+ Did you have a solution for him or some sample code to simple read in 
+segments of data.</p>
+
+<p>Thanks, Dave</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80617">Jonathan Currie</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great bit of code, worked first time, just how it should be!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Joe,</p>
+
+<p>  National instruments won't release the specs for their daqmx format
+ (I've asked), so I don't know what their binary data means. They 
+recently updated their dll to support reading version 2 files, so you 
+might have luck using that. I've been meaning to look at the dll but 
+it's really low on my priority list at this point.</p>
+
+<p>The link to the dll can be found at this page:
+<br>http://digital.ni.com/public.nsf/allkb/A3663DE39D6A2C5A86257204005C11CA</p>
+
+<p>There used to be a specific page for the dll (in which it said it 
+supported only version 1, and then recently version 2) but I can't find 
+it anymore. </p>
+
+<p>Good luck and feel free to email me if you have any more questions.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/424365">Joe</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello,</p>
+
+<p>I get a strange error when trying to use TDMS_readTDMSFile:</p>
+
+<p>It tells me:
+<br>"Error using TDMS_processLeadIn (line 50)
+<br>Currently code is unable to ignore/handle Raw Daq MX data</p>
+
+<p>Error in TDMS_preprocessFile (line 179)
+<br>    [flags,info,eof_error]  = TDMS_processLeadIn(fid,lastLetter);</p>
+
+<p>Error in TDMS_readTDMSFile (line 226)
+<br>metaStruct   = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);"</p>
+
+<p>Surely the program is fit to handle raw DAQmx data right?  How can I avoid this error?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Bob,</p>
+
+<p>  Sorry about the obtuse error message. In the new version I've been 
+working on I am hoping to provide links to lengthy documentation on what
+ each error message actually means. Each section of the tdms file starts
+ with the characters tdsm (data file) or tdsh (if it is the index file).
+ If those are not present, it indicates that there was either an error 
+in parsing the file, or in writing the file. I think every time I've 
+seen this error, the issue has been that the file is not closed properly
+ (using tdms close in Labview) and the last segment is corrupted.</p>
+
+<p>This problem can be fixed by replacing the error you are seeing with:
+<br>flags = [];
+<br>info  = [];
+<br>eof_error = true;
+<br>return;</p>
+
+<p>If you have any more problems feel free to contact me via email.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/394844">Bob</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm trying to help a coworker 
+decode a message he is getting reading tdms files I'm creating. We read a
+ lot of files and we occasionally see an error with the following 
+format:</p>
+
+<p>Error getting TDMS struct: 2013-10-17 16_50_15_902.tdms
+<br>  MException with properties:</p>
+
+<p>    identifier: ''
+<br>       message: 'Unexpected lead in header'
+<br>         cause: {0x1 cell}
+<br>         stack: [6x1 struct]</p>
+
+<p>Is there anything that explains what this error means so I can correct it?</p>
+
+<p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Kadir,</p>
+
+<p>  Please get in touch with me via email and perhaps send a complaint to NI.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/196301">Kadir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Jim,</p>
+
+<p>Thanks a lot for the clarification. I don't have Excel. I tried the 
+dll but it takes only first 1000 values of the sample. Therefore, I'd 
+like to go for the 3rd option.</p>
+
+<p>What do you mean by "regular array" and how can I perform this conversion?</p>
+
+<p>Thanks again, Kadir</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Kadir,</p>
+
+<p>  That flag is updated on every segment, and is not constant 
+throughout the file. The format of that type of data is not specified by
+ NI even after I requested it. Alternatives include:
+<br>- trying the Excel TDMS reader
+<br>- trying their new dll code which might support Raw DaqMX code
+<br>- converting the data in Labview from Raw DaqMx into a regular array, and then using my code</p>
+
+<p>Feel free to email me if you have any more questions.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/196301">Kadir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I got the error "Currently code is unable to ignore/handle Raw Daq MX data". Then, I looked at TDMS_processLeadIn, line 49-51:</p>
+
+<p>if flags.hasRawDaqMX
+<br>            error('Currently code is unable to ignore/handle Raw Daq MX data')
+<br>end</p>
+
+<p>Then, I checked the value of "hasRawDaqMX" field of the struct 
+"flags". It was 0. Then, I shouldn't get the error which is implemented 
+in the line 50, right?</p>
+
+<p>Does anybody have any idea what's going on?</p>
+
+<p>Thanks in advance, Kadir</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/391584">Harry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jim</p>
+
+<p>Works perfect for me! Great!</p>
+
+<p>Thank u very very much!!!!!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Harry,</p>
+
+<p>  You need to add the tdmsSubfunctions folder to your path as well. I
+ had originally placed those in a separate folder to try and make it 
+more obvious which functions you would call and which ones you wouldn't.
+ Sorry about the confusion.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/391584">Harry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey Jim,</p>
+
+<p>I got a problem with your code.
+<br>If I want to convert a .tdms file, I always receive errors.</p>
+
+<p>for example:
+<br>&gt;&gt; filename = 'C:\Users\*****\Desktop\v2p5\tdms\Messdaten.tdms';
+<br>&gt;&gt; my_tdms_struct = TDMS_getStruct(filename);
+<br>Undefined function 'TDMS_handleGetDataOption' for input arguments of type 'struct'.</p>
+
+<p>Error in TDMS_readTDMSFile (line 216)
+<br>TDMS_handleGetDataOption('check',paramsStruct)</p>
+
+<p>Error in TDMS_getStruct (line 57)
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>Can u explain, whats the problem?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi all,</p>
+
+<p>  I recently came across a bug in my code which I expect impacts very
+ few people and for the majority of people it impacts, the following 
+error will most likely be thrown "The remaining data doesn't split 
+evently into chunks." That being said, it is a bug and I'll try and get a
+ fix out soon. From what I can tell it would cause a problem if you 
+occasionally decide not to write a subset of a group of channels, and at
+ other times you write the entire group. Something like:</p>
+
+<p>If case1
+<br>  channels = 1:3
+<br>else
+<br>  channels = [1 3]
+<br>end</p>
+
+<p>In my opinion this error actually goes against the NI documentation so I need to contact them to for clarification.</p>
+
+<p>More details to follow.</p>
+
+<p>Many thanks to Junghwan Kim for sending a sample file to me which allowed me to finally understand this problem.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/390378">Henrik</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi! </p>
+
+<p>I am getting the following error while running step 2,3 and 4 in your example file "TDMS_exampleFunctionCalls". 
+<br>Can you please help me?</p>
+
+<p>Error using fseek
+<br>Invalid file identifier.  Use fopen to generate a valid file identifier.</p>
+
+<p>Error in TDMS_preprocessFile (line 155)
+<br>fseek(fid,0,1);</p>
+
+<p>Error in TDMS_readTDMSFile (line 226)
+<br>metaStruct   = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Best Regards
+<br>Henrik</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Navid,</p>
+
+<p>  Given that NI won't release the data format specs for RawDaqMX data, your options are the following:
+<br>1) Tell NI you want the specs released
+<br>2) see 1)
+<br>3) Try this:
+<br>http://www.ni.com/white-paper/4906/en</p>
+
+<p>Good luck
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/383652">Navid</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Jim,
+<br>Thanks for your fast answer,
+<br>you were right about wrong code but after using your code I got same
+ errors as Jury and Jane,unfortunately I am not able to resave the 
+data,is there other ways to get around this problem?!</p>
+
+<p>many thanks..</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Navid,</p>
+
+<p>  It seems like you might be using different code:
+<br>http://www.mathworks.com/matlabcentral/fileexchange/28771-converttdms-v9</p>
+
+<p>I would recommend you using my code instead. Let me know if you still have problems.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/383652">Navid</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Jim,
+<br>at first thank you so much for your code,I have problem with some kinds of TDMS files,could you help me plz?! I get this:
+<br>Converting 'ADC_20130808_165723.tdms'...Undefined function or variable 'TDMSFileNameShort'.</p>
+
+<p>Error in convertTDMS&gt;getSegInfo (line 405)
+<br>           e=errordlg(sprintf(['Seqment %.0f within ''%s'' has interleaved data which is not
+<br>           supported with this '...</p>
+
+<p>Error in convertTDMS (line 276)
+<br>    [SegInfo,NumOfSeg]=getSegInfo(fid);</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/379793">Junghwan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jim,</p>
+
+<p>Firstly, I deeply appreciate for your code.</p>
+
+<p>I get the same error as Robert and Fiona.
+<br>It looks like you answered Fiona via email. Could you share your answer to Fiona?</p>
+
+<p>Many thanks!</p>
+
+<p>Error using TDMS_preprocessFile (line 450)
+<br>The remaining data doesn't split evently into chunks, estimated #
+<br>of chunks: 5.000000e-01</p>
+
+<p>Error in TDMS_readTDMSFile (line 226)
+<br>metaStruct   =
+<br>TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Error in TDMS_getStruct (line 57)
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/123967">CLF</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jane</p>
+
+<p>  The short answer is that there is no solution. The format of Raw 
+Daq MX data is proprietary and NI has refused my request for 
+documentation. </p>
+
+<p>The easiest way to get around this if you are still looking to use my
+ code is to read the data file using Labview and to resave the data not 
+using Raw Daq MX.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375131">Jane</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello!</p>
+
+<p>I have been having the same error as Jury. Could you possibly post a solution? </p>
+
+<p>Cheers!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jury</p>
+
+<p>  Please send me an email regarding this problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/106601">Jury</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi!</p>
+
+<p>I try to read TDMS file, created LV2012 (12.0.1f2) in Matlab R2013a, 64bit, and obtain error:</p>
+
+<p>Error using TDMS_processLeadIn (line 50)
+<br>Currently code is unable to ignore/handle Raw Daq MX data</p>
+
+<p>Error in TDMS_preprocessFile (line 179)
+<br>    [flags,info,eof_error]  = TDMS_processLeadIn(fid,lastLetter);</p>
+
+<p>Error in TDMS_readTDMSFile (line 226)
+<br>metaStruct   = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Error in TDMS_getStruct (line 57)
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>Is any suggestion for reading TDMS file?</p>
+
+<p>Jury</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Cole ??? - What fix? Please contact me via email to discuss specifics.</p>
+
+<p>Thanks,
+<br>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/204254">Cole Van Vlack</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I should also mention I did try the fix you gave before. When I use it, I get the following error,</p>
+
+<p>---------
+<br>Error in TDMS_processLeadIn (line 27)
+<br>Ttag = fread(fid,1,'uint8');</p>
+
+<p>Output argument "eof_error" (and maybe others) not assigned during call to "E:\Data\Cobra Integration
+<br>Test\v2p5\tdmsSubfunctions\TDMS_processLeadIn.m&gt;TDMS_processLeadIn".</p>
+
+<p>Error in TDMS_preprocessFile (line 179)
+<br>    [flags,info,eof_error]  = TDMS_processLeadIn(fid,lastLetter);</p>
+
+<p>Error in TDMS_readTDMSFile (line 226)
+<br>metaStruct   = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Error in TDMS_getStruct (line 57)
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>Error in test (line 4)
+<br>my_tdms_struct = TDMS_getStruct(filename); 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/361487">Zeb</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Worked fine on Matlab 2010, now trying to use with Matlab 2008. </p>
+
+<p>Getting this error:
+<br>"??? Error: File: TDMS_readTDMSFile.m Line: 134
+<br>Column: 3
+<br>Expression or statement is incorrect--possibly
+<br>unbalanced (, {, or [."</p>
+
+<p>How do I solve this?
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Amrita, </p>
+
+<p>Please add the tdmsSubfunctions directory to your path as well.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/327155">Amrita</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I get the following error when I try to read a tdms file:</p>
+
+<p>??? Undefined function or method 'TDMS_handleGetDataOption' for input
+<br>arguments of type 'struct'.</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 216
+<br>TDMS_handleGetDataOption('check',paramsStruct)</p>
+
+<p>Error in ==&gt; TDMS_getStruct at 57
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>How do I solve this?
+<br>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/326509">Robert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am trying to use the file to convert tdms file but I have a following error:</p>
+
+<p>Error using TDMS_preprocessFile (line 450)
+<br>The remaining data doesn't split evently into chunks, estimated # of chunks: 8.181818e-01</p>
+
+<p>Error in TDMS_readTDMSFile (line 226)
+<br>metaStruct   = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Could someone help me to solve it, please? 
+<br>Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/196086">Joe Cuschieri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am using your algorithm posted on
+ the MATLAB Central to read data from a TDMS file, however I am getting 
+an error which I do not quite understand why.</p>
+
+<p>This is a section of my code:
+<br>getStruct = struct;
+<br>getStruct.group = {'6120'};
+<br>getStruct.channel = {'Untitled 3'};
+<br>getStruct.indices = [2 3];
+<br>tempOutput4 = TDMS_readTDMSFile(fname,'GET_INDICES',getStruct,'SUBSET_IS_LENGTH',false)</p>
+
+<p>However I get these errors:
+<br>Error using cell/ismember&gt;cellismemberlegacy (line 132)
+<br>Input A of class cell and input B of class cell must be cell arrays of strings,
+<br>unless one is a string.</p>
+
+<p>Error in cell/ismember (line 76)
+<br>    [varargout{1:nlhs}] = cellismemberlegacy(varargin{:});</p>
+
+<p>Error in TDMS_handleGetDataOption (line 167)
+<br>            [~,loc] = ismember(objPaths_getIndex,objectPaths);</p>
+
+<p>Error in TDMS_readTDMSFile (line 228)
+<br>optionStruct = TDMS_handleGetDataOption('getArray',paramsStruct,metaStruct); %Option
+<br>handling</p>
+
+<p>Error in Test1 (line 21)
+<br>tempOutput4 =
+<br>TDMS_readTDMSFile(fname,'GET_INDICES',getStruct,'SUBSET_IS_LENGTH',false)</p>
+
+<p>I am using MATLAB R2012b.</p>
+
+<p>Any suggestions?
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>René,</p>
+
+<p>TDMS doesn't contain time unless you explicitly save it as a channel.
+ This is most often only done if you are sampling something 
+periodically, such that the timing between events is not constant. 
+Otherwise time is usually implied from a known sampling rate. If you are
+ saving the time as a timestamp, I currently return the timestamp array 
+as a numeric vector in Matlab's time format instead of converting each 
+element to a string (like datestr). This makes it easier to do 
+computations on the time (note that a difference of 1 in this vector 
+represents a difference of 1 day, divide by 86400 to go to seconds). If 
+you still have questions feel free to contact me via email.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/323460">Rene</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jim,</p>
+
+<p>Like your work a lot. It will save a lot of disk space, since it will be no longer required to save as lvm.</p>
+
+<p>The output format is pretty straightforward, but I however can't figure out what variable contains the array with sample times.
+<br>I figure the tdms-file must hold the time since excel can grab it from there.</p>
+
+<p>Could you tell me whether the sample time is also imported into matlab?</p>
+
+<p>Best regards,
+<br>René</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Anthony,</p>
+
+<p>  Yes this problem is solved. I tend to send emails offline.</p>
+
+<p>This is the email I sent to Kevin. Let me know if you need anything else:</p>
+
+<p>EMAIL TO KEVIN:
+<br>Whoever is giving you the data is most likely not closing the files 
+properly. In addition they are writing the files really inefficiently.</p>
+
+<p>In general every time you write to the file a additional index header
+ is created. It is more efficient to write 100k values to a file than to
+ write 1 value, 100k times with 100k headers. In this case the NAV info 
+is being written in one sample, then the TANDEM is being written for 200
+ samples. It would be more efficient to write these to some queue in 
+memory and then dump them to file occasionally.</p>
+
+<p>That being said you can read a portion of your files if you change the following:
+<br>Assuming you are not doing any fancy reading:
+<br>- TDMS_readFileHelper_v1 - comment out near line 187 which says if eofPosition ~= ftell(fid)
+<br>- In TDMS_processLeadIn - around line 34, comment out the error and add the following:
+<br>        flags = [];
+<br>        info  = [];
+<br>        return
+<br>- In TDMS_preprocessFile - around line 180, write the following:
+<br>    if isempty(flags)
+<br>        nSegs = nSegs - 1;
+<br>        break
+<br>    end</p>
+
+<p>Essentially you are just stopping the code when you get to the error 
+and returning only what you have up until that point. What you have in 
+that file is alot already. My guess is you are only missing a bit of 
+data at the end but I haven't bothered to check that ...</p>
+
+<p>A few others have had similar errors but there is a flag in the 
+header which is specifically for ending too early. This is the first 
+time I have seen the header itself be corrupt like this. Perhaps that is
+ due to working with the tdms file and not the index file.</p>
+
+<p>Good luck and let me know if those changes get things working for you or not.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/310595">Anthony</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jim,</p>
+
+<p>Was there ever a solution to Kevin's error? I seem to be getting the same error when i run the Matlab code.  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/105492">Harm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@uwe: I have used this function on 64bit Matlab (linux and win64) without any problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/61394">Uwe Lelke</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can I also read simple TDM-files with 64-bit Matlab?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Farhan: Sorry about the delayed 
+response. I'm getting ready for a conference and I'm in a bit of a rush 
+to finish things up. I'm glad you got things working. I'll add a check 
+for your error so that others get a more obvious error message. Thanks!</p>
+
+<p>Kevin: File size shouldn't be an issue. In fact I wrote the code 
+specifically to support very large files in which you can do partial 
+reads and process the data before reading more. See my private message 
+on how we might be able to resolve your issue.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/266834">farhan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jim, 
+<br>I resolved the issue, there were some empty Group names that our 
+LabView code was forgetting to assign.  We fixed that problem in the 
+LabView code and now the TDMS converts beautifully into a data 
+structure.
+<br>Thank you!
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/172548">Kevin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Many thanks for this work it's 
+great but I have an issue when I try to read a bigger file : few MB 
+works well but with a 80 MB file I get this error : 
+<br>" 
+<br>??? Error using ==&gt; TDMS_processLeadIn at 33 
+<br>Unexpected lead in header</p>
+
+<p>Error in ==&gt; TDMS_preprocessFile at 179 
+<br>[flags,info,eof_error] = TDMS_processLeadIn(fid,lastLetter);</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 226 
+<br>metaStruct = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Error in ==&gt; TDMS_getStruct at 57 
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:}); 
+<br>" 
+<br>Anyway it's working great for the smaller files.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/266834">farhan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jim, 
+<br>I successfully used your code with an older version of our TDMS, but
+ now I am getting an error.  The file is intact in that it can open in 
+the Excel reader.</p>
+
+<p>&gt;&gt; TDMS_readTDMSFile('LOG_2012-10-08_10-53-27.tdms')
+<br>??? Improper assignment with rectangular empty matrix.</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 275
+<br>        groupIndices(curGroupCount)     = I_groupObject;</p>
+
+<p>Any help would be greatly appreciated!
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/267805">Pian Xiaochuan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jim, I really appreciate your work. It helps me a loooooooooooooooooooot!!!</p>
+
+<p>Marshall</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122878">Larry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This code was a god send for me.  
+Very well written and documented, functional and efficient.  Thanks so 
+much for contributing this to the public, Jim.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dedric Xu recently reported 
+observing a problem with the code which turned out to be a bug. If I 
+really think hard, I convince myself that it might be possible to have 
+the bug he was observing occur without any noticeable code failure. I 
+would recommend updating the code to V2.5 when you can (once it posts). 
+The bug came from interpreting NI documentation too literally. They have
+ acknowledged the poorly worded documentation and said they will update 
+it. My apologies to anyone else this effected, although I sincerely 
+expect that it was basically no one.</p>
+
+<p>More details can be found in the version info file.</p>
+
+<p>Although I am currently working on other things, I still have in mind the following updates:</p>
+
+<p>1) Port of the code to an object oriented nature. Part of this 
+involves creating more functions. I stayed away from this due to speed 
+concerns with function call overheads and data passing but my decision 
+obviously makes debugging and updating more difficult, as well as 
+potential "optional" mex substitutions at key bottleneck points.
+<br>2) A TDMS viewer GUI
+<br>3) Support to optionally read data directly into a double vector, 
+instead of the format it was written in and converting after the fact.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/268177">Toby scientis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>After lots of frustration with the code that NL wrote, this worked perfectly on the first try. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You need to add the subfunction 
+folder to your path as well. I eventually want to make this a class 
+which makes some methods private and hidden, but in the mean time the 
+sub functions folder just helps delineate between functions you should 
+call and functions you shouldn't.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/256229">Hari Patel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I tried to read .tdms file with what you have in readMe.txt and I got following error:
+<br>&gt;&gt; filename = 'Digital_Input.tdms';
+<br>&gt;&gt; my_tdms_struct = TDMS_getStruct(filename)
+<br>data = TDMS_readTDMSFile ('Digital_input.tdms')</p>
+
+<p>??? Undefined function or method 'TDMS_handleGetDataOption' for input arguments of type
+<br>'struct'.</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 213
+<br>TDMS_handleGetDataOption('check',paramsStruct)</p>
+
+<p>Error in ==&gt; TDMS_getStruct at 57
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});
+<br> 
+<br>??? Undefined function or method 'TDMS_handleGetDataOption' for input arguments of type
+<br>'struct'.</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 213
+<br>TDMS_handleGetDataOption('check',paramsStruct)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243309">Laura</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243309">Laura</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot for the reply and indeed also again the solution Jim, working perfectly!!
+<br>(I didn't realized I had done such a change, my mistake)
+<br>Thanks again</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John:</p>
+
+<p>Thanks for the helpful comments. I started writing this file in late 
+2010 since v2 TDMS files weren't supported by the NI driver, as well as 
+because it meant Mac users in the lab were asking me to read files. I 
+thought for sure NI would be rolling out a driver for v2 but after 
+enough waiting I decided to create my own version. I was quite surprised
+ when I was done with writing the code that there was another version 
+already available. I am not sure how I missed this is in my numerous 
+online searches. There are actually multiple versions of the code you 
+mentioned available. The first version I tried I believe was v2 (still 
+available online) and the enumeration of data types was (is?) wrong. 
+That's a HUGE mistake and the code is still posted. I've looked at the 
+other files and I believe with v6 those implementing the code didn't 
+realize that multiple reads of data are possible within a single 
+"header" (for lack of a better word). This means you may write 2000 
+values to file and only get 100 back, when in reality you need to read 
+the file 19 more times to get all 2000 samples. Version 9 is much better
+ although it doesn't have the same functionality that mine does, 
+particularly the ability to read only a part of a file, or to read 
+interleaved data. At the time of this writing I believe that is the 
+case, obviously this may change.</p>
+
+<p>I think there are a few key points here though:
+<br>1) Posting multiple versions of the same file is not a good idea. 
+Versions 2 &amp; 6 shouldn't exist on the file exchange, unless perhaps 
+as links to some website for archival purposes, or with big warning 
+signs saying "This code doesn't work." 
+<br>2) More importantly, I think this points out the need for better 
+code integration between files on file exchange, both in terms of shared
+ authorship and in terms of the ability to create entry points to data. 
+Imagine if on the Mathworks website we could create a section titled 
+"File processors" and under it there could be a link to TDMS (National 
+Instruments). On that page there could be a short description about the 
+format along with the various solutions that people have offered. In 
+general I think the File Exchange is outdated and not effective. I 
+believe there have been some attempts to write wrappers around the file 
+exchange but that these have been shut down by TMW. Even now I'm moving 
+my new code to github where although it loses its association with the 
+language/program, I feel there is a better chance that someone can 
+contribute to my code and help to make community software.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101146">John F</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ladies and gents, this file is 
+working great. If you're using an older version of Matlab, you'll have 
+to change a couple of the "~" placeholders with what I'm calling "dummy 
+variables" because the ~ is not recognized.</p>
+
+<p>IF ANYONE IS INTERESTED, there is another TDMS conversion program 
+called convertTDMS (v6). I was spinning my tires like mad trying to 
+figure out why that code wasn't working properly. </p>
+
+<p>Unfortunately, convertTDMS would only read part of my file. This one works like a dream.</p>
+
+<p>If anyone has any idea why convertTDMS was only reading part of my file, I'd love to hear your theories.</p>
+
+<p>Best,</p>
+
+<p>JF
+<br>Former Noob, Current Novice</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243309">Laura</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>P.S.: the different kinds of data 
+is only a problem when working with the files modified to have double 
+precision. It does work with the original version, but then, with single</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243309">Laura</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi again Jim!, </p>
+
+<p>I continue making use of your TDMS converter (really a good work!) 
+after your successful recommendations to convert the tdms data in double
+ format. </p>
+
+<p>However I have found another small issue that prevents me to 
+successfully convert my new tdms files. I have been taking a look, but 
+again, I have not been able so far to fix it. When trying to run the 
+converter, I find the following error:</p>
+
+<p>??? Attempted to access dataTypes(10); index out of bounds because numel(dataTypes)=3.</p>
+
+<p>Error in ==&gt; TDMS_readFileHelper_v1 at 76
+<br>            if any(dataTypes ~= dataTypes(10))</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 249
+<br>    data = TDMS_readFileHelper_v1(fid,optionStruct,metaStruct,paramsStruct);</p>
+
+<p>Error in ==&gt; TDMS_getStruct at 57
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>and indeed my tdms files have two types of data: DT_FLOAT, (the only 
+existing one in the first tdms that I was dealing with), but also the 
+last group of data which is now DT_DOUBLE. </p>
+
+<p>What should I do if my tdms file has two types of data? Can I handle it with this converter?</p>
+
+<p>Thanks a lot in advance for whenever you have the time to reply to this request!</p>
+
+<p>Best regards,
+<br>Laura</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/127149">Richard</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much, Jim.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/255677">Brian Kaul</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dedric, please check my email.  Thanks. 
+<br>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/252706">Dedric Xu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jim,
+<br>I've encounteered a maddening problem. I have tried to use your 
+function to read my tdms file,but failed. And my file is a little 
+larger, about 60MB.</p>
+
+<p>When I ran your function, it crashed.</p>
+
+<p>The function I used is [output,metaStruct] = TDMS_getStruct(filePath,4);</p>
+
+<p>And the program has ran about 20min,then it crashed.</p>
+
+<p>I gtt the following error:</p>
+
+<p>Warning: Warning: FOR loop index is too large. Truncating to 2147483647. 
+<br>&gt; In TDMS_readFileHelper_v1 at 66
+<br>  In TDMS_readTDMSFile at 249
+<br>  In TDMS_getStruct at 57 
+<br>Error using TDMS_readFileHelper_v1 (line 184)
+<br>Catastrophic error detected, code probably has an error somewhere</p>
+
+<p>Error in TDMS_readTDMSFile (line 249)
+<br>    data = TDMS_readFileHelper_v1(fid,optionStruct,metaStruct,paramsStruct);</p>
+
+<p>Error in TDMS_getStruct (line 57)
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>Is it a Matlab version issue or am I missing something else?</p>
+
+<p>Best regards, 
+<br>Dedric</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/242677">Michael Kung</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243309">Laura</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It worked perfectly!Thanks a lot for the program and for the fast help! 
+<br>It is really the best work I  have found online for tdms conversion</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243309">Laura</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Laura, you are pointing out an 
+issue that I thought would be good to address but that I just haven't 
+gotten to yet. In general I have found it is good to respect the data 
+type so as to prevent memory overflow for a user, but there are 
+obviously times when you want things read in as a double.</p>
+
+<p>I eventually wanted to handle this more gracefully but you can try the following hack to get things to work:
+<br>1) in TDMS_initData, remove the string specification from zeros, in your case it sounds like you want case {9 25} to be:
+<br>output = zeros(1,nSamples) instead of output = zeros(1,nSamples,'single')
+<br>2) in TDMS_getTypeSeekSizes change the read specification to be 
+"type" instead of "type=&gt;type", in your case you want 'single' 
+instead of 'single=&gt;single'</p>
+
+<p>These two changes should make it so that all doubles are read as 
+singles. I eventually want to make a cleaner fix but I've been too busy 
+lately with other things.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243309">Laura</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It is some time that I am playing 
+with your routines. It is a fantastic work. However, although it is 
+working fine to convert to matlab a complex .tdms file, I didn't succeed
+ in modifying the precision of the converted values.  I guess is 
+specified in the readOptions (different from default), and specifically 
+called in the subroutines TDMS_getTypeSeekSizes and 
+TDMS_readFileHelper_v1. I am not a advanced matlab user. I would really 
+appreciate if you could help me to change those settings. 
+<br>My problem consists in that I would like to have the record the structured data in double precision instead of in single.
+<br>Thanks for your work and attention</p>
+
+<p>LV</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/236030">Sergiy</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/233889">John Vazey</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I get an error 
+<br>??? Error using ==&gt; TDMS_readFileHelper_v1 at 188
+<br>Catastrophic error detected, code probably has an error somewhere</p>
+
+<p>Has anyone else had this problem? </p>
+
+<p>JV </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/203916">Blaine</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm new to TDMS files I just 
+assumed that they can all be read the same. The test file I have is just
+ an example file I downloaded from NI. I wasn't aware that Raw DAQ MX 
+was different than any other TDMS file.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Regarding improvements in 
+documentation, that is probably one area to improve. Raw DAQ MX data is a
+ proprietary Labview format and I've been turned down in requests to get
+ specifications on that type. I've managed to parse a couple of examples
+ but since I have had so few examples to go off of I haven't tried 
+implementing it. In my experience the raw format is really just read as a
+ normal data type (int16 in my experience??) with properties that 
+specify how to scale that raw data into measured data. I don't know how 
+to extract the real data type from their meta information. I could 
+technically just treat it as some data type, say uint8, but to parse the
+ data generally (not always) relies on knowing the size of the data 
+type. In addition there is some strange buffering of the meta 
+information which I can manually hard code around but I am not sure if 
+it is always present.</p>
+
+<p>That being said, if you have an example file I would be interested in
+ looking at it so that I could eventually offer some workarounds. As I 
+said I have had some luck in extracting the data.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/203916">Blaine</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I tried to open my large data file with:</p>
+
+<p>[tmp,metaStruct] = TDMS_readTDMSfile('C:\Users\bjmarti4.NDC\Desktop\FIRST_LIGHT_CO2.tdms','GET_DATA_OPTION','getnone')</p>
+
+<p>I get the following error:</p>
+
+<p>??? Error using ==&gt; TDMS_processLeadIn at 50
+<br>Currently code is unable to ignore/handle Raw Daq MX data</p>
+
+<p>Error in ==&gt; TDMS_preprocessFile at 179
+<br>    [flags,info]  = TDMS_processLeadIn(fid,lastLetter);</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 223
+<br>metaStruct   = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Error in ==&gt; TDMS_exampleFunctionCalls at 95
+<br>[tmp,metaStruct] =
+<br>TDMS_readTDMSfile('C:\Users\bjmarti4.NDC\Desktop\FIRST_LIGHT_CO2.tdms','GET_DATA_OPTION','getnone') </p>
+
+<p>I was able to open a small test file, but when I try to open my data file is when I get the error</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You can be as specific about 
+reading data as you would like. See the documentation file 
+TDMS_retrievingSubsets. You can get as fine grained in reading of the 
+data as you would like, specifying down to the channel and sample 
+numbers if you like. Please let me know if there is anything about the 
+documentation you think should be clarified.</p>
+
+<p>Looking over this more carefully it appears that I have made an error
+ in my documentation related to the meta_struct. I will be updating that
+ soon.</p>
+
+<p>The main error is that subsequent calls is that if you read more more
+ data and want to use the metaStruct from a previous call to reduce 
+parsing time, you still need to pass in the filename again:</p>
+
+<p>TDMS_readTDMSfile(filename,'META_STRUCT',metaStruct,etc)</p>
+
+<p>I tend to recommend using TDMS_getStruct, in which case you would use:</p>
+
+<p>TDMS_getStruct(filename,versionNumber,{'META_STRUCT' metaStruct etc})</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/203916">Blaine</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is it possible to only read 
+sections of a large (~3.5 GB) TDMS file with your code? I would like to 
+work with pieces of the data at a time. If so, how would I do it?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Andreas, I am unaware of any bugs in the code at this time. Please check the message I sent you.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/195996">Andreas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Does the Code work with Matlab 7.11 ?</p>
+
+<p>I've tried it on a 32bit (XP) and a 64bit (Windows7) System with various TDM/TDMS files. 
+<br>Depending on the type of input file I get 2 different error messages. For native sample files from NI the reaction is:</p>
+
+<p>&gt;&gt; my_tdms_struct = TDMS_getStruct(filePath);
+<br>??? Error using ==&gt; TDMS_processLeadIn at 33
+<br>Unexpected lead in header</p>
+
+<p>Error in ==&gt; TDMS_preprocessFile at 179
+<br>    [flags,info]  = TDMS_processLeadIn(fid,lastLetter);</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 223
+<br>metaStruct   = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Error in ==&gt; TDMS_getStruct at 57
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});
+<br> </p>
+
+<p>My self-generated TDMS files (read with NI Diadem and Excel importer without problems) gave</p>
+
+<p>??? Subscripted assignment dimension mismatch.</p>
+
+<p>Error in ==&gt; TDMS_preprocessFile at 456
+<br>            rawDataInfo(curIndex).dataMatrix(indices,2) = ...</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 223
+<br>metaStruct   = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Error in ==&gt; TDMS_getStruct at 57
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>Is it a Matlab version issue or am I missing something else?</p>
+
+<p>Best regards,
+<br>Andreas
+<br>[I'm a different Andreas than the one who posted here before..]</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Andreas,</p>
+
+<p>  I've known about that bug for a while I just haven't uploaded a fix
+ yet. I had been a bit slow since I wanted to incorporate some other 
+changes and it is an error that will be thrown as opposed to failing 
+silently and pretending to work. I'll upload a modification very soon 
+but for now you just need to replace in that particular case structure 
+(starting around line 100) in TDMS_readFileHelper_v1 the following:
+<br>dataType -&gt; change to -&gt; dataTypes(1) </p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187629">Andreas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jim,</p>
+
+<p>It looks like your script does exactly what I need. But when I tried 
+to use it today, I get the following error with my tdms file:</p>
+
+<p>&gt;&gt; test=TDMS_readTDMSFile('test.tdms')</p>
+
+<p>??? Undefined function or variable "dataType".</p>
+
+<p>Error in ==&gt; TDMS_readFileHelper_v1 at 106
+<br>                    temp    = fread(fid,numValuesRead*nChans,precisionType{dataType});</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 258
+<br>    data = TDMS_readFileHelper_v1(fid,optionStruct,metaStruct,paramsStruct);
+<br> 
+<br>Reading the index file is working fine and i get the following result:</p>
+
+<p> &gt;&gt;test=TDMS_readTDMSFile('test.tdms_index')</p>
+
+<p>test = 
+<br>              rootIndex: 1
+<br>           groupIndices: 2
+<br>             groupNames: {'Analog Input'}
+<br>            chanIndices: {[3 4 5 6 7]}
+<br>              chanNames: {{1x5 cell}}
+<br>                   data: {[]  []  []  []  []  []  []}
+<br>              propNames: {{1x1 cell}  {1x0 cell}  {1x1 cell}  {1x1 cell}  {1x1 cell}  {1x1 cell}  {1x1 cell}}
+<br>             propValues: {{1x1 cell}  {1x0 cell}  {1x1 cell}  {1x1 cell}  {1x1 cell}  {1x1 cell}  {1x1 cell}}
+<br>        objectPathsOrig: {'/'  '/'Analog Input''  '/'Analog 
+Input'/'T''  '/'Analog Input'/'U''  '/'Analog Input'/'I''  '/'Analog 
+Input'/'B''  '/'Analog Input'/'H''}
+<br>    numberDataPointsRaw: [0 0 28000 28000 28000 28000 28000]
+<br>               dataType: [0 0 10 10 10 10 10]
+<br>           dataTypeName: {'void'  'void'  'double'  'double'  'double'  'double'  'double'}</p>
+
+<p>Maybe you have a tip for me what I have to change in the script to read my tdms file?</p>
+
+<p>Thank you in advance.</p>
+
+<p>Best regards</p>
+
+<p>Andreas
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>That shouldn't be a problem.  The raw format is currently unsupported because its type is unspecified.  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/170156">Jeffrey Fletcher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great piece of work - thanks.
+<br>I get an erro when trying to read by TDMS file created directly by the NI-DAQmx .NET TdmsLogging function.  The error stack is:</p>
+
+<p>??? Error using ==&gt; TDMS_processLeadIn at 50
+<br>Currently code is unable to ignore/handle Raw Daq MX data
+<br>Error in ==&gt; TDMS_preprocessFile at 175
+<br>    [flags,info]  = TDMS_processLeadIn(fid,lastLetter);
+<br>Error in ==&gt; TDMS_readTDMSFile at 225
+<br>metaStruct = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);
+<br>Error in ==&gt; TDMS_getStruct at 57
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});
+<br> 
+<br>It appears that "Raw DAQmx data" is not currently supported.  It's 
+too bad because you can create a data logger in MATLAB (with ONLY 
+NI-DAQmx and base MATLAB installed) with a few lines of code.  I'll 
+share this with anyone interested.</p>
+
+<p>Any chance of an update that supports this data type?
+<br>Jeff </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Craig has identified a 2nd bug that
+ is present in v2.2.  This bug effects all previous versions.  Group 
+names with "/" characters are currently incorrectly parsed.  An update 
+to v2.2 will be released soon that addresses this bug, and the 
+getSubset,IgnoreSubset bug. NOTE: Both of these bugs will cause errors 
+instead of failing silently. Thanks guys for letting me know you had a 
+problem so I could improve the code.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/161100">Craig Smith</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jim, Please ignore my earlier comment.  I have resolved (stupid user error by me).  I now get to the following error:
+<br> my_tdms_struct = TDMS_getStruct(filename);
+<br>???  In an assignment  A(I) = B, the number of elements in B and
+<br> I must be the same.</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 255
+<br>        groupIndices(curGroupCount)     = I_groupObject;</p>
+
+<p>Error in ==&gt; TDMS_getStruct at 57
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>The value of curGroupCount is 1 but the I_groupObject is an array of 
+length 14 with integer values of 2 through 15.  Not sure why the 
+mismatch here</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/161100">Craig Smith</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jim,  I've just downloaded your 
+files and tried to read a TDMS file v2 astarting with what you have in 
+the readMe.txt file.  When I run TDMS_getStruct(filename) and select my 
+file I get the following error messages:
+<br>??? Undefined function or method 'TDMS_handleGetDataOption' for input arguments of type 'struct'.</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 192
+<br>TDMS_handleGetDataOption('check',paramsStruct)</p>
+
+<p>Error in ==&gt; TDMS_getStruct at 57
+<br>[temp,metaStruct] = TDMS_readTDMSFile(filePath,readOptions{:});</p>
+
+<p>Any ideas how I should proceed?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Found bug for v2.2 effecting use of GET_DATA_OPTION with values 'getSubset' or 'ignoreSubset'
+<br>This bug will already throw an error to let you know the read was incorrect</p>
+
+<p>If you get the error:
+<br>The # of requested values does not equal the # of returned values, error in code likely
+<br>Then this should be fixed by adding this line:
+<br>numValuesToGetActual(~keepDataArray) = 0;</p>
+
+<p>after these lines: (around line 133)
+<br>useSubset  = false;
+<br>subsetInfo = struct([]);
+<br>numValuesToGetActual = metaStruct.numberDataPoints;</p>
+
+<p>This will be fixed in the next version.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hmmm, </p>
+
+<p>   In general the code looks fine.  I would throw in the already 
+parsed meta structure back into the function call to save processing 
+time.  I'll send some instructions on that later.  As the code states 
+when a problem like that happens it is most likely my fault.  In general
+ I try and throw in checks where possible because I'd rather have things
+ not work and tell you than pretend to work.  I'll send you an email 
+with more instructions on how we can find a fix to this problem.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/154100">Juha Suomalainen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>Great code you have here but I think there is still a bug somewhere 
+inside it. I am able to load my whole TDMS file using you function. That
+ works fine. Unfortunately some of my datasets will be huge and due to 
+memory issues must be loaded and processed in parts. If I try to read a 
+subset of data using your function, I get an error.</p>
+
+<p>Here is my code to read and process data group by group:
+<br>---
+<br>% Get list what is inside the TDMS 
+<br>params = {'GET_DATA_OPTION','getnone'};
+<br>TDMS_Structure = TDMS_readTDMSFile(TDMS_File, params{:});
+<br>% Read and process groups from the TDMS file one by one
+<br>for GroupNumber = 1:numel(TDMS_Structure.groupNames)
+<br>    params = {...
+<br>        'GET_DATA_OPTION', 'getSubset',...
+<br>        'OBJECTS_GET', struct('groupsKeep',{{TDMS_Structure.groupNames{GroupNumber}}})};
+<br>    TempData = TDMS_readTDMSFile(TDMS_File, params{:});
+<br>    % process subset of data here
+<br>    ProcessData(TempData)
+<br>end
+<br>---</p>
+
+<p>I can read the TDMS_Structure without problems, but the subset loading call of 'TDMS_readTDMSFile' produces an error:</p>
+
+<p>---
+<br>??? Error using ==&gt; TDMS_readFileHelper_v1 at 211
+<br>The # of requested values does not equal the # of returned values, error in code likely</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 229
+<br>    data = TDMS_readFileHelper_v1(fid,optionStruct,metaStruct,paramsStruct);
+<br>---</p>
+
+<p>Is it a bug or am I just using your code with wrong parameters?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Fiona,</p>
+
+<p>   Thanks for pointing out the issue. I'm really busy early this week
+ but I might be able to look at this issue Thursday or Friday.  See me 
+email for more details.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/153947">Fiona</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for uploading!
+<br>When I tried to read my TDMS file, I got the errors below. I wonder if anyone can help. Thanks!</p>
+
+<p>??? Error using ==&gt; TDMS_preprocessFile at 375
+<br>The remaining data doesn't split evently into chunks, estimated # of chunks: 5.000000e-001</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 198
+<br>metaStruct = TDMS_preprocessFile(fid,tdmsFileName,paramsStruct);</p>
+
+<p>Error in ==&gt; Test at 11
+<br>[finalOutput,metaStruct] = TDMS_readTDMSFile(tdmsFileName)</p>
+
+<p> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yes it does.  I use it with 64 bit Windows and it has been tested with a 64 bit Mac.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/57825">Kevin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>please advise if this works with 64bit matlab</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Guosong Zhang
+<br>In 2009b the ~ was introduced as a way to ignore outputs.  This can 
+be especially useful if that output requires a lot of memory.  I've 
+gotten in the habit of putting those in although I realize not everyone 
+may be using 2009b or later.  I might upload a fix in which I put dummy 
+variables back, although I'd be tempted instead to write a small script 
+that allows checking the version and doing a replace in all the files if
+ needed.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/136983">Guosong Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>??? Error: File: TDMS_readTDMSFile.m Line: 453 Column: 11
+<br>Expression or statement is incorrect--possibly unbalanced (, {, or [.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/105492">Harm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works great! The NI tool with the DLLs failed on me (64bit version does not seem to work, 32 bit version was OK).
+<br>But this one is better; and I think it will work on Linux systems as well.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/105492">Harm</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29549">Edward Zechmann</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/123399">Ray</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Joacim,</p>
+
+<p>  I fixed the unicode bug.  Ver. 1.1 should be up soon.  I had 
+misread some documentation regarding # of bytes vs # of characters.  
+Thanks for pointing out my mistake.</p>
+
+<p>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34870">Jim Hokanson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi all,</p>
+
+<p>  In response to Joacim's comments:</p>
+
+<p>1) There should be no file size limitation (other than the users memory size), the out of memory indicates a parsing error.</p>
+
+<p>2) I am still quite unsure as to how well the code handles unicode.  
+The error seems to indicate an ability to properly parse a string ...</p>
+
+<p>3) If anyone sees a similar error please feel free to email an 
+example file to me and I'll gladly try and fix the code so that it is 
+handled.</p>
+
+<p>Thanks,
+<br>Jim</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122974">Joacim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Impressive amount of work you've put into this. Good job and well documented.
+<br>Tested the function on my data saved by Signal Express 2009. Works 
+for small files (&lt;6 MB) but when trying to load larger files (&gt;50 
+MB) it crashes.
+<br>I'm lazy so I downloaded the matlab_tdm_example_sp2010.zip from NI. 
+Using the nilibddc.dll and approx. 200 lines of code, including 
+comments, I'm reading even larger files (approx 320 MB)  in less than 4 
+seconds.</p>
+
+<p>Below is some info from the crash. Maybe it can help you fix the problem:</p>
+
+<p>testTDMSreading
+<br>266                 propName        = fread(fid,propNameLength,'*char')';
+<br>??? Error using ==&gt; fread
+<br>Out of memory. Type HELP MEMORY for your options.</p>
+
+<p>Error in ==&gt; TDMS_preprocessFile at 266
+<br>                propName        = fread(fid,propNameLength,'*char')';</p>
+
+<p>Error in ==&gt; TDMS_readTDMSFile at 176
+<br>[rawDataInfo,numberDataPoints,objectPaths,segInfo] =
+<br>TDMS_preprocessFile(fid2,isIndexFID2,params);</p>
+
+<p>Error in ==&gt; testTDMSreading at 34
+<br>output  = TDMS_readTDMSFile(fullfileName,optionCA{:});
+<br> 
+<br>&gt;&gt; testTDMSreading
+<br>266                 propName        = fread(fid,propNameLength,'*char')';
+<br>K&gt;&gt; propNameLength
+<br>propNameLength =
+<br>  1.9629e+009
+<br>K&gt;&gt; fid
+<br>fid =
+<br>    12
+<br>K&gt;&gt; curProps
+<br>curProps = 
+<br>  Columns 1 through 8
+<br>    'format-string'    [1x22 char]    'unit_string'    []    []    []    []    []
+<br>  Columns 9 through 20
+<br>    []    []    []    []    []    []    []    []    []    []    []    []
+<br>K&gt;&gt; iProp
+<br>iProp =
+<br>     4
+<br>K&gt;&gt; propNameLength
+<br>propNameLength =
+<br>  1.9629e+009</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">14 Jan 2011</td>
+                  <td><p>Updated description</p></td>
+                </tr>
+                <tr>
+                  <td class="date">02 Feb 2011</td>
+                  <td><p>Fixed a major bug with reading unicode.  Other small bug fixes and improvements can be seen in TDMS_VERSION_INFO.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">19 Mar 2011</td>
+                  <td><p>Ver. 1.2 - I had an incorrect minus sign when 
+reading the timestamp property which yielded an invalid year.  Data 
+timestamp reads were correct and previously tested :)
+<br>Thanks to Ed Zechmann for pointing out the problem!  Added extra conv. script v3</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Apr 2011</td>
+                  <td><p>The main update to version 2 is the ability to 
+retrieve a subset of the data from channels.  In addition I've added 
+some extra wrappers to handle data retrieval.  </p></td>
+                </tr>
+                <tr>
+                  <td class="date">29 Apr 2011</td>
+                  <td><p>I was a bit quick with the last update (v2.0).  It had some bugs with respect to parsing subsets of the data.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 May 2011</td>
+                  <td><p>2.2 Update:
+<br>Improved speed and specificity with regard to subset handling</p></td>
+                </tr>
+                <tr>
+                  <td class="date">15 Jul 2011</td>
+                  <td><p>Fixed a bug in which an error check I had in place was incorrectly being thrown.
+<br>Fixed parsing of object names with ' and / characters.</p>
+
+<p>Also allows for only reading .tdms_index files (for debugging)</p></td>
+                </tr>
+                <tr>
+                  <td class="date">12 Oct 2011</td>
+                  <td><p>Fixed some bugs with interleaved data, as well 
+as a bug in reading timestamp data (not properties) which failed with 
+dates prior to 1904.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">30 Jul 2012</td>
+                  <td><p>Bug fix (potentially silent bug), see version notes file.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416125600482&amp;cv=7&amp;fst=1416125600482&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/30023-tdms-reader&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D2%26sort%3Dratings_desc%26term%3DFile+Exchange+Select&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

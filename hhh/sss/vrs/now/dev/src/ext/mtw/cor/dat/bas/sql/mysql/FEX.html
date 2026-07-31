@@ -1,0 +1,1742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>MySQL Database Connector -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8663-mysql-database-connector" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8663-mysql-database-connector" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/8663-mysql-database-connector?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      No BSD License
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#nolicense" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/8663-mysql-database-connector" class="manifest_title">MySQL Database Connector</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/8663-mysql-database-connector/content/mysql.m" class="script" title="Script">mysql.m</a>
+            
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/8663-mysql-database-connector/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:95.0%;">
+                <p>4.75</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              4.8
+              <span class="divider"> | </span>
+              <a href="#feedback">27 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">93 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 10.8 KB</span>
+          <span id="fileid">File ID: #8663</span>
+        </div>
+
+        <div id="details">
+          <h1>MySQL Database Connector</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">06 Oct 2005 </span>
+              <span id="date_updated">(Updated 10 Oct 2005)</span>
+          </p>
+
+
+
+          <p id="summary">Connect to MySQL database.</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F8663-mysql-database-connector&amp;watching=8663" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This C++ Mex-function lets you connect to a MySQL 
+database server. The results of SELECT queries are converted to MATLAB 
+native datatypes. Data can be inserted into the database (slowly) by 
+construcing the INSERT string in MATLAB. It can connect to several 
+servers simultaneously (or multiple connections to one server). See 
+mysql.m for usage instructions. Must be compiled before use; brief 
+instructions are in the C++ file or try <a href="http://mmf.utoronto.ca/resrchres/mysql/">http://mmf.utoronto.ca/resrchres/mysql/</a></p></td>
+          </tr>
+  
+            <tr>
+              <td class="label">Acknowledgements</td>
+              <td>
+                <br>
+                  This submission has inspired the following:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/12027">A Powerful Sidekick: Using MySQL for High-Volume Data Manipulation in Matlab</a>, <a href="http://www.mathworks.com/matlabcentral/fileexchange/17897">Access a MySQL database</a>, <a href="http://www.mathworks.com/matlabcentral/fileexchange/9549">Myblob</a>
+              </td>
+            </tr>
+        
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.0.1 (R14SP1)
+            </td>
+          </tr>
+  
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Need the MySQL client libraries and a standard C++ 
+compiler (MSVC++ or GCC). Tested on Windows and Linux but should work on
+ other platforms.</td>
+            </tr>
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22connect%22" rel="nofollow">connect(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22connector%22" rel="nofollow">connector(3)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data%22" rel="nofollow">data(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+export%22" rel="nofollow">data export(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+import%22" rel="nofollow">data import(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22database%22" rel="nofollow">database(4)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mysql%22" rel="nofollow">mysql(3)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22sql%22" rel="nofollow">sql</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22utilities%22" rel="nofollow">utilities(2)</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/8663-mysql-database-connector">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(48)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">23 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/61417">Ryszard Maciol</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/105216">Kaare</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>it seems to not play very well with parfor?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/105216">Kaare</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very nice, though it needs one 
+feature: it is a bother to guess how many columns are outputted, and to 
+name all columns when that number is large. I really need some sort of 
+cell / struct option.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">05 Mar 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/117908">Nicolas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>WIMC:
+<br>MATLAB to MySQL through SSH tunnel:
+<br>http://b_p.scripts.mit.edu/www/tips-tools/matlab-mysql-ssh-tunnel</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/93000">Bonolo</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I got this to work on Mac OSX. 
+<br> 
+<br>1. open terminal and type export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql-5.5.18-osx10.6-x86_64/lib/</p>
+
+<p>2.  launch matlab from terminal /Applications/MATLAB_R2011a.app/bin/matlab</p>
+
+<p>3. In matlab run command (pointing it to the locations of your mysql libraries and header files):
+<br>mex -I/usr/local/mysql-5.5.18-osx10.6-x86_64/include/ -L/usr/local/mysql-5.5.18-osx10.6-x86_64/lib/ -lmysqlclient mysql.cpp
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Nov 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/189036">Kenji</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank you for your advise.</p>
+
+<p>I reffered to external link and other explanations and could connect  MySQL in Matlab.</p>
+
+<p>These works is really useful!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">15 Nov 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/198818">Uwe Zimmermann</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>yes, it is troublesome to get this working!</p>
+
+<p>First of all, the external link is no longer valid. The correct link 
+is now http://www.cims.nyu.edu/~almgren/mysql/ (why doesn't Mathworks 
+provide a permanent webspace for such contributions?)</p>
+
+<p>Secondly as pointed out by others, the package cannot be compiled using the Mathlab compiler! </p>
+
+<p>Under Windows install the free MS Visual C++ Express from 
+http://www.microsoft.com/visualstudio/en-us/products/2010-editions/express</p>
+
+<p>You also need the MySQL connector library package (libmysql) from http://www.mysql.com/downloads/connector/</p>
+
+<p>Then, finally you can compile the package and get it to run!!!</p>
+
+<p>Uwe.</p>
+
+<p>P.S.: I think there should be a trouble-free built-in access to MySQL and other databases in Matlab!</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">01 Nov 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/189036">Kenji</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank you for great information anytime.
+<br>I wanna interact with MySQL database(MDB) from MATLAB.
+<br>Examples)
+<br>・Input or output data  by accessing the MDB from MATLAB.</p>
+
+<p>I have some question.</p>
+
+<p>Are these thinking correct ?</p>
+
+<p>Question.
+<br>1. What is function of  'mysql.m' and 'mysql.cpp' .
+<br>2. How to use these files.</p>
+
+<p>About 1.
+<br>I guess that contents of these files are "how to access the MDB from Matlab".
+<br>・mysql.m shows how to describe source of Accessing the MDB.
+<br>・I couldn't understand function of mysql.cpp.</p>
+
+<p>If my idea is incorrect, please tell me intuitively.</p>
+
+<p>About 2.
+<br>・Only confirm syntax of source description using mysql.m.
+<br>    thus mysql.m is comment file.
+<br>・What is purpose of running mysql.cpp?</p>
+
+<p>Please teach me correct opinion to my question. </p>
+
+<p>[MATLAB:R2011b OS:Windows 7]</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/174630">yang yang</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Obviously this file works great and 
+received excellent review.  But I can't even get it work.  I downloaded 
+"all the files", including 'mysql.m' and 'mysql.cpp' and included them 
+in the path. When I type in mysql('open',...,...,...), i got the message
+ basically saying that this is a script instead a function.  Can anyone 
+give me a clue what is going on here?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">13 Jul 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/162985">Robert</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Everything works great. I was 
+wondering if there is a way to avoid giving an output for each column of
+ data. I have 137 columns and individually writing out 
+[A(:,1),A(:,2),...,A(:,137)] seems pointless. Suggestions?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/129506">Avtandil Tkabladze</a>
+        </span>
+      </td>
+      <td><span class="comment"><p> O.K. here is a my story. It can be useful
+<br>for somebody else.
+<br>I did everything as it is described above.
+<br>System, Windows 7, MatLAb2008a (64 bit), Mysql 5.5 (64bit).
+<br>I compiled the mex library. The output was libmyql.mexw64.
+<br>Matlab did not understand mysql command, tried to run mysql as a function.
+<br>Irenamed the library libmysql.mexw64 to mysql.mexw64 and everything works.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">15 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/129506">Avtandil Tkabladze</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Please help.
+<br>I have MatLab 2008a (it is supposed to be 32 bit) on Windows 7 64 bit machine. I installed 32 bit MySQL.
+<br>I have Visual Studio 2008.</p>
+
+<p>Old mysql.dll library does not work.
+<br>mex gives compilation error 
+<br>Error using ==&gt;mex at 2007.</p>
+
+<p>Can somebody explain me where is the problem?
+<br>Did you try to install 32 bit MatLab and MySQl on 64 bit platfform succesfully?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">07 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/126164">Antonio</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I got it working, but forgot to post in here.</p>
+
+<p>It was simpler than I thought.</p>
+
+<p>I just had to type on the terminal</p>
+
+<p>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:my_path</p>
+
+<p>where my_path is the path for mysql library.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Feb 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/126164">Antonio</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi All,</p>
+
+<p>I have been having a problem to run the file in ubuntu x86_64.</p>
+
+<p>I downloaded the libraries and I compile it with the following command:</p>
+
+<p>mex -v -g -Ipath/include -Lpath/lib -lmysqlclient mysql.cpp</p>
+
+<p>It works and creates the file: mysql.mexa64.</p>
+
+<p>However, when I try to run the file, I get the following error:</p>
+
+<p>??? Invalid MEX-file 'mysql.mexa64': libmysql.so.16: cannot
+<br>open shared object file: No such file or directory.</p>
+
+<p>My linux version is:
+<br>Linux 2.6.35-25-generic #44-Ubuntu SMP Fri Jan 21 17:40:44 UTC 2011 x86_64 GNU/Linux
+<br>and my matlab version is:
+<br>MATLAB Version 7.9.0.529 (R2009b)</p>
+
+<p>Can anyone help me?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">02 Dec 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/117908">Nicolas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Alex Harper
+<br>I have no idea how respond to your PM, so i'm writing it here:</p>
+
+<p>#quote Alex Harper:
+<br>Hi, did you manage to get Matlab and mySQL talking using the 
+connector? I have a similar set up to you but I'm unsure what to do with
+ the mysql.mexw64 file which you uploaded. Any advice would be much 
+appreciated! 
+<br>#end quote</p>
+
+<p>The mysql.mexw64 file is the .dll. this seams to be a more or less new 'invention' of matlab.
+<br>compiled for a 32bit-system the ending would be .mexw32.
+<br>Acording to Robert Almgren's page all you have to do is:</p>
+
+<p>#quote Robert Almgren
+<br>mysql.dll
+<br>This is compiled against Matlab Version 4 (Release 14) and MySQL 
+4.1.11, on x86 using Microsoft Visual C++ 2003. Put this and mysql.m 
+into $MATLAB\toolbox\local, or keep them in your working directory. 
+($MATLAB means Matlab's home directory, usually something like 
+C:\Program Files\MATLAB704.)
+<br>#end quote</p>
+
+<p>He simply hasn't updated his page to the new matlab standards (.mexw32/.mexw64 instead of .dll).</p>
+
+<p>I simply added the path containing the files in my code by:
+<br>   addpath(path);
+<br>and it worked.</p>
+
+<p>I hope i could help.
+<br>Greetings!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">30 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/117908">Nicolas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>sorry for the previous post.
+<br>problem was that i installed a 32 bit version of mysql.
+<br>now (with 64 bit) it works fine.</p>
+
+<p>however a .dll has not been created. instead a file mysql.mexw64 was created by using 
+<br>mex -I"C:\Program Files\MySQL\MySQL Server 5.1\include" -DWIN32 
+mysql.cpp "C:\Program Files\MySQL\MySQL Server 5.1\lib\opt\libmySQL.lib"</p>
+
+<p>in case anyone is insterested:
+<br>MySQL and Matlab for Win7 with Matlab 7.11.0 (R2010b) [64 bit] and Mysql 5.1.53 [64bit]
+<br>http://www.megaupload.com/?d=UGNG4F13
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">30 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/117908">Nicolas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Same here:
+<br>Need .dll for Matlab R2010b (64 bit) and Mysql 5.1 (64bit) running Win 7.</p>
+
+<p>currently i'm receiving the following error:
+<br>************************************************************
+<br>&gt;&gt; mex -I"C:\Program Files (x86)\MySQL\MySQL Server 
+5.1\include" -DWIN32 mysql.cpp "C:\Program Files (x86)\MySQL\MySQL 
+Server 5.1\lib\opt\libmySQL.lib"
+<br>   Bibliothek 
+"C:\Users\alln\AppData\Local\Temp\mex_ZevDM0\templib.x" und Objekt 
+"C:\Users\alln\AppData\Local\Temp\mex_ZevDM0\templib.exp" werden 
+erstellt. 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes 
+Symbol "mysql_fetch_row" in Funktion ""void __cdecl fancyprint(struct 
+st_mysql_res *)" (?fancyprint@@YAXPEAUst_mysql_res@@@Z)". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes 
+Symbol "mysql_data_seek" in Funktion ""void __cdecl fancyprint(struct 
+st_mysql_res *)" (?fancyprint@@YAXPEAUst_mysql_res@@@Z)". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes 
+Symbol "mysql_fetch_fields" in Funktion ""void __cdecl fancyprint(struct
+ st_mysql_res *)" (?fancyprint@@YAXPEAUst_mysql_res@@@Z)". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes 
+Symbol "mysql_num_fields" in Funktion ""void __cdecl fancyprint(struct 
+st_mysql_res *)" (?fancyprint@@YAXPEAUst_mysql_res@@@Z)". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes 
+Symbol "mysql_num_rows" in Funktion ""void __cdecl fancyprint(struct 
+st_mysql_res *)" (?fancyprint@@YAXPEAUst_mysql_res@@@Z)". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_select_db" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_free_result" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_affected_rows" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_field_count" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_store_result" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_query" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_real_escape_string" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_get_host_info" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_get_server_info" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_ping" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_stat" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_error" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_real_connect" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_init" in Funktion "mexFunction". 
+<br>mysql.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "mysql_close" in Funktion "mexFunction". 
+<br>mysql.mexw64 : fatal error LNK1120: 20 nicht aufgelöste externe Verweise. 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\BIN\MEX.PL: Error: Link of 'mysql.mexw64' failed. 
+<br> 
+<br>??? Error using ==&gt; mex at 208
+<br>Unable to complete successfully.
+<br>************************************************************</p>
+
+<p>any help would be appreciated!
+<br>THX!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">31 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/110601">Oliver Ross</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Since upgrading to Win 7 and 64 bit 
+the old DLL no longer works and I keep getting the "??? Attempt to 
+execute SCRIPT mysql as a function:" error. Could someone maybe post a 
+compiled version as not everyone has a compiler. I would need the dll 
+for Matlab R2010b (64 bit) and Mysql 5.1 (64bit) on a Windows 7 (64 bit 
+machine). Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/111560">Robin den Dekker</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very good!
+<br>I had some problems with compiling and stuff but in the end it is working!
+<br>Don't forget to run the install and install the Include files aswell.
+<br>I had to download MS visual c++ 2008 express because lcc wasn't working out.
+<br>Read the website carefully and it will work out</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">20 Jul 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/56828">Felix Lam</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Finally upgraded to Mac OS X 10.6.4 
+along with MySQL 5.1.48 and MATLAB R2010a, everything running in Intel 
+64 bit.  I had no problems compiling Almgren's original C++ source code 
+(have not tried the more recent mYm from SourceForge):</p>
+
+<p>&gt;&gt; mex -v -maci64 -I/usr/local/mysql/include -L/usr/local/mysql/lib -lmysqlclient_r -lSystemStubs -lpthread mysql.cpp</p>
+
+<p>and everything tested fine afterwards from within MATLAB: was able to
+ connect to MySQL, submit queries, and retrieve data.  Perhaps the 
+problems people were having was with not matching the bit lengths of 
+MATLAB and MySQL? (e.g., 64-bit MySQL with 32-bit MATLAB, or vice 
+versa).</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Jul 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102032">Yanal WAZAEFI</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">18 Jun 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/63693">Omar</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very useful. Thanks!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">18 Jun 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/63693">Omar</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Apr 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/90781">Can Baran</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>So, this function written is pretty useful (almost life saving). I have been using it since August 2009.
+<br>One comment.
+<br>Don't start your function with clear all. why?
+<br>so, let s say you opened a connection with mysql('open',....)
+<br>and u are debugging with the matlab debugger. you found the mistake and you quit debugging without closing the connection.
+<br>then if u start your script with clear all, you think you closed the
+ connection but actually that is not the case! Start with 
+mysql('closeall') and clear variables commands. that will ensure that 
+you close all of your connections before your script/program runs and 
+the memory is cleared.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">15 Mar 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/89202">CRP</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I have been able to compile this on mac 10.6.2 with the following command line:</p>
+
+<p>/Applications/MATLAB_R2009b.app/bin/mex -v -maci64 
+-I../mysql-connector-c-6.0.2-osx10.5-x86-64bit/include/ 
+-I/Applications/MATLAB_R2009b.app/extern/include/ 
+-L/Applications/MATLAB_R2009b.app/bin/maci64/ 
+-L../mysql-connector-c-6.0.2-osx10.5-x86-64bit/lib/ -lz -lmysqlclient_r 
+-lSystemStubs -lpthread mym.cpp</p>
+
+<p>Unfortuntely, upon running mym from matlab I get:</p>
+
+<p>&gt;&gt; mym
+<br>??? Invalid MEX-file 
+'/Users/cp/Downloads/mym_src_v1.0.9/mym.mexmaci64': 
+dlopen(/Users/cp/Downloads/mym_src_v1.0.9/mym.mexmaci64, 1):
+<br>Library not loaded: libmysql.16.dylib
+<br>  Referenced from: /Users/cp/Downloads/mym_src_v1.0.9/mym.mexmaci64
+<br>  Reason: image not found.</p>
+
+<p>I think this is due to the whole @loader mechanism in OS X. I think 
+this could be solved by linking the libraries statically. How do I do 
+that with mex?</p>
+
+<p>Thanks
+<br>CRP</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/85870">albrecht</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>very useful program! i'm running it on my mac (snow leopard) and with Matlab R2009b and it is very handy.</p>
+
+<p>however, i have problems with special characters such as the french 
+'é' with the fancy slash on top (accent aigu); these letters are just 
+skipped by the program when reading a text entry from the database.</p>
+
+<p>anyone knows how to solve this issue? thanks in advance.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">07 Jan 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/81569">Pete</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>After much, much hair pulling, I got this working on my windows XP machine as follows:</p>
+
+<p>First it wouldn't compile ussing lcc, and so I was getting the 
+previously reported error message 'lcc preprocessor error: mysql.cpp:10 
+Could not find include file  '. To get round this I needed an 
+alternative C/C++ compiler (cl.exe). As such I downloaded Microsoft 
+VC2005 Express.</p>
+
+<p>Then, after running mex -setup and changing the compiler to VC2005 
+Express it still wouldn't compile, complaining that cl.exe needed access
+ to windows.h. Since I had the Microsoft PlatformSDK on my computer I 
+followed the standard advice and: (i) created the directory 
+"PlatformSDK" under "%ProgramFiles%\Microsoft Visual Studio 8\VC" (ii) 
+copied the "bin", "include" and "lib" directory from the 
+PSDK-installation into this directory.  </p>
+
+<p>Then I successfully compiled from matlab, using: mex -I'C:\Program 
+Files\MySQL\MySQL Server 5.5\include' -DWIN32 mysql.cpp 'C:\Program 
+Files\MySQL\MySQL Server 5.5\lib\opt\libmysql.lib'</p>
+
+<p>Finally, when I tried to use the basic command "mysql('status')" it I
+ was getting the error "??? Invalid MEX-file 'N:\Matlab Toolboxes\mym 
+utilities\mysql.mexw32': The specified module could not be found." This 
+was caused by an inability to access the file libmysql.dll. As such, I 
+moved the file libmysql.dll from 'C:\Program Files\MySQL\MySQL Server 
+5.5\lib\opt' to 'C:\WINDOWS\system32' [this quite possibly wasn't the 
+best thing to do, but I know no better]</p>
+
+<p>It works, huzzah!</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Dec 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/28369">Todd Welti</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>In the description, it says you can 
+insert data into the database by constructing the INSERT string, but in 
+the m file, no mention of it...?!?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">01 Dec 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/78246">Matt</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I setup Matlab to use the Microsoft Visual C++ 2008 Express compiler
+<br>    &gt;&gt; mex -setup</p>
+
+<p>Then I compiled the file
+<br>    &gt;&gt; mex -DWIN32 -I'C:\Program Files\MySQL\MySQL Server 
+5.0\include' -L'C:\Program Files\MySQL\MySQL Server 5.0\lib\opt' 
+-llibmysql mysql.cpp</p>
+
+<p>Works great!!!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">14 Aug 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/66309">Rick Mediavilla</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I have also found a problem with 
+incorrect types. Variables are inconsistently returned (commonly a 
+string for a numeric) when queries include multiple columns. My 
+workaround is to restructure query to return values for only one column.
+ Alternatively, do a type check (isnumeric) and convert if necessary.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">15 Jul 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/48825">Markus Pylvanen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I have found following problem with Matlab 7.8.0.347 (R2009a), 32-bit win32 and mysql-5.1.32.</p>
+
+<p>For example when I type this command:</p>
+
+<p>"clear A B; [A B] = mysql('SELECT 1, 2 FROM TableX;'); iscell(B)"</p>
+
+<p>the result is true. I haven't found a reason why the output arguments of mysql-function are sometimes in a wrong format.</p>
+
+<p>I have tried self-compiled version and compiled version which is found here.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">08 Jul 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27495">Adam Auton</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This function is excellent... Easy to
+ use and fast. My only gripe is that it doesn't work with the 64bit OS X
+ version of MySQL. It compiles using the 64bit libraries, but crashes 
+MATLAB when you use the 'open' command. As outlined in a previous 
+comment, you need to uninstall the 64bit version of MySQL and replace it
+ with the 32bit version.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">19 Jun 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/61138">Ryan murphy</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">30 Apr 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/24181">koubaa kamal</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">25 Nov 2008</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27495">Adam Auton</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">01 Sep 2008</span></td>
+      <td>
+        <span class="author">
+          Another Happy User
+        </span>
+      </td>
+      <td><span class="comment"><p>After compiling this on OS X 10.5.4 
+(intel) against mysql 5.0.67 i86_64 libraries, running mysql('open', 
+'localhost','user_name', 'password') caused MATLAB to crash at first 
+mysql_init(conn) call.</p>
+
+<p>fixed problem by reinstalling mysql i386 version, then compiling using </p>
+
+<p>mex -v -maci -I/usr/local/mysql/include 
+-L/Applications/MATLAB_R2008a/bin/maci -lmysqlclient_r 
+-L/usr/local/mysql/lib -lpthread mysql.cpp</p>
+
+<p>Would have saved time if -lmysqlclient_r and -lpthread were mentioned in http://mmf.utoronto.ca/resrchres/mysql/ </p>
+
+<p>No problem with fractions using data type double.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">22 Aug 2008</span></td>
+      <td>
+        <span class="author">
+          Confused More confused
+        </span>
+      </td>
+      <td><span class="comment"><p>I have used this for a long time in Matlab 2006b. When upgrading to Matlab 2008, data from mysql is trunkated to integers!?!?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Apr 2008</span></td>
+      <td>
+        <span class="author">
+          Happy User
+        </span>
+      </td>
+      <td><span class="comment"><p>Very useful program, Work with WindowsXp and MySql 5.  </p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">21 Nov 2007</span></td>
+      <td>
+        <span class="author">
+          Frank Hutter
+        </span>
+      </td>
+      <td><span class="comment"><p>Since some people had problems with the header file mysql.h: 
+<br>you need to download MySQL, use the custom installation, and tell it
+ to install lib and include files; then use the appropriate directory in
+ the mex command (for me it's mex -I"C:\Program Files\MySQL\MySQL Server
+ 4.1\include" ...)</p>
+
+<p>Also, compilation didn't work for me with the Matlab lcc compiler, but with the following one (configurable with mex -setup)
+<br>Microsoft Visual C/C++ version 7.1 in C:\Program Files\Microsoft Visual Studio .NET 2003 </p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">14 Nov 2007</span></td>
+      <td>
+        <span class="author">
+          R.K. R.K.
+        </span>
+      </td>
+      <td><span class="comment"><p>Everything works great under mac osx, win32 and linux.
+<br>When I try to compile the mysql.cpp under win 64bit it fails.
+<br>I have just replaced -DWIN32 with -DWIN64 flag when trying to build it but I get many errors.</p>
+
+<p>Can someone please help?</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">21 Jun 2007</span></td>
+      <td>
+        <span class="author">
+          Carl Fischer
+        </span>
+      </td>
+      <td><span class="comment"><p>Line 769 (ish) should read:
+<br>   else if (f[j].type==FIELD_TYPE_BLOB &amp;&amp; f[j].charsetnr == 63) 
+<br>rather than 
+<br>   else if (f[j].type==FIELD_TYPE_BLOB) 
+<br>So that TEXT columns are formatted as text, not arrays of uint8.  Also, comment out lines:
+<br>                  const uLongf max_len = compressBound(plen[i]);
+<br>                    if (max_len&gt;cmp_buf_len){
+<br>                        pcmp = (Bytef*)mxRealloc(pcmp, max_len);
+<br>                        cmp_buf_len = max_len;
+<br>                    }</p>
+
+<p>To get it to compile on Linux x64 without the whole libz fiasco.  Not
+ sure if this breaks blob insertions, but I don't think it will.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">12 Jun 2007</span></td>
+      <td>
+        <span class="author">
+          Arva Hsu
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Oct 2006</span></td>
+      <td>
+        <span class="author">
+          Paul Probert
+        </span>
+      </td>
+      <td><span class="comment"><p>Very nice and handy program. Much 
+lighter and easier to maintain than going through ODBC, especially when 
+you've got 20 networked users who can't install stuff on their own. To 
+make this even easier, I managed to statically link with mysqlclient.lib
+ rather than requiring libmysql.dll to be in the windows search path. 
+Here's my notes:</p>
+
+<p>10/3/06 successfully built mysql.dll for matlab statically linked to mysqlclient, to
+<br>avoid having to have all users install libmysql.dll. Using mysql 4.1.21, matlab 6.5.</p>
+
+<p>edit mexopts.bat:</p>
+
+<p>compiler optimflags should be /MT, not /MD
+<br>linker linkflags should have /NODEFAULTLIB:MSVCRT, also ws2_32.lib advapi32.lib</p>
+
+<p>build command (in matlab):</p>
+
+<p>mex -I"c:\program files\mysql\mysql server 4.1\include" -DWIN32 -D_WINDOWS -D__WIN__ mysql.cpp ...
+<br>"c:\program files\mysql\mysql server 4.1\lib\opt\zlib.lib" ...
+<br>"d:\websave\mysql\src\mysql-4.1.21\lib_release\mysqlclient.lib"</p>
+
+<p>(not sure if the __WIN__ and _WINDOWS are needed)</p>
+
+<p>Where in d:\websave\... I had downloaded the mysql windows source distribution and
+<br>rebuilt the mysqlclient.lib using VC6. In the source tree client directory there is a nice mysqlclient.dsw
+<br>workspace that you can open and build. If I didn't build my own mysqlclient then I'd
+<br>get link errors of undefined externals like ftol2 and aulldvrm that I couldn't find anywhere.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">21 Mar 2006</span></td>
+      <td>
+        <span class="author">
+          Abhishek Tomar
+        </span>
+      </td>
+      <td><span class="comment"><p>Through this method we can simply 
+connect them. I need mysql.h header file. Please give me the address for
+ download the file or send me the file. Thanks</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 Feb 2006</span></td>
+      <td>
+        <span class="author">
+          Antonio Sabino
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi, I follow the instructions that be in the installer file, and I have the error: </p>
+
+<p>"&gt;&gt;mex mysql.cpp
+<br>lcc preprocessor error: mysql.cpp:10 Could not find include file  
+<br>Error mysql.cpp: 57  illegal initialization for parameter `n' 
+<br>Error mysql.cpp: 98  syntax error; found `t' expecting `)' 
+<br>Error mysql.cpp: 98  skipping `t' 
+<br>Error mysql.cpp: 100  undeclared identifier `t' 
+<br>Error mysql.cpp: 103  undeclared identifier `FIELD_TYPE_DECIMAL' 
+<br>Error mysql.cpp: 103  case label must be a constant integer expression 
+<br>Error mysql.cpp: 104  undeclared identifier `FIELD_TYPE_TINY' 
+<br>Error mysql.cpp: 104  case label must be a constant integer expression 
+<br>Error mysql.cpp: 105  undeclared identifier `FIELD_TYPE_SHORT' 
+<br>Error mysql.cpp: 105  case label must be a constant integer expression 
+<br>Error mysql.cpp: 106  undeclared identifier `FIELD_TYPE_LONG' 
+<br>Error mysql.cpp: 106  case label must be a constant integer expression 
+<br>Error mysql.cpp: 107  undeclared identifier `FIELD_TYPE_FLOAT' 
+<br>Error mysql.cpp: 107  case label must be a constant integer expression 
+<br>Error mysql.cpp: 108  undeclared identifier `FIELD_TYPE_DOUBLE' 
+<br>Error mysql.cpp: 108  case label must be a constant integer expression 
+<br>Error mysql.cpp: 109  undeclared identifier `FIELD_TYPE_NULL' 
+<br>Error mysql.cpp: 109  case label must be a constant integer expression 
+<br>Error mysql.cpp: 110  undeclared identifier `FIELD_TYPE_LONGLONG' 
+<br>Error mysql.cpp: 110  too many errors 
+<br> 
+<br>  C:\MATLAB7\BIN\WIN32\MEX.PL: Error: Compile of 'mysql.cpp' failed. 
+<br> 
+<br>??? Error using ==&gt; mex
+<br>Unable to complete successfully</p>
+
+<p>Could you help me?. Please!!!!!!!!.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">02 Feb 2006</span></td>
+      <td>
+        <span class="author">
+          Adam A
+        </span>
+      </td>
+      <td><span class="comment"><p>So simple to use. You need the MySQL 'include' files to install tho.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">09 Dec 2005</span></td>
+      <td>
+        <span class="author">
+          a user
+        </span>
+      </td>
+      <td><span class="comment"><p>work very well, easy to use. For a 
+version supporting Matlab object as well, you can try mYm 
+(http://itswww.epfl.ch/~maret/software.php).</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Oct 2005</span></td>
+      <td>
+        <span class="author">
+          a user
+        </span>
+      </td>
+      <td><span class="comment"><p>Works very well.  Mainly useful for  
+retrieving data from an existing MySQL database.  Inserting MATLAB 
+created data into mySQL set is somewhat harder to program and can be 
+very slow. MySQL experts would probably want to create text files and 
+load thes into mySQL in the normal mySQL manner.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/8663-mysql-database-connector">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+import%22" rel="nofollow">data import</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a></td>
+        <td>22 Oct 2008 08:02:09</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+export%22" rel="nofollow">data export</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a></td>
+        <td>22 Oct 2008 08:02:09</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mysql%22" rel="nofollow">mysql</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a></td>
+        <td>22 Oct 2008 08:02:09</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22database%22" rel="nofollow">database</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a></td>
+        <td>22 Oct 2008 08:02:09</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22connector%22" rel="nofollow">connector</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a></td>
+        <td>22 Oct 2008 08:02:09</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data%22" rel="nofollow">data</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a></td>
+        <td>22 Oct 2008 08:02:09</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22utilities%22" rel="nofollow">utilities</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a></td>
+        <td>22 Oct 2008 08:02:09</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22connect%22" rel="nofollow">connect</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/20301">Robert Almgren</a></td>
+        <td>22 Oct 2008 08:02:09</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22sql%22" rel="nofollow">sql</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/41376">Ben Petschel</a></td>
+        <td>13 Jan 2009 00:36:05</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+export%22" rel="nofollow">data export</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68623">ben_wet Wet</a></td>
+        <td>09 Mar 2010 09:39:46</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22database%22" rel="nofollow">database</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/91217">Alejandro Camacho</a></td>
+        <td>31 Mar 2010 11:23:34</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data+import%22" rel="nofollow">data import</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/100959">Giacomo</a></td>
+        <td>30 Jun 2010 10:03:28</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22database%22" rel="nofollow">database</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/51861">Matt C</a></td>
+        <td>10 Dec 2010 00:48:13</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22utilities%22" rel="nofollow">utilities</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/121350">Bruce Heu</a></td>
+        <td>12 Jan 2011 10:19:01</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mysql%22" rel="nofollow">mysql</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/129971">Nicolas</a></td>
+        <td>09 Aug 2011 19:43:05</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22connector%22" rel="nofollow">connector</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/176250">OBRIET LECLEF</a></td>
+        <td>01 Sep 2011 10:40:08</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22database%22" rel="nofollow">database</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/128524">david</a></td>
+        <td>24 Oct 2011 11:47:20</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22connector%22" rel="nofollow">connector</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/189036">Kenji</a></td>
+        <td>15 Nov 2011 23:55:41</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22connect%22" rel="nofollow">connect</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/189036">Kenji</a></td>
+        <td>15 Nov 2011 23:55:43</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22data%22" rel="nofollow">data</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/135397">Phu Nguyen</a></td>
+        <td>25 Nov 2011 21:37:32</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mysql%22" rel="nofollow">mysql</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/275717">c</a></td>
+        <td>09 Nov 2012 13:45:45</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

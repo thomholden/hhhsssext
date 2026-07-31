@@ -1,0 +1,1885 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Cell Array to CSV-file [cell2csv.m] -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application_002.css" media="screen" rel="stylesheet" type="text/css">
+<link href="FEX_files/application.css" media="all" rel="stylesheet" type="text/css">
+<link href="FEX_files/mw_font.css" media="all" rel="stylesheet" type="text/css">
+<script src="FEX_files/application_002.js" type="text/javascript"></script>
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/4400-cell-array-to-csv-file--cell2csv-m-" rel="canonical">
+<meta content="Cell Array to CSV-file [cell2csv.m] - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/4400-cell-array-to-csv-file--cell2csv-m-" property="og:url"><meta content="Writes a cell array into a comma separated values text file (*.csv)" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-xwx-xq" type="text/css"></style><style id="ki-xwx-xg" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">      
+
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs_en";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest_en";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+			newElem.value = "entire_site_en";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+			newElem.value = "entire_site_en";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F4400-cell-array-to-csv-file--cell2csv-m-" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F4400-cell-array-to-csv-file--cell2csv-m-" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_zip_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/submissions/4400/v/2/download/zip" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=4400" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/4400-cell-array-to-csv-file--cell2csv-m-" class="manifest_title">Cell Array to CSV-file [cell2csv.m]</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/4400-cell-array-to-csv-file--cell2csv-m-/content//cell2csv.m" class="function" title="Function">cell2csv.m</a></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/4400-cell-array-to-csv-file--cell2csv-m-/content/cell2csv.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+
+            <div class="rating" title="94.4828%;">
+              <div class="rate_scale">
+                <div class="rated" style="width: 94.4828%;">4.72414</div>
+              </div>
+            </div>
+
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.7</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">29</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">262 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 1.89 KB</span>
+          <span id="fileid">File ID: #4400</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">Cell Array to CSV-file [cell2csv.m]</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/212470-sylvain-fiedler" class="author_inline results_author" data-cp-link-id="1">Sylvain Fiedler</a>
+
+</span></span></p><div class="profile mlc_author_popover" data-cp-popup-id="1" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/212470-sylvain-fiedler">Sylvain Fiedler <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/212470-sylvain-fiedler"><img src="FEX_files/212470.png"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A11927"><span property="fileExchange_count">1</span> file</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">262</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="4.72414">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 94.4828%">4.72414</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+    
+  <p></p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      22 Jan 2004
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2010-11-03">03 Nov 2010</span>)
+      </span>
+  </p>
+
+  <p id="summary">Writes a cell array into a comma separated values text file (*.csv)</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F4400-cell-array-to-csv-file--cell2csv-m-&amp;watching=4400" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This function writes a cell array into a CSV-file.
+<br>It works with empty cells, numeric, char, string  and logical cells.
+ One array can contain all of them, but only one value per cell.</p>
+
+<p>CSV-files can then be read by Excel, so you don't need DDE or ActiveX.</p></td>
+          </tr>
+
+          
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.8 (R2009a)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F4400-cell-array-to-csv-file--cell2csv-m-">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22array+to+file%22" rel="nofollow">array to file</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22array+to+text%22" rel="nofollow">array to text</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22ascii%22" rel="nofollow">ascii</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22cell%22" rel="nofollow">cell</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22cell+to+ascii%22" rel="nofollow">cell to ascii</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22cell+to+file%22" rel="nofollow">cell to file</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22cell+to+text%22" rel="nofollow">cell to text</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22csv%22" rel="nofollow">csv</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22data+export%22" rel="nofollow">data export</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22data+import%22" rel="nofollow">data import</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22export+ascii%22" rel="nofollow">export ascii</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22save+cell%22" rel="nofollow">save cell</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22save+cell+array%22" rel="nofollow">save cell array</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22save+csv%22" rel="nofollow">save csv</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22write+array%22" rel="nofollow">write array</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="4400" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/4400-cell-array-to-csv-file--cell2csv-m-" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F4400-cell-array-to-csv-file--cell2csv-m-">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(34)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">15 Oct 2014</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/3110253-ricardo" class="author_inline" data-cp-link-id="2">Ricardo</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="2" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/3110253-ricardo">Ricardo <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/3110253-ricardo"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A512888"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>Just FYI:</p>
+
+<p>I had a problem with this script when my cell array had a row with 
+strings: all the values were written as 'NA', supposedly because they 
+didn't verify the conditions from all the elseif's of StringX(x). </p>
+
+<p>If I deleted the last else it would give me an error: "Error using sprintf
+<br>Function is not defined for 'cell' inputs."</p>
+
+<p>So I changed the last else from</p>
+
+<p>else
+<br>        x = 'NA';
+<br>to:</p>
+
+<p>else
+<br>        x = char(x);</p>
+
+<p>And it worked. No more 'NA'.</p>
+
+<p>Thank you for your script. Good work ;)
+</p></span></td>
+        <td width="80">
+            <div class="rating comment_only" title="Comment Only">
+              <div class="rate_scale icon-mw-comment">
+                <span>Comment only</span>
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Oct 2014</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/5119938-charlotte" class="author_inline" data-cp-link-id="3">Charlotte</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="3" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/5119938-charlotte">Charlotte <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/5119938-charlotte"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A509100"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Oct 2014</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/602588-fabricio-pereira" class="author_inline" data-cp-link-id="4">Fabricio Pereira</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="4" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/602588-fabricio-pereira">Fabricio Pereira <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/602588-fabricio-pereira"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A321752"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Sep 2014</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/3487519-alex" class="author_inline" data-cp-link-id="5">Alex</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="5" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/3487519-alex">Alex <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/3487519-alex"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A495900"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Jun 2014</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/3487094-jerry" class="author_inline" data-cp-link-id="6">Jerry</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="6" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/3487094-jerry">Jerry <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/3487094-jerry"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A479850"><span property="fileExchange_count">2</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">141</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="5.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 100.0%">5.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>I modified according to Justin and 
+Jan's suggestions. And also added support for row vector. It is much 
+faster now. See the updated file at 
+http://www.mathworks.com/matlabcentral/fileexchange/47055-cell2csv-m</p>
+
+<p>credits go to Sylvain.</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jun 2013</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/2670360-justin-su" class="author_inline" data-cp-link-id="7">Justin Su</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="7" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/2670360-justin-su">Justin Su <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/2670360-justin-su"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A365639"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>A very convenient code. However, it is a little bit slow for saving large tables.
+<br>Jan Simon's suggestion is very helpful. Another way to further 
+improve its speed is to bundle the output to fprintf() as much as 
+possible. For example, write a whole line at one call rather than call 
+fprintf() for each cell.
+<br>These two tweaks can reduce the excution time by &gt;60%.</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="4">
+              <div class="rate_scale">
+                <div class="rated" style="width: 80%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Jun 2013</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/438721-rostam-farrokhnejad" class="author_inline" data-cp-link-id="8">Rostam FarrokhNejad</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="8" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/438721-rostam-farrokhnejad">Rostam FarrokhNejad <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/438721-rostam-farrokhnejad"><img src="FEX_files/438721.png"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A26359"><span property="fileExchange_count">3</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">309</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="4.01543">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 80.30860000000001%">4.01543</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Apr 2013</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/869888-jan-simon" class="author_inline" data-cp-link-id="9">Jan Simon</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="9" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/869888-jan-simon">Jan Simon <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/869888-jan-simon"><img src="FEX_files/869888.png"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A15233"><span property="fileExchange_count">47</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">873</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="4.87861">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 97.57220000000001%">4.87861</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>This function has a large potential for improvements:
+<br>"var = eval(['cellArray{z,s}']);" could be replaced by the much faster and nicer "v = cellArray{z,s};".
+<br>"if size(var, 1) == 0" does not catch [1x0] arrays, while "isempty(v)" would.</p>
+
+<p>Checking the success of FOPEN is strongly recommended to avoid a strange behaviour. </p>
+
+<p>The documentation is sufficient and the function works as advertised.</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="3">
+              <div class="rate_scale">
+                <div class="rated" style="width: 60%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Mar 2013</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/2103960-igor" class="author_inline" data-cp-link-id="10">Igor</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="10" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/2103960-igor">Igor <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/2103960-igor"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A77954"><span property="fileExchange_count">7</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">86</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="4.42857">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 88.5714%">4.42857</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>Nice function, but a tiny check for a proper result from fopen() might be nice (just for user to get better error messages).</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jul 2012</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/1703463-fabian" class="author_inline" data-cp-link-id="11">Fabian</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="11" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/1703463-fabian">Fabian <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/1703463-fabian"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A242457"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>is there a Version with "append", like Manish Mittal wrote on 15 Sep 2005?
+<br>Can't find it!
+<br>But would be great! I need exact this, ...just with an "append" option</p></span></td>
+        <td width="80">
+            <div class="rating comment_only" title="Comment Only">
+              <div class="rate_scale icon-mw-comment">
+                <span>Comment only</span>
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Mar 2012</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/1740373-pearl" class="author_inline" data-cp-link-id="12">Pearl</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="12" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/1740373-pearl">Pearl <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/1740373-pearl"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A63823"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Mar 2012</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/1496737-reza-farrahi-moghaddam" class="author_inline" data-cp-link-id="13">Reza Farrahi Moghaddam</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="13" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/1496737-reza-farrahi-moghaddam">Reza Farrahi Moghaddam <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/1496737-reza-farrahi-moghaddam"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A75038"><span property="fileExchange_count">6</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">60</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="4.83333">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 96.6666%">4.83333</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Sep 2011</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/2932478-wouter" class="author_inline" data-cp-link-id="14">Wouter</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="14" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/2932478-wouter">Wouter <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/2932478-wouter"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A172492"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>csv2cell can be done by using a combination of uigetfile and textscan.</p></span></td>
+        <td width="80">
+            <div class="rating comment_only" title="Comment Only">
+              <div class="rate_scale icon-mw-comment">
+                <span>Comment only</span>
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Aug 2011</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/2978360-robert" class="author_inline" data-cp-link-id="15">Robert</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="15" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/2978360-robert">Robert <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/2978360-robert"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A171033"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>Nice m-script. Here a diff to account for cellstr contents and empty cells:
+<br>diff cell2csv.m cell2csv_orig.m 
+<br>70,73c70,72
+<br>&lt;         if isempty(var)
+<br>&lt;             continue
+<br>&lt;         end
+<br>&lt; 
+<br>---
+<br>&gt;         % OUTPUT value
+<br>&gt;         fprintf(datei, '%s', var);
+<br>&gt;         
+<br>75c74
+<br>&lt;         if s ~= 1 %size(cellArray, 2)
+<br>---
+<br>&gt;         if s ~= size(cellArray, 2)
+<br>78,86d76
+<br>&lt;         
+<br>&lt;         % OUTPUT value
+<br>&lt;         if ischar(var)
+<br>&lt;             fprintf(datei, '%s', var);
+<br>&lt;         elseif iscellstr(var)
+<br>&lt;             fprintf(datei, '%s', var{1});
+<br>&lt;         end
+<br>&lt;       
+<br>&lt; 
+</p></span></td>
+        <td width="80">
+            <div class="rating comment_only" title="Comment Only">
+              <div class="rate_scale icon-mw-comment">
+                <span>Comment only</span>
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jan 2011</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/2381247-irene" class="author_inline" data-cp-link-id="16">Irene</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="16" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/2381247-irene">Irene <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/2381247-irene"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A122409"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>Thanks; just used it to convert a 1048576x10 cell array to csv, took about 5 hours but didn't crash.</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Mar 2010</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/2241235-ivan-brezani" class="author_inline" data-cp-link-id="17">Ivan Brezani</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="17" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/2241235-ivan-brezani">Ivan Brezani <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/2241235-ivan-brezani"><img src="FEX_files/2241235.png"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A87141"><span property="fileExchange_count">6</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">116</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="5.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 100.0%">5.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Sep 2009</span></td>
+        <td>
+          <a href="https://www.mathworks.com/matlabcentral/profile/authors/1328741-anastasia" class="author_inline" data-cp-link-id="18">Anastasia</a>
+
+<div class="profile mlc_author_popover" data-cp-popup-id="18" vocab="http://schema.org/" typeof="Person">
+  <h3 class="profile__name" property="name"><a href="https://www.mathworks.com/matlabcentral/profile/authors/1328741-anastasia">Anastasia <span>(view profile)</span></a></h3>
+
+    <div class="profile__image">
+      <a href="https://www.mathworks.com/matlabcentral/profile/authors/1328741-anastasia"><img src="FEX_files/profilepic_default.gif"></a>
+    </div>
+  <div class="profile__stats" typeof="CreativeWork">
+    
+  <ul>
+    <li property="fileExchange">
+      <span class="icon-fileexchange"></span> <a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=authorid%3A68087"><span property="fileExchange_count">0</span> files</a>
+    </li>
+    <li property="downloads">
+      <span class="icon-download"></span> <span property="downloads_count">0</span> downloads
+    </li>
+      <li property="rating">
+
+        <div class="rating" title="0.0">
+          <div class="rate_scale">
+            <div class="rated" property="aggregateRating" style="width: 0.0%">0.0</div>
+          </div>
+        </div>
+
+      </li>
+  </ul>
+
+  </div>
+</div>
+
+        </td>
+        <td><span class="comment"><p>Thanks for the great script, just a
+ note, I modified the line 56 to allow for output with CR/LF termination
+ as required by some windows and visual basic programs.</p>
+
+<p> fprintf(datei,'\r\n');</p>
+
+<p>It may be worth adding as an option.</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Sep 2006</span></td>
+        <td>
+          helen chen
+        </td>
+        <td><span class="comment"><p>so far it's working fine:) btw, you could use the textscan function in matlab 7 to convert csv to cell array</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="4">
+              <div class="rate_scale">
+                <div class="rated" style="width: 80%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Aug 2006</span></td>
+        <td>
+          R B
+        </td>
+        <td><span class="comment"><p>This is apparently an older version of another cell2cvs on mathworks.com and should be removed</p></span></td>
+        <td width="80">
+            <div class="rating comment_only" title="Comment Only">
+              <div class="rate_scale icon-mw-comment">
+                <span>Comment only</span>
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Aug 2006</span></td>
+        <td>
+          R B
+        </td>
+        <td><span class="comment"><p>Buggy. Breaks fprintf in some cases</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="1">
+              <div class="rate_scale">
+                <div class="rated" style="width: 20%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 May 2006</span></td>
+        <td>
+          Wouter Rogiest
+        </td>
+        <td><span class="comment"><p>I am using this in all my MATLAB code --thanx! but I can't help wondering if anyone has made a csv2cell ?</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 May 2006</span></td>
+        <td>
+          Joe Lotz
+        </td>
+        <td><span class="comment"><p>Very help, thanks alot for sharing!
+</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Mar 2006</span></td>
+        <td>
+          Kevin Keegan
+        </td>
+        <td><span class="comment"><p>Is there a code for a reverse 
+version of this -- csv2cell ?  I've seen C versions but not Matlab ones 
+-- having a bit of trouble writing one myself.
+<br>Thanks -- Kevin </p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Oct 2005</span></td>
+        <td>
+          Chris Curtis
+        </td>
+        <td><span class="comment"><p>This is a big help.  I'm having a 
+hard time wrapping my mind around cell arrays and this is perfect.  Very
+ flexible, simple, and user-friendly.  Thanks!</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Sep 2005</span></td>
+        <td>
+          Mike B
+        </td>
+        <td><span class="comment"><p>As per the comments above this is excellent. I'm using it just to generate text file output, so its perfect.</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Sep 2005</span></td>
+        <td>
+          Manish Mittal
+        </td>
+        <td><span class="comment"><p>Here is another version of the same file with append, overwrite etc options. Also the delimeter issue is fixed</p>
+
+<p>function cell2csv(filename,cellArray,delimiter,mode)
+<br>% Writes cell array content into a *.csv file.
+<br>% 
+<br>% CELL2CSV(filename,cellArray,delimiter)
+<br>%
+<br>% filename      = Name of the file to save. [ i.e. 'text.csv' ]
+<br>% cellarray    = Name of the Cell Array where the data is in
+<br>% delimiter = seperating sign, normally:',' (it's default)
+<br>% mode = specifies the mode of opening the file. See fopen() for a detailed
+<br>% list (default is overwrite i.e. 'w')
+<br>%
+<br>% by Sylvain Fiedler, KA, 2004
+<br>% modified by Rob Kohr, Rutgers, 2005 - changed to english and fixed delimiter
+<br>if nargin&lt;3
+<br>    delimiter = ',';
+<br>end
+<br>if nargin&lt;4
+<br>    mode = 'w';
+<br>end</p>
+
+<p>datei = fopen(filename,mode);
+<br>for z=1:size(cellArray,1)
+<br>    for s=1:size(cellArray,2)
+<br>        
+<br>        var = eval(['cellArray{z,s}']);
+<br>        
+<br>        if size(var,1) == 0
+<br>            var = '';
+<br>        end
+<br>        
+<br>        if isnumeric(var) == 1
+<br>            var = num2str(var);
+<br>        end
+<br>        
+<br>        fprintf(datei,var);
+<br>        
+<br>        if s ~= size(cellArray,2)
+<br>            fprintf(datei,[delimiter]);
+<br>        end
+<br>    end
+<br>    fprintf(datei,'\n');
+<br>end
+<br>fclose(datei);
+</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Aug 2005</span></td>
+        <td>
+          Miklos Argyelan
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jun 2005</span></td>
+        <td>
+          P L
+        </td>
+        <td><span class="comment"><p>In addition to R k's comment, change lines 32-34 to:</p>
+
+<p>        if s ~= size(cellArray,2)
+<br>            fprintf(datei, trennZeichen);
+<br>        end</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 May 2005</span></td>
+        <td>
+          R K
+        </td>
+        <td><span class="comment"><p>since it is a csv it should be commas as the seperator.</p>
+
+<p>if nargin&lt;3,trennZeichen = ',';end</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Apr 2005</span></td>
+        <td>
+          C T
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Mar 2005</span></td>
+        <td>
+          Marcelo Zeri
+        </td>
+        <td><span class="comment"><p>Excelent, exactly what I need.</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Mar 2005</span></td>
+        <td>
+          Sergio Lucero
+        </td>
+        <td><span class="comment"><p>Great. Also needs to accept a different separator, so besides line 32 it needs to change line 12 to 
+<br>if nargin&lt;3,trennZeichen = ';';end</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Aug 2004</span></td>
+        <td>
+          Juan F. Navas
+        </td>
+        <td><span class="comment"><p>It is simple, it is effective, and 
+not only can write csv, it can read formats created by the user changing
+ the "separator". Needs and adjustement at line 32:
+<br>fprintf(datei,trennZeichen);</p>
+
+<p></p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 May 2004</span></td>
+        <td>
+          Ted Skolnick
+        </td>
+        <td><span class="comment"><p>Simple and effective.</p></span></td>
+        <td width="80">
+
+            <div class="rating" title="5">
+              <div class="rate_scale">
+                <div class="rated" style="width: 100%;
+                "></div>
+              </div>
+            </div>
+
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">24 Jan 2005</td>
+                  <td><p>Updated to work easier with OfficeXP.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">31 Jan 2005</td>
+                  <td><p>adapted separator for OfficeXP</p></td>
+                </tr>
+                <tr>
+                  <td class="date">09 Mar 2006</td>
+                  <td><p>Improved file to wirk with Excel 97,2000 oder alternatively with Excel 2003.
+<br>Microsoft changed the default seperator, so now when Excel Version is &gt; 2003, it is taken care of.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">03 Nov 2010</td>
+                  <td><p>Added the choice of the decimal separator</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1426448246859&amp;cv=7&amp;fst=1426448246859&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=768&amp;u_w=1360&amp;u_ah=733&amp;u_aw=1360&amp;u_cd=24&amp;u_his=1&amp;u_tz=-360&amp;u_java=true&amp;u_nplug=6&amp;u_nmime=85&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/4400-cell-array-to-csv-file--cell2csv-m-&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Futf8%3D%25E2%259C%2593%26term%3Dcell2csv&amp;vis=2"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2015 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+     
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

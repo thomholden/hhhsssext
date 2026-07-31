@@ -1,0 +1,1550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Tree data structure as a MATLAB class -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/35623-tree-data-structure-as-a-matlab-class" rel="canonical">
+<meta content="Tree data structure as a MATLAB class - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/35623-tree-data-structure-as-a-matlab-class" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/56607/original.jpg" property="og:image"><meta content="A per-value class that implements a generic tree data structure." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35623-tree-data-structure-as-a-matlab-class" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35623-tree-data-structure-as-a-matlab-class" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+    <h1> Get from <img alt="Ico-github-logo" src="FEX_files/ico-github-logo.png"> </h1>
+    <div id="download_github_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/35623-tree-data-structure-as-a-matlab-class?download=true" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+    <div id="#github_links">
+      <p>View license information and collaborate at <a href="https://github.com/tinevez/matlab-tree">tinevez/matlab-tree</a></p>
+      <p class="github_footnote"><em>Note:</em> Information from GitHub is updated daily.</p>
+	  <h3 class="highlights_title">GitHub Highlights</h3>
+      <a href="https://github.com/tinevez/matlab-tree/issues"><div id="issues">Issues<span id="issues_count">0</span></div></a>
+      <a href="https://github.com/tinevez/matlab-tree/branches"><div id="branches">Branches<span id="branches_count">2</span></div></a>
+      <a href="https://github.com/tinevez/matlab-tree/graphs/contributors"><div id="contributors">Contributors<span id="contributors_count">1</span></div></a>
+    </div>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/35623-tree-data-structure-as-a-matlab-class" class="manifest_title">Tree data structure as a MATLAB class</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><div class="class" title="Class">tree</div><span class="description">TREE  A class implementing a tree data structure.</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/35623-tree-data-structure-as-a-matlab-class/content/github_repo.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details--github details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:97.3334%;">
+                <p>4.86667</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">18</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">128 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 34.8 KB</span>
+          <span id="fileid">File ID: #35623</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/21907/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Tree data structure as a MATLAB class</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      13 Mar 2012
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-07-10">10 Jul 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">A per-value class that implements a generic tree data structure.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F35623-tree-data-structure-as-a-matlab-class&amp;watching=35623" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>A tree is a hierarchical data structure where every node has exactly one parent (expect the root) and no or several children. 
+<br>Along with this relational structure, each node can store any kind of data.</p>
+
+<p>This class implements it using plain MATLAB syntax and arrays. Most 
+useful methods are implemented, using overloading of MATLAB functions 
+for tree objects.</p>
+
+<p>For instance you can type:</p>
+
+<p>&gt;&gt; find ( (a.^2 .* b) &gt; (c - 5) &amp; d )</p>
+
+<p>with a, b, c and d being tree objects. </p>
+
+<p>Very handy, trivial to use. A rather long tutorial is included to 
+walk you through trees, and show how to make the best out of them.</p>
+
+<p>The tutorial can be found here:
+<br><a href="http://tinevez.github.io/matlab-tree/">http://tinevez.github.io/matlab-tree/</a></p></td>
+          </tr>
+
+          
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.14 (R2012a)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35623-tree-data-structure-as-a-matlab-class">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22data+structure%22" rel="nofollow">data structure</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22graph%22" rel="nofollow">graph</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22matlab%22" rel="nofollow">matlab</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22oop%22" rel="nofollow">oop</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22tree%22" rel="nofollow">tree</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22tutorial%22" rel="nofollow">tutorial</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="35623" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/35623-tree-data-structure-as-a-matlab-class" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35623-tree-data-structure-as-a-matlab-class">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(49)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">07 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi @Thomas,
+<br>Thank you very much for the positive feedback. 
+<br>As for your suggestion, I shall contact you via email to start the 
+discussion on the technical side. But just a remark: Your construct is 
+very elegant and it is a good idea to implement it. However, note that 
+it depends on the iteration order of sibling nodes, which is not what 
+you can expect from the plots.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/19733">Thomas Clark</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jean-Yves, thank you for an extraordinarily well documented and well put together submission.</p>
+
+<p>This is an extremely useful tool straight out of the box. I also 
+think it's a hallmark of the best submissions that it's possible to 
+actually learn about the aspect of computer science they cover (in this 
+case trees) from the documentation, as well as simply how to implement 
+the code (given presupposed knowledge on the concept).</p>
+
+<p>I've learned a lot today, and this submission will form the basis of a
+ planned refactoring of the way my company manages frame of reference 
+changes in multi body simulations.</p>
+
+<p>I have one question on indexing however. Is it possible/sensible to 
+implement a sub2ind() type method for the tree, so that for example you 
+could retrieve branches or leaves based on their location in the tree?</p>
+
+<p>For example, in your smaller example of the C.elegans lineage tree 
+(the image in the submission), t.get(2,1,3) could return 'E.ar'. That 
+way you don't need to keep a database of the single indices 
+corresponding to each node.</p>
+
+<p>I'd be happy to help with this if you'd be interested in 
+collaborating - being more familiar with the code, perhaps you could 
+suggest a good strategy/starting point?</p>
+
+<p>Best regards</p>
+
+<p>Tom Clark </p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478361">Muhammad Aneeq uz Zaman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yes I was able to concatenate all 
+the functions I needed in one file and run it (for some reason the 'eq' 
+function doesn't seem to work). But there seems to be another problem, 
+matlab coder won't work with cell arrays so I guess I am out of luck. 
+But thanks any way.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi @Muhammad.
+<br>In theory nothing prevents you from concatenating all the methods 
+file in the class main file, inside a 'methods' block. Except that it 
+would make the code completely unreadable and unmaintainable. I did this
+ mistake once for another contribution (the msdanalyzer) and won't do it
+ again.
+<br>Best
+<br>jy</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478361">Muhammad Aneeq uz Zaman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jean-Yves, I am trying to 
+compile my project using matlab coder and it is returning error "Cannot 
+load '.../tree/@tree/tree.m' because code generation does not support 
+classes and enumerations in @-directories." So the problem seems to be 
+the @-directory which is needed for a multi-file class definition. Would
+ you have any idea how to convert it into a single file class def?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478361">Muhammad Aneeq uz Zaman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jean-Yves, thanks that was very 
+helpful. Btw is your implementation going to be more efficient than 
+isequal because currently its taking a big chunk of my computation. If 
+its faster it would save a lot of time for me.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi @Muhammad.
+<br>Indeed, to compare the equality between two matrices, we would need the isequal method to be implemented. 
+<br>This is not the case for @tree right now; I will do it for the next release.
+<br>In the meantime, you would have to do something like
+<br>&gt;&gt; cellfun(@(x) isequal(x, a), t.Node )</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478361">Muhammad Aneeq uz Zaman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jean-Yves, I have a tree of 
+matrices, all of the same dimensions. And I want to search the tree for a
+ particular matrix. I tried find(tree == matrix) but it doesn't work, it
+ gives me weird data. Then I tried a = (tree == matrix);prod(a); which 
+works for column vectors but not for matrices. Is there a function that 
+can help me?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478361">Muhammad Aneeq uz Zaman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jean-Yves thanks! I missed that one. Very good job by the way.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi @Muhammad.
+<br>Yes! It's in the doc:
+<br>http://tinevez.github.io/jyt-matlab/publish/html/TreeDemo/TreeDemo_traversal.html#8</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478361">Muhammad Aneeq uz Zaman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jean-Yves, I was wondering if we
+ know the index of a node, is there an easy way to find out the index of
+ its parent or child/children?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi @kan,</p>
+
+<p>Indeed, you need to have at least MATLAB 2008a to use the @tree 
+class. It is based on the new class definition that MATLAB shipped 
+starting from this version.
+<br>Best
+<br>jy</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/465305">kan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi @Jean-Yves, 
+<br>when I executed ' t = tree ', I ran into the following error:
+<br>...\tree.m Line: 23 Column: 27
+<br>The expression to the left of the equals sign is not a valid target for an assignment.
+<br>Since this is my first time do OOP with Matlab, I'm wondering if it is because of the old version of my Matlab(7.0.0).
+<br>I'm sorry for bothering you with this kind of problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/192495">Farzaneh</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/192495">Farzaneh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Dear Jean-Yves : you're right , I 
+checked and found my mistake , because I just copied @tree without 
+.DS_Store in main path , I had this problem . thanks a lot </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi @Farzaneh,
+<br>Like for @Yuantao I suspect a problem with the installation. Can you check the output of 
+<br>&gt;&gt; which tree 
+<br>and make sure it points to the actual tree class?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/192495">Farzaneh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jean-Yves Tinevez : Thanks for 
+this tool ,  i have a problem for plot a tree , when i want to use plot 
+function , i recieve this error :</p>
+
+<p>"??? Undefined function or method 'permuteIfNeeded' for input arguments of type 'tree'."</p>
+
+<p>i also tried with your exmaple in toturial and the result was same error as above . can you help me please ? </p>
+
+<p> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yuantao. Any news?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yuantao.
+<br>I suspect a problem with path and installation here. Can you check the output of 
+<br>&gt;&gt; which tree
+<br>and make sure it points to the actual tree class.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/435995">yuantao song</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I write "t = tree", the system told me "Error using tree (line 28) missing input arguments"
+<br>I write "t = tree('I am the root node')", the matlab told me "Error using tree (line 62)Number of names in string"</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/396782">Rui</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Sean: Yes, it is possible.
+<br>:)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/429068">Sean</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jean-Yves, thanks for the prompt 
+response. Is it possible to add some routine that constructs the tree 
+from linkage matrix in future release 
+(http://www.mathworks.com/help/stats/linkage.html), and a quick way of 
+getting of all leaf nodes of a subtree? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Sean: Thanks!
+<br>Yes. You cannot define addition for two trees that differ in structure. Imagine you are trying to add</p>
+
+<p>1
+<br>|
+<br>2</p>
+
+<p>to</p>
+
+<p>    3
+<br>    |
+<br>5-+-6
+<br>   
+<br>It makes no sense.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/429068">Sean</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the great work! The is a
+ great tool. @Jean-Yves: for the tree operators such as a+b, is it true 
+that a and b must have the exact same structure?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/399736">Eric Nunes</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/399736">Eric Nunes</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jean: I constructed the tree using
+ the tree data structure, now I have a root with the nodes and parent as
+ its contents. I am trying to use the function depthtree as:
+<br>dt = depthtree(root)
+<br>But I am getting the error:
+<br>No appropriate method, property, or field depthfirstiterator for class tree.</p>
+
+<p>Error in depthtree (line 9)
+<br>    iterator = obj.depthfirstiterator;
+<br>Do I have to run the depthfirstiterator before depthtree?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/399736">Eric Nunes</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jean Is it possible to add more content to the node apart from the data.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Eric: It is explained in the tutorial, shipped with the class. Check here:
+<br>http://www.mathworks.com/matlabcentral/fileexchange/35623-tree-data-structure-as-a-matlab-class/content/tree/TreeDemo_creating.html</p>
+
+<p>Basically, you get the ID of the node you just attached using the following syntax:</p>
+
+<p>t = tree('root');
+<br>[ t node1 ] = t.addnode(1, 'Node 1'); %% attach to root
+<br>% node1 now contains the index of the first node.
+<br>[ t node2 ] = t.addnode(1, 'Node 2'); %% attach to root
+<br>[ t node11 ] = t.addnode(node1, 'Child of node 1'); %% attach to first node
+<br>disp(t.tostring)</p>
+
+<p>If it does not work, contact me via email.
+<br>best
+<br>jy
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/399736">Eric Nunes</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>I am using the tree data structure for matlab, and found your tree 
+class really helpful. I have few confusions , I am building a tree and 
+adding nodes as we proceed from the root to the leaves, in that case how
+ do i add nodes , since I don't know what the ID is going to be of the 
+node which is going to split up. Also does the children of the same 
+parent have the same ID.</p>
+
+<p>Regards,
+<br>Eric</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Hadi: I cannot reproduce your 
+error, the function is working fine on my side. Unfortunately, I don't 
+have MATLAB R2009 to investigate whether it is a backward compatibility 
+problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/406528">Hadi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>HI
+<br>I used your code but encounter with the error on line 60 at 
+depthfirstiterator that there is mismatch [ , ) ! I use matlab R2009a</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Scott: Hi,
+<br>This is a good idea, I'll put it in next release. 
+<br>I also need to integrate Per Isakson contribution.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/328278">Scott Teuscher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can the construction of the trees 
+be vectorized? for example I have an ordered vector X which has the 
+parent of each node and I could create a tree by t=tree(X).  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/167654">Steve Goley</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent implementation of the 
+tree data structure.  I really like the automatic plotting function 
+although it gets a bit crowded for large trees.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/172484">Alexander</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Skirt: Thanks! Unfortunately this 
+class cannot do what you want. What you describe here is a simple graph,
+ of which this tree is just a specialization (this is actually an even 
+more specialized *rooted tree* in a tree, all nodes but the root have 
+exactly one parent, and edges have a direction). </p>
+
+<p>You can make a tree out of a simple undirected graph (simple pick one
+ particular node, and name it "the root"), but I think that you could 
+beneficiate from a proper data structure class for what you want. </p>
+
+<p>There exist some basis on which you could build in MATLAB, using e.g.
+ the adjacency matrix (used in gplot 
+http://www.mathworks.fr/fr/help/matlab/ref/gplot.html) which is an 
+unspecialized sparse matrix.</p>
+
+<p>Best
+<br>jy</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/144512">Skirt Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jean-Yves Tinevez 
+<br>This is a great application. I need to build up a tree where the 
+some nodes have multiple parents, so far I have not found the 
+solution... can you help me about this? thanks a lot in advance
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@per isakson: Thanks! I would like 
+to add your function to the class. Do you have the metrics that shows 
+that it is 1 order of magnitude faster? I could put it in a new 
+published file.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32104">per isakson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I experiment with this Tree class 
+to keep meta-data of a HDF5-file in memory. The file contains thousands 
+of time series and it will be a back-end of a visualization tool. I want
+ to read the series at random and present the result promptly. That is a
+ bit of a challenge. Now I have something running, which looks 
+promising. The Tree class plays a key role.</p>
+
+<p>The code works well; I have had no real problems. The documentation 
+is good. The class fills a gap; how come there isn’t a tree class in 
+Matlab? </p>
+
+<p>I added one method to the class, findpath2root.  It is order of 
+magnitude faster than findpath when one of the nodes is the root. It 
+could be included in findpath. </p>
+
+<p>Thanks a lot for this contributions!
+<br>/ per  </p>
+
+<p>function    path2root = findpath2root( this, nix )       
+<br>    path2root = cat( 2, nix, parent_ixs( nix ) );
+<br>    function    p2r = parent_ixs( ix )
+<br>         if ix == 1 
+<br>            p2r = [];
+<br>         else
+<br>            pix = this.Parent( ix );
+<br>            p2r = cat( 2, pix, parent_ixs( pix ) );
+<br>         end
+<br>    end
+<br>end   
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32104">per isakson</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/21960">Wolfgang Garn</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent tool! I like the overloaded Matlab operators. Simple search and display methods.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/244117">zain</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just found what i need. 
+<br>Thanks Jean-Yves Tinevez for this great tool.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/249690">Werner</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/246288">lixin fan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jean-Yves: I am starting to use 
+your tool. So far I haven't encountered any problems.  I will keep you 
+updated when deeper trees are created. Thanks for your assistance.  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/49707">dai zhengguo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A well defined tool for tree data structure, Thanks for your submission.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29713">Jean-Yves Tinevez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@lixin: as for memory, I am pretty 
+sure that the overhead is kept minimal. Speed performance, however, I 
+don't know. If you want, we can work to solve your issues if you 
+encounter then as your project goes.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/246288">lixin fan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Looks a quite nice tool. Solid and elegant!  </p>
+
+<p>I am planning to create some deep trees, probably with dozens (or 
+hundreds) of depths and thousands of nodes. Just wonder if performance 
+will be an issue.  </p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">13 Apr 2012</td>
+                  <td><p>Fixed a severe bug in the chop method, noticed by Francisco Marquez Gutierrez (thanks!).</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Aug 2013</td>
+                  <td><p>- Iteration, plotting and string conversion can be done by forcing the children to be iterated in alphabetical (or any) order.
+<br>- Tree plotting hsa several new options to customize its look.
+<br>- Two new methods to condense and decondense a tree.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Aug 2013</td>
+                  <td><p>Put back the thumbnail.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Jul 2014</td>
+                  <td><p>- Move to gihub
+<br>- Add some extra tuning capabilities to plots.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415598575560&amp;cv=7&amp;fst=1415598575560&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=2&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/35623-tree-data-structure-as-a-matlab-class&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D31%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

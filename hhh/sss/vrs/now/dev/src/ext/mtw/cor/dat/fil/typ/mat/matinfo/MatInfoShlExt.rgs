@@ -1,0 +1,34 @@
+HKCR
+{
+	MatInfo.MatInfoShlExt.1 = s 'MatInfoShlExt Class'
+	{
+		CLSID = s '{6161C834-86DE-4cdd-BA3F-8E1E8631EABA}'
+	}
+	MatInfo.MatInfoShlExt = s 'MatInfoShlExt Class'
+	{
+		CLSID = s '{6161C834-86DE-4cdd-BA3F-8E1E8631EABA}'
+		CurVer = s 'MatInfo.MatInfoShlExt.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6161C834-86DE-4cdd-BA3F-8E1E8631EABA} = s 'MatInfoShlExt Class'
+		{
+			ProgID = s 'MatInfo.MatInfoShlExt.1'
+			VersionIndependentProgID = s 'MatInfo.MatInfoShlExt'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{664BD649-C887-42ca-9FE9-48AE6083F17E}'
+		}
+	}
+    NoRemove .mat
+    {
+        NoRemove shellex
+        {
+            NoRemove {00021500-0000-0000-C000-000000000046} = s '{6161C834-86DE-4cdd-BA3F-8E1E8631EABA}'
+        }
+    }
+}
+

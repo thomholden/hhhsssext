@@ -1,0 +1,162 @@
+% executeSQL  execute the text in the "SQL Statement" edit box
+% =========================================================================
+% executeSQL  Version 2.0 28-May-1999
+%
+% Usage:
+%   status = executeSQL
+%   Not accessed at the command line. Executed by callback of the
+%   "Execute" pushbutton
+%
+% Description:
+%   This Matlab script uses the string in the "SQL Statement" editbox
+%   to execute a query on the Access97 database file.  If the "Save Query"
+%   checkbox is TRUE then the string in the adjacent editbox is used to
+%   
+%
+% Input:
+%   hDB - handle of the database opened by the DAO Database Engine 
+%
+% Output:
+%   n/a
+%
+% Author:
+%   Blair Greenan
+%   Bedford Institute of Oceanography
+%   28-May-1999
+%   Matlab 5.2.1
+%   greenanb@mar.dfo-mpo.gc.ca
+% =========================================================================
+%
+
+% History
+% Version 1.0 18-Oct-1998
+% Version 2.0 28-May-1999
+%        % Cell arrays are containers for double arrays, character arrays, and
+         % other Matlab types. Hence by putting the [ ] brackets around the
+         % cell array data, I can easily strip out double arrays. This improves
+         % the speed of this function by orders of magnitude over the earlier
+         % version of msquery. This is implimented in the for i = 1:FLDCnt loop
+ 
+
+% Prompt user to select the variables to keep in Matlab Workspace
+clear w
+w = who;
+[selection,ok] = listdlg('Name','Variables to Keep',...
+   'ListString',w,'ffs',20);
+w(selection) = [];
+for i = length(w):-1:1
+   % keep the ActiveX handles and the SQLString for the database
+   if ((~strcmp('hDB',w{i}))&(~strcmp('hacc',w{i}))&(~strcmp('SQLStr',w{i})))
+      eval(['clear ', w{i}]);
+   end
+end
+
+% Get the string in the SQL editbox.
+hSQLEdit = findobj(gcbf,'Tag','SQLEdit');
+SQLString2D = get(hSQLEdit,'String');
+sizeSQL = size(SQLString2D);
+
+% reshape this 2D char array into a 1D char array
+SQLString = '';
+for i = 1:sizeSQL(1)
+   SQLString = [SQLString, ' ', deblank(SQLString2D(i,:))];
+end
+
+% If query is to be saved...
+hSQ = findobj(gcbf,'Tag','SaveQueryCheck');
+if (get(hSQ,'Value'))
+   hSQE = findobj(gcbf,'Tag','SaveQueryEdit');
+   SQEString = get(hSQE,'String');
+   if (isempty(SQEString))
+      hErrdlg = errordlg('You must enter a Query name if box is checked',...
+         'Save Query Error','replace');
+   end
+else
+   SQEString = 'TempSQL';
+end
+
+if (~isempty(SQEString))
+   % create a QueryDef based on the "SQL Statement" editbox
+   invoke(hDB,'CreateQueryDef',SQEString,SQLString);
+   
+   % Open a recordset in the DBEngine object containing the query
+   hRSet = invoke(hDB,'OpenRecordset',SQEString);
+   RSetCnt = get(hDB.Recordsets,'Count');
+	RSetCnt = double(RSetCnt);
+   
+   % Name of recordset
+   RSetName = get(hRSet,'Name');
+   
+   % determine the number of fields in the query
+   FLDCnt = get(hRSet.Fields,'Count');
+	FLDCnt = double(FLDCnt);
+   
+   % requery to make sure we are at the first record
+   invoke(hRSet,'ReQuery');
+   
+   % move pointer to last record in query
+   invoke(hRSet,'MoveLast');
+   
+   % count the number of records in the query
+   RCount = get(hRSet,'RecordCount');
+   
+   % requery to make sure we are at the first record
+   invoke(hRSet,'ReQuery');
+   
+   % Transfer all rows to the Matlab workspace. This is transferred as
+   % a VARIANT data type and hence is stored in a cell array in the 
+   % Matlab worksapce.
+   data = invoke(hRSet,'GetRows',RCount);
+   
+   % Convert cell array to variables for each column
+   for i = 1:FLDCnt
+      hFLD = get(hRSet,'Fields',(i-1));
+      FLDName = get(hFLD,'Name');
+      if (ischar(data{i,1}))
+         eval([FLDName,' = data(',num2str(i),',:);']);
+      else
+         % Cell arrays are containers for double arrays, character arrays, and
+         % other Matlab types. Hence by putting the [ ] brackets around the
+         % cell array data, I can easily strip out double arrays. This improves
+         % the speed of this function by orders of magnitude over the earlier
+         % version of msquery. Blair Greenan 28-May-1999
+         eval([FLDName,' = [data{',num2str(i),',:}];']);
+      end
+   end
+   %
+   % close the recordset and release the ActiveX object handle
+   hClose = invoke(hRSet,'Close');
+   release(hRSet);
+   
+   % If there was no request to save query then delete the QueryDef
+   if ~(get(hSQ,'Value'))
+      hDelQDef = invoke(hDB.QueryDefs,'Delete',SQEString);
+   else
+      % Count the number of Query definitions in the Access database
+      QDCnt = get(hDB.QueryDefs,'Count');
+		QDCnt = double(QDCnt);
+      % make up a cell array containing the list of qeuries defined in the database
+      for i = 1: QDCnt
+         hQD = get(hDB,'QueryDefs',(i-1));
+         QDName{i} = get(hQD,'Name');
+         release(hQD);
+      end
+      
+      % find the handle of the "Existing Queries" listbox
+      hQueryList = findobj(gcbf,'Tag','QueryList');
+      QDLength = length(QDName);
+      
+      % Update the string presented in the listbox and highlight the first item
+      set(hQueryList,'String',QDName(1:QDLength),'Value',1);
+   end
+end
+
+% Give the user a message
+msgbox('Data transfer complete!')
+
+% clear variables from workspace 
+clear hSQLEdit SQLString2D sizeSQL SQLString hSQ hSQE SQEString 
+clear RSetCnt RSetName FLDCnt hMoveLast RCount 
+clear data hDelQDef hWait FLDName hFLD hRSet hClose i j status
+clear QDCnt hQD QDName hQueryList QDLength nullStringFlag hErrdlg 
+clear selection ok w

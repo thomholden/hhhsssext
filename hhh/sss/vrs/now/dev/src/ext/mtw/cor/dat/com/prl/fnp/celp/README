@@ -1,0 +1,67 @@
+CELP 1.1, Jan 2007
+by Yuri Gribov (Moscow, Russia)
+
+Requires: Matlab 7.1
+
+Feature requests, bug reports and comments are welcomed at
+tetra2005@mail.ru
+
+Description
+-----------
+
+CELP (CELl Processing) is a functional programming package for Matlab.
+It is often better to use FP instead of loops:
+	- it's more compact;
+	- it's more clear.
+
+Matlab has all prerequisites to implement a Lisp-like FP:
+	- anonymous functions, @'s  <-> lambdas;
+	- FEVAL                     <-> FUNCALL, EVAL, APPLY;
+	- cell arrays               <-> lists.
+
+Matlab has also several peculiarities:
+	- cell arrays may have arbitrary dimensions (not only 1d);
+	- functions may have several outputs
+		(btw you can use builtin DEAL to implement it in @'s);
+	- vectors can be converted to cells and back using
+        NUM2CELL and CELL2MAT.
+
+Currently the package includes
+	CPAPPLY Analogue of Lisp's APPLY
+	CPBIND Substitution of argument
+	CPEVAL Evaluate multioutput function and return outputs in one cell array
+	CPFILTER Analogue of Lisp's FILTER
+	CPIF Conditional composition of functions
+	CPMAP Analogue of Lisp's MAPCAR
+	CPREDUCE Analogue of Lisp's REDUCE
+(use 'help *' for more info and examples).
+
+CPFILTER, CPMAP, CPREDUCE are equivalents of Lisp's routines. The latter
+two are implemented in MEXs for speed.
+
+CPIF and CPBIND are used for construction of new functions from
+defined. They are implemented with the help of nested functions.
+
+CPAPPLY, CPEVAL deal with multioutput functions. One general limitation of
+M-language is that when you write
+	f(g(x))
+only one output of g(x) is substituted into f. Thus you need to use
+	[y,z] = g(x);
+	f(y,z)
+to substitute all outputs. Using CELP's functions you may code it as
+	cpapply(@f,cpeval(2,@g,x))
+
+The main disadvantage of CELP is speed - evaluation of anonymous functions
+can be quite slow. Thus I do not recommend to use CELP with @'s in
+intensive calculations (probably Nathan Thern's TMP_HANDLE may be of help
+here - search for it on FEX).
+
+Changelog
+---------
+
+Ver. 1.1, Jan 2007
+	Corrections in help
+	Removed CPREP (see 'help cpmap'), CPCOMP
+    Changed signature of CPBIND
+    Extended CPBIND to allow function substitution
+	Extended CPIF to allow non-function arguments

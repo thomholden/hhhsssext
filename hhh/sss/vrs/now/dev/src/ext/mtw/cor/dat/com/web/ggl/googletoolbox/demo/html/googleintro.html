@@ -1,0 +1,343 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>Using the Google Toolbox</title>
+      <meta name="generator" content="MATLAB 7.3">
+      <meta name="date" content="2006-06-13">
+      <meta name="m-file" content="googleintro"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>Using the Google Toolbox</h1>
+         <introduction>
+            <p>By Matthew Simoneau</p>
+            <p>This is a basic introduction to the Google Toolbox, available on the MATLAB Central File Exchange: <a href="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=1613">http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=1613</a></p>
+         </introduction>
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#1">Setup</a></li>
+               <li><a href="#6">Finding Pages about MATLAB</a></li>
+               <li><a href="#10">Opening Up a Web Page</a></li>
+            </ul>
+         </div>
+         <h2>Setup<a name="1"></a></h2>
+         <p>Download this submission and put the M-files on your MATLAB path. One way to do this is to add the directory containing them
+            with ADDPATH. For more information on ADDPATH, see <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/ref/addpath.shtml">http://www.mathworks.com/access/helpdesk/help/techdoc/ref/addpath.shtml</a>.
+         </p><pre class="codeinput">cd <span class="string">P:\Matthew_Simoneau\google</span>
+addpath(pwd)
+</pre><p>Go to <a href="http://www.google.com/apis/">http://www.google.com/apis/</a> and download the developer's kit. Unzip the download and copy googleapi.jar to a convenient place.
+         </p><pre class="codeinput">zipUrl = <span class="string">'http://api.google.com/googleapi.zip'</span>;
+unzip(zipUrl,<span class="string">'.'</span>)
+</pre><p>Add JAR file to your Java classpath.  On older versions of MATLAB, you need to modify <tt>toolbox/local/classpath.txt</tt>, but on newer versions you can use JAVAADDPATH.  For more info, see <a href="http://www.mathworks.com/access/helpdesk/help/techdoc/matlab_external/f4867.html">http://www.mathworks.com/access/helpdesk/help/techdoc/matlab_external/f4867.html</a>.
+         </p><pre class="codeinput"><span class="comment">%edit classpath.txt</span>
+javaaddpath(fullfile(pwd,<span class="string">'googleapi'</span>,<span class="string">'googleapi.jar'</span>))
+</pre><p>Back at Google's site, <a href="http://www.google.com/apis/">http://www.google.com/apis/</a>, create a Google account. You'll just need to give them your e-mail address so they can validate it and send you an access
+            key.
+         </p><pre class="codeinput">web <span class="string">http://www.google.com/apis/</span> <span class="string">-browser</span>
+</pre><p>Before using the functions, set the key in your preferences:</p><pre class="codeinput"><span class="comment">%key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';</span>
+setpref(<span class="string">'google'</span>,<span class="string">'key'</span>,key);
+</pre><h2>Finding Pages about MATLAB<a name="6"></a></h2>
+         <p>Now use GOOGLESEARCH to get information about a search for "matlab".</p><pre class="codeinput">s = googlesearch(<span class="string">'matlab'</span>,30);
+disp(s)
+</pre><pre class="codeoutput">                ResultElements: [1x30 struct]
+                   SearchQuery: 'matlab'
+                    StartIndex: 1
+                      EndIndex: 30
+             DocumentFiltering: 0
+    EstimatedTotalResultsCount: 28700000
+               EstimateIsExact: 0
+                SearchComments: ''
+                    SearchTime: 0.2681
+                    SearchTips: ''
+           DirectoryCategories: []
+
+</pre><pre class="codeinput">disp(char(s.ResultElements.URL))
+</pre><pre class="codeoutput">http://www.mathworks.com/                                          
+http://www.mathworks.com/products/matlab/                          
+http://www.mathworks.com/access/helpdesk/help/techdoc/matlab.shtml 
+http://www.mathworks.com/access/helpdesk/help/helpdesk.html        
+http://www.mathworks.com/access/helpdesk/help/techdoc/matlab.html  
+http://www.mathworks.com/academia/                                 
+http://www.math.utah.edu/lab/ms/matlab/matlab.html                 
+http://www.math.ufl.edu/help/matlab-tutorial/                      
+http://math.ucsd.edu/~driver/21d-s99/matlab-primer.html            
+http://www.math.mtu.edu/~msgocken/intro/intro.html                 
+http://www.mathtools.net/MATLAB/index.html                         
+http://www.mathtools.net/                                          
+http://www.mathworks.co.uk/products/matlab                         
+http://www.mathworks.com/academia/student_version/                 
+http://www.mathworks.com/products/                                 
+http://www.mathworks.com/products/matlab/index.shtml               
+http://www.mathworks.com/index.html?ref=logo                       
+http://www.mathworks.com/matlabcentral/fileexchange/               
+http://www.mathworks.com/matlabcentral/                            
+http://www.indiana.edu/~statmath/math/matlab/                      
+http://www.mines.utah.edu/gg_computer_seminar/matlab/matlab.html   
+http://www.mathworks.com/support/                                  
+http://www.mathworks.com/access/helpdesk/help/techdoc/             
+http://www.mathworks.com/products/product_listing/                 
+http://www.mathworks.com/products/matlab/requirements.html         
+http://www.mathworks.com/access/helpdesk/help/techdoc/ref/ref.shtml
+http://www-ccs.ucsd.edu/matlab/                                    
+http://www.engin.umich.edu/group/ctm/                              
+http://en.wikipedia.org/wiki/Matlab                                
+http://en.wikipedia.org/wiki/MATLAB                                
+</pre><pre class="codeinput">disp(s.EstimatedTotalResultsCount)
+</pre><pre class="codeoutput">    28700000
+
+</pre><pre class="codeinput"><span class="keyword">for</span> i = 1:s.EndIndex
+    <span class="comment">% Strip HTML from the title.</span>
+    title = s.ResultElements(i).Title;
+    title = regexprep(title,<span class="string">'&lt;\/?b&gt;'</span>,<span class="string">''</span>);
+    title = strrep(title,<span class="string">'&amp;gt;'</span>,<span class="string">'&gt;'</span>);
+    title = strrep(title,<span class="string">'&amp;lt;'</span>,<span class="string">'&lt;'</span>);
+    title = regexprep(title,<span class="string">'&amp;#(\d+);'</span>,<span class="string">'${char(str2double($1))}'</span>);
+    title = strrep(title,<span class="string">'&amp;amp;'</span>,<span class="string">'&amp;'</span>);
+
+    <span class="comment">% Display the title and URL for each page.</span>
+    fprintf(<span class="string">'%4.0f) %s\n      %s\n\n'</span>, <span class="keyword">...</span>
+        i,title,s.ResultElements(i).URL)
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">   1) The MathWorks - MATLAB and Simulink for Technical Computing
+      http://www.mathworks.com/
+
+   2) MATLAB
+      http://www.mathworks.com/products/matlab/
+
+   3) MATLAB
+      http://www.mathworks.com/access/helpdesk/help/techdoc/matlab.shtml
+
+   4) The MathWorks - Online Documentation, R2006a
+      http://www.mathworks.com/access/helpdesk/help/helpdesk.html
+
+   5) MATLAB
+      http://www.mathworks.com/access/helpdesk/help/techdoc/matlab.html
+
+   6) The MathWorks - Academia
+      http://www.mathworks.com/academia/
+
+   7) Matlab
+      http://www.math.utah.edu/lab/ms/matlab/matlab.html
+
+   8) MATLAB Summary and Tutorial
+      http://www.math.ufl.edu/help/matlab-tutorial/
+
+   9) Matlab Primer
+      http://math.ucsd.edu/~driver/21d-s99/matlab-primer.html
+
+  10) A Practical Introduction to MATLAB
+      http://www.math.mtu.edu/~msgocken/intro/intro.html
+
+  11) Mathtools.net : MATLAB
+      http://www.mathtools.net/MATLAB/index.html
+
+  12) Mathtools.net
+      http://www.mathtools.net/
+
+  13) MATLAB
+      http://www.mathworks.co.uk/products/matlab
+
+  14) The MathWorks - Student Version - MATLAB Student Version
+      http://www.mathworks.com/academia/student_version/
+
+  15) The MathWorks - Products &amp; Services
+      http://www.mathworks.com/products/
+
+  16) The MathWorks - MATLAB&reg; - The Language of Technical Computing
+      http://www.mathworks.com/products/matlab/index.shtml
+
+  17) The MathWorks - MATLAB and Simulink for Technical Computing
+      http://www.mathworks.com/index.html?ref=logo
+
+  18) The MathWorks - MATLAB Central - File Exchange
+      http://www.mathworks.com/matlabcentral/fileexchange/
+
+  19) MATLAB Central
+      http://www.mathworks.com/matlabcentral/
+
+  20) Matlab - Indiana University
+      http://www.indiana.edu/~statmath/math/matlab/
+
+  21) Matlab Tutorial
+      http://www.mines.utah.edu/gg_computer_seminar/matlab/matlab.html
+
+  22) The MathWorks - Support
+      http://www.mathworks.com/support/
+
+  23) MATLAB
+      http://www.mathworks.com/access/helpdesk/help/techdoc/
+
+  24) The MathWorks - Product Listing - Products by Category
+      http://www.mathworks.com/products/product_listing/
+
+  25) The MathWorks - MATLAB&reg; 7.2 - Requirements
+      http://www.mathworks.com/products/matlab/requirements.html
+
+  26) MATLAB Functions
+      http://www.mathworks.com/access/helpdesk/help/techdoc/ref/ref.shtml
+
+  27) MATLAB Help Desk
+      http://www-ccs.ucsd.edu/matlab/
+
+  28) Control Tutorials for MATLAB
+      http://www.engin.umich.edu/group/ctm/
+
+  29) MATLAB - Wikipedia, the free encyclopedia
+      http://en.wikipedia.org/wiki/Matlab
+
+  30) MATLAB - Wikipedia, the free encyclopedia
+      http://en.wikipedia.org/wiki/MATLAB
+
+</pre><h2>Opening Up a Web Page<a name="10"></a></h2>
+         <p>Use FEELINGLUCKY to jump straight to the first hit for "MathWorks".</p><pre class="codeinput">feelinglucky <span class="string">MathWorks</span>
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.3<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% Using the Google Toolbox
+% By Matthew Simoneau
+% 
+% This is a basic introduction to the Google Toolbox, available on the 
+% MATLAB Central File Exchange:
+% <http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=1613>
+
+%% Setup
+% Download this submission and put the M-files on your MATLAB path. One
+% way to do this is to add the directory containing them with ADDPATH. For
+% more information on ADDPATH, see
+% <http://www.mathworks.com/access/helpdesk/help/techdoc/ref/addpath.shtml>.
+
+cd P:\Matthew_Simoneau\google
+addpath(pwd)
+
+%% 
+% Go to <http://www.google.com/apis/> and download the developer's kit.
+% Unzip the download and copy googleapi.jar to a convenient place.
+
+zipUrl = 'http://api.google.com/googleapi.zip';
+unzip(zipUrl,'.')
+
+%%
+% Add JAR file to your Java classpath.  On older versions of MATLAB, you 
+% need to modify |toolbox/local/classpath.txt|, but on newer versions you can
+% use JAVAADDPATH.  For more info, see
+% <http://www.mathworks.com/access/helpdesk/help/techdoc/matlab_external/f4867.html>.
+
+%edit classpath.txt
+javaaddpath(fullfile(pwd,'googleapi','googleapi.jar'))
+
+%%
+% Back at Google's site, <http://www.google.com/apis/>, create a Google
+% account. You'll just need to give them your e-mail address so they can
+% validate it and send you an access key.
+
+web http://www.google.com/apis/ -browser
+
+%%
+% Before using the functions, set the key in your preferences:
+
+%key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+setpref('google','key',key);
+
+
+%% Finding Pages about MATLAB
+% Now use GOOGLESEARCH to get information about a search for "matlab".
+
+s = googlesearch('matlab',30);
+disp(s)
+
+%%
+disp(char(s.ResultElements.URL))
+
+%%
+disp(s.EstimatedTotalResultsCount)
+
+%%
+for i = 1:s.EndIndex
+    % Strip HTML from the title.
+    title = s.ResultElements(i).Title;
+    title = regexprep(title,'<\/?b>','');
+    title = strrep(title,'&gt;','>');
+    title = strrep(title,'&lt;','<');
+    title = regexprep(title,'&#(\d+);','${char(str2double($1))}');
+    title = strrep(title,'&amp;','&');
+    
+    % Display the title and URL for each page.
+    fprintf('%4.0f) %s\n      %s\n\n', ...
+        i,title,s.ResultElements(i).URL)
+end
+
+%% Opening Up a Web Page
+% Use FEELINGLUCKY to jump straight to the first hit for "MathWorks".
+
+feelinglucky MathWorks
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

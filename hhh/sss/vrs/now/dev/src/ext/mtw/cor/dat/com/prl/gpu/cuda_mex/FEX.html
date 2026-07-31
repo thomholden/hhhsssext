@@ -1,0 +1,1195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>CUDA MEX -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25314-cuda-mex" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25314-cuda-mex" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/25314-cuda-mex?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=25314" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/25314-cuda-mex" class="manifest_title">CUDA MEX</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/25314-cuda-mex/content/cuda_mex/setup_cuda_mex.m" class="script" title="Script">setup_cuda_mex.m</a>
+            
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/25314-cuda-mex/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              5.0
+              <span class="divider"> | </span>
+              <a href="#feedback">6 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">27 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 2.64 KB</span>
+          <span id="fileid">File ID: #25314</span>
+        </div>
+
+        <div id="details">
+          <h1>CUDA MEX</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68347">Haim Avron</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">15 Sep 2009 </span>
+          </p>
+
+
+
+          <p id="summary">Compile CUDA from within MATLAB!
+Just write
+cuda_mex filename.cu
+and it is ready.</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F25314-cuda-mex&amp;watching=25314" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This small script modifies the files used by MATLAB to compile mex-functions within MATLAB so that CUDA is supported.</p>
+
+<p>Once the script setup_cuda_mex.m is run you can just compile CUDA mex files with the function cuda_mex.m.</p>
+
+<p>Only Win32 with Visual Studio is supported in the current version.
+<br>CUDA Toolkit and SDK required. </p></td>
+          </tr>
+  
+        
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.4 (R2007a)
+            </td>
+          </tr>
+  
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda(9)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mex%22" rel="nofollow">mex(4)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22programming%22" rel="nofollow">programming(2)</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/25314-cuda-mex">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(27)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">10 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/234240">Lahdan alfahian</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>where can I find this fiel it is not in my computer cuda_mex.p ??</p>
+
+<p>where can I found this one too
+<br>vcvarsamd64.bat I have "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\VCExpress.exe"
+<br>so it is not in bin where can I find it ?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">10 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/234240">Lahdan alfahian</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>hello all</p>
+
+<p>I can't get this right .
+<br>I triad ti fix what I found but some files wasn't in  my Malab folder don't know what I should to do</p>
+
+<p>this is the error</p>
+
+<p>===================================
+<br>EDU&gt;&gt; setup_cuda_mex
+<br>??? Undefined function or variable 'setup_cuda_mex'.
+<br> 
+<br>Note that only Visual Studio compilers are supported.
+<br>Creating cudamexopts.bat based on mexopts.bat...
+<br>Creating cuda_mex.m based on mex.m...
+<br>Creating cuda_mex_helper.m based on mex_helper.m...
+<br>Adding current directory to path...
+<br>Warning: Unable to save path to file 'C:\Program Files (x86)\MATLAB\R2011a
+<br>Student\toolbox\local\pathdef.m'. You can save your path to a different
+<br>location by calling SAVEPATH with an input argument that specifies the
+<br>full path. For MATLAB to use that path in future sessions, save the path
+<br>to 'pathdef.m' in your MATLAB startup folder. 
+<br>&gt; In savepath at 162
+<br>  In setup_cuda_mex at 118
+<br>Testing:
+<br>Compiling example.cu...
+<br>Can't open perl script "C:\Program Files (x86)\MATLAB\R2011a Student\bin\cuda_mex.pl": No such file or directory 
+<br>??? Error using ==&gt; cuda_mex at 208
+<br>Unable to complete successfully.</p>
+
+<p>Error in ==&gt; setup_cuda_mex at 123
+<br>cuda_mex example.cu
+<br> 
+<br>Can't open perl script "C:\Program Files (x86)\MATLAB\R2011a Student\bin\cuda_mex.pl": No such file or directory 
+<br>??? Error using ==&gt; cuda_mex at 208
+<br>Unable to complete successfully.
+<br> 
+<br>Can't open perl script "C:\Program Files (x86)\MATLAB\R2011a Student\bin\cuda_mex.pl": No such file or directory 
+<br>??? Error using ==&gt; cuda_mex at 208
+<br>Unable to complete successfully.
+<br> 
+<br>EDU&gt;&gt; cuda_mex simple.cu
+<br>Can't open perl script "C:\Program Files (x86)\MATLAB\R2011a Student\bin\cuda_mex.pl": No such file or directory 
+<br>??? Error using ==&gt; cuda_mex at 208
+<br>Unable to complete successfully.
+<br> 
+<br>EDU&gt;&gt; 
+<br>===============
+<br>is it becase I'm using student version??why they don't just do the stepes clearly for the bigenear!!
+<br>========
+<br>this is whay I have</p>
+
+<p>MATLAB Version (R2011a)
+<br>MATLAB License Number: STUDENT</p>
+
+<p>OS Name	Microsoft Windows 7 Home Premium
+<br>Version	6.1.7601 Service Pack 1 Build 7601
+<br>System Type	x64-based PC</p>
+
+<p>Thanks</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">28 Nov 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/203270">Takashi</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi,
+<br>I had some troubles when I used it on windows7(x64), Matlab 
+R2011a(x64) and Visual C++ 2010 express with WinSDK7.1, but I could get 
+over it. I had to add a slight modification to Eddie's advice. Thanks 
+Haim and Eddie!!</p>
+
+<p>Modify cuda_mex.pl modification as written above.
+<br>Add
+<br>$ARCH = "win64";
+<br>before the command (line 184)
+<br>$ENV{'ARCH'} = $ARCH;    </p>
+
+<p>Also, you need to comment out the entire block in the setup_cuda_mex.m titled as
+<br>%% Process mex.pl
+<br>to prevent further renewal of mex_cuda.pl</p>
+
+<p>vcvarsamd64.bat should be created as written above.  You have to slightly change it for use with VS2010Ex and SDK7.1.</p>
+
+<p>Finally, you have to move the cudamexopts.bat to the C:\Users\(USER\AppData\Roaming\MathWorks\MATLAB.
+<br>Funny thing is that Matlab R2011a create an additional folder, named
+ R2011a, in above folder and put cudamexopts.bat to the directory, which
+ is not recognized by cuda_mex. So this caused the error message saying 
+'option file not found'. You just move it to the upper directory and 
+things will go perfectly well.</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/44550">Kevin Brown</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>San, this can happen when you don't 
+have the 64-bit part of Visual Studio installed - check your 
+installation of Visual Studio(Control Panel -&gt; Modify Program) to see
+ if the x64 part is installed (mine did not by default , so I had to 
+update it).</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/172623">San Baz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>VISUAL STUDIO 2010 anybody?
+<br>Thanks Hakim for a nearly automatic solution. I'm still having some trouble. I'm running win64, Cuda 4.0 and Visual Studio 2010.
+<br>I tried the original solution and performed Eddie Kotowski's hack but to no avail.
+<br>I get the error:</p>
+
+<p> Visual Studio configuration file '(null)' could not be found for 
+installation at 'C:\Program Files (x86)\Microsoft Visual Studio 
+10.0\VC\bin\amd64/../../..</p>
+
+<p>Thanks!
+<br>SB</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">21 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/147778">Stanimir Mollov</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Many thanks, successfully compiled 
+from the first time with 32bit Window 7, MATLAB 2008a, VS 2005 and CUDA 
+4.0, on a Dell XPS M1730 &amp; GeForce 8800GXT :)</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">21 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/48130">Loren</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>The script reads  {prefdir}/mexopts.bat and I do not have such a file on this computer.</p>
+
+<p>r2010b, x64, Windows 7</p>
+
+<p>I have permission, btw.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">07 Sep 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68347">Haim Avron</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@bochra</p>
+
+<p>It looks like it failed to create a file.
+<br>Check if you have write permission to the directory.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">06 Sep 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/107198">bochra</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi,</p>
+
+<p>I have downloaded these files. I am using Matlab 2010b, Windows 7 64 bit, and VS 2008 . </p>
+
+<p>I run into the following problem when trying to compile the example through setup_cuda_mex.m :
+<br>Note that only Visual Studio compilers are supported.
+<br>Creating cudamexopts.bat based on mexopts.bat...
+<br>Creating cuda_mex.pl based on mex.pl...
+<br>??? Error using ==&gt; fprintf
+<br>Invalid file identifier.  Use fopen to generate a valid file identifier.</p>
+
+<p>Error in ==&gt; setup_cuda_mex at 73
+<br>    fprintf(fid_cuda_mex, '%s', line);</p>
+
+<p>Has anyone run into a similar problem? 
+<br>Thanks for any help you can provide. 
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">10 Aug 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/104882">Jason Riley</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi,
+<br>Ok so I have it working, great! 
+<br>One question I have 2 CUDA compattible cards, how do i know which one it is using and how do i chose which one it uses?
+<br>:)
+<br>I know other cuda interfaces give you the option, although i have found them less 'useful' for other reasons..</p>
+
+<p>Thanks,
+<br>Jason</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">03 Aug 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/40618">Petter</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>With the above hack in cuda_mex.pl I 
+got it working the Windows 64-bit. The author should update the script 
+to do this automatically. </p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Jul 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/99310">Drew</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Eddie,</p>
+
+<p>I was able to get it working! I have also compiled and run some of the other examples available in the Matlab/CUDA tutorial.</p>
+
+<p>Thank you so much!</p>
+
+<p>Drew</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">17 Jul 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102803">Eddie Kotowski</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@Drew,
+<br>             To get 64-bit working you need to open the cuda_mex.pl 
+file and around line 203 just hard code the $ARCH to "win64" so it would
+ look like this.</p>
+
+<p>$ARCH = "win64";</p>
+
+<p>Also ensure that you have vcvarsamd64.bat and ensure that this 
+information is in it and in this location (C:\Program Files 
+(x86)\Microsoft Visual Studio 9.0\VC\bin\amd64\) Here is what 
+vcvarsamd64.bat should have in it:</p>
+
+<p>@SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 9.0
+<br>@SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC
+<br>@SET WIN64SDKDIR=C:\Program Files\Microsoft SDKs\Windows\v6.1</p>
+
+<p>@SET FrameworkDir=C:\WINDOWS\Microsoft.NET\Framework64
+<br>@SET FrameworkVersion=v3.5
+<br>@if "%VSINSTALLDIR%"=="" goto error_no_VSINSTALLDIR
+<br>@if "%VCINSTALLDIR%"=="" goto error_no_VCINSTALLDIR</p>
+
+<p>@echo Setting environment for using Microsoft Visual Studio 2008 x64 tools.</p>
+
+<p>@set 
+PATH=%VCINSTALLDIR%\BIN\amd64;%FrameworkDir%\%FrameworkVersion%;%VCINSTALLDIR%\VCPackages;%VSINSTALLDIR%\Common7\IDE;%VSINSTALLDIR%\Common7\Tools;%WIN64SDKDIR%\Bin\x64;%WIN64SDKDIR%\Bin\x64\vsstools;c:\CUDA\bin;%PATH%
+<br>@set INCLUDE=%VCINSTALLDIR%\INCLUDE;%WIN64SDKDIR%\INCLUDE;%INCLUDE%
+<br>@set LIB=%VCINSTALLDIR%\LIB\amd64;%WIN64SDKDIR%\Lib\x64;%LIB%</p>
+
+<p>@set LIBPATH=%FrameworkDir%\%Framework35Version%;%VCINSTALLDIR%\ATLMFC\LIB\amd64;%VCINSTALLDIR%\LIB\amd64;%LIBPATH%
+<br> </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">08 Jun 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/99310">Drew</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hello,</p>
+
+<p>I have downloaded these files. I am using Matlab 2009b, Windows 7 64 bit, and VS 2008 Express addition. </p>
+
+<p>I run into the following problem when trying to compile the example through setup_cuda_mex.m </p>
+
+<p>WARNING: $ARCH (UNKNOWN) not set correctly [win64] 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\R2009B\BIN\CUDA_MEX.PL:  
+<br>  Error: Using options file: 
+<br>         C:\Users\dcreal\AppData\Roaming\MathWorks\MATLAB\R2009b\cudamexopts.bat 
+<br>         You cannot use this file with the UNKNOWN architecture because it enables 
+<br>         a compiler for a different architecture. 
+<br>         Running mex -setup may resolve this problem.</p>
+
+<p>Has anyone run into a similar problem? Thanks for any help you can provide. </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Jun 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/82831">Shu Heng Shu Heng</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">01 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/53090">R. Scott</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Haim,</p>
+
+<p>nice file, but I have a question. Currently I use XPx64-bit and I was
+ unable to get it to run. I am aware of the x32 is only supported from 
+your notes. But how could I get it to run in x64? Any thoughts.</p>
+
+<p>Oh BTW you may already know this but if you have a CUDA enabled Vid 
+card (non-Tesla) and you are using it as for your monitor as well. There
+ is a max allowed time use of the GPU at 2 sec to any code. If you want 
+more(non-Tesla) it cannot be used as a monitor support vid-card. just 
+FYI that's all</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Oct 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/69297">Sara</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Ok, hopefully I'm not overstaying my 
+welcome on this forum, but I've found out more answers to my 
+cutCreateTimer issue and I wanted to put them out there incase someone 
+else falls into this issue.  
+<br>It appears that somehow the cuda_mex compilation couldn't find my 
+cutil libraries.  This is not necessarily it's fault, I don't know much 
+about make files, linking, etc. so it's fairly probable that I screwed 
+something up somewhere.  There is likely a short, easy, and correct way 
+to fix this, but since I don't know it, here's my work around.  If you 
+find your way into the CUDA SDK folder you will find a Visual Studio 
+solution for compiling everything cutil.  If you change the output of 
+these libraries to the cuda standard library ( likely something along 
+the lines of CUDA/bin)  and then rebuild the solution the cutil32 
+libraries will then be found by the compiler/linker.  Will keep posting 
+if I find out a more elegant solution.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">22 Oct 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/73522">Anthony</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>What would need to be done to port this code to a 64-bit platform?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">22 Oct 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/69297">Sara</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Still having trouble with the 
+cutCreateTimer.  Here is an example.  I have modified the example.cu 
+that comes with this package to create this timer.  In addition, the 
+cutil32.lib and cutil32D.lib are linked in the setup_cuda_mex.m file.   
+ If anyone has a solution, I would be very excited to hear it. </p>
+
+<p>#include 
+<br>#include 
+<br>#include </p>
+
+<p>#include "mex.h"</p>
+
+<p>__global__ void square_array(float *a, int N)
+<br>{
+<br>  int idx = blockIdx.x * blockDim.x + threadIdx.x;
+<br>  if (idx&lt;&lt;&lt; n_blocks, block_size &gt;&gt;&gt; (cuda_mem, N);
+<br>  cudaMemcpy(input, cuda_mem, size, cudaMemcpyDeviceToHost);
+<br>  cudaFree(cuda_mem);
+<br>}</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">22 Oct 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/69297">Sara</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I'm working on Windows XP...has 
+anyone had problems with cutCreateTimer not working?  When it is called 
+by either the CUT_SAFE_CALL or directly it crashes the program.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">20 Oct 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/69297">Sara</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>If you add cutil32.lib to </p>
+
+<p>        if (strcmp(name, 'LINKFLAGS'))
+<br>            value = [value '  cudart.lib  cutil32.lib'];
+<br>        end </p>
+
+<p>in setup_cuda_mex.m, the linker will properly access cutil based 
+functions.    I spent a lot of time trying to figure out why I would get
+ errors in the linking involving various cuda based functions even 
+though the compiler knew the address to the header files...</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">29 Sep 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68347">Haim Avron</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Mklcst,</p>
+
+<p>Do you have permissions to write to MATLAB's directories?
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">29 Sep 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/64875">mklcst mklcst</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Haim Avron, whe  i run I get this error:</p>
+
+<p>&gt; Note that only Visual Studio compilers are supported.
+<br>&gt; Creating cudamexopts.bat based on mexopts.bat...
+<br>&gt; Creating cuda_mex.pl based on mex.pl...
+<br>&gt; ??? Error using ==&gt; fprintf
+<br>&gt; Invalid file identifier. Use fopen to generate a valid file identifier.
+<br>&gt;
+<br>&gt; Error in ==&gt; setup_cuda_mex at 73
+<br>&gt; fprintf(fid_cuda_mex, '%s', line);</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">29 Sep 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks, Haim. I've found a solution 
+now. I use nvcc to convert.cu files to .cpp files, then call mex as 
+normal. This avoids copying/changing any of the MATLAB scripts.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">26 Sep 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68347">Haim Avron</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>To do the same on a Linux the one 
+running the script should have root privileges. I currently do not have 
+MATLAB on a Linux for which I have root privileges...</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">25 Sep 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Sounds good, but currently no use to me - I'm desperate for an equivalent function for a linux system.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">15 Sep 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/69297">Sara</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Works!!!  Thank you so much!  I've 
+spent the last week arguing with Matlab 2008a, Visual Studio 2008, and 
+CUDA trying to get them to talk to each other.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/25314-cuda-mex">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22programming%22" rel="nofollow">programming</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68347">Haim Avron</a></td>
+        <td>15 Sep 2009 12:17:05</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mex%22" rel="nofollow">mex</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68347">Haim Avron</a></td>
+        <td>15 Sep 2009 12:17:05</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68347">Haim Avron</a></td>
+        <td>15 Sep 2009 12:17:05</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/42790">Brandon</a></td>
+        <td>17 Sep 2009 19:10:17</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/36627">Patrik</a></td>
+        <td>18 Sep 2009 18:09:28</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mex%22" rel="nofollow">mex</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/36627">Patrik</a></td>
+        <td>18 Sep 2009 18:09:35</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22programming%22" rel="nofollow">programming</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/36627">Patrik</a></td>
+        <td>18 Sep 2009 18:09:37</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/99310">Drew</a></td>
+        <td>08 Jun 2010 20:55:58</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mex%22" rel="nofollow">mex</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/99310">Drew</a></td>
+        <td>08 Jun 2010 20:56:03</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/57660">Andrius</a></td>
+        <td>10 Sep 2010 07:59:17</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mex%22" rel="nofollow">mex</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/147115">Charles</a></td>
+        <td>20 May 2011 12:43:42</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/147115">Charles</a></td>
+        <td>20 May 2011 12:43:55</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/109700">Jesper</a></td>
+        <td>03 Jun 2011 04:09:45</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/172861">Igor</a></td>
+        <td>17 Aug 2011 09:50:49</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cuda%22" rel="nofollow">cuda</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/246370">zong chen</a></td>
+        <td>21 May 2012 04:47:31</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

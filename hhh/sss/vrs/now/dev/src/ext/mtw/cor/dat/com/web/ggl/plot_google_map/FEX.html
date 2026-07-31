@@ -1,0 +1,2414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>plot_google_map -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27627-plot-google-map" rel="canonical">
+<meta content="plot_google_map - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27627-plot-google-map" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/54443/original.jpg" property="og:image"><meta content="Plot a google map on the background of the current figure using the Static Google Maps API." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27627-plot-google-map" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27627-plot-google-map" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/61807" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=27627" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/27627-plot-google-map" class="manifest_title">plot_google_map</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27627-plot-google-map/content/plot_google_map.m" class="function" title="Function">plot_google_map(varargin)
+</a><span class="description">function h = plot_google_map(varargin)
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/27627-plot-google-map/content/plot_google_map.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:98.46159999999999%;">
+                <p>4.92308</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">45</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">331 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 18.5 KB</span>
+          <span id="fileid">File ID: #27627</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/9499/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">plot_google_map</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      16 May 2010
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-04-10">10 Apr 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Plot a google map on the background of the current figure using the Static Google Maps API.</p>
+
+    <div id="editorsnote">
+      <h3>Editor's Notes:</h3>
+      <p></p><p>This file was selected as MATLAB Central <a href="http://blogs.mathworks.com/pick/2012/05/04/plot-google-map/">Pick of the Week</a></p><p></p>
+    </div>
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F27627-plot-google-map&amp;watching=27627" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>plot_google_map.m uses the Google Maps API to plot a map in the background of the current figure.
+<br>It assumes the coordinates of the current figure are in the WGS84 
+datum, and uses a conversion code to convert and project the image from 
+the coordinate system used by Google into WGS84 coordinates.
+<br>The zoom level of the map is automatically determined to cover the 
+entire area of the figure. Additionally, it has the option to 
+auto-refresh the map upon zooming in the figure, revealing more details 
+as one zooms in.</p>
+
+<p>The following code produces the screenshot:</p>
+
+<p>lat = [48.8708   51.5188   41.9260   40.4312   52.523   37.982];
+<br>lon = [2.4131    -0.1300    12.4951   -3.6788    13.415   23.715];
+<br>plot(lon,lat,'.r','MarkerSize',20)
+<br>plot_google_map</p>
+
+<p>Known Issues: 
+<br>1) The static maps API is limited to 1000 requests per day when used
+ with no API key. If you use this function a lot, you can obtain an API 
+key and easily set the function to use it (see help for more details)
+<br>2) Saving the map with an image/matrix overlay drawn on top of it 
+(especially a semi-transparent one) can sometimes cause unexpected 
+results (map not showing etc.). If you're encountering such problems, 
+it's recommended to use the export_fig submission:
+<br><a href="http://www.mathworks.com/matlabcentral/fileexchange/23629-exportfig">http://www.mathworks.com/matlabcentral/fileexchange/23629-exportfig</a>
+<br>The combination that seems to work best:
+<br>set(gcf,'renderer','zbuffer')
+<br>export_fig('out.jpg')</p>
+
+<p></p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/24113-get-google-map">Get Google Map</a> inspired <i>this file.</i></p>
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/43218-visual-inertial-odometry">Visual Inertial Odometry</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/46973-jcdstatusplot">Jc Dstatus Plot</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.9 (R2009b)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27627-plot-google-map">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22earth+sciences%22" rel="nofollow">earth sciences</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22google%22" rel="nofollow">google</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22google+earth%22" rel="nofollow">google earth</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22kml%22" rel="nofollow">kml</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22map%22" rel="nofollow">map</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22mapping%22" rel="nofollow">mapping</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22pick+of+the+week%22" rel="nofollow">pick of the week</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22plot%22" rel="nofollow">plot</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22potw%22" rel="nofollow">potw</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22wgs%22" rel="nofollow">wgs</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22wgs84%22" rel="nofollow">wgs84</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="27627" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/27627-plot-google-map" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27627-plot-google-map">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(97)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">11 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/281579">Giorgos Papakonstantinou</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Zonar and thank you for you nice submission. 
+<br>As already users have previously noted, there is an issue when 
+running the code with R2014b, which originates from the fact the every 
+handle is an object and not a double.</p>
+
+<p>You have nicely included a ResizeFcn, which is invoked when the figure is resized.
+<br>In the ResizeFcn you use break in the for loop. Can you explain me the reason of doing that?
+<br>Because if you have two axes with google maps
+<br>i.e. 
+<br>subplot(1,2,1); plot_google_map; subplot(1,2,2); plot_google_map;</p>
+
+<p>the ResizeFcn function does not re-plot both maps and you turn up with a bad resolution in one of the two.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/521222">Gijs</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a helpful piece of code.</p>
+
+<p>Unfortunately, as mentioned below, it breaks with 2014b.  I'm having 
+an issue at line 109 (inputParams.(['ax' num2str(axHandle*1e6,'%.0f')]) =
+ varargin;).  The error message that I'm getting is: "Undefined function
+ 'mtimes' for input arguments of type 'matlab.graphics.axis.Axes'."</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/519161">Shameek</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/513681">Sunil Dowray</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot for your response Zohar.. As you said, for loop is creating the issue in zooming speed.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Larry - thanks for the heads up. 
+I'm very busy in the coming weeks, will fix and release a new version as
+ soon as I have some free time.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/513681">Sunil Dowray</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/513681">Sunil Dowray</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Zohar, thanks for sharing this 
+wonderful piece of code. I have a query, I'm trying to plot data points 
+which are mapped on to corresponding co-ordinates. The problem is, the 
+number of data points are large (around 15000 - 35000 points). I'm able 
+to plot these data points on the map, but facing issues in 
+zooming/panning speed. The map reaction becomes too slow whenever I try 
+to zoom in or out with the data points on the map. Is there any 
+limitations in the number of points on the map or should I check for any
+ other parameter to overcome this issue.. Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/515254">Larry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>plot_google_map() has broken with R2014b. (No sure about R2014a)</p>
+
+<p>Line 108 gca returns now returns an axes object instead of a double as previously.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Pietro - such a feature can be added quite easily.</p>
+
+<p>In the meantime, if you have the mapping toolbox, you can use a few lines of code to achieve this:</p>
+
+<p>load toolbox\map\mapdisp\private\regions.mat worldRegions
+<br>[tf,pos]=ismember('Turkey',{worldRegions.name});
+<br>axis([worldRegions(pos).lonlim worldRegions(pos).latlim])
+<br>plot_google_map</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is it possible to provide a string to the function like "Turkey" and getting a map of Turkey? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126406">Nebitno</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>wiwi - there seem to be random errors with some computer IPs.
+<br>Try obtaining an API key from Google and setting it, it would probably solve your problem.</p>
+
+<p>If you need more help, feel free to contact me:
+<br>zoharby@gmail.com
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/497471">wiwi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Zohar, this code does not work 
+for me. It displays only the lat and long nodes. I have an error 
+"Warning: Unable to download map form Google Servers.\nPossible reasons:
+ no network connection, or quota exceeded (1000
+<br>map requests per day). 
+<br>&gt; In plot_google_map at 186"</p>
+
+<p>I'm using Matlab2014a. Please help me!!! thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32364">Gary</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Interesting - worked just fine on a different computer.  Sorry of for the false alarm.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Gary - works fine here without a key. Maybe it depends on your IP which is treated differently by Google for some reason. 
+<br>Anyway, obtaining an API key and setting it is a matter of minutes, and would probably solve your problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32364">Gary</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Did Google just change something 
+that broke this?  The code-generated URL states that a API key is 
+required, but the link you provided in get_google_map for obtaining a 
+key says that keys aren't needed anymore.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/459129">Mevlut</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great work Zohar. I've one question:
+<br>If you use this code:</p>
+
+<p>lat = [48.8708 51.5188 41.9260 40.4312 52.523 37.982]; 
+<br>lon = [2.4131 -0.1300 12.4951 -3.6788 13.415 23.715]; 
+<br>plot(lon,lat,'.r','MarkerSize',20) 
+<br>plot_google_map</p>
+
+<p>How do the plot_google_map know to use the variables lat and lon?
+<br>I've tried with 4 variables:</p>
+
+<p>latR= [1 2 3 4]
+<br>lonR = [1 2 3 4]
+<br>latG =[1 2 3 4]
+<br>long = [1 2 3 4]
+<br>hold on, plot(lonR,latR,'.r','MarkerSize',20) 
+<br>hold on, plot(lonG,latG,'.g','MarkerSize',10) 
+<br>plot_google_map</p>
+
+<p>It works perfectly!! BUT, how do the function plot_google_map know it to take that 4 variables?</p>
+
+<p>Great work, thank you
+<br>MEvO</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/492860">SURAJ</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey Nice Work.</p>
+
+<p>If you can add a script save map tiles on the computer it will reduce
+ the requirement of API key. API key will be used only to to download 
+additional maps or when required to update.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/485910">Oriol Casamor Martinell</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>GREAT script. What is the relation 
+between the image I see in the figure and the image output of the 
+script? I need to relate latVec and lonVec with the image I obtain from 
+saveas. </p>
+
+<p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126406">Nebitno</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is it possible to get from google maps the position of commercial spots(e.g. restaurants, hotels, etc) in the map?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Shatrughan - awesome tip. I will try to integrate it into the script soon.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131564">Shatrughan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hello Zohar,</p>
+
+<p>Hope you remember as I pointed out the need to put 'map scale' on the
+ google plots. You said that you will work on it later when you get 
+time. It seems this is still a persistent issue with all users using 
+your anyway 'GREAT' script. However, I have come across another 
+submission on FEX for making scale and very simply I have been using 
+these two scripts for my purpose since long time. Just thought that this
+ might help others and also to you as it might save a bit of your time. 
+:)</p>
+
+<p>Here the link is:</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/33545-automatic-map-scale-generation</p>
+
+<p>After using plot_google_map
+<br>just use makescale</p>
+
+<p>and you are done !!</p>
+
+<p>Happy Matlabbing !!!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Zohar, thanks for your reply. I 
+found this function that it is quite useful, unfortunately I can't 
+control the scale, like 1:20000, but I can get only the distance. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>pietro - that would be quite tricky, as it also depends on your screen size etc.
+<br>I wanted to add a scale indicator at the bottom of the map, but never got to it. Hope to add it sometime...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great job. Is it possible to control the map scale? By istance generating plots with a map scale of 1:20,000. Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/307154">Jorge</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Zohar, I assumed that you knew 
+about OSM tiles since you've displayed an impressibly awesome work with 
+this function! My comment was more of an open thought directed at other 
+members =)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jorge - working with tiles has its 
+upsides (you can choose the resolution you want, possibility for local 
+caching etc.), but will make the code much more complicated and slower 
+to run since it will require several images to be downloaded for every 
+map you want to display. 
+<br>I don't have plans to get to it in the near future...
+<br>I don't plan </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/307154">Jorge</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Amazing! My only comment is, would 
+it make sense to pull the tiles from OpenStreetMap? For example, OSM 
+tiles stored by MapQuest could be accessed even at 4000 tiles/second! </p>
+
+<p>http://wiki.openstreetmap.org/wiki/Mapquest#MapQuest-hosted_map_tiles</p>
+
+<p>And are pulled simply like 
+http://otile1.mqcdn.com/tiles/1.0.0/osm/zoom/x/y.jpg where x and y are 
+easily calculated from the desired coordinates:</p>
+
+<p>http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Octave</p>
+
+<p>This way Google limits could be avoided, given OSM is now a very 
+mature project. I would gladly implement this if I had the time, but I 
+thought that maybe anyone else here is annoyed by Google and could use 
+the idea =)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David,</p>
+
+<p>The easiest way would be to set the zoom level you want manually 
+(using xlim/ylim or the axis command), and then call plot_google_map 
+again to force it to refresh to the current zoom.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/469950">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great code! I can't figure out how to zoom in to a specific location. Using the comand zoom(15) will not zoom on my GPS point.</p>
+
+<p>Is there any way to set the ylim and xlim of the graph (using those 
+commands the map does not refresh)? I'm trying to use it in a loop to 
+visualize my bicycle ride (needs to be pretty zoomed in)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/466869">David Radin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Update to my comment below:</p>
+
+<p>Realized the error was due to a bad coordinate reference - if coordinates do not fit on global plane, well, errors happen. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/466869">David Radin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Zohar -
+<br>First of all, great function, great utility. </p>
+
+<p>Wondering if you could comment on an error that suddenly appeared. 
+The script was running perfectly but today I started it up and now it is
+ not. I receive the following error:</p>
+
+<p>Error using set
+<br>Bad property value found.
+<br>Object Name :  axes
+<br>Property Name : 'YLim'
+<br>Values must be increasing and non-NaN.</p>
+
+<p>Error in axis&gt;LocSetLimits (line 206)
+<br>    set(ax,...</p>
+
+<p>Error in axis (line 94)
+<br>                LocSetLimits(ax(j),cur_arg);</p>
+
+<p>Error in plot_google_map (line 250)
+<br>    axis(curAxis) % update axis as quickly as possible, before downloading new image</p>
+
+<p>Error in test (line 11)
+<br>plot_google_map('APIKey','**key hidden**')</p>
+
+<p>Appreciate your time!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/455831">Xavier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for your quick feedback. In 
+the meantime, I found a solution, I had "'PaperPositionMode','auto'" to 
+the figure properties in addition of "'visible','off'" and it works 
+pretty well and this allow to gain a lot f computing time.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>OK, turns out the previous comment didn't get through... 
+<br>Anyway, Xavier - the problem is caused because plot_google_map set a
+ custom figure resize callback to change the zoom if the figure is 
+resized and changes its aspect ratio.
+<br>You can disable it by commenting out line 434 which sets the figure resize callback:
+<br>set(figHandle, 'ResizeFcn', @update_google_map_fig);  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey, sorry my mistake, that flag was only in some local version I had here.
+<br>To resolve your problem comment out line 434:
+<br>set(figHandle, 'ResizeFcn', @update_google_map_fig);  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/455831">Xavier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, 
+<br>First thanks a lot for this script which is very useful.
+<br>I got a question where I did not find a solution myself. I use this 
+script into a loop where each iteration represents a trip. I save the 
+figure into png file. I would like to the figure does not appear. I used
+ figure('Visible','off') but  figures appear at the saveas command 
+(found out though debug mode) but not if plot_google_map command is 
+removed. I looked at line 379 and so on but without finding a solution. 
+Do you have an idea?
+<br>Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/334508">mizu</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jason,</p>
+
+<p>From you error, it seems you are using a very old version of MATLAB, in which the syntax of the zoom command is different.
+<br>You can make it work by disabling all the functionality involving the auto refresh feature. Comment out lines 421-429.
+<br>This should make it work for you, but you'll need to call 
+plot_google_map again if you want the map to refresh after you zoom in 
+or out.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/460060">Jason Oh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is my error message below ; </p>
+
+<p>??? Output argument "out" (and maybe others) not assigned during call
+ to "C:\Program Files (x86)\MATLAB71\toolbox\matlab\graph2d\zoom.m 
+(zoom)".</p>
+
+<p>Error in ==&gt; zoom at 81
+<br>if nargin==2 &amp;&amp; ...</p>
+
+<p>Error in ==&gt; plot_google_map at 421
+<br>    zoomHandle = zoom;   </p>
+
+<p>Do you know why I got this message? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/460844">Mani</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for developing this 
+Zohar. I can use it for a project I am working on. Is it possible to add
+ area measurements tool to this map? If yes, how?
+<br>Thank You!!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/408574">Clemens</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just figured out: After rendering with set(gcf,'renderer','opengl'), even saveas(gcf, 'out.jpg') works.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/408574">Clemens</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Zohar, </p>
+
+<p>thank you a lot for your support! I tried your suggestion and with 
+the rendering setting of set(gcf,'renderer','zbuffer'), the background 
+(map) + transparent settings vanished again. </p>
+
+<p>set(gcf,'renderer','opengl') and exporting with export_fig.m though works for me :)</p>
+
+<p>Best Regards</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Clemens,</p>
+
+<p>I've updated the Known Issues section, hopefully addressing your problem. Hope this helps:</p>
+
+<p>2) Saving the map with an image/matrix overlay drawn on top of it 
+(especially a semi-transparent one) can sometimes cause unexpected 
+results (map not showing etc.). If you're encountering such problems, 
+it's recommended to use the export_fig submission:
+<br>http://www.mathworks.com/matlabcentral/fileexchange/23629-exportfig
+<br>The combination that seems to work best:
+<br>set(gcf,'renderer','zbuffer')
+<br>export_fig('out.jpg')</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/408574">Clemens</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works perfectly for me. I have only
+ the issue already raised by Larry, that if I export my figure to a 
+picture, the map is missing. Do others also have troubles with that or 
+any workaround except screenshots? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/95443">Roger GALLOU</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Zohar,</p>
+
+<p>I've the same message as Larry. When I post URL given in example in a
+ Web browser (Firefox with no proxy configured), I can see the staticmap
+ of Google Maps.
+<br>I've not problems with my quotas and I've really loaded the last version.
+<br>Can you give me some help on what it happens ?</p>
+
+<p>Thanks. Regards.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/431184">Anuja</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Kudos to you, Its really nice, working fine for me...I tried it with two points.
+<br>I really wanted to ask one thing, How can we extract the latitude 
+longitude points between two points as in between the source and the 
+destination, Do we have to enter it manually or do we require some 
+coding for the same.
+<br>Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Larry, are you sure you're using the latest version?
+<br>If yes, you can try putting a breakpoint at line 316 - urlwrite(url,filename);
+<br>copy the url to your browser and see if it works there.
+<br>Anyway, if you need more help feel free to contact me:
+<br>zoharby@gmail.com</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/280288">Larry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For couple of days plot_google_map can't be used, in both my computer and my colleague's. It kept showing:</p>
+
+<p>Warning: Unable to download map form Google Servers.
+<br>Possible reasons: no network connection, or quota exceeded.
+<br>Consider using an API key if quota problems persist. 
+<br>&gt; In plot_google_map at 318 </p>
+
+<p>My quota is not a problem. I also have tried to use the API key but to no avail. Any idea?</p>
+
+<p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/372234">Rajiv</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great script. It shows little error
+ for me showing:zoom error. It shows red marker first, then only the map
+ not the red makers.One or more output arguments not assigned during 
+call to 'D:\MATLAB7\toolbox\matlab\graph2d\zoom.m (zoom)'.
+<br>Error in ==&gt; plot_google_map at 402
+<br>    zoomHandle = zoom;   
+<br>Error in ==&gt; test at 16
+<br>  plot_google_map('maptype','roadmap')
+<br>Please help how to make it run?
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Naveed - v3 is only for the javascript API. This code uses the Static Maps API which still uses v2.</p>
+
+<p>If you already have the heatmap data as a matrix, you can simply plot
+ it with IMAGE and give an AlphaData matrix with values &lt;1 to make it
+ semi transperent. 
+<br>If you have point data, you'll first need to convert it to a heatmap
+ matrix. I need to do it myself for a project in the coming weeks. If I 
+don't find an existing solution I'll probably create one and hopefully 
+submit it to the FEX.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101652">Naveed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey, thanks for this great code! 
+Just what I needed. Quick question: are you planning on upgrading this 
+to the v3 of google maps API? Also, could you recommend how to add a 
+heat map layer to the rendered map?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Gabriel - there shouldn't be any recursion in this code. Please send me an example how to reproduce the error.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/359930">Gabriel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I was able to do a plot once or twice, but now I am reaching max. recursion limit all the time. Any help?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Konstantinos - Simply call plot_google_map after plotting the route. It should display the map in the background of the route.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/406935">Konstantinos</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great job, and really helpful. I' m
+ trying to plot a certain route on the map which is in a gpx file, which
+ i created from google maps. I use the gpxread function to read the file
+ , I can display the route on a seperate window, but i don't know how to
+ display the route on the map. Does anyone have any idea?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/391832">Alexandre</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Zohar!
+<br>With your new code and after cheking mine It seems that the map 
+isn't stretched (also when you remove "axis equal" ....). Many Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alexandre - I think what you mean is that the map is stretched in one axis, which shouldn't happen with the new version.
+<br>If you're having the same problem with the new version, please send me an example code to reproduce the problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/391832">Alexandre</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice job, very useful, many thanks.
+ But I exactly have the same question as Chad Greene (Mar 2012). Does 
+anyone know how to get the image in overhead view instead of 60° 
+inclinaison? Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/147617">Preetham Aghalaya Manjunatha</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Really good one! I was planning to 
+make a GPS tracker for my project, I found exactly what I am looking 
+for. But needs quite a bit of work to make this for realtime tracking or
+ for post-processing. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/358397">eder vidaurre gonzales</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>me sale este error a que se debe : 
+Output argument "varargout" (and maybe others) not assigned during call 
+to "E:\plot_google_map.m&gt;plot_google_map".</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/307247">Giacomo Alessandroni</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/280288">Larry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks, Seb. It is a wonderful tool.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/77250">Seb Biass</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>My mistake, had an old version, updated one works like a charm!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/280288">Larry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It seems to be incompatible with 
+pcolor. Matlab can plot with both pcolor and plot_google_map, but when 
+the plot is saved as an image (as any format such as png), the 
+background google map is gone.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/77250">Seb Biass</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi there,
+<br>Does anyone has any problem with that script recently?  It was running smoothly until today.
+<br>??? Error using ==&gt; imread at 387
+<br>Unable to determine the file format.</p>
+
+<p>Error in ==&gt; plot_google_map at 189
+<br>[M Mcolor] = imread(filename);
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/280288">Larry</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Amit, with the new scale=2 param 
+which is used by default, you actually get a 1280x1280 image, which 
+gives a much nicer rendering (though responds somewhat slower...)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/152946">peter</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/135203">Floris</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Amit,</p>
+
+<p>the 640*640 limit is set by the google API. see 
+https://developers.google.com/maps/documentation/staticmaps/index for 
+more information</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/292631">Amit</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Good work there Zohar Bar-Yehuda. And very helpful for my work, thank you.
+<br>Though I wonder why is the image size limited to 640X640. It would 
+be very helpful to have this limitation removed. Perhaps a good idea to 
+have the image sized in proportion to screen size. Screen size can be 
+obtained from 
+<br>java.awt.Toolkit.getDefaultToolkit().getScreenSize()</p>
+
+<p>Thanks again.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/246014">Sebastian Holmqvist</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>From what I've gathered, Google 
+switched from counting usage per domain to per user instead. So 
+basically if you use Static Maps on your website, a single user using up
+ all of the quota won't affect any other users, only that particular 
+user.</p>
+
+<p>Other than that, great piece of software! It was easy to get 
+compatible with older Matlab (2003) and works like a charm under Matlab 
+R2008b.</p>
+
+<p>As for future requests, caching (i.e renaming and not removing) tiles
+ would be awesome! I realize that storing tiles might violate Google's 
+terms, but temporary would certainly do the trick!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Kart - I think there is a problem 
+with the API key mode. It seems like Google ignores it since the 
+requests have no referrer field in the HTTP header. Will try 
+investigating it for a solution.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/265317">Heiko</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/265469">Kart</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I tried it with my own API key
+<br>plot_google_map(‘APIKey’,'xxxxxxxxxxxxxxxxxxxxxxxxxx’)</p>
+
+<p>but Iam getting the warning quota exceeded. what should i do?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Scale is a great idea, and quite easy to implement. I'll try adding it when I have some time.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131564">Shatrughan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great script !! simple and easy to 
+use..however, I have a question, how to put map scale on the plot? also 
+if you could add direction symbol (North/South)..it would be great..any 
+response will be appreciated..</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just noticed they changed the API and introduced the API key again.
+<br>It doesn't say what's the limit if you don't use any key, but from a quick test it looks like it's 400 per day (per IP I guess).</p>
+
+<p>If you do get your own key, you can use up to 25,000 requests per 
+day. I'll try to upload a new version soon with an easy way to put your 
+own key.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Marco,</p>
+
+<p>This function uses Google's Static Maps API, and is therefore 
+perfectly legal. It's also limited to 1000 map requests per day as 
+specified in the API. See:
+<br>https://developers.google.com/maps/documentation/staticmaps/</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104259">Marco</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Have anyone considered possible legal issues in this application?
+<br>As far as i know, it's forbidden the access to the maps through the direct creation of the url.
+<br>The access is legal only through the api's google offers (such as javascript).</p>
+
+<p>In case you have different informations please let us know!</p>
+
+<p>Thanks</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/257367">Mint Sauce</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22865">georg</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/63624">K E</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212538">Andrea</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey, great function!</p>
+
+<p>I was wondering one thing. I have to plot a wind map over the ocean, 
+close to the coast. Therefore I would like to get the coastline on the 
+top, and the land just represented as a grey or black surface on top of 
+my contour plot. Is it possible to get the land of the googlemap 
+background on top of my countour plot?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/225623">Chad Greene</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ah, there's an easy fix: simply add "axis equal" after the plotting command. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/225623">Chad Greene</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is unbelievably easy to install and use!  </p>
+
+<p>Only one question: it seems to be plotting the 45° angle view, 
+whether I choose roadmap, terrain, or satellite.  Any ideas of how to 
+get the overhead image?  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58363">Erdal Bizkevelci</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/53591">Oliver</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great work. This works a treat, Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/174714">Chandrakumar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi there zohar,</p>
+
+<p>Hope you are fine,
+<br>actually i have a power plot of an antenna radiation level at ground
+ level which spread over some 300 meters. now what i want to do is 
+placing the power plot on a specific region on google earth so that i 
+can see how the power plot is in the region where the antenna is, can 
+you help me?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/171413">Michael Wengler</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Outstanding, easy to use, elegant!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/96707">Zohar Bar-Yehuda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Seb - I am converting the PNG map 
+downloaded (when using roadmap) to a truecolor image to prevent problems
+ with conflicting colormaps, so I don't really know why you're having 
+problems.</p>
+
+<p>Maybe you can send me an example code you use, and I will check it out.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/77250">Seb Biass</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Wow, that is cool, thanks!
+<br>Question: I am using a contourf plot and adding the map behind. So I
+ set the colormap and the transparency for the contourf, but all colors 
+change when I plot the background map. Any idea where that could come 
+from?</p>
+
+<p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116118">Aaron Holtzman</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/111189">danish zubairi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>made my life easier</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32364">Gary</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40936">Jan Vidar</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">18 Jun 2012</td>
+                  <td><p>- Support use of the "scale=2" parameter by default for finer rendering (set scale=1 if too slow).
+<br>- Auto-adjust axis extent so the map isn't stretched.
+<br>- Set and use an API key which enables a much higher usage volume per day.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Oct 2013</td>
+                  <td><p>- Improved functionality of AutoAxis, which now handles any shape of map axes. 
+<br>Now also updates the extent of the map if the figure is resized.
+<br>- Added the ShowLabels param which allows hiding the textual labels on the map.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">25 Mar 2014</td>
+                  <td><p>Version 1.4 - 25/03/2014
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Added the language parameter for showing labels in a local language
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Display the URL on error to allow easier debugging of API errors</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Apr 2014</td>
+                  <td><p>known issues (map saving alternative with export_fig)</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415756134164&amp;cv=7&amp;fst=1415756134164&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/27627-plot-google-map&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D53%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

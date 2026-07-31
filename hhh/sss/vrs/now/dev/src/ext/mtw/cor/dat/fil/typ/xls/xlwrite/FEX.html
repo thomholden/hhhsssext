@@ -1,0 +1,2436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>xlwrite: Generate XLS(X) files without Excel on Mac/Linux/Win -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win" rel="canonical">
+<meta content="xlwrite: Generate XLS(X) files without Excel on Mac/Linux/Win - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/44176/original.jpg" property="og:image"><meta content="Generates ‘.xls’ &amp; '.xlsx' files on Mac/Linux/Win without Excel, using same syntax as xlswrite." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/16935" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=38591" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win" class="manifest_title">xlwrite: Generate XLS(X) files without Excel on Mac/Linux/Win</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win/content//20130227_xlwrite/xlwrite.m" class="function" title="Function">[status, message]=xlwrite...</a><span class="description">XLWRITE Write to Microsoft Excel spreadsheet file using Java</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win/content//20130227_xlwrite/Test_xlWrite.m" class="script" title="Script">Test_xlWrite.m</a><span class="description">Small demonstration on how to use XLWRITE
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win/content/20130227_xlwrite.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:96.875%;">
+                <p>4.84375</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.8</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">37</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">178 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 8.45 MB</span>
+          <span id="fileid">File ID: #38591</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/8302/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">xlwrite: Generate XLS(X) files without Excel on Mac/Linux/Win</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      12 Oct 2012
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-02-27">27 Feb 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">Generates ‘.xls’ &amp; '.xlsx' files on Mac/Linux/Win without Excel, using same syntax as xlswrite.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win&amp;watching=38591" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>xlwrite allows to generate '.xls' &amp; '.xlsx' files
+ easily without having Excel installed or using COM-objects. It 
+generates Excel files by using the Apache POI java library. This way 
+Excel files can be generated on any platform supporting Java, including 
+Linux &amp; mac.</p>
+
+<p>xlwrite uses the same syntax as xlswrite, making it easy to integrate in current applications.</p>
+
+<p>xlwrite supports following datatypes:
+<br>- string
+<br>- numerical
+<br>- logical/boolean
+<br>The type of data is kept in Excel: for example boolean data in matlab will be saved as boolean in Excel.</p>
+
+<p>xlwrite also supports a combination of above datatypes in a cell array like for example:
+<br>xlsData = {1 true 'text' false; 10 -12.5 6 false};</p>
+
+<p>To generate the Excel file without too much overhead, xlwrite interacts directly with the Apache POI library. </p>
+
+<p>The original idea of this script is based on the xlwrite function 
+written by Marin Deresco, however due to some limitations we had to 
+write an improved version.</p>
+
+<p>Although created under Matlab 2012a, xlwrite should also work for earlier versions of Matlab.</p>
+
+<p>UPDATE: if you find any bugs, please contact me directly.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/37560-xlwrite---export-data-to-excel-from-matlab-on-mac-win">Xlwrite : Export Data To Excel From Matlab On Mac/Win</a> inspired <i>this file.</i></p>
+      
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.14 (R2012a)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Requires Apache POI library. Binaries included in zip file.
+</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22apache+poi%22" rel="nofollow">apache poi</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22excel%22" rel="nofollow">excel</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22java%22" rel="nofollow">java</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22jexcelapi%22" rel="nofollow">jexcelapi</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22linux%22" rel="nofollow">linux</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22mac%22" rel="nofollow">mac</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22windows%22" rel="nofollow">windows</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22xlswrite%22" rel="nofollow">xlswrite</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22xlwrite%22" rel="nofollow">xlwrite</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="38591" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(86)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">06 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/41376">Ben Petschel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ok the problem seems to be two of 
+the tokens appear in reverse order to what getSheetNames was expecting. A
+ fix that worked for me was to insert the following code before line 21 
+of toolbox/matlab/iofun/private/getSheetNames.m:</p>
+
+<p>        if isempty(match)
+<br>          match = regexp(workbook_xml, ...
+<br>                         ['&lt;sheet name=".*(?&lt;=&lt;sheet 
+name=")(?&lt;sheetName&gt;.+?)(?=" r:id="rId' num2str(sheetIDs(i)) '" 
+sheetId=".*"/&gt;)'], ...
+<br>                         'names' );
+<br>        end
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/511418">Martin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec
+<br>Thanks for solving most of my problem, I'm just left with one issue.
+ How do I either delete the content of a Cell or overwrite it with Not a
+ number =NA().
+<br>Currently trying =NA() I get a string instead of having excel 
+evaluating it to "#N/A" which is not plotted rather than the string 
+being plotted as 0.
+<br>Thanks Martin</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Nikos
+<br>If you want to place the POI files somewhere else, it is possible, 
+as long as you change the paths correctly in the "javaaddpath" commands.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/498882">Nikos</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello again,
+<br>Problem solved, I had multiple copies of Text.xlWrite.m in different folders. 
+<br>xlwrite works perfectly as long as Text.xlWrite.m and the folder poi_library are both in the current directory.
+<br>Sorry for the bother.
+<br>Thanks again, excellent work! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/498882">Nikos</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec,
+<br>This project was much needed, thanks. 
+<br>I seem to have the same proble as @azizulh khan and @Shawn - I get the error: 
+<br>"The POI library is not loaded in Matlab.
+<br>Check that POI jar files are in Matlab Java path!" 
+<br>I am certain poi_library is in my workspace and in the matlab path as is  Text.xlWrite.m
+<br>Please help!
+<br>Kind regards, Nikos
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Azizullah Khan
+<br>These should be in the zip file. Just extract the whole zip folder to your matlab workspace to make the demo work.
+<br>Alec</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/405246">azizullah khan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>sir,make me clear about poi library
+<br>how can i insert it and from where can i get these files.The jar files?
+<br>thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33321">Dan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice job but I believe there is a small problem.
+<br>xlwrite is able to create an xlsx file with multiple worksheets 
+which I can open with Excel but I cannot read this file with xlsread. 
+However, if I open the xlsx file with excel and then simply hit save 
+(ostensibly making no changes), I can then open with xlsread.</p>
+
+<p>Any ideas?</p>
+
+<p>Thanks,</p>
+
+<p>Dan</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/415550">Zhan Xiong</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/476122">Gabriel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Gaurav and others facing that bug,</p>
+
+<p>This may be due to some unexpected formatting in some description xml file(s) in the xlsx.</p>
+
+<p>If you have write access to the matlab installation, you can fix it by editing the file
+<br>MATLAB/R2014a/toolbox/matlab/iofun/private/getSheetNames.m</p>
+
+<p>replace line 12 with:
+<br>'&lt;Relationship Id="rId(\d+?)" 
+Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet"
+ Target="worksheets/.*\.xml"\s*/&gt;', ...</p>
+
+<p>and line 19 with:
+<br>['&lt;sheet name=".*(?&lt;=&lt;sheet 
+name=")(?&lt;sheetName&gt;.+?)(?=" sheetId=".*" r:id="rId' 
+num2str(sheetIDs(i)) '"\s*/&gt;)'], ...</p>
+
+<p>I have not tested this fix extensively but I think it should not cause problems with other files.</p>
+
+<p>@Alec,
+<br>Sorry for hijacking your comment section, but this is the number one page on google at the moment for that issue.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Gaurav:</p>
+
+<p>It seems like a bug in Matlab itself.
+<br>Best would to file a bug submission at the Mathworks.</p>
+
+<p>If it is urgent, you can edit the xlsread.m file directly to remove the bug. I don't have 2014a, so I cannot correct it myself.</p>
+
+<p>Alec</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478153">Gaurav</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The thing is, I'm writing hundreds 
+of files so I can't open each one in openoffice and hit save to be able 
+to read them with xlsread. Any work around will be appreciated.
+<br>Best,
+<br>G</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478153">Gaurav</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Alec,
+<br>Great work, great help, thanks a lot mate!</p>
+
+<p>I'm still having trouble reading the file created by xlwrite through 
+xlsread. I have installed the latest version of of Matlab (2014a). The 
+error I get is:</p>
+
+<p>Error using xlsread (line 247)
+<br>No right hand side value for assignment.</p>
+
+<p>But if I open the file in openoffice, hit delete on an empty cell (so
+ not really changing anything), and save it then xlsread can read it. 
+So, I guess they have not really fixed the bug with xlsread.
+<br>Best,
+<br>G</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121753">D.</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Shaun:
+<br>It seems the "poi_library" folder is not in the same folder as your Text.xlWrite.m file....</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Volker Schardt
+<br>Sorry for the late reply. I will be more than happy to add your code
+ to the zip file. Can you please contact me by Private Message?</p>
+
+<p>Thanks!
+<br>Alec</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/474265">Shaun</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec,
+<br>Thank you for your great work!
+<br>But I have a problem...
+<br>I'm using Mac OS X. Matlab 2013a.
+<br>i got the following error when run the Text_xlWrite.m.</p>
+
+<p>Error using xlwrite (line 93)
+<br>The POI library is not loaded in Matlab.
+<br>Check that POI jar files are in Matlab Java path!
+<br> 
+<br>Files were loaded with no errors.
+<br>I downloaded following jar files.</p>
+
+<p>I've run following codes.</p>
+
+<p>javaaddpath('poi_library/poi-3.8-20120326.jar');
+<br>javaaddpath('poi_library/poi-ooxml-3.8.jar');
+<br>javaaddpath('poi_library/poi-ooxml-schemas-3.8-beta4-20110826.jar');
+<br>javaaddpath('poi_library/xmlbeans-2.3.0.jar');
+<br>javaaddpath('poi_library/dom4j-1.6.1-hudson-1.jar');
+<br>javaaddpath('poi_library/stax-api-1.0.1.jar');
+<br>javaaddpath('poi_library/jxl.jar');</p>
+
+<p>I got errors when the following code was run.</p>
+
+<p>xlwrite(fileName, xlsData, sheetName, startRange);</p>
+
+<p> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/474265">Shaun</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/277051">Brian</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67900">Volker Schardt</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice work indeed!
+<br>@ thomas, based on Alec work I did an xlread function. But I haven't
+ done all the cross check work for my input that are needed to provide a
+ out of the box function which can be used by anyone. Maybe I can do 
+this later this week.</p>
+
+<p>@ Alec if you like I would offer you my code to inculde it to your package, instead of opening a new site here on file exchange</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67900">Volker Schardt</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/465189">Stephan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Alec. The function works writing xls-files, but importing the data again (by xlsread) leaves empty data and txt variables. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/311082">Martin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/458589">Chris</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/422187">thomas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey, just a beautiful and useful function !
+<br>the only thing i changed is the auto-cast to cell array for dataset type (will do the same for tables)</p>
+
+<p>if isa(A,'dataset')
+<br>    A = dataset2cell(A);
+<br>end</p>
+
+<p>Only one request : will you provide an xlread which does the same job in the other way ?</p>
+
+<p>EDIT</p>
+
+<p>I also add the auto-import command :</p>
+
+<p>pkg = dir(fullfile(fileparts(mfilename('fullpath')),'lib','*.jar'));
+<br>for i=1:length(pkg)
+<br>    jar{i} = fullfile(fileparts(mfilename('fullpath')),'lib',pkg(i).name);
+<br>end
+<br>cellfun(@javaaddpath,jar);</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/445838">florian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am getting the following error when trying to paste a 28900,14 cell array in an xlsx file. it seems my memory funs out?</p>
+
+<p>Warning: A Java exception occurred trying to load the sprintf class:
+<br>Java exception occurred:
+<br>java.lang.OutOfMemoryError: GC overhead limit exceeded
+<br>	at java.util.Arrays.copyOf(Arrays.java:2271)
+<br>	at java.util.zip.ZipCoder.getBytes(ZipCoder.java:89)
+<br>	at java.util.zip.ZipFile.getEntry(ZipFile.java:306)
+<br>	at java.util.jar.JarFile.getEntry(JarFile.java:226)
+<br>	at java.util.jar.JarFile.getJarEntry(JarFile.java:209)
+<br>	at sun.misc.URLClassPath$JarLoader.getResource(URLClassPath.java:840)
+<br>	at sun.misc.URLClassPath.getResource(URLClassPath.java:199)
+<br>	at java.net.URLClassLoader$1.run(URLClassLoader.java:358)
+<br>	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+<br>	at java.security.AccessController.doPrivileged(Native Method)
+<br>	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+<br>	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+<br>	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+<br>	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+<br>	at java.lang.Class.forName0(Native Method)
+<br>	at java.lang.Class.forName(Class.java:270)
+<br>	at com.mathworks.util.jarloader.SimpleClassLoader.loadClass(SimpleClassLoader.java:233)
+<br>	at com.mathworks.util.jarloader.SimpleClassLoader.loadClass(SimpleClassLoader.java:201)
+<br>	at com.mathworks.jmi.OpaqueJavaInterface.findClass(OpaqueJavaInterface.java:213) 
+<br>&gt; In ExternalException&gt;ExternalException.ExternalException at 35
+<br>  In JavaException&gt;JavaException.JavaException at 38
+<br>  In xlwrite at 260
+<br>  In dikablis_analysis at 445 
+<br>Error using xlwrite (line 260)
+<br>Java exception occurred:
+<br>java.lang.OutOfMemoryError: GC overhead limit exceeded
+<br>	at org.apache.poi.xssf.usermodel.XSSFRow.createCell(XSSFRow.java:174)
+<br>	at org.apache.poi.xssf.usermodel.XSSFRow.createCell(XSSFRow.java:147)
+<br>	at org.apache.poi.xssf.usermodel.XSSFRow.createCell(XSSFRow.java:39)</p>
+
+<p>Error in dikablis_analysis (line 445)
+<br>    xlwrite(Xcel_FileNameExt,CELLTIME,sheetName,startRange);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/445838">florian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>feature request: table support...unfortunately it seems I can only export cells, vectors or matrixes but not tables?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Dan: I just got a reply back from Mathworks support:
+<br>"This bug should be fixed with R2014a. The PreRelease for R2014a is available already and it should also contain the bug fix."</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Dan: XLSREAD has a bug in its 
+implementation to read xlsx files; I have informed Mathworks support 
+regarding this. The Mathworks development team has acknowlodged the bug.
+ Don't know yet if they fixed it.</p>
+
+<p>The workaround is to use xls files if you can.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Nik: can you send me a demo code so I can reproduce it and fix the bug?</p>
+
+<p>Thanks,
+<br>Alec</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/426214">Samuel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Niklas: Try to specify the extension. For me the problem occured when not specifying it:</p>
+
+<p>fileName = 'myfile' does not work with several sheets.</p>
+
+<p>fileName = 'myfile.xlsx' does. </p>
+
+<p>Don't ask me why.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33321">Dan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A great submission but there seems 
+to be problems when I use xlsread to read these files. I am unable to 
+read an xlsx workbook with multiple worksheets created with xlwrite (on a
+ Mac). I just get "Worksheet not found".</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/412769">Niklas Brown</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec,
+<br>am trying to write a multiple sheet .xls-File. Unfortunately, on 
+every loop is overwrites the worksheet. So at the end I get an xls-File 
+with one worksheet created in the last loop. Sheetname changes on every 
+loop.
+<br>If I understand the description correctly, the function should add the worksheet a the end?!
+<br>Thanks for help!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/403930">Alessio Nava</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/403914">SCADA Miner</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Regarding the problem below.  There
+ was a corrupted existing myfile.xlsx already in the directory where 
+xlwrite was trying to create the new file. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/403914">SCADA Miner</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec.  I have been using this on
+ Windows and it is great.  I have moved m code onto a linux machine and 
+am encountering the following exception:
+<br>java.lang.illegalArgumentException: Your InputStream was neither an 
+OLE2 stream, nor an OOXML stream at 
+...WorkbookFactory.create(WorkbookFactory.java (line 137 or xlwrite: 
+xlsWorkbook = WorkbookFactory.create(fileIn))
+<br>I am  trying to create an xlsx file which has been working 
+flawlessly in windows.  i have checked all the .jar dependencies and 
+they are identical on my windows install as the linux one.  Any 
+suggestions to help fault-finding?
+<br>Thanks,
+<br>Tom
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Guillaume,
+<br>Your are right. I will try to send a bug fix as soon as possible.</p>
+
+<p>Best regards,
+<br>Alec</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/360177">Guillaume</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Oups my last post has been deleted.</p>
+
+<p>Actually, i've got the following error </p>
+
+<p>Error using xlwrite (line 179)
+<br>Java exception occurred:
+<br>java.lang.IllegalArgumentException: The workbook already contains a sheet of this name
+<br>	at org.apache.poi.xssf.usermodel.XSSFWorkbook.createSheet(XSSFWorkbook.java:619)
+<br>	at org.apache.poi.xssf.usermodel.XSSFWorkbook.createSheet(XSSFWorkbook.java:70)</p>
+
+<p>when i used xlwrite several times on a new workbook with a specific 
+worksheet (e.g. 8th sheet). The function created the workbook with one 
+sheet named "sheet 8". So when i tried to use xlwrite again on the 8th 
+sheet, xlwrite didn't recognized "sheet 8" as the 8th spreadsheet and 
+tried to create a newer with the name "sheet 8". This induced the above 
+error.
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/360177">Guillaume</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>replacing line 179 : "xlsSheet = xlsWorkbook.createSheet(['Sheet ' num2str(sheet)]);"</p>
+
+<p>by :
+<br> "for sheet_number=1:sheet
+<br>            xlsSheet = xlsWorkbook.createSheet(['Sheet ' num2str(sheet_number)]);
+<br>            end"</p>
+
+<p>Works well for me, but is it reproducible and reliable with different cases or is it the best way to do this ...
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/360177">Guillaume</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks again!
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Guillaume:
+<br>I highly recommend to use the 'fullfile' command of Matlab to 
+generate paths to directories or files. It allows you to use relative 
+and absolute paths, independent of the operating system.</p>
+
+<p>The error you get is because could not open or store the file in the requested location.</p>
+
+<p>Hope it helps.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/360177">Guillaume</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Alec! 
+<br>You're right, my Poi_Library was not loaded. - -'</p>
+
+<p>But after that, I still got an error :</p>
+
+<p>Error using xlwrite (line 286)
+<br>Java exception occurred:
+<br>java.io.FileNotFoundException: ~/Documents/Recherche/Etude Course vs Bondissements/Donnees/Fichiers Sujets/Cyril
+<br>Schmit2/Analyse Force Cyril Schmit2.xlsx (No such file or directory)
+<br>	at java.io.FileOutputStream.open(Native Method)
+<br>	at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:194)
+<br>	at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:84)</p>
+
+<p>Actually, i had recently changed my laptop to the macbook pro and 
+realized that , with MacOS X, the path filename attribution method is 
+not as easy as Windows .</p>
+
+<p>After multiple trial, i realized that the relative mode didn't work 
+with XlWrite. Therefore, the path filename have to be loaded in absolute
+ mode (starting with /User/username/etc.) with MacOS X</p>
+
+<p>Don't know if it's mentioned in the Help section...</p>
+
+<p>Guillaume</p>
+
+<p>P.S: Sorry for my poor english skills.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Guillaume: Thanks.
+<br>Yes it is possible to write to any file on your drive. We do it all the time.
+<br>The error you get seems to be caused by one of the libraries that is
+ not loaded. I think it is poi-ooxml or poi-ooxml-schemas, but not sure.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/360177">Guillaume</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very, Very Nice function!!! Thanks for the submission</p>
+
+<p>I would just like to know, is it possible to write on specific path 
+file? I'm working with MACOS X (Mavericks) and when i tried to write in 
+excel spreadsheet out of the matlab path folder the following error 
+appeared :</p>
+
+<p>Error using xlwrite (line 148)
+<br>Java exception occurred:
+<br>java.lang.NoClassDefFoundError: Could not initialize class org.apache.xmlbeans.XmlBeans
+<br>	at org.openxmlformats.schemas.spreadsheetml.x2006.main.CTWorkbook$Factory.newInstance(Unknown Source)
+<br>	at org.apache.poi.xssf.usermodel.XSSFWorkbook.onWorkbookCreate(XSSFWorkbook.java:290)
+<br>	at org.apache.poi.xssf.usermodel.XSSFWorkbook.&lt;init&gt;(XSSFWorkbook.java:170)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116091">Michael</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>THANK YOU!!!!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ S A: Just add the folder to your Matlab path, and then it will always be loaded by default.
+<br>You can access the "Set Path" in the ribbon toolbar of Matlab. Hope it helps!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/394724">KoenV</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works great!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/392875">S A</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have used Matlab for years on a 
+Windows system, and am just starting on a Mac.  How do you add this file
+ to your directory?  I copied the poi_library folder to my java folder, 
+and added the .jar files to the classpath.txt file.  But how do I add 
+xlwrite to the general matlab directory (so that it may be called in any
+ folder as a built-in matlab function)?  
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/381405">Dominik</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi all,
+<br>The column index error is due to the Microsoft limitation for 
+*.xls-files (Excel 1997-2003). Just change your specified file extension
+ to *.xlsx to solve the problem.
+<br>Thanks Alec for the hint.
+<br>Cheers,
+<br>Dominik</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/381405">Dominik</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec,
+<br>Thanks for the great submission. 
+<br>However, like Corbin, I am also receiving an error concerning the column size:
+<br>"java.lang.IllegalArgumentException: Invalid column index (256).  Allowable column
+<br>range for BIFF8 is (0..255) or ('A'..'IV')"
+<br>Is there a workaround to this?
+<br>Thanks,
+<br>Dominik</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Robert,
+<br>It should normally append the data. It will only overwrite data if 
+your column header matrix is too big or if your cell range is not 
+properly defined.
+<br>If you cannot solve it, please send me a mail with a demo code, so I can reproduce it, and I will fix it as soon as possible.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/274221">Robert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec, </p>
+
+<p>Thanks for sharing this excellent code. I just tried to write data 
+and then add column headers but found that xlwrite (as opposed to 
+xlswrite) does not append to an already existing file but rather 
+replaces it. Am I missing something?</p>
+
+<p>Thanks, Robert</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/361321">Corbin Cunningham</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec,</p>
+
+<p>I am receiving this error: "Warning:  Could not add cell at RY338 because it exceeds the maximum column limit"</p>
+
+<p>What is the limit on the number of columns xlwrite can make and is there a wordaround for that?</p>
+
+<p>Any info would be great!</p>
+
+<p>Best,
+<br>Corbin</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Klever: You get this error, 
+because you are running an old version of Matlab(2009a) which does not 
+support the tilde (~) operator to ignore outputs of a function. This has
+ only been introduced in Matlab 2009b. You can read more about it on 
+http://blogs.mathworks.com/loren/2009/09/11/matlab-release-2009b-best-new-feature-or/</p>
+
+<p>As a workaround, you could try to modify line 140 in xlwrite from
+<br>[~,~,fileExt] = fileparts(filename);
+<br>to 
+<br>[unusedA,unusedB,fileExt] = fileparts(filename);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243846">Klever</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec,  This script seems like it
+ has great potential for my application.  However, it works great on 
+Windows, but on Red Hat and with MATLAB 7.8.0 (2009a) I keep getting the
+ following error when I run your test script:</p>
+
+<p>??? Error: File: xlwrite.m Line: 140 Column: 7
+<br>Expression or statement is incorrect--possibly unbalanced (, {, or [.</p>
+
+<p>Error in ==&gt; Test_xlWrite at 28
+<br>xlwrite(fileName, xlsData, sheetName, startRange);</p>
+
+<p>Can't seem to solve this error. Any Suggestions?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jeremy: This is a bug in the 
+implementation of XLSREAD. When opening an XLSX on a Mac, XLSREAD opens 
+it in 'basic' mode. The 'basic' mode in XLSREAD has a bug when opening 
+XLSX. If you try [~,b,c] = xlsread('myXlsx.xls', 1, '', 'basic') on your
+ windows PC you will see the same bug.
+<br>I would recommend to save the file as XLS if possible.</p>
+
+<p>@Barry: There is no plan to create an xlsread version with the POI 
+library. Did you try using the xlsread in 'basic' mode? This should 
+normally avoid the "Could not start Excel server..." error.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/299452">Barry</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I was just wondering if there is a 
+xlread version using the POI library. When using the normal xlsread in a
+ loop I eventually get a "Could not start Excel server...". Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/352521">Jeremy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Update: I tried this on Windows 7 
+and it worked correctly.  On my Mac(10.8) I encountered the problem.  
+Also this was as a .xlsx, it seems the .xls works as stated.
+<br>Hi, I've noticed a bug(s) when trying to use xlsread after xlwrite. 
+In my situation it was occurring when the first column of a record was a
+ '1A' instead of a '1a', but solving this next bug may catch that one.  I
+ tried to make a sample program to illustrate the bug. The return did 
+not get the second row on the read.  Note: If i go into Excel and do 
+something and resave, xlsread then reads the second row:
+<br>titles = {'label1', 'label2'};
+<br>record = {1, 2};
+<br>xlwrite('myXlsx.xlsx', titles, 'A1:B1');
+<br>xlwrite('myXlsx.xlsx', record, 'A2:B2');
+<br>[~,b,c] = xlsread('myXlsx.xlsx')
+<br>b = 
+<br>    'label1'
+<br>c = 
+<br>    'label1'</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/201104">Tom</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>great - a little slow - but still great!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/341457">Denis Anikiev</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great submission, thanks.
+<br>Why don't you add something like this to beginning:</p>
+
+<p>path = mfilename('fullpath');    
+<br>name = mfilename;
+<br>path = path(1:length(path)-length(name));
+<br>javaaddpath([path 'poi_library/poi-3.8-20120326.jar']);
+<br>javaaddpath([path 'poi_library/poi-ooxml-3.8-20120326.jar']);
+<br>javaaddpath([path 'poi_library/poi-ooxml-schemas-3.8-20120326.jar']);
+<br>javaaddpath([path 'poi_library/xmlbeans-2.3.0.jar']);
+<br>javaaddpath([path 'poi_library/dom4j-1.6.1.jar']);</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/281252">Alexandre Laurin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Mario: Thanks!</p>
+
+<p>@Thierry: thanks for the recommendations!
+<br>1) The Stax library should indeed also be loaded. This will be fixed in next release.</p>
+
+<p>2) Originally we also wanted to add an auto-load function, but we ran
+ into the issue that the POI folder location is unknown. It is allowed 
+to be anywhere on your computer. For example in our 
+matlab-webapplications, the POI libraries are put next to the other java
+ libraries in a central folder. To keep it as generic as possible we 
+decided to throw an error if it is not loaded.</p>
+
+<p>3)xlwrite replacing NaN with the previous number is indeed a bug. This was solved in the update of 25/01/2013.</p>
+
+<p>Best Regards,
+<br>Alec</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/325463">Mario</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alec thanks for this wonderful submission it works great.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33118">Thierry Dalon</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>1.It seems you also need to javaaddpath the stax*.jar to get it work, right?
+<br>(it is omitted in the test_xlwrite).
+<br>I would add something like this in the beginning of xlwrite:
+<br>if exist('org.apache.poi.ss.usermodel.WorkbookFactory', 'class') ~= 8 ...
+<br>%     || exist('org.apache.poi.hssf.usermodel.HSSFWorkbook', 'class') ~= 8 ...
+<br>%     || exist('org.apache.poi.xssf.usermodel.XSSFWorkbook', 'class') ~= 8
+<br>    % auto-initialize
+<br>    javadir=fullfile(fileparts(mfilename('fullpath')),'poi_library');
+<br>    jarfiles=dir(javadir,'*.jar');
+<br>    javaaddpath(jarfiles);</p>
+
+<p>2. xlwrite replace NaN by previous numeric values
+<br>whereas xlswrite replace NaN by empty cell.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Jveer,</p>
+
+<p>It should not be a problem to use javaaddpath together with the 
+compiler. We use it for example with de Matlab JA compiler in our 
+company.</p>
+
+<p>To make it work with the compiler:
+<br>- Add/drag&amp;drop the POI folder to 'Shared Resource and Helper Files'-window of the compile project
+<br>- make sure the javaaddpath point to the right (relative) location.</p>
+
+<p>I hope this helps</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/83838">Jveer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for the excellent submission.</p>
+
+<p>Is there a way around 'javaaddpath' in order to compile using Matlab compiler?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/274221">Robert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice, many thanks for sharing 
+this. I've added the javaaddpath-commands to my startup.m file - this 
+way xlwrite is immediately available</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Klaus, the bug is fixed &amp;
+ also the documentation was adapted. I uploaded a new version. It should
+ be online once accepted by the Mathworks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/314195">Klaus</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>to get xlswrite behavier for NaN's just insert</p>
+
+<p>       if isnumeric(data)
+<br>          if isnan(data)
+<br>               data=[];
+<br>           end
+<br>       end
+<br>after 
+<br>     if ~isempty(data)
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/314195">Klaus</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>using cell arrays the NaN to empty conversion is currently not working.</p>
+
+<p>in the help example xlSwrite is copy-pasted</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126288">Wouter</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/301349">Marianna</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alec thanks a lot for the immediate feedback! I tried it and it works great, I can't thank you enough :)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Marianna,
+<br>When you read the documentation of xl(s)write, you are not allowed 
+to give an empty ([]) sheet. You should use the syntax 
+xlwrite('test.xls',M,'A1:B10') instead of xlwrite('test.xls',M,[],'A1').</p>
+
+<p>Setting the sheet to 1 is also an option, like you said... and the 
+error you are getting is a bug:) I fixed it and uploaded a new version 
+today. It should be online by tomorrow.
+<br> 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/301349">Marianna</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi and thanks for the much needed submission :) 
+<br>I have been using the function for some weeks now without problem. 
+Recently I tried to use it in the code of a simple GUI that I 
+implemented and for some reason nothing works.. 
+<br>More specifically, I have o command of the type:
+<br>xlwrite('test.xls',M,[],'A1')
+<br>and get the following error:
+<br>??? No method 'getSheet' with matching signature found for class
+<br>'org.apache.poi.hssf.usermodel.HSSFWorkbook'.</p>
+
+<p>Error in ==&gt; xlwrite at 161
+<br>        xlsSheet = xlsWorkbook.getSheet(0);</p>
+
+<p>If I set the sheet to 1, I get:
+<br>??? Java exception occurred:
+<br>java.lang.IllegalArgumentException: Sheet index (0) is out of range (0..-1)</p>
+
+<p>Note that everything works fine when I save my variables in the 
+workspace and use the same code from the command line (so it obviously 
+has to do with the GUI). </p>
+
+<p>Any idea if/how I can work around this?</p>
+
+<p>Any help would be much appreciated!
+<br>Thanks, 
+<br>Marianna
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Dan &amp; Jason: Thanks for the feedback! </p>
+
+<p>I fixed the bug &amp; uploaded a new version. Should be approved by tha Mathworks soon...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/299479">Dan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent job!</p>
+
+<p>I had the same problem mentioned by Jason. I replaced line 211 by:</p>
+
+<p>currentRow = xlsSheet.getRow(iRow);
+<br>if isempty(currentRow)
+<br>    currentRow = xlsSheet.createRow(iRow);
+<br>end</p>
+
+<p>Hope it helps!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/297578">Jason</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>When I try to specify a range, it wipes out the entire row. So for example the following code</p>
+
+<p>xlwrite('M:\test.xls',[1,2,3,4],'Data','B5:E5');</p>
+
+<p>writes the data in the proper cells but all of the other cells of row
+ 5 are overwritten to be blank. Is there a way to preserve the data in 
+the other cells?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290233">omar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>problem solved, xlsread(fileName) works. Great job, thanks a millon.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Omar, 
+<br>the problem should be solved with this update (for XLS files).
+<br>Alec</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290233">omar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>How to read the file again in matlab</p>
+
+<p>xlsread give the following:</p>
+
+<p>Error using xlsread (line 232)
+<br>XLS File contains unicode text which is not yet
+<br>supported.</p>
+
+<p>Any suggestions?</p>
+
+<p>Thanks in advance</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290233">omar</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290233">omar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Your code just worked on Linux ubuntu with MATLAB 2011b.Thanks
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/266876">Marin Deresco</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>nice!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/105165">peter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Now I got it !!!
+<br>thanks a lot</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285432">Alec de Zegher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Peter</p>
+
+<p>This error is caused because the jxl.jar (JExcelApi) package is not loaded correctly in your workspace.</p>
+
+<p>- Check that you extracted correctly the jxl.jar file from the zip file.
+<br>- You should not forget to add the jxl.jar file to your Matlab Java 
+path as explained in test_xlwrite. If jxl.jar is in the same directory 
+as your current workspace: you should execute the 
+"javaaddpath('jxl.jar');" command. If jxl.jar is not in the same 
+directory as your current workspace, you should execute the 
+"javaaddpath('\FULL\PATH\TO_jxl.jar');".</p>
+
+<p>Please let me know if this solves your problem or not.</p>
+
+<p>Alec</p>
+
+<p>Please let me know 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/105165">peter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>??? Undefined variable "jxl" or class "jxl.Workbook.createWorkbook".</p>
+
+<p>I tried to run the test_xlwrite and got the following ?</p>
+
+<p>Error in ==&gt; xlwrite at 87
+<br>    xlsWorkbook = jxl.Workbook.createWorkbook(xlsFile);</p>
+
+<p>Error in ==&gt; test_XLWRITE at 19
+<br>xlwrite(fileName, xlsData, sheetName, startRange);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">05 Nov 2012</td>
+                  <td><p>The new version of xlwrite uses the Apache POI 
+library, instead of JExcelApi. The Apache POI library has some 
+advantages over JExcelApi library:
+<br>- It can create XLSX files
+<br>- xlsread supports xls files generated by POI lib.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Nov 2012</td>
+                  <td><p>Fixed bug: use existing rows if present, instead of overwrite rows by default. Thanks to Dan &amp; Jason.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Nov 2012</td>
+                  <td><p>Fixed bug: use existing rows if present, instead of overwrite rows by default. Thanks to Jason.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">04 Dec 2012</td>
+                  <td><p>Bugfix: if a numeric sheet was given &amp; didn't exist an error was returned instead of creating the sheet. Thanks to Marianna</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Jan 2013</td>
+                  <td><p>Fixed bug: use existing cell if present, instead of overwriting. This way original XLS formatting is kept &amp; not overwritten.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">25 Jan 2013</td>
+                  <td><p>20130125 - Fixed bug &amp; documentation. Incorrect working of NaN. Thanks Klaus</p></td>
+                </tr>
+                <tr>
+                  <td class="date">27 Feb 2013</td>
+                  <td><p>20130227 - Fixed bug when no sheet number given &amp; added Stax to java load. Thanks to Thierry</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416027477544&amp;cv=7&amp;fst=1416027477544&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/38591-xlwrite--generate-xls-x--files-without-excel-on-mac-linux-win&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D122%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

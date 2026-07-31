@@ -1,0 +1,4351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Variable Precision Integer Arithmetic -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/22725-variable-precision-integer-arithmetic" rel="canonical">
+<meta content="Variable Precision Integer Arithmetic - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/22725-variable-precision-integer-arithmetic" property="og:url"><meta content="Arithmetic with integers of fully arbitrary size. Arrays and vectors of vpi numbers are supported." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-rdm-ry" type="text/css"></style><style id="ki-rdm-r3" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F22725-variable-precision-integer-arithmetic" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F22725-variable-precision-integer-arithmetic" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/18382" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=22725" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic" class="manifest_title">Variable Precision Integer Arithmetic</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/html/demo_vpi.html" class="example" title="Example">demo_vpi</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/base2vpi.m" class="function" title="Function">base2vpi(B,base)</a><span class="description">bin2vpi: converts an integer in an arbitrary base into vpi (decimal) form</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/bin2vpi.m" class="function" title="Function">bin2vpi(B)</a><span class="description">bin2vpi: converts a binary representation of an integer into vpi (decimal) form</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/binomfactors.m" class="function" title="Function">binomfactors(n,k)</a><span class="description">binomfactors: list all factors of the binomial coefficient nchoosek(n,k)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/catdigits.m" class="function" title="Function">catdigits(N,M)</a><span class="description">catdigits: concatenates the digits of N and M into an aggregate number</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/createPrimesList.m" class="function" title="Function">createPrimesList</a><span class="description">createPrimesList - For users of older matlab releases, this function will generate a compatible _primeslist_ file</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/factorialfactors.m" class="function" title="Function">factorialfactors(n)</a><span class="description">factorialfactors: efficient computation of the prime factors of factorial(n)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/fibonacci.m" class="function" title="Function">fibonacci(n,modulus)</a><span class="description">fibonacci: vpi tool to efficiently compute the n'th Fibonacci number and the n'th Lucas number</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/getprimeslist.m" class="function" title="Function">getprimeslist
+</a><span class="description">loads the primeslist file, and decompresses it, returning the list of primes up to 2^26
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/ispalindrome.m" class="function" title="Function">ispalindrome(N)</a><span class="description">ispalindrome: test if the number N (vpi or numeric, or a digit string as a vector) is a palindrome</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/iszero.m" class="function" title="Function">iszero(INT)</a><span class="description">vpi/iszero: test to see if a numeric object is zero</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/legendresymbol.m" class="function" title="Function">legendresymbol(a,p)</a><span class="description">legendresymbol: computes the legendre symbol (a/p) for prime p</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/lineardiophantine.m" class="function" title="Function">lineardiophantine(A,B,C)</a><span class="description">lineardiophantine: solve the linear Diophantine equation, A*x + B*y = C</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/mersenne.m" class="function" title="Function">mersenne(p)</a><span class="description">mersenne: identify whether 2^p-1 is a Mersenne prime, using the Lucas-Lehmer test</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/minv.m" class="function" title="Function">minv(a,p)</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/modfibonacci.m" class="function" title="Function">modfibonacci(n,modulus)</a><span class="description">fibonacci: compute the n'th Fibonacci number and the n'th Lucas number, all modulo a given value</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/modrank.m" class="function" title="Function">modrank(A,p)</a><span class="description">modrank: compute the rank of an integer array, modulo p</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/modroot.m" class="function" title="Function">modroot(a,p)</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/modsolve.m" class="function" title="Function">modsolve(A,rhs,p)</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/nextprime.m" class="function" title="Function">nextprime(N,direction,kpr...</a><span class="description">nextprime: finds the next larger prime number directly above (or below) N</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/numberOfPartitions.m" class="function" title="Function">numberOfPartitions(N)</a><span class="description">numberOfPartitions: compute the number of partitions of the positive integer n</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/powermod.m" class="function" title="Function">powermod(a,d,n)</a><span class="description">vpi/powermod: Compute mod(a^d,n)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/quadraticresidues.m" class="function" title="Function">quadraticresidues(N)</a><span class="description">quadraticresidues: returns a list of the possible quadratic residues of the integer N</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/quotient.m" class="function" title="Function">quotient(numerator,denomi...</a><span class="description">quotient: divides two integers, computing a quotient and remainder</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/subfactorial.m" class="function" title="Function">subfactorial(N)</a><span class="description">subfactorial: The subfactorial of an integer (or integers) N, known as !N</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/totient.m" class="function" title="Function">totient(N)</a><span class="description">vpi/totient: the number of positive integers less than N that are coprime to N</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content//VariablePrecisionIntegers/@vpi/vpi.m" class="class" title="Class">vpi(N)</a><span class="description">vpi: Creator function for a variable precision integer</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic/content/VariablePrecisionIntegers.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:97.0%;">
+                <p>4.85</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.8</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">44</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">138 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 2.86 MB</span>
+          <span id="fileid">File ID: #22725</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">Variable Precision Integer Arithmetic</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      19 Jan 2009
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-07-31">31 Jul 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">Arithmetic with integers of fully arbitrary size. Arrays and vectors of vpi numbers are supported.</p>
+
+    <div id="editorsnote">
+      <h3>Editor's Notes:</h3>
+      <p></p><p>This file was selected as MATLAB Central <a href="http://blogs.mathworks.com/pick/2009/03/13/variable-precision-arithmetic-without-the-symbolic-toolbox/">Pick of the Week</a></p><p></p>
+    </div>
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F22725-variable-precision-integer-arithmetic&amp;watching=22725" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Every once in a while, I've wanted to do arithmetic 
+with large integers with magnitude exceeding that which can fit into 
+MATLAB's standard data types. Since I don't have the symbolic toolbox, 
+the simple solution was to write it in MATLAB. I did that in these tools
+ which are entirely written in MATLAB, so there is no need for compiled 
+code.</p>
+
+<p>Arithmetic is simple with the vpi tools.</p>
+
+<p>A = vpi(17)^17
+<br>ans =
+<br>827240261886336764177</p>
+
+<p>17 + A^17
+<br>ans =
+<br>39786732894291535047752038041559739510060813980024082
+<br>30012867731573722066105737100731556603857745946047229
+<br>53759676529121155309750944582301597489457676380805029
+<br>59227566911971103003303064782118652210655457390045806
+<br>99039190393572334521701109889855832341416056005878848
+<br>49943142324389193616484809157960034059531548585473213
+<br>36465170635561696613297503569949729314
+<br>&nbsp;
+<br>There are also a few nice add ons, for example a tool to compute 
+exact binomial coefficients for large arguments, or large factorials, or
+ convert binary numbers with thousands of digits to decimal (vpi) form.</p>
+
+<p>For example, the existing nchoosek function in matlab gets upset for even reasonably small binomial coefficients. </p>
+
+<p>nchoosek(100,50)
+<br>Warning: Result may not be exact. Coefficient is greater than 1.000000e+15
+<br>&nbsp;and is only accurate to 15 digits.
+<br>&gt; In nchoosek at 66
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;1.0089e+29</p>
+
+<p>However, nchoosek has no such issues on vpi numbers.</p>
+
+<p>nchoosek(vpi(100),50)
+<br>ans =
+<br>100891344545564193334812497256</p>
+
+<p>Similarly, the computation of factorial(171) will cause an overflow. 
+While I'll admit that there are many good ways to avoid this problem, 
+the factvpi function has no problems at all.</p>
+
+<p>factorial(171)
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;Inf</p>
+
+<p>factorial(vpi(171))
+<br>ans =
+<br>12410180702176678234248405241031039926166055775016931
+<br>85388951803611996075221691752992751978120487585576464
+<br>95950167038705280988985869071076733124203221848436431
+<br>04735778899685482782907545415619648521534683180442932
+<br>39598173696899657235903947616152278558180061176365108
+<br>428800000000000000000000000000000000000000000</p>
+
+<p>There are now GCD and LCM tools, both of which can accept more than two input arguments.</p>
+
+<p>lcm(vpi(123452356),12344332,65364467)
+<br>ans =
+<br>3557547184310976844988</p>
+
+<p>I've also put in some tools that can test for primality. For example,  the Mersenne prime:</p>
+
+<p>p = vpi(2)^127 - 1
+<br>ans =
+<br>170141183460469231731687303715884105727</p>
+
+<p>isprime(p)
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</p>
+
+<p>Factoring of vpi numbers is now implemented.</p>
+
+<p>factor(vpi('1234567890123456789'))
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3    3    101   3541   3607   3803    27961</p>
+
+<p>Vectors or arrays of vpi numbers work very nicely now.</p>
+
+<p>A = vpi(eye(3))*3 + 1
+<br>A =
+<br>&nbsp;&nbsp;&nbsp;4   1   1
+<br>&nbsp;&nbsp;&nbsp;1   4   1
+<br>&nbsp;&nbsp;&nbsp;1   1   4</p>
+
+<p>A^17
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;5642305908354   5642176768191   5642176768191
+<br>&nbsp;&nbsp;&nbsp;5642176768191   5642305908354   5642176768191
+<br>&nbsp;&nbsp;&nbsp;5642176768191   5642176768191   5642305908354</p>
+
+<p>Dozens of other tools are also included. I've even included a tool 
+just for fun that will convert a number into a readable text version of 
+it as a large integer.</p>
+
+<p>vpi2english(vpi('12000000110022987'))
+<br>ans =
+<br>twelve quadrillion, one hundred ten million, twenty two thousand, nine hundred eighty seven</p>
+
+<p>For those Project Euler solvers around, vpi makes many of the problems easy to solve.</p>
+
+<p>Addenda - Ben Petschel has graciously given me code for unique and sortrows operations on vpi arrays. Many thanks to Ben!</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/6446-multiple-precision-toolbox-for-matlab">Multiple Precision Toolbox For Matlab</a> inspired <i>this file.</i></p>
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/29504-the-computation-of-pi-by-archimedes">The Computation Of Pi By Archimedes</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/22375-multiple-root-polynomial-solved-by-partial-fraction-expansion">Multiple Root Polynomial Solved By Partial Fraction Expansion</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/23846-nextprime">Nextprime</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/24798-sumsqint">Sumsqint</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/25643-num2vpi-converts-input-exactly-into-vpi">Num2vpi   Converts Input Exactly Into Vpi</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/32856-system-of-linear-congruences">System Of Linear Congruences</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/24878-fractions-toolbox">Fractions Toolbox</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/36534-hpf-a-big-decimal-class">Hpf   A Big Decimal Class</a>.</p>
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.5 (R2007b)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F22725-variable-precision-integer-arithmetic">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22arithmetic%22" rel="nofollow">arithmetic</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22big%22" rel="nofollow">big</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22biginteger%22" rel="nofollow">biginteger</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22finite+field%22" rel="nofollow">finite field</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22integer%22" rel="nofollow">integer</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22long%22" rel="nofollow">long</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22operator%22" rel="nofollow">operator</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22overloading%22" rel="nofollow">overloading</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22variable%22" rel="nofollow">variable</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="22725" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/22725-variable-precision-integer-arithmetic" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F22725-variable-precision-integer-arithmetic">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(141)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">05 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Of course it is free. The file 
+exchange provides tools that are free for your use. VPI does not come 
+with MATLAB directly because it was written by a third party. In this 
+case, I am that third party.</p>
+
+<p>Just download it, install it as directed, then use it and enjoy it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/499684">Seth Wagenman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is this free to download?  R2014a which I am using does not have vpi apparently...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Nicolas,</p>
+
+<p>VPI uses a Pollard rho algorithm for factoring. While it is 
+significantly better than MATLAB's builtin factor tool, which can only 
+handle numbers as large as about 10 digits or so, the scheme I used is 
+often ineffectual on numbers that are the product of two seriously large
+ primes. Of course, that is a difficult problem in general, else many of
+ the encryption schemes in common use today would fail miserably.</p>
+
+<p>One of my goals has been to re-write factor to use a better scheme, 
+but until then I should put in a warning message when factor has failed 
+to resolve a composite number fully into its prime factors.</p>
+
+<p>So you did nothing wrong here, except to give factor a number too large for it to handle.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/483083">nicolas rosselot</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi.</p>
+
+<p>First, great tools! </p>
+
+<p>Second, what am I doing wrong?</p>
+
+<p>&gt;&gt; p1 = vpi('40094690950920881030683735292761468389214899724061')
+<br>p1 =
+<br>40094690950920881030683735292761468389214899724061
+<br>&gt;&gt; p2 = vpi('37975227936943673922808872755445627854565536638199')
+<br>p2 = 37975227936943673922808872755445627854565536638199</p>
+
+<p>&gt;&gt; factor(p1*p2)
+<br>ans =
+<br>    1522605027922533360535618378132637429718068114961380688657908494580122963258952897654000350692006139</p>
+
+<p>It should give p1 and p2...</p>
+
+<p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/422279">Edgar Zakarian</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/422279">Edgar Zakarian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks sir.
+<br>if someone is interested, I answer my question about using vpi in 
+simulink (see below comment). I converted the vpi number into a matrix 
+of bits (actually a bit is stored in double). </p>
+
+<p>here are the steps :
+<br>seed = vpi('123456789')
+<br>N0 = randint(vpi(seed),[1,1])
+<br>N1 = vpi2bin(N0) % Convert vpi from decimal to binary form
+<br>N2 = [N1 - '0']  % Convert number to string (vector)  
+<br>N3 = vec2mat(N2,8) % Convert vector into matrix of 8 columns.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>N = vpi('123456789012345678901234567890');</p>
+
+<p>vpi2bin(N)
+<br>ans =
+<br>1100011101110100100001111111101101100001101110011111000001110111001001110001111110000101011010010</p>
+
+<p>I suppose in hindsight, I should have used dec2bin as the name for this.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/422279">Edgar Zakarian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>How can I convert a vpi number to binary ?
+<br>Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22520">Giuseppe Cardillo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,
+<br>I saw that you use the Miller-Rabin algorithm to test primality. 
+considering that are known the strong pseudoprimes to the first 9 prime 
+bases (http://arxiv.org/pdf/1207.0063.pdf), I suggest a little 
+implementation to speed up your Miller-Rabin algorithm:</p>
+
+<p>if N&lt;2047
+<br>    witnesses=2;
+<br>elseif N&lt;1373653
+<br>    witnesses=[2 3];
+<br>elseif N&lt;25326001
+<br>    witnesses=[2 3 5];
+<br>elseif N&lt;3215031751
+<br>    witnesses=[2 3 5 7];
+<br>elseif N&lt;2152302898747
+<br>    witnesses=[2 3 5 7 11];
+<br>elseif N&lt;3474749660383
+<br>    witnesses=[2 3 5 7 11 13];
+<br>elseif N&lt;341550071728321
+<br>    witnesses=[2 3 5 7 11 13 17 19];
+<br>elseif N&lt;3825123056546413051
+<br>    witnesses=[2 3 5 7 11 13 17 19 23];
+<br>else
+<br>    witnesses=[2 3 5 7 11 13 17 19 23 29 31 37];
+<br>end</p>
+
+<p>Regards</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Suma,</p>
+
+<p>I recall seeing exactly this same question a few days ago on some 
+forum. Maybe it was on Answers, but I'm not going to search for it. The 
+responses there told you that the issue was floating point arithmetic.</p>
+
+<p>Regardless, you are trying to solve a FLOATING point issue with an 
+INTEGER arithmetic tool. Perhaps you need to consider that there is a 
+problem with that whole idea. I'm not at all sure what answer you expect
+ to see from the computation you did.</p>
+
+<p>Worse, the problem is not even with eig, but still with your 
+understanding of floating point arithmetic. (Please don't try throwing 
+this same problem at my HPF tool, as it won't solve the problem either.)</p>
+
+<p>SO. The fact is, it looks like you have a singular matrix. Floating 
+point trash can creep in on problems like this to yield slightly 
+negative numbers, on the order of eps. Throwing random pieces of code at
+ the results of eig will not fix the problem by trying to increase the 
+precision of MATLAB.</p>
+
+<p>HOWEVER, if you know the eigenvalues can never be negative, then why 
+not just use max? (By the way, please don't ask again about this 
+question here, as I do NOT do consulting in the comments of my code, 
+especially when the problem has no relevance to my code.)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/456951">Suma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi,</p>
+
+<p>I have a 2x2 matrix A, its eigen value returned me negative zeros,eg-
+<br> -0.000000000000000 and  -0.000000000000000  
+<br>  1.000000000000000       0.999999999999999</p>
+
+<p>So I tried to use the vpi function like-
+<br>lamda(:,k) = vpi(eig(A(:,:,k)))</p>
+
+<p>but this returned me error message-</p>
+
+<p>Warning: Converted a real float to a vpi integer form 
+<br>&gt; In vpi.vpi at 172
+<br>  In vpi.vpi at 138</p>
+
+<p>obviously my vpi implementation is wrong. can vpi be used in such cases?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/183660">Jean-Luc</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Edgar,</p>
+
+<p>I suspect the Simulink toolbox is calling isnumeric on a VPI object. 
+ Try making a file isnumeric.m in the @vpi folder with something like:</p>
+
+<p>function val = isnumeric(INT)
+<br>val = true;</p>
+
+<p>Jean-Luc
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/323777">Tétef</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Edgar - I'm sorry, but I know 
+absolutely nothing about Simulink, so I can offer no help here. Perhaps 
+someone else can do so, or you can contact MathWorks and ask them.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/422279">Edgar Zakarian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>thanks Mr D'Errico for sharing,
+<br>If I may ask, a question to anyone : within Simulink, when I use an 
+Embedded MATLAB function and I call from it another function that 
+outputs a vpi number (Z), I always get the following error : "MATLAB 
+Function Interface Error: MATLAB expression 'Z' is not numeric." what 
+should I do to avoid it the error ? I still need a vpi number from that 
+function.
+<br>thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/276148">Cavin Dsouza</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Remarkable Sir</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/183660">Jean-Luc</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey John: thanks for implementing min and max in the latest version!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/390310">Shiuan-Tzuo Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice submission!
+<br>Suggest the implementation of generating random numbers in Z_p^*, where p is a vpi number. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You install it the same way you 
+would install any other submission from the FEX. The same for Windoze or
+ any operating system. Unpack the zip file, then put the TOP level 
+directory (VariablePrecisionIntegers) on your search path.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/377952">Fogato Abbestia</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>how do i install it on windows ? i have matlab 2008b 64bit, thx.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Oops. Fixed totient(1) &amp; uploaded.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58574">the cyclist</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great submission. I use it rarely, but it is a life-saver when I need it.</p>
+
+<p>I did find one foible, I believe. Your totient function outputs 
+totient(1) as 0, but both the Wikipedia page you cite and the Sloane 
+Online Encyclopedia of Integer Sequences (http://oeis.org/A000010) say 
+that totient(1) = 1.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/349091">Thomas Reasoner</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I used it for prime number factorization. Works great!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116970">Seth Kosowsky</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks John. I did implement w/ 
+repmat and as expected the loss of speed is huge. Still, I have no other
+ way of doing this problem (finding n-digit numbers in base-n with 
+unique digits and special divisibility properties) above base 13. While 
+the repmat is slow, the vpi is doing its job.</p>
+
+<p>Also, I might suggest for future work an equivalent 'isvpi' function. </p>
+
+<p>thanks again.
+<br>-Seth</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>As far as I know, bsxfun will not 
+work with these tools. That tool is out of my control, as compiled code.
+ I suppose I could overload bsxfun for vpi, but there are a variety of 
+bsxfun replacements on the FEX. One of them might work, as long as they 
+are written for arrays of a general class that supports addition and 
+multiplication.</p>
+
+<p>You can always just use repmat to solve the problem, although it will
+ not offer any gain in speed, since it will allocate the additional 
+memory that bsxfun avoids.</p>
+
+<p>And, finally, the possibility of a new, faster version of vpi is on the horizon.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116970">Seth Kosowsky</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is it possible to get bsxfun to 
+work with the vpi tool box? when I blindly try it, matlab reports bsxfun
+ not defined for vpi types.</p>
+
+<p>Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232578">kevin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/68691">Juliano</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great quality, very easy to 
+integrate. I needed to check for some bugs today that could be related 
+to lack of precision of the standard numeric types, and VPI did the job.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232578">kevin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thank you John!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm sorry, but I don't do 
+consulting in the comments of a submission, as otherwise these things go
+ on forever. More to the point, this very much appears to be a homework 
+problem of some sort, and I don't do homework. I will only repeat my 
+last statement, that analysis always trumps brute force. At the very 
+least, it will allow you to reduce your search space. And I already gave
+ you one hint. Spend some time with pencil and paper, BEFORE you throw 
+brute force search at the problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232578">kevin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I ever tried to use 
+"round(sqrt(temps))==sqrt(temps)" as criterion for perfect square, but 
+finally obtained some pseudo solutions for m=17 very soon  without any 
+warning message . </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232578">kevin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>% code I am now using,but it does not work well for m=11
+<br>close all
+<br>clear 
+<br>clc
+<br>N=1e7;
+<br>result=vpi(zeros(1,2));
+<br>counts=0;
+<br>test256=[0;1;4;9;16;17;25;33;36;41;49;57;64;65;68;73;81;89;97;100;105;113;121;129;132;137;144;145;153;161;164;169;177;185;193;196;201;209;217;225;228;233;241;249];
+<br>test10=[0;1;4;5;6;9];
+<br>test05=[0;1;4];
+<br>test07=[0;1;2;4];
+<br>test09=[0;1;4;7];
+<br>test13=[0;1;3;4;9;10;12];
+<br>test17=[0;1;2;4;8;9;13;15;16];</p>
+
+<p>tic</p>
+
+<p>for ii=2:N
+<br>    if counts&gt;0
+<br>        break
+<br>    end
+<br>    for jj=1:ii-1
+<br>     if counts&gt;0
+<br>     break
+<br>     end
+<br>        temps=(ii*jj)*(ii+jj)*(ii-jj)/11; % here the m.</p>
+
+<p>       if  round(temps)==temps 
+<br>           if~isempty(find(test256==mod(temps,256)))
+<br>               if  mod(temps,3)&lt;2  &amp;&amp;(mod(temps,5)&lt;2||mod(temps,5)==4) 
+<br>       if ~isempty(find(test10==mod(temps,10))) || (mod(temps,4)&lt;2)
+<br>           if ~isempty(find(test17==mod(temps,17)))
+<br>             if ~isempty(find(test13==mod(temps,13)))
+<br>                  if ~isempty(find(test09==mod(temps,9)))
+<br>         if temps&gt;1e10
+<br>           [root,excess]=sqrt(vpi(temps));
+<br>         else
+<br>             xxx=sqrt(temps);
+<br>             excess=xxx-round(xxx);
+<br>         end
+<br>      if excess==0 % isSqr(temps)%mod(temps,temp)==0 
+<br>           if counts&gt;0
+<br>             break
+<br>            end
+<br>          numerator=(ii^2+jj^2)*(ii^2+jj^2);
+<br>          if temps&gt;2e15
+<br>          temps=vpi(temps);
+<br>          numerator=vpi(ii^2+jj^2)*vpi(ii^2+jj^2);
+<br>          end
+<br>          denominator=temps*4;
+<br>           % if gcd(numerator,denominator)==1
+<br>               counts=counts+1;
+<br>               result(counts,:)=[numerator,denominator]
+<br>               toc
+<br>               break
+<br>       %     end  % disable
+<br>          end
+<br>           end
+<br>           end
+<br>           end
+<br>       end
+<br>               end
+<br>           end
+<br>    end
+<br>    end
+<br>end
+<br>toc</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Chen - I'm sorry, but I don't 
+have any reason or need or even the spare time at this point to "test" 
+vpi. I know that it works. And, to be honest, this feels like some sort 
+of homework problem, or maybe a Project Euler (like) problem, found on 
+some web site. Problems like this are not a test of software, they are a
+ test of your analytical skill to reduce it to something more easily 
+solved in a reasonable time. So I'm not going to solve it for you 
+either. I'll give you at most a hint.</p>
+
+<p>Consider the moduli of the set of perfect squares, mod 194. Note that
+ you can compute that modulus even without vpi if you are careful for 
+quite large numbers. What does it tell you if two such elements have the
+ same modulus? Does it help you to find a solution? There is still some 
+search required, but this may reduce the extent of your search.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232578">kevin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi John</p>
+
+<p>The problem mainly lies the limitation of VPI toolbox's calculation capability.</p>
+
+<p>e.g.</p>
+
+<p>when determining whether a number is a square number, I used 
+"round(sqrt(m)) == sqrt(m)" which does not work for larger number m.</p>
+
+<p>Would you please try to find a rational number n which is subjected to:
+<br>√n, √n+97, √n-97 are all rational numbers ? I believe this would be a
+ good verification method for the toolbox's calculating capability.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/228099">Michaela</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Wow ... I design floating point hardware, and this is just what the doctor ordered. Big Thanks xxx!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/79853">Tristan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very rad ! Worked right out of the box for what i needed, thanks! 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Maybe we are looking at this the wrong way. </p>
+
+<p>Suppose your goal is to generate random numbers, WITHOUT replacement in the interval [0,2^200 - 1].</p>
+
+<p>Yes, the odds of a collision are infinitesimal, but the point is as 
+easily made for numbers in a smaller interval. Here I'll use 20 "digit" 
+numbers, with each digit in base 1024.</p>
+
+<p>n = 500000;
+<br>spares = 100;
+<br>B = floor(rand(n + spares,20)*1024);</p>
+
+<p>Eliminate any collisions, although there essentially won't ever be 
+any for numbers this large. Unique sorts them of course, so we now 
+extract the number we originally wanted.</p>
+
+<p>B = unique(B,'rows');
+<br>ind = randperm(n+spares);
+<br>B = B(ind(1:n),:);</p>
+
+<p>Having done this, you can easily convert them into VPI numbers if you
+ want them in a big decimal form for some reason, or simply leave then 
+as they are. Or, suppose you wanted to use a decimal form, with bounds 
+of [0,1e1000-1]. Here we could have used numbers with 100 base 1e10 
+digits. The same approach applies.</p>
+
+<p>Generating a few spares is incredibly cheap here, so there is no real problem. </p>
+
+<p>In fact, as long as you can factor the upper limit (+1) into a list 
+of small primes, all of which are less than 2^53, one can always use a 
+scheme as I have described above. The only problem is if you wanted to 
+generate samples that lie in an interval like this:</p>
+
+<p> [0, 12323242124232456456345346]</p>
+
+<p>Of course, I've chosen the number 12323242124232456456345347 
+carefully, to be a large prime number. This is why my randint code is 
+slow, as it allows any general upper limit. (I can certainly speed that 
+up with some thought though, since I chose an algorithm that may not 
+have been optimal for speed. I'll need to leave that for the future 
+re-write.)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/209726">Michael</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For this particular experiment, I'm
+ clearly on the cusp of breaking into larger problems with a 2^60 size. 
+ Ideally my problem size gets up to 100-200 which, until now, didn't 
+seem possible.  It may not be.  My problem is not in storing big 
+integers (tried using uint64), but in manipulating them with existing 
+functions.  Much support has been added for these numbers, but many 
+functions, like binary/decimal conversion, are limited by the 2^53 size.
+  This is where your tools come in perfectly--if you'll recall you found
+ me trying to convert binary to decimal with some inferior software.</p>
+
+<p>I know a lot of people use this page to gripe about your software not
+ being perfect for what they want -- I was trying to express my 
+gratitude and contribute something that might be useful to you or 
+someone.  We're not all out to get you, John.  Peace, love, and thanks 
+for the software.</p>
+
+<p>Peacefully Unforced,</p>
+
+<p>Mike</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>While I'm happy to see that some 
+find VPI useful, nothing forces you to use a tool that is designed to 
+operate on numbers with hundreds or even many many thousands of decimal 
+digits. If your goal really is nothing larger than that will fit into a 
+64 bit integer, then use uint64 for your operations. (Only 64 bits is 
+amazingly small in context of the problems VPI is designed to handle.) 
+VPI obviously cannot compete in speed with arithmetic on those numbers, 
+as this is an issue of apples versus oranges.</p>
+
+<p>One day I expect to get around to re-writing VPI, but even then I 
+will not reasonably expect more than about  10-1 speedup in any tests 
+I've done, and even that will force some potential compromises on my 
+part.</p>
+
+<p>Use the right tool for your problem. In this case, uint64 seems like a better choice.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/209726">Michael</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Here are some stats on the big 
+numbers.  I think I will just write my code to ignore duplicates since 
+it's not time effective to remove them.  Sorting takes a little while, 
+but I think I can work out of order just fine.  So I'm good for now I 
+think, just thought you'd be interested in some run times, and that 
+you'd tell me if something looks off.</p>
+
+<p>&gt;&gt; N=vpi(uint64(2^60))
+<br>&gt;&gt; tic,vsamples = randint(N,[500000,1]);toc
+<br>Elapsed time is 1138.346514 seconds.
+<br>&gt;&gt; tic, vsamplesU=unique(vsamples);toc
+<br>Elapsed time is 1811.413225 seconds.
+<br>&gt;&gt; tic,vsamplesS=sort(vsamples);toc
+<br>Elapsed time is 1833.296390 seconds.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/209726">Michael</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I see also that unique() was 
+contributed to the toolbox, so with only ~55 collisions per 500,000 
+samples, I could easily remove the duplicates using unique.  I'm 
+guessing that will be more efficient than the re-sampling approach.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Michael - you do have the benefit 
+of large numbers here. I saw in your question online that you were 
+looking at really large numbers. So suppose we choose to sample 500,000 
+numbers from the set 1:2^50, but allowing replacements? What are the 
+odds of a collision? This is just a large scale birthday paradox 
+problem. We can compute the probability of a collision in that case:</p>
+
+<p>&gt;&gt; 1-10^sum(log10(1-(1:500000)*2^-50))
+<br>ans =
+<br>   0.00011102</p>
+
+<p>So the probability of a collision happening is fairly small here.</p>
+
+<p>Had we allowed the random sampling with replacement to go as high as 
+2^60, which I recall was the basis of your question, the probability of 
+any collision becomes quite a bit smaller. It is not impossible, but 
+certainly a low probability event. You may choose to simply ignore the 
+possibility completely. If you insist on a fully zero probability of any
+ collision, this too is possible. Resampling is easiest. For example, 
+suppose we choose to sample from the set of integers 1:2^50? As long as 
+we stay under 2^53, we can use doubles. Thus</p>
+
+<p>n = 500000;
+<br>m = 2^50;
+<br>A = ceil(rand(1,n)*m);
+<br>A = unique(A);
+<br>k = n - numel(A);
+<br>while k &gt; 0
+<br>  A = [A,ceil(rand(1,k)*m)];
+<br>  A = unique(A);
+<br>  k = n - numel(A);
+<br>end
+<br>A = A(randperm(n));</p>
+
+<p>Of course, when the limit exceeds 2^53-1, you could do a similar 
+resampling scheme on vpi numbers using the randint function to generate 
+the samples. unique is defined for vpi.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/209726">Michael</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've just been diving into the 
+documentation (thank you for all of that so much, by the way).  I see we
+ can generate vectors of random numbers with replacement, but is it 
+possible (or would it be difficult) to generate random numbers from a 
+population without replacement?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/209726">Michael</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Oh my God I love you.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Well, I have no idea what is the 
+value of l, since you don't say. However, I tried l = 7. To no surprise,
+ it worked fine, giving these results:</p>
+
+<p>    4
+<br>   16
+<br>   256
+<br>   65536
+<br>   4294967296
+<br>   18446744073709551616
+<br>   340282366920938463463374607431768211456</p>
+
+<p>My guess is, that you are doing something again without thinking about what you did.</p>
+
+<p>LOOK at the output!!!!!!! See that the value of t that is being 
+displayed is a double precision number, NOT a VPI number. So regardless 
+of what you tell me you did, this output is not from the code you 
+posted.</p>
+
+<p>Think about what you are doing BEFORE you ask a question. PLEASE. I am pleading with you.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi john,
+<br>        i want to call a function recursively.. in that vpi numbers 
+are involved...while executing that function code i got following error 
+please suggest me some idea to overcome this problem....thanks in 
+advance....</p>
+
+<p>My code is
+<br>n=vpi('59623408128589294906667477489466511394227058875719821124229053681229189216330915080633066080885115044018179752252075074762255857650359062592367314714255870395157878516147169752676083317321479715959914788386131373552660119411485042306204724685302709882300932537368996737625591854420932024858921774454130558350942691706925108621964426007163860852250193402906989838459886518533364378045747452657637521597746398695785988555098978535368265198866036728222641091714452140558062069296423468874123503682189797544270604765655771');
+<br>m=vpi(2);
+<br>r=vpi(1);
+<br>c(1)=mod(power(m,r),n);
+<br>t(1)=c(1);
+<br>for i=1:l
+<br>    c(i+1)=vpi(c(i)).*vpi(c(i));
+<br>    if lt(c(i+1),n)==1
+<br>        t(i+1)=mod(c(i+1),n);
+<br>    else
+<br>        t(i+1)=c(i+1);
+<br>    end
+<br>        disp(t(i+1));
+<br>end</p>
+
+<p>The output and error is:
+<br>   2</p>
+
+<p>     4</p>
+
+<p>    16</p>
+
+<p>   256</p>
+
+<p>       65536</p>
+
+<p>  4.2950e+009</p>
+
+<p>??? Error using ==&gt; vpi.vpi at 141
+<br>If N is a double, it may be no larger than 2^53 - 1</p>
+
+<p>Error in ==&gt; vpi.lt at 46
+<br>  INT1 = vpi(INT1);</p>
+
+<p>Error in ==&gt; mdxp at 19
+<br>    if lt(c(i+1),n)==1
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks john...ya you are right here after i will go through the helps as much as i can...  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sigh. I see I was half asleep when I responded there. </p>
+
+<p>This will do the correct thing, but I was playing around with 
+different examples, and editing my response, so it shows the wrong 
+result in that response.</p>
+
+<p>&gt;&gt; 1+order(vpi(123456)) 
+<br>ans = 
+<br>     6</p>
+
+<p>And of course, if you actually extract the digits themselves, then digits will succeed. </p>
+
+<p>&gt;&gt; numel(digits(vpi(123456))) 
+<br>ans = 
+<br>     6</p>
+
+<p>disp would also work, but you must subtract off the first few blanks. There are always four leading blanks.</p>
+
+<p>&gt;&gt; numel(deblank(disp(vpi(123456)))) - 4
+<br>ans =
+<br>     6</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Scan through all of the functions 
+in VPI. There really are not that many. Read through the helps. You 
+might find the tools to do this, and you might find other tools that you
+ never even knew existed in there.</p>
+
+<p>Simplest is to use the order function, which returns the power of 10 
+associated with the highest order digit. Adding 1 to that will tell you 
+what you want.</p>
+
+<p>&gt;&gt; 1+order(vpi(123456))
+<br>ans =
+<br>     5</p>
+
+<p>Or, since disp actually returns the digits of the number as a string variable...</p>
+
+<p>&gt;&gt; numel(disp(vpi(123456)))
+<br>ans =
+<br>    10</p>
+
+<p>Or, you could count the digits themselves, extracted into a numeric vector...</p>
+
+<p>&gt;&gt; numel(digits(vpi(123456)))
+<br>ans =
+<br>     6</p>
+
+<p>Finally, you could compute the log to the base 10, then take the 
+ceiling of that, but since log10 returns a floating point number, this 
+may actually be inaccurate, and there would be further issues for 
+non-positive numbers.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi john,
+<br>Is there any possibility to find the length of vpi number???
+<br>For example 
+n=vpi('59623408128589294906667477489466511394227058875719821124229053681229189216330915080633066080885115044018179752252075074762255857650359062592367314714255870395157878516147169752676083317321479715959914788386131373552660119411485042306204724685302709882300932537368996737625591854420932024858921774454130558350942691706925108621964426007163860852250193402906989838459886518533364378045747452657637521597746398695785988555098978535368265198866036728222641091714452140558062069296423468874123503682189797544270604765655771')
+<br>if suppose,i give length(n) it shows ans as 1...please suggest me some idea...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>powermod does not work on character
+ input, only on vpi input. Only the vpi function itself is able to 
+convert a character string of decimal digits into a vpi number. If you 
+cannot bother to convert the number to vpi form, it won't correct your 
+mistake, guessing that you intended the input to be treated as a number.
+ I won't/can't write prescient code that corrects all possible errors. 
+Computers do what you tell them to do. They follow your instructions 
+precisely, not knowing what you wanted to do in your mind when you wrote
+ down incorrect or ambiguous instructions.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am using powermod function to get
+ the result,to compute mod(M^E,N)where M,E,N should be vpi number 
+right???but for M,i am converting char into ASCII value for example 
+'hai' is my input after converting to ASCII and also append padding bits
+ it become like this 
+104097105000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+<br>If i pass this number into powermod function where 
+N=vpi('59623408128589294906667477489466511394227058875719821124229053681229189216330915080633066080885115044018179752252075074762255857650359062592367314714255870395157878516147169752676083317321479715959914788386131373552660119411485042306204724685302709882300932537368996737625591854420932024858921774454130558350942691706925108621964426007163860852250193402906989838459886518533364378045747452657637521597746398695785988555098978535368265198866036728222641091714452140558062069296423468874123503682189797544270604765655771');
+<br>E=vpi('877598789786798798477798374982794987349');
+<br>then i got following error 
+<br>??? Error using ==&gt; mtimes
+<br>Inner matrix dimensions must agree.</p>
+
+<p>Error in ==&gt; vpi.powermod at 56
+<br>    a2 = mod(a*a,n);</p>
+
+<p>Error in ==&gt; encryption at 13
+<br>    c=powermod(m,e,n);</p>
+
+<p>I hope the problem here is i have not converted ASCII value into vpi number 
+<br>How to resolve this error suggest me some ideas.thanks john</p>
+
+<p> 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187380">Ahmet Karakucuk</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is something truly great. Thank you for all your effort you've put into this great "product".</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You are overloading the comments by
+ asking too many questions here, most of which you have not really 
+thought about, or read the relevant help first. Please stop. Send me 
+e-mail instead when you have a problem, or simply read the help.</p>
+
+<p>Regardless, I have no idea what you are asking or what you might have done wrong, since it does work exactly as it should.</p>
+
+<p>&gt;&gt; a=vpi('367366666786786668787987897979797879879');</p>
+
+<p>&gt;&gt; nextprime(a)
+<br>ans =
+<br>   367366666786786668787987897979797880011</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks john...if i generate vpi number assigned to some variable like a=vpi('367366666786786668787987897979797879879') 
+<br>if want to use this number as input to other function such nextprime
+ then if i will give variable 'a' as input its right?? if i give like 
+that it doesn't work?? 
+<br>give me your suggestions for these questions 
+<br>thanks in advance....</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Read the help for input.</p>
+
+<p>&gt;&gt; inp = input('Please input a vpi number: ','s');
+<br>Please input a vpi number: 53634523453456456465766566879675668997876768797865767867567685453433233465463446
+<br>&gt;&gt; vpi(inp)
+<br>ans =
+<br>    53634523453456456465766566879675668997876768797865767867567685453433233465463446</p>
+
+<p>Or, use inputdlg to get input from a dialog box.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi john,If there is anyway to get interactive input from user for vpi
+<br>(i.e)input('enter the vpi no') how to assign that given input to vpi function??? 
+<br>and also one more question,if i generate vpi number assigned to some
+ variable like a=vpi('367366666786786668787987897979797879879')
+<br>if want to use this number as input to other function such nextprime
+ then if i will give variable 'a' as input its right?? if i give like 
+that it doesn't work?? 
+<br>give me your suggestions for these questions 
+<br>thanks in advance....</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>To be honest, I never thought of 
+min and max. Yes, it will be easy enough to write those utilities. In 
+fact, I'd not written a min/max facility in the high precision floating 
+point tool I've written either. Just a blind spot on my part.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/183660">Jean-Luc</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,</p>
+
+<p>Very nice package, thanks!</p>
+
+<p>A small question: is there a reason that vpi doesn't overload min and
+ max?  It seems easy to do but that's why I'm surprised they're missing.</p>
+
+<p>Thanks,</p>
+
+<p>Jean-Luc
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/183660">Jean-Luc</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi,i used that num2strexact 
+function through the link sent by you,i can't compile it because it 
+requires c/c++ compiler..i have  dev-c++ compiler...while running that 
+function it asking to mention the compiler name used. i gave it as 
+dev-c++ compiler. but for that it shows the following error message: 
+<br>mex('C:\Users\Nanthini\Documents\MATLAB\num2strexact.c')
+<br> 
+<br> 
+<br>Select a compiler: 
+<br> 
+<br>[0] None 
+<br> 
+<br>Compiler: Dev-C++ IDE
+<br>Please select from 0-0 
+<br>Compiler: 0
+<br> 
+<br>  mex: No compiler selected. No action taken. 
+<br> 
+<br>************************************************************************** 
+<br>  Warning: The MATLAB C and Fortran API has changed to support MATLAB 
+<br>           variables with more than 2^32-1 elements.  In the near future 
+<br>           you will be required to update your code to utilize the new 
+<br>           API. You can find more information about this at: 
+<br>           http://www.mathworks.com/support/solutions/en/data/1-5C27B9/?solution=1-5C27B9 
+<br>           Building with the -largeArrayDims option enables the new API. 
+<br>************************************************************************** 
+<br> 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\R2010A\BIN\MEX.PL: Error: No compiler options 
+file could be found to compile source code. Please run "mex -setup" to 
+rectify. 
+<br> 
+<br> 
+<br>Well, *that* didn't work ... now trying it with mwSize defined ...
+<br> 
+<br> 
+<br>mex('-DDEFINEMWSIZE','C:\Users\Nanthini\Documents\MATLAB\num2strexact.c')
+<br>C:\PROGRA~1\MATLAB\R2010A\BIN\MEX.PL: Error: No compiler options 
+file could be found to compile source code. Please run "mex -setup" to 
+rectify. 
+<br> 
+<br>Hmmm ... That didn't work either.
+<br> 
+<br>The mex command failed. This may be because you have already run
+<br>mex -setup and selected a non-C compiler, such as Fortran. If this
+<br>is the case, then rerun mex -setup and select a C/C++ compiler.
+<br> 
+<br>??? Error using ==&gt; num2strexact at 155
+<br>Unable to compile num2strexact.c</p>
+
+<p>Error in ==&gt; check at 5
+<br>d=num2strexact(v);
+<br> </p>
+
+<p>why i am getting this error what i have to do to overcome this error..please give your suggestions.. 
+<br>thanks in advance....</p>
+
+<p>  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>That number is not really an 
+integer at all in matlab, so converting to an integer format seems a bit
+ overkill. Or, perhaps you can think of it as MANY integers, all of 
+which are impossible to distinguish from each other. Computing exact 
+integer results for an integer that you cannot resolve seems a waste of 
+time.</p>
+
+<p>&gt;&gt; p = 2.9600e+024;
+<br>&gt;&gt; eps(p)
+<br>ans =
+<br>   536870912</p>
+
+<p>You can think of this as roughly the magnitude of the smallest number
+ that can be added to p and get a different result from that addition. 
+Or think of it as the granularity of p, how much slop or uncertainty 
+there is in determining that value. When eps(p) is greater than 1, then 
+you are unable to effectively resolve p as an integer. Thus</p>
+
+<p>&gt;&gt; eps(2^53 - 1)
+<br>ans =
+<br>     1</p>
+
+<p>&gt;&gt; eps(2^53)
+<br>ans =
+<br>     2</p>
+
+<p>As far as how many bits are used for p, log2 tells us that we would need over 80 bits of precision to define p as an integer.</p>
+
+<p>&gt;&gt; log2(p)
+<br>ans =
+<br>       81.292</p>
+
+<p>But ALL double precision numbers in MATLAB use an internal IEEE 
+format that has 52 bits devoted to the mantissa, a sign bit, and 
+effectively 11 bits in the exponent, to fit into 64 bits for the overall
+ number.</p>
+
+<p>If you insist on converting this number to vpi, you could probably 
+use the function num2strexact, also found on the file exchange.</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/22239-num2strexact-exact-version-of-num2str</p>
+
+<p>Once p is available as a string, trim off anything that is provided 
+beyond the decimal point, and then vpi can interpret it as an integer.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>2960000000000000100663296, can you tell me the number of bits occupied for the above mentioned number...
+<br>Thanks in advance...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For ANY number represented in 
+double precision that is larger than 2^53 - 1, you cannot convert it to a
+ vpi number directly, because you have not provided ALL of the integer 
+digits of that number. The double precision number you have in p is a 
+FLOATING POINT NUMBER. In fact, the actual number stored in MATLAB when 
+you specify p = 2.9600e+024 is 2960000000000000100663296. (Computed 
+using another tool of mine.) This is because MATLAB stores numbers using
+ only a limited number of binary bits. That number is not stored as the 
+decimal integer you think it is. For this reason, I prevent you from 
+creating a vpi number from anything when the number exceeds 2^53 - 1. </p>
+
+<p>&gt;&gt; 2^53 - 1
+<br>ans =
+<br>   9.0072e+15</p>
+
+<p>Here is a simple way to test that p as you have entered it is not exactly represented as an integer in matlab:</p>
+
+<p>&gt;&gt; p = 2.9600e+024;
+<br>&gt;&gt; p == (p + 1)
+<br>ans =
+<br>     1</p>
+
+<p>You can test for equality too. But note that that test is actually a fuzzy one.</p>
+
+<p>&gt;&gt; isequal(2960000000000000100663296,p)
+<br>ans =
+<br>     1</p>
+
+<p>&gt;&gt; isequal(2960000000000000100034423,p)
+<br>ans =
+<br>     1</p>
+
+<p>&gt;&gt; isequal(2960000000000000000000002,p)
+<br>ans =
+<br>     1</p>
+
+<p>&gt;&gt; isequal(2959999999999999999999375,p)
+<br>ans =
+<br>     1</p>
+
+<p>See that when you add 1 to p, the number has not changed! In fact, I 
+could change it by quite a lot and still not change it at all as far as 
+MATLAB knows. This is not a bug in MATLAB as many novices think, but a 
+fact of life when you use double precision. It is also one of the 
+reasons I wrote vpi, because the precision of a number in matlab is 
+limited in double precision.</p>
+
+<p>In order to create that corresponding exact vpi number, you need to 
+supply all of the digits of that number. This is why I allow you to 
+provide a string input for vpi as an integer, so you can create numbers 
+larger than 2^53-1.</p>
+
+<p>&gt;&gt; p = vpi('296000000000000000000000');
+<br>&gt;&gt; gcd(67,p)
+<br>ans =
+<br>    1</p>
+
+<p>Now however, try the add 1 test on the true vpi number.</p>
+
+<p>&gt;&gt; p = vpi('296000000000000000000000')
+<br>p =
+<br>    296000000000000000000000</p>
+
+<p>&gt;&gt; p + 1
+<br>ans =
+<br>    296000000000000000000001</p>
+
+<p>&gt;&gt; p == (p + 1)
+<br>ans =
+<br>     0</p>
+
+<p>Of course this all works exactly as arithmetic should, because vpi is handling the details.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>i tried to find gcd of following two numbers but i got the following error will please explain why i got this error
+<br>e=67
+<br>p= 2.9600e+024</p>
+
+<p>??? Error using ==&gt; vpi.vpi at 141
+<br>If N is a double, it may be no larger than 2^53 - 1</p>
+
+<p>Error in ==&gt; test at 23
+<br>z=gcd(e,vpi(p)); </p>
+
+<p>thanks in advance..</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thank you so much.... i got the output...:)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>sorry i am using MATLAB R2011a mistakenly 
+<br>i typed as R2021a...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I tried your test case. </p>
+
+<p>&gt;&gt; int1=vpi('4536788992900999999999999999999999999423456789072434546775885959'); </p>
+
+<p>&gt;&gt; int2=vpi('2345678998765432112345678987654323456789755654433245567787889899'); </p>
+
+<p>&gt;&gt; t=gcd(int1,int2)
+<br>t =
+<br>    1</p>
+
+<p>As I expected, it works perfectly fine.  Now, admittedly, I don't 
+have version R2021a, because this is only 2011, and that version will 
+not be released for another 10 years or so. I do have release R2011b. :)</p>
+
+<p>My guess is that you have done something inappropriate when you 
+downloaded the files. Most likely, you took some or all of the m-files 
+from the @vpi directory. I'm at a complete random guess, based on the 
+class error message, that probably cannot happen unless you moved some 
+files around.  Perhaps you put the @vpi directory on your search path, 
+another no-no, which the readme file explicitly says not to do. If I 
+might repeat what is said in the file ReadAboutVPI.rtf:</p>
+
+<p>"Do NOT put the @vpi directory on your search path!!! Do NOT take any
+ functions from that directory, as this will break the operation of the 
+vpi code!!!"</p>
+
+<p>Best seems to completely delete the VPI files you have downloaded, 
+and re-install, this time following the instructions provided.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177149">Nanthini</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hello i want find gcd of two larger
+ numbers for that i used vpi but i got some error...will please explain 
+why i got this kind of error
+<br>my input 
+<br>int1=vpi('4536788992900999999999999999999999999423456789072434546775885959'); 
+<br>int2=vpi('2345678998765432112345678987654323456789755654433245567787889899'); 
+<br>t=gcd(int1,int2); 
+<br>disp(t); </p>
+
+<p>but i got error like this
+<br>??? Error using ==&gt; class 
+<br>The CLASS function must be called from a class constructor.
+<br>Error in ==&gt; vpi at 95 
+<br>INT = class(INT,'vpi');
+<br>Error in ==&gt; check at 1 
+<br>int1=vpi('4536788992900999999999999999999999999423456789072434546775885959');</p>
+
+<p>My MATLAB version is R2021a....
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>M = vpi(2)^100;
+<br>M =
+<br>    1267650600228229401496703205376</p>
+
+<p>Modular operations work as you would expect.</p>
+
+<p>mod((M+1)^263-1,M)
+<br>ans =
+<br>    0</p>
+
+<p>Modular multiplicative inverses work, as long as the inverse exists, minv should compute an inverse.</p>
+
+<p>P = minv(3,M)
+<br>P =
+<br>    845100400152152934331135470251</p>
+
+<p>mod(3*P,M)
+<br>ans =
+<br>    1</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/111514">Lea Jade</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello, I am new to matlab and so 
+far I have had an amazing time using this toolbox and now I would like 
+to use it to perform arithmetic within a galois field. The maximum power
+ MATLAB supports is 2^16, how do I use VPI in order to have values like 
+2^100 and still be able to perform the arithmetic with the GF field. 
+Thanks alot</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>:) that disp was a later 
+addition,since i was trying to forcibly stuff an enormous number into a 
+vpi variable.  i think the error is in the variable out. i am still 
+running a few tests. </p>
+
+<p>actually i rather like the randint function. it made my life slightly simpler. </p>
+
+<p>thank you!! </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>No. You don't need to convert an existing vpi number into vpi form using disp.</p>
+
+<p>If k and PointOrder are already vpi numbers, then there is no need to
+ use disp on them. However, the error message that is returned from vpi 
+in your original question indicates that prod (or one of the arguments 
+in that line of code) was NOT a vpi number.</p>
+
+<p>What happens when two numbers are added (where one is a vpi number) is this:</p>
+
+<p>I attempt to convert both numbers into vpi form, then I do the add. Try an example.</p>
+
+<p>&gt;&gt; A = vpi(123456);
+<br>&gt;&gt; A + 12
+<br>ans =
+<br>    123468</p>
+
+<p>vpi looks at this and realizes that A is already a vpi number, but 
+that 12 is not. So it internally converts 12 into vpi form, then adds 
+the digits, doing any necessary carries. All of this works nicely and 
+completely transparently to you. But what happens when we try this on a 
+really large number added to A?</p>
+
+<p>&gt;&gt; A + 1e37
+<br>??? Error using ==&gt; vpi.vpi at 160
+<br>If N is a double, it may be no larger than 2^53 - 1</p>
+
+<p>Error in ==&gt; vpi.plus at 61
+<br>      INT2 = vpi(INT2);</p>
+
+<p>See that when vpi tries to convert 1e37 into a vpi, it fails. This is
+ because 1e37 is too large to represent in MATLAB as an exact floating 
+point integer, a FLINT. I don't (can't) know ALL of the digits of 1e37, 
+since only roughly 16 of them are available. The limit for this is in 
+fact 2^53-1 as a double.</p>
+
+<p>&gt;&gt; 2^53-1
+<br>ans =
+<br>   9.0072e+15</p>
+
+<p>Anything larger than that, and vpi gets a headache, since MATLAB does
+ not store sufficient information to recover all of the digits to the 
+left of the decimal point.</p>
+
+<p>The error message that you showed says that one of the arguments to 
+plus was indeed not a vpi number, and that it was too large to convert 
+exactly to a vpi number. When this happens, vpi must return an error. 
+What else can it do?</p>
+
+<p>As far as randint goes, it should be reasonably efficient as these 
+things go, but I had to be quite careful to be positive that the digits 
+were truly uniformly distributed. I'll look again to see if it can be 
+improved for a bit more speed though. If I try too hard to gain speed 
+there, I may end up damaging the pseudo-randomness of the result. For 
+example, suppose I wanted to generate a uniformly distributed random 
+integer as large as 1e100 as a vpi? </p>
+
+<p>I cannot simply generate a single random number using rand, and then 
+scale it up to 1e100. The digits would not be uniformly distributed. All
+ numbers in that range would not be possible and equally likely. So 
+vpi/randint actually generates those digits independently, in a way that
+ will result in a uniformly distributed number, and where all such 
+numbers are equally likely in theory. But if you want a number with 100 
+random digits, vpi must generate roughly 100 random numbers along the 
+way. This makes it slower than you like, but it has the desired 
+properties.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>ok i should have been clear. my 
+mistake. both invk and prod (i'll change the name) are vpi variables. 
+those values were arrived at after some calculations(i copied those 
+values from the command terminal). therefore i do not have the option of
+ providing those values to vpi as strings. 
+<br>my actual code is like this:
+<br>  invk=minv(k,PointOrder)% k and PointOrder are user defined vpi variables
+<br>    
+<br>  prod1=vpi(da*r)% da and r are user defined vpi variables</p>
+
+<p>    s=vpi(mod(vpi(disp(invk))*vpi((disp(out)+disp(prod1))),vpi(PointOrder)))</p>
+
+<p>in a case like the above one what can i do? </p>
+
+<p>also regarding the randint function i am using it to generate private
+ keys when dealing with vpi variables! but my slow processor takes too 
+long to perform certain calculations. so now i use a mix  of randint and
+ randomnum in my program depending upon the precision i need.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>To answer the question about other 
+random number generators, randint generates uniformly distributed random
+ VPI integers. As such I have found it of particular value for factoring
+ and primality testing. That was in fact why I wrote randint.</p>
+
+<p>To generate numbers with other distributions, one needs to specify 
+the distribution itself. And if you are working in vpi form, the numbers
+ must be integer. Since there are not too many probability distributions
+ in common use where the variates are integer (ok, Poisson is one) I'm 
+not sure what I might provide that enough people would find of use.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>When you write things like this:</p>
+
+<p>invk = 5431182971659226082032497739807769284499946472968309173822</p>
+
+<p>prod = 
+<br>66634193303502359521887744541301070677802959088568215854843250</p>
+
+<p>Matlab creates DOUBLE precision numbers called prod and invk. (BY the
+ way, the name prod is a poor choice, because it overloads the prod 
+function, preventing you from later using the prod function.) Next, you 
+try to do the computation:</p>
+
+<p>s=vpi(mod((vpi(invk)*vpi(out))+prod)),vpi(PointOrder)))</p>
+
+<p>Here matlab tries to add prod to a vpi number, converted from invk. 
+In order to do this, it must convert invk and prod into vpi form. But 
+those numbers are too large to convert exactly into a vpi number. Oops. 
+This is your error. See that </p>
+
+<p>invk =
+<br>   5.4312e+57</p>
+
+<p>log2(invk)
+<br>ans =
+<br>       191.79</p>
+
+<p>So invk is a double precision number, with far too many digits to 
+represent as an integer in standard matlab. The limit in Matlab for a 
+floating point integer (sometimes called a FLINT) is 2^53-1. But vpi can
+ handle the numbers, if you call pass them in properly.</p>
+
+<p>You can define them as vpi numbers directly, calling vpi with a character string of digits.</p>
+
+<p>invk = vpi(' 5431182971659226082032497739807769284499946472968309173822')</p>
+
+<p>prod = vpi('
+<br>66634193303502359521887744541301070677802959088568215854843250')</p>
+
+<p>By providing the numbers to vpi as character strings, it can convert them directly into VPI form with NO loss in precision.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi 
+<br>i am having an issue with performing certain calculations on vpi numbers. 
+<br>i have a vpi variable 
+<br>invk = 5431182971659226082032497739807769284499946472968309173822</p>
+
+<p>i have another variable 
+<br>prod =
+<br>66634193303502359521887744541301070677802959088568215854843250</p>
+
+<p>now i have this expression 
+<br>  s=vpi(mod((vpi(invk)*vpi(out))
+<br>+prod)),vpi(PointOrder)))</p>
+
+<p>now the program works fine until the value of prod. but it comes to a complete halt when it comes to s. 
+<br>and i get an error of the form :
+<br>??? Error using ==&gt; vpi.vpi at 141
+<br>If N is a double, it may be no larger than 2^53 - 1</p>
+
+<p>Error in ==&gt; vpi.plus at 51
+<br>      INT1 = vpi(INT1);</p>
+
+<p>Error in ==&gt; dsaforlargenumbers at 98
+<br>    s=vpi(mod(vpi(invk)*vpi((out+prod)),PointOrder))</p>
+
+<p>could you help me out?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>yup you are right. i did not really explore isprime for vpi. </p>
+
+<p>is there any function other than randint to generate pseudo random numbers for vpi? </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You could count the number of 
+factors of a number to determine primality. This would be efficient IF 
+the number was prime, since the virtually first thing factor does is a 
+call to isprime. When it is not prime however, factor will take longer, 
+since factoring numbers is relatively time consuming.</p>
+
+<p>So in the end, just call isprime if all you wish to do is determine primality of the number.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Gabriel - The exponent in powermod can be rather large, a vpi number itself. For example...</p>
+
+<p>tic,powermod(vpi('124142565235674676762435233523'),vpi('1234562425532452245524323146735634323443256767474343446454564657645466435556453557454646578567453543658567536457567346878067852'),vpi('137457798574858')),toc</p>
+
+<p>ans =
+<br>    101407725757733</p>
+
+<p>Of course, since powermod is the workhorse in many of the tools of 
+vpi, such as isprime, modroot and factor, it needs to be efficient.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/153399">Gabriel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Sarla</p>
+
+<p>Use isprime(vpi(p))?
+<br>It's probably faster than factoring the whole thing. It return 1 when the number is prime.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>:) so even the stupidest of questions have their uses! 
+<br>i realized that i could use the factor in vpi to test whether or not a number is prime.  like this:</p>
+
+<p>fac=factor(vpi(p));
+<br>if length(fac)==1
+<br>    thetruth=1;
+<br>else 
+<br>    thetruth=0;
+<br>end
+<br>i.e. if the length were 1 the number would be prime! this way i don't really have to bother with primality tests!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/153399">Gabriel</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/153399">Gabriel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>-_-</p>
+
+<p>Lesson learned... Thank you =)
+<br>Is there a limit to the exponent in powermod?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Gabriel. Yes, you can use the code 
+as written. But you might also be less than happy having done so. I 
+would point out that there already exists a powermod tool in vpi!!!!! 
+How does yours compare?</p>
+
+<p>I saved the code you wrote, calling it powermod2, then ran it on a simple comparison.</p>
+
+<p>&gt;&gt; tic,R = mod(vpi(2).^12345,vpi(9937)),toc
+<br>R =
+<br>    8315
+<br>Elapsed time is 0.457709 seconds.</p>
+
+<p>&gt;&gt; tic,R = powermod(vpi(2),12345,vpi(9937)),toc
+<br>R =
+<br>    8315
+<br>Elapsed time is 0.024054 seconds.</p>
+
+<p>&gt;&gt; tic,R = powermod2(vpi(2),12345,vpi(9937)),toc
+<br>R =
+<br>    7516
+<br>Elapsed time is 0.068513 seconds.</p>
+
+<p>See that my own powermod code produces the correct, same result.</p>
+
+<p>Your code is slower. And it gets the answer wrong. Looking to see if a
+ code exists to solve your problem is always a good idea. Testing your 
+code for correctness is ALWAYS just as important.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/153399">Gabriel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for this great package. I
+ am definitely not a pro programmer but I wrote a little function 
+because I needed something like powermod from the Matlab symbolic 
+toolbox. I might have made mistakes, but it seemed a lot faster to use 
+this to compute the modulo of a power.
+<br>function result = powermod(x,power,modulus)
+<br>intermediateResult = x;
+<br>flag = 1;
+<br>for i=1:32
+<br>   intermediateResult = mod(intermediateResult^2,modulus);
+<br>   if(bitget(power,i))
+<br>      if(flag)
+<br>         moduloResult = intermediateResult;
+<br>         flag = 0;
+<br>      else
+<br>         moduloResult = moduloResult*intermediateResult;
+<br>      end
+<br>   end
+<br>end
+<br>result = mod(moduloResult,modulus);
+<br>end</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You got me thinking that I should 
+include a num2str function for exactly that purpose though, which would 
+have been more obvious to a user.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>:)that worked perfectly. sorry. should have worked on it a bit more before posting up a silly question like that. thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sarla - you are wrong that there is no conversion. Try this:</p>
+
+<p>&gt;&gt; N = vpi(12)^37
+<br>N =
+<br>    8505622499821102144576131684114829934592</p>
+
+<p>&gt;&gt; nchar = disp(N)
+<br>nchar =
+<br>    8505622499821102144576131684114829934592</p>
+
+<p>&gt;&gt; whos nchar
+<br>  Name       Size            Bytes  Class    Attributes
+<br>  nchar      1x44               88  char               </p>
+
+<p>See that disp does the conversion, and if you provide an output argument, it gives you exactly what you want.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi
+<br>i was actually trying to display a vpi value in my matlab gui's text
+ box. however i was unable to do that. i think there is no conversion 
+from vpi back to string. so i keep getting an error message. is there 
+any way i can work around this?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Finding the factors of a 
+significantly large number, in this case, one with over 600 decimal 
+digits, can be extremely difficult. If these problems were easy, then 
+the schemes used in modern methods of encryption would be easily broken.</p>
+
+<p>The factoring scheme in vpi/factor is able to handle numbers with 
+many digits, but there are limits, and I have not coded up the best 
+possible method, but only a reasonably good one. (It is still far better
+ than that offered by the default factor method in MATLAB. One day I 
+hope to offer some of the better methods as an alternative.) If a very 
+large factor is returned, then you can always test to see if it is truly
+ prime using isprime, or if factor simply gave up. For example, </p>
+
+<p>F = factor(vpi(2)^113 - 11)
+<br>F =
+<br>    3   7   7  101  699440541326170624170606362123</p>
+
+<p>isprime(F)
+<br>ans =
+<br>     1     1     1     1     1</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/145245">Zakir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I want to factorize very large no
+<br>Example:
+<br>a = vpi(2);
+<br>b = a^2067;
+<br>c = b-7;
+<br>How to sactorize it?
+<br>When i factorize by factor function then matlab display only those factors which are less then 2^32;
+<br>and the remaning value as a factor?
+<br>What is the Problem?
+<br>and How to handle it Please?
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/145245">Zakir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very Very Nice Job
+<br>Thanks for This.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>okay. thank you anyway!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hmm. I'd not implemented inf (or 
+for that matter, nan) into vpi. For example, there seemed no reason to 
+define an inf, as a vpi number has essentially no dynamic range 
+restrictions on it anyway. I'll take a look, as admittedly I have 
+occasionally thought that these extensions would be appropriate.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi
+<br>i seem to be facing a problem assigning inf to a vpi variable.</p>
+
+<p>i have a variable P declared as vpi, and another condition wherein if
+ this variable ever equals inf then a certain value is returned.
+<br>the problem is whenever i try to write something of the form 
+<br>if P==inf
+<br>i get an error of the form</p>
+
+<p>Error using ==&gt; vpi.vpi at 139
+<br>N must be a finite number</p>
+
+<p>Error in ==&gt; vpi.eq at 44
+<br>  INT2 = vpi(INT2); </p>
+
+<p>any suggestions as to how i can get around this?
+<br>p.s. the inf is sort of essential for the program.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124291">Sarla</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>this submission is wonderful for 
+working around with huge numbers, and after struggling for days with 
+implementing cryptographic algorithms and being thwarted at every point,
+ i finally stumbled upon this. thank you. bless you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65956">Evgeny Pr</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>When you download this toolbox, or 
+ANY toolbox that creates a new class, NEVER move the included files 
+around. Do NOT put the @vpi directory on your search path. Do NOT place 
+the downloaded directory in the Mathworks provided hierarchy of 
+toolboxes. Use some other directory that you provide to store all 
+downloaded files.</p>
+
+<p>All that you should do is unzip the download zip file, and then put the VariablePrecisionIntegers directory on your search path.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101638">Gustaf Lindberg</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This file would solve a lot of 
+problems for me if I only could get it to work. No matter what I do, I 
+keep getting this error message:</p>
+
+<p>??? Error using ==&gt; class
+<br>The CLASS function must be called from a class constructor.</p>
+
+<p>Error in ==&gt; vpi at 181
+<br>INT = class(INT,'vpi');</p>
+
+<p>What am I doing wrong. I've tested just copy pasting some of your own
+ examples and all I get is that message. What am I doing wrong? Do I 
+need to have more files than the vpi.m in the same directory as the file
+ I'm working with?</p>
+
+<p>/Gustaf Lindberg</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/90537">Joseph Kirk</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is quite possibly the best submission I have downloaded from the File Exchange. Great work John!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80522">Harriet Fell</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/49773">Rob Campbell</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Ian. I've sent in an update to fix the legendresymbol bug. John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/83534">Ian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great work!</p>
+
+<p>I got this as a reference and guide as I attempt to write my own Quadratic Sieve.</p>
+
+<p>I noticed an issue on your legendresymbol.  I think you have the 'iseven' check under p==2 backwards.</p>
+
+<p>for instance: legendresymbol(87463,2) = 0.  I expect '1'.</p>
+
+<p>Thanks for such a great toolbox.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/68674">Nathan Greco</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62100">Guillaume</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just a small word to say that I really like this package, very handy !</p>
+
+<p>However, a typo in the docs says that randint generates between 1 and N, which is wrong. It generates numbers between 0 and N.</p>
+
+<p>Moreover, I would love a fast function similar to biterr (that tells 
+the bit error rate of 2 integers). At the moment, I compute it with some
+ sum and vpi2bin function, but it is quite slow.</p>
+
+<p>Thanks hor this work !</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>One of the things I never 
+overloaded was colon. I briefly considered doing something like that, 
+but logically, there is no need to do so. Consider...</p>
+
+<p>Suppose the arguments to colon are small numbers? In that case, you 
+can simply use double to convert the numbers to normal integers, then 
+use colon on that. Even then, don't expect a loop like</p>
+
+<p>for i = 1:2^53
+<br>   stuff
+<br>end</p>
+
+<p>to terminate any time soon in matlab.</p>
+
+<p>The second case is if the numbers are true vpi numbers, that way for a
+ good reason. For example, in the case you pose, this loop will not 
+terminate before the universe undergoes heat death, even on the fastest 
+super-computer in the world, even on a cloud of the 1000 fastest 
+super-computers in the world. You must appreciate that 2^1024 is a 
+number with over 300 zeros in it.</p>
+
+<p>log10(vpi(2)^1024)
+<br>ans =
+<br>       308.25</p>
+
+<p>In fact, vpi(2)^1024 slightly exceeds the capability of vpi2english! </p>
+
+<p>vpi2english(vpi(2)^1000)
+<br>ans =
+<br>ten novemnonagintillion, seven hundred fifteen octononagintillion, 
+eighty six septennonagintillion, seventy one sexnonagintillion, eight 
+hundred sixty two quinnonagintillion, six hundred seventy three 
+quattuornonagintillion, two hundred nine trenonagintillion, four hundred
+ eighty four duononagintillion, two hundred fifty unnonagintillion, four
+ hundred ninety nonagintillion, six hundred novemoctogintillion, 
+eighteen octooctogintillion, one hundred five septoctogintillion, six 
+hundred fourteen sexoctogintillion, forty eight quinoctogintillion, one 
+hundred seventeen quattuoroctogintillion, fifty five treoctogintillion, 
+three hundred thirty six duooctogintillion, seventy four 
+unoctogintillion, four hundred thirty seven octogintillion, five hundred
+ three novemseptuagintillion, eight hundred eighty three 
+octoseptuagintillion, seven hundred three septenseptuagintillion, five 
+hundred ten sexseptuagintillion, five hundred eleven 
+quinseptuagintillion, ...</p>
+
+<p>It continues that way for quite a while too. This is a seriously BIG 
+number. It is larger than the number of elementary particles in the 
+entire universe, by MANY orders of magnitude.</p>
+
+<p>So suppose we made it a wee bit simpler. How about</p>
+
+<p>for i = vpi(2)^1023:vpi(2)^1024
+<br>    stuff
+<br>end</p>
+
+<p>In theory, this loop would terminate in 1/2 the time as would your 
+loop. So what? It will still take an essentially infinite amount of 
+time.</p>
+
+<p>So consider a much simpler problem, at least in theory.</p>
+
+<p>for i = 1:vpi(1e21)
+<br>   stuff
+<br>end</p>
+
+<p>That number only has 21 zeros in it. Even on a supercomputer capable 
+of 1 petaflop performance, this will take on the order of some days in 
+CPU time to execute. On your laptop, expect it to take years of time.</p>
+
+<p>Ok, so maybe that one was too much to do. How about this simple loop?</p>
+
+<p>N = vpi(10)^21;
+<br>for i = N:(N+100)
+<br>   stuff
+<br>end</p>
+
+<p>While I might consider allowing you to do this, nothing stops you from doing something almost as simple.</p>
+
+<p>N = vpi(10)^21;
+<br>for j = 0:100
+<br>   i = N + j;
+<br>   stuff
+<br>end</p>
+
+<p>This last case is the only one I have shown that is possible on a 
+normal computer in a finite amount of time, and it is trivially possible
+ already as I show.</p>
+
+<p>So this is why I never provided the facility to do as you wanted. There was never any reason.</p>
+
+<p>Regards,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80987">GennaroAlphonse Ramón Rodríguez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jhon,</p>
+
+<p>I'm new using your vpi toolbox, and it caught my attention. Well, 
+making tests I realized that using vpi type in a "for" of the form 
+i=1:vpi(2)^1024,  the result sends me  the message: "Undefined function 
+or method 'colon' for input arguments of type 'vpi'." .</p>
+
+<p> And my question is, the current version of vpi toolbox don't handle this task ? Or there is another way to solve this ?</p>
+
+<p>In advance thanks for your attention.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry about that. Only the 
+binomfactors code uses consolidator, and only nchoosek calls 
+binomfactors. I never caught it in testing, since consolidator is on my 
+search path.</p>
+
+<p>Anyway, and would be more efficient to use a call to unique there, then accumarray anyway, since no tolerance is employed.</p>
+
+<p>I've submitted a new release. It will be there on Monday morning.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40285">Derek O'Connor</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John,</p>
+
+<p>The demo_vpi.m  needs your consolidator function:</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/8354-consolidator</p>
+
+<p>Great package.</p>
+
+<p>Derek O'Connor</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/15124">Khaled Hamed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>More fun with vpi2english if you use, for example,</p>
+
+<p>speak(vpi2english(vpi(2^52)))</p>
+
+<p>The function "speak" is summission File ID: #4769 named "Speak".</p>
+
+<p>There are a also a couple more "speak" submissions around.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/15124">Khaled Hamed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Another good reason to use higher preciesion: the famous subtractive cancellation error</p>
+
+<p>&gt;&gt; x=77617;y=33096;z=33375*y^6+100*x^2*(11*x^2*y^2-y^6-121*y^4-2)+550*y^8</p>
+
+<p>z = -1.5112e+023</p>
+
+<p>&gt;&gt; x=sym(77617);y=sym(33096);z=33375*y^6+100*x^2*(11*x^2*y^2-y^6-121*y^4-2)+550*y^8</p>
+
+<p>z = -200</p>
+
+<p>&gt;&gt;x=vpa(77617);y=vpa(33096);z=100*x^2*(11*x^2*y^2-y^6-121*y^4-2)+33375*y^6+550*y^8
+<br> 
+<br>z = -200.0</p>
+
+<p>&gt;&gt; x=vpi(77617);y=vpi(33096);z=33375*y^6+100*x^2*(11*x^2*y^2-y^6-121*y^4-2)+550*y^8</p>
+
+<p>z = -200</p>
+
+<p>vpi is as accurate as symbolic and vpa, roughly four times faster than sym and eight times faster than vpa</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Gwendolyn,</p>
+
+<p>I was going to submit a new version today again. The simplest thing 
+to do is to save that file in a form that is compatible with older 
+releases that go back to version 7.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31958">Gwendolyn Fischer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,
+<br>I like your submission, and it works fine for my puposes even in 
+R14. Using your old factor routines, as the new factor command uses a 
+mat file (_primeslist_), which the old matlab version can not read. Is 
+it possible to provide a compatible mat file for MATLAB R14?</p>
+
+<p>Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ben - I've submitted an update, that now handles the pathological cases for plus and times.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John - I think the problem is shown
+ by your path. Are you using an older release of MATLAB? Perhaps release
+ 11? If so, I'll not be at all surprised at seeing a problem. I would 
+not expect vpi to run on older versions, and I have not tested it there.</p>
+
+<p>If you actually have a more recent release, then please contact me via mail and I will help to resolve the problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/63459">John Edwards</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John, </p>
+
+<p>I am a beginner with Matlab. However, your creation caught my eye and
+ I downloaded the package. I used very simple examples but MATLAB kept 
+returning the same error:
+<br>---------------------------------
+<br>A = vpi(17)^17
+<br>??? lseif ~ischar(N) &amp;&amp;
+<br>                      |
+<br>Missing variable or function.</p>
+
+<p>Syntax error in ==&gt; C:\MATLABR11\toolbox\VariablePrecisionIntegers\@vpi\vpi.m
+<br>On line 51  ==&gt; elseif ~ischar(N) &amp;&amp; ~isnumeric(N)
+<br>----------------------------</p>
+
+<p>I am not sure how to resolve this error. Any ideas?</p>
+
+<p>Thanks </p>
+
+<p>John Edwards</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/41376">Ben Petschel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John, you've done a great service to the mathematical community (esp. number theorists and Project Euler enthusiasts!)</p>
+
+<p>In the vpi/add carry operation you could improve the performance of 
+pathological cases such as 1+vpi(repmat('9',1,1e6)) by changing the 
+while loop to a for loop.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 May 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/57507">Neha P</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Errico,</p>
+
+<p>The tool box you have created in order to store large integer numbers
+ has been very helpful for our project. Currently we have encountered a 
+problem to store large floating numbers. 
+<br>I would request you to give me any information regarding the above problem. </p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32096">Lissa</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I just uploaded a new release, fixing the bug in vpi2english.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/28933">Andreas Bonelli</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/28933">Andreas Bonelli</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great submission, but there seems to be a bug with vpi2english for numbers from 1 to 99:</p>
+
+<p>&gt;&gt; vpi2english(vpi('1'))
+<br>??? Index exceeds matrix dimensions.</p>
+
+<p>Error in ==&gt; vpi.vpi2base at 114
+<br>    B(i) = base2dec(fliplr(cdigits(ind)),10);</p>
+
+<p>Error in ==&gt; vpi.vpi2english at 53
+<br>base1000 = vpi2base(N,1000);
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry. I'll fix the demo.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Apr 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/76178">Giampiero Campa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>very cool, 
+<br>however i think there's something wrong with line 129 of the demo:
+<br>&gt;&gt; iseven(2^127)
+<br>it should not be just a double, and yet is too large to be a vpi ...
+<br>it gives an error in r2009a anyway.</p>
+
+<p>perhaps you meant iseven(vpi(2)^127) ...
+<br>Giampy
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've done a more careful investigation into the question. Can I in fact use an integer format for the internal storage?</p>
+
+<p>As it turns out, I cannot do so, at least not without seriously 
+compromising the capabilities of this toolbox. First, the question is, 
+can I use INT8 for storage? The answer here is no. While Bill checked to
+ see if it would work, he apparently did not do a multiply between a 
+pair of vpi numbers. vpi uses a nice trick to multiply a pair of vpi 
+numbers. It uses conv, whereby it gains a massive increase in its 
+multiplication speed. And since multiplication is necessary for these 
+tools, the loss of conv would be rather bad for performance.</p>
+
+<p>Sadly, conv does not support int8 inputs. Even worse, int8 would 
+cause a dramatic restriction on the size of the numbers that vpi can 
+handle. try this simple test:</p>
+
+<p>N = [9 9];
+<br>conv(N,N)
+<br>ans =
+<br>    81   162    81</p>
+
+<p>So were I to store the number 99 as a vpi number that uses int8 as a 
+storage mechanism, then I could not actually multiply 99*99 using conv, 
+even if int8 was supported as an input to conv. The conv result would 
+overflow int8 storage.</p>
+
+<p>This suggests an alternative. Perhaps I could use single as the 
+internal storage for the digits. In fact, this offers some minor gain. 
+Use of single would cut the memory requirements for vpi numbers in half.
+ Even better, in my tests the single operations on integers are actually
+ a bit faster than they are for doubles.</p>
+
+<p>So for a few moments, I thought I could at least use single. The 
+problem is, it too will cause a problem. This would limit vpi number to 
+about a maximum of roughly 100,000 digits. Again, the problem is numeric
+ overflow in multiplication using conv. While numbers that large might 
+seem large, I'd still prefer to have essentially no limit on the number 
+of digits. </p>
+
+<p>One other option is to use a smaller form for storage, but then to 
+automatically convert from int8 to doubles and then back (internally) 
+for all operations. I could do this, but it seems risky, and likely to 
+cause bugs.</p>
+
+<p>So for the present time, I'm forced to stick with the internal storage as it is.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Bill. I'll fix the examples,
+ and look into the question of changing the internal storage format. It 
+is something I've considered before. My initial reason for leaving them 
+all as doubles internally was to get the maximum speed. I want to 
+minimize the number of events where I need to force a type conversion 
+between int and double.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22546">Bill McKeeman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am impressed the scope and presentation of this toolbox.  Very nice work.  I have a couple of nits to comment upon.
+<br>The last example in vpi.m seems to have lost its text.
+<br>I recommend that the examples be such that, if cut and pasted to the
+ command line, run.  I did this with my World Time Zones FX entry in 
+response to a criticism and was pleased at the result.
+<br>I experimented with replacing
+<br> INT.digits = double(fliplr(N))-48;
+<br>with
+<br>  INT.digits = int8(fliplr(N))-int8('0');
+<br>The package still seems to run and takes 8x less storage for the vpi numbers.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40285">Derek O'Connor</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Alain,</p>
+
+<p>Thanks for your reply and correct answer mean(x) = 4.661273948537807e-005, (or
+<br>sum(x) = 7680*4.661273948537807e-005 = 0.3579858392477036 (16 digits) )
+<br>which is the mean of the data at https://hpcrd.lbl.gov/SCG/ocean/NRS/etaana.dat.</p>
+
+<p>I meant to ask for the sum(x) not mean(x) because this sum(x) was discussed in
+<br>the paper by Yun He and Chris H.Q. Ding, ``Using Accurate Arithmetics
+<br>to Improve Numerical Reproducibility and Stability in Parallel Applications'',
+<br>Journal of Supercomputing, Vol 18, No 3, Mar 2001.</p>
+
+<p> http://crd.lbl.gov/~yunhe/papers/HPA_JSC.pdf</p>
+
+<p>In what follows the 7680 d.p.f.p. numbers in etaana.dat are stored in ssh.mat</p>
+
+<p>They give exact sum(ssh) = 0.35798583924770355224609375 (26 digits).</p>
+
+<p>I think you should publish your code and also how the condition of any sum(x)
+<br>can be calculated. I have met many people who are surprised that a
+<br>simple summation can give very bad results.</p>
+
+<p>Matlab gives sum(ssh) = 3.441476821899414e+001, which has a relative error
+<br>of 9.513444009773050e+001, nearly 2 orders of magnitude wrong.</p>
+
+<p>Using the 1-norm my condition number for sum(ssh) is
+<br>k_1 = n*sumexact(abs(ssh))/abs(sumexact(ssh)) ~ 10^21.</p>
+
+<p>If I use the Matlab sum (ssh) I get k_1 ~ 10^16,
+<br>which is not correct but still gives a warning that
+<br>this problem is very ill-conditioned.</p>
+
+<p>Here is my Matlab implementation of D. Priest's method,
+<br>which gives the correct result, rounded to about 16 digits :</p>
+
+<p>===========================================================
+<br>function snew = SumP(xorig);</p>
+
+<p>% Using Douglas M. Priest's thesis recommendation.
+<br>% D.M. Priest: "On properties of floating point arithmetics:
+<br>%     Numerical stability and the cost of accurate computations",
+<br>%     Mathematics Department,
+<br>%     University of California at Berkeley, CA, USA (1992).</p>
+
+<p>% This function has complexity O(n log n) because of the sort.
+<br>% This is the price we pay to get the correct sum.</p>
+
+<p>% Written by Derek O'Connor March 2006.</p>
+
+<p>% --- Sort xorig in decreasing abs(x) order</p>
+
+<p>    [absx absord] = sort(abs(xorig),'descend');
+<br>    x = xorig(absord);  % |x1| &gt;= |x2| &gt;= ... &gt;= |xn|</p>
+
+<p>% --------- Compensated Summation --------
+<br>    sold = x(1);
+<br>    c = 0;
+<br>    for k = 2:length(x)
+<br>       y = x(k) + c;
+<br>       snew = sold + y;
+<br>       u = snew - sold;
+<br>       c = y - u;
+<br>       sold = snew;
+<br>    end;
+<br>% --------- end of SumP -----------------</p>
+
+<p>============================================================</p>
+
+<p>Here is the result using Priest's method:</p>
+
+<p>&gt;&gt; SumP(ssh)
+<br>ans =
+<br>    3.579858392477036e-001</p>
+
+<p>Here is the result using Rump's Intlab 5.5 set to 30-digit precision:</p>
+
+<p>&gt;&gt; p = 30; display(SumRump(ssh,p),p)
+<br>long ans =
+<br>  3.579858392477035522460937500000 * 10^-0001</p>
+
+<p>It seems that this Sea Surface Heights problem needs at least 26-digit
+<br>precision to obtain the exact sum.</p>
+
+<p>Intlab is here : http://www.ti3.tu-harburg.de/rump/intlab/</p>
+
+<p>Regards,</p>
+
+<p>Derek O'Connor</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/48432">Alain Barraud</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>vpi is an excellent toolbox, thanks a lot.
+<br>I shoud add a comment to derek O Coonor question. I have found 
+4.661273948537807e-005 as the mean of the data in "etaana" without any 
+toolbox just using floating poitn computation within Matlab. I have used
+ a function I have written some years ago which computes full precision 
+sums of any condition number (here 1.5e17) in a very simple and 
+efficient way.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/45180">MATLABician</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Kevin,</p>
+
+<p>You "don't understand the utility of this function"? First of all, 
+this submission is not a function, it's a toolbox. I suggest you read 
+John's reply to get a glimpse of its utility, but even before that I 
+suggest, as he did, that you learn some mathematics. That might help you
+ to understand the utility of this toolbox, his other submission MIN2, 
+MAX2, whose utility, too, you have had trouble understanding, and many 
+other of his submissions for that matter - before you go around 
+commenting on their utility. And after that, I suggest you go through 
+the code. I'm sure you can learn one or two things about MATLAB. </p>
+
+<p>Omid</p>
+
+<p>PS. As always, great submission John. Thanks for sharing this with the community.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30774">Kenneth Eaton</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/17521">Orlando Rodríguez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>What a marvelous tool! Thank you John!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40285">Derek O'Connor</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Kevin,</p>
+
+<p>Please calculate the average of the following set of 7680 floating point numbers to 3 "significant" digits.  </p>
+
+<p>https://hpcrd.lbl.gov/SCG/ocean/NRS/etaana.dat</p>
+
+<p>Please post your result and tell us how you did it.</p>
+
+<p>Yours sincerely,</p>
+
+<p>Derek O'Connor  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Kevin,</p>
+
+<p>(Sigh.) Just because you personally don't ever need more than 3 
+digits in any computation does not mean that no one else will ever have 
+such a need. And there is NO reason to trash the useful work of another 
+just because your own point of view is so specialized.</p>
+
+<p>This toolbox does not have a specific purpose. As a toolbox, it 
+should NOT be so specialized that others cannot use it for their 
+purposes. And as an author of dozens of toolboxes over the years, I am 
+continually surprised at how others have used the utilities I've 
+offered, in a variety of ways. But if you need a reason for something to
+ exist, I'll offer a few such reasons.</p>
+
+<p>Surely the most well publicized reason to work with large integers is
+ public key encryption. Here one must find large prime numbers (with 
+very many digits) and work with them.</p>
+
+<p>http://en.wikipedia.org/wiki/RSA</p>
+
+<p>On the other end of encryption is the task of breaking such a code. 
+Here tools are needed to factor large integers. While the specific tool 
+I've provided to factor integers is only capable of factoring integers 
+with a few dozen digits with any regularity, it is far better than the 
+very limited tools provided in MATLAB itself. I've also begun to work on
+ other factoring tools, with the potential to solve larger factoring 
+problems. Admittedly, the best such tools would use multiple CPUs in 
+such a task, parcelling out the work. But, this is something that is 
+easily done in the factoring of large integers. Read about the quadratic
+ sieve methods for factoring. </p>
+
+<p>http://en.wikipedia.org/wiki/Quadratic_sieve</p>
+
+<p>These are very useful methods that can succeed in factoring huge 
+numbers. Again, they require the ability to use multiple CPUs, all 
+working in parallel, but this is something that is now becoming quite 
+feasible. In fact, I've even written a simple working quadratic sieve 
+factoring code, although it is far below the standards I put on my own 
+work to release.</p>
+
+<p>This toolbox is not (yet) capable of working with the speed necessary
+ to factor numbers with several hundred digits. But it can serve as a 
+useful testbed for algorithmic development in that field, and as an 
+easy, inexpensive way to learn some techniques for such work. </p>
+
+<p>Are there needs to work on the breaking of codes? Perhaps World War 
+II might have lasted a bit longer had those mathematicians working with 
+Alan Turing not done their jobs. Read about codes and cyphers.</p>
+
+<p>http://www.codesandciphers.org.uk/</p>
+
+<p>The National Security Agency is one such place where many mathematicians work.</p>
+
+<p>http://www.nsa.gov/CAREERS/</p>
+
+<p>If this set of tools existed for no reason other than primality 
+testing and factoring, I'd suggest it has some merit. But there are 
+other tools I've provided inside that may offer value. Solutions of 
+linear Diophantine equations are frequently requested on the newsgroup, 
+so I added a simple tool to do so. It is one that I will look to improve
+ (given time) with future releases. As well I've begun work on Pell 
+equation solvers. These last tools are of interest to number theorists, 
+so perhaps they are boring to you. All of them tend to use continued 
+fraction approximations to numbers, approximations to fractions, 
+approximations to square roots, etc. Number theory is itself a topic 
+that offers careers to mathematicians worldwide.</p>
+
+<p>http://en.wikipedia.org/wiki/Number_theory</p>
+
+<p>As well, number theory is perhaps one of the prettiest branches of 
+mathematics. It offers a way for a student to become interested in 
+mathematics, with easily formulated problems with correspondingly 
+beautiful solutions.</p>
+
+<p>In my own case, I spent my first several years as a student mostly 
+interested in number theory, before gravitating to more prosaic fields 
+like numerical analysis, statistics, modeling and applied mathematics in
+ general. A student who becomes entranced with mathematics, playing with
+ such an easily formulated problem like Goldbach's conjecture, may then 
+move into other fields of mathematics, perhaps knot theory, differential
+ or algebraic geometry, statistics, or even diverge into some branch of 
+engineering. And the fact is, I've had the need for results from diverse
+ fields of mathematics in my career as a consulting mathematician.</p>
+
+<p>You state that other tools exist that can serve the same purposes as 
+this toolbox, i.e., Maple and Mathematica. While they do exist, and 
+serve that purpose very well, not every individual has the money to pay 
+for those tools. For example, I don't own the symbolic toolbox, nor a 
+copy of Mathematica. For those individuals with an interest in the 
+problems this toolbox can solve, they can do their work for no 
+additional investment.</p>
+
+<p>Finally, this toolbox can serve to teach others methods they can use 
+to build their own toolboxes, a template of sorts. Alternatively, one 
+could easily expand these tools to work with variable precision floating
+ point arithmetic, or with fractions of arbitrary size. When enough 
+people have the current matlab releases, I'll convert this toolbox to 
+use the newer methods now found in matlab for working with classes and 
+OOP code.</p>
+
+<p>So I am truly sorry that this tool is of no interest to you. But that
+ only says what limited horizons you live within. Just for once, expand 
+those horizons. Learn some mathematics.</p>
+
+<p>John
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/49225">Kevin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I don't understand the utility of this function.</p>
+
+<p>Sure its neat to have hundreds of digits for some esoteric project, 
+but what is the goal. Give an example of the usage of this tool suite. 
+Is it to prove a theorem? Is it to design a new compression algorithm? 
+Is it to simulate a fluid flow problem? What is the goal?</p>
+
+<p>In my line of work, 3 significant digits is ALL we can ever hope for.
+ With 4, we would be virtually guaranteed contract renewal for the next 5
+ years. But 100s of digits? C'mon.</p>
+
+<p>Please explain WHY calculating 100 factorial to the final place is of any utility. </p>
+
+<p>BTW, mathematica, maple and other symbolic programs have been able to do this for years. </p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>In the first release, I had given 
+new names to a few functions, like factorial, nchoosek, and prod. This 
+allowed those functions to work on double inputs, yet still produce a 
+vpi result. Petter makes a valid argument though, so I have changed 
+that.</p>
+
+<p>In this release, functions that already exist in matlab have been overloaded (along with a huge number of other enhancements.)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40618">Petter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Indroducing new function names is inconvenient for the user, overloading existing ones is preferable.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/46044">Sebastian Randel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great work! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31593">Husam Aldahiyat</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>vpi2english is the icing on the cake.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">25 Jan 2012</td>
+                  <td><p>Speedup for plus and minus operations, also new min and max functions by request</p></td>
+                </tr>
+                <tr>
+                  <td class="date">31 Jul 2013</td>
+                  <td><p>Fix Totient function, some minor doc changes</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415926622861&amp;cv=7&amp;fst=1415926622861&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D96%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

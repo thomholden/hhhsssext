@@ -1,0 +1,671 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>The aliquot parts of a number</title>
+      <meta name="generator" content="MATLAB 7.5">
+      <meta name="date" content="2009-05-13">
+      <meta name="m-file" content="demo_aliquot_parts"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>The aliquot parts of a number</h1>
+         <introduction>
+            <p>This demo file teaches about the aliquot parts of a number, and how to use the functions I've provided.</p>
+            <p>Author: John D'Errico</p>
+            <p>e-mail: <a href="mailto:woodchips@rochester.rr.com">woodchips@rochester.rr.com</a></p>
+            <p>Release: 1.0</p>
+            <p>Release date: 9/21/08</p>
+         </introduction>
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#1">The aliquot parts of a number are its proper divisors</a></li>
+               <li><a href="#5">The sum of the aliquot parts, or sum of proper divisors</a></li>
+               <li><a href="#6">aliquotsum is efficient and vectorized</a></li>
+               <li><a href="#8">You can also count the number of divisors</a></li>
+               <li><a href="#11">Or you can form the sum of the p'th powers</a></li>
+               <li><a href="#12">Perfect numbers</a></li>
+               <li><a href="#13">Abundant numbers</a></li>
+               <li><a href="#14">Hyper-abundant numbers</a></li>
+               <li><a href="#17">Collosally-abundant numbers?</a></li>
+               <li><a href="#19">Odd abundant numbers are less common than the abundant numbers in general</a></li>
+               <li><a href="#20">The odd abundant numbers are also "less" abundant</a></li>
+               <li><a href="#21">Why are the odd abundants so rare?</a></li>
+               <li><a href="#25">Deficient numbers</a></li>
+               <li><a href="#26">Maximally deficient numbers</a></li>
+               <li><a href="#27">Amicable numbers</a></li>
+               <li><a href="#28">Sociable numbers form cliques, or amicable cycles</a></li>
+               <li><a href="#29">Amicable cycles</a></li>
+               <li><a href="#33">Odd amicables</a></li>
+               <li><a href="#34">Some interesting things to try</a></li>
+            </ul>
+         </div>
+         <h2>The aliquot parts of a number are its proper divisors<a name="1"></a></h2>
+         <p>For example, the number 12 has the list of prime factors</p><pre class="codeinput">factor(12)
+</pre><pre class="codeoutput">ans =
+     2     2     3
+</pre><p>but its proper divisors are given by</p><pre class="codeinput">aliquotparts(12)
+</pre><pre class="codeoutput">ans =
+     1     2     3     4     6
+</pre><p>See that N will not be listed as a proper divisor of itself, not for any value of N. In fact, the number 1 has no proper divisors.</p><pre class="codeinput">aliquotparts(1)
+</pre><pre class="codeoutput">ans =
+     1
+</pre><p>Of course, prime numbers can have only 1 as a proper divisor.</p><pre class="codeinput">aliquotparts(17)
+</pre><pre class="codeoutput">ans =
+     1
+</pre><h2>The sum of the aliquot parts, or sum of proper divisors<a name="5"></a></h2><pre class="codeinput">aliquotsum([2 4 5 6 8 12 27 135 40320])
+</pre><pre class="codeoutput">ans =
+  Columns 1 through 8
+           1           3           1           6           7          16          13         105
+  Column 9
+      118800
+</pre><h2>aliquotsum is efficient and vectorized<a name="6"></a></h2>
+         <p>In this test, the sum of the divisors for EVERY number from 1 to 100000 is computed in short order.</p><pre class="codeinput">N = (1:100000)';
+tic,pdsum = aliquotsum(N);toc
+</pre><pre class="codeoutput">Elapsed time is 3.735000 seconds.
+</pre><p>Show the numbers up to 100000 with the largest relative sums of their proper divisors.</p><pre class="codeinput">[pdsum,tags] = sort(pdsum./N,<span class="string">'descend'</span>);
+disp(<span class="string">'         N,      sigma(N)./N'</span>)
+disp([N(tags(1:10)),pdsum(1:10)])
+</pre><pre class="codeoutput">         N,      sigma(N)./N
+        55440        3.187
+        83160       3.1558
+        65520       3.1333
+        98280       3.1026
+        75600       3.0677
+        85680       3.0639
+        27720       3.0519
+        95760       3.0401
+        90720       3.0333
+        60480       3.0317
+</pre><h2>You can also count the number of divisors<a name="8"></a></h2>
+         <p>This is just the sum of the zero'th powers of the divisors. Logically, we expect all the prime numbers to have only one divisor.</p><pre class="codeinput">N = (1:20)';
+[N,aliquotsum(N,0)]
+</pre><pre class="codeoutput">ans =
+     1     0
+     2     1
+     3     1
+     4     2
+     5     1
+     6     3
+     7     1
+     8     3
+     9     2
+    10     3
+    11     1
+    12     5
+    13     1
+    14     3
+    15     3
+    16     4
+    17     1
+    18     5
+    19     1
+    20     5
+</pre><p>What number no larger than 100000 has the most proper divisors?</p><pre class="codeinput">N = (1:100000)';
+d = aliquotsum(N,0);
+[maxdivisors,Nmax] = max(d)
+</pre><pre class="codeoutput">maxdivisors =
+   127
+Nmax =
+       83160
+</pre><p>As you might expect, that number has multiple small factors</p><pre class="codeinput">factor(Nmax)
+</pre><pre class="codeoutput">ans =
+     2     2     2     3     3     3     5     7    11
+</pre><h2>Or you can form the sum of the p'th powers<a name="11"></a></h2>
+         <p>Here we will compute the sum of the squares of the aliquot parts.</p><pre class="codeinput">N = (1:20)';
+[N,aliquotsum(N,2)]
+</pre><pre class="codeoutput">ans =
+     1     0
+     2     1
+     3     1
+     4     5
+     5     1
+     6    14
+     7     1
+     8    21
+     9    10
+    10    30
+    11     1
+    12    66
+    13     1
+    14    54
+    15    35
+    16    85
+    17     1
+    18   131
+    19     1
+    20   146
+</pre><h2>Perfect numbers<a name="12"></a></h2>
+         <p>Perfect numbers have their aliquot sums equal to the number itself.</p><pre class="codeinput">aliquotsum([6 28 496 8128])
+</pre><pre class="codeoutput">ans =
+           6          28         496        8128
+</pre><h2>Abundant numbers<a name="13"></a></h2>
+         <p>Just under 25% of all numbers are abundant</p><pre class="codeinput">N = 100000;
+100*sum(aliquotsum(1:N)&gt;(1:N))/N
+</pre><pre class="codeoutput">ans =
+       24.795
+</pre><h2>Hyper-abundant numbers<a name="14"></a></h2>
+         <p>Few (roughly 2%) of numbers are hyper-abundant. I've defined hyper-abundancy as an aliquot sum of the number N that is at
+            least twice as large as N.
+         </p><pre class="codeinput">N = (1:100000)';
+</pre><p>As a percentage...</p><pre class="codeinput">100*sum(aliquotsum(N)&gt;(2*N))./100000
+</pre><pre class="codeoutput">ans =
+         2.02
+</pre><p>Show the numbers up to 100000 with the largest relative sums of their proper divisors.</p><pre class="codeinput">pdsum = aliquotsum(N);
+[pdsum,tags] = sort(pdsum./N,<span class="string">'descend'</span>);
+disp(<span class="string">'         N,      sigma(N)./N'</span>)
+disp([N(tags(1:10)),pdsum(1:10)])
+</pre><pre class="codeoutput">         N,      sigma(N)./N
+        55440        3.187
+        83160       3.1558
+        65520       3.1333
+        98280       3.1026
+        75600       3.0677
+        85680       3.0639
+        27720       3.0519
+        95760       3.0401
+        90720       3.0333
+        60480       3.0317
+</pre><h2>Collosally-abundant numbers?<a name="17"></a></h2>
+         <p>How hyper-abundant can they get? Is there a maximum?</p><pre class="codeinput">N = 1000000;
+pdsum = aliquotsum(1:N);
+[maxsum,whichN] = max(pdsum)
+</pre><pre class="codeoutput">maxsum =
+     3392928
+whichN =
+      997920
+</pre><p>It does not appear that there is any maximum value to this ratio. Certainly it exceeds 3. Mathworld suggests <a href="http://mathworld.wolfram.com/ColossallyAbundantNumber.html"><tt>(Collossally abundant)</tt></a> that the ratio can get fairly large. Add 1 to get the ratio they list.
+         </p><pre class="codeinput">maxsum/whichN
+</pre><pre class="codeoutput">ans =
+          3.4
+</pre><h2>Odd abundant numbers are less common than the abundant numbers in general<a name="19"></a></h2>
+         <p>The smallest odd abundant number is 945.</p><pre class="codeinput">N = (1:2:10000)';
+pdsum = aliquotsum(N);
+ind = find(pdsum&gt;N);
+N(ind)'
+</pre><pre class="codeoutput">ans =
+  Columns 1 through 8
+         945        1575        2205        2835        3465        4095        4725        5355
+  Columns 9 through 16
+        5775        5985        6435        6615        6825        7245        7425        7875
+  Columns 17 through 23
+        8085        8415        8505        8925        9135        9555        9765
+</pre><h2>The odd abundant numbers are also "less" abundant<a name="20"></a></h2>
+         <p>The third column here is the extent of the overabundancy. Since 1.0 there would indicate a perfect number, these odd abundants
+            are all clearly just barely so. I wonder, is there a limit to the extent of abundancy for the odd numbers? Are any hyper-abundant,
+            as I've defined it above?
+         </p><pre class="codeinput">N = (1:2:1000000)';
+pdsum = aliquotsum(N);
+maxOddAbundancy = max(pdsum./N)
+</pre><pre class="codeoutput">maxOddAbundancy =
+       1.4665
+</pre><h2>Why are the odd abundants so rare?<a name="21"></a></h2>
+         <p>We can get some idea as to the reason why odd abundant numers are so rare, by looking at the factors of a highly abundant
+            even number.
+         </p>
+         <p>Try 840 for example. Clearly it has multiple powers of 2 in its factorization.</p><pre class="codeinput">factor(840)
+</pre><pre class="codeoutput">ans =
+     2     2     2     3     5     7
+</pre><p>840 is also quite abundant.</p><pre class="codeinput">aliquotsum(840)
+</pre><pre class="codeoutput">ans =
+        2040
+</pre><p>If we look at the factors of the most highly abundant numbers, you will generally find many spare powers of 2. But how about
+            the odd abunbdants? There are no powers of 2 allowed in an odd number, so pick some of the odd abundant numbers and look at
+            their factors. As expected, we find some extra powers of 3, along with some other moderately small odd primes.
+         </p><pre class="codeinput">factor(945)
+factor(9765)
+</pre><pre class="codeoutput">ans =
+     3     3     3     5     7
+ans =
+     3     3     5     7    31
+</pre><p>Pick a rather large odd number that will have very many factors. Unfortunately, this is close to as far as aliquotsum will
+            go, due to the limits of MATLAB's operating precision. I'll admit the ratio is starting to approach 2.
+         </p><pre class="codeinput">N = 3*3*3*5*5*7*7*11*13*17*19
+aliquotsum(N)/N
+</pre><pre class="codeoutput">N =
+   1.5277e+09
+ans =
+       1.7981
+</pre><h2>Deficient numbers<a name="25"></a></h2>
+         <p>All primes are deficient, as are all pure powers of prime numbers. As well, all the divisors of any perfect number are known
+            to be deficient.
+         </p><pre class="codeinput">aliquotsum(primes(50))
+</pre><pre class="codeoutput">ans =
+     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1
+</pre><h2>Maximally deficient numbers<a name="26"></a></h2>
+         <p>Naturally, the prime numbers represent the most deficient numbers possible, since each prime has only one divisor less than
+            itself, and that is the number 1. If we ignore the prime numbers, which numbers are the next most deficient? Do you see a
+            pattern?
+         </p><pre class="codeinput">N = setdiff(1:50,primes(50))';
+[N,aliquotsum(N)]
+</pre><pre class="codeoutput">ans =
+     1     0
+     4     3
+     6     6
+     8     7
+     9     4
+    10     8
+    12    16
+    14    10
+    15     9
+    16    15
+    18    21
+    20    22
+    21    11
+    22    14
+    24    36
+    25     6
+    26    16
+    27    13
+    28    28
+    30    42
+    32    31
+    33    15
+    34    20
+    35    13
+    36    55
+    38    22
+    39    17
+    40    50
+    42    54
+    44    40
+    45    33
+    46    26
+    48    76
+    49     8
+    50    43
+</pre><h2>Amicable numbers<a name="27"></a></h2>
+         <p>A pair of numbers is amicable if their aliquot sums are equal to the other member of the pair.</p><pre class="codeinput">aliquotsum([220 284])
+</pre><pre class="codeoutput">ans =
+   284   220
+</pre><h2>Sociable numbers form cliques, or amicable cycles<a name="28"></a></h2>
+         <p>Perfect numbers are self-amicable, with a cycle length of 1. Amicable pairs have a cycle length of 2. This cycle has length
+            5 before it returns to the start.
+         </p><pre class="codeinput">aliquotsum([12496 14288 15472 14536 14264])
+</pre><pre class="codeoutput">ans =
+       14288       15472       14536       14264       12496
+</pre><h2>Amicable cycles<a name="29"></a></h2>
+         <p>Perfect numbers are self-amicable. The amicablecycles function:</p><pre>cycles = amicablecycles(N,L)</pre><p>will find all cycles that start with a number as large as N. The length of the cycle is L.</p><pre class="codeinput">amicablecycles(20000,1)
+</pre><pre class="codeoutput">ans =
+           6
+          28
+         496
+        8128
+</pre><p>Amicable pairs have a cycle length of 2.</p><pre class="codeinput">amicablecycles(20000,2)
+</pre><pre class="codeoutput">ans =
+         220         284
+        1184        1210
+        2620        2924
+        5020        5564
+        6232        6368
+       10744       10856
+       12285       14595
+       17296       18416
+</pre><p>There are no known sociable cliques of length 3 or 4</p><pre class="codeinput">amicablecycles(20000,3)
+amicablecycles(20000,4)
+</pre><pre class="codeoutput">ans =
+   Empty matrix: 0-by-3
+ans =
+   Empty matrix: 0-by-4
+</pre><p>The smallest cycle of length 5 starts at 12496</p><pre class="codeinput">amicablecycles(20000,5)
+</pre><pre class="codeoutput">ans =
+       12496       14288       15472       14536       14264
+</pre><h2>Odd amicables<a name="33"></a></h2>
+         <p>You can force amicablecycles to look only at certain starting points. For example, to find the odd amicable cycles only</p><pre class="codeinput">amicablecycles(1:2:200000,2)
+</pre><pre class="codeoutput">ans =
+       12285       14595
+       67095       71145
+       69615       87633
+      100485      124155
+      122265      139815
+</pre><h2>Some interesting things to try<a name="34"></a></h2>
+         <p>What fun things can you find to do with these numbers? Can you find any odd perfect numbers? Perhaps a quasi-perfect number?</p>
+         <p>Some simple problems for the student, and a few that may not be so simple.</p>
+         <p>1. Which numbers have many distinct divisors?</p>
+         <p>2. What is the smallest number to have exactly 31 divisors?</p>
+         <p>3. Does the product of the first k primes necessarily have the largest number of distinct divisors?</p>
+         <p>4. Can you construct a number less than 2*3*5*7*11 that has more divisors than this number?</p>
+         <p>5. For which values of non-prime numbers N is the lower bound sqrt(N)+1 realized for the aliquot sum?</p>
+         <p>6. Can you prove that sqrt(N)+1 forms a lower bound for the aliquot sum for the non-prime numbers N?</p>
+         <p>7. Is there a simple relationship for the upper bound of the aliquot sum as a function of N? Consider N*log(N) as a start.</p>
+         <p>8. There are many abundant numbers. As was shown above, roughly 25% of all numbers are abundant. Can you generate the list
+            of all abundant numbers up to some value? (Start with the aliquotsum function.) What is the smallest abundant number?
+         </p>
+         <p>9. The odd abundant numbers were shown to be somewhat rare, and always seemed to have multiple powers of 3 in their representations.
+            Are there any abundants that do not have either 2 or 3 as a factor? Can this happen? Note that such an investigation might
+            involve numbers that are too large for the tools I've provided to work with properly.
+         </p><pre class="codeinput">N = vpi(5)*5*5*5*5*5*7*7*7*11*13
+aliquotsum(N)
+</pre><pre class="codeoutput">N =
+   766390625
+ans =
+   546092575
+</pre><p>10. Can you represent numbers as the sum of two abundant numbers? Which numbers are not so representable? Is there a smallest
+            number such that all those above it are the sum of two abundant numbers?
+         </p>
+         <p>11. An interesting generalization of a perfect number is what I'll call the p-perfect number. Thus, if a perfect number is
+            an integer such that the sum of its proper divisors adds up to the number itself, a p-perfect number N might have the sum
+            of the p'th powers of the divisors adding up to N^p. Do any such numbers exist? Can you show this cannot happen? Or are there
+            any numbers with the squares of the divisors that adds up to the original number?
+         </p>
+         <p>12. How about p-amicability? Can you think of a way to generalize this concept?</p>
+         <p class="footer"><br>
+            Published with MATLAB&reg; 7.5<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% The aliquot parts of a number
+%
+% This demo file teaches about the aliquot parts of a number,
+% and how to use the functions I've provided.
+%
+% Author: John D'Errico
+%
+% e-mail: woodchips@rochester.rr.com
+%
+% Release: 1.0
+%
+% Release date: 9/21/08
+
+%% The aliquot parts of a number are its proper divisors
+% For example, the number 12 has the list of prime factors
+factor(12)
+
+%%
+% but its proper divisors are given by
+aliquotparts(12)
+
+%%
+% See that N will not be listed as a proper divisor of itself, not
+% for any value of N. In fact, the number 1 has no proper divisors.
+aliquotparts(1)
+
+%%
+% Of course, prime numbers can have only 1 as a proper divisor.
+aliquotparts(17)
+
+%% The sum of the aliquot parts, or sum of proper divisors
+aliquotsum([2 4 5 6 8 12 27 135 40320])
+
+%% aliquotsum is efficient and vectorized
+% In this test, the sum of the divisors for EVERY number from 1 to 100000
+% is computed in short order.
+N = (1:100000)';
+tic,pdsum = aliquotsum(N);toc
+%%
+% Show the numbers up to 100000 with the largest relative sums of their proper divisors.
+[pdsum,tags] = sort(pdsum./N,'descend');
+disp('         N,      sigma(N)./N')
+disp([N(tags(1:10)),pdsum(1:10)])
+
+%% You can also count the number of divisors
+% This is just the sum of the zero'th powers of the divisors. Logically,
+% we expect all the prime numbers to have only one divisor.
+N = (1:20)';
+[N,aliquotsum(N,0)]
+
+%%
+% What number no larger than 100000 has the most proper divisors?
+N = (1:100000)';
+d = aliquotsum(N,0);
+[maxdivisors,Nmax] = max(d)
+%%
+% As you might expect, that number has multiple small factors
+factor(Nmax)
+
+%% Or you can form the sum of the p'th powers
+% Here we will compute the sum of the squares of the aliquot parts.
+N = (1:20)';
+[N,aliquotsum(N,2)]
+
+%% Perfect numbers
+% Perfect numbers have their aliquot sums equal to the
+% number itself.
+aliquotsum([6 28 496 8128])
+
+%% Abundant numbers
+% Just under 25% of all numbers are abundant
+N = 100000;
+100*sum(aliquotsum(1:N)>(1:N))/N
+
+%% Hyper-abundant numbers
+% Few (roughly 2%) of numbers are hyper-abundant.
+% I've defined hyper-abundancy as an aliquot sum of the number N
+% that is at least twice as large as N.
+N = (1:100000)';
+%%
+% As a percentage...
+100*sum(aliquotsum(N)>(2*N))./100000
+
+%%
+% Show the numbers up to 100000 with the largest relative sums of their proper divisors.
+pdsum = aliquotsum(N);
+[pdsum,tags] = sort(pdsum./N,'descend');
+disp('         N,      sigma(N)./N')
+disp([N(tags(1:10)),pdsum(1:10)])
+
+%% Collosally-abundant numbers?
+% How hyper-abundant can they get? Is there a maximum?
+N = 1000000;
+pdsum = aliquotsum(1:N);
+[maxsum,whichN] = max(pdsum)
+%%
+% It does not appear that there is any maximum value
+% to this ratio. Certainly it exceeds 3. Mathworld suggests
+% <http://mathworld.wolfram.com/ColossallyAbundantNumber.html |(Collossally abundant)|>
+% that the ratio can get fairly large. Add 1 to get the ratio they list.
+maxsum/whichN
+
+%% Odd abundant numbers are less common than the abundant numbers in general
+% The smallest odd abundant number is 945. 
+N = (1:2:10000)';
+pdsum = aliquotsum(N);
+ind = find(pdsum>N);
+N(ind)'
+
+%% The odd abundant numbers are also "less" abundant
+% The third column here is the extent of the overabundancy.
+% Since 1.0 there would indicate a perfect number, these odd abundants
+% are all clearly just barely so. I wonder, is there a limit to the
+% extent of abundancy for the odd numbers? Are any hyper-abundant,
+% as I've defined it above?
+N = (1:2:1000000)';
+pdsum = aliquotsum(N);
+maxOddAbundancy = max(pdsum./N)
+
+%% Why are the odd abundants so rare?
+% We can get some idea as to the reason why odd abundant numers 
+% are so rare, by looking at the factors of a highly abundant even
+% number.
+%
+% Try 840 for example. Clearly it has multiple powers of 2 in its
+% factorization.
+factor(840)
+%%
+% 840 is also quite abundant.
+aliquotsum(840)
+%% 
+% If we look at the factors of the most highly abundant numbers,
+% you will generally find many spare powers of 2. But how about
+% the odd abunbdants? There are no powers of 2 allowed in an odd number,
+% so pick some of the odd abundant numbers and look at their factors.
+% As expected, we find some extra powers of 3, along with some other
+% moderately small odd primes.
+factor(945)
+factor(9765)
+%%
+% Pick a rather large odd number that will have very many factors.
+% Unfortunately, this is close to as far as aliquotsum will go, due to
+% the limits of MATLAB's operating precision. I'll admit the ratio
+% is starting to approach 2.
+N = 3*3*3*5*5*7*7*11*13*17*19
+aliquotsum(N)/N
+
+%% Deficient numbers
+% All primes are deficient, as are all pure powers of prime numbers.
+% As well, all the divisors of any perfect number are known to be deficient.
+aliquotsum(primes(50))
+
+%% Maximally deficient numbers
+% Naturally, the prime numbers represent the most deficient numbers
+% possible, since each prime has only one divisor less than itself,
+% and that is the number 1. If we ignore the prime numbers, which
+% numbers are the next most deficient? Do you see a pattern?
+N = setdiff(1:50,primes(50))';
+[N,aliquotsum(N)]
+
+%% Amicable numbers
+% A pair of numbers is amicable if their aliquot sums are
+% equal to the other member of the pair.
+aliquotsum([220 284])
+
+%% Sociable numbers form cliques, or amicable cycles
+% Perfect numbers are self-amicable, with a cycle length of 1.
+% Amicable pairs have a cycle length of 2.
+% This cycle has length 5 before it returns to the start.
+aliquotsum([12496 14288 15472 14536 14264])
+
+%% Amicable cycles
+% Perfect numbers are self-amicable. The amicablecycles function:
+%
+%  cycles = amicablecycles(N,L)
+% 
+% will find all cycles that start with a number
+% as large as N. The length of the cycle is L.
+amicablecycles(20000,1)
+%%
+% Amicable pairs have a cycle length of 2.
+amicablecycles(20000,2)
+
+%%
+% There are no known sociable cliques of length 3 or 4
+amicablecycles(20000,3)
+amicablecycles(20000,4)
+
+%%
+% The smallest cycle of length 5 starts at 12496
+amicablecycles(20000,5)
+
+%% Odd amicables
+% You can force amicablecycles to look only at certain starting points.
+% For example, to find the odd amicable cycles only
+amicablecycles(1:2:200000,2)
+
+%% Some interesting things to try
+% What fun things can you find to do with these numbers?
+% Can you find any odd perfect numbers? Perhaps a quasi-perfect
+% number?
+%
+% Some simple problems for the student, and a few that may not be so
+% simple.
+%
+% 1. Which numbers have many distinct divisors?
+%
+% 2. What is the smallest number to have exactly 31 divisors?
+%
+% 3. Does the product of the first k primes necessarily have the largest number of distinct divisors?
+%
+% 4. Can you construct a number less than 2*3*5*7*11 that has more divisors than this number?
+%
+% 5. For which values of non-prime numbers N is the lower bound sqrt(N)+1 realized for the aliquot sum?
+%
+% 6. Can you prove that sqrt(N)+1 forms a lower bound for the aliquot sum for the non-prime numbers N?
+%
+% 7. Is there a simple relationship for the upper bound of the aliquot sum
+% as a function of N? Consider N*log(N) as a start.
+%
+% 8. There are many abundant numbers. As was shown above, roughly 25% of
+% all numbers are abundant. Can you generate the list of all abundant
+% numbers up to some value? (Start with the aliquotsum function.) What is the
+% smallest abundant number?
+%
+% 9. The odd abundant numbers were shown to be somewhat rare, and always
+% seemed to have multiple powers of 3 in their representations. Are there
+% any abundants that do not have either 2 or 3 as a factor? Can this
+% happen? Note that such an investigation might involve numbers that are
+% too large for the tools I've provided to work with properly.
+N = vpi(5)*5*5*5*5*5*7*7*7*11*13
+aliquotsum(N)
+%%
+% 10. Can you represent numbers as the sum of two abundant numbers? Which
+% numbers are not so representable? Is there a smallest number such that
+% all those above it are the sum of two abundant numbers?
+%
+% 11. An interesting generalization of a perfect number is what I'll call the p-perfect
+% number. Thus, if a perfect number is an integer such that the sum of its
+% proper divisors adds up to the number itself, a p-perfect number N might
+% have the sum of the p'th powers of the divisors adding up to N^p. Do any
+% such numbers exist? Can you show this cannot happen? Or are there any
+% numbers with the squares of the divisors that adds up to the original
+% number?
+%
+% 12. How about p-amicability? Can you think of a way to generalize this
+% concept?
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

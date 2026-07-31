@@ -1,0 +1,331 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>Textscan Tool Help</title>
+      <meta name="generator" content="MATLAB 7.5">
+      <meta name="date" content="2007-08-23">
+      <meta name="m-file" content="textscantoolhelp"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>Textscan Tool Help</h1>
+         <introduction>
+            <p>This document describes how to use <tt>textscantool</tt>, an interactive GUI to read large text files with delimited data. The tool lets you specify which columns to read and what
+               data types to use. It can also generate the M code to carry out the same task programmatically. There is a video tutorial
+               for this tool in the directory that comes with this submission.
+            </p>
+         </introduction>
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#1">Starting the tool</a></li>
+               <li><a href="#2">Specify text file, header and delimiter information</a></li>
+               <li><a href="#11">Specify data types of columns or which to ignore</a></li>
+               <li><a href="#17">Specify import options</a></li>
+               <li><a href="#23">Import data or generate code</a></li>
+               <li><a href="#27">Closing tool</a></li>
+            </ul>
+         </div>
+         <h2>Starting the tool<a name="1"></a></h2>
+         <p>To open the tool, type <tt>texscantool</tt> at the command line.
+         </p>
+         <h2>Specify text file, header and delimiter information<a name="2"></a></h2>
+         <p><b>Select a text file</b></p>
+         <p>To select a text file data source, click <b>Browse...</b> and use the dialog that appears to pick a file. The size of the selected file on disk is displayed and a preview of the first
+            100 lines of the file is shown in the panel below.
+         </p>
+         <p><b>Specify last header row number</b></p>
+         <p>Examine the preview to determine the number of header lines in the file that need to be skipped before the data starts. Use
+            the mouse to click on the number of the row where the headers end. You must click on the row number on the left and not just
+            anywhere in the row. This will populate the 'No. of header lines' edit box below. It will also try to determine the delimiter
+            used (just by finding the most common characters in the row) and populate the edit box below.
+         </p>
+         <p><b>Specify header and delimiter information manually</b></p>
+         <p>You can override the calculated header and delimiter information by specifying,</p>
+         <div>
+            <ul>
+               <li>The number of header lines</li>
+               <li>Whether or not the text file contains column headers names/categories.</li>
+               <li>The row that the columns headers are to be found. By default it assumes that the column headers are on the last header row
+                  that you just selected. You will need to change this if there are some header rows between the column headers and the actual
+                  data.
+               </li>
+            </ul>
+         </div>
+         <p>Click <b>Next&gt;</b>.
+         </p>
+         <h2>Specify data types of columns or which to ignore<a name="11"></a></h2>
+         <p>In the next panel, up to 100 rows of data is read in and displayed in a grid. By default the data is read in as strings, to
+            ensure that it can all be read. In most cases you will be reading numerical data, so you will need to specify a numerical
+            data type to use. This is the type that the data will be stored in, in the MATLAB workspace.
+         </p>
+         <p><b>Select column(s)</b></p>
+         <p>Select a columns with the mouse (or multiple columns with CTRL mouse click). You can select all columns by clicking in the
+            top left.
+         </p>
+         <p><b>Choose data type or ignore</b></p>
+         <p>Then click the radio buttons below to select a data type. The tool will check that the column can be read with that data type
+            by reading the file. Character strings for example cannot be read in as numerical data. If the data type is chosen works,
+            it is included with the name in the header. Singles and integer data types will take up less storage space than the usual
+            doubles.
+         </p>
+         <p>Choose <b>ignore</b> if you do not want to read a column.
+         </p>
+         <p>If you have a date/time string in a column and you wish to read it as an date/time number, specify an anonymous function calling
+            the datenum function and select the radio button.
+         </p>
+         <p>Note: There is a known bug in this tool in that after selecting a radio button it and the column becomes deselected.</p>
+         <p>Click <b>Next&gt;</b>.
+         </p>
+         <h2>Specify import options<a name="17"></a></h2>
+         <p>In the final panel, you specify a number of import options.</p>
+         <p><b>Number of data rows to read</b></p>
+         <p>Enter the number of data rows to be read. If you click outside the text box the estimated size of the array in the workspace
+            and time to import is estimated and displayed. If you want to read the entire file but do not know how long it is, press the
+            <b>Count Lines in File</b> button. It will determine the number of rows in the file, hence the number of data lines that can be read and populate the
+            text box.  This may take a while for large files.
+         </p>
+         <p><b>Specify data structure</b></p>
+         <p>Next choose the data structure that you would like to read the data into. Options include,</p>
+         <div>
+            <ul>
+               <li>A row cell array, which is the most memory efficient for importing multiple data types</li>
+               <li>A 2D numerical array which is the most memory efficient and is only possible if all data is of the same type and numerical.</li>
+               <li>A 2D cell array, which is the most memory inefficient but lets you view different data types together with headers in the
+                  array editor similar to a spreadsheet.
+               </li>
+            </ul>
+         </div>
+         <h2>Import data or generate code<a name="23"></a></h2>
+         <p>To import the data now...</p>
+         <p>...click <b>Import Data</b>. Variables called <tt>data</tt> and <tt>columnHeaders</tt> are created in the base workspace. If there were no column headers in the file then <tt>columnHeaders</tt> will contain dummy strings <tt>column1</tt>, <tt>column2</tt>, etc.
+         </p>
+         <p>To generated the code...</p>
+         <p>...click <b>Generate Code</b></p>
+         <p>It generates a function to read the data and opens it in the editor. The function does not currently return a column header
+            variable. You can get column header information if you specify the 2D cell array option, in which case they are included with
+            the data.
+         </p>
+         <p>If a variable imported takes up too much memory or you get an "out of memory" error, consider importing less rows of data
+            or going back to the previous panel and specify a smaller data type.
+         </p>
+         <h2>Closing tool<a name="27"></a></h2>
+         <p>Click <b>Close</b>, to exit the tool.
+         </p>
+         <p class="footer"><br>
+            Published with MATLAB&reg; 7.5<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% Textscan Tool Help
+% This document describes how to use |textscantool|, an interactive GUI to
+% read large text files with delimited data. The tool lets you specify
+% which columns to read and what data types to use. It can also generate the M
+% code to carry out the same task programmatically. There is a video
+% tutorial for this tool in the directory that comes with this submission.
+
+%% Starting the tool
+% To open the tool, type |texscantool| at the command line. 
+
+%% Specify text file, header and delimiter information
+
+%%
+% *Select a text file*
+
+%%
+% To select a text file data source, click *Browse...* and use the dialog
+% that appears to pick a file. The size of the selected file on disk is displayed
+% and a preview of the first 100 lines of the file
+% is shown in the panel below.
+
+%%
+% *Specify last header row number*
+
+%%
+% Examine the preview to determine the number of header lines in the file
+% that need to be skipped before the data starts. Use the mouse to click on
+% the number of the row where the headers end. You must click on the row
+% number on the left and not just anywhere in the row. This will populate
+% the 'No. of header lines' edit box below. It will also try to determine
+% the delimiter used (just by finding the most common characters in the
+% row) and populate the edit box below. 
+
+%% 
+% *Specify header and delimiter information manually*
+
+%%
+% You can override the calculated header and delimiter information by specifying,
+
+%% 
+% * The number of header lines
+% * Whether or not the text file contains column headers names/categories.
+% * The row that the columns headers are to be found. By default it assumes
+% that the column headers are on the last header row that you just
+% selected. You will need to change this if there are some header rows
+% between the column headers and the actual data.
+
+%%
+% Click *Next>*.
+
+%% Specify data types of columns or which to ignore
+% In the next panel, up to 100 rows of data is read in and displayed in a
+% grid. By default the data is read in as strings, to ensure that it can
+% all be read. In most cases you will be reading numerical data, so you
+% will need to specify a numerical data type to use. This is the type that
+% the data will be stored in, in the MATLAB workspace.
+
+%%
+% *Select column(s)*
+
+%%
+% Select a columns with the mouse (or multiple columns with CTRL mouse
+% click). You can select all columns by clicking in the top left.
+
+%%
+% *Choose data type or ignore*
+
+%%
+% Then click the radio buttons below to select a data type. The tool will
+% check that the column can be read with that data type by reading the
+% file. Character strings for example cannot be read in as numerical data.
+% If the data type is chosen works, it is included with the name in the
+% header. Singles and integer data types will take up less storage space
+% than the usual doubles.
+%
+% Choose *ignore* if you do not want to read a column.
+%
+% If you have a date/time string in a column and you wish to read
+% it as an date/time number, specify an anonymous function calling the
+% datenum function and select the radio button.
+
+%%
+% Note: There is a known bug in this tool in that after
+% selecting a radio button it and the column becomes deselected.
+%
+% Click *Next>*.
+
+%% Specify import options
+% In the final panel, you specify a number of import options. 
+
+%% 
+% *Number of data rows to read*
+
+%%
+% Enter the number of data rows to be read. If you click outside the text
+% box the estimated size of the array in the workspace and time to import
+% is estimated and displayed. If you want to read the entire file but do
+% not know how long it is, press the *Count Lines in File* button. It will
+% determine the number of rows in the file, hence the number of data lines
+% that can be read and populate the text box.  This may take a while for
+% large files.
+
+%% 
+% *Specify data structure*
+
+%%
+% Next choose the data structure that you would like to read the data into.
+% Options include,
+
+%%
+% * A row cell array, which is the most memory efficient for importing
+% multiple data types
+% * A 2D numerical array which is the most memory efficient and is only
+% possible if all data is of the same type and numerical. 
+% * A 2D cell array, which is the most
+% memory inefficient but lets you view different data types together with
+% headers in the array editor similar to a spreadsheet.
+
+%% Import data or generate code
+% To import the data now...
+%
+% ...click *Import Data*. Variables called |data| and |columnHeaders| are
+% created in the base workspace. If there were no column headers in the file
+% then |columnHeaders| will contain dummy strings |column1|,
+% |column2|, etc.
+
+%%
+% To generated the code...
+% 
+% ...click *Generate Code*
+
+%%
+% It generates a function to read the data and opens it in the editor. The
+% function does not currently return a column header variable. You can get
+% column header information if you specify the 2D cell array option, in
+% which case they are included with the data.
+
+%%
+% If a variable imported takes up too much memory or you get
+% an "out of memory" error, consider importing less rows of data or going
+% back to the previous panel and specify a smaller data type.
+
+%% Closing tool
+% Click *Close*, to exit the tool.
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

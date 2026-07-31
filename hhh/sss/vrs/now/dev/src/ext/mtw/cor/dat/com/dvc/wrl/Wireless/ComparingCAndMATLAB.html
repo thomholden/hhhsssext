@@ -1,0 +1,275 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>Comparing C++ and MATLAB Code</title>
+      <meta name="generator" content="MATLAB 7.6">
+      <meta name="date" content="2008-02-28">
+      <meta name="m-file" content="ComparingCAndMATLAB"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>Comparing C++ and MATLAB Code</h1>
+         <introduction>
+            <p>The following is a set of notes on the difference between the C++ and MATLAB code.</p>
+         </introduction>
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#1">Data Members and Properties</a></li>
+               <li><a href="#5">Methods and Functions</a></li>
+               <li><a href="#6">Other Topics</a></li>
+            </ul>
+         </div>
+         <h2>Data Members and Properties<a name="1"></a></h2>
+         <div>
+            <ul>
+               <li><b>Data members and properties</b>. C++ data members are implemented as MATLAB class properties and specified in a properties block of the class definition
+                  file.
+               </li>
+               <li><b>C++ class data member names</b>. C++ class data members which use the convention <tt>m_name</tt> have been left with the same property name in the M code to aid the comparison, but this convention is not required in MATLAB
+                  as <tt>obj.name</tt> syntax makes class properties obvious.
+               </li>
+               <li><b>C++ data member access</b>. C++ data members with simple public access are implemented as public properties in MATLAB. There is no need to create an
+                  access method.
+               </li>
+            </ul>
+         </div><pre class="codeoutput">
+22        properties
+23            m_bitDelay % Instead of public access method
+24        end
+
+</pre><div>
+            <ul>
+               <li><b>C++ access methods</b>. C++ data member access methods that do carry out some operation such as validate the property, have been implement as a
+                  MATLAB <tt>get</tt> or <tt>set</tt> method, such as this get method for the <tt>m_bitDelay</tt> property.
+               </li>
+            </ul>
+         </div><pre class="codeoutput">
+138           function out=get.m_bitDelay(hObj)
+139               switch hObj.m_bitrate
+140                   case 1
+141                       out=1;
+142                   case 11
+143                       out= constants.codeLength;
+144                   otherwise
+145                       error('');   % Should not occur
+146                       out=0;
+147               end
+148           end
+
+</pre><div>
+            <ul>
+               <li><b>C++ data member access control</b>. MATLAB property attributes have been used to control access to properties. Although its best to leave properties public
+                  during development and debugging to ease access. Note that you need to set the <tt>GetAccess</tt> and <tt>SetAccess</tt> attributes. For example:
+               </li>
+            </ul>
+         </div><pre class="codeoutput">
+19        properties (GetAccess='private', SetAccess='private')
+20            m_dB_noise;
+21            m_x1;
+22            m_x2;
+23            m_x3;
+24            m_x4;
+25            m_x5;
+26            m_x6;
+27        end
+
+</pre><div>
+            <ul>
+               <li><b>Data member access within methods</b>. The first input argument of a class method is typically the object (e.g. <tt>obj</tt>) but does not have to be. Properties inside of methods are accessed via the object e.g. <tt>obj.property</tt> or <tt>hObj.property</tt> convention. Methods that modify property values need to pass  the object back as a return argument from the method if it
+                  is a value class but not if it is a handle class.
+               </li>
+            </ul>
+         </div>
+         <h2>Methods and Functions<a name="5"></a></h2>
+         <div>
+            <ul>
+               <li><b>Methods</b>. C++ member functions are implemented as MATLAB class methods and specified as MATLAB functions in a methods block of the
+                  class definition file
+               </li>
+               <li><b>Method calling</b>. Functional notation is mainly used for calling methods in the application e.g. <i>method(obj, arg1, arg2)</i>, but you could use dot notation e.g. <i>object.method(arg1, arg2)</i> to more closely match C++ code.
+               </li>
+               <li><b>Static functions accessed by more than one class</b>. These have been placed on the path such as the <tt>setRSRCpulseShapingFilter</tt>.
+               </li>
+               <li><b>Indexing operators</b>. Overloaded indexing operators in C++ have been implemented in MATLAB with <tt>subsref</tt> and <tt>subsasgn</tt> methods. These are called when an object is access by either regular indexing <tt>()</tt>, cell array indexing <tt>{}</tt> or accessed with a dot <tt>.</tt>.
+               </li>
+            </ul>
+         </div><pre class="codeoutput">
+98            function out=subsref(hObj,s)
+
+
+106               switch s.type
+107                   case '()' % Subs ref
+108                       if length(s.subs)==1
+109                           index = s.subs{1};
+110                           out=hObj.m_fc(index);
+
+</pre><h2>Other Topics<a name="6"></a></h2>
+         <div>
+            <ul>
+               <li><b>C++ pointers</b>. MATLAB handle classes are used to give objects reference behavior, similar to the behavior of C++ objects typically accessed
+                  via pointers. Most classes in the application are specified as handle classes, by inheriting from the <tt>handle</tt> base class in the classdef line.
+               </li>
+            </ul>
+         </div><pre class="codeoutput">
+11    classdef AWGN &lt; handle
+
+</pre><div>
+            <ul>
+               <li><b>C++ loop iterators</b>. In general, C++ loop iterators <tt>i</tt> and <tt>j</tt> are have been replaced in the example with <tt>k</tt>, <tt>ii</tt>  or <tt>jj</tt> to avoid confusion with the complex values <tt>i</tt> and <tt>j</tt> in MATLAB.
+               </li>
+               <li><b>C++ copy constructors</b>. These are not required in MATLAB code
+               </li>
+               <li><b>C++ destructors</b>. These are not required in the MATLAB code, but customized ones could be specified for handle classes
+               </li>
+               <li><b>C++ templates</b>. There is no equivalent to templates in MATLAB but this is not as necessary, as MATLAB is dynamically typed
+               </li>
+               <li><b>Virtual methods in base classes</b>. These are not required.
+               </li>
+            </ul>
+         </div>
+         <p class="footer"><br>
+            Published with MATLAB&reg; 7.6<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% Comparing C++ and MATLAB Code
+% The following is a set of notes on the difference between the C++ and
+% MATLAB code.
+
+%% Data Members and Properties
+% * *Data members and properties*. C++ data members are implemented as
+% MATLAB class properties and specified in a properties block of the class
+% definition file.
+% * *C++ class data member names*. C++ class data members which use the
+% convention |m_name| have been left with the same property name in the M
+% code to aid the comparison, but this convention is not required in
+% MATLAB as |obj.name| syntax makes class properties obvious.
+% * *C++ data member access*. C++ data members with simple public access
+% are implemented as public properties in MATLAB. There is no
+% need to create an access method.
+dbtype BluetoothReceiver 22:24
+
+%%
+% * *C++ access methods*. C++ data member access methods that do carry out some
+% operation such as validate the property, have been implement as a MATLAB
+% |get| or |set| method, such as this get method for the |m_bitDelay|
+% property.
+dbtype IEEE802_11b_Receiver 138:148
+
+%%
+% * *C++ data member access control*. MATLAB property attributes have been used to
+% control access to properties. Although its best to leave properties
+% public during development and debugging to ease access. Note that you need
+% to set the |GetAccess| and |SetAccess| attributes. For example:
+dbtype AWGN 19:27
+
+%%
+% * *Data member access within methods*. The first input argument of a
+% class method is typically the object (e.g. |obj|) but does not have to
+% be. Properties inside of methods are accessed via the object e.g.
+% |obj.property| or |hObj.property| convention. Methods that modify
+% property values need to pass 
+%  the object back as a return argument from the method if it is a
+% value class but not if it is a handle class.
+
+%% Methods and Functions
+% * *Methods*. C++ member functions are implemented as MATLAB class methods
+% and specified as MATLAB functions in a methods block of the class definition file
+% * *Method calling*. Functional notation is mainly used for calling methods in the
+% application e.g. _method(obj, arg1, arg2)_, but you could use dot notation
+% e.g. _object.method(arg1, arg2)_ to more closely match C++ code.
+% * *Static functions accessed by more than one class*. These have been
+% placed on the path such as the |setRSRCpulseShapingFilter|.
+% * *Indexing operators*. Overloaded indexing operators in C++ have been
+% implemented in MATLAB with |subsref| and |subsasgn| methods. These are
+% called when an object is access by either regular indexing |()|, cell
+% array indexing |{}| or accessed with a dot |.|.
+dbtype FIRFilter 98
+dbtype FIRFilter 106:110
+
+%% Other Topics
+% * *C++ pointers*. MATLAB handle classes are used to give objects reference
+% behavior, similar to the behavior of C++ objects typically accessed
+% via pointers. Most classes in the application are specified as handle
+% classes, by inheriting from the |handle| base class in the classdef line.
+dbtype AWGN 11
+
+%%
+% * *C++ loop iterators*. In general, C++ loop iterators |i| and |j| are have
+% been replaced in the example with |k|, |ii|  or |jj| to avoid confusion with
+% the complex values |i| and |j| in MATLAB.
+% * *C++ copy constructors*. These are not required in MATLAB code
+% * *C++ destructors*. These are not required in the MATLAB code, but customized ones could be
+% specified for handle classes
+% * *C++ templates*. There is no equivalent to templates in MATLAB but this
+% is not as necessary, as MATLAB is dynamically typed
+% * *Virtual methods in base classes*. These are not required.
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

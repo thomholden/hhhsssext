@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/favicon.20220103150815220.ico" type="image/x-icon">
+<link rel='canonical' href='https://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files?s_tid=srchtitle'><meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="/etc.clientlibs/clientlibs/granite/jquery.min.20220103150815220.js"></script><link rel="stylesheet" href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common.min.20220103150815220.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/matlabcentral.min.20220103150815220.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/fileexchange.min.20220103150815220.css" type="text/css">
+<link href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/fonts/roboto/roboto-latin-italic-400.20220103150815220.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+<link href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/fonts/roboto/roboto-latin-italic-500.20220103150815220.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+<link href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/fonts/roboto/roboto-latin-italic-700.20220103150815220.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+<link href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/fonts/roboto/roboto-latin-normal-400.20220103150815220.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+<link href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/fonts/roboto/roboto-latin-normal-500.20220103150815220.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+<link href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/fonts/roboto/roboto-latin-normal-700.20220103150815220.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+<link href="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/fonts/mathworks.20220103150815220.woff" rel="preload" as="font" type="font/woff" crossorigin>
+<script id="analyticsDigitalData">digitalData = {
+    'pageInstanceID' : 'JSONLab: a toolbox to encode/decode JSON files - File Exchange - MATLAB Central',
+    'page' : {
+        'pageInfo' : {
+            'pageID' : '/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files',
+            'destinationURL' : 'https://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files?s_tid=srchtitle'
+        },
+        'category' : {
+            'primaryCategory' : 'matlabcentral',
+            'subCategory1' : 'matlabcentral/fileexchange',
+            'subCategory2' : '',
+        },
+        'attributes' : {"descriptonCode":"FX_33381","category":["Web Access","Octave","HDF5","JSON Format"]}
+    },
+    'product' : [{ 'productInfo' : {} }],
+    'component' : [],
+    'events' : [],
+    'user': []
+};
+</script><script>(function(g,b,d,f){(function(a,c,d){if(a){var e=b.createElement("style");e.id=c;e.innerHTML=d;a.appendChild(e)}})(b.getElementsByTagName("head")[0],"at-body-style",d);setTimeout(function(){var a=b.getElementsByTagName("head")[0];if(a){var c=b.getElementById("at-body-style");c&&a.removeChild(c)}},f)})(window,document,"[class*='personalization-container']:not([id^='web-application']) {opacity: 0 !important}",2E3);</script><script src="//assets.adobedtm.com/d0cc0600946eb3957f703b9fe43c3590597a8c2c/satelliteLib-e8d23c2e444abadc572df06537e2def59c01db09.js" async></script><title>JSONLab: a toolbox to encode/decode JSON files - File Exchange - MATLAB Central</title>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="SWAK68wp6pk6Ml0fH5boqKtbSWivvAeYlY4O+15Re5YY5+nJe1vRIzKzpmHppTVJkjFj1OWv2/MQfPpW46eNXw==" />
+<script src="/matlabcentral/fileexchange/assets/application-fb93970bc27536a5145e889fe730f0933c04d8c908804effdb158973200ad126.js"></script>
+<link rel="stylesheet" media="screen" href="/matlabcentral/fileexchange/assets/application-c6136d68b4c151454abd52ce559a20b44713eac5b87ae2d346c7542eed8c87f4.css" />
+<link rel="stylesheet" media="screen" href="/matlabcentral/fileexchange/assets/ui/application-49e27dc5b88eca64bff2998bff91de5a559cd1814e2900d8468a59c37c8c0792.css" />
+<link rel="stylesheet" type="text/css" href="/matlabcentral/static/rtc/scripts/mlc-rtc-1.0.5.css">
+<script src="/matlabcentral/static/rtc/scripts/code-options-1.2.0.js" data-code-options-app="fileexchange" data-locale="en-US"></script>
+<script src="https://www.mathworks.com/matlabcentral/jscript/profile_card_v1.2.js" data-app-name="fileexchange"></script>
+<script src="/matlabcentral/discussions/component.v2.js" crossorigin="anonymous"></script>
+<meta property="og:title" content="JSONLab: a toolbox to encode/decode JSON files" /><meta property="og:type" content="website" /><meta property="og:url" content="https://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files" /><meta property="og:image" content="https://www.mathworks.com/responsive_image/160/120/0/0/0/cache/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/4e4f42eb-4861-4dd6-a240-08725362ecd4/images/screenshot.png" /><meta property="og:description" content="A toolbox to encode/decode JSON/UBJSON/MessagePack files in MATLAB/Octave" />
+
+                              <script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="LERXA-6VNES-W6PXS-U8C7F-BXSZH",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"LERXA-6VNES-W6PXS-U8C7F-BXSZH",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write("<bo"+'dy onload="document._l();">'),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="",n="qyu5rq5ydcidmyp62e6a-f-ce6458d03-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,_={"ak.v":"32","ak.cp":"31027","ak.ai":parseInt("195948",10),"ak.ol":"0","ak.cr":39,"ak.ipv":4,"ak.proto":"h2","ak.rid":"1855bf9e","ak.r":34368,"ak.a2":e,"ak.m":"x","ak.n":"essl","ak.bpcip":"134.41.216.0","ak.cport":44472,"ak.gh":"184.150.96.159","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.csrc":"-","ak.acc":"","ak.t":"1644089660","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==4a1wBSdSFr1iXUBWrG9nmB9FqcvylFQypT1dGwpgpxoC346rnyFtY0Id0gH6/nkybDqy05Xde6knHKTYCQb2mjbJbQHlwyV7M7B0qS4yxZNpcS39aQEW3fjwx6HYl/PDS4rSuT+88q3m2Ule8ByuMau7OX61OLBmkakHcmGII28PqwuyNMJwe/BHHrciwXsTp1LM12snmjMziSw4DfN9/fD0miDWGTOm1e1GJvqa/KnRY1pBr0uTRpbH01R0rld5Nr8hmKeRk/jE+nqfUzgF+VMPdHkyrypVVxyYSTS0PucUvRepZUmqfXpPYlh1kMggtP+Sk07OUhYmzvDRKBVxwP7E3TIci/Ez4zgaIGQYrdsTDtbreaKomG6QePUo4SbHddrBaFnnN655TYyqPqy/4REooFiZJ3kPzAutm+sSdfg=","ak.pv":"155","ak.dpoabenc":"","ak.tf":i};if(""!==t)_["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))_["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(_)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:_,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+<body class="
+		   
+		   templateservice
+		  
+		  
+		  " data-label-chat-online="Chat with Support" data-label-chat-offline="Chat is Offline" data-label-chatbot="Start MathWorks Bot" data-image-chatbot="/content/dam/mathworks/mathworks-dot-com/images/responsive/logos/chatbot.png">
+
+	<a class="skip_link sr-only" href="#content_container" tabindex="1">Skip to content</a>
+
+	
+<!-- Mobile TopNav: Start -->
+<div class="header visible-xs visible-sm" id="header_mobile">
+	<nav class="navbar navbar-default" role="navigation"><div class="navbar-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-3">
+						<button type="button" class="navbar-toggle topnav_toggle" tabindex="1" data-toggle="collapse" data-target="#topnav_collapse">
+							<span class="sr-only">Toggle Main Navigation</span>
+							<span class="icon-menu"></span>
+						</button>
+					</div>
+					<div class="col-xs-6">
+						<div class="text-center">
+							<a href="/?s_tid=gn_logo" class="svg_link navbar-brand" tabindex="3">
+								<img src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/pic-header-mathworks-logo.20220103150815220.svg" class="mw_logo" alt="MathWorks - Mobile View"></a>
+						</div>
+					</div>
+					<div class="col-xs-3">
+						<div class="matrix_affordance_container_mobile" id="matrix_affordance_container_mobile"></div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row visible-xs visible-sm">
+					<div class="col-xs-12">
+						<div class="navbar-collapse collapse" id="topnav_collapse">
+							<div class="topNavigation topnavigation containsResourceName resourceClass-topnavigation">
+
+<ul class="nav navbar-nav" id="topnav">
+<li class="headernav_login" style="display: none;">
+	<a class="mwa-nav_login" tabindex="2"><span class="visible-xs visible-sm">Sign In <span class="sr-only">to Your MathWorks Account</span></span><span class="visible-lg visible-md"><span class="sr-only">Sign In to Your MathWorks Account</span></span></a>
+</li>
+<li class="headernav_logout dropdown" style="display: none;">
+	<a href="#" role="button" aria-haspopup="menu" aria-controls="mwa-nav" class="dropdown-toggle mwa_image_drop_down" data-toggle="dropdown" tabindex="2">
+		<span class="visible-xs visible-sm">
+			<span class="mobile_account_image">
+				<span class="sr-only">Access your MathWorks Account</span>
+			</span>
+			<span class="mobile_account_name" aria-hidden="true"></span>
+			<b class="caret"></b>
+		</span>
+	</a>
+	<ul role="menu" class="dropdown-menu" id="mwa-nav">
+<li class="mwa-nav_account"><a role="menuitem" class="mwa-account" tabindex="2">My Account</a></li>
+		<li class="mwa-nav_community"><a role="menuitem" class="mwa-community-profile" tabindex="2">My Community Profile</a></li>
+		<li class="mwa-nav_associate"><a role="menuitem" class="mwa-link-license" tabindex="2">Link License</a></li>
+		<li class="mwa-nav_logout">
+<a role="menuitem" class="mwa-logout" tabindex="2">Sign Out</a>
+		</li>
+	</ul>
+</li>
+
+	
+		<li class="topnav_products ">
+			<a href="/products.html?s_tid=gn_ps" tabindex="2">Products</a>
+		</li>
+	
+		<li class="topnav_solutions ">
+			<a href="/solutions.html?s_tid=gn_sol" tabindex="2">Solutions</a>
+		</li>
+	
+		<li class="topnav_academia ">
+			<a href="/academia.html?s_tid=gn_acad" tabindex="2">Academia</a>
+		</li>
+	
+		<li class="topnav_support ">
+			<a href="/support.html?s_tid=gn_supp" tabindex="2">Support</a>
+		</li>
+	
+		<li class="topnav_community ">
+			<a href="/matlabcentral/?s_tid=gn_mlc" tabindex="2">Community</a>
+		</li>
+	
+		<li class="topnav_events ">
+			<a href="/company/events.html?s_tid=gn_ev" tabindex="2">Events</a>
+		</li>
+	
+	
+		<li class="headernav_store">
+			<a href="/products/get-matlab.html?s_tid=gn_getml" tabindex="2">Get MATLAB</a>
+		</li>
+	
+</ul>
+</div>
+
+						</div>
+						<div class="navbar-collapse collapse" id="matrix_collapse">
+							<div class="matrix_menu_container_mobile" id="matrix_menu_container_mobile"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</div>
+<!-- Mobile TopNav: End -->
+<!-- Desktop TopNav: Start -->
+<div class="header hidden-xs hidden-sm" id="header_desktop">
+	<nav class="navbar navbar-default" role="navigation"><div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="navbar-header">
+						<div class="logo_container hidden-xs hidden-sm">
+							<a href="/?s_tid=gn_logo" class="svg_link pull-left" tabindex="1">
+								<img src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/pic-header-mathworks-logo.20220103150815220.svg" class="mw_logo" alt="MathWorks"></a>
+						</div>
+						<div class="navbar-collapse collapse hidden-xs hidden-sm">
+							
+							<div class="topNavigation topnavigation containsResourceName resourceClass-topnavigation">
+
+
+	<ul id="topnav" class="nav navbar-nav">
+<li class="topnav_products ">
+			<a href="/products.html?s_tid=gn_ps" tabindex="2">Products</a>
+		</li>
+	
+		<li class="topnav_solutions ">
+			<a href="/solutions.html?s_tid=gn_sol" tabindex="2">Solutions</a>
+		</li>
+	
+		<li class="topnav_academia ">
+			<a href="/academia.html?s_tid=gn_acad" tabindex="2">Academia</a>
+		</li>
+	
+		<li class="topnav_support ">
+			<a href="/support.html?s_tid=gn_supp" tabindex="2">Support</a>
+		</li>
+	
+		<li class="topnav_community ">
+			<a href="/matlabcentral/?s_tid=gn_mlc" tabindex="2">Community</a>
+		</li>
+	
+		<li class="topnav_events ">
+			<a href="/company/events.html?s_tid=gn_ev" tabindex="2">Events</a>
+		</li>
+	</ul>
+</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="headerNavigation headernavigation containsResourceName resourceClass-headernavigation">
+<div class="collapse navbar-collapse" id="headernav_collapse">
+	<ul class="nav navbar-nav navbar-right" id="headernav">
+<li class="headernav_store"><a href="/products/get-matlab.html?s_tid=gn_getml" class="btn btn_color_blue companion_btn btn-xs" tabindex="2">Get MATLAB</a></li>
+		
+		<li class="headernav_login" style="display: none;">
+	<a class="mwa-nav_login" tabindex="2"><span class="visible-xs visible-sm">Sign In <span class="sr-only">to Your MathWorks Account</span></span><span class="visible-lg visible-md"><span class="sr-only">Sign In to Your MathWorks Account</span></span></a>
+</li>
+<li class="headernav_logout dropdown" style="display: none;">
+	<a href="#" role="button" aria-haspopup="menu" aria-controls="mwa-nav" class="dropdown-toggle mwa_image_drop_down" data-toggle="dropdown" tabindex="2">
+		<span class="visible-xs visible-sm">
+			<span class="mobile_account_image">
+				<span class="sr-only">Access your MathWorks Account</span>
+			</span>
+			<span class="mobile_account_name" aria-hidden="true"></span>
+			<b class="caret"></b>
+		</span>
+	</a>
+	<ul role="menu" class="dropdown-menu" id="mwa-nav">
+<li class="mwa-nav_account"><a role="menuitem" class="mwa-account" tabindex="2">My Account</a></li>
+		<li class="mwa-nav_community"><a role="menuitem" class="mwa-community-profile" tabindex="2">My Community Profile</a></li>
+		<li class="mwa-nav_associate"><a role="menuitem" class="mwa-link-license" tabindex="2">Link License</a></li>
+		<li class="mwa-nav_logout">
+<a role="menuitem" class="mwa-logout" tabindex="2">Sign Out</a>
+		</li>
+	</ul>
+</li>
+
+		<li id="headernav_matrix" class="headernav_matrix">
+	</ul>
+</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+	</nav>
+</div>
+<!-- Desktop TopNav: End -->
+
+	<div class="sticky_header_container includes_subnav">
+		<!-- Section Header: Start -->
+		<div class="section_header level_3">
+			<div class="container-fluid">
+				<div class="row" id="mobile_search_row">
+					<div class="col-sm-6 col-md-7" id="section_header_title">
+						<div>
+<div class="sectionHead sectionhead containsResourceName resourceClass-sectionhead">
+	<div class="section_header_content">
+		<div class="section_header_title"><p class="h1">
+				<a href="/matlabcentral/fileexchange/" class="add_cursor_pointer">File Exchange</a>
+				
+			</p></div>
+		
+			<button type="button" class="navbar-toggle collapsed subnav visible-xs visible-sm" data-toggle="collapse" data-target=".mobile_subnav_content" aria-label="Mobile Navigation"> <span class="icon-arrow-down icon_24"><span class="sr-only">Toggle Sub Navigation</span></span> </button>
+		
+	</div>
+</div>
+</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-5" id="mobile_search">
+						<div>
+<div class="sectionHeadSearchBox sectionheadsearchbox containsResourceName resourceClass-sectionheadsearchbox">
+<div class="search_nested_content_container">
+	
+	<div id="search_scope_site" class="collapse in"><!-- Search File Exchange -->
+<div id="search_scope_fx" class="collapse in">
+  <form id="fx_search_form" name="mlcsearch_form" method="get" data-language="en" action="/matlabcentral/fileexchange">
+    
+    <div class="input-group tokenized_search_field">
+      <label class="sr-only">Search File Exchange</label>
+      <input type="search" class="form-control conjoined_search fileexchange-search" autocomplete="off" name="q" placeholder="Search File Exchange" id="fxsearch"  value="" onfocus="this.value = this.value;">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn_search_adjacent dropdown-toggle" data-toggle="dropdown" tabindex="-1"><span class="caret"></span><span class="search_scope_label">File Exchange</span></button>
+        <ul class="dropdown-menu list-unstyled dropdown-menu-right" role="menu">
+          <li data-toggle="collapse" data-target="#search_scope_support" class="site_search_scope_trigger"><a href="#">Support</a></li>
+          <li data-toggle="collapse" data-target="#search_scope_sitewide"  class="site_search_scope_trigger"><a href="#">MathWorks</a></li>
+        </ul>
+        <script>
+        window.addEventListener('DOMContentLoaded', function() {
+          $(".support_search_scope_trigger, .site_search_scope_trigger").click(function() {
+            $("#search_scope_fx").removeClass("in");
+            $("#query").val($("#fxsearch").val());
+            $("#supportsearch").val($("#fxsearch").val());
+          });
+        });
+        </script>
+        <button type="submit" id="submitsearch" class="btn icon-search btn_search_adjacent btn_search icon_16" tabindex="-1"></button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- End Search File Exchange -->
+<!-- Support Search -->
+<div id="search_scope_support" class="collapse">
+      <form id="supportsearch_form" name="supportsearch_form" method="get" data-language="en" action="/support/search_results.html">
+        <div class="input-group tokenized_search_field">
+          <label class="sr-only">Search Support</label>
+          <input type="search" class="form-control conjoined_search" autocomplete="off" name="q" placeholder="Search Support" id="supportsearch">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn_search_adjacent dropdown-toggle" data-toggle="dropdown" tabindex="-1"><span class="caret"></span><span class="search_scope_label">Support</span></button>
+            <ul class="dropdown-menu list-unstyled dropdown-menu-right" role="menu">
+              <li data-toggle="collapse" data-target="#search_scope_fx"  class="fileexchange_search_scope_trigger"><a href="#">File Exchange</a></li>
+              <li data-toggle="collapse" data-target="#search_scope_sitewide"  class="support_search_scope_trigger"><a href="#">MathWorks</a></li>
+            </ul>
+            <script>
+            window.addEventListener('DOMContentLoaded', function() {
+              $(".support_search_scope_trigger, .fileexchange_search_scope_trigger").click(function() {
+                $("#search_scope_support").removeClass("in");
+                $("#fxsearch").val($("#supportsearch").val());
+                $("#query").val($("#supportsearch").val());
+              });
+            });
+            </script>
+            <button type="submit" name="submitsearch" id="submitsearch" class="btn icon-search btn_search_adjacent btn_search icon_16" tabindex="-1"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+<!-- End Support Search -->
+<!-- Search MathWorks.com -->
+<div id="search_scope_sitewide" class="collapse">
+ <form name="search" id="site_search" class="site_search" action="/search/site_search.html" method="get">
+   <div class="input-group">
+     <label class="sr-only">Search MathWorks.com</label>
+     <input type="hidden" name="c[]" value="entire_site">
+     <input type="search" name="q" id="query" class="form-control conjoined_search" placeholder="Search MathWorks.com" autocomplete="off" \="">
+     <div class="input-group-btn">
+       <button type="button" class="btn btn_search_adjacent dropdown-toggle" data-toggle="dropdown" tabindex="-1"><span class="caret"></span><span class="search_scope_label">MathWorks</span></button>
+       <ul class="dropdown-menu list-unstyled dropdown-menu-right" role="menu">
+         <li data-toggle="collapse" data-target="#search_scope_fx"  class="fileexchange_search_scope_trigger"><a href="#">File Exchange</a></li>
+         <li data-toggle="collapse" data-target="#search_scope_support" class="support_search_scope_trigger"><a href="#">Support</a></li>
+       </ul>
+       <script>
+       window.addEventListener('DOMContentLoaded', function() {
+         $(".support_search_scope_trigger, .fileexchange_search_scope_trigger").click(function() {
+           $("#search_scope_sitewide").removeClass("in");
+           $("#fxsearch").val($("#query").val());
+           $("#supportsearch").val($("#query").val());
+         });
+       });
+       </script>
+       <button type="submit" id="searchbutton" class="btn icon-search btn_search_adjacent btn_search icon_16" tabindex="-1"></button>
+     </div>
+   </div>
+ </form>
+</div>
+<!-- End Search --></div>
+	
+		<script>
+			$(".search_scope_trigger").click(function handlerSearch(event) {
+				var target1 = event.target.parentNode.attributes.getNamedItem("data-groupid").nodeValue;
+				$('#' + target1).removeClass("in");
+			});
+		</script>
+</div>
+<button class="btn icon-remove btn_search pull-right icon_32 visible-xs" data-toggle="collapse" data-target="#mobile_search" aria-expanded="false" aria-controls="mobile_search"><span class="sr-only">Close Mobile Search</span>
+</button>
+
+</div>
+</div>
+					</div>
+					<div class="visible-xs" id="search_actuator">
+						<button class="btn icon-search btn_search pull-right icon_16 containsResourceName resourceClass-button" data-toggle="collapse" data-target="#mobile_search" aria-expanded="false" aria-controls="mobile_search"><span class="sr-only">Close Mobile Search</span></button>
+					</div>
+				</div>
+				<!-- Mobile Local Nav: Start -->
+				<div class="row visible-xs visible-sm" id="mobile_subnav">
+					<div class="col-xs-12">
+						<div class="navbar-collapse collapse mobile_subnav_content">
+							<div>
+<div class="localNavigation localnav containsResourceName resourceClass-localnav">
+
+
+	<ul id="localnav_mobile" class="nav navbar-nav subnav" style="float:none">
+<li class="dropdown ">
+				<a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MATLAB Central<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+<li>
+							<a href="/matlabcentral/?s_tid=gn_mlc">Community Home</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/answers/index/?s_tid=gn_mlc_an">MATLAB Answers</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a>
+							
+						</li>
+					
+						<li>
+							<a href="https://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a>
+							<hr class="local_nav_hr">
+</li>
+					
+						<li>
+							<a href="/matlabcentral/content/communities.html?s_tid=gn_mlc_tbc_dl">Communities</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/community/onramps/mlc_treasure_hunt?s_tid=gn_mlc_hunt">Treasure Hunt</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/highlights?s_tid=gn_mlc_hl">Highlights</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/contests.html?s_tid=gn_mlc_contests">Contests</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/content/community-advisors.html?s_tid=gn_mlc_cab">Advisors</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/profile/badges/all?s_tid=gn_mlc_bdgs">Virtual Badges</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/content/about.html?s_tid=gn_mlc_about">About</a>
+							
+						</li>
+					
+				</ul>
+</li>
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+	
+ <li id="leftnav_files"><a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx_files">Files</a></li> <li id="leftnav_authors"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors?s_tid=gn_mlc_fx_auth">Authors</a></li> <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My File Exchange<span class="caret"></span></a><ul class="dropdown-menu"><li id=""><a href="/matlabcentral/profile/authors/my_profile?content=all">Followed Content Feed</a></li><li id=""><a href="/matlabcentral/profile/authors/my_profile/follows">Manage Following</a></li><li id=""><a href="/matlabcentral/profile/authors/my_profile/notification_preferences">Communication Preferences</a></li><li id=""><a href="/matlabcentral/fileexchange/authors/my_fileexchange?s_tid=gn_mlc_fx_myfx">My Files</a></li></ul></li> <li id="leftnav_submit"><a href="/contribute?s_tid=gn_mlc_fx_contr">Publish</a></li> <li id="leftnav_about"><a href="/matlabcentral/content/fx/about.html?s_tid=gn_mlc_fx_help">About</a></li>
+
+</ul>
+</div>
+</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- Mobile Local Nav: End -->
+			</div>
+		</div>
+		
+	<div class="horizontal_nav hidden-xs hidden-sm ">
+		<div class="horizontal_nav_container">
+			
+			<div>
+				<div class="container-fluid">
+					<div class="row">
+						
+	<div class="col-md-8 col-lg-9 hidden-xs hidden-sm">
+		<nav class="navbar navbar-default" role="navigation" id="subnav"><div class="collapse navbar-collapse">
+				<div>
+<div class="localNavigation localnav containsResourceName resourceClass-localnav">
+
+
+	<ul id="localnav" class="nav navbar-nav subnav" style="float:none">
+<li class="dropdown ">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MATLAB Central<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+<li>
+							<a href="/matlabcentral/?s_tid=gn_mlc">Community Home</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/answers/index/?s_tid=gn_mlc_an">MATLAB Answers</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a>
+							
+						</li>
+					
+						<li>
+							<a href="https://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a>
+							<hr class="local_nav_hr">
+</li>
+					
+						<li>
+							<a href="/matlabcentral/content/communities.html?s_tid=gn_mlc_tbc_dl">Communities</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/community/onramps/mlc_treasure_hunt?s_tid=gn_mlc_hunt">Treasure Hunt</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/highlights?s_tid=gn_mlc_hl">Highlights</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/contests.html?s_tid=gn_mlc_contests">Contests</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/content/community-advisors.html?s_tid=gn_mlc_cab">Advisors</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/profile/badges/all?s_tid=gn_mlc_bdgs">Virtual Badges</a>
+							
+						</li>
+					
+						<li>
+							<a href="/matlabcentral/content/about.html?s_tid=gn_mlc_about">About</a>
+							
+						</li>
+					
+				</ul>
+</li>
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+			
+			
+		
+	
+ <li id="leftnav_files"><a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx_files">Files</a></li> <li id="leftnav_authors"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors?s_tid=gn_mlc_fx_auth">Authors</a></li> <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My File Exchange<span class="caret"></span></a><ul class="dropdown-menu"><li id=""><a href="/matlabcentral/profile/authors/my_profile?content=all">Followed Content Feed</a></li><li id=""><a href="/matlabcentral/profile/authors/my_profile/follows">Manage Following</a></li><li id=""><a href="/matlabcentral/profile/authors/my_profile/notification_preferences">Communication Preferences</a></li><li id=""><a href="/matlabcentral/fileexchange/authors/my_fileexchange?s_tid=gn_mlc_fx_myfx">My Files</a></li></ul></li> <li id="leftnav_submit"><a href="/contribute?s_tid=gn_mlc_fx_contr">Publish</a></li> <li id="leftnav_about"><a href="/matlabcentral/content/fx/about.html?s_tid=gn_mlc_fx_help">About</a></li>
+
+</ul>
+</div>
+</div>
+			</div>
+		</nav>
+</div>
+	<div class="col-md-4 col-lg-3 hidden-xs hidden-sm">
+		<div>
+<div class="callToAction calltoactionheader containsResourceName resourceClass-calltoactionheader">
+
+
+	<div class="cta_box">
+		<ul class="list-inline">
+<li class="cta_item cta_item_general">
+				<a href="/campaigns/products/trials.html" class="
+						  icon-download
+						  " data-link="lead" data-offertype="trial">
+					Trial software
+				</a>
+			</li>
+		</ul>
+</div>
+
+
+
+</div>
+</div>
+	</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	</div>
+
+
+
+	
+
+	
+
+	
+		
+
+		
+			
+			<div class="content_container" id="content_container" tabindex="-1">
+				
+				<div class="container-fluid">
+					
+					
+					<section><div class="mainParsys parsys containsResourceName resourceClass-parsys">
+<div class="targetcontainer containsResourceName resourceClass-targetcontainer section">
+
+
+
+<div class="personalization-container " id="web-application-body-container">
+	<div>
+<div class="targetContent parsys containsResourceName resourceClass-parsys">
+<div class="cqColumns containsResourceName section resourceClass-columns">
+<div class="row   ">
+
+	
+		<div class=" col-xs-12">
+<div class="2420e633-83fe-4c2d-9b62-4248985f27d2 parsys containsResourceName resourceClass-parsys">
+  
+
+  <!-- JSON-LD for SEO purpose (see more at https://schema.org/) -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "JSONLab: a toolbox to encode/decode JSON files - File Exchange - MATLAB CentralFile Exchange - MATLAB Central",
+      "accessibilitySummary": "A toolbox to encode/decode JSON/UBJSON/MessagePack files in MATLAB/Octave",
+      "url": "https://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files",
+      "datePublished": "14 Jun 2020",
+      "contributor": {
+        "@type": "Person",
+        "name": "Qianqian Fang"
+      },
+      "contentRating": "4.4",
+      "commentCount": "194"
+    }
+  </script>
+
+  <div id="announcements_container"></div>
+
+  <div data-view="detail">
+    
+    
+    
+    <div id="followSuccess" class="alert alert-success hidden"> <span class="alert_icon icon-alert-success"></span>
+  <p class="alert_heading"><strong>You are now following this Submission</strong></p>
+  <ul>
+    <li>You will see updates in your <a href='/matlabcentral/profile/authors/my_profile?content=all'>followed content feed</a></li>
+    <li>You may receive emails, depending on your <a href='/matlabcentral/profile/authors/my_profile/notification_preferences'>communication preferences</a></li>
+  </ul>
+</div>
+
+    
+<script type="text/javascript">
+window.addEventListener('DOMContentLoaded', function() {
+    $("#matlab_fileexchange_badge_copy").tooltip({trigger: 'manual'});
+});
+</script>
+
+
+    <!-- start-of-the-page-container -->
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- start-of-the-header -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-2">
+            <div id="thumbnail" class="text-center">
+  <a border="0" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/4e4f42eb-4861-4dd6-a240-08725362ecd4/images/screenshot.png"><img src="/responsive_image/160/120/0/0/0/cache/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/4e4f42eb-4861-4dd6-a240-08725362ecd4/images/screenshot.png" alt="image thumbnail" itemprop="image" /></a>
+</div>
+
+          </div>
+          <div class="col-xs-12 col-sm-10">
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-9">
+                <h2 id="title" class="add_font_color_emphasize add_margin_5">
+                    <span id="titleText">JSONLab: a toolbox to encode/decode JSON files</span>
+                </h2>
+                <div class="add_margin_5">
+                    <span id="user_version" class="small add_font_color_mediumgray">version 2.0.1 (137 KB) by </span>
+                  <span><a class="author_inline analyticsMlcProfileModal results_author" data-locale-id="en-US" href="/matlabcentral/profile/authors/1583198">Qianqian Fang</a>
+
+</span>
+                </div>
+                <div id="summary" class="add_text_wrapping">
+                  <span id="summaryText">A toolbox to encode/decode JSON/UBJSON/MessagePack files in MATLAB/Octave</span>
+                </div>
+                  <div><a target="_blank" rel="nofollow noopener noreferrer" href="http://openjdata.org/jsonlab">http://openjdata.org/jsonlab</a></div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 section_downsize">
+                <div class="pull-right">
+                  <div class="rating add_margin_0 text-right add_display_block" title="4.40 out of 5 Stars">
+                    <span class="numberrating">
+                      <div class="rate_scale">
+                        <a href="">
+                          <div class="rated pull-right" data-tab-id="reviews_tab" style="width: 88.0%;">
+                              <span id="rating_value">4.4</span>
+                          </div>
+                        </a>
+                      </div>
+                      <a id="review_count" href="">
+                        <span data-counter-id="reviews" data-tab-id="reviews_tab">
+                          (79)
+                        </span>
+                      </a>
+                    </span>
+                  </div>
+                    <p class="add_margin_0 text-right">
+                      <span id="downloads">49.7K Downloads</span>
+                      <span class="icon_16 icon-info-circle" data-container="body" data-toggle="popover" role="button" tabindex="0" data-trigger="hover" data-placement="left" title="" data-content="Last 30 days: 155<br> All time: 49,669" data-original-title="Downloads" aria-describedby="popover506129"></span>
+                    </p>
+                  <p class="add_margin_0 text-right">
+                    <span id="date_updated">Updated
+                      <span content="2020-06-14">14 Jun 2020</span>
+                    </span>
+                  </p>
+                    <div class="metadata_info text-right">
+    <a data-toggle="modal" href="#version_history_modal">View Version History</a>
+</div>
+
+<div class="modal fade" id="version_history_modal" tabindex="-1" role="dialog" aria-labelledby="version_history_modal_title" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 class="modal-title" id="version_history_modal_title">Version History</h3>
+      </div>
+      <div class="modal-body section_upsize">
+        <p></p>
+        <div id="update_notes" class="row add_margin_50 update_notes_container" data-add-on-update-note=true>
+          <div class="col-xs-12">
+            <div class="section_downsize">
+              <table>
+                <tbody>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="2.0.1.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/4e4f42eb-4861-4dd6-a240-08725362ecd4/packages/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2020-06-14 19:45:15 UTC">14 Jun 2020</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">2.0.1</td>
+                      <td class="add_padding_10"><p>- fix bjdata spec link</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="2.0.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/c3df67cb-fdc9-4237-a0b1-97a6f9fb9cf7/packages/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2020-06-14 19:42:00 UTC">14 Jun 2020</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">2.0</td>
+                      <td class="add_padding_10"><p>- add unit testing script
+<br />- apply data compression to strings
+<br />- add jsave and jload for portable data sharing
+<br />- compatible with R2008
+<br />- add UseMap option output containers.Map
+<br />- supports BJData spec Draft 1
+<br />- add _ArrayShape_ to save special matrices</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.15.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+        <div class="btn-group btn-block">
+            <button type="button" class="btn btn-sm btn-block btn_color_blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Download<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a title="Download Zip" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/16/download/zip">Zip</a></li>
+                <li><a title="Download Toolbox" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/16/download/mltbx">Toolbox</a></li>
+            </ul>
+        </div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2015-01-03 05:52:50 UTC">3 Jan 2015</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.15.0.0</td>
+                      <td class="add_padding_10"><p>ChangeLog:
+<br />- update documentation, finalize 1.0
+<br />- fix a bug to strictly respect NoRowBracket in savejson</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.13.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/14/download/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2014-11-24 17:14:14 UTC">24 Nov 2014</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.13.0.0</td>
+                      <td class="add_padding_10"><p>ChangeLog:
+<br />- fix UBSJON data endianness for all integer types
+<br />- fix several compatibility issues for GNU octave
+<br />- support 2D cell and struct arrays
+<br />- escape special characters in a JSON string
+<br />- fix a bug when saving UBSJON files</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.12.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/13/download/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2014-02-03 20:22:24 UTC">3 Feb 2014</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.12.0.0</td>
+                      <td class="add_padding_10"><p>- update to jsonlab 1.0 beta release
+<br />- fix file read and write bugs in loadubjson and saveubjson</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.11.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/12/download/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2013-08-26 15:47:03 UTC">26 Aug 2013</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.11.0.0</td>
+                      <td class="add_padding_10"><p>update to 1.0 alpha release, included functions (saveubjson and loadubjson) for writing and reading Universal Binary JSON files</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.10.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/11/download/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2012-06-20 11:55:29 UTC">20 Jun 2012</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.10.0.0</td>
+                      <td class="add_padding_10"><p>ChangeLog</p>
+
+<p>- 2012/06/17 *new format for an invalid leading char, unpacking hex code in savejson
+<br />- 2012/06/01  support JSONP in savejson
+<br />- 2012/05/25  fix the empty cell bug
+<br />- 2012/04/05  savejson can save to a file</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.9.8.4">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/10bf1484-917e-45a5-84f7-73c33602cc4e/packages/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2019-11-02 03:22:58 UTC">2 Nov 2019</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.9.8.4</td>
+                      <td class="add_padding_10"><p>- fix a bug in saveubjson when saving integer 256</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.9.8.3">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/f835fdd3-074a-4c41-8ea7-e743cec77252/packages/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2019-10-27 04:20:35 UTC">27 Oct 2019</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.9.8.3</td>
+                      <td class="add_padding_10"><p>- fix openjdata.org link</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.9.8.2">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/b9bed65e-83de-4f53-af68-242c6f449013/packages/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2019-10-25 14:23:57 UTC">25 Oct 2019</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.9.8.2</td>
+                      <td class="add_padding_10"><p>- update savejson and saveubjson license statement</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.9.8.1">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+        <div class="btn-group btn-block">
+            <button type="button" class="btn btn-sm btn-block btn_color_blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Download<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a title="Download Toolbox" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/1.9.8.1/packages/mltbx">Toolbox</a></li>
+                <li><a title="Download Zip" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/b732c8f5-8830-436a-a774-4d653111c210/packages/zip">Zip</a></li>
+            </ul>
+        </div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2019-10-25 04:17:12 UTC">25 Oct 2019</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.9.8.1</td>
+                      <td class="add_padding_10"><p>-Avoid double expanding arrayzipdata in savejson and saveubjson</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.9.8.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+        <div class="btn-group btn-block">
+            <button type="button" class="btn btn-sm btn-block btn_color_blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Download<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a title="Download Toolbox" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/1.9.8/packages/mltbx">Toolbox</a></li>
+                <li><a title="Download Zip" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/66ac6040-284f-4688-a7c5-0405c1dcf83f/packages/zip">Zip</a></li>
+            </ul>
+        </div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2019-10-24 23:51:21 UTC">24 Oct 2019</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.9.8</td>
+                      <td class="add_padding_10"><p>-Official reference implementation for JData Spec Draft 2(<a href="http://github.com/fangq/jdata" target="_blank" rel="nofollow noopener noreferrer">http://github.com/fangq/jdata</a>)
+<br />-Initial support to MessagePack
+<br />-ND array serialization changed from column-major-&gt;row-major
+<br />-Support LZMA/LZ4/LZHC compression
+<br />-Support graph,table,class&amp;object</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.9.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+        <div class="btn-group btn-block">
+            <button type="button" class="btn btn-sm btn-block btn_color_blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Download<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a title="Download Toolbox" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/b0d25cd9-b4cb-4879-8dbd-0611dc1e1258/packages/mltbx">Toolbox</a></li>
+                <li><a title="Download Zip" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/b0d25cd9-b4cb-4879-8dbd-0611dc1e1258/packages/zip">Zip</a></li>
+            </ul>
+        </div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2019-05-08 18:31:10 UTC">8 May 2019</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.9</td>
+                      <td class="add_padding_10"><p>ChangeLog:</p>
+
+<p> 2012/02/28 loadjson quotation mark escape bug, see <a href="http://bit.ly/yyk1nS" target="_blank" rel="nofollow noopener noreferrer">http://bit.ly/yyk1nS</a>
+<br /> 2012/01/25 patch to handle root-less objects, contributed by Blake Johnson
+<br />- unescape strings in loadjson.m
+<br />- support zmat base64 encoding
+<br />- support data compression
+<br />- support function handles
+<br />- add option to parse string array or convert to char
+<br />- treat string array as cell array in newer matlab
+<br />- save 64bit int in ubjson</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.7.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/8/download/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2012-01-19 14:51:36 UTC">19 Jan 2012</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.7.0.0</td>
+                      <td class="add_padding_10"><p>ChangeLog:
+<br />-2012/01/13 speed up loadjson by 20 fold when parsing large data arrays in matlab
+<br />-2012/01/11 remove row bracket if an array has 1 element
+<br />-2011/12/22 accept sequence of 'param',value input
+<br />-2011/11/18 fix struct array bug</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.5.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+        <div class="btn-group btn-block">
+            <button type="button" class="btn btn-sm btn-block btn_color_blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Download<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a title="Download Toolbox" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/22/download/mltbx">Toolbox</a></li>
+                <li><a title="Download Zip" data-logintodownload="false" class="link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/22/download/zip">Zip</a></li>
+            </ul>
+        </div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2017-01-03 01:12:13 UTC">3 Jan 2017</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.5</td>
+                      <td class="add_padding_10"><p>-use Big-endian format to store floating points (d/D) in saveubjson
+<br />-speedup parsing large unstructured data
+<br />-make parsing independent of whitespace
+<br />-allow to parse array of homogeneous elements
+<br />-fix a bug that prevents saving to a file in savejson</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.3.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/4/download/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2011-10-21 15:08:51 UTC">21 Oct 2011</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.3.0.0</td>
+                      <td class="add_padding_10"><p>ChangeLog:</p>
+
+<p> 2011/10/21  fix a bug in loadjson, previous code does not use any of the acceleration
+<br /> 2011/10/20  loadjson supports JSON collections: appendable JSON objects</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.2.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/21/download/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2015-12-30 23:39:46 UTC">30 Dec 2015</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.2.0.0</td>
+                      <td class="add_padding_10"><p>- 2x speed in savejson (Issue#17) 
+<br />- fix FileName case bug (SVN rev#495)
+<br />- add SingletCell/SingletArray flags (Issue#15,#8)
+<br />- fix file name bug (Pull#14)
+<br />- fix bug for cell with transposed data (Pull#12)
+<br />- export matlab object to JSON (Pull#10,#11)
+<br />- 2x speed in savejson (Issue#17)
+<br />- fix FileName case bug (SVN rev#495)
+<br />- add SingletCell/SingletArray flags (Issue#15,#8)
+<br />- fix file name bug (Pull#14)
+<br />- fix bug for cell with transposed data (Pull#12)
+<br />- export matlab object to JSON (Pull#10,#11)
+<br />- 2x speed in savejson (Issue#17)
+<br />- fix FileName case bug (SVN rev#495)
+<br />- add SingletCell/SingletArray flags (Issue#15,#8)
+<br />- fix file name bug (Pull#14)
+<br />- fix bug for cell with transposed data (Pull#12)
+<br />- export matlab object to JSON (Pull#10,#11)
+<br />- 2x speed in savejson (Issue#17)
+<br />- fix FileName case bug (SVN rev#495)
+<br />- add SingletCell/SingletArray flags (Issue#15,#8)
+<br />- fix file name bug (Pull#14)
+<br />- fix bug for cell with transposed data (Pull#12)
+<br />- export matlab object to JSON (Pull#10,#11)</p></td>
+                    </tr>
+                    <tr>
+                      <td class="add_padding_5 cell_20">
+                        <div data-version-modal-state="add" data-version-number="1.1.0.0">
+                          <div data-view="versions">
+                            <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/submissions/33381/versions/17/download/zip">Download</a></div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="add_padding_10 add_font_color_mediumgray cell_20">
+                        <time datetime="2015-06-05 21:08:08 UTC">5 Jun 2015</time>
+                      </td>
+                      <td class="add_padding_10 add_text_wrapping cell_20">1.1.0.0</td>
+                      <td class="add_padding_10"><p>-massively accelerating loadjson
+<br />-parse logicals in loadjson
+<br />-make options case insensitive
+<br />-reading unicode encoded json files
+<br />-allow \uXXXX in a unicode in a string
+<br />-handle escape characters in a string
+<br />-implement the UBJSON Draft12 new name format</p></td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                    <p class="text-right"><a data-toggle="modal" href="#license_modal">View License</a></p>
+
+<div class="modal fade" id="license_modal" tabindex="-1" role="dialog" aria-labelledby="license_modal_title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 class="modal-title" id="license_modal_title">License</h3>
+      </div>
+      <div class="modal-body">
+        <iframe src="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/4e4f42eb-4861-4dd6-a240-08725362ecd4/license/license.txt" style="border: none" frameborder="0"></iframe>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <ul class="list-inline pull-right add_clear_both">
+  <li class="add_margin_0">
+      <div id="follow" data-fileexchange-id='33381'></div>
+  </li>
+  <!-- Start Download action -->
+  <li>
+    <div data-visible-on="add">
+            <div><a title="Download" data-logintodownload="false" class="btn btn-sm btn_color_blue btn-block link--download" href="/matlabcentral/mlc-downloads/downloads/e581a8a2-4a80-11e4-9553-005056977bd0/4e4f42eb-4861-4dd6-a240-08725362ecd4/packages/zip">Download</a></div>
+</div>
+
+  </li>
+  <!-- End Download action -->
+</ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end-of-the-header -->
+
+        <!-- start-of-the-tabs -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="all-tabs-container">
+              <div>
+  <ul role="tablist" class="nav nav-tabs responsive" id="add_on_files">
+    <li class="active">
+      <a role="tab" data-toggle="tab" href="#overview_tab" name="overview">Overview</a>
+    </li>
+        <li class="">
+          <a role="tab" data-toggle="tab" href="#functions_tab" name="functions" class="resizable-iframe">Functions</a>
+        </li>
+    <li class="">
+      <a role="tab" data-toggle="tab" href="#reviews_tab" name="reviews">Reviews  <span data-counter-id="reviews">(79)</span></a>
+    </li>
+    <li class="">
+      <a role="tab" data-toggle="tab" href="#discussions_tab" name="discussions">Discussions  <span data-counter-id="discussions">(149)</span></a>
+    </li>
+  </ul>
+</div>
+
+<div class="tab-content responsive">
+    <div class="tab-pane active" id="overview_tab" data-context="web">
+    <div class="row">
+      <div class='col-xs-12 col-md-9' >
+          <div id="editors_notes" class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+              <div class="panel panel-default">
+                <div class="panel-body" data-add-on-editor-note="true">
+                  <p><strong>Editor&#39;s Note:</strong> Popular File <a href=" https://www.mathworks.com/matlabcentral/fileexchange/?term=tag:%22popular+file+2018%22">2018</a> 
+<br>
+<p>
+This file was selected as MATLAB Central <a href="http://blogs.mathworks.com/pick/2015/04/24/parsing-json-files/">Pick of the Week</a>
+</p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div id="description" data-add-on-description="true" class="add_margin_30 add_text_wrapping">
+          <div id="descriptionBody"><p>** JSONLab 2.0 Final (Magnus Prime) is released on 06/14/2020.**
+<br>==============================================================
+<br>Release URL: <a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/fangq/jsonlab/releases/tag/v2.0">https://github.com/fangq/jsonlab/releases/tag/v2.0</a>
+<br>Depends on: <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.mathworks.com/matlabcentral/fileexchange/71434-zmat">https://www.mathworks.com/matlabcentral/fileexchange/71434-zmat</a>
+<br>Data format according to 
+<br>- JData Specification Draft-3: <a target="_blank" rel="nofollow noopener noreferrer" href="http://github.com/OpenJData/jdata">http://github.com/OpenJData/jdata</a>, and 
+<br>- Binary JData Specification Draft-1: <a target="_blank" rel="nofollow noopener noreferrer" href="http://github.com/OpenJData/bjdata">http://github.com/OpenJData/bjdata</a>
+<br>Python modules to read/write JSONLab files: 
+<br>- jdata: <a target="_blank" rel="nofollow noopener noreferrer" href="https://pypi.org/project/jdata/">https://pypi.org/project/jdata/</a>
+<br>- bjdata: <a target="_blank" rel="nofollow noopener noreferrer" href="https://pypi.org/project/bjdata/">https://pypi.org/project/bjdata/</a>
+<br>==============================================================</p>
+
+<p>JSONLab is a free and open-source JSON/UBJSON/MessagePack encoder and 
+<br>decoder written in the native MATLAB language. It can be used to convert a MATLAB 
+<br>data structure (array, struct, cell, struct array, cell array, and objects) into 
+<br>JSON/UBJSON/MessagePack formatted strings and files, or to parse a 
+<br>JSON/UBJSON/MessagePack file into MATLAB data structure. JSONLab supports both 
+<br>MATLAB and GNU Octave [<a target="_blank" rel="nofollow noopener noreferrer" href="http://www.gnu.org/software/octave">http://www.gnu.org/software/octave</a>] (a free MATLAB clone).</p>
+
+<p>JSON (JavaScript Object Notation, <a target="_blank" rel="nofollow noopener noreferrer" href="http://www.json.org/">http://www.json.org/</a>) is a highly portable, 
+<br>human-readable and "fat-free" text format to represent complex and hierarchical 
+<br>data, widely used for data-exchange in applications. UBJSON (Universal Binary JSON, 
+<br><a target="_blank" rel="nofollow noopener noreferrer" href="http://ubjson.org/">http://ubjson.org/</a> ) is a binary JSON format,  designed to specifically address the 
+<br>limitations of JSON, permitting efficient storage of binary data with strongly typed 
+<br>data records, resulting in smaller file sizes and fast encoding and decoding. 
+<br>MessagePack is another binary JSON-like data format widely used in data 
+<br>exchange in web/native applications. It is slightly more compact than UBJSON, 
+<br>but is not directly readable compared to UBJSON.</p>
+
+<p>We envision that both JSON and its binary counterparts will play important 
+<br>rules not only for light-weight data storage, but also for storage and interchange
+<br>of scientific data. It has both the flexibility and generality as in other general-purpose 
+<br>file specifications, such as HDF5 [<a target="_blank" rel="nofollow noopener noreferrer" href="http://www.hdfgroup.org/HDF5/whatishdf5.html">http://www.hdfgroup.org/HDF5/whatishdf5.html</a>] 
+<br>but has significantly reduced complexity and excellent readability.</p>
+
+<p>Towards this goal, we have developed the JData Specification (<a target="_blank" rel="nofollow noopener noreferrer" href="http://github.com/fangq/jdata">http://github.com/fangq/jdata</a>) 
+<br>to standardize serializations of complex scientific data structures, such as
+<br>N-D arrays, sparse/complex-valued arrays, trees, maps, tables and graphs using
+<br>JSON/binary JSON constructs. The text and binary formatted JData files are
+<br>syntactically compatible with JSON/UBJSON formats, and can be readily parsed 
+<br>using existing JSON and UBJSON parsers. JSONLab is not just a parser and writer 
+<br>of JSON/UBJSON data files, but one that systematically converts complex scientific
+<br>data structures into human-readable and universally supported JSON forms using the
+<br>standardized JData data annotations.</p>
+
+<p>Please find detailed online help at <a target="_blank" rel="nofollow noopener noreferrer" href="http://iso2mesh.sf.net/cgi-bin/index.cgi?jsonlab/Doc">http://iso2mesh.sf.net/cgi-bin/index.cgi?jsonlab/Doc</a></p>
+
+<p>== What's New ==</p>
+
+<p>JSONLab v2.0 - code named "Magnus Prime" - is a stable release of JSONLab and
+<br>a new milestone towards a stable, complete reference implementation of the 
+<br>JData Specification (<a target="_blank" rel="nofollow noopener noreferrer" href="http://openjdata.org">http://openjdata.org</a>) for portable scientific data storage.</p>
+
+<p>There have been many major updates added to this release since the previous 
+<br>release v1.9.8 in Oct. 2019. A list of the major changes are summarized below
+<br>(with key features marked by *), including the support to `_ArrayShape_` to
+<br>efficiently encode special matrices and the addition of `jsave/jload` to save
+<br>and restore variables in MATLAB/Octave like the `save/load` commands (experimental).</p>
+
+<p>=== jsave.m ===</p>
+
+<p>      jsave    % save the current workspace to jamdata.jamm
+<br>      jsave mydata.jamm
+<br>      jsave('mydata.jamm','vars',{'var1','var2'})
+<br>      jsave('mydata.jamm','compression','lzma')</p>
+
+<p>=== jload.m ===</p>
+
+<p>      jload    % load variables from jamdata.jamm to the current workspace
+<br>      jload mydata.jamm   % load variables 
+<br>      vars=jload('mydata.jamm','vars',{'var1','var2'}) </p>
+
+<p>== Other updates</p>
+
+<p>*change default workspace to caller for jload and jsave
+<br>*created `jdata` and `bjdata` python modules to share data with MATLAB
+<br>*add savebj and loadbj to dedicate to loading and saving bjdata
+<br>*add unit testing script, fix issues found in the testing unit
+<br>*accelerate fast_match_bracket, drop unicode2native for speed
+<br>*support Toeplitz matrices, use case-insensitive comparison
+<br>*jdatadecode now handles _ArrayOrder_
+<br>*add keeptype option to jsave and saveubjson
+<br>*make jsave and jload work on octave
+<br>*apply data compression to strings, new datatype char
+<br>*fix loadmsgpack ND array issue
+<br>*add jsave and jload for portable data sharing
+<br>*adding support to _ArrayShape_ to record special matrices
+<br>*jsonlab is compatible with matlab R2008
+<br>*saveubjson now implments BJData spec Draft1,<a target="_blank" rel="nofollow noopener noreferrer" href="https://github.com/fangq/bjdata">https://github.com/fangq/bjdata</a>
+<br>*add UseMap option to avoid key name conversion
+<br>*reduce jsonopt calls to speed up encoding and decoding
+<br>*enable jdataencode in savejson and saveubjson</p></div>
+        </div>
+
+          <div id="citation" class="add_margin_30 add_text_wrapping">
+    <h3 class="add_bottom_rule add_margin_5">
+      Cite As
+    </h3>
+        <p id="defaultCitation" class="add_margin_20">
+    Qianqian Fang (2022). <span id="defaultCitationTitle">JSONLab: a toolbox to encode/decode JSON files</span> (https://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files), MATLAB Central File Exchange.
+    Retrieved <time datetime="2022-02-05 19:34:20 UTC">February 5, 2022</time>.
+</p>
+
+  </div>
+
+      </div>
+
+      <div class="col-xs-12 col-md-3 section_downsize">
+            <div id="dependency" class="sidebar-dependency add_margin_20">
+    <h5 class="add_bottom_rule add_margin_5">Requires</h5>
+
+      <ul id="product_requirements" class="list-unstyled">
+          <li>
+            <span class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
+            data-toggle="tooltip" data-placement="top" title=""><a class="" href="/products/matlab.html?s_tid=FX_PR_info">MATLAB</a></span>
+          </li>
+      </ul>
+
+      <div id="other_requirements" class="add_text_wrapping">
+        JSONLab is platform independent.
+      </div>
+  </div>
+
+
+          <div id="matlab_release" class="add_margin_20">
+            <h5 class="add_bottom_rule add_margin_5">MATLAB Release Compatibility</h5>
+            <div>
+              Created with
+              R2008a
+            </div>
+            <div>
+              Compatible with any release
+            </div>
+          </div>
+
+        <div id="os_platforms" class="add_margin_20">
+          <h5 class="add_bottom_rule add_margin_5">Platform Compatibility</h5>
+          <span class='icon-checkbox-checked add_padding_5'></span><span>Windows</span> <span class='icon-checkbox-checked add_padding_5'></span><span>macOS</span> <span class='icon-checkbox-checked add_padding_5'></span><span>Linux</span>
+        </div>
+
+          <div id="categories" class="add_margin_20">
+    <h5 class="add_bottom_rule add_margin_5">Categories</h5>
+    <ul class="list-unstyled show_more_toggle" data-height="200" data-collapse-text="Show less" data-expand-text="Show more">
+        <li class="add_margin_15">
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/index&amp;s_tid=FX_AO_detail_cat">MATLAB</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/data-import-and-analysis&amp;s_tid=FX_AO_detail_cat">Data Import and Analysis</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/data-import-and-export&amp;s_tid=FX_AO_detail_cat">Data Import and Export</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/internet-file-access&amp;s_tid=FX_AO_detail_cat">Web Access</a>
+            <span class="add_font_color_darkgray">></span>
+        </li>
+        <li class="add_margin_15">
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/index&amp;s_tid=FX_AO_detail_cat">MATLAB</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/external-language-interfaces&amp;s_tid=FX_AO_detail_cat">External Language Interfaces</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=support/other-lan6011&amp;s_tid=FX_AO_detail_cat">Other languages</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=support/octave1459&amp;s_tid=FX_AO_detail_cat">Octave</a>
+            <span class="add_font_color_darkgray">></span>
+        </li>
+        <li class="add_margin_15">
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/index&amp;s_tid=FX_AO_detail_cat">MATLAB</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/data-import-and-analysis&amp;s_tid=FX_AO_detail_cat">Data Import and Analysis</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/data-import-and-export&amp;s_tid=FX_AO_detail_cat">Data Import and Export</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/standard-file-formats&amp;s_tid=FX_AO_detail_cat">Standard File Formats</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=support/hdf51624&amp;s_tid=FX_AO_detail_cat">HDF5</a>
+            <span class="add_font_color_darkgray">></span>
+        </li>
+        <li class="add_margin_15">
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/index&amp;s_tid=FX_AO_detail_cat">MATLAB</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/data-import-and-analysis&amp;s_tid=FX_AO_detail_cat">Data Import and Analysis</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/data-import-and-export&amp;s_tid=FX_AO_detail_cat">Data Import and Export</a>
+            <span class="add_font_color_darkgray">></span>
+            <a data-enable-spinner="true" href="/matlabcentral/fileexchange/?category[]=matlab/json-format&amp;s_tid=FX_AO_detail_cat">JSON Format</a>
+            <span class="add_font_color_darkgray">></span>
+        </li>
+    </ul>
+  </div>
+
+
+        <div class="add_margin_20">
+  <div data-tags-path="">
+    <h5 class="add_bottom_rule add_margin_5">Tags
+      <span id="add_tags_span" class="add-tags-span pull_right ">
+        <a class="add-tags-link" href="#">Add Tags</a>
+      </span>
+    </h5>
+    <div id="tags" class="tag-list">
+        <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22base64%22">base64</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22compression%22">compression</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22data%22">data</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22data+export%22">data export</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22data+import%22">data import</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22decoder%22">decoder</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22json%22">json</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22pick+of+the+week%22">pick of the week</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22popular+file+2018%22">popular file 2018</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22potw%22">potw</a> <a rel="nofollow" class="tag_component" href="/matlabcentral/fileexchange/?term=tag:%22toolbox%22">toolbox</a>
+    </div>
+
+    <div id="add_tags_form">
+      <form id="add_new_tags_form" action="/matlabcentral/fileexchange/ui/tags" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+  <input type="hidden" name="add_on_uuid" value="e581a8a2-4a80-11e4-9553-005056977bd0" />
+  <input type="text" name="tags" id="add_tags" value="" class="form-control add_margin_5" />
+  <button type="button" class="btn btn-xs companion_btn btn_color_blue cancel_button">Cancel</button>
+  <input type="submit" value="Save" class="btn btn-xs btn_secondary save_button" data-disable-with="Save" />
+</form>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    $("#add_tags").multicomplete({
+      data_source: { url: "/matlabcentral/fileexchange/ui/tags/auto_suggest" }
+    });
+
+    $(".add-tags-link").click(function() {
+      $("#add_tags_form").show();
+      $("#add_tags").focus();
+      return false;
+    });
+
+    $("#add_tags_form .cancel_button").click(function() {
+      $("#add_tags").val('').blur();
+      $("#add_tags_form").hide();
+    });
+
+    $("#add_new_tags_form").on('ajax:complete', function(){
+      $('.multicomplete > .multicomplete-selected-item').remove()
+      $("#add_tags").val('').blur();
+      $("#add_tags_form").hide();
+    });
+});
+</script>
+
+
+        <div id="related_content" data-related-content-path="/matlabcentral/fileexchange/ui/related_content/e581a8a2-4a80-11e4-9553-005056977bd0"></div>
+
+          <div id="acknowledgements" class="add_margin_20">
+    <h5 class="add_bottom_rule add_margin_5">
+    Acknowledgements</h5>
+        <p class="add_margin_10 add_text_wrapping">
+          <strong>Inspired by:</strong>
+          <a href="/matlabcentral/fileexchange/71434-zmat">ZMat</a>, <a href="/matlabcentral/fileexchange/39526-byte-encoding-utilities">Byte encoding utilities</a>, <a href="/matlabcentral/fileexchange/23393-another-json-parser">(another) JSON Parser</a>, <a href="/matlabcentral/fileexchange/20565-json-parser">JSON Parser</a>, <a href="/matlabcentral/fileexchange/25713-highly-portable-json-input-parser">Highly portable JSON-input parser</a>
+        </p>
+        <p class="add_margin_10 add_text_wrapping">
+          <strong>Inspired:</strong>
+          <a href="/matlabcentral/fileexchange/61575-googlemapapi">googleMapAPIを利用した走行ルートデータ作成</a>, <a href="/matlabcentral/fileexchange/59359-matlab-to-google-sheets-matlab2sheets">Matlab to Google Sheets (matlab2sheets)</a>, <a href="/matlabcentral/fileexchange/56420-quinnsys-quinnsys-oapi">QuinnSys/QuinnSys-OAPI</a>, <a href="/matlabcentral/fileexchange/49683-light-field-toolbox-v0-4-deprecated-v0-5-available-now">Light Field Toolbox v0.4 -- deprecated, v0.5 available now</a>, <a href="/matlabcentral/fileexchange/62118-lol-chuck">LOL Chuck</a>, <a href="/matlabcentral/fileexchange/48508-slackmatlab">SlackMatlab</a>, <a href="/matlabcentral/fileexchange/46973-jcdstatusplot">JCDstatusPlot</a>, <a href="/matlabcentral/fileexchange/53698-core_jsonparser-import-and-export-json-files-using-matlab">Core_jsonparser: Import and Export JSON files using MATLAB</a>, <a href="/matlabcentral/fileexchange/66114-sonyalpha-control-a-sony-alpha-camera">sonyalpha: Control a Sony Alpha Camera</a>, <a href="/matlabcentral/fileexchange/45238-jsonrpc2-a-set-of-classes-to-encode-decode-json-rpc-messages">JSONRPC2: a set of classes to encode/decode JSON RPC messages</a>, <a href="/matlabcentral/fileexchange/41511-deprecated-light-field-toolbox-v0-2-v0-3-now-available">deprecated -- Light Field Toolbox v0.2 -- v0.3 now available</a>, <a href="/matlabcentral/fileexchange/48405-deprecated-light-field-toolbox-v0-3-v0-4-now-available">deprecated -- Light Field Toolbox v0.3 -- v0.4 now available</a>, <a href="/matlabcentral/fileexchange/56990-beam-information">Beam information</a>
+        </p>
+  </div>
+
+
+            <div id="poll_container"></div>
+            <script>
+              var component = new DiscussionsFrame({
+                  div_id: "#poll_container",
+                  app_id: "fx"
+              });
+              component.initPolls();
+            </script>
+
+          
+
+          <div id="treasure_hunt_spotlight">
+  <div class="panel panel-default add_cursor_pointer" onclick="location.href='/matlabcentral/community/onramps/mlc_treasure_hunt?s_tid=hunt_spotlight';">
+    <div class="panel-heading add_background_cover add_font_color_white" style="min-height: 80px; background-image: url(/matlabcentral/static/hunt_banner.png);">
+    </div>
+    <div class="panel-body">
+      <h3>Community Treasure Hunt</h3>
+      <p>Find the treasures in MATLAB Central and discover how the community can help you!</p>
+      <a class="icon-chevron" href="/matlabcentral/community/onramps/mlc_treasure_hunt?s_tid=hunt_spotlight">Start Hunting!</a>
+    </div>
+  </div> 
+</div>
+
+          <div id="relatedContentSpotlight" class="relatedContentSpotlight" addonFileExchangeId="33381" addonTitle="JSONLab: a toolbox to encode/decode JSON files" addonSummary="A toolbox to encode/decode JSON/UBJSON/MessagePack files in MATLAB/Octave" addonTags="base64 compression data data export data import decoder json pick of the week popular file 2018 potw toolbox" addonPath="33381-jsonlab-a-toolbox-to-encode-decode-json-files">
+</div>
+
+<div id="staticSpotlight" class="hidden">
+  <div class="panel panel-default">
+    <div class="panel-heading add_padding_40 add_background_position_left add_background_cover" style="background-image: url(/images/responsive/supporting/apps/downloads/panel-live-editor-spotlight.png);">
+    </div>
+    <div class="panel-body">
+      <h3 class="add_font_color_orange">Discover Live Editor</h3>
+      <p>Create scripts with code, output, and formatted text in a single executable document.</p>
+      <hr class="add_hr_spacing_10">
+      <p><a class="icon-chevron" href="https://www.mathworks.com/products/matlab/live-editor.html?s_tid=fx_mlle" target="liveeditor">Learn About Live Editor</a></p>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script>
+  $(function() {
+    var incrementViewCount = new UI.IncrementViewCount(
+      "/matlabcentral/fileexchange/ui/view_count",
+      "e581a8a2-4a80-11e4-9553-005056977bd0"
+    );
+
+    incrementViewCount.execute();
+  });
+</script>
+
+<script type="text/javascript">$(document).ready(function () { CodeOptions.show(); });</script>
+      <div class="tab-pane resizable-iframe " id="functions_tab">
+        <div class="row">
+    <div class="col-xs-3">
+    	<div class="package__file-list single_tier functions" data-pane="scroll">
+            <h4>jsonlab-2.0</h4>
+          <ul class="nav nav-list nav--file-list truncate_text list-inline">
+              <li id="function_af83a35e-13fd-42e8-9430-778f806ffb49" class="selected" title="base64decode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fbase64decode.m&amp;embed=web" title="base64decode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fbase64decode.m&amp;embed=web">base64decode</a>
+              </li>
+              <li id="function_0f76965b-06fb-4423-8425-8ce65ee6c194" class="" title="base64encode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fbase64encode.m&amp;embed=web" title="base64encode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fbase64encode.m&amp;embed=web">base64encode</a>
+              </li>
+              <li id="function_c471a785-3df1-465a-976f-1bacb6dde773" class="" title="Contents.m">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2FContents.m&amp;embed=web" title="Contents.m" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2FContents.m&amp;embed=web">Contents.m</a>
+              </li>
+              <li id="function_d4b39795-463d-4289-8795-ad247b8496d6" class="" title="decodevarname">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fdecodevarname.m&amp;embed=web" title="decodevarname" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fdecodevarname.m&amp;embed=web">decodevarname</a>
+              </li>
+              <li id="function_94ae573a-f6a9-4529-903c-d5cbfd814155" class="" title="encodevarname">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fencodevarname.m&amp;embed=web" title="encodevarname" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fencodevarname.m&amp;embed=web">encodevarname</a>
+              </li>
+              <li id="function_0acbfb5f-2474-4f00-9bb3-ce22bf4841a0" class="" title="fast_match_bracket">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Ffast_match_bracket.m&amp;embed=web" title="fast_match_bracket" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Ffast_match_bracket.m&amp;embed=web">fast_match_bracket</a>
+              </li>
+              <li id="function_80db8620-46c2-4504-aac4-6120f3e1a9a7" class="" title="gzipdecode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fgzipdecode.m&amp;embed=web" title="gzipdecode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fgzipdecode.m&amp;embed=web">gzipdecode</a>
+              </li>
+              <li id="function_39a5cb7e-25d9-400a-b650-d660a23f552f" class="" title="gzipencode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fgzipencode.m&amp;embed=web" title="gzipencode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fgzipencode.m&amp;embed=web">gzipencode</a>
+              </li>
+              <li id="function_39942c97-3fc5-43d6-a30f-47d9b8100866" class="" title="isoctavemesh">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fisoctavemesh.m&amp;embed=web" title="isoctavemesh" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fisoctavemesh.m&amp;embed=web">isoctavemesh</a>
+              </li>
+              <li id="function_d5179fbb-9eed-4cae-a0ae-327b6c942458" class="" title="jdatadecode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjdatadecode.m&amp;embed=web" title="jdatadecode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjdatadecode.m&amp;embed=web">jdatadecode</a>
+              </li>
+              <li id="function_1c5b91b1-0b4e-4065-823f-f3fce1f96720" class="" title="jdataencode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjdataencode.m&amp;embed=web" title="jdataencode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjdataencode.m&amp;embed=web">jdataencode</a>
+              </li>
+              <li id="function_910ae2b5-efa7-4bac-a7bd-75c18cc57244" class="" title="jload">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjload.m&amp;embed=web" title="jload" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjload.m&amp;embed=web">jload</a>
+              </li>
+              <li id="function_6100a046-0cb1-461e-a11a-f46ca87c8ed8" class="" title="jsave">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjsave.m&amp;embed=web" title="jsave" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjsave.m&amp;embed=web">jsave</a>
+              </li>
+              <li id="function_36ce1206-3ce5-4d73-ac84-c773adb22ddd" class="" title="jsonopt">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjsonopt.m&amp;embed=web" title="jsonopt" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fjsonopt.m&amp;embed=web">jsonopt</a>
+              </li>
+              <li id="function_fabbda92-5487-4f06-ab88-b44f086214fe" class="" title="loadbj">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Floadbj.m&amp;embed=web" title="loadbj" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Floadbj.m&amp;embed=web">loadbj</a>
+              </li>
+              <li id="function_d657de96-7731-4c57-a8f7-9d15dc47e3d8" class="" title="loadjson">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Floadjson.m&amp;embed=web" title="loadjson" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Floadjson.m&amp;embed=web">loadjson</a>
+              </li>
+              <li id="function_9b4f1133-b4cc-4482-9cd9-99449423f84f" class="" title="loadmsgpack">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Floadmsgpack.m&amp;embed=web" title="loadmsgpack" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Floadmsgpack.m&amp;embed=web">loadmsgpack</a>
+              </li>
+              <li id="function_6db1c9f9-64fa-44d0-8a61-e8ec2174068e" class="" title="loadubjson">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Floadubjson.m&amp;embed=web" title="loadubjson" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Floadubjson.m&amp;embed=web">loadubjson</a>
+              </li>
+              <li id="function_aab80d22-7829-44cc-b424-f1b661e7982a" class="" title="lz4decode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flz4decode.m&amp;embed=web" title="lz4decode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flz4decode.m&amp;embed=web">lz4decode</a>
+              </li>
+              <li id="function_111380b3-cb3b-4c22-adcd-b019bf5c14ef" class="" title="lz4encode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flz4encode.m&amp;embed=web" title="lz4encode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flz4encode.m&amp;embed=web">lz4encode</a>
+              </li>
+              <li id="function_da67ddf3-d163-4e32-8226-fc87f999ceb6" class="" title="lz4hcdecode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flz4hcdecode.m&amp;embed=web" title="lz4hcdecode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flz4hcdecode.m&amp;embed=web">lz4hcdecode</a>
+              </li>
+              <li id="function_99a945f3-fe04-40e4-b44f-236837bba0b2" class="" title="lz4hcencode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flz4hcencode.m&amp;embed=web" title="lz4hcencode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flz4hcencode.m&amp;embed=web">lz4hcencode</a>
+              </li>
+              <li id="function_445fff1d-a683-4931-9d5b-c27bd15b9098" class="" title="lzipdecode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flzipdecode.m&amp;embed=web" title="lzipdecode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flzipdecode.m&amp;embed=web">lzipdecode</a>
+              </li>
+              <li id="function_2a74fec8-68a8-45a9-807f-d6be08f5b8ba" class="" title="lzipencode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flzipencode.m&amp;embed=web" title="lzipencode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flzipencode.m&amp;embed=web">lzipencode</a>
+              </li>
+              <li id="function_bc1d277d-8dad-41b0-9873-5207b521a550" class="" title="lzmadecode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flzmadecode.m&amp;embed=web" title="lzmadecode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flzmadecode.m&amp;embed=web">lzmadecode</a>
+              </li>
+              <li id="function_08ba58c9-b435-4259-bb7c-f7c144d68958" class="" title="lzmaencode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flzmaencode.m&amp;embed=web" title="lzmaencode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Flzmaencode.m&amp;embed=web">lzmaencode</a>
+              </li>
+              <li id="function_068bded0-68cf-4b65-927f-cb843b0ca738" class="" title="match_bracket">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fmatch_bracket.m&amp;embed=web" title="match_bracket" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fmatch_bracket.m&amp;embed=web">match_bracket</a>
+              </li>
+              <li id="function_eedc84c0-78b6-49a9-a5a9-8ac358ddd0c5" class="" title="mergestruct">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fmergestruct.m&amp;embed=web" title="mergestruct" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fmergestruct.m&amp;embed=web">mergestruct</a>
+              </li>
+              <li id="function_932303e6-e18d-4981-b04b-c8bf844494b2" class="" title="nestbracket2dim">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fnestbracket2dim.m&amp;embed=web" title="nestbracket2dim" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fnestbracket2dim.m&amp;embed=web">nestbracket2dim</a>
+              </li>
+              <li id="function_87660520-1c16-4edd-9a35-f4cc6af28c8d" class="" title="savebj">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fsavebj.m&amp;embed=web" title="savebj" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fsavebj.m&amp;embed=web">savebj</a>
+              </li>
+              <li id="function_ffee0f2b-3381-456e-9b1d-d3738d540507" class="" title="savejson">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fsavejson.m&amp;embed=web" title="savejson" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fsavejson.m&amp;embed=web">savejson</a>
+              </li>
+              <li id="function_9939439c-4641-456b-8fd6-9e97939c62a6" class="" title="savemsgpack">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fsavemsgpack.m&amp;embed=web" title="savemsgpack" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fsavemsgpack.m&amp;embed=web">savemsgpack</a>
+              </li>
+              <li id="function_1c4cda89-e15c-4801-82c1-432d08c59c48" class="" title="saveubjson">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fsaveubjson.m&amp;embed=web" title="saveubjson" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fsaveubjson.m&amp;embed=web">saveubjson</a>
+              </li>
+              <li id="function_89a62783-3b81-4b1a-ab35-5139c4c31930" class="" title="varargin2struct">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fvarargin2struct.m&amp;embed=web" title="varargin2struct" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fvarargin2struct.m&amp;embed=web">varargin2struct</a>
+              </li>
+              <li id="function_7836a1d4-7571-4b8c-997d-655055bcadbf" class="" title="zlibdecode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fzlibdecode.m&amp;embed=web" title="zlibdecode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fzlibdecode.m&amp;embed=web">zlibdecode</a>
+              </li>
+              <li id="function_da08dba2-6354-4894-833e-6a76c8e8f9e6" class="" title="zlibencode">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fzlibencode.m&amp;embed=web" title="zlibencode" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fzlibencode.m&amp;embed=web">zlibencode</a>
+              </li>
+          </ul>
+            <h4>jsonlab-2.0/examples</h4>
+          <ul class="nav nav-list nav--file-list truncate_text list-inline">
+              <li id="function_90e22cc2-f3bf-4d9b-8070-e9620dcf50ba" class="" title="demo_jsonlab_basic.m">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fdemo_jsonlab_basic.m&amp;embed=web" title="demo_jsonlab_basic.m" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fdemo_jsonlab_basic.m&amp;embed=web">demo_jsonlab_basic.m</a>
+              </li>
+              <li id="function_2e7f4d5a-5d50-4dc9-8eb4-536726bcc471" class="" title="demo_msgpack_basic.m">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fdemo_msgpack_basic.m&amp;embed=web" title="demo_msgpack_basic.m" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fdemo_msgpack_basic.m&amp;embed=web">demo_msgpack_basic.m</a>
+              </li>
+              <li id="function_6bc2192a-d3ab-49f2-a58f-555a9f4d082c" class="" title="demo_ubjson_basic.m">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fdemo_ubjson_basic.m&amp;embed=web" title="demo_ubjson_basic.m" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fdemo_ubjson_basic.m&amp;embed=web">demo_ubjson_basic.m</a>
+              </li>
+              <li id="function_e3c496ba-b8f8-47d0-a5a1-0b135a53f00f" class="" title="jsonlab_selftest.m">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fjsonlab_selftest.m&amp;embed=web" title="jsonlab_selftest.m" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fjsonlab_selftest.m&amp;embed=web">jsonlab_selftest.m</a>
+              </li>
+              <li id="function_bf26b07a-6a84-4763-b389-84a662c723fd" class="" title="jsonlab_speedtest.m">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fjsonlab_speedtest.m&amp;embed=web" title="jsonlab_speedtest.m" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fexamples%2Fjsonlab_speedtest.m&amp;embed=web">jsonlab_speedtest.m</a>
+              </li>
+          </ul>
+            <h4>jsonlab-2.0/test</h4>
+          <ul class="nav nav-list nav--file-list truncate_text list-inline">
+              <li id="function_8a2ca79e-4076-4b04-81af-686876579919" class="" title="run_jsonlab_test">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Ftest%2Frun_jsonlab_test.m&amp;embed=web" title="run_jsonlab_test" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Ftest%2Frun_jsonlab_test.m&amp;embed=web">run_jsonlab_test</a>
+              </li>
+              <li id="function_c9312316-881f-491c-be5f-c00b4c77b88f" class="" title="test_jsonlab">
+                <a href="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Ftest%2Ftest_jsonlab.m&amp;embed=web" title="test_jsonlab" data-render-in-viewer-app="true"
+                data-iframe-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Ftest%2Ftest_jsonlab.m&amp;embed=web">test_jsonlab</a>
+              </li>
+          </ul>
+      </div>
+    </div>
+    <div class="col-xs-9">
+    	<div class="package__file-content">
+        <div class="panel panel-default package__file-content_panel" id="functions_iframe_holder">
+          <iframe id='functions_iframe' src="" data-default-src="https://viewer.mathworks.com/?viewer=plain_code&amp;url=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Fmlc-downloads%2Fdownloads%2Fe581a8a2-4a80-11e4-9553-005056977bd0%2F4e4f42eb-4861-4dd6-a240-08725362ecd4%2Ffiles%2Fjsonlab-2.0%2Fbase64decode.m&amp;embed=web"></iframe>
+        </div>
+      </div>
+    </div>
+</div>
+
+      </div>
+  <div class="tab-pane " id="reviews_tab">
+    
+
+  <div id="reviews" data-mlc-discussions="true" data-group-id="fx-reviews" data-created-by="1583198" data-ref-id="e581a8a2-4a80-11e4-9553-005056977bd0" data-url= https://www.mathworks.com/matlabcentral/fileexchange/33381?tab=reviews></div>
+
+  </div>
+  <div class="tab-pane " id="discussions_tab">
+    
+
+  <div id="discussions" data-mlc-discussions="true" data-group-id="fx-comments" data-created-by="1583198" data-ref-id="e581a8a2-4a80-11e4-9553-005056977bd0" data-url= https://www.mathworks.com/matlabcentral/fileexchange/33381?tab=discussions></div>
+
+  </div>
+</div>
+
+            </div>
+          </div>
+        </div>
+        <!-- end-of-the-tabs -->
+      </div>
+    </div>
+    <!-- end-of-the-page-container -->
+    
+    <script src="/matlabcentral/fileexchange/assets/file_infos/show-b71540842eac7fccd17af5fc4d7a6455c2a356cef8ea9a70d32a35a0417078c9.js"></script>
+    <script src="/matlabcentral/fileexchange/assets/ui/application-1f2e1c742897b7acbbe1ff65d4b7963bf288577ec22cd57bd64506d27be0a62a.js"></script>
+  </div>
+
+<script src="/matlabcentral/jscript/announcements_v1.js" data-app-name="File Exchange"></script>
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="popover"]').popover({ html: true });
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    // Has to run on window load and not DOMContentReady because we have to wait for the Quaularoo object to exist
+    window.addEventListener("load", function () {
+        // Qualaroo survey code added in web2020Jul -- all values must be strings
+        function setQualarooVars(userIsFollowing) {
+            if (typeof _kiq !== "undefined" && _kiq.push) {
+                let qualarooVars = {
+                    "userLoggedIn": "true",
+                    "userIsFollowing": userIsFollowing.toString(),
+                    "userIsAuthor":  "false"
+                }
+
+                _kiq.push(['set', qualarooVars]);
+            }
+        }
+
+        const followUiContainer = document.getElementById("follow");
+
+        // Follow UI container only exists if the current user is logged in
+        if (followUiContainer) {
+            const followService = new FollowService(followUiContainer);
+
+            followService.addEventListener("load", function(followingLoadEvent) {
+                setQualarooVars(followingLoadEvent.data.isFollowing);
+            });
+
+            followService.load();
+        } else {
+            setQualarooVars(false);
+        }
+    });
+
+    const discussionsContainer = document.getElementById("discussions");
+
+    if (discussionsContainer) {
+        const discussionsComponent = new DiscussionsService(
+            "e581a8a2-4a80-11e4-9553-005056977bd0",
+            "#discussions",
+            "fx-comments",
+            "discussions",
+            "https://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files?tab=discussions",
+            "https://www.mathworks.com/login?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F33381-jsonlab-a-toolbox-to-encode-decode-json-files%3Ftab%3Ddiscussions&amp;form_type=community"
+        );
+        discussionsComponent.load();
+    }
+
+    const reviewsContainer = document.getElementById("reviews");
+
+    if (reviewsContainer) {
+        const reviewsComponent = new DiscussionsService(
+            "e581a8a2-4a80-11e4-9553-005056977bd0",
+            "#reviews",
+            "fx-reviews",
+            "reviews",
+            "https://www.mathworks.com/matlabcentral/fileexchange/33381-jsonlab-a-toolbox-to-encode-decode-json-files?tab=reviews",
+            "https://www.mathworks.com/login?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F33381-jsonlab-a-toolbox-to-encode-decode-json-files%3Ftab%3Dreviews&amp;form_type=community"
+        );
+        reviewsComponent.load();
+    }
+</script>
+</div>
+</div>
+	
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section><div>
+<div class="modalParsys parsys containsResourceName resourceClass-parsys">
+</div>
+</div>
+
+						<div id="location_content" style="display:none;"></div>
+
+<div class="modal fade" id="country-unselected" tabindex="-1" role="dialog" aria-labelledby="country-unselected-title" translate="no">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<img src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/pic-header-mathworks-logo.20220103150815220.svg" style="width:167px; height:auto;" class="mw_logo" alt="MathWorks - Domain Selector">
+</div>
+			<div class="modal-body">
+				<div class="row add_margin_40">
+					<div class="col-xs-12">
+						<p class="h1 icon-globe add_icon_color_darkblue" id="country-unselected-title">Select a Web
+							Site</p>
+						<p>Choose a web site to get translated content where available and see local events and
+							offers. Based on
+							your location, we recommend that you select: <strong class="recommended-country"></strong>.
+						</p>
+						<div class="default-recommendation">
+							<a href="#" id="recommended_domain_button" class="btn btn_color_blue containsResourceName resourceClass-button"><span class="recommended-country-button"></span></a>
+						</div>
+						<div class="ch-recommendation" style="display:none;">
+							<ul class="list-inline">
+<li class="add_display_block_xs add_margin_10_xs"><a href="//ch.mathworks.com" class="recommendation-button btn btn_color_blue btn-md add_display_block_xs" data-subdomain="ch" data-lang="en" data-recommended-text="Switzerland" data-default-lang="true" data-do-not-rewrite="true">Switzerland (English)</a></li>
+								<li class="add_display_block_xs add_margin_10_xs"><a href="//ch.mathworks.com" class="recommendation-button btn companion_btn btn-md add_display_block_xs" data-subdomain="ch" data-lang="de" data-recommended-text="Schweiz" data-do-not-rewrite="true">Switzerland (Deutsch)</a></li>
+								<li class="add_display_block_xs"><a href="//ch.mathworks.com" class="recommendation-button btn companion_btn btn-md add_display_block_xs" data-subdomain="ch" data-lang="fr" data-recommended-text="Suisse" data-do-not-rewrite="true">Switzerland (Français)</a></li>
+							</ul>
+</div>
+						<div class="zh-recommendation" style="display:none;">
+							<ul class="list-inline">
+<li class="add_display_block_xs add_margin_10_xs"><a href="//ww2.mathworks.cn" class="recommendation-button btn btn_color_blue btn-md add_display_block_xs" data-subdomain="ww2" data-lang="zh" data-recommended-text="中国" data-default-lang="true" data-do-not-rewrite="true">中国 (简体中文)</a></li>
+								<li class="add_display_block_xs"><a href="//ww2.mathworks.cn" class="recommendation-button btn companion_btn btn-md add_display_block_xs" data-subdomain="ww2" data-lang="en" data-recommended-text="China" data-do-not-rewrite="true">中国 (English)</a></li>
+							</ul>
+</div>
+					</div>
+				</div>
+				<p>You can also select a web site from the following list:</p>
+				<div class="alert alert-warning" id="china_performance_alert" style="display:none;">
+<span class="alert_icon icon-alert-warning"></span>
+					<h2>How to Get Best Site Performance</h2>
+					<p>Select the China site (in Chinese or English) for best site performance. Other MathWorks country
+						sites are not optimized for visits from your location.</p>
+				</div>
+				<div class="row add_margin_20">
+					<div class="col-sm-4 col-md-3">
+						<h3 class="add_bottom_rule">Americas</h3>
+						<ul class="list-unstyled">
+<li>
+<a href="//la.mathworks.com" class="domain_selector_link" data-country-code="LA" data-subdomain="la" data-lang="es" data-default-lang="true" data-selected-text="América Latina" data-recommended-text="América Latina" data-do-not-rewrite="true">América Latina</a> (Español)
+							</li>
+							<li>
+<a href="//www.mathworks.com" class="domain_selector_link" data-country-code="CA" data-subdomain="www" data-lang="en" data-do-not-rewrite="true">Canada</a> (English)
+							</li>
+							<li>
+<a href="//www.mathworks.com" class="domain_selector_link" data-country-code="US" data-subdomain="www" data-lang="en" data-default-lang="true" data-selected-text="United States" data-recommended-text="United States" data-do-not-rewrite="true">United States</a> (English)
+							</li>
+						</ul>
+</div>
+					<div class="col-sm-4 col-md-6">
+						<h3 class="add_bottom_rule">Europe</h3>
+						<div class="row">
+							<div class="col-xs-6 col-sm-12 col-md-6">
+								<ul class="list-unstyled add_margin_0_sm">
+<li>
+<a href="//nl.mathworks.com" class="domain_selector_link" data-country-code="BE" data-subdomain="nl" data-lang="en" data-do-not-rewrite="true">Belgium</a> (English)
+									</li>
+									<li>
+<a href="//se.mathworks.com" class="domain_selector_link" data-country-code="DK" data-subdomain="se" data-lang="en" data-do-not-rewrite="true">Denmark</a> (English)
+									</li>
+									<li>
+<a href="//de.mathworks.com" class="domain_selector_link" data-country-code="DE" data-subdomain="de" data-lang="de" data-default-lang="true" data-selected-text="Deutschland" data-recommended-text="Deutschland" data-do-not-rewrite="true">Deutschland</a> (Deutsch)
+									</li>
+									<li>
+<a href="//es.mathworks.com" class="domain_selector_link" data-country-code="ES" data-subdomain="es" data-lang="es" data-default-lang="true" data-selected-text="España" data-recommended-text="España" data-do-not-rewrite="true">España</a> (Español)
+									</li>
+									<li>
+<a href="//se.mathworks.com" class="domain_selector_link" data-country-code="FI" data-subdomain="se" data-lang="en" data-do-not-rewrite="true">Finland</a> (English)
+									</li>
+									<li>
+<a href="//fr.mathworks.com" class="domain_selector_link" data-country-code="FR" data-subdomain="fr" data-lang="fr" data-default-lang="true" data-selected-text="France" data-recommended-text="France" data-do-not-rewrite="true">France</a> (Français)
+									</li>
+									<li>
+<a href="//uk.mathworks.com" class="domain_selector_link" data-country-code="IE" data-subdomain="uk" data-lang="en" data-do-not-rewrite="true">Ireland</a> (English)
+									</li>
+									<li>
+<a href="//it.mathworks.com" class="domain_selector_link" data-country-code="IT" data-subdomain="it" data-lang="it" data-default-lang="true" data-selected-text="Italia" data-recommended-text="Italia" data-do-not-rewrite="true">Italia</a> (Italiano)
+									</li>
+									<li>
+<a href="//nl.mathworks.com" class="domain_selector_link" data-country-code="LU" data-subdomain="nl" data-lang="en" data-do-not-rewrite="true">Luxembourg</a> (English)
+									</li>
+								</ul>
+</div>
+							<div class="col-xs-6 col-sm-12 col-md-6">
+								<ul class="list-unstyled">
+<li>
+<a href="//nl.mathworks.com" class="domain_selector_link" data-country-code="NL" data-subdomain="nl" data-lang="en" data-default-lang="true" data-selected-text="Benelux" data-recommended-text="Netherlands" data-do-not-rewrite="true">Netherlands</a> (English)
+									</li>
+									<li>
+<a href="//se.mathworks.com" class="domain_selector_link" data-country-code="NO" data-subdomain="se" data-lang="en" data-do-not-rewrite="true">Norway</a> (English)
+									</li>
+									<li>
+<a href="//de.mathworks.com" class="domain_selector_link" data-country-code="AT" data-subdomain="de" data-lang="de" data-do-not-rewrite="true">Österreich</a> (Deutsch)
+									</li>
+									<li>
+<a href="//www.mathworks.com" class="domain_selector_link" data-country-code="PT" data-subdomain="www" data-lang="en" data-do-not-rewrite="true">Portugal</a> (English)
+									</li>
+									<li>
+<a href="//se.mathworks.com" class="domain_selector_link" data-country-code="Sweden" data-subdomain="se" data-lang="en" data-default-lang="true" data-selected-text="Nordic" data-recommended-text="Sweden" data-do-not-rewrite="true">Sweden</a> (English)
+									</li>
+									<li>Switzerland
+										<ul class="list-unstyled add_indent_20">
+<li>
+<a href="//ch.mathworks.com" class="domain_selector_link" data-country-code="CH" data-subdomain="ch" data-lang="de" data-selected-text="Schweiz" data-recommended-text="Schweiz" data-do-not-rewrite="true">Deutsch</a>
+											</li>
+											<li>
+<a href="//ch.mathworks.com" class="domain_selector_link" data-country-code="CH" data-subdomain="ch" data-lang="en" data-default-lang="true" data-selected-text="Switzerland" data-recommended-text="Switzerland" data-do-not-rewrite="true">English</a>
+											</li>
+											<li>
+<a href="//ch.mathworks.com" class="domain_selector_link" data-country-code="CH" data-subdomain="ch" data-lang="fr" data-selected-text="Suisse" data-recommended-text="Suisse" data-do-not-rewrite="true">Français</a>
+											</li>
+										</ul>
+</li>
+									<li>
+<a href="//uk.mathworks.com" class="domain_selector_link" data-country-code="GB" data-subdomain="uk" data-lang="en" data-default-lang="true" data-selected-text="United Kingdom" data-recommended-text="United Kingdom" data-do-not-rewrite="true">United Kingdom</a>
+										(English)
+									</li>
+								</ul>
+</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-md-3">
+						<h3 class="add_bottom_rule">Asia Pacific</h3>
+						<ul class="list-unstyled">
+<li>
+<a href="//au.mathworks.com" class="domain_selector_link" data-country-code="AU" data-subdomain="au" data-lang="en" data-default-lang="true" data-selected-text="Australia" data-recommended-text="Australia" data-do-not-rewrite="true">Australia</a> (English)
+							</li>
+							<li>
+<a href="//in.mathworks.com" class="domain_selector_link" data-country-code="IN" data-subdomain="in" data-lang="en" data-default-lang="true" data-selected-text="India" data-recommended-text="India" data-do-not-rewrite="true">India</a> (English)
+							</li>
+							<li>
+<a href="//au.mathworks.com" class="domain_selector_link" data-country-code="NZ" data-subdomain="au" data-lang="en" data-do-not-rewrite="true">New Zealand</a> (English)
+							</li>
+							<li>中国
+								<ul class="list-unstyled add_indent_20">
+<li>
+<a href="//ww2.mathworks.cn" class="domain_selector_link" data-country-code="CN" data-subdomain="ww2" data-lang="zh" data-default-lang="true" data-selected-text="中国" data-recommended-text="中国" data-do-not-rewrite="true">简体中文<span class="sr-only">Chinese</span>
+										</a>
+									</li>
+									<li>
+<a href="//ww2.mathworks.cn" class="domain_selector_link" data-country-code="CN" data-subdomain="ww2" data-lang="en" data-default-lang="true" data-selected-text="China" data-recommended-text="China" data-do-not-rewrite="true">English</a>
+									</li>
+								</ul>
+</li>
+							<li>
+<a href="//jp.mathworks.com" class="domain_selector_link" data-country-code="JP" data-subdomain="jp" data-lang="ja" data-default-lang="true" data-selected-text="日本" data-recommended-text="日本" data-do-not-rewrite="true">日本<span class="sr-only">Japanese</span></a> (日本語)
+							</li>
+							<li>
+<a href="//kr.mathworks.com" class="domain_selector_link" data-country-code="KR" data-subdomain="kr" data-lang="ko" data-default-lang="true" data-selected-text="한국" data-recommended-text="한국" data-do-not-rewrite="true">한국<span class="sr-only">Korean</span></a> (한국어)
+							</li>
+						</ul>
+</div>
+				</div>
+				<p class="text-center"><a href="#" class="worldwide_link">Contact your local office</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+					
+				</div>
+			</div>
+			<div class="cta_container_mobile visible-sm visible-xs">
+	<div class="container-fluid">      
+		<div class="row">
+			<div class="col-xs-12">
+				<div>
+<div class="callToAction calltoactionheader containsResourceName resourceClass-calltoactionheader">
+
+
+	<div class="cta_box">
+		<ul class="list-inline">
+<li class="cta_item cta_item_general">
+				<a href="/campaigns/products/trials.html" class="
+						  icon-download
+						  " data-link="lead" data-offertype="trial">
+					Trial software
+				</a>
+			</li>
+		</ul>
+</div>
+
+
+
+</div>
+</div>
+			</div>
+		</div>
+	</div>
+</div>
+			
+			<footer id="footer" class="bs-footer"><div class="fat_footer_container">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="fat_footer">
+<div class="fatFooterParsys iparsys parsys resourceClass-iparsys containsResourceName">
+<div class="section">
+<div class="new containsResourceName resourceClass-new"></div>
+</div>
+<div class="iparys_inherited">
+<div class="fatFooterParsys iparsys parsys containsResourceName resourceClass-par">
+<div class="cqColumns containsResourceName section resourceClass-columns">
+<div class="row   ">
+
+	
+		<div class=" col-xs-12 col-md-12 col-lg-3 add_margin_20">
+<div class="1 parsys containsResourceName resourceClass-parsys">
+<div class="text containsResourceName section resourceClass-text">
+<div class="mw-text   ">
+	<p class="h4 add_font_futura_medium add_margin_0">MathWorks</p>
+<p><i>Accelerating the pace of engineering and science</i></p>
+
+</div>
+</div>
+<div class="text containsResourceName section resourceClass-text">
+<div class="mw-text   ">
+	<p>MathWorks is the leading developer of mathematical computing software for engineers and scientists.</p>
+
+</div>
+</div>
+<div class="text containsResourceName section resourceClass-text">
+<div class="mw-text   ">
+	<p><a href="/discovery.html?s_tid=hp_ff_a_discover" data-target="same">Discover…</a></p>
+</div>
+</div>
+
+</div>
+</div>
+	
+		<div class=" col-xs-12 col-md-12 col-lg-9">
+<div class="2 parsys containsResourceName resourceClass-parsys">
+<div class="cqColumns containsResourceName section resourceClass-columns">
+<div class="row add_margin_20  ">
+
+	
+		<div class=" col-xs-12 col-sm-2">
+<div class="1 parsys containsResourceName resourceClass-parsys">
+<div class="text containsResourceName section resourceClass-text">
+<div class="mw-text   ">
+	<p class="ff_section_title"><a href="#fatfooter_products" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="fatfooter_products">Explore Products<span class="caret"></span></a></p>
+<div class="collapse" id="fatfooter_products"><ul class="list-unstyled">
+<li><a href="/products/matlab.html?s_tid=hp_ff_p_matlab" target="_self">MATLAB</a></li>
+<li><a href="/products/simulink.html?s_tid=hp_ff_p_simulink" target="_self">Simulink</a></li>
+<li><a href="/products/matlab/student.html?s_tid=hp_ff_p_student" target="_self">Student Software</a></li>
+<li><a href="/hardware-support/home.html?s_tid=hp_ff_p_hwsupport" target="_self">Hardware Support</a></li>
+<li><a href="/matlabcentral/fileexchange/?s_tid=hp_ff_p_fx">File Exchange</a></li>
+</ul></div>
+
+</div>
+</div>
+
+</div>
+</div>
+	
+		<div class=" col-xs-12 col-sm-2">
+<div class="2 parsys containsResourceName resourceClass-parsys">
+<div class="text containsResourceName section resourceClass-text">
+<div class="mw-text   ">
+	<p class="ff_section_title"><a href="#fatfooter_buy" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="fatfooter_buy">Try or Buy<span class="caret"></span></a></p>
+<div class="collapse" id="fatfooter_buy"><ul class="list-unstyled">
+<li><a href="/downloads/web_downloads/?s_iid=hp_ff_t_downloads">Downloads</a></li>
+<li><a href="/campaigns/products/trials.html?s_iid=hp_ff_p_trial" data-target="same" data-link="lead" data-offertype="trial">Trial Software</a></li>
+<li><a href="/company/aboutus/contact_us/contact_sales.html?s_iid=hp_ff_t_sales" target="_self" data-link="lead" data-offertype="Contact Sales">Contact Sales</a></li>
+<li><a href="/pricing-licensing.html?s_iid=hp_ff_t_pricing" target="_self" data-link="lead" data-offertype="pl">Pricing and Licensing</a></li>
+<li><a href="/store/?s_iid=hp_ff_t_buy" target="_self" data-link="store">How to Buy</a></li>
+</ul></div>
+
+</div>
+</div>
+
+</div>
+</div>
+	
+		<div class=" col-xs-12 col-sm-2">
+<div class="3 parsys containsResourceName resourceClass-parsys">
+<div class="text containsResourceName section resourceClass-text">
+<div class="mw-text   ">
+	<p class="ff_section_title"><a href="#fatfooter_use" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="fatfooter_use">Learn to Use<span class="caret"></span></a></p>
+<div class="collapse" id="fatfooter_use"><ul class="list-unstyled">
+<li><a href="/help/?s_tid=hp_ff_l_doc" data-target="same">Documentation</a></li>
+<li><a href="/support/learn-with-matlab-tutorials.html?s_tid=hp_ff_l_tutorials" data-target="same">Tutorials</a></li>
+<li><a href="/help/examples.html?s_tid=hp_ff_l_examples" data-target="same">Examples</a></li>
+<li><a href="/videos.html?s_tid=hp_ff_l_videos" target="_self">Videos and Webinars</a></li>
+<li><a href="/services/training.html?s_tid=hp_ff_l_training" target="_self">Training</a></li>
+</ul></div>
+
+</div>
+</div>
+
+</div>
+</div>
+	
+		<div class=" col-xs-12 col-sm-2">
+<div class="4 parsys containsResourceName resourceClass-parsys">
+<div class="text containsResourceName section resourceClass-text">
+<div class="mw-text   ">
+	<p class="ff_section_title"><a href="#fatfooter_support" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="fatfooter_support">Get Support<span class="caret"></span></a></p>
+<div class="collapse" id="fatfooter_support"><ul class="list-unstyled">
+<li><a href="/help/install/?s_tid=hp_ff_s_install">Installation Help</a></li>
+<li><a href="/matlabcentral/answers/index?s_tid=hp_ff_s_answers">Answers</a></li>
+<li><a href="/services/consulting.html?s_tid=hp_ff_s_consulting" target="_self">Consulting</a></li>
+<li><a href="/licensecenter/?s_tid=hp_ff_s_license">License Center</a></li>
+<li><a href="/support/contact_us.html?s_tid=hp_ff_s_support" target="_self">Contact Support</a></li>
+</ul></div>
+
+</div>
+</div>
+
+</div>
+</div>
+	
+		<div class=" col-xs-12 col-sm-2">
+<div class="5 parsys containsResourceName resourceClass-parsys">
+<div class="text containsResourceName section resourceClass-text">
+<div class="mw-text   ">
+	<p class="ff_section_title"><a href="#fatfooter_about" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="fatfooter_about">About MathWorks<span class="caret"></span></a></p>
+<div class="collapse" id="fatfooter_about"><ul class="list-unstyled">
+<li><a href="/company/jobs/opportunities.html?s_tid=hp_ff_a_careers">Careers</a></li>
+<li><a href="/company/newsroom.html?s_tid=hp_ff_a_newsroom" target="_self">Newsroom</a></li>
+<li><a href="/company/aboutus/soc_mission.html?s_tid=hp_ff_a_socialmission" target="_self">Social Mission</a></li>
+<li><a href="/company/customer-stories.html?s_tid=hp_ff_a_customerstories" target="_self">Customer Stories</a></li>
+<li><a href="/company.html?s_tid=hp_ff_a_company" target="_self">About MathWorks</a></li>
+</ul></div>
+
+</div>
+</div>
+
+</div>
+</div>
+	
+</div>
+</div>
+
+</div>
+</div>
+	
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+		</div>
+	</div>
+</div>
+</div>
+
+	<!-- BASIC FOOTER CONTENT - Begin -->
+	<div class="container-fluid">
+		<div class="footer">
+			<div class="row">
+				<div class="col-xs-12 col-md-9">
+					<ul class="countrynav">
+<!-- Code to Remove Tracking from Previous page and add new tracking --><li class="footernav_country">
+							<a href="#" data-toggle="modal" data-target="#country-unselected">
+								<span class="sr-only">Select a Web Site</span>
+								<span class="icon-globe icon_color_quinary icon_16"></span><span id="countrySelectorButtonText">United States</span>
+							</a>
+						</li>
+					</ul>
+<div class="clearfix"></div>
+					<div>
+<div class="footerNavigation footernavigation containsResourceName resourceClass-footernavigation">
+	<ul class="footernav  ">
+<li class="footernav_footernav_patents">
+			<a href="/company/aboutus/policies_statements/trust-center.html?s_tid=gf_tc">Trust Center</a>
+		</li>
+	
+		<li class="footernav_footernav_trademarks">
+			<a href="/company/aboutus/policies_statements/trademarks.html?s_tid=gf_trd">Trademarks</a>
+		</li>
+	
+		<li class="footernav_footernav_privacy">
+			<a href="/company/aboutus/policies_statements.html?s_tid=gf_priv">Privacy Policy</a>
+		</li>
+	
+		<li class="footernav_footernav_piracy">
+			<a href="/company/aboutus/policies_statements/piracy.html?s_tid=gf_pir">Preventing Piracy</a>
+		</li>
+	
+		<li class="footernav_footernav_status">
+			<a href="https://status.mathworks.com/?s_tid=gf_application">Application Status</a>
+		</li>
+	
+		<li class="footernav_footernav_terms">
+			<a href="/matlabcentral/content/terms-of-use.html?s_tid=gf_terms">Terms of Use</a>
+		</li>
+	</ul>
+</div>
+</div>
+					
+					<div>
+<div class="footerCompanyAddress footercompanyaddress containsResourceName resourceClass-footercompanyaddress">
+	
+	<div class="cq-placeholder" data-emptytext="Footer Company Address"></div>
+
+</div>
+</div>
+					
+					<div>
+<div class="footerParsys iparsys parsys resourceClass-iparsys containsResourceName">
+<div class="section">
+<div class="new containsResourceName resourceClass-new"></div>
+</div>
+<div class="iparys_inherited">
+<div class="footerParsys iparsys parsys containsResourceName resourceClass-par"></div>
+</div>
+</div>
+</div>
+					
+					<div class="clearfix"></div>
+					<p class="copyright">© 1994-2022 The MathWorks, Inc.</p>
+				</div>
+				<div class="clearfix visible-sm add_margin_10"></div>
+				<div class="col-xs-12 col-md-3">
+					<div>
+<div class="socialMediaIconParsys iparsys parsys resourceClass-iparsys containsResourceName">
+<div class="section">
+<div class="new containsResourceName resourceClass-new"></div>
+</div>
+<div class="iparys_inherited">
+<div class="socialMediaIconParsys iparsys parsys containsResourceName resourceClass-par">
+<div class="socialmediaicon containsResourceName resourceClass-socialmediaicon section">
+
+
+	<div class="social_media  ">
+		<ul class="social_media_icons list-unstyled  ">
+<li>
+				<a href="https://www.facebook.com/MATLAB" class="svg_link" rel="noreferrer" target="_blank">
+					<img class="ico_facebook" alt="Facebook" src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/ico-facebook.20220103150815220.svg"></a>
+
+				 
+				
+			</li>
+			
+			<li>
+				<a href="https://www.twitter.com/MATLAB" class="svg_link" rel="noreferrer" target="_blank">
+					<img class="ico_twitter" alt="Twitter" src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/ico-twitter.20220103150815220.svg"></a>
+
+				 
+				
+			</li>
+			
+			<li>
+				<a href="https://www.instagram.com/matlab/" class="svg_link" rel="noreferrer" target="_blank">
+					<img class="ico_instagram" alt="Instagram" src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/ico-instagram.20220103150815220.svg"></a>
+
+				 
+				
+			</li>
+			
+			<li>
+				<a href="https://www.youtube.com/user/MATLAB" class="svg_link" rel="noreferrer" target="_blank">
+					<img class="ico_youtube" alt="YouTube" src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/ico-youtube.20220103150815220.svg"></a>
+
+				 
+				
+			</li>
+			
+			<li>
+				<a href="https://www.linkedin.com/company/the-mathworks_2" class="svg_link" rel="noreferrer" target="_blank">
+					<img class="ico_linkedin" alt="LinkedIn" src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/ico-linkedin.20220103150815220.svg"></a>
+
+				 
+				
+			</li>
+			
+			<li>
+				<a href="/company/rss.html" class="svg_link" rel="noreferrer">
+					<img class="ico_rss" alt="RSS" src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common/resources/images/ico-rss.20220103150815220.svg"></a>
+
+				 
+				
+			</li>
+			
+			
+		</ul>
+<div class="clearfix"></div>
+	</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+					
+					<div class="clearfix"></div>
+					<p class="pull_right_sm pull_right_md pull_right_lg"><small class="percent_90"><em>Join the conversation</em></small></p>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+	<!-- BASIC FAT FOOTER CONTENT - End -->
+</footer><script src="/etc.clientlibs/mathworks/clientlibs/customer-ui/components/domainredirect.min.20220103150815220.js"></script><script src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/akamai.min.20220103150815220.js"></script><script src="/etc.clientlibs/mathworks/clientlibs/customer-ui/components/lodash.min.20220103150815220.js"></script><script src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/common.min.20220103150815220.js"></script><script src="/etc.clientlibs/mathworks/clientlibs/customer-ui/components/condensedrelatedcontent.min.20220103150815220.js"></script><script src="/etc.clientlibs/mathworks/clientlibs/customer-ui/components/lightslider.min.20220103150815220.js"></script><script src="/etc.clientlibs/mathworks/clientlibs/customer-ui/templates/matlabcentral.min.20220103150815220.js"></script><script src="/etc.clientlibs/mathworks/clientlibs/customer-ui/components/matrixmenu.min.20220103150815220.js"></script><script>
+				if (typeof matrix !== 'undefined') {
+					matrix.show({
+						largeId: 'headernav_matrix',
+						smallId: ['matrix_affordance_container_mobile', 'matrix_menu_container_mobile'],
+						env: 'prod',
+						tier: 'DOTCOM',
+						lang: 'en'
+					});
+				}
+			</script>
+</body>
+</html>

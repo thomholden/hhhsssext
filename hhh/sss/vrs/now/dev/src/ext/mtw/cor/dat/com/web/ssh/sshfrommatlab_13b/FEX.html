@@ -1,0 +1,2392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>SSH From Matlab (updated) + SFTP/SCP -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27999-ssh-from-matlab--updated--+-sftp-scp" rel="canonical">
+<meta content="SSH From Matlab (updated) + SFTP/SCP - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27999-ssh-from-matlab--updated--+-sftp-scp" property="og:url"><meta content="Run commands on a remote machine from a Matlab session, via a secure shell." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27999-ssh-from-matlab--updated--%2B-sftp-scp" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27999-ssh-from-matlab--updated--%2B-sftp-scp" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/18565" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=27999" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp" class="manifest_title">SSH From Matlab (updated) + SFTP/SCP</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/scptomatlab.m" class="function" title="Function">scptomatlab(userName,host...</a><span class="description">SCPTOMATLAB connects Matlab to a remote computer and uploads</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/sftpfrommatlab.m" class="function" title="Function">sftpfrommatlab(userName,h...</a><span class="description">sftpfrommatlab connects Matlab to a remote computer and uploads
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/sshfrommatlab.m" class="function" title="Function">sshfrommatlab(userName,ho...</a><span class="description">SSHFROMMATLAB connects Matlab to a remote computer via a secure shell
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/sshfrommatlab_publickey.m" class="function" title="Function">sshfrommatlab_publickey(u...</a><span class="description">SSHFROMMATLAB_PUBLICKEY connects Matlab to a remote computer via a secure
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/sshfrommatlab_publickey_file.m" class="function" title="Function">sshfrommatlab_publickey_f...</a><span class="description">SSHFROMMATLAB_PUBLICKEY_FILE connects Matlab to a remote computer via a</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/sshfrommatlabclose.m" class="function" title="Function">sshfrommatlabclose(channel)
+</a><span class="description">SSHFROMMATLABCLOSE disconnects Matlab from a remote machine
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/sshfrommatlabinstall.m" class="function" title="Function">sshfrommatlabinstall(args)
+</a><span class="description">SSHFROMMATLABINSTALL(DOWNLOAD) provides installation instructions for SSHFROMMATLAB
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/sshfrommatlabissue.m" class="function" title="Function">sshfrommatlabissue(channe...</a><span class="description">SSHFROMMATLAB issues commands to a remote computer from within Matlab
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content//sshfrommatlab_13b/sshfrommatlabissue_dontwait.m" class="function" title="Function">sshfrommatlabissue_dontwa...</a><span class="description">SSHFROMMATLAB_DONTWAIT issues commands to a remote computer from within Matlab</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp/content/sshfrommatlab_13b.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:93.3334%;">
+                <p>4.66667</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.7</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">15</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">106 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 600 KB</span>
+          <span id="fileid">File ID: #27999</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">SSH From Matlab (updated) + SFTP/SCP</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      23 Jun 2010
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-08-20">20 Aug 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">Run commands on a remote machine from a Matlab session, via a secure shell.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F27999-ssh-from-matlab--updated--%2B-sftp-scp&amp;watching=27999" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>If you need to access a remote machine from your 
+Matlab session (for near-real time data transfer etc...) this set of 
+functions allows you to programmatically send a single command and 
+obtain the return values as a cell array.</p>
+
+<p>Added SFTP function that is compatible with this library. Changed to 
+use Matlab's binary read operations. Tested and achieved over 1.2MB 
+sustained transfer rate. </p>
+
+<p>SCP functionality has been included to transfer files back locally.</p>
+
+<p>Now supports public key authentication.</p>
+
+<p>This requires the open-source Ganymed SSH-2 for Java that is freely available online and is now included in the zip file.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/21996-ssh-from-matlab">Ssh From Matlab</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/25256-scp-sftp-from-matlab">Scp/Sftp From Matlab</a> inspired <i>this file.</i></p>
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/32098-ssh--sftp-scp-from-matlab-with-public-key-authentication">Ssh, Sftp/Scp From Matlab With Public Key Authentication</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/35409-ssh-sftp-scp-for-matlab--v2-">Ssh/Sftp/Scp For Matlab (V2)</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.9 (R2009b)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Ganymed SSH-2 for Java library
+INCLUDED IN ZIP FILE</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27999-ssh-from-matlab--updated--%2B-sftp-scp">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22communications%22" rel="nofollow">communications</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22data+export%22" rel="nofollow">data export</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22import%22" rel="nofollow">import</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22scp%22" rel="nofollow">scp</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22sftp%22" rel="nofollow">sftp</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22ssh%22" rel="nofollow">ssh</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22thank+you+very+much+for+this+very+useful+one+question+is+it+poss%22" rel="nofollow">thank you very much for this very useful one question is it poss</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="27999" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/27999-ssh-from-matlab--updated--+-sftp-scp" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27999-ssh-from-matlab--updated--%2B-sftp-scp">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(79)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">20 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi James, it appears cleondris has 
+stopped hosting the ganymed-library. I have submitted an updated to 
+Mathworks that will include the .zip file with the matlab files so it 
+will no longer need to be downloaded.</p>
+
+<p>It's been a great run cleondris.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/378281">James</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Perfectly useful tool.</p>
+
+<p>This morning sshfrommatlabinstall(1) is returning the following error:</p>
+
+<p>??? Error using ==&gt; urlwrite at 140
+<br>Error downloading URL. Your network connection may be down or your proxy settings improperly
+<br>configured.</p>
+
+<p>Error in ==&gt; sshfrommatlabinstall at 40
+<br>   urlwrite('http://www.cleondris.ch/ssh2/ganymed-ssh2-build250.zip','ganymed-ssh2-build250.zip');
+<br> </p>
+
+<p>Also, http://www.cleondris.ch/ssh2/ganymed-ssh2-build250.zip generates an error when trying to access it from a brouser.</p>
+
+<p>Thanks again for this great tool!!</p>
+
+<p>James</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/248115">Adam</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>great!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Nicholas,</p>
+
+<p>If you can NFS mount the remote computer, that would probably be ideal.</p>
+
+<p>Otherwise, you can continue to use this function, just download the 
+files to your computer to use matlab functions to do your analysis.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/157876">Nicholas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, I'm enjoying playing around 
+with this function but I can't get it to do what I want.  I was 
+wondering if maybe I should be using an alternative.  I've developed a 
+series of scripts to analyse some model outputs and the way the script 
+works is by looking at which directory is the newest and then taking 
+information from the filenames to determine automatically quite a lot of
+ information about the runs I've done.  However, I'm now doing some runs
+ on a computer other than my own that I only have remote access to, and,
+ which, doesn't have matlab. </p>
+
+<p>So, is there anyway I can get matlab to see the directories on the 
+remote machine as if it was a local directory so that I can use 
+functions such as dir, textscan and cell2mat to extract the model 
+information from the remote directories?</p>
+
+<p>Any assistance would be greatly appreciated.</p>
+
+<p>Nick</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,</p>
+
+<p>Unfortunately, I'm not familiar with byobu. This link implies you 
+need to run byobu with the "-t" option as the ssh2 package does not 
+provide a tty terminal. </p>
+
+<p>http://stackoverflow.com/questions/474967/automatically-or-more-easily-reconnect-to-a-screen-session-after-network-inter</p>
+
+<p>Does this solve your problem?</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/328798">Matthew</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>After SSHing into the remote 
+computer, I am trying to run the byobu command so I can run the remote 
+in root.  I use the command below:
+<br>[conn, res] = sshfrommatlabissue(conn,'byobu') and the result 
+returns ']0;roboard@a-laptop - byobuMust be connected to a terminal.'.
+  I was hoping you could give me some insight as how to run byobu so I 
+can run the remote in root.</p>
+
+<p>Thanks,
+<br>Matt</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Walter, If I understand the 
+problem, you want to look at the result of your commands. I'll remind 
+you that these functions cannot support interactive modes on the command
+ line. But, for getting the response of your command, you can look at 
+the cell array "result" from the command</p>
+
+<p>[channel, result]  =  sshfrommatlabissue(channel,command). </p>
+
+<p>Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/318707">Walter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, great submission!
+<br>I use this package to run simple commands on a condor cluster. But 
+there appear to be certain commands which when run using an external SSH
+ tool, print commands to the prompt screen</p>
+
+<p>In particular: condor submitters -username</p>
+
+<p>When I try to run that command from SSH_MATLAB, obviously, it will not give me any feedback, or command response.</p>
+
+<p>Is there a setting somewhere I can adjust, that would allow for me to
+ see the same feedback at my MATLAB Command Window, that I see when I 
+run condor submitters from the SSH GUI?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/224225">Roel H</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David,</p>
+
+<p>Thanks for your quick reply!
+<br>I was already afraid that this would be the answer, because both 
+hacks you suggest are not possible in my network configuration. Before I
+ found this package, I tried public key identification/scripting but it 
+didn't work. Also, I don't think the server I need to connect through 
+runs matlab, so I'll have to figure out another way or just do it 
+manually.</p>
+
+<p>Greets, Roel</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Roel,</p>
+
+<p>It is difficult, but I don't think impossible to connect through two machines. </p>
+
+<p>If you're able to run Matlab on the first machine, you should be able to use this package to ssh into the second machine.</p>
+
+<p>Otherwise, you can use public key authentication on the first machine
+ and a script to automatically connect and execute your function. </p>
+
+<p>This hacks are needed because the SSH package for matlab can only execute commands and cannot run interactively.  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/224225">Roel H</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David,</p>
+
+<p>Thanks for writing this awesome package!</p>
+
+<p>I have one question, though.
+<br>I need to ssh to a server first and then from the server ssh to the 
+remote machine I want to use. Then, on the remote machine I need to 
+start up my matlab simulations.
+<br>My (linux)system environment does not let me automate ssh 
+connections (expect scripts, public keys or similar constructs), so I am
+ using sshfrommatlab to handle the connections.
+<br>Therefore my question: Is it possible to make this double ssh connection using the package You have provided?</p>
+
+<p>Thanks very much in advance!
+<br>Roel Helsen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/175824">Carlos</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This files look great! However, when I try to use sshfrommatlab, I get,</p>
+
+<p>Error using ch.ethz.ssh2.Connection/authenticateWithPassword
+<br>Java exception occurred:
+<br>java.io.IOException: Password authentication failed.
+<br>	at ch.ethz.ssh2.auth.AuthenticationManager.authenticatePassword(AuthenticationManager.java:328)
+<br>	at ch.ethz.ssh2.Connection.authenticateWithPassword(Connection.java:311)
+<br>Caused by: java.io.IOException: Authentication method password not supported by the server at this stage.
+<br>	at ch.ethz.ssh2.auth.AuthenticationManager.authenticatePassword(AuthenticationManager.java:298)
+<br>	... 1 more</p>
+
+<p>Error in sshfrommatlab (line 53)
+<br>  isAuthenticated = channel.authenticateWithPassword(userName,password);</p>
+
+<p>And I am sure that my username, server and password are ok... :(</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/272785">Alex</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I needed the -t flag (pseudo-tty) when executing certain commands.  Simple modification to sshfrommatlabissue.m made this work:</p>
+
+<p>% 
+<br>% Send the commands
+<br>%
+<br>  result  =  {''};
+<br>  channel2  =  channel.openSession();
+<br>  
+<br>  channel2.requestPTY('vt100', 80, 24, 640, 480, []);
+<br>  
+<br>  channel2.execCommand(command);</p>
+
+<p>...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100927">Marissa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>When I try to execute the scptomatlab function, I get an error message associated with this portion of code:</p>
+
+<p>import ch.ethz.ssh2.SCPClient;
+<br>import ch.ethz.ssh2.SCPClient;
+<br>import ch.ethz.ssh2.Session;</p>
+
+<p>which says</p>
+
+<p>??? Error: File: scptomatlab.m Line: 23 Column: 8
+<br>Arguments to IMPORT must either end with ".*"
+<br>or else specify a fully qualified class name: "ch.ethz.ssh2.SCPClient" fails
+<br>this test.</p>
+
+<p>If I add .* to the end of each one and then execute, this error appears:</p>
+
+<p>??? Error using ==&gt; scptomatlab at 45
+<br>Error: SCPTOMATLAB could not connect to the remote machine</p>
+
+<p>followed by the host name I’m trying to connect to. Do you know what 
+is going wrong? This code has worked for my coworker, so I know that the
+ hostname must be correct.</p>
+
+<p>Rebecca
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29102">Murat Belge</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For BeagleBoard users out there who
+ is trying to connect to their board from within MATLAB using SSH. The 
+BeagleBoard support package in R2012a has built-in support for SSH 
+connection. The BeagleBoard support package uses "plink.exe" and 
+"pscp.exe" utilities to talk to beagleboard. There is a demo called 
+"Executing Remote Linux Commands" that goes over the API.</p>
+
+<p>To install BeagleBoard downloadable support package, type in "targetinstaller" on the MATLAB command line.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/258423">Trentt James</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much David. This helped me out a bunch!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Trent, this is likely the same problem that Ronald (and maybe Dominic) had in Oct 2010. Modified C/P below.</p>
+
+<p>The issue stems from the fact you are not getting a bash (or tcsh) 
+shell, and are therefore not getting any of the typical variables. This 
+was a problem for me too, and I had to create a file that "exports" the 
+variables, and after I log in, I include a "source" command before I 
+issue any statements. It's kinda a pain, but that's the way it has to 
+be. You may want to check the ganymed-ssh2 FAQ at 
+http://www.cleondris.ch/opensource/ssh2/FAQ.html for more info.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/258423">Trentt James</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David. If this helps, the user 
+is trying to connect to a BeagleBoard xM. I am ssh in as root so we 
+should have root privelages. Through other methods of ssh (like putty), I
+ have been able to connect to the remot host and send these commands as 
+well so that should be verified. </p>
+
+<p>Initially, when connected, I sent these commands (which worked correctly):</p>
+
+<p>[conn,res] = sshfrommatlabissue(conn,'pwd');disp(res);
+<br>[conn,res] = sshfrommatlabissue(conn,'cd ..; ls');disp(res);</p>
+
+<p>and then I tried to run a program, but I was given a null return and 
+send back to root's home directory. When I first started to run a 
+command, besides trying to shutdown/restart, I tried to run a program 
+with this following command:</p>
+
+<p>[conn,res] = sshfrommatlabissue(conn,'./Program');disp(res);</p>
+
+<p>Once again, I was given a null return. Then I tried to restart with 
+the "shutdown -r now" which I have always done to restart, and a 
+"shutdown -h now" to shutdown. After multiple tries, I was unable to 
+restart the computer. I really appreciate this help!
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/258423">Trentt James</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Also, we are ssh in as root so we should have root privelages. Sorry for this late post. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Trennt, Are you sure the user is
+ authorized to shutdown the computer? Have you verified this command 
+"shutdown -r now" works from the same computer using an ssh2 client? 
+Also, please make sure you have a made a connection object correctly. 
+Have you tried running "hostname" to if you have made a good connection?
+ I expect if you can verify this, you should be able to restart the 
+machine.</p>
+
+<p>I always thought the command was shutdown -r 0</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/258423">Trentt James</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi!</p>
+
+<p>I am trying to issue a standard command to restart the remote host by
+ using the command " sshfrommatlabissue(connection,'shutdown -r now') ".
+ However, this is not restarting the remote host and I am receving a 
+null return. I would greatly appreciate any help on this, or if this 
+type on command line is not implemented. Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sébastien, you should check out 
+the v2 of this file SSH/SFTP/SCP For Matlab (v2)at the top. It has 
+public key support for sftp and scp functions.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/255347">Sébastien Laberge</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I just found a solution. I tried to
+ connect with sshfrommatlab_publickey_file and it worked. That's 
+bizarre. It looks like when I use the ganymed java package instead of 
+the system command line, the server only accepts to be accessed with a 
+ssh-key and refuses the old password method. 
+<br>But it looks like I will have to make my own m files to use transfer
+ files because the sftpfrommatlab and scptomatlab functions use 
+passwords to connect...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/255347">Sébastien Laberge</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am trying to connect to an 
+external server to call parallel simulations directly from a matlab GUI,
+ and then fetch the results back to my computer. The sshfrommatlab 
+package works well to make an ssh connexion to another personal 
+computer, but I got the following error when trying to connect to the 
+server:</p>
+
+<p> Error using ch.ethz.ssh2.Connection/authenticateWithPassword
+<br>Java exception occurred:
+<br>java.io.IOException: Password authentication failed.
+<br>	at ch.ethz.ssh2.auth.AuthenticationManager.authenticatePassword(AuthenticationManager.java:318)
+<br>	at ch.ethz.ssh2.Connection.authenticateWithPassword(Connection.java:311)
+<br>Caused by: java.io.IOException: Authentication method password not supported by the server at this stage.
+<br>	at ch.ethz.ssh2.auth.AuthenticationManager.authenticatePassword(AuthenticationManager.java:288)
+<br>	... 1 more</p>
+
+<p>Error in sshfrommatlab (line 53)
+<br>  isAuthenticated = channel.authenticateWithPassword(userName,password);</p>
+
+<p>I don't understand. I am sure I use the correct username, host name 
+and password. I usually don't get this error when I try to connect via 
+the computer's common line using the ssh command and a password. I am 
+currently working on mac OS X and the server uses linux (SUSE).</p>
+
+<p>Thank you for your help</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/228134">Alex</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jurek, it looks like you are trying to upload a 722 MB file, that could be your issue.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/222043">Jurek Dziewierz</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>on trying to use the sftp, i get:</p>
+
+<p> sftpcl = SFTPv3Client(channel)
+<br>Java exception occurred:
+<br>java.io.IOException: Illegal sftp packet len: 757951599</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.receiveMessage(SFTPv3Client.java:245)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.init(SFTPv3Client.java:861)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.&lt;init&gt;(SFTPv3Client.java:108)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.&lt;init&gt;(SFTPv3Client.java:119)</p>
+
+<p>please help . . . .</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/210369">Hamad</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David , this is really an interesting library. I am struggling to start it.
+<br>Can you anybody tell me how to use it? I mean in all the m files we have to change the username and password and hostname? 
+<br>1. only in the arguments or also in the body.
+<br>2. what is the actual sequence for execution? </p>
+
+<p>i am engineering student but i have to copy files to remote sever and then to start the simulations.</p>
+
+<p>I would be waiting for your kind responses</p>
+
+<p>regards,
+<br>Hamad</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/208882">Sophie</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Got it sorted, thanks! Works fine now.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/208882">Sophie</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David, 
+<br>Thanks for your super quick response. Yes I've tried that. When I 
+tried the suggestion above based on the nested try catch, the error 
+changed to a connection error. Although I have no problem with 
+connecting simply with unix('ssh HOST').</p>
+
+<p>Thanks again. Sophie </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sophie,</p>
+
+<p>Have you tried running
+<br>sshfrommatlabinstall(1)
+<br>once 
+<br>and then</p>
+
+<p>sshfrommatlabinstall 
+<br>every time you restart matlab, but before you run sshfrommatlab
+<br>?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/208882">Sophie</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I keep getting an error using sshfrommatlab:</p>
+
+<p>Error using sshfrommatlab (line 48)
+<br>Error: SSHFROMMATLAB could not find the SSH2 java package</p>
+
+<p>This is using MatlabR2011b and using either the ganymed build 250 or 
+251beta. I have tested with a couple of remote hosts that I have no 
+trouble ssh-ing into. </p>
+
+<p>Any tips on obvious places I might be going wrong?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Dmoninic, I cannot tell what's 
+wrong from your above statement. Have you verified that your connection 
+works with a simple "ls"? Also, ssh2 does not open a bash or csh, 
+meaning any parameters you expect (.bash_profile) must be setup 
+interdependently. i.e. "source ~/.bash_profile; ./script-parameter"</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/55389">Dominic</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I meant sshfrommatlabissue(channel,'./script -parameter')</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/55389">Dominic</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I tried to execute script using sshfrommatlabissue(channel,''./script -parameter); but it doesn't work. 
+<br>What's the problem here?</p>
+
+<p>Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/110338">Nathan Orloff</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/110338">Nathan Orloff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is there a way to change the port?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/110338">Nathan Orloff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David,</p>
+
+<p>I think I might also be confused about what this program actually 
+does can you explain your answer to Clark? Maybe I misunderstand the 
+function. I want to remotely connect to a server and put a file in a 
+folder on the host from a computer running matlab.</p>
+
+<p>Thanks,</p>
+
+<p>Nate</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34660">Richard Crozier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Because of the nested try catch in 
+sshfrommatlab.m, the error 'SSHFROMMATLAB could not find the SSH2 java 
+package' is always thrown, even if the actual error is that the 
+connection was unsuccessful. This could be fixed with something like:</p>
+
+<p>%
+<br>%  Build the connection using the JSch package
+<br>%
+<br>  try
+<br>    import ch.ethz.ssh2.*;
+<br>    try
+<br>      channel  =  Connection(hostName);
+<br>      channel.connect();
+<br>    catch
+<br>      error('SSHFRMMATLAB:noconnection', ...
+<br>            ['Error: SSHFROMMATLAB could not connect to the remote machine %s ...'],...
+<br>            hostName);
+<br>    end
+<br>  catch
+<br>      
+<br>      LE = lasterror;
+<br>      
+<br>      if isequal(LE.identifier, 'SSHFRMMATLAB:noconnection')
+<br>          rethrow(LE);
+<br>      else
+<br>          error('Error: SSHFROMMATLAB could not find the SSH2 java package');
+<br>      end
+<br>      
+<br>  end</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ernest. I think I see the issue with the two previous posts. 
+<br>1) You cannot use user@user-dir/dir/dir/. The user information is provided in the first input variable.
+<br>2) I think you need to provide the entire path for the remote file, i.e. /dir/dir/dir/GPS_POS_1.dat</p>
+
+<p>Hope that helps.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/182342">Ernest</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David, I am having a problem using the 
+<br>sftpfrommatlab.  I used the following commands the I get the errors bellow:
+<br>&gt;&gt; h  =  sshfrommatlab('user','host','pswd');
+<br>&gt;&gt; sftpfrommatlab('user','host','pswd','C:\GPS_POS_1.dat','user@user-dir/dir/dir/')</p>
+
+<p>??? Java exception occurred:
+<br>ch.ethz.ssh2.SFTPException: No such file (SSH_FX_NO_SUCH_FILE: A reference was made to a file which does not
+<br>exist.)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.openFile(SFTPv3Client.java:1198)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.createFile(SFTPv3Client.java:1071)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.createFile(SFTPv3Client.java:1052)</p>
+
+<p>Error in ==&gt; sftpfrommatlab at 67
+<br>localf=sftpcl.createFile(remotefilename);</p>
+
+<p>Do you have any idea whatcould be the source of such error?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/182342">Ernest</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I also have the following error...</p>
+
+<p>&gt;&gt; sftpfrommatlab('user','host','pswd','c:\GPS_POS_1.dat','/dir/dir/dir/')
+<br>??? Java exception occurred:
+<br>ch.ethz.ssh2.SFTPException: Failure (SSH_FX_FAILURE: An error occurred, but no specific error code exists to
+<br>describe the failure.)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.openFile(SFTPv3Client.java:1198)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.createFile(SFTPv3Client.java:1071)</p>
+
+<p>	at ch.ethz.ssh2.SFTPv3Client.createFile(SFTPv3Client.java:1052)</p>
+
+<p>Error in ==&gt; sftpfrommatlab at 67
+<br>localf=sftpcl.createFile(remotefilename);</p>
+
+<p>I hope you could shed some lite regarding this.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34660">Richard Crozier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great tool thanks, it work with the beta 251 build which I accidentally downloaded too.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/162582">Mithila Nagendra</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David,</p>
+
+<p>I found your tool very useful and it literally saved me weeks of work... thanks a lot for sharing it! </p>
+
+<p>I used your tool awhile back (folder name "sshfrommatlab_12") - back 
+then I had to add the public key authentication for SFTP/SCP to your 
+package for my use, but never got around to uploading the changes. I 
+noticed that this feature is now available in the new package, but only 
+for running commands remotely through SSH. I have a version of your 
+SFTP/SCP functions that support public key authentication. I will upload
+ my files, thought I'll let you know about it.</p>
+
+<p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Koenraad, unfortunately, the SCP library doesn't support wildcards. I would ... 
+<br>nevermind, your workaround is what I would suggest. Nice work!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160410">Koenraad</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I found a work-around:</p>
+
+<p>command  ='cd /tmp; ls';
+<br>[channel, result]  =  sshfrommatlabissue(channel,command);
+<br>localFolder = 'c:\temp\'
+<br>for i = 1:size(result)
+<br>    remotefilename = ['/tmp/' cell2mat(result(i))];
+<br>     scptomatlab(userName,hostName,password,localFolder,remotefilename);
+<br>end;
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160410">Koenraad</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I was using scptomatlab to copy multiple files.</p>
+
+<p> localFolder= c:\temp\
+<br> remotefilename = /tmp/*</p>
+
+<p>where /tmp/ on the remote machine has multiple files (more than 100)</p>
+
+<p>but only one file is copied to my c:\temp</p>
+
+<p>Could it be that the tool does not support to copy multiple files?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/152060">Etienne  Coetzee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks David. Works a treat.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>oops, the file was not updated 
+correctly, you should find it shortly. The file you're looking for is 
+sshfrommatlabissue_dontwait.m</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37456">Etienne</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David. I noticed that you made the update, but I am not sure where you refer to the function that you are talking about.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/152060">Etienne  Coetzee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks. I will wait for the new additions and then give you a 5 star rating. Your programs have been incredibly useful.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>OK, I added a function that doesn't
+ wait for a response. Plus I added Jonathan's request and Erica's 
+suggestion. File should update shortly.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/152060">Etienne  Coetzee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David</p>
+
+<p>I am launching a batch job on a unix machine. When I launch it from 
+this program it hangs up because there are so many jobs I am sending. I 
+would rather like to launch the job in the background and then check 
+periodically whether it has finished. I tried all sorts of syntax, but 
+it just doesn't seem to work. I will keep on trying.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Etienne, I don't quite 
+understand your question. -f appears to put the ssh command in the 
+background. There is no similar command when using Ganymed SSH-2 for 
+Java.</p>
+
+<p>You should be able to launch a batch command from SSH by issuing the 
+correct command, i.e. ./command.sh. You should be able to put this 
+script in the background.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37456">Etienne</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David</p>
+
+<p>I managed to get the commands to work, but woudl like to be able to 
+launch a batch command from SSH. I noticed that you can use a -f option 
+in ssh. Is this functionality available in your routines. I have tried 
+the nohup option and the &amp; operator at the end of the command, to no
+ avail.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Etienne, I'm not very familiar 
+with the Korn Shell, but I believe you can source the startup variables 
+by connecting and running,</p>
+
+<p>. .profile
+<br>or
+<br>. .kshrc</p>
+
+<p>first, i.e., in your command string enter</p>
+
+<p>". .profile; commandtorun"</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37456">Etienne</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David</p>
+
+<p>The tool is working very well, but now I am trying to run a Korn 
+shell script to no avail. I noticed the comments above about exporting 
+the environment variables etc. Can you please explain how you do this?</p>
+
+<p>Thanks</p>
+
+<p>Etienne</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/113746">Tam Chu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I tried to run sshfrommatlab and 
+ran into the following problem about "authentication method Password not
+ supported by server at this stage".</p>
+
+<p>But I was able to login with password through command line.   Not 
+sure what the problem is.   Has anyone else experienced the same 
+problem?</p>
+
+<p>Tam</p>
+
+<p>??? Java exception occurred:
+<br>java.io.IOException: Password authentication failed.
+<br>	at ch.ethz.ssh2.auth.AuthenticationManager.authenticatePassword(AuthenticationManager.java:328)
+<br>	at ch.ethz.ssh2.Connection.authenticateWithPassword(Connection.java:311)
+<br>Caused by: java.io.IOException: Authentication method password not supported by the server at this
+<br>stage.
+<br>	at ch.ethz.ssh2.auth.AuthenticationManager.authenticatePassword(AuthenticationManager.java:298)
+<br>	... 1 more</p>
+
+<p>Error in ==&gt; sshfrommatlab at 53
+<br>  isAuthenticated = channel.authenticateWithPassword(userName,password);
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/120213">Erika</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jonathan, to use sshfrommatlab.m with a private/public key you can try this one: </p>
+
+<p>remove/comment the following lines: 
+<br>% isAuthenticated = channel.authenticateWithPassword(userName,password);
+<br> % if(~isAuthenticated)
+<br>  %  error...
+<br>   %   (['Error: SSHFROMMATLAB could not authenticate the',...
+<br>   %     ' SSH connection...']);
+<br> % end</p>
+
+<p>and write instead: </p>
+
+<p>id_dsa = sprintf('&lt;your_dsa_or_rsa_key&gt;')
+<br>  isAuthenticated = channel.authenticateWithDSA(userName,id_dsa, password) </p>
+
+<p>For me it works. 
+<br>Erika</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/119627">Clark Gee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>David, thanks for the quick reply.
+<br>I will go look for passive mode FTP.
+<br>Clark</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>First Thomas, I have no idea what's causing the problem. You should verify that you can ssh to this local machine.</p>
+
+<p>There is no private/public key support at the moment, but that is a limitation of the matlab code, not the SSH library. </p>
+
+<p>Finally, Clark, this is an SSH/SFTP tool and it appears to me that 
+you're trying to SSH to the host. There is not FTP support in this 
+version. This is either built into Matlab, or passive mode support is 
+provided by another matlab central upload.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/119627">Clark Gee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,  I am experiencing the same problem as "Tomas S".
+<br>I have tried different jar files: 
+<br>1) trilead-ssh2-build213.jar
+<br>2) ganymed-ssh2-build250.jar
+<br>Added each one (at a time) to classpath.txt and restarted matlab7b each time a change was made.
+<br>Situation: I am trying to connect to a NASA ftp site that I can 
+connect to via WS-FTP, but would like to use Matlab.  I have a site, 
+username, and password that work using WS-FTP.
+<br>Configuration: Windows XP Pro(32 bit), MatLab7b</p>
+
+<p>If I call sshfrommatlab directly using the user,site,pass fields correctly, I get a response: 
+<br>??? Error using ==&gt; sshfrommatlab at 48
+<br>Error: SSHFROMMATLAB could not find the SSH2 java package</p>
+
+<p>Diving into the sshfrommatlab.m file ...</p>
+
+<p>I then entered commands manually.  Here is what I get:
+<br>&gt;&gt;import ch.ethz.ssh2.*
+<br>&gt;&gt;channel = Connection(hostName) </p>
+
+<p>channel = ch.ethz.ssh2.Connection@1ac8e09</p>
+
+<p>&gt;&gt;channel.connect()
+<br>??? Java exception occurred:
+<br>java.io.IOException: There was a problem while connecting to oceans.gsfc.nasa.gov:22</p>
+
+<p>	at ch.ethz.ssh2.Connection.connect(Connection.java:753)</p>
+
+<p>	at ch.ethz.ssh2.Connection.connect(Connection.java:543)</p>
+
+<p>Caused by: java.net.ConnectException: Connection timed out: connect</p>
+
+<p>	at java.net.PlainSocketImpl.socketConnect(Native Method)</p>
+
+<p>	at java.net.PlainSocketImpl.doConnect(Unknown Source)</p>
+
+<p>	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)</p>
+
+<p>	at java.net.PlainSocketImpl.connect(Unknown Source)</p>
+
+<p>	at java.net.SocksSocketImpl.connect(Unknown Source)</p>
+
+<p>	at java.net.Socket.connect(Unknown Source)</p>
+
+<p>	at ch.ethz.ssh2.transport.TransportManager.establishConnection(TransportManager.java:342)</p>
+
+<p>	at ch.ethz.ssh2.transport.TransportManager.initialize(TransportManager.java:450)</p>
+
+<p>	at ch.ethz.ssh2.Connection.connect(Connection.java:697)</p>
+
+<p>	... 1 more</p>
+
+<p>Sorry the message is so long...
+<br>I realize that there must be some simple thing I have not set, but 
+have been unable to recognize it, yet.  Any help here would be most 
+appreciated.
+<br>Cheers,
+<br>Clark</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/114644">Jonathan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I am able to use SFTP functionality with password authentication, but
+ not with public key authentication.  Can some one confirm for me that 
+this is indeed a limitation of the code, and not an error on my part? If
+ so, are there plans to add this functionality?</p>
+
+<p>Thanks for the great tool! 
+<br>Yoni</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/115341">Dirk</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>I've the same problem as Tomas S. Perhaps it is a Matlab 2010a Problem. Because it works fine for me with Matlab 2006b.
+<br>Dirk</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/112984">Tomas S</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, I have some trouble with using 
+sshfrommatlab.m. I am not able to make the connection with remote host 
+in my local network. When I enter "channel  =  Connection(hostName)" 
+result is "channel = ch.ethz.ssh2.Connection@b243d7" - I think this is 
+OK. But executing of next command "channel.connect()" gives error: </p>
+
+<p>??? Java exception occurred:
+<br>java.io.IOException: There was a problem while connecting to PETER-NTB:22</p>
+
+<p>	at ch.ethz.ssh2.Connection.connect(Connection.java:753)</p>
+
+<p>	at ch.ethz.ssh2.Connection.connect(Connection.java:543)</p>
+
+<p>Caused by: java.net.ConnectException: Connection timed out: connect</p>
+
+<p>	at java.net.PlainSocketImpl.socketConnect(Native Method)</p>
+
+<p>	at java.net.PlainSocketImpl.doConnect(Unknown Source)</p>
+
+<p>	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)</p>
+
+<p>	at java.net.PlainSocketImpl.connect(Unknown Source)</p>
+
+<p>	at java.net.SocksSocketImpl.connect(Unknown Source)</p>
+
+<p>	at java.net.Socket.connect(Unknown Source)</p>
+
+<p>	at ch.ethz.ssh2.transport.TransportManager.establishConnection(TransportManager.java:342)</p>
+
+<p>	at ch.ethz.ssh2.transport.TransportManager.initialize(TransportManager.java:450)</p>
+
+<p>	at ch.ethz.ssh2.Connection.connect(Connection.java:697)</p>
+
+<p>	... 1 more</p>
+
+<p>I am sorry, it is so long log... but after two-day thinking and 
+trying I still cannot find how to make connection. I am sure that 
+hostname, username and password are right. I tried use IP address 
+(private 192.168.1.4) instead of hostname but result was the same. Is 
+here anyone who could help me?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Dan, unfortunately you can't use the command in that way. If you want to accomplish the current task I recommend you do </p>
+
+<p>[conn,res] = sshfrommatlabissue(conn, 'cd ..; ls'); disp(res); </p>
+
+<p>cd won't return anything (unless there's an error) so you should get the response from the ls command.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/111762">Dan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi: I am having some trouble.  I am
+ able to get the connection and issue an 'ls' command with the result 
+being a listing of the contents of my home directory, however, when 
+trying to 'cd' to any other directory I get an empty result and when I 
+issue a subsequent 'ls' command I still get home contents.  For example:</p>
+
+<p>[conn,res] = sshfrommatlabissue(conn, 'ls');  disp(res);
+<br>[conn,res] = sshfrommatlabissue(conn, 'cd ..');  disp(res);
+<br>[conn,res] = sshfrommatlabissue(conn, 'ls');  disp(res);</p>
+
+<p>This results in the same listing before and after the cd command.</p>
+
+<p>I am running off a Mac OSX Matlab 2009b version.  Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/108942">Yasel Couce</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent tool... Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/87062">Philip Mewes</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>very nice tool. I need to specify a proxy server (socks 5) and a 
+port number to connect to a ssh server because I'm inside a company 
+network. Putty e.g. give you the possibility to specify a proxy. 
+<br>Matlab itselfs only allows to configure proxys for Internet-connection, but not for ssh</p>
+
+<p>Philip</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Min, I would recommend you look 
+into using public/private keys because otherwise I don't know how you 
+can possibly enter the password with ganymed-ssh2. You may want to look 
+into the suggestions posted on the following link, Problem 2: Can't 
+enter SSH password. http://pentestmonkey.net/blog/ssh-with-no-tty/</p>
+
+<p>Ronald, the issue stems from the fact you are not getting a bash (or 
+tcsh) shell, and are therefore not getting any of the typical variables.
+ This was a problem for me too, and I had to create a file that 
+"exports" the variables, and after I log in, I include a "source" 
+command before I issue any statements. It's kinda a pain, but that's the
+ way it has to be. You may want to check the FAQ I'm posting in the next
+ reply.</p>
+
+<p>Aurelien, Thanks for the rating, I'm still learning the limitations 
+myself. They are basically the same limitations of ganymed-ssh2. You 
+should check out the FAQ at 
+http://www.cleondris.ch/opensource/ssh2/FAQ.html</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ronald, the issue stems from the 
+fact you are not getting a bash (or tcsh) shell, and are therefore not 
+getting any of the typical variables. This was a problem for me too, and
+ I had to create a file that "exports" the variables, and after I log 
+in, I include a "source" command before I issue any statements. It's 
+kinda a pain, but that's the way it has to be. You may want to check the
+ FAQ I'm posting in the next reply.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40441">Aurelien Queffurust</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice tool. Tested successfully with R2010a after adding ganymed-ssh2-build251beta1.jar in my java path .
+<br>Once I entered the hostname , login and password of the Linux remote
+ machine using sshfrommatlab.m I was able to run basic commands like 
+"ls" or "pwd" from my MATLAB windows machine .</p>
+
+<p>Now I am trying to find a way to run a standalone ( GUI executable 
+created with MATLAB Compiler) remotely via ssh . Could you tell me  what
+ are the exact limitations of sshfrommatlabissue.m?</p>
+
+<p>Thanks !</p>
+
+<p>Aurélien</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103882">Ronald</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This works great for running defaul
+ commands, but I noticed that I am missing all of my custom environment 
+variables when creating an SSH session from MATLAB. Do you know why some
+ of the environment variables are being dropped?</p>
+
+<p>Note: I am able to use PuTTY on the same machine and get the full list of environment variables. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102422">Min Kim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>FYI, I played around a little bit, and figured out that whenever I try to ssh to another remote, I get stderr that says </p>
+
+<p>Pseudo-terminal will not be allocated because stdin is not a terminal.
+<br>Permission denied, please try again. 
+<br>Permission denied (publickey,password,keyboard-interactive).
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102422">Min Kim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I really appreciate the version, and I did learn a lot about using the java package to control SSH. Again, thank you very much, </p>
+
+<p>I have another question though. I've been trying to use this file to 
+connect to a host, and then trying to ssh into another remote (only 
+connected to the aforementioned host). The problem is that whenever the 
+server's response is a question (e.g. RSA key question, or password), 
+the sshfrommatlabissue does not grab the question (it's just an empty 
+string), and there's no way to issue an answer. </p>
+
+<p>So  for example, if I connect to a server using "sshfrommatlab", and then use "sshfrommatlabissue(conn, 'ssh 155.226.32.136')"
+<br>, I only get back an empty string as result, and I can't answer the 
+password challenge. Would there be any way to accomplish this? </p>
+
+<p>(I've looked at the code, and it seems like "sshfrommatlabissue" 
+always close session...maybe that's the reason?  I would really 
+appreciate any help! ) 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102422">Min Kim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a million!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100727">David Freedman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, I removed the hidden MacOS 
+files. Also to transfer files back locally, I added the SCP function. I 
+use this to transfer files back locally.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102422">Min Kim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much! Very useful. </p>
+
+<p>One question: is it possible for sftpfrommatlab.m to download file 
+(remote to local) instead of uploading (local to remote)? So far I could
+ not do this. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34787">Samuel Hurley</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Looks like this could be very useful, especially for initiating parallel processing jobs on a cluster of servers.</p>
+
+<p>One quick suggestion, try to be careful to not include the MaxOS 
+hidden files (__MACOSX, .DS_Store, etc) in the zip file.  Kinda annoying
+ to go thru and clean all of those out.  Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">29 Jun 2010</td>
+                  <td><p>Added SFTP function. Also removed extraneous files. </p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Jul 2010</td>
+                  <td><p>Added SCP functionality</p></td>
+                </tr>
+                <tr>
+                  <td class="date">01 Jun 2011</td>
+                  <td><p>Now supports public key authentication. Also 
+one can send commands without waiting for a response. Plus, an updated 
+sshfrommatlabinstall.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">02 Jun 2011</td>
+                  <td><p>File updated.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 Aug 2013</td>
+                  <td><p>Includes Ganymed library (no longer accessible from (<a href="http://www.cleondris.ch/">http://www.cleondris.ch/</a>)</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415912997316&amp;cv=7&amp;fst=1415912997316&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/27999-ssh-from-matlab--updated--+-sftp-scp&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D93%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>
