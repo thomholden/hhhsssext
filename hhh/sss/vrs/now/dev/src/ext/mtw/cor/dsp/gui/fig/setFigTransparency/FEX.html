@@ -1,0 +1,829 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>setFigTransparency - set figure transparency / fading -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30583-setfigtransparency-set-figure-transparency-fading" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30583-setfigtransparency-set-figure-transparency-fading" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/30583-setfigtransparency-set-figure-transparency-fading?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=30583" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/30583-setfigtransparency-set-figure-transparency-fading" class="manifest_title">setFigTransparency - set figure transparency / fading</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/30583-setfigtransparency-set-figure-transparency-fading/content/setFigTransparency.m" class="function" title="Function">setFigTransparency(hFig, alph...</a>
+            <span class="description">setFigTransparency sets the transparency/opacity of a figure window
+</span>
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/30583-setfigtransparency-set-figure-transparency-fading/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              5.0
+              <span class="divider"> | </span>
+              <a href="#feedback">6 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">5 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 3.82 KB</span>
+          <span id="fileid">File ID: #30583</span>
+        </div>
+          <div id="thumbnail" style="padding-bottom: 3px;">
+            <a href="http://www.mathworks.com/matlabcentral/fx_files/30583/2/setFigTransparency.png" border="0"><img src="FEX_files/preview.jpg" alt="image thumbnail"></a>
+          </div>
+
+        <div id="details">
+          <h1>setFigTransparency - set figure transparency / fading</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">01 Mar 2011 </span>
+              <span id="date_updated">(Updated 13 Oct 2011)</span>
+          </p>
+
+
+
+          <p id="summary">setFigTransparency sets the transparency/opacity of a figure window, with optional fading effect</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F30583-setfigtransparency-set-figure-transparency-fading&amp;watching=30583" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Syntax:</p>
+
+<p>&nbsp;&nbsp;&nbsp;oldAlpha = setFigTransparency(hFig, alpha, fadeDuration, blockingFlag)
+<br>&nbsp;</p>
+
+<p>Description:
+<br>&nbsp;&nbsp;&nbsp;setFigTransparency sets the figure hFig's 
+transparency value. The entire figure window, including all internal 
+menus, toolbars and components, is made transparent according to the 
+alpha value.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;oldAlpha = setFigTransparency(...) returns the old
+ transparency value of the specified figure, prior to its modification.</p>
+
+<p>&nbsp;&nbsp;&nbsp;This submission is based on an original idea implemented by Malcolm Lidierth in his MUtilities submission: <a href="http://www.mathworks.com/matlabcentral/fileexchange/28326-mutilities">http://www.mathworks.com/matlabcentral/fileexchange/28326-mutilities</a></p>
+
+<p>Input parameters:  (all parameters are optional)
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hFig (default=gcf) - Handle(s) of the 
+modified figure(s). If component handle(s) is/are specified, the 
+containing figure(s) will be inferred and used.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha (default=0.5) - Transparency 
+value, between 0.0 (=fully transparent) and 1.0 (=fully opaque). Note 
+that all Matlab figure windows are created opaque. alpha&lt;0 indicates 
+that alpha value should not be modified.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fadeDuration (default=0) - Number of 
+seconds for fade-in/fade-out effect. Note: default value of 0 means 
+immediately (no fading)
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blockingFlag - (default=true) Whether 
+or not the function should wait for the fade-in/fade-out effect to 
+complete before returning
+<br>&nbsp;</p>
+
+<p>Examples:
+<br>&nbsp;&nbsp;&nbsp;oldAlpha = setFigTransparency(hFig,-1);   % get hFig's current alpha
+<br>&nbsp;&nbsp;&nbsp;oldAlpha = setFigTransparency(hFig);      % set hFig's alpha to 0.5 (semi-transparent)
+<br>&nbsp;&nbsp;&nbsp;oldAlpha = setFigTransparency(hFig,0.7);  % set hFig's alpha to 0.7
+<br>&nbsp;&nbsp;&nbsp;oldAlpha = setFigTransparency([hFig1,hFig2],0.7);  % set transparency for several figures
+<br>&nbsp;&nbsp;&nbsp;oldAlpha = setFigTransparency(hFig,0.3,1.5,false); % non-blocking fade over 1.5 secs</p>
+
+<p>Bugs and suggestions:
+<br>&nbsp;&nbsp;&nbsp;Please send to Yair Altman (altmany at gmail dot com)
+<br>&nbsp;</p>
+
+<p>Warning:
+<br>&nbsp;&nbsp;&nbsp;This code heavily relies on undocumented and 
+unsupported Matlab functionality. It works on Matlab 7.9 (R2009b) and 
+higher, but use at your own risk!</p></td>
+          </tr>
+  
+            <tr>
+              <td class="label">Acknowledgements</td>
+              <td>
+                <br>
+                  This submission has inspired the following:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/30666">blurFigure - blurs and prevents interaction on a figure window</a>, <a href="http://www.mathworks.com/matlabcentral/fileexchange/31437">WindowAPI</a>
+              </td>
+            </tr>
+        
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.11 (R2010b)
+            </td>
+          </tr>
+  
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Matlab 7.9 (R2009b) and higher, or a retrofit of JRE 1.6.0_10 and higher in any previous Matlab release.</td>
+            </tr>
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui%22" rel="nofollow">gui</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22undocumented%22" rel="nofollow">undocumented</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/30583-setfigtransparency-set-figure-transparency-fading">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(11)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">17 Oct 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/263080">Alex</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Oct 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/263080">Alex</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">21 Sep 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@Razvan - setFigTansparency cannot 
+work on an invisible figure for technical reasons. However, you can 
+create a *Visible* figure with initial position outside the screen 
+boundaries, which is effectively hidden. This works nicely (at least for
+ non-docked figures):</p>
+
+<p>hFig = figure('Visible', 'off'); 
+<br>pos = get(hFig,'Position');
+<br>set(hFig, 'Position',[-100,-100,1,1], 'Visible','on');
+<br>setFigTransparency(hFig, 0);
+<br>set(hFig, 'Position',pos);
+<br>setFigTransparency(hFig, 1,1);</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">20 Sep 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/137143">Razvan</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This function is very nice!</p>
+
+<p>I couldn't figure out though how I can fade in a figure. I tried to 
+set the 'visible' property to 'off' first then set alpha to 0, but this 
+doesn't work.</p>
+
+<p>The only option that I found is something like this:</p>
+
+<p>hFig = figure('Visible', 'off');
+<br>set(hFig, 'Visible', 'on')
+<br>setFigTransparency(hFig, 0);
+<br>figure(hFig)
+<br>setFigTransparency(hFig, 1, 1);</p>
+
+<p>but it doesn't look nice because the figure pops up before it disappears and fades in again...
+<br>Any advise?</p>
+
+<p>Thanks,
+<br>Razvan</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">20 Sep 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/137143">Razvan</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Oct 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/83838">Jveer</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank you for the fix.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 Oct 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@Jveer - I uploaded a fix for R2011b.
+ It should be available here shortly. Note that your method of 
+attracting my attention is entirely unprofessional. </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">26 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/83838">Jveer</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hello</p>
+
+<p>This doesn't work with R2011b</p>
+
+<p>I get the following error:</p>
+
+<p>Error using setFigTransparency&gt;getJFrame (line 194)
+<br>Cannot retrieve the Java Frame reference for figure 174.0021</p>
+
+<p>Error in setFigTransparency (line 105)
+<br>      jff = getJFrame(hFigCell{figIdx});</p>
+
+<p>Error in MPMSimPre&gt;TF_Callback (line 1536)
+<br>    setFigTransparency(obj.figure1,1-obj.TF.getValue/100);</p>
+
+<p>So I re-rate.</p>
+
+<p>Please advise.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="1">
+            <div style="width:20%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/15233">Jan Simon</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>After I installed JRE 1.6.0_24, the 
+UITREE objects of Matlab 2009a cannot be reliably resized by "set(TreeH,
+ 'Position', Pos)": Sometimes it works, sometimes the update appears 
+after some seconds only, or not at all. I'm absolutely sure, that Yair 
+could find a solution, but this is actually not his job. It would be 
+nice if TMW offers a long-term supported MATLAB release which accepts 
+updated JREs seamingless.
+<br>Now I'm using the Windows-API to enable alpha-blending. This has the
+ additional feature, that I can create a full size window (not just 
+maximized, but all window borders outside the screen) and a stencil 
+color to let the background disappear. This allows to create plots 
+transparently "in" the command window. Ugly. Does this work with the 
+Java methods also?
+<br>I rate this with 5 stars, but I will not use it with a retrofit JRE.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Note: a retrofit of JRE means 
+installing JRE 1.6.0_10 (also called "Java 6 update 10"), or any later 
+version (e.g., the latest available version today is 1.6 update 24). The
+ JRE can be downloaded from http://java.com/en/download/manual.jsp  and 
+you can configure Matlab to use it according to the instructions in 
+http://www.mathworks.com/support/solutions/en/data/1-1812J/</p>
+
+<p>All of this is only necessary in Matlab releases R2009a (7.8) and 
+earlier, which pre-bundle an earlier JRE version that does not support 
+window frame transparency/opacity used in this submission.</p>
+
+<p>Matlab R2009b (7.9) and onward, at least on Microsoft Windows, 
+pre-bundle a JRE version that does support transparency/opacity and so 
+do not require a retrofit.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/83838">Jveer</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Awesome!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/30583-setfigtransparency-set-figure-transparency-fading">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr class="title">
+              <th colspan="2"><span class="heading">Updates</span></th>
+            </tr>
+              <tr>
+                <td class="date">13 Oct 2011</td>
+                <td><p>Fix for R2011b</p></td>
+              </tr>
+          </tbody></table>
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui%22" rel="nofollow">gui</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>02 Mar 2011 11:19:51</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22undocumented%22" rel="nofollow">undocumented</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>02 Mar 2011 11:19:51</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>02 Mar 2011 11:19:51</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

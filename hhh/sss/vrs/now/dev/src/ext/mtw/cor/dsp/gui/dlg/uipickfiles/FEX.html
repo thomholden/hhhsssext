@@ -1,0 +1,2010 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>uipickfiles: uigetfile on steroids -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F10867-uipickfiles-uigetfile-on-steroids" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F10867-uipickfiles-uigetfile-on-steroids" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/10867-uipickfiles-uigetfile-on-steroids?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=10867" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/10867-uipickfiles-uigetfile-on-steroids" class="manifest_title">uipickfiles: uigetfile on steroids</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10867-uipickfiles-uigetfile-on-steroids/content/uipickfiles.m" class="function" title="Function">uipickfiles(varargin)
+</a>
+            <span class="description">uipickfiles: GUI program to select files and/or folders.
+</span>
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/10867-uipickfiles-uigetfile-on-steroids/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:98.919%;">
+                <p>4.94595</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              4.9
+              <span class="divider"> | </span>
+              <a href="#feedback">39 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">96 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 12.1 KB</span>
+          <span id="fileid">File ID: #10867</span>
+        </div>
+          <div id="thumbnail" style="padding-bottom: 3px;">
+            <a href="http://www.mathworks.com/matlabcentral/fx_files/10867/14/uipickfiles_win.png" border="0"><img src="FEX_files/preview.jpg" alt="image thumbnail"></a>
+          </div>
+
+        <div id="details">
+          <h1>uipickfiles: uigetfile on steroids</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">25 Apr 2006 </span>
+              <span id="date_updated">(Updated 02 Mar 2012)</span>
+          </p>
+
+
+
+          <p id="summary">Many-featured, platform independent file and directory picker.</p>
+          
+            <div id="editorsnote">
+              <h3>Editor's Notes:</h3>
+              <p></p><p>This file was selected as MATLAB Central <a href="http://blogs.mathworks.com/pick/2010/02/19/file-and-folder-selection-gui/">Pick of the Week</a></p><p></p>
+            </div>
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F10867-uipickfiles-uigetfile-on-steroids&amp;watching=10867" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This is a GUI application that allows multiple files 
+or directories to be selected and allows you to manage the list (remove 
+files, reorder, etc.) before returning.  It has basic filtering as well 
+as regular expression filtering and navigation of the file system is 
+easy.  The output is configurable (cell, struct or char arrays).  It is 
+written entirely in M and so is platform independent.</p></td>
+          </tr>
+  
+            <tr>
+              <td class="label">Acknowledgements</td>
+              <td>
+                <br>
+                  This submission has inspired the following:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/27659">PIVlab - time-resolved particle image velocimetry (PIV) tool</a>
+              </td>
+            </tr>
+        
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.8 (R2009a)
+            </td>
+          </tr>
+  
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Tested on Windows XP, Mac OS X and Ubuntu Linux.</td>
+            </tr>
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example(8)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui+tools%22" rel="nofollow">gui tools</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22multiple+file+selection%22" rel="nofollow">multiple file selection</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22pick+of+the+week%22" rel="nofollow">pick of the week</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22potw%22" rel="nofollow">potw(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22uigetfile+uigetfiles+files+directory%22" rel="nofollow">uigetfile uigetfiles files directory</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/10867-uipickfiles-uigetfile-on-steroids">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(75)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">20 Jan 2013</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Jesse, thanks for the very good suggestion.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">05 Dec 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/34051">Jesse Hopkins</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks for this useful tool!  One 
+quick note, around line 205 you use exist(..,'file') and 
+exist(..,'dir').  I've found these to be problematic, as exist will 
+return true if it finds the input anywhere on the matlab path.  </p>
+
+<p>This actually did cause an error in my case, when I passed in a 
+directory called "Workspace".  The directory had been deleted, however 
+exist('Workspace','file') returns true due to workspace.m in the matlab 
+install directory.  The subsequent call do dir returned an empty matrix,
+ causing an assignment error.  </p>
+
+<p>I've found the following functions more reliable for performing isdir/isfile type operations:
+<br>function x = myisdir(str)
+<br>x = false;
+<br>    tmp = dir(str);
+<br>    if length(tmp) &gt; 1 % if str is a dir, then tmp will always contain at least '.' and '..'
+<br>        x = true;
+<br>    end</p>
+
+<p>function x = isfile(str)
+<br>	x = false;
+<br>tmp = dir(str);
+<br>	
+<br>	if ~isempty(tmp) &amp;&amp; length(tmp) == 1
+<br>		if ~tmp.isdir
+<br>			x = true;
+<br>		end
+<br>	end
+</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">01 Oct 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/202770">Lilja</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">13 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/60262">jvc</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>A great tool!  I use this all the time and just finally got around to rating it.  Thanks for sharing this.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">18 Jun 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/46440">Alejandro Arrizabalaga</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Great file!
+<br>A great addition would be to make it so that it could also pick files remotely using FTP.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">18 Jun 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/46440">Alejandro Arrizabalaga</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">21 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>iman, this question belongs on the newsgroup, but I will answer anyway.</p>
+
+<p>Your error is that n is not an image, but just a string containing the image file name.  You must load the image first:</p>
+
+<p>[filename,folder] = uigetfile(...);
+<br>im = imread(fullfile(folder,filename));
+<br>axes(handles.axes1)
+<br>imshow(im)
+<br>imwrite(im,'myimage.jpg')</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">21 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/248537">iman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I use uigetfile to upload image from 
+file in matlab GUI. I don't got any problem with this but when i try to 
+save the image i got error, plez can someone help me.</p>
+
+<p>this is my code</p>
+
+<p>n=uigetfile({'*.jpg;*.tif;*.png;*.gif','All Image Files';... 
+'*.*','All Files' },'Testing',...'C:\Users\norfadhilah\Application 
+Data\Desktop\Testing');
+<br>axes(handles.axes1)
+<br>imshow(n)</p>
+
+<p>imwrite (n,'myimage.jpg')</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/80137">Matthew Arthington</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Doug and Andrew,</p>
+
+<p>An idea: If displaying information on date and size was very 
+important, perhaps you could use a colormap to shade the background of 
+each file according to its size and/or date, and then only a scale (log 
+scale for size?) would have to be included in the figure window.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">04 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/210491">Andrew</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks. As long as the sorting works 
+then I'm happy with it. It just wasn't clear that was happening since 
+the values weren't displayed.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Andrew,</p>
+
+<p>No, they aren't supposed to be displayed.  I realize that it's not 
+ideal, but there are two problems with displaying them.  (1) There's not
+ enough room.  Remember, we have to display both the list of files on 
+the left and the chosen files on the right.  To display additional 
+information would simply make the figure too wide.  (2) It would be 
+difficult (maybe impossible) to get multiple columns to line up without 
+using a monospaced font.  A monospaced font would take up even more room
+ and just exacerbate problem 1.</p>
+
+<p>Those are my reasons, but I will think about your request and if I 
+can come up with a way to do it without sacrificing appearance or 
+functionality I'm not opposed.</p>
+
+<p>Doug
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">04 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/210491">Andrew</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks for the quick updates. One 
+other request or possible bug fix, in the window it gives options to 
+sort by Date and Size, but date and size aren't displayed for any of the
+ files. Are they supposed to be? I'm running it in Matlab 2012a on a 
+Macintosh. Thx.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Mar 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Chris, I uploaded a new version that deals with the "My Documents" issue.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">29 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Chris,</p>
+
+<p>I hadn't noticed this before, but I see what you mean.  I think I 
+know a way to check if the directory is real or a figment of Window's 
+imagination (like "My Documents" is) so I should be able to drop "My 
+Documents" from the list automatically.  Note that "Documents" also 
+appears so if you just select that all is well, but I agree that if "My 
+Documents" doesn't represent a valid choice it shouldn't appear at all. 
+ I will work on it and update uipickfiles soon.  Thanks for the report.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">29 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/227200">Chris</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hey Doug,</p>
+
+<p>I am using this function with Windows 7. When you navigate to your 
+'My Documents' folder, nothing is displayed because the actual folder 
+name in the directory path is 'Documents'. If I edit the 'My ' out of 
+the path displayed then the directory contents appear. Is there a place 
+in the code where i could search the new directory path for 'My 
+Documents' in order to replace it with 'Documents'? Other directories 
+such as 'My Received Files' do don't exhibit the same error.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">05 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Bryan, that's interesting.  Back when
+ I first wrote this function, that was not an error, but at some point 
+TMW changed textscan and I didn't notice.  Anyway, I just submitted a 
+fix.  Thanks for the report!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/44027">Bryan</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Douglas, great function. I noticed a 
+bug while using on a PC. When I back out all the way to My Computer and 
+open a new drive. I get an error at line 1299 for calling textscan with 
+the first input empty.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Andrew, I'm glad to oblige.  I just submitted a version that cancels with a press of the escape key.  Thanks for the suggestion.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">22 Dec 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/210491">Andrew</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Love the program. Only thing I'd like
+ is if you press escape on the keyboard it be the equivalent of clicking
+ the cancel button (it's the only thing uigetfile has up on this one). 
+Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I just uploaded a new version that is resizable and remembers the size and position so you can choose any size you want.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">03 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68961">Lube F</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Excellent function. One (stupid) 
+question: I've got long file names and would like the gui window to open
+ maximized so that I can see them fully. Is this possible? Could 
+http://www.mathworks.com/matlabcentral/fileexchange/3812-maximize-window/content/Maximize.m
+ be incorporated if necessary?
+<br>Cheers.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">14 Jun 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/81542">Nicolas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks a lot ! Very time saving for me</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">15 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Horia, you must have another file 
+called uipickfiles.m because that line of code simply does not exist in 
+my function.  Run 'which uipickfiles -all' to help sort this out.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">15 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/142733">Horia</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I re-downloaded the file.
+<br>When executing the function, I get:</p>
+
+<p>Images=uipickfiles('num',[],'out','cell');
+<br>??? Error using ==&gt; setappdata
+<br>Invalid object handle</p>
+
+<p>Error in ==&gt; uipickfiles at 382
+<br>setappdata(hgui, 'sequencer', 1); %default style</p>
+
+<p>Sorry, but I can't figure why this happens. </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">14 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Horia, try downloading it again 
+because I just downloaded it myself to be sure and setappdata is not in 
+there.  The downloaded uipickfiles.m is exactly as it should be.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">14 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/142733">Horia</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>It appears in the downloaded file.
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">09 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Horia, I don't know what function you have because I don't use setappdata in my function at all.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/142733">Horia</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>On R2008a,I get the message:
+<br>??? Error using ==&gt; setappdata
+<br>Invalid object handle</p>
+
+<p>Error in ==&gt; uipickfiles at 382
+<br>setappdata(hgui, 'sequencer', 1); %default style
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">10 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/129035">Sundeep</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>That's an excellent tool. All it's really missing is cut/copy/paste functionality. Sounds feasible too.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">20 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Md. Niazul,</p>
+
+<p>Try replacing the calls to sort in lines 1025-1037 with sort_nat.  It might do what you want.  It is available from</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/10959</p>
+
+<p>Doug</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">20 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/98263">Md. Niazul</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I am using this function uipickfiles.
+ But my problem is, GUI of this function does not show the file names in
+ the same order ,as  they are  in the folder.
+<br>In the folder my files look like:</p>
+
+<p>spectrum1_300_315.60039
+<br>spectrum1_315.60039_331.20078
+<br>..............................
+<br>................................
+<br>spectrum1_1002.0175_1017.6179...</p>
+
+<p>.................................
+<br>but the GUI of this function is showing like this:
+<br>spectrum1_1002.0175_1017.6179
+<br>...............................
+<br>.............................
+<br>spectrum1_300_315.60039
+<br>spectrum1_315.60039_331.20078</p>
+
+<p>how can i fix the problem ..Could anyone help please.??</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">15 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/116124">Zhijiang Wang</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Good Job! Good man!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">28 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/112446">sjye</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">30 Sep 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Asaad,</p>
+
+<p>Are you using my function, uipickfiles, or the built-in function 
+uigetfile?  If mine, please let me know what arguments you are using.</p>
+
+<p>Doug</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">30 Sep 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/64075">Asaad Said</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Douglas,</p>
+
+<p>I'm having a problem reading many files (&gt;780 files) using 
+uigetfile function. the function works fine if I read less than 780 
+files. I'm getting the following error message 
+<br>"File not found. Please verify the correct file name was given"</p>
+
+<p>I looked at this error online, but didn't find any solution online on Mathworks website.
+<br>I appreciate if you can help or provide a link for this issue</p>
+
+<p>thanks,
+<br>Asaad</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">04 Aug 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/80137">Matthew Arthington</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This is something TMW should have made a long time ago. </p>
+
+<p>Thank you for sharing it, it works very well.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">28 Jul 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/103727">Gergely</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>That was exactly what I was looking for. Thank You!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Jul 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/77954">Igor</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very good...</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">28 May 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/98199">James</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Apr 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/40064">Eric</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks very much.  This is a great tool that I've incorporated into my GUIs when I need to select a large number of files.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">25 Mar 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/80488">Debanjan Goswami</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Mar 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/78035">gozer</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>
+I should mention one other thing.  The directories and files I am 
+accessing are on a network drive...not sure if that makes a difference. 
+(the network drive is specified in the filter property value)</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Mar 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>gozer, I'm not sure what you mean. 
+You should be able to navigate around the file system and add files to 
+the Selected Files list from multiple directories. When you say 'pick 
+list', which one do you mean, the list on the left or the one on the 
+right? The one on the left should show the contents of one directory at a
+ time while the list on the right should show every file you have added 
+to it until you press 'Done'. Please clarify.  - Doug</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Mar 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/78035">gozer</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Would like to add my kudos to your work.  excellent job....with one question;
+<br>I have a need to be able to select files for various directories.  
+But it seems once a select files from one directory, then try to 
+level-up to another it does not refresh the 'pick list'.  Am I doing 
+something wrong?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31547">W Thielicke</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hey cool, thank you very much!!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">05 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I just fixed it and uploaded the new version -- it should appear soon. Thanks for the bug report!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31547">W Thielicke</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very nice, I especially like the 
+possibility to sort the filenames manually in the GUI. But when I set 
+'output' to 'struct' (that is what I need for my application), it 
+doesn't care anymore about manual sorting. Is there a way to fix this 
+problem?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">06 Jan 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/57011">Andrey Rubshtein</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Great! No Guide, does the job, very useful.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">03 Jan 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/33834">Amjad Elshenawy</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very useful</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">07 Nov 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/55156">Weimin</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">14 Sep 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/67935">Bernd</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This would have saved me a lot of 
+programming, well it will even save some time in future....perfekt, 
+classic 5 stars for SUPERUSEFUL</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">11 Sep 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/68674">Nathan Greco</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very useful, especially when loading in multiple files at one with a regexp filter. Thanks a lot!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">25 Jun 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>J W, what platform are you using and 
+what kinds of files are those?  Do the hidden files somehow pair up with
+ non-hidden versions so you have both ._abc.txt and abc.txt?  It would 
+be easy to add a feature so that hidden files are not displayed in 
+uipickfiles as long as we can identify them.  Tell me more.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">25 Jun 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/61681">J W</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Actually, I just found a workaround. 
+At every designation of 'filenames' I follow it with a series of loops 
+testing each filename to see if it is preceded by '._' My supplement to 
+the code is working well if anyone needs to have hidden files removed 
+from file lists.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">24 Jun 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/61681">J W</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Great File! One quick question though
+ - how might I go about removing hidden files from file lists? I notice 
+that when I have hidden files in the same directory as the images I am 
+trying to retrieve, hidden file versions with prefix '._' appear first 
+making file selection very non-intuitive. Any solutions?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">24 Jan 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Skip, you can double-click on a file 
+and it will be added to the list immediately.  That may be sufficient 
+for your purposes, but I will look into your suggestion.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Jan 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/43325">Skip</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very useful.  Thank you!</p>
+
+<p>Is it possible to have files added to the list in Ctrl+click order?  This would avoid the need to sort files after selecting.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Oct 2008</span></td>
+      <td>
+        <span class="author">
+          Rene Michels
+        </span>
+      </td>
+      <td><span class="comment"><p>Great Job,</p>
+
+<p>THX for sharing! It really helps me out!!
+<br>Greetings,
+<br>Rene</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">20 Aug 2008</span></td>
+      <td>
+        <span class="author">
+          Ben Bratton
+        </span>
+      </td>
+      <td><span class="comment"><p>Excellent code. Very helpful for myself and colleagues. We work with image processing and this greatly simplifies our lives.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Aug 2008</span></td>
+      <td>
+        <span class="author">
+          Thomas Ibbotson
+        </span>
+      </td>
+      <td><span class="comment"><p>This looks like just what I need. 
+However I was getting an error when I first tried to use it. It appears 
+that if you specify a filter which returns no files, there is an error:</p>
+
+<p>??? Error using ==&gt; vertcat
+<br>CAT arguments are not consistent in structure field number.</p>
+
+<p>Error in ==&gt; uipickfiles&gt;filtered_dir at 762
+<br>		d = [ddot1;ddot2;dfiles(index1);ddir(index2)];</p>
+
+<p>Error in ==&gt; uipickfiles at 164
+<br>fdir = filtered_dir(full_filter,re_filter);</p>
+
+<p>I fixed this by adding these lines:</p>
+
+<p>762     if ~isempty(dfiles)
+<br>763         d = [ddot1;ddot2;dfiles(index1);ddir(index2)];
+<br>764     else
+<br>765         d = [ddot1;ddot2;ddir(index2)];
+<br>766     end</p>
+
+<p>It might not be the best way to do it, but it works for me.</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">28 Mar 2008</span></td>
+      <td>
+        <span class="author">
+          Joe Spernyak
+        </span>
+      </td>
+      <td><span class="comment"><p>Great for Queue'ing up lots of files/datasets for overnite processing.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">04 Feb 2008</span></td>
+      <td>
+        <span class="author">
+          Jeff Meganck
+        </span>
+      </td>
+      <td><span class="comment"><p>Incredibly useful, very well written 
+program. I have incorporated this program into almost all of my own 
+scripts. I just upgraded to R2007b(7.5.0) and started to get the 
+following problem:</p>
+
+<p>??? Subscripted assignment between dissimilar structures.</p>
+
+<p>Error in ==&gt; uipickfiles&gt;add at 353
+<br>	dir_picks(end + 1) = dir_pick;</p>
+
+<p>??? Error using ==&gt; waitfor
+<br>Error while evaluating uicontrol Callback</p>
+
+<p>The fix was easy. Add 'datenum',[] at the end of line 171 so that it reads:
+<br>dir_picks = struct('name',{},'date','','bytes',[],'isdir',[],'datenum',[]);</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">06 Jul 2007</span></td>
+      <td>
+        <span class="author">
+          B. Andre Weisntock
+        </span>
+      </td>
+      <td><span class="comment"><p>I needed an intuitive way for a 
+non-MatLab user to load multiple directories into a MatLab stand-alone 
+application and this product was EXACTLY what was needed. Perfect. Many 
+thanks Doug!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">11 Jun 2007</span></td>
+      <td>
+        <span class="author">
+          Oleksandr (Alex) Dzyubak
+        </span>
+      </td>
+      <td><span class="comment"><p>I am working on image processing and 
+for me that is usual practice to have more than 100 images in a set. The
+ native MATLAB utility uigetfile does not support that at the moment.
+<br>In fact, uipickfiles DOES. Which is more, it works in Linux and 
+Windows and for R2006b and R2007a. Thanks Douglas!!! Nice product!</p>
+
+<p>Alex</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">18 May 2007</span></td>
+      <td>
+        <span class="author">
+          Elakkat D
+        </span>
+      </td>
+      <td><span class="comment"><p>reallay useful tool</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">11 Apr 2007</span></td>
+      <td>
+        <span class="author">
+          Douglas Schwarz
+        </span>
+      </td>
+      <td><span class="comment"><p>Patrick, yes it could be done.  Email me and we'll discuss it. -- Doug</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">10 Apr 2007</span></td>
+      <td>
+        <span class="author">
+          Patrick Naulleau
+        </span>
+      </td>
+      <td><span class="comment"><p>Any chance of getting a non-nested function version of this allowing it to work in earlier versions of Matlab?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">21 Mar 2007</span></td>
+      <td>
+        <span class="author">
+          Chris K
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank you for updating it! I am thrilled to be able use it!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">20 Mar 2007</span></td>
+      <td>
+        <span class="author">
+          Douglas Schwarz
+        </span>
+      </td>
+      <td><span class="comment"><p>TMW changed the struct returned by 
+dir in R2007a.  I have updated uipickfiles accordingly.  (It will still 
+work with older versions of MATLAB.)  Thanks for the report.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Mar 2007</span></td>
+      <td>
+        <span class="author">
+          Chris K
+        </span>
+      </td>
+      <td><span class="comment"><p>The interface looks great, but I can't use it because of the following error and others.</p>
+
+<p>??? Subscripted assignment between dissimilar structures.</p>
+
+<p>Error in ==&gt; uipickfiles&gt;add at 353
+<br>				dir_picks(end + 1) = dir_pick;</p>
+
+<p>??? Error using ==&gt; waitfor
+<br>Error while evaluating uicontrol Callback</p>
+
+<p>I am running:
+<br>MATLAB Version 7.4.0.287 (R2007a) on Mac OS X
+</p></span></td>
+      <td width="80">
+          <div class="starrating" title="2">
+            <div style="width:40%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">17 Feb 2007</span></td>
+      <td>
+        <span class="author">
+          Oleksnadr Dzyubak
+        </span>
+      </td>
+      <td><span class="comment"><p>Just Great!!!
+<br>I work on Linux where uigetfile is buggy.
+<br>The "uipickfiles" is an excellent workarround.
+<br>Many thanks!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">24 Jul 2006</span></td>
+      <td>
+        <span class="author">
+          Johann Boleininger
+        </span>
+      </td>
+      <td><span class="comment"><p>Very useful, many thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">10 Jul 2006</span></td>
+      <td>
+        <span class="author">
+          Lennaert Klerk
+        </span>
+      </td>
+      <td><span class="comment"><p>Great!! This saved me so much time and is going to be used a lot by me and my colleagues....</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">15 Jun 2006</span></td>
+      <td>
+        <span class="author">
+          Laszlo Totthfalusi
+        </span>
+      </td>
+      <td><span class="comment"><p>Smashing, cool</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">17 May 2006</span></td>
+      <td>
+        <span class="author">
+          Scott Miller
+        </span>
+      </td>
+      <td><span class="comment"><p>Sweet.  This saves me a lot of time; I
+ was going to have to write one of these myself.  I like that it is 
+written completely in m script; there is really no point in writting 
+such an interface as a dll if you don't have to, and this makes is easy 
+to customize.  It also doesn't seem to to have that "where's my dialog 
+box?" effect of uigetfiles, (NOT uigetfile!), where occasionally, 
+randomly, the dialog box will "open" with the window closed on startup. 
+ My only complaint as a windows user is uipickfiles has that funny UNIX 
+smell to the UI (e.g., "..\" instead of an up arrow, files are sorted by
+ case and then alphabetically instead of alphabetically), but hey, you 
+can't have everything, and the script is right there if you want to 
+change something.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/10867-uipickfiles-uigetfile-on-steroids">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr class="title">
+              <th colspan="2"><span class="heading">Updates</span></th>
+            </tr>
+              <tr>
+                <td class="date">20 Mar 2007</td>
+                <td><p>Updated to work with R2007a.</p></td>
+              </tr>
+              <tr>
+                <td class="date">05 Feb 2010</td>
+                <td><p>Fixed bug identified by W Thielicke.</p></td>
+              </tr>
+              <tr>
+                <td class="date">17 Feb 2010</td>
+                <td><p>Updated the user interface, appearance, documentation and internal comments.</p></td>
+              </tr>
+              <tr>
+                <td class="date">24 Mar 2010</td>
+                <td><p>(Windows only) Now works correctly with UNC-named resources (e.g., \\machine\share).</p></td>
+              </tr>
+              <tr>
+                <td class="date">09 Aug 2010</td>
+                <td><p>Minor interface changes -- backspace will go up 
+one directory, control-A (command-A on the Mac) will select all as 
+before, but won't cause menu bar to appear.</p></td>
+              </tr>
+              <tr>
+                <td class="date">17 Oct 2010</td>
+                <td><p>Recent Folders list (right-click path box) is now
+ sorted in chronological order and is persistent between calls (via a 
+preferences setting).  Also, ctrl-F will select all files (leaving 
+folders unselected).</p></td>
+              </tr>
+              <tr>
+                <td class="date">07 Mar 2011</td>
+                <td><p>Added ability to recall previous selections.  Fixed a few minor bugs.</p></td>
+              </tr>
+              <tr>
+                <td class="date">08 Mar 2011</td>
+                <td><p>Fixed bug in yesterday's version in recalling folders.</p></td>
+              </tr>
+              <tr>
+                <td class="date">21 Mar 2011</td>
+                <td><p>Added ability to sort file list by name, date or size.</p></td>
+              </tr>
+              <tr>
+                <td class="date">09 Aug 2011</td>
+                <td><p>GUI is now resizable and remembers the size and position last used.</p></td>
+              </tr>
+              <tr>
+                <td class="date">03 Jan 2012</td>
+                <td><p>Added use of escape key as equivalent to Cancel button.</p></td>
+              </tr>
+              <tr>
+                <td class="date">05 Jan 2012</td>
+                <td><p>Fixed bug identified by Bryan.</p></td>
+              </tr>
+              <tr>
+                <td class="date">02 Mar 2012</td>
+                <td><p>Addressed problem mentioned by Chris.  Now, on 
+Windows, an attempt to open "My Documents" will be silently converted to
+ an open of "Documents" instead if "My Documents" doesn't really exist.</p></td>
+              </tr>
+          </tbody></table>
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui+tools%22" rel="nofollow">gui tools</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a></td>
+        <td>22 Oct 2008 08:23:18</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a></td>
+        <td>22 Oct 2008 08:23:18</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22uigetfile+uigetfiles+files+directory%22" rel="nofollow">uigetfile uigetfiles files directory</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22680">Douglas Schwarz</a></td>
+        <td>22 Oct 2008 08:23:18</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22multiple+file+selection%22" rel="nofollow">multiple file selection</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/57011">Andrey Rubshtein</a></td>
+        <td>06 Jan 2010 11:35:32</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/85927">Tim</a></td>
+        <td>17 Feb 2010 11:00:13</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22potw%22" rel="nofollow">potw</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/51864">Shari Freedman</a></td>
+        <td>18 Feb 2010 12:03:59</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22pick+of+the+week%22" rel="nofollow">pick of the week</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/15007">Jiro Doke</a></td>
+        <td>11 Feb 2011 20:04:43</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/136076">anoop</a></td>
+        <td>26 Apr 2011 17:20:14</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/162495">Gopinath</a></td>
+        <td>22 Jul 2011 07:28:00</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/173602">Bram Roozendaal</a></td>
+        <td>07 Feb 2012 18:16:10</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/98669">Ergon</a></td>
+        <td>22 Feb 2012 11:57:17</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/202770">Lilja</a></td>
+        <td>01 Oct 2012 01:45:29</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22potw%22" rel="nofollow">potw</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/208307">Tom</a></td>
+        <td>15 Nov 2012 13:11:41</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22example%22" rel="nofollow">example</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/150011">Daniel</a></td>
+        <td>20 Dec 2012 03:03:19</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

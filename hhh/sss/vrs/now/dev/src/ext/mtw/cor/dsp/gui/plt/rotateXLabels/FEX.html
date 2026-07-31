@@ -1,0 +1,1895 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>rotateXLabels( ax, angle, varargin )
+ -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27812-rotatexlabels--ax--angle--varargin--" rel="canonical">
+<meta content="rotateXLabels( ax, angle, varargin )
+ - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27812-rotatexlabels--ax--angle--varargin--" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/58417/original.jpg" property="og:image"><meta content="Rotate x-tick labels to any angle, preserving font settings and coping with resize, zoom, pan etc" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27812-rotatexlabels--ax--angle--varargin--" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27812-rotatexlabels--ax--angle--varargin--" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/62839" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=27812" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/27812-rotatexlabels--ax--angle--varargin--" class="manifest_title">rotateXLabels( ax, angle, varargin )
+</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27812-rotatexlabels--ax--angle--varargin--/content/rotateXLabels.m" class="function" title="Function">rotateXLabels( ax, angle,...</a><span class="description">rotateXLabels: rotate any xticklabels
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/27812-rotatexlabels--ax--angle--varargin--/content/rotateXLabels.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:92.0%;">
+                <p>4.6</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.6</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">31</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">750 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 18.1 KB</span>
+          <span id="fileid">File ID: #27812</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/22757/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">rotateXLabels( ax, angle, varargin )
+</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      01 Jun 2010
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-10-08">08 Oct 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Rotate x-tick labels to any angle, preserving font settings and coping with resize, zoom, pan etc</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F27812-rotatexlabels--ax--angle--varargin--&amp;watching=27812" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>&lt;b&gt;NB: As of R2014b this functionality is built into MATLAB axes using the 'XTickLabelRotation' property.&lt;/b&gt;
+<br>This function rotates the x-tick labels on a plot. An arbitrary 
+angle can be specified for the text and the label justification adjusts 
+appropriately to ensure the labels lie below the ticks. The axes font 
+properties are preserved in the labels, which will update in response to
+ font changes. Changes to the axes limits are also handled.</p>
+
+<p>Main features:
+<br>* Arbitrary angle of rotation
+<br>* Justification adjusts appropriately for the specified angle
+<br>* Axes font property changes are reflected
+<br>* Labels move correctly when zooming and panning</p>
+
+<p>As with other functions that achieve the same result, this works by 
+replacing the xtick labels with text objects. Handles to the created 
+text objects are returned for you to tinker with.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/16804-rotate-xtick-labels-for-multi-axes">Rotate X Tick Labels For Multi Axes</a> inspired <i>this file.</i></p>
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/30151-shaded-correlation-table">Shaded Correlation Table</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/42744-machine-learning-with-matlab">Machine Learning With Matlab</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/45663-xyrotalabel-rotate-x-axis-and-y-axis-labels">X Yrotalabel   Rotate X Axis And Y Axis Labels</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.10 (R2010a)
+            </td>
+          </tr>
+
+            <tr>
+              <td class="label">MATLAB Search Path</td>
+              <td><pre class="path_list">/</pre></td>
+            </tr>
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27812-rotatexlabels--ax--angle--varargin--">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22plotting%22" rel="nofollow">plotting</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22xtick%22" rel="nofollow">xtick</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="27812" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/27812-rotatexlabels--ax--angle--varargin--" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27812-rotatexlabels--ax--angle--varargin--">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(62)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">24 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/307875">Filipe</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey Ben, awesome job with this one!
+ I was just in need of something like this. Just one detail... When I 
+run your code everything goes well except for the plot title which 
+lowers slightly. Any way of fixing this?</p>
+
+<p>Cheers,
+<br>Filipe Belga</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/289400">Sebastian D'Amico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ok I've found out the reason: removing the function repositionXLabel makes the labels to go outside the plot when zomming in.</p>
+
+<p>Cheers,</p>
+
+<p>Sebastian</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/289400">Sebastian D'Amico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ben,</p>
+
+<p>many thanks for your amazing script. I have one question for you: if I
+ profile your function the most of the execution time (about 66%) comes 
+from "repositionXLabel", ( in particular from "ext = get( 
+textLabels(ll), 'Extent' )" ). I do not understand what this function is
+ used for (line 49) also because it works even if i comment that out. 
+I'm sure the funcion is there for a reason, could you please give me 
+some further info?
+<br>Thanks again,</p>
+
+<p>Sebastian</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/491304">Grant</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This was very helpful. I tried 
+various user-created functions to rotate text tick labels (cell array of
+ strings) for the x-axis tick label. This is the only one I found that 
+can rotate text tick labels on subplots without changing the subplots' 
+sizes. Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/505614">DIEGO</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent work.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/503792">R Bakker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Good work.
+<br>Got an issue when YDir is reversed.
+<br>Here is the fix, starting at line 137:</p>
+
+<p>reverse = xor(strcmpi( get( ax, 'XAxisLocation' ), 'Top' ),strcmpi( get( ax, 'YDir' ), 'Reverse' ))
+<br>if reverse,
+<br>  y = ylim(2);
+<br>else
+<br>  y = ylim(1);
+<br>end
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/398784">Peking University</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/471315">Chen Chen</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/234067">John Yang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fulfill my need. Works for subplot, too. Thanks,</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/438349">Robert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great! But not working with the pre-release of 2014b.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/372275">Eduardo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/468991">Chris</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>very useful, thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/130634">Quan Wang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Useful</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/421697">Art</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Having problems with this. consider
+<br>figure;plot(1:10);
+<br>set(gca,'xlimmode','manual','xlim',[0,11]);
+<br>rotateXlabels(gca,90);
+<br>set(gca, 'xlim', [0,15]);</p>
+
+<p>The labels do not update correctly. 13,14,&amp;15 don't show. Adding 'xtick',[0:15] to the set command didn't help.
+<br>Using matlab 7.12.0 on an xp box.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/393705">Amit</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice function. </p>
+
+<p>Follow-on to the discussion about imagesc
+<br>Had some trouble (position of labels) using this with imagesc. Solved it modifying the following </p>
+
+<p>line 139:           y = ylim(1);
+<br>line 141:           y = ylim(2);
+<br>line 357:             pos = [0 ylim(2)];
+<br>line 359:             pos = [0 ylim(1)];</p>
+
+<p>Still a remaining problem. If colorbar is visible the figure sizing is not correct. 
+<br>Not sure how to fix this part. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/242559">Patrick Cloke</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful! Some errors when saving a figure and reopening them (it looks like the old axes is trying to be modified).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100436">Adam Finnefrock</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/364472">Forest</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>things are not right if one set the axis reverse as: 
+<br>set(gca,'YDir','reverse')</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/364472">Forest</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Pretty good and handy tool to display long strings as X tick label!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/24252">Jaroslaw Tuszynski</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Idea is great and it works for some
+ plots. I had issues with plots being incorrectly resized that required 
+code changes. I also had some blots for which this function placed tick 
+labels inside the plot area. So it needs more debugging and possibly a 
+tutorial page with examples. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/327451">Dinesh Jayaraman</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/362236">Gadi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've pinpointed the issue with the "Index exceeds matrix dimensions." error and it's a bug somewhere else.</p>
+
+<p>It has to do with "hold on" somehow adding 2 new tick marks to the figure.</p>
+
+<p>Here is how to reproduce it on 2012a:</p>
+
+<p>dat = 1:5;
+<br>fh = figure; 
+<br>hold all;
+<br>bar(dat);
+<br>set(gca,'XTickLabel', dat);
+<br>rotateXLabels(gca,10);</p>
+
+<p>If you would remove "hold on", no error.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241229">Muthu Annamalai</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for sharing! Do you have any ideas on applying this to the Y-axis ?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/307154">Jorge</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/306503">Andrea</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73455">M H</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice function!!</p>
+
+<p>the imagesc() workaround would be to create a copy of the function e.g. 'rotateXLabelsIMGSC()' and change</p>
+
+<p>'y = ylim(2);' to 'y = ylim(1);' in line 124
+<br>and
+<br>'y = ylim(1);' to 'y = ylim(2);' in line 126</p>
+
+<p>..would be nicer to catch the imagesc()-case by an 'if' but I am not sure if there is a handle/handle-combination to do it...
+<br>cheers</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Fernando &amp; Martin, could one of you post (or email me) an example? When I try the obvious:</p>
+
+<p>imagesc
+<br>rotateXLabels(gca, 45)</p>
+
+<p>it all looks fine. Also, which MATLAB version, just in case it matters?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Matt, that's an interesting bug you've found. </p>
+
+<p>I think we can do something slightly better and remove everything to 
+do with rotated labels when the axes are cleared. I'll post an update 
+that does this for you to try. Hopefully it won't break any existing 
+functionality.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29000">Matt Jardin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey Ben. Very useful function 
+indeed! I may have found an odd issue that occurs if you run cla on the 
+axis that contains rotated x-axis labels. In that case, the next time 
+you trigger one of the listeners that your function sets up, an error is
+ thrown because all of the properties it expects to find have been 
+cleared. I hacked a quick fix by checking inside of each of the listener
+ callbacks to check if the particular axis property is empty. If so, I 
+remove the listeners. Perhaps you have a better suggestion? Thanks again
+ for the function.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/197334">Jingmin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks!! Just what I needed.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126136">none</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>great! eg rotateXLabels(gca, 40);</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241451">Fernando</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have the same problem of Martin</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/270601">Edward</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/226508">Martin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Love the function, but have one 
+problem: when I use it with imagesc() the labels end up on the top of 
+the graph and inside the face of the graph. How can I move them to be 
+outside?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/219419">Sam</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the sweet function. 
+However, I'm also getting an "Index exceeds matrix dimensions" error 
+with R2012a, and I isolated what's causing the problem for me at least 
+(although I have no idea why). The code below simulates the scenario I'm
+ working on. When I set 'YGrid' to 'on', I get the error that follows 
+the code. No error when I leave out a 'YGrid' specification. (Note that 
+the code seems to execute just fine despite the error, so it's not a 
+huge deal.)</p>
+
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+
+<p>% Create fake data
+<br>%%% 14 groups of 4 percentages, each group adding to 100
+<br>data = zeros(14,4) ;
+<br>data(:,1) = randi(100,14,1) ;
+<br>for y = 2:3
+<br>    for x = 1:14
+<br>        if sum(data(x,:)) == 100
+<br>            continue
+<br>        end
+<br>        data(x,y) = randi(100-sum(data(x,:)),1,1) ;
+<br>    end
+<br>end
+<br>for x = 1:14
+<br>    data(x,4) = 100 - sum(data(x,:)) ;
+<br>end</p>
+
+<p>% Make grouped bar graph
+<br>bar(data,'grouped') ;
+<br>xlabels = 
+char('Grp01','Grp02','Grp03','Grp04','Grp05','Grp06','Grp07','Grp08','Grp09','Grp10','Grp11','Grp12','Grp13','Grp14')
+ ;
+<br>set(gca,'XTickLabel',xlabels,'YLim',[0 100],'YGrid','on')
+<br>rotateXLabels(gca,45)</p>
+
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<br>Here's the error message:
+<br>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+
+<p>Index exceeds matrix dimensions.</p>
+
+<p>Error in rotateXLabels/getLabelHeight (line 226)
+<br>        oldUnits = get( textLabels(1), 'Units' );</p>
+
+<p>Error in rotateXLabels/repositionXLabel (line 204)
+<br>        labelHeight = getLabelHeight(ax);</p>
+
+<p>Error in rotateXLabels/onAxesLimitsChanged (line 353)
+<br>        repositionXLabel( ax );
+<br> 
+<br>Warning: Error occurred while evaluating listener callback. 
+<br>&gt; In graphics/private/clo at 83
+<br>  In cla at 29
+<br>  In newplot&gt;ObserveAxesNextPlot at 125
+<br>  In newplot at 74
+<br>  In bar at 76 </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Vaibhav, any chance you could 
+post a version of the code that doesn't require a data-file? You can use
+ RAND etc to generate some fake data. The important thing is that the 
+range of the data (both in x and y) is similar to the data that you are 
+having trouble with.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/254716">Vaibhav Jain</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ben,</p>
+
+<p>Thank you for your function. It works absolutely perfect but I am 
+facing a problem when converting the x ticks to mm/dd hh:mm format using
+ datetick command. The eroor message arises specifically when I increase
+ the number of x ticks beyond a certain limit (more than 8 in this case)
+ using linspace command. </p>
+
+<p>Please look at the following code. I have tried to explain its steps 
+in the commented lines. In the end I am pasting the error message I get 
+on running. I would like to know your views on it. Thanks again! </p>
+
+<p>file=importdata('HourlyTemperature.csv');
+<br>DateTime=file.textdata(2:end,1); 
+<br>% textdata is a &lt;168x1 double&gt; array with values in 'dd/mm hh:mm:ss' format
+<br> 
+<br>DateTime=datenum(DateTime); 
+<br>% Converts mm/dd hh:mm to numeric values
+<br> 
+<br>Temperature=file.data(:,1); 
+<br>% data is a &lt;168x1 double&gt; array with numeric format
+<br> 
+<br>plot(DateTime,Temperature);
+<br>datetick('x','dd/mm HH:MM:SS','keepticks');
+<br>xData=linspace(735105.0416666666,735112,8);
+<br>% linspace('first value of DateTime array', 'last value of DateTime array',
+<br>% 'number of XTicks in between')
+<br> 
+<br>set(gca,'XTick',xData)
+<br> 
+<br>rotateXLabels(gca, 90)
+<br> </p>
+
+<p>Error message:
+<br>??? Index exceeds matrix dimensions.</p>
+
+<p>Error in ==&gt; rotateXLabels&gt;createNewLabels at 132
+<br>            textLabels(ll) = text( ...</p>
+
+<p>Error in ==&gt; rotateXLabels at 35
+<br>h = createNewLabels( ax, vals, labels, angle );</p>
+
+<p>Error in ==&gt; HourlyTempPlot at 29
+<br>rotateXLabels(gca, 90)</p>
+
+<p>- Vaibhav Jain</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/254716">Vaibhav Jain</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/227171">Jacques Pecreaux</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Worked perfectly in 2 minutes. 
+<br>A great and user-friendly file.
+<br>Some warnings about latex markups while using no interpreter but it's harmless so far
+<br>Thanks for sharing!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>OK, I've submitted an update that 
+will hopefully fix the printing issues. Please keep a backup of the old 
+version in case this change breaks something else (it passes all my 
+tests, but they probably don't cover all uses). The update should appear
+ here in the next few days. When it does, let me know if it helped.</p>
+
+<p>Cheers. 
+<br>Ben</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Johan, I can see the problem. I 
+am using "normalized" coordinates for the text used as the labels. It 
+seems that with the units set to normalized they don't print, but if I 
+set them to something else they do. I have no idea why this would be.</p>
+
+<p>I will see if I can re-arrange the code to use something other than 
+normalized units without breaking something else (zooming, panning, 
+titles, etc).</p>
+
+<p>:-(</p>
+
+<p>Ben</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35160">Johan Carlson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>On screen everything looks fine. However, when I try to print, the 
+tick labels disappear, same as for Wolfgang. I'm running MATLAB 2011b 
+(7.13.0.564) on Windows 7 (x64 version). All plot settings are at the 
+default.</p>
+
+<p>Other than that, great function!
+<br>/Johan</p>
+
+<p>Here's the test script that used:</p>
+
+<p>%------------------
+<br>clear all
+<br>close all
+<br>clc</p>
+
+<p>x = 1:0.2:2.8;
+<br>y = x.^2;
+<br>plot(x,y);
+<br>xlab = get(gca,'XTickLabel');
+<br>xlab = num2str(xlab);
+<br>set(gca,'XTickLabel',xlab);
+<br>xlabel('X axis label');
+<br>ylabel('Y axis label');
+<br>title('Plot title');
+<br>rotateXLabels(gca, 45)
+<br>set(gcf, 'PaperPositionMode', 'auto');
+<br>print('-dpng','plot.png');</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/182704">Pablo</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187763">Chris Sparrow</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>yes I am using an old version of Matlab - thanks for the suggestion. Great script btw!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Chris, are you by any chance using a version of MATLAB older than R2010a? </p>
+
+<p>If so, you may still be able to get it to work by replacing the '~' 
+with a real variable name, but bear in mind this hasn't been developed 
+or tested on older releases.</p>
+
+<p>Cheers. Ben</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187763">Chris Sparrow</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I get the following error:
+<br>&gt;&gt; rotateXLabels( gca(), 22 )
+<br>??? Error: File: rotateXLabels.m Line: 310 Column: 33
+<br>Unexpected MATLAB operator.</p>
+
+<p>line 310 is function onAxesFontChanged( ~, ~ )</p>
+
+<p>it will work if I commnet out the functions having ( ~, ~ )
+<br>any thoughts why I have this error?</p>
+
+<p>thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Wolfgang, I've just tried this 
+using the example in the help and printing using the lines you provided 
+and the labels appear OK. Could you provide a more detailed example that
+ shows the problem? There may be some setting of your figure that makes a
+ difference.</p>
+
+<p>Cheers. Ben</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187536">Wolfgang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ben,</p>
+
+<p>This works fine with me, but the x-Axis labels are not printed into a png-file via 
+<br>set(gcf, 'PaperPositionMode', 'auto');
+<br>print('-dpng','-r90','bild.png');</p>
+
+<p>Can you reproduce this, and do you have a solution. 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/107659">Thijs</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>First rotate script I came across that works without issues (yet ;) ) on subplots. </p>
+
+<p>Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/47367">Denzel Li</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ben and Miranda:
+<br>The program is cool, especially comparing to other rotation programs
+ which may not adjust the text object position well. Also the code style
+ is clear.  
+<br>For my previous request of setting the axis to the top, I just 
+manually set the y to a proper value in creatNewLabels(...) and it 
+works. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/125783">Miranda</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ben,
+<br>Thank you for this nice program. One disadvantage is that the labels
+ are very close to the x-axes, especially if I choose an angle of -90 or
+ 90. I thought of including an extra space in the labels:
+<br>if 0 &lt;= angle &amp;&amp; angle &lt; 180
+<br>  labels = cellfun(@(x) horzcat(x,'  '),labels,'UniformOutput', false);    
+<br>else
+<br>  labels = cellfun(@(x) horzcat('  ',x),labels,'UniformOutput', false);
+<br>end
+<br>Maybe an extra if-expression is needed for the labels on XAxisLocation top...
+<br>Miranda</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Denzel, my first attempt at 
+getting this to work is on its way through the approval process now. You
+ should see it arrive on here in the next day or two.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/47367">Denzel Li</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ben:
+<br>Thanks for your quick reply.  Having xticklabels on top and 
+yticklabels on right are especially useful when displaying heatmap with 
+labels. Please keep me updated. Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Denzel,
+<br>this hack works by replacing the tick labels with text objects and 
+removing the existing tick labels. This means that setting properties of
+ the tick labels (fonts, position etc) will no longer have any effect. 
+I'll have a look and see if I can make them honour the "XAxisLocation" 
+property, but I suspect that even then you will need to set it before 
+rotating the labels. Watch this space...</p>
+
+<p>Ben</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/47367">Denzel Li</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ben:
+<br>Thanks for the great tool. However it only produces xticklabels 
+which is at the bottom and not on the top. That is, even with the 
+function call: 
+<br>set(gca, 'XAxisLocation', 'top');
+<br>the xticklabels are still at the bottom. Please note that get(gca,XAxisLocation') returns 'top'. 
+<br>Please let me know if anyone has any suggestion. Thanks.</p>
+
+<p>Best,
+<br>Denzel</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/95595">Dan Glaser</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks, the positioning now works great.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Dan. I'm hoping this latest update will have fixed your problem. Please let me know if it doesn't.</p>
+
+<p>Cheers. Ben</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/95595">Dan Glaser</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Ben,
+<br>I appreciate you looking into this!
+<br>-Dan</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80363">Ben Tordoff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Dan. Having done some testing, 
+it looks like text object positions are only stored to the nearest 
+pixel. This means that when you call rotateXLabels, any labels that are 
+drawn at the same pixel location will store their position as the same 
+value. This seems to be a limitation of MATLAB's normalised position 
+units or at least a restriction imposed when you switch to them. I will 
+see if it's possible to achieve the same label behavior without using 
+normalised coordinates as this may fix your problem. Watch this space...</p>
+
+<p>Cheers. Ben</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/95595">Dan Glaser</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This works beautifully, but when it
+ is used with a plot that has a very large number of x tick labels (1000
+ for example) it does not position them correctly.</p>
+
+<p>Initially of course in this case, they labels are all overlapping, 
+but after zooming it can be seen that they do not position equally  and 
+some are directly on top of each other.</p>
+
+<p>Does anyone have any suggestions?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/95595">Dan Glaser</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/5196">Suresh Joel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Some function arguments missing? (line 256 col 33)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">30 Sep 2010</td>
+                  <td><p>Switch to using normalized units for labels to prevent loss of accuracy with hundreds/thousands of labels.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Feb 2011</td>
+                  <td><p>Should now honour the "XAxisLocation" property of the axes.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 Feb 2012</td>
+                  <td><p>Switch to using data coordinates internally to 
+allow printing to work. Please keep the old version in case this breaks 
+something else!</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Mar 2013</td>
+                  <td><p>Improve behavior when "cla" is called on the axes.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">08 Oct 2014</td>
+                  <td><p>* On MATLAB R2014b, just use XTickLabelRotation instead</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415419743756&amp;cv=7&amp;fst=1415419743756&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=2&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/27812-rotatexlabels--ax--angle--varargin--&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D10%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>propertiesGUI - display properties in an editable context-aware table -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38864-propertiesgui-display-properties-in-an-editable-context-aware-table" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38864-propertiesgui-display-properties-in-an-editable-context-aware-table" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/38864-propertiesgui-display-properties-in-an-editable-context-aware-table?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=38864" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/38864-propertiesgui-display-properties-in-an-editable-context-aware-table" class="manifest_title">propertiesGUI - display properties in an editable context-aware table</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/38864-propertiesgui-display-properties-in-an-editable-context-aware-table/content/propertiesGUI.m" class="function" title="Function">propertiesGUI(hParent, parame...</a>
+            <span class="description">propertiesGUI displays formatted editable list of properties
+</span>
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/38864-propertiesgui-display-properties-in-an-editable-context-aware-table/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              5.0
+              <span class="divider"> | </span>
+              <a href="#feedback">3 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">75 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 10.1 KB</span>
+          <span id="fileid">File ID: #38864</span>
+        </div>
+          <div id="thumbnail" style="padding-bottom: 3px;">
+            <a href="http://www.mathworks.com/matlabcentral/fx_files/38864/3/propertiesGUI.png" border="0"><img src="FEX_files/preview.jpg" alt="image thumbnail"></a>
+          </div>
+
+        <div id="details">
+          <h1>propertiesGUI - display properties in an editable context-aware table</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">31 Oct 2012 </span>
+              <span id="date_updated">(Updated 14 Jan 2013)</span>
+          </p>
+
+
+
+          <p id="summary">propertiesGUI processes and displays a list of data properties in a context-aware GUI table</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F38864-propertiesgui-display-properties-in-an-editable-context-aware-table&amp;watching=38864" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Syntax:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[hPropsPane,parameters] = propertiesGUI(hParent, parameters)
+<br>&nbsp;
+<br>Description:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;propertiesGUI processes a list of data properties and displays
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;them in a GUI table, where each parameter value has a unique
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;associated editor.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;propertiesGUI by itself, with no input parameters, displays a demo
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By default, propertiesGUI identifies and processes the following
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field types: signed, unsigned, float, file, folder, text or string,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color, IPAddress, password, date, boolean, cell-array of strings.
+<br>&nbsp;
+<br>Inputs:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hParent - optional handle of a parent GUI container (figure/uipanel
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/uitab)
+ in which the properties table will appear.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ missing or empty or 0, the table will be shown in a
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new
+ modal dialog window; otherwise it will be embedded
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in the parent container.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameters - struct with data fields. The fields are processed
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;separately
+ to determine their corresponding cell editor.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ parameters is not specified, then the global test_data
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will
+ be used. If test_data is also empty, then a demo of
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;several
+ different data types will be used.
+<br>&nbsp;
+<br>Outputs:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hPropsPane - handle of the properties panel widget, which can be
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customized
+ to display field descriptions, toolbar, etc.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameters - the resulting (possibly-updated) parameters struct.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Naturally,
+ this is only relevant in case of a modal dialog.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(global test_data) - this global variable is updated internally when
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the
+ &lt;OK&gt; button is clicked. It is meant to enable easy data
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passing
+ between the properties GUI and other application
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;component.
+ Using global vars is generally discouraged as
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bad
+ programming, but it simplifies component interaction.
+<br>&nbsp;
+<br>&nbsp;&nbsp;Customization:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This utility is meant to be used either as stand-alone, or as a
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template for customization. For example, you can attach a unique
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description to each property that will be shown in an internal
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sub-panel: see the customizePropertyPane() and preparePropsList()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sub-functions.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When passing the properties in an input parameters struct, the
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utility automatically inspects each struct field and assigns a
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;corresponding cell-editor with no description and a field label
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that reflects the field name. The properties are automatically
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set as modifiable (editable) and assigned a default callback
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function (propUpdatedCallback() sub-function).
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See the demoParameters() sub-function for some examples.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can have specific control over each property's description,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label,  editability, cell-editor and callback function. See the
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;preparePropsList() sub-functions for some examples. You can add
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additional cell-editors/renderers in the newProperty() sub-function.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can place specific control over the acceptable property values
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by entering custom code into the checkProp() sub-function.
+<br>&nbsp;
+<br>&nbsp;&nbsp;Future development:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Enable property groups using sub-structs (params.group.field)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Enable more control over appearance and functionality via
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;propertiesGUI's input parameters
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Add additional built-in cell editors/renderers: time, slider,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;point, rectangle (=position), font, ...
+<br>&nbsp;
+<br>&nbsp;&nbsp;Example:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;propertiesGUI;   % displays the demo
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params.name   = 'Yair';
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params.age    = uint8(41);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params.folder = pwd;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params.date   = now;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params.size.width  = 10;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params.size.height = 20;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[hPropsPane, params] = propertiesGUI(params);
+<br>&nbsp;
+<br>&nbsp;&nbsp;Bugs and suggestions:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please send to Yair Altman (altmany at gmail dot com)
+<br>&nbsp;
+<br>&nbsp;&nbsp;Warning:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This code heavily relies on undocumented and unsupported Matlab
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;functionality. It works on Matlab 7+, but use at your own risk!
+<br>&nbsp;
+<br>A technical description of the implementation can be found at:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://undocumentedmatlab.com/blog/jide-property-grids/">http://undocumentedmatlab.com/blog/jide-property-grids/</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://undocumentedmatlab.com/blog/advanced-jide-property-grids/">http://undocumentedmatlab.com/blog/advanced-jide-property-grids/</a></p></td>
+          </tr>
+  
+            <tr>
+              <td class="label">Acknowledgements</td>
+              <td>
+                  <p>The author wishes to acknowledge the following in the creation of this submission:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/28732-property-grid-using-jide-implementation">Property grid using JIDE implementation</a>, <a href="http://www.mathworks.com/matlabcentral/fileexchange/17935-uiinspect-display-methods-properties-callbacks-of-an-object">UIINSPECT - display methods-properties-callbacks of an object</a>
+                <br>
+              </p></td>
+            </tr>
+        
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="http://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.11 (R2010b)
+            </td>
+          </tr>
+  
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui%22" rel="nofollow">gui(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22jide%22" rel="nofollow">jide(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22undocumented%22" rel="nofollow">undocumented</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/38864-propertiesgui-display-properties-in-an-editable-context-aware-table">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(7)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">07 Feb 2013</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/318102">Andrew Ness</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I just commented out that statement and things have been working.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">05 Feb 2013</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/318102">Andrew Ness</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This looks like a nice utility.  
+Unfortunately I am experiencing an error in R2012b, even when running 
+just the demo multiple times.  If I execute it twice, selecting cancel 
+each time, there isn't a problem, however on the third try I receive 
+this error:</p>
+
+<p>&gt;&gt; propertiesGUI
+<br>&gt;&gt; propertiesGUI
+<br>&gt;&gt; propertiesGUI
+<br>Dot name reference on non-scalar structure.</p>
+
+<p>Error in propertiesGUI (line 224)
+<br>  pane.setBorderColor(pane.getBackground);</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">19 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@Izhar - you can easily modify the 
+preparePropsList() sub-function, specifically lines #303-314 to handle a
+ non-scalar numeric vector</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/82392">izhar karbat</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Yair,
+<br>1) +1.</p>
+
+<p>2) one of my fields contains an array of float values. only the first
+ value is displayed in the table. is there any obvious workaround ? </p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">03 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@Julien - </p>
+
+<p>1. MATLAB uses JIDE internaly in numerous places, including uitable. 
+You can use them freely, as part of the MATLAB license. For this reason I
+ do not think there is any issue. But if you insist then you could ask 
+MathWorks about it.</p>
+
+<p>2. You can process objects using the standard struct() method, as follows:</p>
+
+<p>params = struct(myClassObject);
+<br>[hPropsPane,params] = propertiesGUI(hParent, params);</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/58005">Julien</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very nice utility, thanks !
+<br>Do you know the terms of JIDE's license about using such components 
+in deployed applications? Or maybe should I ask Mathworks directly?
+<br>Moreover, I have a suggestion : it would be nice to support matlab's
+  classes in addition to structures. Do you plan to expand this? </p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">01 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/41102">Cristiano</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/38864-propertiesgui-display-properties-in-an-editable-context-aware-table">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr class="title">
+              <th colspan="2"><span class="heading">Updates</span></th>
+            </tr>
+              <tr>
+                <td class="date">07 Nov 2012</td>
+                <td><p>Accept any object having properties/fields as input parameter; support multi-level properties</p></td>
+              </tr>
+              <tr>
+                <td class="date">14 Jan 2013</td>
+                <td><p>fixes for file/folder/date/color properties</p></td>
+              </tr>
+          </tbody></table>
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui%22" rel="nofollow">gui</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>31 Oct 2012 20:04:34</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>31 Oct 2012 20:41:37</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22undocumented%22" rel="nofollow">undocumented</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>31 Oct 2012 20:41:43</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22jide%22" rel="nofollow">jide</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>31 Oct 2012 20:41:47</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui%22" rel="nofollow">gui</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/304701">Alexander Parunov</a></td>
+        <td>13 Dec 2012 03:11:57</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/304701">Alexander Parunov</a></td>
+        <td>13 Dec 2012 03:20:27</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22jide%22" rel="nofollow">jide</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/304701">Alexander Parunov</a></td>
+        <td>13 Dec 2012 03:20:31</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

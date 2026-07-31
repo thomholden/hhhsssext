@@ -1,0 +1,126 @@
+#  $Revision: 1.1.8.1 $
+
+sub msvc90freeopts
+{
+    my $input = shift;
+    my $default_location = "$ENV{'ProgramFiles'}\\Microsoft Visual Studio 9.0";
+    my @language_handled = ('C');
+
+    my $locate_fcn = sub {
+        my @msvc9_roots = ();
+        my $msvc9_root;
+        my $oldPath;
+        my $registry_lookup_fcn = $input->{"registry_lookup"};
+
+        # Search the default environment variable location. 
+        # Since MSVC 2008 professional ed. and the express ed.
+        # use the same environment variable (VS90COMNTOOLS),
+        # use the directory structure to differentiate between the two.
+        if ($ENV{'VS90COMNTOOLS'} ne "" &&  
+            -e "$ENV{'VS90COMNTOOLS'}\\..\\..\\VC\\bin\\cl.exe" &&
+            -e "$ENV{'VS90COMNTOOLS'}\\..\\IDE\\VCExpress.exe"){
+            $msvc9_root = $ENV{'VS90COMNTOOLS'};
+            $msvc9_root =~ s|\\+Common7\\+Tools\\*$||i; 
+            $oldPath = $ENV{'PATH'};
+            $ENV{'PATH'} = "$msvc9_root\\Common7\\IDE;$oldPath";
+            if (&correct_version("$msvc9_root\\VC\\bin\\cl.exe","15.0")){ 
+                push(@msvc9_roots, $msvc9_root); 
+            }
+            $ENV{'PATH'} = "$oldPath";
+        }
+
+        # Search the registry. 
+        $msvc9_root = &$registry_lookup_fcn("SOFTWARE\\Microsoft\\VCExpress\\9.0\\" . 
+                                            "Setup\\VS", "ProductDir");
+        if (-e "$msvc9_root\\VC\\bin\\cl.exe" && -e "$msvc9_root\\Common7\\IDE\\VCExpress.exe"){ 
+            $oldPath = $ENV{'PATH'};
+            $ENV{'PATH'} = "$msvc9_root\\Common7\\IDE;$oldPath";
+            if (&correct_version("$msvc9_root\\VC\\bin\\cl.exe","15.0")){ 
+                push(@msvc9_roots, $msvc9_root); 
+            } 
+            $ENV{'PATH'} = "$oldPath";
+        }
+    
+        return @msvc9_roots;
+    };
+
+
+    # Find the SDK  
+    my @mspsdk_roots = ();
+    my $mspsdk_root;
+    my $default_location_for_mspsdk = "$ENV{'ProgramFiles'}\\Microsoft SDKs\\Windows\\v6.0A";
+
+    # Search the default install location.
+    if (-e "$default_location_for_mspsdk" && -e "$default_location_for_mspsdk\\lib\\user32.lib"){
+	#	print "msvc90freeopts => SDK Found \n\@ $default_location_for_mspsdk\n";
+        push(@mspsdk_roots, $default_location_for_mspsdk);
+    }else
+    {
+		print "WARNING(msvc90freeopts): SDK does not exist ... \n	\@$default_location_for_mspsdk\n";
+    }
+
+    # Search the default environment variable location.
+    $mspsdk_root = $ENV{'MSSdk'};
+    if (-e "$mspsdk_root\\lib\\user32.lib"){
+          push(@mspsdk_roots, $mspsdk_root);
+    }
+
+    my $mspsdk_dir = pop @mspsdk_roots;
+
+
+    my $root_val = sub {
+        my $base_directory = shift;
+
+        if ($ENV{'MSSdk'} eq "" || !-e "$ENV{'MSSdk'}\\bin"){
+            print "\n*****************************************************************************\n" .
+				  "						msvc90freeopts\n" .
+                  "  Error: The Microsoft Platform Software Development Kit (SDK) was not found.\n" .
+                  "\n" .
+                  "         Microsoft Visual C++ 2008 Express Edition requires that the SDK is\n" .
+                  "         installed properly.  MEX uses the environment variable \"MSSdk\" to\n" .
+                  "         find the SDK.  If it is installed properly, please verify that the\n" .
+                  "         environment variable \"MSSdk\" points to the correct location.\n" .
+                  "         Otherwise, install the SDK and try again.\n" .
+                  "*****************************************************************************\n";
+            return;
+        } else {
+            print "\n***************************************************************************\n" .
+				  "						msvc90freeopts\n" .
+                  "  Warning: MEX-files generated using Microsoft Visual C++ 2008 Express\n" .
+                  "           Edition require that Microsoft Visual Studio 2008 run-time\n" .
+                  "           libraries be available on the computer they are run on.\n" .
+                  "           If you plan to redistribute your MEX-files to other MATLAB\n" .
+                  "           users, be sure that they have the run-time libraries.\n" . 
+                  "           You can find more information about this at:\n" . 
+                  "           http://www.mathworks.com/support/solutions/data/1-2223MW.html\n" .
+                  "***************************************************************************\n";
+
+            if (!-d "$base_directory\\Common7" || !-d "$base_directory\\VC"){        
+                print "\n  Warning: MEX requires that the Microsoft Visual C++ 2008 Express Edition\n" .
+                        "           directories \"VC\" and \"Common7\" be located within the same\n" .
+                        "           parent directory. MEX setup expected to find directories named\n" .
+                        "           \"Common7\" and \"VC\" in the directory: \n" .
+                        "           \"$base_directory\".\n"; 
+            }
+
+            return $base_directory;
+
+        }
+    };
+
+    return {
+        "vendor_name"      => "Microsoft Visual C++ 2008 Express Edition",
+        "version"          => "",                          #This version is left blank intentionally.
+        "group_id"         => "MSVC",
+        "serial"           => 9.0,
+        "root_var"         => "VSINSTALLDIR",
+        "linker_var"       => "MSSdk",
+        "optfile_name"     => "msvc90freeopts.bat",
+        "default_location" => $default_location,
+        "language_handled" => \@language_handled,
+        "root_val"         => $root_val,
+        "link_val"         => $mspsdk_dir,
+        "locate"           => $locate_fcn,
+        };
+}
+1;

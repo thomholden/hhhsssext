@@ -1,0 +1,24 @@
+(1) The Microsoft.Net Framework version 2 must be installed on the system, folder:
+	C:\windows\Microsoft.NET\Framework\v2.???????\        (????? -> your version number)
+(2) Compile the ComMatlab.cs file to a dll, command:
+    	C:\windows\Microsoft.NET\Framework\v2.???????\csc /t:library ComMatlab.cs
+(3) Register the ComMatlab Active X control, command:
+        C:\windows\Microsoft.NET\Framework\v2.???????\regasm ComMatlab.dll /tlb /codebases
+
+(4) Start Matlab
+
+(5) ComMatlabtest.m <enter>
+
+
+**** Example RegisterComMatlab.bat batch file  ****
+
+echo off
+cls
+echo **** Unregister ComMatlab.dll ****
+C:\windows\Microsoft.NET\Framework\v2.0.50727\regasm ComMatlab.dll /unregister
+echo **** Complice ComMatlab.cs    ****
+C:\windows\Microsoft.NET\Framework\v2.0.50727\csc /t:library ComMatlab.cs
+echo **** Register ComMatlab.dll   ****
+C:\windows\Microsoft.NET\Framework\v2.0.50727\regasm ComMatlab.dll /tlb /codebase
+pause
+

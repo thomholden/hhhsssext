@@ -1,0 +1,283 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This file describes,
+
+1. how to obtain the VTK Visualization Tool Kit (www.vtk.org) source code
+2. how to compile VTK to generate shared libraries
+3. how to write a MATLAB mex file to call the VTK libraries
+
+This document was written on 18-Apr-2008 and relates to the following product 
+verions
+ - VTK 5.0.4
+ - cmake 2.4
+ - MATLAB R2008a (with a C compiler set up to create mex files)
+ - Visual Studio.Net 2003
+ - Windows XP SP2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+1. Download and unzip VTK source code
+
+a) Download the VTK source code vtk-5.0.4.zip from
+http://www.vtk.org/get-software.php
+
+Note that you must download the source code NOT the precompiled binary
+(vtk-5.0.4-win32.exe).
+This is because the binary is a dot.exe file where as dot.lib files are required
+to call VTK from MATLAB through mex.
+
+b) Unzip the code.
+This document assumes that the code is in the directory C:\Program Files\VTK 5.0\VTK.
+(This name is not essential, however the rest of this document assumes that name.)
+
+c) Optionally, some example data files may also be downloaded.
+The file is vtkdata-5.0.4.zip.
+Unzip this into the directory C:\Program Files\VTK 5.0\VTKData.
+(The rest of this document will not deal with using these example files.  I've
+simply listed this step for completeness.)
+
+2. Compile VTK to shared libraries
+
+a) Download the cmake utility from http://www.cmake.org/HTML/Download.html
+cmake is a utility that (amongst other uses) comes with files specifically designed for
+compiling VTK on various platforms and to various targets.
+
+b) Unzip cmake
+The location isn't important, although on Windows it's likely to be
+C:\Program Files\CMake 2.4
+
+c) Run cmake (C:\Program Files\CMake 2.4\bin\CMakeSetup.exe), which should
+generate a user interface.
+
+d) In the "Where is the source code" dialog put C:\Program Files\VTK 5.0\VTK
+
+e) Create the directory C:\Program Files\VTK 5.0\Build and put this name into
+the "Where to build the binaries" dialog.
+
+f) Set BUILD_SHARED_LIBS to ON
+
+g) If the example data was downloaded in part 1c (above) then BUILD_EXAMPLES may
+also be set to ON.  (Again, this is not essential.)
+
+h) Press the Configure button to save the setting changes, then the OK button.
+cmake creates various utilities that are used for building the VTK libraries.
+These utilities get put into C:\Program Files\VTK 5.0\src5p0\Build and various
+subdirectories.
+
+i) Start Visual Studio and load the project that was created by cmake:
+C:\Program Files\VTK 5.0\Build\VTK.sln
+
+j) Build the project.  (This may take 10-15 minutes.)
+Of most importance are the libraries created in
+C:\Program Files\VTK 5.0\Build\bin\debug
+
+k) Put the above libraries on the System path so that they can be called from MATLAB.
+Right click on "My Computer" and select Properties.
+Select the Advanced tab and press the "Environment Variables" button (at the bottom).
+Under "System Variables" select the Path and press the Edit button.
+Append C:\Program Files\VTK 5.0\Build\bin\debug to the path and save it.
+
+3. Create an example mex file
+
+a) An example C++ mex file can be found at http://www.vtk.org/Wiki/VTK/VTKMatlab
+For completeness that code is reproduced at the end of this file in Appendix A.
+Cut between the lines where indicated below and put the code into a file called
+vtkPolyDataRenderer.cpp.
+
+(Note that another example is linked off http://speechlab.bu.edu/VTK.php.
+This is a Visual Studio.Net project for compiling the mex file.
+However it uses a previous version VTK4.2.2, which uses an obsolete class not
+in VTK5.0.
+Hence to use that example you'll need to obtain the VTK4.2.2 source code and
+compile it instead.)
+
+b) Create a MATLAB script to compile the mex file.
+The following code may be used to create the script compileDemoVTKmexfile.m
+and should be put into the same directory as vtkPolyDataRenderer.cpp
+
+%%%%%%%%%%%%%%%CUT HERE AND PUT INTO compileDemoVTKmexfile.m%%%%%%%%%%%%%%%
+mex -v vtkPolyDataRenderer.cpp ...
+    -I'C:\Program Files\VTK 5.0\VTK\Common' ...
+    -I'C:\Program Files\VTK 5.0\VTK\Filtering' ...
+    -I'C:\Program Files\VTK 5.0\VTK\Rendering' ...
+    -I'C:\Program Files\VTK 5.0\Build' ...
+    -L'C:\Program Files\VTK 5.0\Build\bin\debug' ...
+    -lvtkCommon ...
+    -lvtkFiltering ...
+    -lvtkRendering
+%%%%%%%%%%%%%%%CUT HERE AND PUT INTO compileDemoVTKmexfile.m%%%%%%%%%%%%%%%
+
+c) Change the MATLAB current directory to be the directory containing
+vtkPolyDataRenderer.cpp and execute compileDemoVTKmexfile.m.
+This will/should create the mex file vtkPolyDataRenderer.mexw32.
+
+d) Test the mex file.
+The following example MATLAB code is a very minor modification of the example
+from http://www.vtk.org/Wiki/VTK/VTKMatlab.
+Cut where indicated and execute runDemoVTKmexfile.m you should get a separate
+window generated conaining the VTK visualization.
+
+%%%%%%%%%%%%%%%CUT HERE AND PUT INTO runDemoVTKmexfile.m%%%%%%%%%%%%%%%
+[x,y,z,v] = flow;
+q = z./x.*y.^3;
+mesh=isosurface(x, y, z, q, -.08, v);
+[N,M]=size(mesh.faces);
+scalars=linspace(0,1,N)';
+vtkPolyDataRenderer(mesh.vertices,mesh.faces,scalars);
+%%%%%%%%%%%%%%%CUT HERE AND PUT INTO runDemoVTKmexfile.m%%%%%%%%%%%%%%%
+
+e) Using the left mouse button on the image and moving the mouse will rotate
+the image.
+Using the right mouse button on the image and moving the mouse will zoom
+the image.
+
+
+Appendix A.
+
+Example code from http://www.vtk.org/Wiki/VTK/VTKMatlab
+Cut where indicated.
+
+%%%%%%%%%%%%%%%CUT HERE AND PUT INTO vtkPolyDataRenderer.cpp%%%%%%%%%%%%%%%
+/****************************************************
+(C) 2005 Dominik Szczerba <domi at vision ee ethz ch>
+*****************************************************/
+
+//#include <cstdlib>
+//#include <cmath>
+
+/* MEX HEADERS */
+#include <mex.h>
+
+/* VTK HEADERS */
+#include <vtkPolyData.h>
+#include <vtkPoints.h>
+#include <vtkCellArray.h>
+#include <vtkDoubleArray.h>
+#include <vtkPolyData.h>
+
+#include <vtkCell.h>
+#include <vtkCellData.h>
+#include <vtkDataSet.h>
+#include <vtkDataSetAttributes.h>
+#include <vtkProperty.h>
+
+#include <vtkDataSetMapper.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkActor.h>
+#include <vtkRenderer.h>
+#include <vtkRenderWindow.h>
+#include <vtkRenderWindowInteractor.h>
+#include <vtkInteractorStyleTrackballCamera.h>
+
+/* MAIN FUNCTION */
+void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[]){
+
+  double *v;	// Vertices
+  double *f;	// Faces
+  
+  unsigned int nV, nF, nC=0, i, j;
+
+  if(nrhs<2)
+	 mexErrMsgTxt("2+ input args required");
+
+  double* dcolors = 0;
+  vtkDoubleArray* dcolarr = 0;
+  
+  nV = mxGetM(prhs[0]);
+  nF = mxGetM(prhs[1]);
+  v = mxGetPr(prhs[0]);
+  f = (double*)mxGetPr(prhs[1]);
+  if(nrhs>=3){
+	 //mexPrintf("found color information\n");
+	 nC = mxGetM(prhs[2]);
+	 if(nC!=nF)
+		mexErrMsgTxt("dimension mismatch");
+	 dcolors = mxGetPr(prhs[2]);
+	 dcolarr = vtkDoubleArray::New();
+	 dcolarr->SetName("aCellScalar");
+	 dcolarr->SetArray(dcolors,nF,1);//save dcolors
+  }
+  mexPrintf("got %d nodes, %d faces and %d colors\n",nV,nF,nC);
+
+  // Initialize vtk variables
+  vtkPolyData *surf = vtkPolyData::New();
+  vtkPoints *sverts = vtkPoints::New();
+  vtkCellArray *sfaces = vtkCellArray::New();
+
+  // Load the point, cell, and data attributes.
+  //indexes in VTK are 0-based, in Matlab 1-based
+  const int offset = -1;
+  for(i=0; i<nV; i++) sverts->InsertPoint(i,v[i],v[nV+i],v[2*nV+i]);
+  for(i=0; i<nF; i++){
+	 sfaces->InsertNextCell(3);
+	 for(j=0;j<3;j++){
+		int idx = (unsigned int)f[j*nF+i]+offset;
+		if(idx<0 || idx>=nV)
+		//mexPrintf("Warning : wrong index\n");
+		  mexErrMsgTxt("wrong index");
+		sfaces->InsertCellPoint(vtkIdType(idx));
+	 }
+  }
+  
+  // assign the pieces to the vtkPolyData.
+  surf->SetPoints(sverts);
+  surf->SetPolys(sfaces);
+  sverts->Delete();
+  sfaces->Delete();
+
+  if(nC>0){
+	 surf->GetCellData()->SetScalars(dcolarr);
+  }
+
+  // now render
+  vtkDataSetMapper::SetResolveCoincidentTopologyToPolygonOffset();
+  vtkPolyDataMapper *surfMapper = vtkPolyDataMapper::New();
+  vtkActor *surfActor = vtkActor::New();
+  vtkRenderer *aRenderer = vtkRenderer::New();
+  vtkRenderWindow *renWin = vtkRenderWindow::New();
+  vtkRenderWindowInteractor *iren = vtkRenderWindowInteractor::New();
+  
+  surfMapper->SetInput(surf);
+  //surfMapper->ScalarVisibilityOff();
+  if(nC>0){
+	 surfMapper->ScalarVisibilityOn();
+	 surfMapper->SetScalarRange(0,1);  
+  }
+
+  surfActor->SetMapper(surfMapper);
+  surfActor->GetProperty()->SetAmbient(0.1);
+  surfActor->GetProperty()->SetDiffuse(0.3);
+  surfActor->GetProperty()->SetSpecular(1.0);
+  surfActor->GetProperty()->SetSpecularPower(30.0);
+  
+  aRenderer->AddActor(surfActor);
+  aRenderer->SetBackground(0.2,0.2,0.2);
+  
+  iren->SetRenderWindow(renWin);
+  
+  renWin->AddRenderer(aRenderer);
+  renWin->SetSize(500,500);
+  renWin->Render();
+  
+  vtkInteractorStyleTrackballCamera *style = 
+ 	 vtkInteractorStyleTrackballCamera::New();
+  iren->SetInteractorStyle(style);
+
+  // Start interactive rendering
+  iren->Start();
+
+  // clean up
+  surfMapper->Delete();
+  surfActor->Delete();
+  surf->Delete();
+  aRenderer->Delete();
+  renWin->Delete();
+  iren->Delete();
+  style->Delete();
+
+}
+%%%%%%%%%%%%%%%CUT HERE AND PUT INTO vtkPolyDataRenderer.cpp%%%%%%%%%%%%%%%
+
+
+
+

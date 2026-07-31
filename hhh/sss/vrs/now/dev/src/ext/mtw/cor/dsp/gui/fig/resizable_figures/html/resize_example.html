@@ -1,0 +1,211 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>Creating a Resizable Figure</title>
+      <meta name="generator" content="MATLAB 7.8">
+      <meta name="date" content="2010-06-25">
+      <meta name="m-file" content="resize_example"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>Creating a Resizable Figure</h1>
+         <!--introduction-->
+         <p>Simple example which uses the features of resizable_figure and resizeable_layout.  When the figure is resized, the edit control
+            and the list control will expand to fill the available space.
+         </p>
+         <!--/introduction-->
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#1">Create figure</a></li>
+               <li><a href="#2">Create controls</a></li>
+               <li><a href="#3">Create element matrix and apply it</a></li>
+               <li><a href="#4">Define a matrix of "mergeblocks" and apply it</a></li>
+               <li><a href="#5">Set sizes for rows, columns, spacing and borders</a></li>
+               <li><a href="#6">Position figure in middle of screen and set its size</a></li>
+               <li><a href="#7">Show the figure</a></li>
+            </ul>
+         </div>
+         <h2>Create figure<a name="1"></a></h2>
+         <p>Creates the figure and the layout manager.</p><pre class="codeinput">f = resizable_figure(<span class="string">'Find In List'</span>);
+</pre><h2>Create controls<a name="2"></a></h2>
+         <p>These are normal MATLAB controls.  Specify the parent figure for safety.</p><pre class="codeinput">label = uicontrol(<span class="string">'parent'</span>,f,<span class="string">'style'</span>,<span class="string">'text'</span>,<span class="string">'string'</span>,<span class="string">'Item Name:'</span>);
+list = uicontrol(<span class="string">'parent'</span>,f,<span class="string">'style'</span>,<span class="string">'listbox'</span>);
+editctrl = uicontrol(<span class="string">'parent'</span>,f,<span class="string">'style'</span>,<span class="string">'edit'</span>,<span class="string">'horizontalalignment'</span>,<span class="string">'left'</span>);
+find = uicontrol(<span class="string">'parent'</span>,f,<span class="string">'style'</span>,<span class="string">'pushbutton'</span>,<span class="string">'string'</span>,<span class="string">'Find'</span>);
+remove = uicontrol(<span class="string">'parent'</span>,f,<span class="string">'style'</span>,<span class="string">'pushbutton'</span>,<span class="string">'string'</span>,<span class="string">'Remove'</span>);
+add = uicontrol(<span class="string">'parent'</span>,f,<span class="string">'style'</span>,<span class="string">'pushbutton'</span>,<span class="string">'string'</span>,<span class="string">'Add...'</span>);
+</pre><h2>Create element matrix and apply it<a name="3"></a></h2>
+         <p>The elements which are to span more than one row or column must appear at the top-left of their range.</p><pre class="codeinput">elements = {<span class="keyword">...</span>
+    label, editctrl, [], find, [];<span class="keyword">...</span>
+    list,  [],       [],   [], remove;<span class="keyword">...</span>
+    [],    [],       [],   [], add;<span class="keyword">...</span>
+    [],    [],       [],   [], [];<span class="keyword">...</span>
+    };
+f.UserData = setelements(f.UserData,elements);
+</pre><h2>Define a matrix of "mergeblocks" and apply it<a name="4"></a></h2>
+         <p>For each element which is to span more than one cell, we specify the range of rows and the range of columns which is to occupy.
+            Each row in the "mergeblocks" matrix specifies the location of a different control, and the columns in the matrix are:   
+             row_min, row_max, column_min, column_max.
+         </p><pre class="codeinput">mergeblocks = [<span class="keyword">...</span>
+    1 1 2 3;<span class="keyword">...</span><span class="comment">  % edit control (first row, columns 2 &amp; 3)</span>
+    2 4 1 4;<span class="keyword">...</span><span class="comment">  % list control (rows 2 through 4, columns 1 through 4)</span>
+    ];
+f.UserData = setmergeblocks(f.UserData,mergeblocks);
+</pre><h2>Set sizes for rows, columns, spacing and borders<a name="5"></a></h2>
+         <p>Row and column sizes first.  Negative numbers indicate resizable rows or columns.  The available space in each direction is
+            shared according to the ratio of the numbers, so the absolute values are irrelevant. In this case, the bottom row and middle
+            column are resizable.
+         </p><pre class="codeinput">rowsizes = [ 25, 25, 25, -1 ];
+colsizes = [ 100, 100, -1, 100, 100 ];
+<span class="comment">% (rows first, then columns)</span>
+f.UserData = setsizes(f.UserData,rowsizes,colsizes);
+<span class="comment">% Set the spacing between controls (X, Y)</span>
+f.UserData = setspacing(f.UserData,5, 5);
+<span class="comment">% Set the border between the edge of the figure and the first control (X, Y)</span>
+f.UserData = setpadding(f.UserData,5, 5);
+</pre><h2>Position figure in middle of screen and set its size<a name="6"></a></h2>
+         <p>If there was a "parent" figure, we would supply its handle first, and this figure would be centred on it.  In this case the
+            figure will be positioned in the middle of the screen.
+         </p><pre class="codeinput">centrefigure([],f,[500,250] );
+</pre><h2>Show the figure<a name="7"></a></h2><pre class="codeinput">f.Visible = <span class="string">'on'</span>;
+</pre><img vspace="5" hspace="5" src="resize_example_01.png" alt=""> <p class="footer">Copyright 2006-2010 The MathWorks, Inc.<br>
+            Published with MATLAB&reg; 7.8<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% Creating a Resizable Figure
+% Simple example which uses the features of resizable_figure
+% and resizeable_layout.  When the figure is resized, the
+% edit control and the list control will expand to fill the
+% available space.
+
+% Copyright 2006-2010 The MathWorks, Inc.
+
+%% Create figure
+% Creates the figure and the layout manager.
+f = resizable_figure('Find In List');
+
+%% Create controls
+% These are normal MATLAB controls.  Specify the parent figure for
+% safety.
+label = uicontrol('parent',f,'style','text','string','Item Name:');
+list = uicontrol('parent',f,'style','listbox');
+editctrl = uicontrol('parent',f,'style','edit','horizontalalignment','left');
+find = uicontrol('parent',f,'style','pushbutton','string','Find');
+remove = uicontrol('parent',f,'style','pushbutton','string','Remove');
+add = uicontrol('parent',f,'style','pushbutton','string','Add...');
+
+%% Create element matrix and apply it
+% The elements which are to span more than one row or column must appear
+% at the top-left of their range.
+elements = {...
+    label, editctrl, [], find, [];...
+    list,  [],       [],   [], remove;...
+    [],    [],       [],   [], add;...
+    [],    [],       [],   [], [];...
+    };
+f.UserData = setelements(f.UserData,elements);
+
+%% Define a matrix of "mergeblocks" and apply it
+% For each element which is to span more than one cell, we specify
+% the range of rows and the range of columns which is to occupy.
+% Each row in the "mergeblocks" matrix specifies the location of a
+% different control, and the columns in the matrix are:
+%     row_min, row_max, column_min, column_max.
+mergeblocks = [...
+    1 1 2 3;...  % edit control (first row, columns 2 & 3)
+    2 4 1 4;...  % list control (rows 2 through 4, columns 1 through 4)
+    ];
+f.UserData = setmergeblocks(f.UserData,mergeblocks);
+
+%% Set sizes for rows, columns, spacing and borders
+% Row and column sizes first.  Negative numbers indicate resizable rows or
+% columns.  The available space in each direction is shared according to
+% the ratio of the numbers, so the absolute values are irrelevant.
+% In this case, the bottom row and middle column are resizable.
+rowsizes = [ 25, 25, 25, -1 ];
+colsizes = [ 100, 100, -1, 100, 100 ];
+% (rows first, then columns)
+f.UserData = setsizes(f.UserData,rowsizes,colsizes);
+% Set the spacing between controls (X, Y)
+f.UserData = setspacing(f.UserData,5, 5);
+% Set the border between the edge of the figure and the first control (X, Y)
+f.UserData = setpadding(f.UserData,5, 5);
+
+%% Position figure in middle of screen and set its size
+% If there was a "parent" figure, we would supply its handle first, and this
+% figure would be centred on it.  In this case the figure will be positioned
+% in the middle of the screen.
+centrefigure([],f,[500,250] );
+
+%% Show the figure
+f.Visible = 'on';
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

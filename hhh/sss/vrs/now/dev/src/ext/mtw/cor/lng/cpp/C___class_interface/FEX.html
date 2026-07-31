@@ -1,0 +1,1343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Example MATLAB class wrapper for a C++ class -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/38964-example-matlab-class-wrapper-for-a-c++-class" rel="canonical">
+<meta content="Example MATLAB class wrapper for a C++ class - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/38964-example-matlab-class-wrapper-for-a-c++-class" property="og:url"><meta content="An example of how to safely encapsulate a C++ class in a MATLAB class, via a mex interface." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38964-example-matlab-class-wrapper-for-a-c%2B%2B-class" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38964-example-matlab-class-wrapper-for-a-c%2B%2B-class" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/16503" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=38964" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/38964-example-matlab-class-wrapper-for-a-c++-class" class="manifest_title">Example MATLAB class wrapper for a C++ class</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/38964-example-matlab-class-wrapper-for-a-c++-class/content//class_interface.m" class="class" title="Class">class_interface</a><span class="description">CLASS_INTERFACE Example MATLAB class wrapper to an underlying C++ class
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/38964-example-matlab-class-wrapper-for-a-c++-class/content/C___class_interface.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:98.3334%;">
+                <p>4.91667</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">14</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">112 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 3 KB</span>
+          <span id="fileid">File ID: #38964</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">Example MATLAB class wrapper for a C++ class</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      09 Nov 2012
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-01-14">14 Jan 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">An example of how to safely encapsulate a C++ class in a MATLAB class, via a mex interface.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F38964-example-matlab-class-wrapper-for-a-c%2B%2B-class&amp;watching=38964" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This package provides an example of how to wrap a C++
+ class in a MATLAB class, via a mex interface, safely, without memory 
+leaks, whilst achieving an interface in MATLAB that is similar to the 
+underlying C++ interface.</p>
+
+<p>After downloading, first mex the C++ wrapper using:
+<br>&gt;&gt; mex class_interface_mex.cpp</p>
+
+<p>Then test the various methods:
+<br>&gt;&gt; a = class_interface(); % Create a class instance
+<br>&gt;&gt; train(a) % Train the class - dummy method
+<br>&gt;&gt; test(a) % Test the class - dummy method
+<br>&gt;&gt; clear a; % Destroy the instance</p>
+
+<p>Look in class_interface.m and class_interface_mex.cpp to see how this
+ is implemented, and copy the structure to interface with your own C++ 
+classes.</p>
+
+<p>This submission is inspired by the following newsgroup thread:
+<br><a href="http://www.mathworks.com/matlabcentral/newsreader/view_thread/278243">http://www.mathworks.com/matlabcentral/newsreader/view_thread/278243</a>
+<br>Thanks to all those who have contributed.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/45020-matlab-class-wrapper-for-a-c++-implementation-of-a-quadtree">Matlab Class Wrapper For A C++ Implementation Of A Quadtree</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/41504-ray-casting-for-deformable-triangular-3d-meshes">Ray Casting For Deformable Triangular 3 D Meshes</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/31141-felicity">Felicity</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/47536-crobarcro-mcode-cpp-utilities">Crobarcro/Mcode Cpp Utilities</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/47383-message-passing-algorithm-for-decoding-binary-ldpc-codes">Message Passing Algorithm For Decoding Binary Ldpc Codes</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 8.0 (R2012b)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>C++ compiler</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38964-example-matlab-class-wrapper-for-a-c%2B%2B-class">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22c%22" rel="nofollow">c</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22class%22" rel="nofollow">class</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22example%22" rel="nofollow">example</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hello%22" rel="nofollow">hello</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22mex%22" rel="nofollow">mex</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22wrapper%22" rel="nofollow">wrapper</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="38964" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/38964-example-matlab-class-wrapper-for-a-c++-class" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F38964-example-matlab-class-wrapper-for-a-c%2B%2B-class">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(34)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">26 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/178642">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Looks intriguing, but I get the 
+following error message when I try to compile: fatal error C1083: Cannot
+ open include file: 'stdint.h': No such file or directory.</p>
+
+<p>I read up online a bit and it's because my version of Visual Studio 
+(2008) does not support this library. If Matlab uses visual studio to 
+compile, you'll need to download these libraries to run and add an -i 
+argument to tell the file location when compiling: 
+https://code.google.com/p/msinttypes/downloads/detail?name=msinttypes-r26.zip
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375706">Hanse</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Joel: It would seem to be valid, 
+but I cannot comment on whether it is safe. I would also imagine the 
+pointer points to a static string, though. Try it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/176548">Joel Andersson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is it safe to change the type of 
+class_handle&lt;base&gt;::name_m to const char*? I imagine that 
+"typeid(base).name()" returns a pointer to something with static 
+storage.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>An Tran Lam: The type cast is 
+required because MATLAB arrays can only contain values, not pointers, 
+and pointers can be up to 64 bits long (on current hardware).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/287458">An Tran Lam</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I know how to use the software, but don't understand why it works?
+<br>Can you explain why do you need to cast into &lt;uint64_t&gt; type?
+<br>*((uint64_t *)mxGetData(out)) = reinterpret_cast&lt;uint64_t&gt;(new class_handle&lt;base&gt;(ptr));</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129968">Kota Yamaguchi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello, I made a development kit for this design pattern, if anyone interested. https://github.com/kyamagu/mexplus</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Shawn: There's nothing special 
+about that number. But, no, you don't need a different signature per 
+class, as the code also records the name of the class (a second 
+signature, if you like), and checks this against the expected name when 
+casting back to a pointer. This means it would throw an error if you 
+tried to cast a pointer of one class to a pointer of another.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375706">Hanse</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/64264">Shawn Walker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have a question about class_handle.hpp:</p>
+
+<p>Regarding this line:</p>
+
+<p>#define CLASS_HANDLE_SIGNATURE 0xFF00F0A5</p>
+
+<p>What is so special about that number?  Could I make up anything, as long as it is consistent in the C++ code?</p>
+
+<p>The reason I ask is if I have two separate C++ classes that are 
+mex-ed and interfaced using your approach.  It seems I should use a 
+different signature for each C++ class, for safety's sake.  Is this 
+true?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375706">Hanse</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Shawn: The code is as intended. I 
+wrote it that way with the intention that people would change the lower 
+bound on number of inputs to suit their needs. You could have an upper 
+bound too, but it's not vital, whereas a lower bound is.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/64264">Shawn Walker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a great submission.</p>
+
+<p>However, one minor comment.  This code is taken from your class_interface_mex.cpp file:</p>
+
+<p>    if (!strcmp("train", cmd)) {
+<br>        // Check parameters
+<br>        if (nlhs &lt; 0 || nrhs &lt; 2)
+<br>            mexErrMsgTxt("Train: Unexpected arguments.");
+<br>        // Call the method
+<br>        dummy_instance-&gt;train();
+<br>        return;</p>
+
+<p>Shouldn't it be:</p>
+
+<p>if (nlhs &gt; 0 || nrhs &gt; 2)</p>
+
+<p>because your "train" method does not need any inputs or outputs?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Greg: Thanks for your input. Yes, 
+the locking mechanism causes problems if you free an instance in a 
+different mex file from that in which it was allocated. You can 
+certainly remove the locking. However, as I stated in the associated 
+newsgroup thread, I found that MATLAB crashes when I call "clear 
+functions" if I don't use the file lock. As such, my advice is to keep 
+the lock where possible, and design your software such that each 
+instance is freed in the same mex file it is allocated in.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/99409">Greg</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful code!</p>
+
+<p>Found some interesting behavior though.</p>
+
+<p>From my observations, as far as the operating system is concerned, 
+all mex-files that you call from a single instance of MATLAB share the 
+same memory segmentation.  That is, you can create a C++ object in one 
+mex-file, pass the handle to that object back into MATLAB, then delete 
+the object in a different mex-file.  This seems to work just fine and is
+ handy in the case where the code of one class creates instances of 
+another class.</p>
+
+<p>This gets funky with the calls to mexLock() and mexUnlock() though.  
+mexLock and mexUnlock are automatically keyed to the currently-running 
+mex-file.  So, if an object of Class_B is created inside Class_A_mex and
+ convertPtr2Mat is called to pass that pointer back to MATLAB, you've 
+just added an extra lock to Class_A_mex that won't be unlocked when 
+Class_A is deleted.  The Class_B_mex delete method seems to delete the 
+Class_B object just fine, but it doesn't know anything about the mexLock
+ on Class_A_mex.</p>
+
+<p>For the moment, I've created a workaround by creating a 
+"convertPtr2MatLockless" function in "class_handle.hpp" that's an exact 
+copy of "convertPtr2Mat" except that it doesn't call mexLock().  I call 
+the "Lockless" version whenever creating an object of a different class 
+than the one the mex file is for.</p>
+
+<p>I'm not all that happy with that workaround, but I don't really know 
+how important the mexLock() is.  At the very least, it doesn't appear to
+ be necessary to keep the C++ delete methods from causing segfaults.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/99409">Greg</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Bin: Those members provide a means 
+of checking that you are not casting a random memory address to a 
+pointer to an instance of the base class. Doing that could lead to some 
+bad things happening, so it is a protection against that.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/376284">Bin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can you explain to me what the 
+reason for using class_handle with signature_m and name_m? What if we 
+don't use those two members and just use the base class directly?</p>
+
+<p>thank you very much.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/356266">Paul Dugas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How about moving the SIGNATURE into the template parameters?</p>
+
+<p>template&lt;class base, uint32_t SIGNATURE&gt; ...</p>
+
+<p>This would allow it to be changed for different derivations.</p>
+
+<p>$0.02</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/341056">Ander Biguri</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Szigeti: your compile error is not related to this submission.</p>
+
+<p>Fernando: the error you get seems self explanatory. You need to make 
+sure class_handle.hpp, which comes with this submission, is in the same 
+folder as the cpp file being compiled.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/329591">Szigeti</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello
+<br>I have run the example successfully, and even managed to make new 
+functions, in my class, and gave a matrix as an out parameter. However I
+ want to import my code into the given class, as a function. It opens a 
+dll in C++ to a COM 2 device. I have overloaded some operator like [], 
+=, *; I have read that matlab support overloading, but this is not 
+matlab code. So I am confused a bit. In my opinion the vs 2010 compiler 
+that I have mex -setup-ed, should work. But it gives me this error.  
+class_interface_mex.obj : error LNK2019: unresolved external symbol 
+"public: class std::vector&lt;int,class std::allocator&lt;int&gt; &gt; 
+&amp; __cdecl EEGContainer::operator[](int)" 
+(??AEEGContainer@@QEAAAEAV?$vector@HV?$allocator@H@std@@@std@@H@Z) 
+referenced in function "public: double * * __cdecl dummy::getEeg(void)" 
+(?getEeg@dummy@@QEAAPEAPEANXZ) 
+<br>class_interface_mex.obj : error LNK2019: unresolved external symbol 
+"public: int __cdecl EEGContainer::getDataLenght(void)" 
+(?getDataLenght@EEGContainer@@QEAAHXZ) referenced in function "public: 
+double * * __cdecl dummy::getEeg(void)" (?getEeg@dummy@@QEAAPEAPEANXZ) 
+<br>class_interface_mex.obj : error LNK2019: unresolved external symbol 
+"public: __cdecl EEGContainer::~EEGContainer(void)" 
+(??1EEGContainer@@QEAA@XZ) referenced in function "public: double * * 
+__cdecl dummy::getEeg(void)" (?getEeg@dummy@@QEAAPEAPEANXZ) 
+<br>class_interface_mex.obj : error LNK2019: unresolved external symbol 
+"public: class EEGContainer &amp; __cdecl EEGContainer::operator=(class 
+EEGContainer const &amp;)" (??4EEGContainer@@QEAAAEAV0@AEBV0@@Z) 
+referenced in function "public: double * * __cdecl dummy::getEeg(void)" 
+(?getEeg@dummy@@QEAAPEAPEANXZ) 
+<br>class_interface_mex.obj : error LNK2019: unresolved external symbol 
+"public: __cdecl EEGContainer::EEGContainer(int)" 
+(??0EEGContainer@@QEAA@H@Z) referenced in function "public: double * * 
+__cdecl dummy::getEeg(void)" (?getEeg@dummy@@QEAAPEAPEANXZ) 
+<br>class_interface_mex.obj : error LNK2019: unresolved external symbol 
+"public: __cdecl BMRecorder::BMRecorder(void)" (??0BMRecorder@@QEAA@XZ) 
+referenced in function "public: double * * __cdecl dummy::getEeg(void)" 
+(?getEeg@dummy@@QEAAPEAPEANXZ) 
+<br>class_interface_mex.mexw64 : fatal error LNK1120: 6 unresolved externals </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/316794">Fernando</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hello everyone, I am having trouble
+ when mexing the class_interface_mex.cpp in matlab. The error that 
+matlab gives me is the follwing:</p>
+
+<p>&gt;&gt; mex class_interface_mex.cpp
+<br>class_interface_mex.cpp 
+<br>\\aus.aero-ad.tamu.edu\UgradUsers$\f0p1107\Home\MATLAB\class_interface_mex.cpp(2)
+ : fatal error C1083: Cannot open include file: 'class_handle.hpp': No 
+such file or directory 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\R2012A\BIN\MEX.PL: Error: Compile of 
+'\\aus.aero-ad.tamu.edu\UgradUsers$\f0p1107\Home\MATLAB\class_interface_mex.cpp'
+ failed. 
+<br> 
+<br>Error using mex (line 206)
+<br>Unable to complete successfully.</p>
+
+<p>Could anyone help me by letting me know how I can get rid of this 
+error? I am no expert at coding so please try to keep your answer as 
+simple as possible. Any help will be much appreciated.</p>
+
+<p>Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34660">Richard Crozier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hmmm, the FEX comment box gobbled my libraries, it's the following two that I needed</p>
+
+<p>cstring
+<br>typeinfo</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34660">Richard Crozier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I had to include both of the following to get it to compile on Linux</p>
+
+<p>#include &lt;cstring&gt;
+<br>#include &lt;typeinfo&gt;</p>
+
+<p>I'm using gcc 4.4.6. It ordered me to use typeinfo, I needed cstring to get strcmp.</p>
+
+<p>Thanks for this though, it's incredibly useful to me!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/166838">Gabriele Gualandi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you Andreas for you suggestion about compiling in Unix!!!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/113820">Artem</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>That's it, Oliver! Thanks a lot, a wonderful contribution!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Artem: If you want to put this in a
+ class directory then the mex file needs to go in a subdirectory of that
+ folder called private.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/113820">Artem</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Oliver, It is just 'mex 
+class_interface_mex.cpp', right? It works fine if the mex-file is in a 
+non-@ directory, but in the class dir it fails.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Artem: Did you mex the file, as explained in the file description?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/113820">Artem</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great contribution! 
+<br>I wonder if it is possible to put the class in @class_interface 
+directory? In my case, Matlab cannot find class_interface_mex() 
+function. Any suggestions?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104589">Andreas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>code needs some tweaking to compile
+ on non-windows systems. What's the reason for using 'raw_name()' 
+instead of 'name()'. The former is MS specific.</p>
+
+<p>--- orig/class_handle.hpp	2012-11-08 15:34:08.000000000 +0100
+<br>+++ new/class_handle.hpp	2012-11-27 16:46:50.831263148 +0100
+<br>@@ -4,12 +4,28 @@
+<br> #include &lt;stdint.h&gt;
+<br> #include &lt;string&gt;
+<br> 
+<br>+#if !(defined _WIN32 || defined _WIN64) // needed to compile on linux.
+<br>+    #include &lt;string.h&gt; 
+<br>+    #include &lt;typeinfo&gt; 
+<br>+    #define raw_name name // it would be better to change the code so that we use 'name()' instead of 'raw_name()'
+<br>+#endif
+<br>+</p>
+
+<p> 
+<br>--- orig/class_interface_mex.cpp	2012-11-08 16:10:26.000000000 +0100
+<br>+++ new/class_interface_mex.cpp	2012-11-27 16:46:47.375263270 +0100
+<br>@@ -1,6 +1,10 @@
+<br> #include "mex.h"
+<br> #include "class_handle.hpp"
+<br> 
+<br>+#if !(defined _WIN32 || defined _WIN64) // needed to compile on linux.
+<br>+    #include &lt;string.h&gt; 
+<br>+#endif
+<br>+
+<br> // The class that we are interfacing to
+<br> class dummy
+<br> {</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/70535">Francesco Montorsi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works great! perfect to start interfacing C++ object-oriented code to MATLAB</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33744">Matthew</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great submission developed from an informative newsgroup thread (referred to in description). </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">12 Dec 2012</td>
+                  <td><p>Fix compile error in Linux - thanks to Andreas for highlighting the issue.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">02 Jan 2013</td>
+                  <td><p>2nd attempt to fix compilation under linux.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">14 Jan 2013</td>
+                  <td><p>Add #includes suggested by Richard Crozier (thanks) to fix compilation in Linux.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416088075465&amp;cv=7&amp;fst=1416088075465&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/38964-example-matlab-class-wrapper-for-a-c++-class&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D130%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

@@ -1,0 +1,26 @@
+(1) The Microsoft.Net Framework version 2 must be installed on the system, folder:
+	C:\windows\Microsoft.NET\Framework\v2.???????\        (????? -> your version number)
+(2) Compile the ComMatlab.cs file to a dll, command:
+    	C:\WINDOWS\Microsoft.NET\Framework\v2.???????\Csc.exe /target:library MatlabGUI.cs MatlabGUIForm.cs MatlabGUIForm.Designer.cs MatlabGUIAssemblyInfo.cs
+(3) Register the ComMatlab Active X control, command:
+        C:\windows\Microsoft.NET\Framework\v2.???????\regasm MatlabGUI.dll /tlb /codebases
+
+(4) Start Matlab
+
+(5) ComMatlab.m <enter>
+
+
+**** Example RegisterMatlabGUI.bat batch file  ****
+
+echo off
+cls
+echo 'Change v2.0.50727 in this bat file to your framework version folder'
+pause
+echo **** Unregister MatlabGUI.dll ****
+C:\windows\Microsoft.NET\Framework\v2.0.50727\regasm MatlabGUI.dll /unregister
+echo .
+echo **** Complice MatlabGUI.dll ****
+C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Csc.exe /target:library MatlabGUI.cs MatlabGUIForm.cs MatlabGUIForm.Designer.cs MatlabGUIAssemblyInfo.cs
+echo **** Register MatlabGUI.dll ****
+C:\windows\Microsoft.NET\Framework\v2.0.50727\regasm MatlabGUI.dll /tlb /codebase
+pause

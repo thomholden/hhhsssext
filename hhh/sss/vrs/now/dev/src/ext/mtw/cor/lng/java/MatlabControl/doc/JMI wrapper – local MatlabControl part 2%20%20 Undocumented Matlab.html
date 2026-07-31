@@ -1,0 +1,782 @@
+<!DOCTYPE html><html
+dir="ltr" lang="en-US"><head><meta
+charset="UTF-8" /><title>JMI wrapper &#8211; local MatlabControl part 2 | Undocumented Matlab</title><link
+rel="profile" href="http://gmpg.org/xfn/11" /><link
+rel="stylesheet" type="text/css" media="all" href="http://undocumentedmatlab.com/blog/wp-content/themes/twentyten/style.css" /><link
+rel="pingback" href="http://undocumentedmatlab.com/blog/xmlrpc.php" /><script type="text/javascript">window.google_analytics_uacct="UA-8004730-1";</script><link
+rel="alternate" type="application/rss+xml" title="Undocumented Matlab &raquo; Feed" href="http://undocumentedmatlab.com/feed/" /><link
+rel="alternate" type="application/rss+xml" title="Undocumented Matlab &raquo; Comments Feed" href="http://undocumentedmatlab.com/comments/feed/" /><script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-8004730-1']);_gaq.push(['_setCustomVar',1,'tags','java jmi joshua-kaplan undocumented-feature',3],['_setCustomVar',2,'categories','guest-bloggers high-risk-of-breaking-in-future-version',3],['_trackPageview'],['_trackPageLoadTime']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script><link
+rel="alternate" type="application/rss+xml" title="Undocumented Matlab &raquo; JMI wrapper &#8211; local MatlabControl part 2 Comments Feed" href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/feed/" /><link
+rel='stylesheet' id='wp_greet_box_style-css'  href='http://undocumentedmatlab.com/blog/wp-content/plugins/wp-greet-box/css/style.css?ver=3.1.1' type='text/css' media='all' /><script type='text/javascript' src='http://undocumentedmatlab.com/blog/wp-includes/js/l10n.js?ver=20101110'></script><script type='text/javascript' src='http://undocumentedmatlab.com/blog/wp-includes/js/jquery/jquery.js?ver=1.4.4'></script><script type='text/javascript' src='http://undocumentedmatlab.com/blog/wp-content/plugins/collapsing-archives/collapsFunctions.js?ver=1.7'></script><script type='text/javascript' src='http://undocumentedmatlab.com/blog/wp-includes/js/comment-reply.js?ver=20090102'></script><script type='text/javascript' src='http://undocumentedmatlab.com/blog/wp-content/plugins/wp-greet-box/js/functions.js?ver=3.1.1'></script><script type='text/javascript' src='http://undocumentedmatlab.com/blog/wp-content/plugins/wp-greet-box/js/js-mode.js?ver=3.1.1'></script><link
+rel="EditURI" type="application/rsd+xml" title="RSD" href="http://undocumentedmatlab.com/blog/xmlrpc.php?rsd" /><link
+rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://undocumentedmatlab.com/blog/wp-includes/wlwmanifest.xml" /><link
+rel='index' title='Undocumented Matlab' href='http://undocumentedmatlab.com/' /><link
+rel='start' title='Changing Matlab&#8217;s Command Window colors' href='http://undocumentedmatlab.com/blog/changing-matlab-command-window-colors/' /><link
+rel='prev' title='JMI wrapper &#8211; local MatlabControl part 1' href='http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-1/' /><link
+rel='next' title='JMI wrapper &#8211; remote MatlabControl' href='http://undocumentedmatlab.com/blog/jmi-wrapper-remote-matlabcontrol/' /><meta
+name="generator" content="WordPress 3.1.1" /><link
+rel='shortlink' href='http://undocumentedmatlab.com/?p=1514' /><meta
+name="description" content="An example using matlabcontrol for calling Matlab from within a Java class is explained and discussed" /><meta
+name="keywords" content="java,jmi,joshua kaplan,undocumented feature,guest bloggers,high risk of breaking in future versions" /><link
+rel="canonical" href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/" /> <style type='text/css'>
+    
+    </style><link
+rel="stylesheet" href="http://undocumentedmatlab.com/blog/wp-content/plugins/wp-syntax/wp-syntax.css" type="text/css" media="screen" /><style type="text/css">
+body { background-color: #FFFFFF; }
+</style></head><body
+class="single single-post postid-1514 single-format-standard"><div
+id="wrapper" class="hfeed"><div
+id="header"><div
+id="masthead"><div
+id="branding" role="banner"><div
+id="site-title"> <span> <a
+href="http://undocumentedmatlab.com/" title="Undocumented Matlab" rel="home">Undocumented Matlab</a> </span></div><div
+id="site-description">Charting Matlab&#8217;s unsupported hidden underbelly</div></div><div
+id="access" role="navigation"><div
+class="skip-link screen-reader-text"><a
+href="#content" title="Skip to content">Skip to content</a></div><div
+class="menu"><ul><li ><a
+href="http://undocumentedmatlab.com/" title="Home">Home</a></li><li
+class="page_item page-item-2"><a
+href="http://undocumentedmatlab.com/about/" title="About">About</a></li><li
+class="page_item page-item-1718"><a
+href="http://undocumentedmatlab.com/consulting/" title="Consulting">Consulting</a></li><li
+class="page_item page-item-2743"><a
+href="http://undocumentedmatlab.com/training/" title="Training">Training</a></li><li
+class="page_item page-item-2101"><a
+href="http://undocumentedmatlab.com/ib-matlab/" title="IB-Matlab">IB-Matlab</a></li><li
+class="page_item page-item-2558"><a
+href="http://undocumentedmatlab.com/matlab-java-book/" title="Matlab-Java book">Matlab-Java book</a></li><li
+class="page_item page-item-59"><a
+href="http://undocumentedmatlab.com/todo/" title="TODO">TODO</a></li><li
+class="page_item page-item-2882"><a
+href="http://undocumentedmatlab.com/policies/" title="Policies">Policies</a></li><li
+class="page_item page-item-54"><a
+href="http://undocumentedmatlab.com/site-map/" title="Site map">Site map</a></li></ul></div></div></div></div><div
+id="main"><div
+id="container"><div
+id="content" role="main"><div
+id="nav-above" class="navigation"><div
+class="nav-previous"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-1/" rel="prev"><span
+class="meta-nav">&larr;</span> JMI wrapper &#8211; local MatlabControl part 1</a></div><div
+class="nav-next"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-remote-matlabcontrol/" rel="next">JMI wrapper &#8211; remote MatlabControl <span
+class="meta-nav">&rarr;</span></a></div></div><div
+id="post-1514" class="post-1514 post type-post status-publish format-standard hentry category-guest-bloggers category-high-risk-of-breaking-in-future-versions category-java category-undocumented-feature tag-java tag-jmi tag-joshua-kaplan tag-undocumented-feature"><h1 class="entry-title">JMI wrapper &#8211; local MatlabControl part 2</h1><div
+class="entry-meta"> <span
+class="entry-date">Wednesday, May 19th, 2010</span></div><div
+class="entry-content"><div
+id="greet_block"><noscript><div
+class="greet_block wpgb_cornered"><div
+class="greet_text"><div
+class="greet_image"><a
+href="http://undocumentedmatlab.com/feed/" target="_blank" rel="nofollow"><img
+src="http://undocumentedmatlab.com/blog/wp-content/plugins/wp-greet-box/images/rss_icon.png" alt="WP Greet Box icon"/></a></div>Hello there! If you are new here, you might want to <a
+href="http://undocumentedmatlab.com/feed/" rel="nofollow"><strong>subscribe to the RSS feed</strong></a> or <a
+href="http://undocumentedmatlab.com/subscribe_email.html" rel="nofollow"><strong>email feed</strong></a> for updates on Undocumented Matlab topics.<div
+style="clear:both"></div></div></div></noscript></div><p><i>Once again I welcome guest blogger Joshua Kaplan for his continued series on MatlabControl &#8211; the Java-to-Matlab Interface (JMI) wrapper</i></p><p>Last week I <a
+target="_blank" href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-1/" >introduced</a> a Java package called <a
+target="_blank" rel="nofollow" href="http://matlabcontrol.googlecode.com/" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://matlabcontrol.googlecode.com/']);"><i>matlabcontrol</i></a> which can be used to access Matlab from Java.</p><p>Let&#8217;s now put <i>matlabcontrol</i> to work from Java. Below is a very simple Java class called LocalExample which uses Swing to create a window (JFrame), a text field (JTextField), and a button (JButton). When the button is pressed, the text in the field will be evaluated in Matlab using <em>LocalMatlabProxy.eval(…)</em>, which was explained in the previous post.</p><div
+class="wp_syntax"><div
+class="code"><pre class="java" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.awt.event.ActionEvent</span><span style="color: #339933;">;</span>
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.awt.event.ActionListener</span><span style="color: #339933;">;</span>
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.awt.event.WindowAdapter</span><span style="color: #339933;">;</span>
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.awt.event.WindowEvent</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.util.concurrent.ExecutorService</span><span style="color: #339933;">;</span>
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.util.concurrent.Executors</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">javax.swing.JButton</span><span style="color: #339933;">;</span>
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">javax.swing.JFrame</span><span style="color: #339933;">;</span>
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">javax.swing.JPanel</span><span style="color: #339933;">;</span>
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">javax.swing.JTextField</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">matlabcontrol.LocalMatlabProxy</span><span style="color: #339933;">;</span>
+<span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">matlabcontrol.MatlabInvocationException</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #008000; font-style: italic; font-weight: bold;">/**
+ * A simple demo of some of matlabcontrol's functionality.
+ * 
+ * @author Joshua Kaplan
+ */</span>
+<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> LocalExample <span style="color: #000000; font-weight: bold;">extends</span> <span style="color: #003399;">JFrame</span>
+<span style="color: #009900;">&#123;</span>
+  <span style="color: #008000; font-style: italic; font-weight: bold;">/**
+   * Constructs this example and displays it.
+   */</span>
+  <span style="color: #000000; font-weight: bold;">public</span> LocalExample<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+  <span style="color: #009900;">&#123;</span>
+    <span style="color: #666666; font-style: italic;">//Window title</span>
+    <span style="color: #000000; font-weight: bold;">super</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;Local Session Example&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Panel to hold field and button</span>
+    <span style="color: #003399;">JPanel</span> panel <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">JPanel</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000000; font-weight: bold;">this</span>.<span style="color: #006633;">add</span><span style="color: #009900;">&#40;</span>panel<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Input field</span>
+    <span style="color: #000000; font-weight: bold;">final</span> <span style="color: #003399;">JTextField</span> inputField <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">JTextField</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    inputField.<span style="color: #006633;">setColumns</span><span style="color: #009900;">&#40;</span><span style="color: #cc66cc;">15</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    panel.<span style="color: #006633;">add</span><span style="color: #009900;">&#40;</span>inputField<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Eval button</span>
+    <span style="color: #003399;">JButton</span> evalButton <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">JButton</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;eval&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    panel.<span style="color: #006633;">add</span><span style="color: #009900;">&#40;</span>evalButton<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Eval runnable, to execute in separate (non-EDT) thread</span>
+    <span style="color: #000000; font-weight: bold;">final</span> ExecutorService executor <span style="color: #339933;">=</span> Executors.<span style="color: #006633;">newSingleThreadExecutor</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000000; font-weight: bold;">final</span> <span style="color: #003399;">Runnable</span> evalRunnable <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">Runnable</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #009900;">&#123;</span>
+      <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> run<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+      <span style="color: #009900;">&#123;</span>
+        <span style="color: #000000; font-weight: bold;">try</span>
+        <span style="color: #009900;">&#123;</span>
+          LocalMatlabProxy.<span style="color: #006633;">eval</span><span style="color: #009900;">&#40;</span>inputField.<span style="color: #006633;">getText</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">&#125;</span>
+        <span style="color: #000000; font-weight: bold;">catch</span> <span style="color: #009900;">&#40;</span>MatlabInvocationException exc<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span> <span style="color: #009900;">&#125;</span>
+      <span style="color: #009900;">&#125;</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Eval action event for button and field</span>
+    <span style="color: #003399;">ActionListener</span> evalAction <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">ActionListener</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #009900;">&#123;</span>
+      <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> actionPerformed<span style="color: #009900;">&#40;</span><span style="color: #003399;">ActionEvent</span> e<span style="color: #009900;">&#41;</span>
+      <span style="color: #009900;">&#123;</span>
+        <span style="color: #666666; font-style: italic;">//This uses the EDT thread, which may hang Matlab...</span>
+        <span style="color: #666666; font-style: italic;">//LocalMatlabProxy.eval(inputField.getText());</span>
+&nbsp;
+        <span style="color: #666666; font-style: italic;">//Execute runnable on a separate (non-EDT) thread</span>
+        executor.<span style="color: #006633;">execute</span><span style="color: #009900;">&#40;</span>evalRunnable<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+      <span style="color: #009900;">&#125;</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+    evalButton.<span style="color: #006633;">addActionListener</span><span style="color: #009900;">&#40;</span>evalAction<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    inputField.<span style="color: #006633;">addActionListener</span><span style="color: #009900;">&#40;</span>evalAction<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//On closing, release resources of this frame</span>
+    <span style="color: #000000; font-weight: bold;">this</span>.<span style="color: #006633;">addWindowListener</span><span style="color: #009900;">&#40;</span><span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">WindowAdapter</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #009900;">&#123;</span>
+      <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> windowClosing<span style="color: #009900;">&#40;</span><span style="color: #003399;">WindowEvent</span> e<span style="color: #009900;">&#41;</span>
+      <span style="color: #009900;">&#123;</span>
+        LocalExample.<span style="color: #000000; font-weight: bold;">this</span>.<span style="color: #006633;">dispose</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+      <span style="color: #009900;">&#125;</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Display</span>
+    <span style="color: #000000; font-weight: bold;">this</span>.<span style="color: #006633;">pack</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000000; font-weight: bold;">this</span>.<span style="color: #006633;">setResizable</span><span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000000; font-weight: bold;">this</span>.<span style="color: #006633;">setVisible</span><span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">true</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#125;</span></pre></div></div><p>We can either copy and compile the above code (remember to import the <a
+target="_blank" rel="nofollow" href="http://code.google.com/p/matlabcontrol/downloads/list" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://code.google.com/p/matlabcontrol/downloads/list']);"><i>matlabcontrol</i> JAR file</a> in your compiler; four class files will be created), or download the already-compiled code <a
+target="_blank" href="http://undocumentedmatlab.com/files/LocalExample.zip" >here</a>. Note that the already-compiled classes were compiled using JDK 1.6, so if you have Matlab R2007a (7.4) or earlier you will need to compile using an earlier Java compiler.</p><p>We now need to tell Matlab where to find both the <i>matlabcontrol</i> JAR file, and our LocalExample class files. We can either add the files to the static java classpath (by editing the classpath.txt file), or add them only to the current Matlab session&#8217;s dynamic classpath:</p><div
+class="wp_syntax"><div
+class="code"><pre class="matlab" style="font-family:monospace;"><span style="color: #228B22;">% Add Java files to current Matlab session's dynamic classpath</span>
+javaaddpath LocalExample.<span style="">zip</span>
+javaaddpath matlabcontrol-<span style="color: #33f;">3.01</span>.<span style="">jar</span></pre></div></div><p>To run the Java program, simply type <i>LocalExample</i> in the Matlab Command Window &#8211; A small Java window will appear and JMI will evaluate any expression typed into it:</p><div
+class="wp_syntax"><div
+class="code"><pre class="matlab" style="font-family:monospace;">&gt;&gt; LocalExample
+<span style="color: #0000FF;">ans</span> =
+LocalExample<span style="color: #080;">&#91;</span>frame0,<span style="color: #33f;">0</span>,<span style="color: #33f;">0</span>,202x67,<span style="color: #0000FF;">title</span>=Local Session Example,<span style="color: #F0F;">...</span><span style="color: #080;">&#93;</span></pre></div></div><p><center><div
+class="wp-caption aligncenter" style="width: 212px"><img
+alt="Java window calling Matlab via JMI" src="http://UndocumentedMatlab.com/images/matlabcontrol_local.png" title="Java window calling Matlab via JMI" width="202" height="67" /><p
+class="wp-caption-text">Java window calling Matlab via JMI</p></div></center></p><div
+class="wp_syntax"><div
+class="code"><pre class="matlab" style="font-family:monospace;">a =
+          <span style="color: #33f;">1.77245385090552</span></pre></div></div><p>When we called <em>LocalMatlabControl.eval(…)</em> from the Command Window last week, what occurred behind the scenes was actually quite different from what happens when we press the &#8220;eval&#8221; button in the Java program. This is because in the Command Window everything executes in Matlab&#8217;s single main thread. When we pressed &#8220;eval&#8221;, the code executed from the <a
+target="_blank" href="http://undocumentedmatlab.com/blog/matlab-and-the-event-dispatch-thread-edt/" >Event Dispatch Thread (EDT)</a>, which is a separate thread.</p><p>EDT is used extensively by Matlab when accessing graphical components such as a figure window, uicontrols or plots. When calling a function from JMI, the calling thread always blocks (pauses) until Matlab is done completing whatever has been asked of it. So, if we called JMI/<i>matlabcontrol</i> from the EDT and Matlab needed to use the EDT, then everything will lock up. To fix this potential problem, when you press the &#8220;eval&#8221; button the command is sent off to a separate thread which can block without preventing Matlab from doing its work. Future versions of <i>matlabcontrol</i> will try to simplify this process further. <i>matlabcontrol</i> over a remote connection, the topic of my next post, does not suffer from this complication because Matlab and your program are not sharing the same EDT or even the same Java runtime process (JVM).</p><p>While the above Java example is quite simple, using a combination of all of the methods described throughout my previous post, a much more sophisticated program can be created. To explore the methods in more detail you can use the <a
+target="_blank" rel="nofollow" href="http://code.google.com/p/matlabcontrol/downloads/list" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://code.google.com/p/matlabcontrol/downloads/list']);">demo available here</a>. The demo uses a remote connection to Matlab, but the available methods are the same. In my next and final article on this subject, I will explore controlling Matlab using <i>matlabcontrol</i> over a remote connection.</p><p>Related posts:<ol><li><a
+href='http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-1/' rel='bookmark' title='JMI wrapper &#8211; local MatlabControl part 1'>JMI wrapper &#8211; local MatlabControl part 1</a> <small>MatlabControl is an open-source wrapper of JMI that allows an easy and documented way to communicate from Java to Matlab. This article describes this wrapper....</small></li><li><a
+href='http://undocumentedmatlab.com/blog/jmi-wrapper-remote-matlabcontrol/' rel='bookmark' title='JMI wrapper &#8211; remote MatlabControl'>JMI wrapper &#8211; remote MatlabControl</a> <small>An example using matlabcontrol for calling Matlab from a separate Java process is explained....</small></li><li><a
+href='http://undocumentedmatlab.com/blog/customizing-uitree-nodes-2/' rel='bookmark' title='Customizing uitree nodes &#8211; part 2'>Customizing uitree nodes &#8211; part 2</a> <small>This article shows how Matlab GUI tree nodes can be customized with checkboxes and similar controls...</small></li><li><a
+href='http://undocumentedmatlab.com/blog/customizing-uitree-nodes/' rel='bookmark' title='Customizing uitree nodes &#8211; part 1'>Customizing uitree nodes &#8211; part 1</a> <small>This article describes how to customize specific nodes of Matlab GUI tree controls created using the undocumented uitree function...</small></li><li><a
+href='http://undocumentedmatlab.com/blog/changing-matlab-command-window-colors-part2/' rel='bookmark' title='Changing Matlab&#8217;s Command Window colors &#8211; part 2'>Changing Matlab&#8217;s Command Window colors &#8211; part 2</a> <small>The Matlab Command Window enables a limited degree of inline color customization - this post describes how to use it...</small></li><li><a
+href='http://undocumentedmatlab.com/blog/jmi-java-to-matlab-interface/' rel='bookmark' title='JMI &#8211; Java-to-Matlab Interface'>JMI &#8211; Java-to-Matlab Interface</a> <small>JMI enables calling Matlab functions from within Java. This article explains JMI's core functionality....</small></li></ol></p></div><div
+class="entry-utility"> Categories: <a
+href="http://undocumentedmatlab.com/blog/category/guest-bloggers/" title="View all posts in Guest bloggers" rel="category tag">Guest bloggers</a>, <a
+href="http://undocumentedmatlab.com/blog/category/presumed-future-risk/high-risk-of-breaking-in-future-versions/" title="View all posts in High risk of breaking in future versions" rel="category tag">High risk of breaking in future versions</a>, <a
+href="http://undocumentedmatlab.com/blog/category/java/" title="View all posts in Java" rel="category tag">Java</a>, <a
+href="http://undocumentedmatlab.com/blog/category/undocumented-feature/" title="View all posts in Undocumented feature" rel="category tag">Undocumented feature</a><p>Tags: <a
+href="http://undocumentedmatlab.com/blog/tag/java/" rel="tag">Java</a>, <a
+href="http://undocumentedmatlab.com/blog/tag/jmi/" rel="tag">JMI</a>, <a
+href="http://undocumentedmatlab.com/blog/tag/joshua-kaplan/" rel="tag">Joshua Kaplan</a>, <a
+href="http://undocumentedmatlab.com/blog/tag/undocumented-feature/" rel="tag">Undocumented feature</a></div></div><div
+id="nav-below" class="navigation"><div
+class="nav-previous"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-1/" rel="prev"><span
+class="meta-nav">&larr;</span> JMI wrapper &#8211; local MatlabControl part 1</a></div><div
+class="nav-next"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-remote-matlabcontrol/" rel="next">JMI wrapper &#8211; remote MatlabControl <span
+class="meta-nav">&rarr;</span></a></div></div><div><script type="text/javascript">var addthis_pub="altmany";var addthis_language='en';var addthis_options='email, favorites, digg, delicious, myspace, google, facebook, reddit, live, more';</script><script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script></div><table
+width="100%" style="background: #fff; border: 0 none; margin: 0;"><tbody><tr><td
+style="border: 0pt none; vertical-align: middle; padding: 0;"><a
+onclick="javascript:pageTracker._trackPageview('/outbound/article/http://www.addthis.com/bookmark.php'); return addthis_sendto()" onmouseout="addthis_close()" onmouseover="return addthis_open(this, '', 'http%3A%2F%2Fundocumentedmatlab.com%2Fabout%2F', 'About')" href="http://www.addthis.com/bookmark.php" rel="nofollow"><img
+width="125" height="16" border="0" alt="Bookmark and Share" src="http://s7.addthis.com/static/btn/lg-share-en.gif"/></a></td><td
+style="border: 0pt none; vertical-align: middle; padding: 0;"><iframe
+src="http://www.facebook.com/plugins/like.php?href=http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/&layout=standard&show_faces=false&width=450&action=like&colorscheme=light&height=25" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:25px;" allowTransparency="true"></iframe></td><td
+style="border: 0pt none; vertical-align: middle; padding: 0;"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/print/" title="Print" rel="nofollow"><img
+class="WP-PrintIcon" src="http://undocumentedmatlab.com/blog/wp-content/plugins/wp-print/images/print.gif" alt="Print" title="Print" style="border: 0px;" /></a>&nbsp;<a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/print/" title="Print" rel="nofollow">Print</a></td></tr></tbody></table><div
+class="buymecoffee_wrapper"><div
+class="buymecoffee"><a
+class="buymecoffeelink" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=altmany@gmail.com&currency_code=USD&amount=&return=&item_name=Donate+a+cup+of+coffee+or+two." target="paypal" rel="nofollow"><div
+class="coffee_image"></div><div
+class="coffee_text">If you like this post, please consider buying me a cup of coffee.</div></a></div></div><div
+id="comments"><h3 id="comments-title">7 Responses to <em>JMI wrapper &#8211; local MatlabControl part 2</em></h3><ol
+class="commentlist"><li
+class="comment even thread-even depth-1" id="li-comment-10236"><div
+id="comment-10236"><div
+class="comment-author vcard"> <img
+alt='' src='http://1.gravatar.com/avatar/3db91c15d10e8f45672b123594b746c0?s=40&amp;d=identicon&amp;r=PG' class='avatar avatar-40 photo' height='40' width='40' /><cite
+class="fn">ben</cite> <span
+class="says">says:</span></div><div
+class="comment-meta commentmetadata"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/#comment-10236"> May 21, 2010 at 2:33 am</a></div><div
+class="comment-body"><p>I am looking forward to your blog post about controlling Matlab using matlabcontrol over a remote connection. Thanks for all the effort you put into matlabcontrol!</p></div><div
+class="reply"> <a
+class='comment-reply-link' href='/blog/jmi-wrapper-local-matlabcontrol-part-2/?replytocom=10236#respond' onclick='return addComment.moveForm("comment-10236", "10236", "respond", "1514")'>Reply</a></div></div></li><li
+class="post pingback"><p>Pingback: <a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-remote-matlabcontrol/"   rel='external nofollow' class='url'>JMI wrapper – remote MatlabControl | Undocumented Matlab</a></p></li><li
+class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-19792"><div
+id="comment-19792"><div
+class="comment-author vcard"> <img
+alt='' src='http://1.gravatar.com/avatar/b9b2e4869ef0c1ebb8983ad195d62eda?s=40&amp;d=identicon&amp;r=PG' class='avatar avatar-40 photo' height='40' width='40' /><cite
+class="fn">n n</cite> <span
+class="says">says:</span></div><div
+class="comment-meta commentmetadata"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/#comment-19792"> October 12, 2010 at 11:29 pm</a></div><div
+class="comment-body"><p>hello guys.<br
+/> Where should I found this file?</p><p>import matlabcontrol.LocalMatlabProxy;<br
+/> import matlabcontrol.MatlabInvocationException;</p></div><div
+class="reply"> <a
+class='comment-reply-link' href='/blog/jmi-wrapper-local-matlabcontrol-part-2/?replytocom=19792#respond' onclick='return addComment.moveForm("comment-19792", "19792", "respond", "1514")'>Reply</a></div></div><ul
+class='children'><li
+class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-19797"><div
+id="comment-19797"><div
+class="comment-author vcard"> <img
+alt='' src='http://1.gravatar.com/avatar/92402544fcd8f7f5147962b1c757785b?s=40&amp;d=identicon&amp;r=PG' class='avatar avatar-40 photo' height='40' width='40' /><cite
+class="fn"><a
+href="http://UndocumentedMatlab.com" onclick="javascript:_gaq.push(['_trackEvent','outbound-commentauthor','http://UndocumentedMatlab.com']);"  rel='external nofollow' class='url'>Yair Altman</a></cite> <span
+class="says">says:</span></div><div
+class="comment-meta commentmetadata"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/#comment-19797"> October 13, 2010 at 1:04 am</a></div><div
+class="comment-body"><p>matlabcontrol.jar is available here: <a
+href="http://code.google.com/p/matlabcontrol/downloads/list" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://code.google.com/p/matlabcontrol/downloads/list']);" rel="nofollow">http://code.google.com/p/matlabcontrol/downloads/list</a></p></div><div
+class="reply"></div></div></li></ul></li><li
+class="comment odd alt thread-even depth-1" id="li-comment-49333"><div
+id="comment-49333"><div
+class="comment-author vcard"> <img
+alt='' src='http://0.gravatar.com/avatar/86fc066b685d532e691d045e272050a2?s=40&amp;d=identicon&amp;r=PG' class='avatar avatar-40 photo' height='40' width='40' /><cite
+class="fn"><a
+href="http://www.sdtools.com" onclick="javascript:_gaq.push(['_trackEvent','outbound-commentauthor','http://www.sdtools.com']);"  rel='external nofollow' class='url'>Etienne Balmes</a></cite> <span
+class="says">says:</span></div><div
+class="comment-meta commentmetadata"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/#comment-49333"> June 24, 2011 at 7:53 am</a></div><div
+class="comment-body"><p>I have been following your posts with interest. Here is a question. I have very large data sets in MATLAB and would like to use a custom table model to display them in java. I tested the process in pure java and it works as it should.</p><p>Now to implement an <i> AbstractTableModel </i> I need to be able to call Matlab (or possibly C), to get the correct values on <i> getColumnCount </i>, <i> getRowCount </i> and <i> getValueAt </i></p><p>Using the JMI I can get the data with a call to my own Matlab function <i> mat.fevalConsoleOutput(&#8220;cinguj&#8221;, &#8230;); </i></p><p>But when this is called by SWING I cannot use <i> Matlab.mtFevalConsoleOutput </i> because swing is not on the main Matlab Thread so JMI complains and <i> fevalConsoleOutput </i> seems to run asynchronously so that I do not get the right answer in time.</p><p>Matlabcontrol does not call <i> fevalConsoleOutput </i> and thus does not address the issue. I also tried implementing the <i> com.mathworks.jmi.CompletionObserver</i> (just say implements CompletionObserver and add a completed method) but I have not found out to get the java to wait until completion (things I have tried locked up).</p><p>Yair, if you don&#8217;t have an easy answer, I am willing to invest some money into it.</p></div><div
+class="reply"> <a
+class='comment-reply-link' href='/blog/jmi-wrapper-local-matlabcontrol-part-2/?replytocom=49333#respond' onclick='return addComment.moveForm("comment-49333", "49333", "respond", "1514")'>Reply</a></div></div></li><li
+class="comment even thread-odd thread-alt depth-1" id="li-comment-55651"><div
+id="comment-55651"><div
+class="comment-author vcard"> <img
+alt='' src='http://0.gravatar.com/avatar/4b36034c51be25ab98e037149a2ad83b?s=40&amp;d=identicon&amp;r=PG' class='avatar avatar-40 photo' height='40' width='40' /><cite
+class="fn">Inno</cite> <span
+class="says">says:</span></div><div
+class="comment-meta commentmetadata"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/#comment-55651"> September 2, 2011 at 3:10 am</a></div><div
+class="comment-body"><p>Hi, I tried to compile this example, and this is what I get</p><p># javac LocalExample.java<br
+/> LocalExample.java:55: non-static method eval(java.lang.String) cannot be referenced from a static context<br
+/> LocalMatlabProxy.eval(inputField.getText());</p><p>Any help will be appreciated. Thanks.</p></div><div
+class="reply"> <a
+class='comment-reply-link' href='/blog/jmi-wrapper-local-matlabcontrol-part-2/?replytocom=55651#respond' onclick='return addComment.moveForm("comment-55651", "55651", "respond", "1514")'>Reply</a></div></div></li><li
+class="comment odd alt thread-even depth-1" id="li-comment-81865"><div
+id="comment-81865"><div
+class="comment-author vcard"> <img
+alt='' src='http://0.gravatar.com/avatar/8b9198e3cd16d294df2c198e56967f16?s=40&amp;d=identicon&amp;r=PG' class='avatar avatar-40 photo' height='40' width='40' /><cite
+class="fn">weikuiwang</cite> <span
+class="says">says:</span></div><div
+class="comment-meta commentmetadata"><a
+href="http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/#comment-81865"> April 17, 2012 at 2:01 am</a></div><div
+class="comment-body"><p>hi, can the matlabcontrol be used also for matlab runtime?</p></div><div
+class="reply"> <a
+class='comment-reply-link' href='/blog/jmi-wrapper-local-matlabcontrol-part-2/?replytocom=81865#respond' onclick='return addComment.moveForm("comment-81865", "81865", "respond", "1514")'>Reply</a></div></div></li></ol><div
+id="respond"><h3 id="reply-title">Leave a Reply <small><a
+rel="nofollow" id="cancel-comment-reply-link" href="/blog/jmi-wrapper-local-matlabcontrol-part-2/#respond" style="display:none;">Cancel reply</a></small></h3><form
+action="http://undocumentedmatlab.com/blog/wp-comments-post.php" method="post" id="commentform"><p
+class="comment-notes">Your email address will not be published. Required fields are marked <span
+class="required">*</span></p><p
+class="comment-form-author"><label
+for="author">Name</label> <span
+class="required">*</span><input
+id="author" name="author" type="text" value="" size="30" aria-required='true' /></p><p
+class="comment-form-email"><label
+for="email">Email</label> <span
+class="required">*</span><input
+id="email" name="email" type="text" value="" size="30" aria-required='true' /></p><p
+class="comment-form-url"><label
+for="url">Website</label><input
+id="url" name="url" type="text" value="" size="30" /></p><p
+class="comment-form-comment"> <label
+for="comment">HTML tags such as &lt;b&gt; or &lt;i&gt; are accepted. <br/>Wrap code fragments inside &lt;pre lang="matlab"&gt; tags, like this:</label><div
+style="margin: 0 20px 10px; color: #888; font-size: 11px; line-height: 12px;"> &lt;pre lang="matlab"&gt; <br/> a = magic(3); <br/> sum(a) <br/> &lt;/pre&gt;</div> </label><textarea id="comment" aria-required="true" rows="8" cols="45" name="comment"></textarea></p><p
+class="form-submit"> <input
+name="submit" type="submit" id="submit" value="Post Comment" /> <input
+type='hidden' name='comment_post_ID' value='1514' id='comment_post_ID' /> <input
+type='hidden' name='comment_parent' id='comment_parent' value='0' /></p><p
+style="display: none;"><input
+type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="8010869457" /></p><script src="http://undocumentedmatlab.com/?live-comment-preview.js" type="text/javascript"></script><div
+id="commentPreview"></div></form></div><script type="text/javascript">jQuery(document).ready(function(){jQuery('#commentform').submit(function(){_gaq.push(['_setAccount','UA-8004730-1'],['_trackEvent','comment']);});});</script></div></div></div><div
+id="primary" class="widget-area" role="complementary"><ul
+class="xoxo"><li
+id="text-701801014" class="widget-container widget_text"><div
+class="textwidget"><form
+role="search" method="get" id="searchform" action="http://undocumentedmatlab.com/"><div><label
+class="screen-reader-text" for="s">Search for:</label> <input
+value="" name="s" id="s" type="text"> <input
+id="searchsubmit" value="Search" size="25" title="Search for:" type="submit"></div></form> <font
+color="gray" size="-4">Enclose with " for exact match e.g., "uitable report"</font></div></li><li
+id="text-701801013" class="widget-container widget_text"><h3 class="widget-title">Useful links</h3><div
+class="textwidget"><ul><li><img
+src="/images/email-icon.png" width="16" height="11" alt="" style="vertical-align:middle;border:0"/>&nbsp;<a
+href="mailto: altmany @gmail.com?subject=Undocumented Matlab&body=Hi Yair, &cc=;&bcc=" rel="nofollow" target="_blank" onclick="var n='altmany'; var d='gmail.com'; window.open('mailto:'+n+'@'+d+'?subject=Undocumented Matlab&body=Hi Yair, '); return false;">Email Yair Altman</a></li><li><img
+src="/images/email-icon.png" width="16" height="11" alt="" style="vertical-align:middle;border:0"/>&nbsp;<a
+href="http://undocumentedmatlab.com/subscribe_email.html" >Subscribe to new posts (email)</a></li><li><img
+src="/images/feed-icon-14x14.png" width="16" height="14" alt="" style="vertical-align:middle;border:0"/>&nbsp;<a
+href="http://undocumentedmatlab.com/feed/" >Subscribe to new posts (feed)</a></li><li><img
+src="/images/feed-icon-14x14.png" width="16" height="14" alt="" style="vertical-align:middle;border:0"/>&nbsp;<a
+href="http://undocumentedmatlab.com/subscribe_reader.html"  rel="alternate" type="application/rss+xml">Subscribe to new posts (reader)</a></li><li><img
+src="/images/feed-icon-14x14.png" width="16" height="14" alt="" style="vertical-align:middle;border:0"/>&nbsp;<a
+href="http://undocumentedmatlab.com/comments/feed/" >Subscribe to comments (feed)</a></li></ul><a
+onclick="javascript:pageTracker._trackPageview('/outbound/article/http://www.addthis.com/bookmark.php'); return addthis_sendto()" onmouseout="addthis_close()" onmouseover="return addthis_open(this, '', 'http%3A%2F%2Fundocumentedmatlab.com%2Fabout%2F', 'About')" href="http://www.addthis.com/bookmark.php" onclick="javascript:_gaq.push(['_trackEvent','outbound-widget','http://www.addthis.com/bookmark.php']);" rel="nofollow"><img
+alt="Bookmark and Share" src="http://s7.addthis.com/static/btn/lg-share-en.gif" border="0" height="16" width="100"></a>&nbsp;<iframe
+src="http://www.facebook.com/plugins/like.php?href=<?php the_permalink() ?>&layout=button_count&show_faces=false&width=76&action=like&colorscheme=light&height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:77px; height:20px;" allowTransparency="true"> </iframe>&nbsp;<g:plusone size="small" href="http://UndocumentedMatlab.com"></g:plusone> <br/><form
+action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input
+type="hidden" name="cmd" value="_s-xclick"><input
+type="hidden" name="hosted_button_id" value="4214251"><input
+type="hidden" name="item_name" value="Buy Yair a cup of coffee (Thanks!)"> <input
+type="hidden" name="currency_code" value="USD"> <input
+type="hidden" name="business" value="altmany@gmail.com"> <input
+type="hidden" name="notify_url" value=""> <input
+type="hidden" name="no_shipping" value="1"> <input
+type="hidden" name="return" value="http://UndocumentedMatlab.com"> <input
+type="hidden" name="no_note" value="1"> <input
+type="hidden" name="tax" value="0"> <input
+type="hidden" name="bn" value="PP-DonationsBF"><input
+type="image" src="http://undocumentedmatlab.com/images/btn_donate_SM.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online."></form><br/><div
+style="background-color: rgb(255, 255, 0);"><center>In 21-23 August 2012, I will hold public <a
+target="_blank" href="http://undocumentedmatlab.com/training/" >training courses</a> in <b>Geneva</b>, Switzerland. Anyone interested please <a
+href="mailto:%20altmany%20@gmail.com?subject=Matlab%20courses&amp;body=Hi%20Yair,%20&amp;cc=;&amp;bcc=" rel="nofollow" target="_blank" onclick="var n='altmany'; var d='gmail.com'; window.open('mailto:'+n+'@'+d+'?subject=Matlab training courses&amp;body=Hi Yair, '); return false;">email me</a> (altmany at gmail dot com) for more details.</center></div><br/><center><a
+href="http://undocumentedmatlab.com/matlab-java-book/"><img
+title="Undocumented Secrets of Matlab-Java Programming book" src="http://undocumentedmatlab.com/book/Undocumented%20Matlab-Java/book-front-cover-CRC-2D-medium.jpg" alt="Undocumented Secrets of Matlab-Java Programming book"/><br/> Get the book!</a></center></div></li><li
+id="collapsarch-5" class="widget-container widget_collapsarch"><h3 class="widget-title">Archives</h3><ul
+id='widget-collapsarch-5-top
+' class='collapsing archives list'><li
+class='collapsing archives'><span
+title='click to collapse' class='collapsing archives collapse' onclick='expandCollapse(event, "", "", 0,"collapsing archives"); return false' ><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/'>2012 <span
+class="yearCount">(31)</span> </a> </span><ul
+id='collapsArch-2012:5'><li
+class='collapsing archives'><span
+title='click to collapse' class='collapsing archives collapse' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/08/' >August <span
+class="monthCount">(2)</span> </a></span><ul
+id='collapsArch-2012-8:5'><li
+class='collapsing archives item'><a
+href='http://undocumentedmatlab.com/blog/bold-color-text-in-the-command-window/' title='Bold color text in the Command Window'>Bold color text in the Command Window</a></li><li
+class='collapsing archives item'><a
+href='http://undocumentedmatlab.com/blog/xlswrite-for-mac-linux/' title='xlswrite for Mac, Linux'>xlswrite for Mac, Linux</a></li></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/07/' >July <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2012-7:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/06/' >June <span
+class="monthCount">(3)</span> </a></span><ul
+style='display:none' id='collapsArch-2012-6:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/05/' >May <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2012-5:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/04/' >April <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2012-4:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/03/' >March <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2012-3:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/02/' >February <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2012-2:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2012/01/' >January <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2012-1:5'></ul></li></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0,"collapsing archives"); return false' ><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/'>2011 <span
+class="yearCount">(47)</span> </a> </span><ul
+style='display:none' id='collapsArch-2011:5'><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/12/' >December <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-12:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/11/' >November <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-11:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/10/' >October <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-10:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/09/' >September <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-9:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/08/' >August <span
+class="monthCount">(3)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-8:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/07/' >July <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-7:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/06/' >June <span
+class="monthCount">(3)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-6:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/05/' >May <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-5:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/04/' >April <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-4:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/03/' >March <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-3:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/02/' >February <span
+class="monthCount">(3)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-2:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2011/01/' >January <span
+class="monthCount">(3)</span> </a></span><ul
+style='display:none' id='collapsArch-2011-1:5'></ul></li></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0,"collapsing archives"); return false' ><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/'>2010 <span
+class="yearCount">(57)</span> </a> </span><ul
+style='display:none' id='collapsArch-2010:5'><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/12/' >December <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-12:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/11/' >November <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-11:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/10/' >October <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-10:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/09/' >September <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-9:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/08/' >August <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-8:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/07/' >July <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-7:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/06/' >June <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-6:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/05/' >May <span
+class="monthCount">(6)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-5:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/04/' >April <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-4:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/03/' >March <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-3:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/02/' >February <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-2:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2010/01/' >January <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2010-1:5'></ul></li></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0,"collapsing archives"); return false' ><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/'>2009 <span
+class="yearCount">(48)</span> </a> </span><ul
+style='display:none' id='collapsArch-2009:5'><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/12/' >December <span
+class="monthCount">(2)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-12:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/11/' >November <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-11:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/10/' >October <span
+class="monthCount">(6)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-10:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/09/' >September <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-9:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/08/' >August <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-8:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/07/' >July <span
+class="monthCount">(5)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-7:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/06/' >June <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-6:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/05/' >May <span
+class="monthCount">(7)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-5:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/04/' >April <span
+class="monthCount">(4)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-4:5'></ul></li><li
+class='collapsing archives'><span
+title='click to expand' class='collapsing archives expand' onclick='expandCollapse(event, "", "", 0, "collapsing archives"); return false'><span
+class='sym'></span><a
+href='http://undocumentedmatlab.com/blog/2009/03/' >March <span
+class="monthCount">(7)</span> </a></span><ul
+style='display:none' id='collapsArch-2009-3:5'></ul></li></ul></li><li
+style='display:none'><script type="text/javascript">/*<![CDATA[*/var expandSym="<img src='/wp-content/plugins/collapsing-archives/img/expand.gif' alt='expand' />";var collapseSym="<img src='/wp-content/plugins/collapsing-archives/img/collapse.gif' alt='collapse' />";try{collapsItems['catTest']='test';}catch(err){collapsItems=new Object();}
+collapsItems['collapsArch-2012-8:5']='';collapsItems['collapsArch-2012-7:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/splash-window-for-deployed-applications/\' title=\'Splash window for deployed applications\'>Splash window for deployed applications</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/waiting-for-asynchronous-events/\' title=\'Waiting for asynchronous events\'>Waiting for asynchronous events</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/trapping-warnings-efficiently/\' title=\'Trapping warnings efficiently\'>Trapping warnings efficiently</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/using-groovy-in-matlab/\' title=\'Using Groovy in Matlab\'>Using Groovy in Matlab</a></li>';collapsItems['collapsArch-2012-6:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/multi-line-uitable-column-headers/\' title=\'Multi-line uitable column headers\'>Multi-line uitable column headers</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/the-java-import-directive/\' title=\'The Java import directive\'>The Java import directive</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/undocumented-scatter-plot-jitter/\' title=\'Undocumented scatter plot jitter\'>Undocumented scatter plot jitter</a></li>';collapsItems['collapsArch-2012-5:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/internal-matlab-memory-optimizations/\' title=\'Internal Matlab memory optimizations\'>Internal Matlab memory optimizations</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/array-resizing-performance/\' title=\'Array resizing performance\'>Array resizing performance</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/preallocation-performance/\' title=\'Preallocation performance\'>Preallocation performance</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-menu-items-part-3/\' title=\'Customizing menu items part 3\'>Customizing menu items part 3</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-menu-items-part-2/\' title=\'Customizing menu items part 2\'>Customizing menu items part 2</a></li>';collapsItems['collapsArch-2012-4:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-menu-items-part-1/\' title=\'Customizing menu items part 1\'>Customizing menu items part 1</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-axes-tick-labels-format/\' title=\'Setting axes tick labels format\'>Setting axes tick labels format</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/specialized-matlab-plots/\' title=\'Specialized Matlab plots\'>Specialized Matlab plots</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/spy-easter-egg-take-2/\' title=\'Spy Easter egg take 2\'>Spy Easter egg take 2</a></li>';collapsItems['collapsArch-2012-3:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/extending-a-java-class-with-udd/\' title=\'Extending a Java class with UDD\'>Extending a Java class with UDD</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/expanding-urlreads-capabilities/\' title=\'Expanding urlread capabilities\'>Expanding urlread capabilities</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlabs-internal-memory-representation/\' title=\'Matlab&#039;s internal memory representation\'>Matlab&#039;s internal memory representation</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/java-stack-traces-in-matlab/\' title=\'Java stack traces in Matlab\'>Java stack traces in Matlab</a></li>';collapsItems['collapsArch-2012-2:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/profiling-matlab-memory-usage/\' title=\'Profiling Matlab memory usage\'>Profiling Matlab memory usage</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/training/\' title=\'New training courses\'>New training courses</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/using-java-collections-in-matlab/\' title=\'Using Java Collections in Matlab\'>Using Java Collections in Matlab</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-mex-in-place-editing/\' title=\'Matlab mex in-place editing\'>Matlab mex in-place editing</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/mlintfailurefiles/\' title=\'MLintFailureFiles or: Why can&#039;t I save my m-file?!\'>MLintFailureFiles or: Why can&#039;t I save my m-file?!</a></li>';collapsItems['collapsArch-2012-1:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/using-spinners-in-matlab-gui/\' title=\'Using spinners in Matlab GUI\'>Using spinners in Matlab GUI</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-java-memory-leaks-performance/\' title=\'Matlab-Java memory leaks, performance\'>Matlab-Java memory leaks, performance</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/recovering-previous-editor-state/\' title=\'Recovering previous editor state\'>Recovering previous editor state</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/2011-perspective/\' title=\'2011 perspective &amp; plans for 2012\'>2011 perspective &amp; plans for 2012</a></li>';collapsItems['collapsArch-2011-12:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/command-window-text-manipulation/\' title=\'Command Window text manipulation\'>Command Window text manipulation</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/ideas-for-a-new-book/\' title=\'Ideas for a new book\'>Ideas for a new book</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/converting-java-vectors-to-matlab-arrays/\' title=\'Converting Java vectors to Matlab arrays\'>Converting Java vectors to Matlab arrays</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/common-javacomponent-problems/\' title=\'Common javacomponent problems\'>Common javacomponent problems</a></li>';collapsItems['collapsArch-2011-11:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/reasons-for-undocumented-matlab-aspects/\' title=\'Reasons for undocumented Matlab aspects\'>Reasons for undocumented Matlab aspects</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/types-of-undocumented-matlab-aspects/\' title=\'Types of undocumented Matlab aspects\'>Types of undocumented Matlab aspects</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-java-book/\' title=\'Matlab-Java book\'>Matlab-Java book</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/determining-axes-zoom-state/\' title=\'Determining axes zoom state\'>Determining axes zoom state</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/multi-line-tooltips/\' title=\'Multi-line tooltips\'>Multi-line tooltips</a></li>';collapsItems['collapsArch-2011-10:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uitable-cell-colors/\' title=\'Uitable cell colors\'>Uitable cell colors</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/tri-state-checkbox/\' title=\'Tri-state checkbox\'>Tri-state checkbox</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/javacomponent-background-color/\' title=\'Javacomponent background color\'>Javacomponent background color</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/datestr-performance/\' title=\'datestr performance\'>datestr performance</a></li>';collapsItems['collapsArch-2011-9:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/reading-non-latin-text-files/\' title=\'Reading non-Latin text files\'>Reading non-Latin text files</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/getundoc-get-undocumented-object-properties/\' title=\'getundoc - get undocumented object properties\'>getundoc - get undocumented object properties</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/controlling-plot-data-tips/\' title=\'Controlling plot data-tips\'>Controlling plot data-tips</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/bug-and-workaround-in-timeseries-plot/\' title=\'Bug and workaround in timeseries plot\'>Bug and workaround in timeseries plot</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-installation-woes/\' title=\'Matlab installation woes\'>Matlab installation woes</a></li>';collapsItems['collapsArch-2011-8:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/formatting-numbers/\' title=\'Formatting numbers\'>Formatting numbers</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/controlling-callback-re-entrancy/\' title=\'Controlling callback re-entrancy\'>Controlling callback re-entrancy</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uitable-customization-report/\' title=\'Uitable customization report\'>Uitable customization report</a></li>';collapsItems['collapsArch-2011-7:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uitable-sorting/\' title=\'Uitable sorting\'>Uitable sorting</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/running-vb-code-in-matlab/\' title=\'Running VB code in Matlab\'>Running VB code in Matlab</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matrix-processing-performance/\' title=\'Matrix processing performance\'>Matrix processing performance</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/more-undocumented-timing-features/\' title=\'More undocumented timing features\'>More undocumented timing features</a></li>';collapsItems['collapsArch-2011-6:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/jboost-integrating-an-external-java-library-in-matlab/\' title=\'JBoost - Integrating an external Java library in Matlab\'>JBoost - Integrating an external Java library in Matlab</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/unique-computer-id/\' title=\'Unique computer ID\'>Unique computer ID</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/docking-figures-in-compiled-applications/\' title=\'Docking figures in compiled applications\'>Docking figures in compiled applications</a></li>';collapsItems['collapsArch-2011-5:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/color-selection-components/\' title=\'Color selection components\'>Color selection components</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/minimize-maximize-figure-window/\' title=\'Minimize/maximize figure window\'>Minimize/maximize figure window</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/borderless-button-used-for-plot-properties/\' title=\'Borderless button used for plot properties\'>Borderless button used for plot properties</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/datenum-performance/\' title=\'Datenum performance\'>Datenum performance</a></li>';collapsItems['collapsArch-2011-4:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/plot-type-selection-components/\' title=\'Plot-type selection components\'>Plot-type selection components</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/blurred-matlab-figure-window/\' title=\'Blurred Matlab figure window\'>Blurred Matlab figure window</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/transparent-matlab-figure-window/\' title=\'Transparent Matlab figure window\'>Transparent Matlab figure window</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/disable-entire-figure-window/\' title=\'Enable/disable entire figure window\'>Enable/disable entire figure window</a></li>';collapsItems['collapsArch-2011-3:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/interesting-uitree-utility/\' title=\'An interesting uitree utility\'>An interesting uitree utility</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/udd-and-java/\' title=\'UDD and Java\'>UDD and Java</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/udd-events-and-listeners/\' title=\'UDD Events and Listeners\'>UDD Events and Listeners</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/udd-properties/\' title=\'UDD Properties\'>UDD Properties</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/hierarchical-systems-with-udd/\' title=\'Hierarchical Systems with UDD\'>Hierarchical Systems with UDD</a></li>';collapsItems['collapsArch-2011-2:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/creating-a-simple-udd-class/\' title=\'Creating a simple UDD class\'>Creating a simple UDD class</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/introduction-to-udd/\' title=\'Introduction to UDD\'>Introduction to UDD</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/multi-column-grid-legend/\' title=\'Multi-column (grid) legend\'>Multi-column (grid) legend</a></li>';collapsItems['collapsArch-2011-1:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/jgraph-and-bde/\' title=\'JGraph and BDE\'>JGraph and BDE</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/jfreechart-graphs-and-gauges/\' title=\'JFreeChart graphs and gauges\'>JFreeChart graphs and gauges</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/2010-perspective/\' title=\'2010 perspective &amp; plans for 2011\'>2010 perspective &amp; plans for 2011</a></li>';collapsItems['collapsArch-2010-12:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/handle2struct-struct2handle-and-matlab-8/\' title=\'handle2struct, struct2handle &amp; Matlab 8.0\'>handle2struct, struct2handle &amp; Matlab 8.0</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/fig-files-format/\' title=\'FIG files format\'>FIG files format</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uisplittool-uitogglesplittool-callbacks/\' title=\'uisplittool &amp; uitogglesplittool callbacks\'>uisplittool &amp; uitogglesplittool callbacks</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uisplittool-uitogglesplittool/\' title=\'uisplittool &amp; uitogglesplittool\'>uisplittool &amp; uitogglesplittool</a></li>';collapsItems['collapsArch-2010-11:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-callbacks-for-java-events/\' title=\'Matlab callbacks for Java events\'>Matlab callbacks for Java events</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/panel-level-uicontrols/\' title=\'Panel-level uicontrols\'>Panel-level uicontrols</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uitab-customizations/\' title=\'Uitab customizations\'>Uitab customizations</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uitab-colors-icons-images/\' title=\'Uitab colors, icons and images\'>Uitab colors, icons and images</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-workspace-context-menu/\' title=\'Customizing Workspace context-menu\'>Customizing Workspace context-menu</a></li>';collapsItems['collapsArch-2010-10:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-uicontrol-border/\' title=\'Customizing uicontrol border\'>Customizing uicontrol border</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/hgfeval/\' title=\'The hgfeval function\'>The hgfeval function</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/fixing-a-java-focus-problem/\' title=\'Fixing a Java focus problem\'>Fixing a Java focus problem</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-java-interface-using-static-control/\' title=\'Matlab-Java interface using a static control\'>Matlab-Java interface using a static control</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/accessing-plot-brushed-data/\' title=\'Accessing plot brushed data\'>Accessing plot brushed data</a></li>';collapsItems['collapsArch-2010-9:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/undocumented-cursorbar-object/\' title=\'Undocumented cursorbar object\'>Undocumented cursorbar object</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/gui-automation-utilities/\' title=\'GUI automation utilities\'>GUI automation utilities</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/gui-automation-robot/\' title=\'GUI automation using a Robot\'>GUI automation using a Robot</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/docs-of-old-matlab-releases/\' title=\'Docs of old Matlab releases\'>Docs of old Matlab releases</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-uitree-nodes-2/\' title=\'Customizing uitree nodes - part 2\'>Customizing uitree nodes - part 2</a></li>';collapsItems['collapsArch-2010-8:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-uitree-nodes/\' title=\'Customizing uitree nodes - part 1\'>Customizing uitree nodes - part 1</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-uitree/\' title=\'Customizing uitree\'>Customizing uitree</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uitree/\' title=\'uitree\'>uitree</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/javacomponent/\' title=\'The javacomponent function\'>The javacomponent function</a></li>';collapsItems['collapsArch-2010-7:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/com-activex-tips/\' title=\'COM/ActiveX tips &amp; tricks\'>COM/ActiveX tips &amp; tricks</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-dde-support/\' title=\'Matlab DDE support\'>Matlab DDE support</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/syntax-highlighted-labels-panels/\' title=\'Syntax highlighted labels &amp; panels\'>Syntax highlighted labels &amp; panels</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/modifying-matlab-look-and-feel/\' title=\'Modifying Matlab&#039;s Look-and-Feel\'>Modifying Matlab&#039;s Look-and-Feel</a></li>';collapsItems['collapsArch-2010-6:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/date-selection-components/\' title=\'Date selection components\'>Date selection components</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/tab-panels-uitab-and-relatives/\' title=\'Tab panels - uitab and relatives\'>Tab panels - uitab and relatives</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/plot-performance/\' title=\'Plot performance\'>Plot performance</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-layout-managers-uicontainer-and-relatives/\' title=\'Matlab layout managers: uicontainer and relatives\'>Matlab layout managers: uicontainer and relatives</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/modifying-default-toolbar-menubar-actions/\' title=\'Modifying default toolbar/menubar actions\'>Modifying default toolbar/menubar actions</a></li>';collapsItems['collapsArch-2010-5:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/jmi-wrapper-remote-matlabcontrol/\' title=\'JMI wrapper - remote MatlabControl\'>JMI wrapper - remote MatlabControl</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-2/\' title=\'JMI wrapper - local MatlabControl part 2\'>JMI wrapper - local MatlabControl part 2</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/jmi-wrapper-local-matlabcontrol-part-1/\' title=\'JMI wrapper - local MatlabControl part 1\'>JMI wrapper - local MatlabControl part 1</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/new-information-on-hg2/\' title=\'New information on HG2\'>New information on HG2</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-hg2/\' title=\'Matlab&#039;s HG2 mechanism\'>Matlab&#039;s HG2 mechanism</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/undocumented-feature-function/\' title=\'Undocumented feature() function\'>Undocumented feature() function</a></li>';collapsItems['collapsArch-2010-4:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/advanced-jide-property-grids/\' title=\'Advanced JIDE Property Grids\'>Advanced JIDE Property Grids</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/jide-property-grids/\' title=\'JIDE Property Grids\'>JIDE Property Grids</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/jmi-java-to-matlab-interface/\' title=\'JMI - Java-to-Matlab Interface\'>JMI - Java-to-Matlab Interface</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/image-easter-egg/\' title=\'Image Easter egg\'>Image Easter egg</a></li>';collapsItems['collapsArch-2010-3:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/plot-liminclude-properties/\' title=\'Plot LimInclude properties\'>Plot LimInclude properties</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/axes-looseinset-property/\' title=\'Axes LooseInset property\'>Axes LooseInset property</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/plot-linesmoothing-property/\' title=\'Plot LineSmoothing property\'>Plot LineSmoothing property</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/matlab-and-the-event-dispatch-thread-edt/\' title=\'Matlab and the Event Dispatch Thread (EDT)\'>Matlab and the Event Dispatch Thread (EDT)</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-desktop-tab-completions/\' title=\'Setting desktop tab completions\'>Setting desktop tab completions</a></li>';collapsItems['collapsArch-2010-2:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/inactive-control-tooltips-event-chaining/\' title=\'Inactive Control Tooltips &amp; Event Chaining\'>Inactive Control Tooltips &amp; Event Chaining</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/additional-uicontrol-tooltip-hacks/\' title=\'Additional uicontrol tooltip hacks\'>Additional uicontrol tooltip hacks</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/continuous-slider-callback/\' title=\'Continuous slider callback\'>Continuous slider callback</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/solving-a-matlab-bug-by-subclassing/\' title=\'Solving a MATLAB bug by subclassing\'>Solving a MATLAB bug by subclassing</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-listbox-editbox-scrollbars/\' title=\'Customizing listbox &amp; editbox scrollbars\'>Customizing listbox &amp; editbox scrollbars</a></li>';collapsItems['collapsArch-2010-1:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setprompt-setting-matlab-desktop-prompt/\' title=\'setPrompt - Setting the Matlab Desktop prompt\'>setPrompt - Setting the Matlab Desktop prompt</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/rich-matlab-editbox-contents/\' title=\'Rich Matlab editbox contents\'>Rich Matlab editbox contents</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/findjobj-gui-display-container-hierarchy/\' title=\'FindJObj GUI - display container hierarchy\'>FindJObj GUI - display container hierarchy</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/findjobj-find-underlying-java-object/\' title=\'FindJObj - find a Matlab component&#039;s underlying Java object\'>FindJObj - find a Matlab component&#039;s underlying Java object</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-matlabs-workspace-table/\' title=\'Customizing Matlab&#039;s Workspace table\'>Customizing Matlab&#039;s Workspace table</a></li>';collapsItems['collapsArch-2009-12:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/gui-integrated-html-panel/\' title=\'GUI integrated HTML panel\'>GUI integrated HTML panel</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/gui-integrated-browser-control/\' title=\'GUI integrated browser control\'>GUI integrated browser control</a></li>';collapsItems['collapsArch-2009-11:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-help-popup-contents/\' title=\'Customizing help popup contents\'>Customizing help popup contents</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-print-setup/\' title=\'Customizing print setup\'>Customizing print setup</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/undocumented-xml-functionality/\' title=\'Undocumented XML functionality\'>Undocumented XML functionality</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-matlab-labels/\' title=\'Customizing Matlab labels\'>Customizing Matlab labels</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/customizing-uiundo/\' title=\'Customizing uiundo\'>Customizing uiundo</a></li>';collapsItems['collapsArch-2009-10:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uiundo-matlab-undocumented-undo-redo-manager/\' title=\'uiundo - Matlab&#039;s undocumented undo/redo manager\'>uiundo - Matlab&#039;s undocumented undo/redo manager</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/accessing-the-matlab-editor/\' title=\'Accessing the Matlab Editor\'>Accessing the Matlab Editor</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/updating-speaker-sound-volume/\' title=\'Updating speaker sound volume\'>Updating speaker sound volume</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/performance-scatter-vs-line/\' title=\'Performance: scatter vs. line\'>Performance: scatter vs. line</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/undocumented-scatter-plot-behavior/\' title=\'Undocumented scatter plot behavior\'>Undocumented scatter plot behavior</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uicontrol-side-effect-removing-figure-toolbar/\' title=\'uicontrol side-effect: removing figure toolbar\'>uicontrol side-effect: removing figure toolbar</a></li>';collapsItems['collapsArch-2009-9:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/undocumented-mouse-pointer-functions/\' title=\'Undocumented mouse pointer functions\'>Undocumented mouse pointer functions</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/detecting-window-focus-events/\' title=\'Detecting window focus events\'>Detecting window focus events</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/r2009b-keyboard-bindings/\' title=\'R2009b keyboard bindings\'>R2009b keyboard bindings</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/figure-toolbar-customizations/\' title=\'Figure toolbar customizations\'>Figure toolbar customizations</a></li>';collapsItems['collapsArch-2009-8:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/figure-toolbar-components/\' title=\'Figure toolbar components\'>Figure toolbar components</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/editormacro-v2-setting-command-window-key-bindings/\' title=\'EditorMacro v2 - setting Command Window key-bindings\'>EditorMacro v2 - setting Command Window key-bindings</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-listbox-mouse-actions/\' title=\'Setting listbox mouse actions\'>Setting listbox mouse actions</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/context-sensitive-help/\' title=\'Context-Sensitive Help\'>Context-Sensitive Help</a></li>';collapsItems['collapsArch-2009-7:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-status-bar-components/\' title=\'Setting status-bar components\'>Setting status-bar components</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-status-bar-text/\' title=\'Setting status-bar text\'>Setting status-bar text</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/non-textual-editor-actions/\' title=\'Non-textual editor actions\'>Non-textual editor actions</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/blinkdagger-the-end/\' title=\'BlinkDagger - the end?\'>BlinkDagger - the end?</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/editormacro-assign-a-keyboard-macro-in-the-matlab-editor/\' title=\'EditorMacro - assign a keyboard macro in the Matlab editor\'>EditorMacro - assign a keyboard macro in the Matlab editor</a></li>';collapsItems['collapsArch-2009-6:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-the-matlab-desktop-layout-programmatically/\' title=\'Setting the Matlab desktop layout programmatically\'>Setting the Matlab desktop layout programmatically</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/changing-system-preferences-programmatically/\' title=\'Changing system preferences programmatically\'>Changing system preferences programmatically</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/guide-customization/\' title=\'GUIDE customization\'>GUIDE customization</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/legend-semi-documented-feature/\' title=\'Legend &#039;-DynamicLegend&#039; semi-documented feature\'>Legend &#039;-DynamicLegend&#039; semi-documented feature</a></li>';collapsItems['collapsArch-2009-5:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/spicing-up-matlab-uicontrol-tooltips/\' title=\'Spicing up Matlab uicontrol tooltips\'>Spicing up Matlab uicontrol tooltips</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/tic-toc-undocumented-option/\' title=\'tic / toc - undocumented option\'>tic / toc - undocumented option</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/\' title=\'cprintf - display formatted color text in the Command Window\'>cprintf - display formatted color text in the Command Window</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/cellfun-undocumented-performance-boost/\' title=\'cellfun - undocumented performance boost\'>cellfun - undocumented performance boost</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/changing-matlab-command-window-colors-part2/\' title=\'Changing Matlab&#039;s Command Window colors - part 2\'>Changing Matlab&#039;s Command Window colors - part 2</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/displaying-hidden-handle-properties/\' title=\'Displaying hidden handle properties\'>Displaying hidden handle properties</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uicontrol-callbacks/\' title=\'Uicontrol callbacks\'>Uicontrol callbacks</a></li>';collapsItems['collapsArch-2009-4:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/button-customization/\' title=\'Button customization\'>Button customization</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/spy-easter-egg/\' title=\'Spy Easter egg\'>Spy Easter egg</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/ismembc-undocumented-helper-function/\' title=\'ismembc - undocumented helper function\'>ismembc - undocumented helper function</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/undocumented-profiler-options/\' title=\'Undocumented profiler options\'>Undocumented profiler options</a></li>';collapsItems['collapsArch-2009-3:5']='          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-system-tray-popup-messages/\' title=\'Setting system tray popup messages\'>Setting system tray popup messages</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/uisplitpane/\' title=\'UISplitPane\'>UISplitPane</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/adding-context-menu-to-uitree/\' title=\'Adding a context-menu to a uitree\'>Adding a context-menu to a uitree</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-line-position-in-edit-box-uicontrol/\' title=\'Setting line position in an edit-box uicontrol\'>Setting line position in an edit-box uicontrol</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/setting-system-tray-icons/\' title=\'Setting system tray icons\'>Setting system tray icons</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/html-support-in-matlab-uicomponents/\' title=\'HTML support in Matlab uicomponents\'>HTML support in Matlab uicomponents</a></li>          <li class=\'collapsing archives item\'><a href=\'http://undocumentedmatlab.com/blog/changing-matlab-command-window-colors/\' title=\'Changing Matlab&#039;s Command Window colors\'>Changing Matlab&#039;s Command Window colors</a></li>';/*]]>*/</script></li></ul></li><li
+id="recent-posts-3" class="widget-container widget_recent_entries"><h3 class="widget-title">Recent Posts</h3><ul><li><a
+href="http://undocumentedmatlab.com/blog/bold-color-text-in-the-command-window/" title="Bold color text in the Command Window">Bold color text in the Command Window</a></li><li><a
+href="http://undocumentedmatlab.com/blog/xlswrite-for-mac-linux/" title="xlswrite for Mac, Linux">xlswrite for Mac, Linux</a></li><li><a
+href="http://undocumentedmatlab.com/blog/splash-window-for-deployed-applications/" title="Splash window for deployed applications">Splash window for deployed applications</a></li><li><a
+href="http://undocumentedmatlab.com/blog/waiting-for-asynchronous-events/" title="Waiting for asynchronous events">Waiting for asynchronous events</a></li><li><a
+href="http://undocumentedmatlab.com/blog/trapping-warnings-efficiently/" title="Trapping warnings efficiently">Trapping warnings efficiently</a></li><li><a
+href="http://undocumentedmatlab.com/blog/using-groovy-in-matlab/" title="Using Groovy in Matlab">Using Groovy in Matlab</a></li><li><a
+href="http://undocumentedmatlab.com/blog/multi-line-uitable-column-headers/" title="Multi-line uitable column headers">Multi-line uitable column headers</a></li><li><a
+href="http://undocumentedmatlab.com/blog/the-java-import-directive/" title="The Java import directive">The Java import directive</a></li><li><a
+href="http://undocumentedmatlab.com/blog/undocumented-scatter-plot-jitter/" title="Undocumented scatter plot jitter">Undocumented scatter plot jitter</a></li><li><a
+href="http://undocumentedmatlab.com/blog/internal-matlab-memory-optimizations/" title="Internal Matlab memory optimizations">Internal Matlab memory optimizations</a></li><li><a
+href="http://undocumentedmatlab.com/blog/array-resizing-performance/" title="Array resizing performance">Array resizing performance</a></li><li><a
+href="http://undocumentedmatlab.com/blog/preallocation-performance/" title="Preallocation performance">Preallocation performance</a></li><li><a
+href="http://undocumentedmatlab.com/blog/customizing-menu-items-part-3/" title="Customizing menu items part 3">Customizing menu items part 3</a></li><li><a
+href="http://undocumentedmatlab.com/blog/customizing-menu-items-part-2/" title="Customizing menu items part 2">Customizing menu items part 2</a></li><li><a
+href="http://undocumentedmatlab.com/blog/customizing-menu-items-part-1/" title="Customizing menu items part 1">Customizing menu items part 1</a></li></ul></li><li
+id="categories-383361502" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3><ul><li
+class="cat-item cat-item-3"><a
+href="http://undocumentedmatlab.com/blog/category/desktop/" title="View all posts filed under Desktop">Desktop</a> (24)</li><li
+class="cat-item cat-item-5"><a
+href="http://undocumentedmatlab.com/blog/category/figure-window/" title="View all posts filed under Figure window">Figure window</a> (28)</li><li
+class="cat-item cat-item-51"><a
+href="http://undocumentedmatlab.com/blog/category/guest-bloggers/" title="View all posts filed under Guest bloggers">Guest bloggers</a> (26)</li><li
+class="cat-item cat-item-4"><a
+href="http://undocumentedmatlab.com/blog/category/gui/" title="View all posts filed under GUI">GUI</a> (80)</li><li
+class="cat-item cat-item-48"><a
+href="http://undocumentedmatlab.com/blog/category/handle-graphics/" title="View all posts filed under Handle graphics">Handle graphics</a> (36)</li><li
+class="cat-item cat-item-30"><a
+href="http://undocumentedmatlab.com/blog/category/hidden-property/" title="View all posts filed under Hidden property">Hidden property</a> (27)</li><li
+class="cat-item cat-item-13"><a
+href="http://undocumentedmatlab.com/blog/category/icons/" title="View all posts filed under Icons">Icons</a> (5)</li><li
+class="cat-item cat-item-7"><a
+href="http://undocumentedmatlab.com/blog/category/java/" title="View all posts filed under Java">Java</a> (102)</li><li
+class="cat-item cat-item-15"><a
+href="http://undocumentedmatlab.com/blog/category/listeners/" title="View all posts filed under Listeners">Listeners</a> (15)</li><li
+class="cat-item cat-item-16"><a
+href="http://undocumentedmatlab.com/blog/category/memory/" title="View all posts filed under Memory">Memory</a> (10)</li><li
+class="cat-item cat-item-87"><a
+href="http://undocumentedmatlab.com/blog/category/mex/" title="View all posts filed under Mex">Mex</a> (3)</li><li
+class="cat-item cat-item-37"><a
+href="http://undocumentedmatlab.com/blog/category/presumed-future-risk/" title="Indicated the presumed risk of this feature breaking in some future Matlab version">Presumed future risk</a> (177)<ul
+class='children'><li
+class="cat-item cat-item-10"><a
+href="http://undocumentedmatlab.com/blog/category/presumed-future-risk/high-risk-of-breaking-in-future-versions/" title="Very likely to break in some future Matlab versions. Usually indicates a deeply undocumented feature that relies on internal Matlab code which may change or break with no prior notice.">High risk of breaking in future versions</a> (41)</li><li
+class="cat-item cat-item-12"><a
+href="http://undocumentedmatlab.com/blog/category/presumed-future-risk/low-risk-of-breaking-in-future-versions/" title="Unlikely to break in future Matlab versions. Usually indicates a supported but mis-documented feature or a feature in very wide use throughout the Matlab system. If it does break in a future Matlab version, then a warning message is likely to appear before the feature completely breaks in some yet-more-future version.">Low risk of breaking in future versions</a> (71)</li><li
+class="cat-item cat-item-11"><a
+href="http://undocumentedmatlab.com/blog/category/presumed-future-risk/medium-risk-of-breaking-in-future-versions/" title="May possibly break in future Matlab versions. Usually indicates a feature in non-widespread use throughout the Matlab code corpus. Future Matlab versions may decide to recode these usages using other methods. If the feature does break in a future Matlab version, then a warning message may appear before the feature completely breaks in some yet-more-future version, but this is not assured.">Medium risk of breaking in future versions</a> (68)</li></ul></li><li
+class="cat-item cat-item-40"><a
+href="http://undocumentedmatlab.com/blog/category/semi-documented-feature/" title="View all posts filed under Semi-documented feature">Semi-documented feature</a> (5)</li><li
+class="cat-item cat-item-41"><a
+href="http://undocumentedmatlab.com/blog/category/semi-documented-function/" title="View all posts filed under Semi-documented function">Semi-documented function</a> (26)</li><li
+class="cat-item cat-item-17"><a
+href="http://undocumentedmatlab.com/blog/category/stock-matlab-function/" title="View all posts filed under Stock Matlab function">Stock Matlab function</a> (65)</li><li
+class="cat-item cat-item-52"><a
+href="http://undocumentedmatlab.com/blog/category/toolbox/" title="View all posts filed under Toolbox">Toolbox</a> (2)</li><li
+class="cat-item cat-item-6"><a
+href="http://undocumentedmatlab.com/blog/category/ui-controls/" title="View all posts filed under UI controls">UI controls</a> (29)</li><li
+class="cat-item cat-item-1"><a
+href="http://undocumentedmatlab.com/blog/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (5)</li><li
+class="cat-item cat-item-27"><a
+href="http://undocumentedmatlab.com/blog/category/undocumented-feature/" title="View all posts filed under Undocumented feature">Undocumented feature</a> (76)</li><li
+class="cat-item cat-item-20"><a
+href="http://undocumentedmatlab.com/blog/category/undocumented-function/" title="View all posts filed under Undocumented function">Undocumented function</a> (19)</li></ul></li><li
+id="get-recent-comments" class="widget-container widget_get_recent_comments"><h3 class="widget-title">Recent Comments</h3><div
+id="get_recent_comments_wrap"><ul><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101734" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Yair Altman (4 days 4 hours ago)</a>: @Raphael &#8211; I see no reason why you couldn&#8217;t funnel the output into a separate window / file. At some point during...</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101730" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Yair Altman (4 days 4 hours ago)</a>: @Peter &#8211; FYI, this feature was added in R2011b. My article next week will expand on this issue.</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101619" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Peter Gardman (4 days 11 hours ago)</a>: Thank you very much Yair!!! For everyone&#8217;s info, fprintf(&#8216;not bold, &lt;strong&gt; bold &lt;/strong&gt;\n&#8217;)...</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101423" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Raphael (5 days 3 hours ago)</a>: that&#8217;s awesome !</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101422" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Raphael (5 days 3 hours ago)</a>: oh yeah, huh that&#8217;s a rather useful trick. Do you know if it would be possible to tunnel the output in a separate window /...</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101378" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Yair Altman (5 days 6 hours ago)</a>: @Raphael &#8211; indeed so. This happens because Matlab has internal logic to &#8220;optimize&#8221; the formatting by merging...</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101375" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Raphael (5 days 6 hours ago)</a>: Hi Yair. I have been using cprintf with Matlab R2011b (win7, x64) for a little while now and have noticed a few glitches: -...</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101359" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Yair Altman (5 days 7 hours ago)</a>: @Peter &#8211; it turns out the answer is much simpler than messing around with the internal attributes &#8211; simply use...</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101348" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Yair Altman (5 days 8 hours ago)</a>: @Peter &#8211; Matlab indeed added a fourth custom attribute (to the list of three attributes listed in the article above):...</li><li><a
+href="http://undocumentedmatlab.com/blog/cprintf-display-formatted-color-text-in-command-window/#comment-101312" title="cprintf &#8211; display formatted color text in the Command Window, May 13, 2009">Peter Gardman (5 days 11 hours ago)</a>: Dear Yair, First of all, congratulations for you excellent site. I&#8217;d like to show some words in bold in the command...</li></ul></div></li><li
+id="text-387858881" class="widget-container widget_text"><div
+class="textwidget"><form
+action="https://www.paypal.com/cgi-bin/webscr" method="post">Donate US$<input
+type="hidden" name="cmd" value="_xclick"><input
+type="hidden" name="hosted_button_id" value="Z98PH7GNYTAUY"> <input
+type="hidden" name="item_name" value="Buy Yair a cup of coffee (Thanks!)"> <input
+name="amount" size="6" title="The amount you wish to donate" value="6.00" type="text"> <input
+type="hidden" name="currency_code" value="USD"> <input
+type="hidden" name="business" value="altmany@gmail.com"> <input
+type="hidden" name="notify_url" value=""> <input
+type="hidden" name="no_shipping" value="1"> <input
+type="hidden" name="return" value="http://UndocumentedMatlab.com"> <input
+type="hidden" name="no_note" value="1"> <input
+type="hidden" name="tax" value="0"> <input
+type="hidden" name="bn" value="PP-DonationsBF"><input
+type="image" src="http://undocumentedmatlab.com/images/btn_donate_SM.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online."></form></div></li><li
+id="text-701801011" class="widget-container widget_text"><div
+class="textwidget"><script type="text/javascript">google_ad_client="pub-5346001835928783";google_ad_slot="6203308420";google_ad_width=200;google_ad_height=600;</script><script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div></li></ul></div></div><div
+id="footer" role="contentinfo"><div
+id="colophon"><p> Undocumented Matlab <a
+href="http://undocumentedmatlab.com/feed/">Entries (RSS)</a> and <a
+href="http://undocumentedmatlab.com/comments/feed/">Comments (RSS)</a>. <br>Copyright &copy; 2009-2010 Yair Altman <br/>&nbsp;</p></div></div></div><center><script type="text/javascript">google_ad_client="pub-5346001835928783";google_ad_slot="9817981417";google_ad_width=728;google_ad_height=90;</script><script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></center><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script></body></html>
+
+<!-- W3 Total Cache: Minify debug info:
+Engine:             disk: basic
+Theme:              b7666
+Template:           single
+-->
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Served from: undocumentedmatlab.com @ 2012-08-08 15:24:10 -->
+
+<!-- W3 Total Cache: Page cache debug info:
+Engine:             disk: enhanced
+Cache key:          blog/jmi-wrapper-local-matlabcontrol-part-2/_index.html_gzip
+Caching:            enabled
+Status:             not cached
+Creation Time:      1.051s
+Header info:
+X-Pingback:         http://undocumentedmatlab.com/blog/xmlrpc.php
+Content-Type:       text/html; charset=UTF-8
+Set-Cookie:         wpgb_visit_last_php-default=1344464649; expires=Thu, 08-Aug-2013 22:24:09 GMT; path=/
+Link:               <http://undocumentedmatlab.com/?p=1514>; rel=shortlink
+Last-Modified:      Wed, 08 Aug 2012 22:24:10 GMT
+Vary:               Accept-Encoding, Cookie
+Expires:            Wed, 08 Aug 2012 23:24:10 GMT
+Pragma:             public
+Cache-Control:      public, must-revalidate, proxy-revalidate
+Etag:               09468539ce48af31e7d857904489bf64
+Content-Encoding:   gzip
+-->

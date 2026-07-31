@@ -1,0 +1,932 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>ScreenCapture - get a screen-capture of a figure frame or component -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component?download=true" title="Download Now">Download Submission</a>
+        </div>
+      </div>
+    </div>
+
+
+  <p class="license">
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=24323" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component" class="manifest_title">ScreenCapture - get a screen-capture of a figure frame or component</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component/content/screencapture.m" class="function" title="Function">screencapture(varargin)
+</a>
+            <span class="description">screencapture - get a screen-capture of a figure frame, component handle, or screen area rectangle
+</span>
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo">
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              5.0
+              <span class="divider"> | </span>
+              <a href="#feedback">7 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">142 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 42 KB</span>
+          <span id="fileid">File ID: #24323</span>
+        </div>
+          <div id="thumbnail" style="padding-bottom: 3px;">
+            <a href="http://www.mathworks.com/matlabcentral/fx_files/24323/10/ScreenCapture.png" border="0"><img src="FEX_files/preview.jpg" alt="image thumbnail"></a>
+          </div>
+
+        <div id="details">
+          <h1>ScreenCapture - get a screen-capture of a figure frame or component</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">01 Jun 2009 </span>
+              <span id="date_updated">(Updated 14 Feb 2013)</span>
+          </p>
+
+
+
+          <p id="summary">ScreenCapture gets a screen-capture of any Matlab GUI handle, or specified screen area rectangle</p>
+
+            <div id="editorsnote">
+              <h3>Editor's Notes:</h3>
+              <p></p><p>This file was selected as MATLAB Central <a href="http://blogs.mathworks.com/pick/2012/08/10/grab-a-screen-shot-from-within-matlab/">Pick of the Week</a></p><p></p>
+            </div>
+
+
+          <p id="filetools">
+            <span class="divider"> | </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component&amp;watching=24323" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>ScreenCapture gets a screen-capture of any Matlab GUI
+ handle (including desktop, figure, axes, image, or uicontrol), or a 
+specified area rectangle located relative to the specified handle. </p>
+
+<p>Screen area capture is possible by specifying the root (desktop) handle (=0). </p>
+
+<p>The output can be either to an image file or to a Matlab matrix 
+(useful for displaying via imshow() or for further processing), or to 
+the system clipboard. </p>
+
+<p>This utility also enables adding a toolbar button for easy interactive screen-capture.</p>
+
+<p>Syntax:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageData = screencapture(handle, position, target, 'PropName',PropValue, ...)
+<br>&nbsp;
+<br>Input Parameters:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handle - optional handle to be used for screen-capture origin.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ empty/unsupplied then current figure (gcf) will be used.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position - optional position array in pixels: [x,y,width,height].
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ empty/unsupplied then the handle's position vector will be used.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ both handle and position are empty/unsupplied then the position
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will
+ be retrieved via interactive mouse-selection.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ handle is an image, then position is in data (not pixel) units, so the
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;captured
+ region remains the same after figure/axes resize (like imcrop)</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target - optional filename for storing the screen-capture, or the 'clipboard' string.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ empty/unsupplied then no output to file will be done.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The
+ file format will be determined from its extension (JPG/PNG/...).
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Supported
+ formats are those supported by the imwrite function.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ neither target nor imageData were specified, the user will be asked to
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactively
+ specify the output file.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'PropName',PropValue - 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optional
+ list of property pairs 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.g.,
+ screencapture('target','sc.png','pos',[10,20,30,40],'handle',gca)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PropNames
+ may be abbreviated and are case-insensitive.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PropNames
+ may also be given in whichever order.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Supported
+ PropNames are:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
+ 'handle'    (default: gcf handle)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
+ 'position'  (default: gcf position array)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
+ 'target'  (default: '')
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-
+ 'toolbar'   (figure handle; default: gcf)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this
+ adds a screen-capture button to the figure's toolbar
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ this parameter is specified, then no screen-capture
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will
+ take place and the returned imageData will be [].</p>
+
+<p>Output parameters:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageData - image data in a format acceptable by the imshow function.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+ neither filename nor imageData were specified,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the
+ user will be asked to interactively specify the output file.
+<br>&nbsp;
+<br>Examples:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageData = screencapture;  % interactively select screen-capture rectangle
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageData = screencapture(hListbox);  % capture image of a uicontrol
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageData = screencapture(0,  [20,30,40,50]);  % select a small desktop region
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageData = screencapture(gcf,[20,30,40,50]);  % select a small figure region
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imageData = screencapture(gca,[10,20,30,40]);  % select a small axes region
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imshow(imageData);  % display the captured image in a matlab figure
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imwrite(imageData,'myImage.png');  % save the captured image to file
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;screencapture(gcf,[],'myFigure.jpg');  % capture the entire figure into file
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;screencapture('handle',gcf,'target','myFigure.jpg');  % same as previous
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;screencapture('handle',gcf,'target','clipboard');  % copy to system clipboard
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;screencapture('toolbar',gcf);  % adds a screen-capture button to gcf's toolbar
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;screencapture('toolbar',[],'target','sc.bmp'); % same with default output filename
+<br>&nbsp;
+<br>Technical description:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://undocumentedmatlab.com/blog/screencapture-utility/">http://UndocumentedMatlab.com/blog/screencapture-utility/</a></p>
+
+<p>Bugs and suggestions:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please send to Yair Altman (altmany at gmail dot com)</p></td>
+          </tr>
+
+            <tr>
+              <td class="label">Acknowledgements</td>
+              <td>
+                  <p>The author wishes to acknowledge the following in the creation of this submission:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/28708-imclipboard">IMCLIPBOARD</a>, <a href="http://www.mathworks.com/matlabcentral/fileexchange/30583-setfigtransparency-set-figure-transparency-fading">setFigTransparency - set figure transparency / fading</a>
+                <br>
+                  This submission has inspired the following:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/28357">jMouseEmu: Mouse Emulator (v2.2)</a>
+              </p></td>
+            </tr>
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.5 (R2007b)
+            </td>
+          </tr>
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Requires Java engine.
+
+Developed on Matlab 7.5 (R2007b) but should work on all Matlab versions 
+6.1 (R12.1) or newer (not fully tested - please report any issues)</td>
+            </tr>
+
+        </tbody></table>
+
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui%22" rel="nofollow">gui(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java(2)</a></span>
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+
+              </div>
+            </td>
+
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+
+          <td class="label">Add New Tags</td>
+            <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component">Please login</a> to tag files.
+            </td>
+          </tr>
+        </tbody></table>
+
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(12)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">07 Feb 2013</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/318962">Maofeng</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">13 Aug 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@Mikhail - ScreenCapture uses java.awt.Robot, which only captures a bitmap image</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 Aug 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/166056">Mikhail</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very nice!</p>
+
+<p>How about capturing to a vector file format instead of a bitmap?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/245674">Joerg</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">10 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>@Lapili Sanchez - the screencapture 
+code already contains a corrected version of us's code - it was 
+corrected in the code after "us" posted his comment above. </p>
+
+<p>Moreover, this code is currently not used, since I have included even
+ faster code, based on Jan Simon's comment. It is Jan Simon's faster 
+code that is the current infrastructure of screencapture.</p>
+
+<p>Take a look at the getScreenCaptureImageData() function within screencapture.m for more information</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/117563">lapili Sanchez</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>&gt;&gt; % macro 
+<br>&gt;&gt; conv=@(a,b,c) double(bitand(a,255^b))./255^c; </p>
+
+<p>Just a small correction, that sentence from 'us' code should be:
+<br>conv=@(a,b,c) double(bitand(a,256^b-256^(b-1)))./256^c;</p>
+
+<p>Thanks anyway, that code is so fast!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/133275">Yanxiong Li</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Jul 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/42790">Brandon</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">25 Feb 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/108974">Dinie Muhammad</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">18 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/15233">Jan Simon</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks Yair! The new version works for Matlab 6.5, if you download James Tursa's typecast replacement from the FEX (#17476).
+<br>Capturing the whole screen does not match the edges exactly. E.g. this is exact:
+<br>img = screencapture(0, 'Position', [1,-2,1024,768]);
+<br>But then the top left three pixels are [255,0,0], [0,255,0] and 
+[0,0,255]. The rest of the image is fine. Under Matlab 2009a these funny
+ pixels do not appear.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/15233">Jan Simon</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks for this exhaustively implemented screen capture tool. It works with some tiny modifications even in Matlab 6.5.
+<br>The conversion from the INT32 from getDataStorage to a Matlab RGB 
+array can be done in the half time. Just let TYPECAST split the INT32 
+values instead of expensive BITSHIFT and BITAND (line 401):
+<br>pixelsData = reshape(typecast( ...
+<br>    jImage.getData.getDataStorage, 'uint8'), 4, w, h);
+<br>imgData = cat(3, ...
+<br>   transpose(reshape(pixelsData(3, :, :), w, h)), ...
+<br>   transpose(reshape(pixelsData(2, :, :), w, h)), ...
+<br>   transpose(reshape(pixelsData(1, :, :), w, h)));
+<br>This is the most time consuming part and a further acceleration might be useful.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">02 Jun 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/4309">us</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>a very nice robot, which the FEX community has been looking for a long time...
+<br>two thoughts:
+<br>1) in interactive mode, the user looses the data if no output arg is selected, which may be a bit frustrating:
+<br>a) a warning(?)
+<br>b) a new figure displaying the result by default(?)
+<br>2) we've been using this approach, which may be a bit faster 
+(depending on the size of the capture) by converting the planes in one 
+shot using a macro...</p>
+
+<p>% input
+<br>%    xoff/yoff/xlen/ylen
+<br>% assign after loading java stuff...
+<br>     rob=Robot;
+<br>% macro
+<br>     conv=@(a,b,c) double(bitand(a,255^b))./255^c;
+<br>% capture screen contents at this pos
+<br>     rec=Rectangle(xoff,yoff,xlen,ylen);
+<br>     cap=rob.createScreenCapture(rec);
+<br>     dat=cap.getData;
+<br>     buf=dat.getDataStorage;
+<br>     buf=typecast(buf(:),'uint32');
+<br>     buf=reshape(buf,dat.getWidth,dat.getHeight).';
+<br>     mm=zeros([size(buf),3]);
+<br>     mm(:,:,3)=conv(buf,1,0); % bitand(buf,255^1)./255^0;
+<br>     mm(:,:,2)=conv(buf,2,1); % bitand(buf,255^2)./255^1;
+<br>     mm(:,:,1)=conv(buf,3,2); % bitand(buf,255^3)./255^2;
+<br>     mm=mm./255;
+<br>% ...for display in a regular figure
+<br>     figure;
+<br>     set(gca,'position',[0,0,1,1]);
+<br>     image(mm);
+<br>     axis image;
+<br>     axis off;</p>
+
+<p>3) in principle, the robot itself can be used on any screen location;
+ it would be nice - however, admittedly cumbersome - to add this feature</p>
+
+<p>us</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+
+        </div>
+
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24323-screencapture-get-a-screen-capture-of-a-figure-frame-or-component">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr class="title">
+              <th colspan="2"><span class="heading">Updates</span></th>
+            </tr>
+              <tr>
+                <td class="date">03 Jun 2009</td>
+                <td><p>Handle missing output format; performance boost (thanks to Urs); fix minor root-handle bug; added toolbar button option</p></td>
+              </tr>
+              <tr>
+                <td class="date">03 Jun 2009</td>
+                <td><p>updated attached screenshot with explanatory notes</p></td>
+              </tr>
+              <tr>
+                <td class="date">16 Jan 2011</td>
+                <td><p>another performance boost (thanks to Jan Simon); some compatibility fixes for Matlab 6.5 (untested)</p></td>
+              </tr>
+              <tr>
+                <td class="date">30 Jul 2012</td>
+                <td><p>Capture current object if w=h=0 (clicking a 
+single point); extra input args sanity checks; fix for docked windows; 
+include axes labels &amp; ticks by default when capturing axes; use 
+data-units position vector when capturing images; many edge-case fixes</p></td>
+              </tr>
+              <tr>
+                <td class="date">28 Jan 2013</td>
+                <td><p>Fixed capture of Desktop (root); enabled rbbox 
+anywhere on desktop (not necesarily in a Matlab figure); enabled output 
+to clipboard (based on Jiro Doke's imclipboard utility); edge-case 
+fixes; added Java compatibility check</p></td>
+              </tr>
+              <tr>
+                <td class="date">12 Feb 2013</td>
+                <td><p>FEX page credit to Jiro Doke's imclipboard utility</p></td>
+              </tr>
+              <tr>
+                <td class="date">14 Feb 2013</td>
+                <td><p>(a more prominent acknowledgement of Jiro's imclipboard tool on the FEX page) - no changes to the actual files</p></td>
+              </tr>
+          </tbody></table>
+
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>02 Jun 2009 09:45:58</td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui%22" rel="nofollow">gui</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/27420">Yair Altman</a></td>
+        <td>02 Jun 2009 09:45:58</td>
+      </tr>
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gui%22" rel="nofollow">gui</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/288687">Vishal Rane</a></td>
+        <td>23 Oct 2012 11:43:53</td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/288687">Vishal Rane</a></td>
+        <td>23 Oct 2012 11:43:57</td>
+      </tr>
+  </tbody></table>
+
+
+        </div>
+
+      </td>
+    </tr>
+
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

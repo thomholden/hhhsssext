@@ -1,0 +1,1084 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>JMatIO - Matlab's MAT-file I/O in JAVA -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F10759-jmatio-matlabs-mat-file-io-in-java" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F10759-jmatio-matlabs-mat-file-io-in-java" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=10759" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java" class="manifest_title">JMatIO - Matlab's MAT-file I/O in JAVA</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/ByteStorageSupport.html" class="html" title="HTML">ByteStorageSupport.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/ByteStorageSupport.html" class="html" title="HTML">ByteStorageSupport.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/GenericArrayCreator.html" class="html" title="HTML">GenericArrayCreator.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/GenericArrayCreator.html" class="html" title="HTML">GenericArrayCreator.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLArray.html" class="html" title="HTML">MLArray.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLArray.html" class="html" title="HTML">MLArray.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLCell.html" class="html" title="HTML">MLCell.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLCell.html" class="html" title="HTML">MLCell.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLChar.html" class="html" title="HTML">MLChar.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLChar.html" class="html" title="HTML">MLChar.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLDouble.html" class="html" title="HTML">MLDouble.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLDouble.html" class="html" title="HTML">MLDouble.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLEmptyArray.html" class="html" title="HTML">MLEmptyArray.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLEmptyArray.html" class="html" title="HTML">MLEmptyArray.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLInt64.html" class="html" title="HTML">MLInt64.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLInt64.html" class="html" title="HTML">MLInt64.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLInt8.html" class="html" title="HTML">MLInt8.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLInt8.html" class="html" title="HTML">MLInt8.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLNumericArray.html" class="html" title="HTML">MLNumericArray.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLNumericArray.html" class="html" title="HTML">MLNumericArray.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLSparse.html" class="html" title="HTML">MLSparse.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLSparse.html" class="html" title="HTML">MLSparse.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLStructure.html" class="html" title="HTML">MLStructure.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLStructure.html" class="html" title="HTML">MLStructure.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLUInt64.html" class="html" title="HTML">MLUInt64.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLUInt64.html" class="html" title="HTML">MLUInt64.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/class-use/MLUInt8.html" class="html" title="HTML">MLUInt8.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/MLUInt8.html" class="html" title="HTML">MLUInt8.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/common/MatDataTypes.html" class="html" title="HTML">MatDataTypes.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/common/class-use/MatDataTypes.html" class="html" title="HTML">MatDataTypes.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/class-use/MatFileFilter.html" class="html" title="HTML">MatFileFilter.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/MatFileFilter.html" class="html" title="HTML">MatFileFilter.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/class-use/MatFileHeader.html" class="html" title="HTML">MatFileHeader.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/MatFileHeader.html" class="html" title="HTML">MatFileHeader.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/MatFileReader.html" class="html" title="HTML">MatFileReader.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/class-use/MatFileReader.html" class="html" title="HTML">MatFileReader.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/class-use/MatFileWriter.html" class="html" title="HTML">MatFileWriter.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/MatFileWriter.html" class="html" title="HTML">MatFileWriter.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/MatlabIOException.html" class="html" title="HTML">MatlabIOException.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/class-use/MatlabIOException.html" class="html" title="HTML">MatlabIOException.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/allclasses-frame.html" class="html" title="HTML">allclasses-frame.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/allclasses-noframe.html" class="html" title="HTML">allclasses-noframe.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/constant-values.html" class="html" title="HTML">constant-values.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/deprecated-list.html" class="html" title="HTML">deprecated-list.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/help-doc.html" class="html" title="HTML">help-doc.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-1.html" class="html" title="HTML">index-1.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-10.html" class="html" title="HTML">index-10.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-11.html" class="html" title="HTML">index-11.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-12.html" class="html" title="HTML">index-12.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-13.html" class="html" title="HTML">index-13.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-14.html" class="html" title="HTML">index-14.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-15.html" class="html" title="HTML">index-15.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-16.html" class="html" title="HTML">index-16.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-2.html" class="html" title="HTML">index-2.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-3.html" class="html" title="HTML">index-3.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-4.html" class="html" title="HTML">index-4.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-5.html" class="html" title="HTML">index-5.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-6.html" class="html" title="HTML">index-6.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-7.html" class="html" title="HTML">index-7.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-8.html" class="html" title="HTML">index-8.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index-files/index-9.html" class="html" title="HTML">index-9.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/index.html" class="html" title="HTML">index.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/overview-frame.html" class="html" title="HTML">overview-frame.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/overview-summary.html" class="html" title="HTML">overview-summary.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/overview-tree.html" class="html" title="HTML">overview-tree.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/common/package-frame.html" class="html" title="HTML">package-frame.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/package-frame.html" class="html" title="HTML">package-frame.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/package-frame.html" class="html" title="HTML">package-frame.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/package-summary.html" class="html" title="HTML">package-summary.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/common/package-summary.html" class="html" title="HTML">package-summary.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/package-summary.html" class="html" title="HTML">package-summary.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/package-tree.html" class="html" title="HTML">package-tree.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/package-tree.html" class="html" title="HTML">package-tree.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/common/package-tree.html" class="html" title="HTML">package-tree.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/types/package-use.html" class="html" title="HTML">package-use.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/common/package-use.html" class="html" title="HTML">package-use.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/com/jmatio/io/package-use.html" class="html" title="HTML">package-use.html</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/content/doc/serialized-form.html" class="html" title="HTML">serialized-form.html</a>
+            
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:95.0%;">
+                <p>4.75</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              4.8
+              <span class="divider"> | </span>
+              <a href="#feedback">8 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">32 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 203 KB</span>
+          <span id="fileid">File ID: #10759</span>
+        </div>
+
+        <div id="details">
+          <h1>JMatIO - Matlab's MAT-file I/O in JAVA</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22866">Wojciech Gradkowski</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">15 Apr 2006 </span>
+              <span id="date_updated">(Updated 05 Oct 2007)</span>
+          </p>
+
+
+
+          <p id="summary">Package contains Matlab's MAT-file I/O API in JAVA. Supports Matlab 5 MAT-flie format reading and wr</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F10759-jmatio-matlabs-mat-file-io-in-java&amp;watching=10759" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>JMatIO is a JAVA library to read/write/manipulate with Matlab's binary MAT-files.</p>
+
+<p>Currently supported data types are:
+<br>+ Double array
+<br>+ UInt8, Int8 array
+<br>+ UInt64, Int64 array
+<br>+ Char array
+<br>+ Structure
+<br>+ Cell array
+<br>+ Sparase array</p>
+
+<p>this project is also available at <a href="http://sf.net/projects/jmatio">http://sf.net/projects/jmatio</a></p></td>
+          </tr>
+  
+            <tr>
+              <td class="label">Acknowledgements</td>
+              <td>
+                <br>
+                  This submission has inspired the following:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/16319">CSMatIO: MAT-file I/O API for .NET 2.0</a>
+              </td>
+            </tr>
+        
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.0.4 (R14SP2)
+            </td>
+          </tr>
+  
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Java SDK 1.5.0</td>
+            </tr>
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22external+interface%22" rel="nofollow">external interface</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22io%22" rel="nofollow">io</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22load%22" rel="nofollow">load</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mat+file%22" rel="nofollow">mat file(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22save%22" rel="nofollow">save</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(9)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">05 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/278356">Lee Wei Yeong</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">29 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/115903">Essam Soliman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>how to use this library?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">22 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/39616">Stuart Bowman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank you! This is a big help in the world of java apps that produce data that engineers need to analyze. Great API.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">20 Feb 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/101486">rohit</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>very useful</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">18 Feb 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/86812">Bryant Mairs</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Would be useful to support the single data type. Odd omission from this library.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">06 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/110869">Lei</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Execellent. But problem with large mat files. I have these error messages when reading a large mat file ( &gt; 40 M):
+<br>Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+<br>	at java.util.Arrays.copyOf(Unknown Source)
+<br>	at java.io.ByteArrayOutputStream.write(Unknown Source)
+<br>	at com.jmatio.io.MatFileReader.inflate(Unknown Source)
+<br>	at com.jmatio.io.MatFileReader.readData(Unknown Source)
+<br>	at com.jmatio.io.MatFileReader.read(Unknown Source)
+<br>	at com.jmatio.io.MatFileReader.(Unknown Source)
+<br>	at com.jmatio.io.MatFileReader.(Unknown Source)
+<br>	at com.Tester.common.Tester.main(Tester.java:41)</p>
+
+<p>Is there a fix?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Aug 2007</span></td>
+      <td>
+        <span class="author">
+          iskandar mamaik
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">11 Apr 2007</span></td>
+      <td>
+        <span class="author">
+          Olav -
+        </span>
+      </td>
+      <td><span class="comment"><p>Very useful library</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">12 Jan 2007</span></td>
+      <td>
+        <span class="author">
+          Leon Lee
+        </span>
+      </td>
+      <td><span class="comment"><p>Very useful!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/10759-jmatio-matlabs-mat-file-io-in-java">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr class="title">
+              <th colspan="2"><span class="heading">Updates</span></th>
+            </tr>
+              <tr>
+                <td class="date">24 Apr 2006</td>
+                <td><p>Following users' suggestions (thank you Imran) some code parts were modified:
+<br>+MLDouble array supports Jama style constructors, and JAVA types
+<br>+MLChar String exports
+<br>+MatFileReader maps content by name
+<br>+JUnit tests added
+<br>+JavaDoc added</p></td>
+              </tr>
+              <tr>
+                <td class="date">26 Apr 2006</td>
+                <td><p>+ bug fix: reading unsigned values
+<br>+ new constructor in MLDouble supporting double[][]
+<br>+ filtered reading of MAT-file
+<br>+ JUnit test updated</p></td>
+              </tr>
+              <tr>
+                <td class="date">26 Apr 2006</td>
+                <td><p>+bug fix: poor performance with big arrays
+<br>+documentation updated
+<br>+jmatio.jar added</p></td>
+              </tr>
+              <tr>
+                <td class="date">24 May 2006</td>
+                <td><p>+improved performance of MatFileReader (~100% faster now)
+<br>+JUnit tests added to test and show usage of Cells and Strucutures</p></td>
+              </tr>
+              <tr>
+                <td class="date">22 Feb 2007</td>
+                <td><p>+ Added support:UInt8 array 
+<br>+ MAJOR reading performance enhancement - reading is as fast as in Matlab now
+<br>+ Removed Log4j references</p></td>
+              </tr>
+              <tr>
+                <td class="date">02 Mar 2007</td>
+                <td><p>+ REGRESSION BUG: double arrays created natively in Matlab are not read correctly (reversed byte ordering)</p></td>
+              </tr>
+              <tr>
+                <td class="date">26 Mar 2007</td>
+                <td><p>+ bugfix: struct/cell reading fails when containing empty arrays
+<br>+ added: int64 and uint64 support</p></td>
+              </tr>
+              <tr>
+                <td class="date">05 Oct 2007</td>
+                <td><p>+ Sparse matrix bugfixes
+<br>+ MatFileReader performance enhancements 
+<br>+ new MatFileReader methods added</p></td>
+              </tr>
+          </tbody></table>
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22external+interface%22" rel="nofollow">external interface</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22866">Wojciech Gradkowski</a></td>
+        <td>22 Oct 2008 08:22:24</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mat+file%22" rel="nofollow">mat file</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22866">Wojciech Gradkowski</a></td>
+        <td>22 Oct 2008 08:22:24</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22866">Wojciech Gradkowski</a></td>
+        <td>22 Oct 2008 08:22:24</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22io%22" rel="nofollow">io</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22866">Wojciech Gradkowski</a></td>
+        <td>22 Oct 2008 08:22:24</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22save%22" rel="nofollow">save</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22866">Wojciech Gradkowski</a></td>
+        <td>22 Oct 2008 08:22:24</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22load%22" rel="nofollow">load</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/22866">Wojciech Gradkowski</a></td>
+        <td>22 Oct 2008 08:22:24</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22java%22" rel="nofollow">java</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/51612">Kevin ortega</a></td>
+        <td>01 Oct 2010 10:15:37</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mat+file%22" rel="nofollow">mat file</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/216142">Cristina Naranjo</a></td>
+        <td>12 Nov 2012 12:08:39</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

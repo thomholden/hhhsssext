@@ -1,0 +1,1863 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>inputsdlg: Enhanced Input Dialog Box (v2.1.2) -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-" rel="canonical">
+<meta content="inputsdlg: Enhanced Input Dialog Box (v2.1.2) - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/58087/original.jpg" property="og:image"><meta content="Predefined dialog box function to accept user inputs of several forms" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/58977" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=25862" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-" class="manifest_title">inputsdlg: Enhanced Input Dialog Box (v2.1.2)</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-/content//inputsdlg.m" class="function" title="Function">inputsdlg(Prompt, Title, ...</a><span class="description">INPUTSDLG Enhanced input dialog box supporting multiple data types
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-/content//inputsdlg_demo.m" class="script" title="Script">inputsdlg_demo.m</a><span class="description">INPUTSDLG DEMO (Enhanced input dialog box with multiple data types)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-/content//inputsdlg_demo_contactinfo.m" class="script" title="Script">inputsdlg_demo_contactinfo.m</a><span class="description">INPUTSDLG DEMO (Enhanced input dialog box with multiple data types)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-/content//inputsdlg_demo_tile.m" class="script" title="Script">inputsdlg_demo_tile.m</a><span class="description">demo script for inputsdlg_struct
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-/content/inputsdlg_v2.1.2.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:93.3334%;">
+                <p>4.66667</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.7</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">13</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">84 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 31.7 KB</span>
+          <span id="fileid">File ID: #25862</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/20754/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">inputsdlg: Enhanced Input Dialog Box (v2.1.2)</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      16 Nov 2009
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-09-19">19 Sep 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Predefined dialog box function to accept user inputs of several forms</p>
+
+    <div id="editorsnote">
+      <h3>Editor's Notes:</h3>
+      <p></p><p>This file was selected as MATLAB Central <a href="http://blogs.mathworks.com/pick/2009/12/25/input-dialog-box-on-steroids/">Pick of the Week</a></p><p></p>
+    </div>
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-&amp;watching=25862" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This function is an enhanced version of the standard INPUTDLG function with many additional features:
+<br>- 8 control types: text, edit, check, list, range, color, table, button
+<br>(**color, table, and button were added in v2.0**)
+<br>- Text Type is a static text (e.g., to place an instruction)
+<br>- Check Type displays a checkbox with a label, returns one of two values
+<br>- Edit Type can be configured to accept:
+<br>&nbsp;&nbsp;* plain text (single- or multi-line mode)
+<br>&nbsp;&nbsp;* date (following date formats as defined in DATESTR)
+<br>&nbsp;&nbsp;* numeric value (integer or float with range specification)
+<br>&nbsp;&nbsp;* file or directory name (with UIGETFILE, UIPUTFILE, or UIGETDIR functions, supports UIGETFILE multi-sel
+<br>ect mode)
+<br>&nbsp;&nbsp;* vector of floats (can specify the length of the vector)
+<br>- List Type returns index(es) of the selected item and can have 4 different appearances:
+<br>&nbsp;&nbsp;* Popupmenu
+<br>&nbsp;&nbsp;* Listbox (can be made to multi-select)
+<br>&nbsp;&nbsp;* Radiobutton (button placements can be customized)
+<br>&nbsp;&nbsp;* Togglebutton (button placements can be customized)
+<br>- INPUTSDLG can automatically size controls and dialog box for an 
+optimal appearance, and control's size can be made to auto-adjust if 
+dialog is made resizable.
+<br>- INPUTSDLG supports user callbacks to all UI controls as well as 
+dialog's CreateFcn and DeleteFcn callbacks. The callback function takes 
+additional input arguments to standard MATLAB callback arguments.
+<br>- INPUTSDLG returns the user entries in a cell or in a structure</p>
+
+<p>- INPUTSDLG is backward compatible with INPUTDLG except for its 
+returned values when canceled. With default answers given, INPUTDLG 
+returns an empty cell while INPUTSDLG returns the default answers. 
+INPUTSDLG returns the second  parameter, CANCELED(a logical flag) to 
+indicate how the dialog box is terminated.</p>
+
+<p>ACKNOWLEDGMENT: 
+<br>- Luke Reisner prepared v1.3 and kindly shared his modification/bug fixes.
+<br>- Florian Hatz initiated the development of v2.0 with his ideas of adding table, color, and tiling option
+</p></td>
+          </tr>
+
+          
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 8.3 (R2014a)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Reported not compatible with MATLAB R14 and earlier</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22dialog%22" rel="nofollow">dialog</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22gui%22" rel="nofollow">gui</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22inputdlg%22" rel="nofollow">inputdlg</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22pick+of+the+week%22" rel="nofollow">pick of the week</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22potw%22" rel="nofollow">potw</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22predefined+dialog+box%22" rel="nofollow">predefined dialog box</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22uigetdir%22" rel="nofollow">uigetdir</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22uigetfile%22" rel="nofollow">uigetfile</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22uiputfile%22" rel="nofollow">uiputfile</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22utility%22" rel="nofollow">utility</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="25862" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(49)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">02 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Spigge - All edit box formats with
+ dialog prompts are implemented with uicontrol's ButtonDownFcn (instead 
+of Callback) and Enable='inactive'. So, in order for you to toggle the 
+dir edit box Enable state, you need to do the following:</p>
+
+<p>From Enabled -&gt; Disabled
+<br>1. Save dir edit's ButtonDownFcn (I usually use the edit's UserData property)
+<br>2. Set edit's Enable to 'off' and ButtonDownFcn to [] (and UserData with the callback function)</p>
+
+<p>From Disabled-&gt;Enabled
+<br>1. Retrieve the saved ButtonDownFcn callback
+<br>2. Set edit's Enable to 'inactive' and reinstate ButtonDownFcn</p>
+
+<p>Hope this helps</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285200">Spigge</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Kesh,</p>
+
+<p>I have created a check box that controls the enable state of an edit 
+text box with the format 'dir'. The edit box is initially disabled 
+(grayed) and gets enabled (white) when the check box is checked and back
+ to disabled when the check box is unchecked. So far so good. The 
+problem is that the default behaviour of the edit box on mouse click, 
+which is to open a file dialog (via UIGETDIR) and then display the 
+selected directory as a string in the edit box, is lost when disabled 
+and enabled this way. Instead it behaves like a normal edit box of 
+format 'text'. Why does this happen and how can I get it to work 
+properly you think?</p>
+
+<p>Thanks! </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/285200">Spigge</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74566">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Kesh,
+<br>great tool...
+<br>something went wrong with my last submission...
+<br>I think there is an error with the tooltips on line 1070: changed Prompt(:,3) to Prompt(:,4)
+<br>I also added the following line (2293) to have tooltips for all elements:
+<br>% style-dependent configuration 
+<br>set(hc,'TooltipString',TooltipStrings{m});</p>
+
+<p>David</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74566">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry 
+<br>I added the following in line 2293:
+<br>% style-dependent configuration
+<br> set(hc,'TooltipString',TooltipStrings{m}); % added</p>
+
+<p>David</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/41725">Jonathan Lister</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Enables quick scripting of non standard dialogs.  I used to have to do these by hand.  Thanks for the tool.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/286378">Dan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Cool, got it working now!  Thanks for your help and for making a great program. 
+<br>-Dan</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Dan - Yeah, that error message is 
+awfully cryptic and so ESL, isn't it? Sorry about that (it'll be 
+improved in the next upload). It's telling you that the number of 
+Formats elements do not match the number of Prompt rows. Here is how I 
+modified your inputsdlg line to make it run:</p>
+
+<p>[Answer,Cancelled] = inputsdlg(Prompt,Title,Formats(1:3),rmfield(DefAns,'DataFolder'),Options);</p>
+
+<p>The dimensions of Prompt, Formats, and DefAns inputs are critical for
+ this function to run. If you are creating a "dense" dialog (i.e., w/o 
+any empty prompt  cell), the number of rows of Prompt must match the 
+number of elements of Formats, and DefAns' fields must exactly account 
+for all the second column of Prompt array.</p>
+
+<p>Good luck! -Kesh
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/286378">Dan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Kesh, 
+<br>This looks like an awesome tool.  However, I can't seem to get it to
+ work in my program.  I am getting the following error message: </p>
+
+<p>Error using inputsdlg (line 397)
+<br>Not enough FORMATS size for the display.</p>
+
+<p>I don't understand what this error means and would be grateful for 
+your advice.  Here's my code (modeled on the demo file you provided): </p>
+
+<p>%%%% Options Dialog Box using inputsdlg
+<br>Title = 'Program Options';
+<br>Options.Resize = 'on';
+<br>Options.Interpreter = 'tex';
+<br>Options.CancelButton = 'on';
+<br>Options.ApplyButton = 'on';
+<br>Options.ButtonNames = {'Continue','Cancel'}; %&lt;- default names, included here just for illustration
+<br>Option.Dim = 1; % Horizontal dimension in fields
+<br>Prompt = {};
+<br>Formats = {};
+<br>DefAns = struct([]);</p>
+
+<p>Prompt(1,:) = {'Choose program options',[]};
+<br>Formats(1).type = 'text';</p>
+
+<p>Prompt(2,:) = {'Process traces with Chung-Kennedy filter prior to counting steps?','CKfilt'};
+<br>Formats(2).type = 'check';
+<br>DefAns(1).CKfilt = true;</p>
+
+<p>Prompt(3,:) = {'Apply intensity filter to discard small steps?','IntFilt'};
+<br>Formats(3).type = 'check';
+<br>DefAns.IntFilt = true;</p>
+
+<p>Prompts(4,:) = {'Select folder containig data to analyze','DataFolder'};
+<br>Formats(4).type = 'edit';
+<br>Formats(4).format = 'dir';
+<br>Formats(4).required = 'on';
+<br>DefAns.DataFolder = [];</p>
+
+<p>[Answer,Cancelled] = inputsdlg(Prompt,Title,Formats,DefAns,Options);
+<br>%%%% End of dialog box</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@John - I'm glad it's working for you now. Now, re: enable/disable other control, here is how I would do it.</p>
+
+<p>First, create an m-function:</p>
+
+<p>function toggleEnable(hctl,htgt)</p>
+
+<p>if get(hctl,'Value')
+<br>   set(htgt,'Enable','on');
+<br>else
+<br>   set(htgt,'Enable','off');
+<br>end</p>
+
+<p>and set the callback of the controlling checkbox (located at (2,4)) as</p>
+
+<p>Formats(2,4).callback = @(hobj,~,h,k)toggleEnable(hobj,h(k+1,1));</p>
+
+<p>The above assumes that the checkbox controls the enable state of 
+h(k+1,1) control, i.e., the control immediately after the checkbox. Note
+ that one checkbox can en/disable multiple controls if you desire.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/304875">John</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nvm, I was able to get a solution (it might not be the prettiest, but it works :-) ).</p>
+
+<p>For other's future reference I will explain what I did. In Kesh's 
+inputsdlg_demo.m file I added the following lines of code after prompt 
+5:</p>
+
+<p>%---------</p>
+
+<p>EnableCheck = {'on','off'};</p>
+
+<p>x=1;</p>
+
+<p>Formats(2,4).callback = @(~,~,h,k)set(h(k+1), 'enable', EnableCheck{EnableDisable(x)});</p>
+
+<p>%---------</p>
+
+<p>And I called I simple function that I wrote (titled EnableDisable). I have included that code below:</p>
+
+<p>%---------
+<br>% enable/disable controls associated with (some)    % checkboxes
+<br>    function x = EnableDisable(x)
+<br>        
+<br>    global x
+<br>    
+<br>    a=1;
+<br>    b=2;
+<br>    x = (a+b)-x;
+<br>    
+<br>    end</p>
+
+<p>%---------</p>
+
+<p>I know that this is probably not the best way to go about it, but it does work if anyone is interested.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/304875">John</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Kesh, Thanks again for this awesome function! Your updates are working great! </p>
+
+<p>I am actually interested in doing what I think your "Enable enhanced 
+mode" checkbox is supposed to be doing. I am assuming that what you were
+ thinking about doing here is creating a callback function that then 
+Enables/Disables a different Prompt. However, it appears that you 
+haven't included your callback function. So, right now it is just a 
+checkbox. </p>
+
+<p>I am currently working to add this callback to my current dialog box.
+ But, I thought if you already had it completed then it could save me 
+some work if you wouldn't mind sharing it. :-) </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375418">Erasmo Morales</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Ikuma: Thank you sir, you are a 
+good person. This new version works on Windows now. :) I will experiment
+ with it this weekend. I will send you and email if I have more 
+troubles.</p>
+
+<p>Thanks again!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Erasmo - The reported compatibility bug for pre-R2013a has been fixed in v2.0.2, which I just uploaded.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Erasmo - Your issue has been 
+confirmed on R2012b. I will look into it in a next couple days. Please 
+keep your eyes for the next update.</p>
+
+<p>Re: slider. Only way for you to customize the v1.3 slider behavior is
+ to hack the code. The slider callback is set on Line 1245 to an 
+anonymous function. You need to replace the function with a custom 
+callback to modify the unit label. The handle of the unit label is given
+ in handles struct, in the main inputsdlg scopes. Recommend using a 
+nested function.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375418">Erasmo Morales</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Ikuma, thanks for replying. I am using Matlab on Windows. I've just tried v2.0.1 and it does the same.</p>
+
+<p>About the slider:
+<br>For now, on a project I am using the older version of inputsdlg v1.3. Is what you suggested available in this version? </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Erasmo - I will see if I can 
+reproduce those errors that you reported. These demo scripts work fine 
+on my system. Are you running Matlab on Mac or Linux?</p>
+
+<p>As for showing the value of the slider, you can use the slider 
+callback to modify either its TooltipString or the "unit" label. If you 
+aren't sure how to do this, shoot me an email.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375418">Erasmo Morales</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello, Mr. Ikuma. I am having similar troubles that John is having. </p>
+
+<p>When running inputsdlg_demo.m I get:</p>
+
+<p>Error using inputsdlg (line 394)
+<br>Default integer data must integer.</p>
+
+<p>Error in inputsdlg_demo (line 187)
+<br>[Answer,Cancelled] = inputsdlg(Prompt,Title,Formats,DefAns,Options)</p>
+
+<p>When running inputsdlg_demo_tile.m I get:</p>
+
+<p>Error using inputsdlg (line 394)
+<br>Default dir must be a valid path.</p>
+
+<p>Error in inputsdlg_demo_tile (line 57)
+<br>inputsdlg(Prompt,Title,Formats,DefAns,Options)</p>
+
+<p>What do I have to change to get these to run? I am using Matlab 2012b.</p>
+
+<p>Also, is there a way to display what value the slider has(for the range type)?</p>
+
+<p>Ex:
+<br>0          100
+<br>|---[]------| (40)
+<br>                ^
+<br>I would like to display this value (40).</p>
+
+<p>Thank you.
+<br>:)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@John - Thanks for the bug report. I just uploaded the fixed version (v2.0.1) to (re)enable 'inputsdlg' style input arguments.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/304875">John</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This looks like a great tool! </p>
+
+<p>However, I appear to be unable to run the demos or the examples shown in the "File Exchange Pick of the Week". 
+<br>I am getting a variety of errors such as:</p>
+
+<p>Error 1 (1st example in "File Exchange Pick of the Week"):</p>
+
+<p>    Error using struct
+<br>    Field names must be strings.</p>
+
+<p>    Error in inputsdlg&gt;checkformats (line 1086)
+<br>       Formats = repmat(struct(fields{:}),NumQuest,1);</p>
+
+<p>    Error in inputsdlg (line 388)
+<br>    [Formats,err] = checkformats(Formats,NumQuest,FormatDefaultFields);</p>
+
+<p>Error 2 (2nd example in "File Exchange Pick of the Week"): </p>
+
+<p>    Error using inputsdlg (line 394)
+<br>    Default text data format must be char.</p>
+
+<p>Error 3 (attempt to run inputsdlg_demo_tile.m)</p>
+
+<p>    Error using inputsdlg (line 394)
+<br>    Default dir must be a valid path.</p>
+
+<p>    Error in inputsdlg_demo_tile (line 57)
+<br>    inputsdlg(Prompt,Title,Formats,DefAns,Options)</p>
+
+<p>Error 4 (attempt to run inputsdlg_demo.m):</p>
+
+<p>    Error using inputsdlg (line 394)
+<br>    Default integer data must integer.</p>
+
+<p>    Error in inputsdlg_demo (line 187)
+<br>    [Answer,Cancelled] = inputsdlg(Prompt,Title,Formats,DefAns,Options)</p>
+
+<p>However, the inputsdlg_demo_contactinfo.m works great! I know that I 
+have included a lot of info here, but I thought that you might be able 
+to investigate this better with more information.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Charles - Great idea! I'm working on a new version as of now. I will incorporate your suggestion in the upcoming release.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/368077">Charles Collin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This looks like a very useful tool.
+ However, I noted that it has the same issue regarding font size as does
+ inputdlg. That is, it only takes the factory default, making it 
+impossible to change the size of the font using (e.g.) set(0, 
+'DefaultTextFontSize', 14), as is possible for most of the other "dlg" 
+commands.  I modified the script at line 940 to read:
+<br>   'FontSize'      get(0,'DefaultTextFontSize');
+<br>This makes it accept the user-definable default, but the size of the
+ text boxes don't scale accordingly.  It would be great if an updated 
+version of the function could do this.  Thanks for your attention.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/366507">Florian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Perfect tool, I like it a lot</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/275493">Soren Preus</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Invaluable when making large GUI-based applications!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@kirka - oops, I wrote you a reply before to Troy, but FEX comment section acted up and overwrote my reply to you.</p>
+
+<p>That being said, the only way for this function to return the answers
+ before closing the dialog is for you to modify the code yourself. I 
+modeled this function after the built-in inputdlg function, which is 
+uses a modal window.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/260155">kirka</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm not used to read other ones 
+code so I don't know how to change callbacks in a way that I'm looking 
+for. Like I earlier wrote I want to make apply button to set my answers 
+without closing the dialog (like pressing ok but dialog stays open). </p>
+
+<p>Hopefully someone understood my problem so I can get even some sort of an answer.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Troy - I think the answer to your 
+question is 'yes'. The number of field is determined by the size of 
+PROMPT (cell array) argument (and others) so you can programatically 
+modify PROMPT array size during run time. Hope this helps.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/263303">Troy Rockwood</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a lifesaver!  Is there a 
+good way to have the number of fields be determined at run-time rather 
+than before?  I would like to have fields for n filenames where the user
+ defines n.  Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/260155">kirka</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi</p>
+
+<p>How I can get answers out from inputsdlg without closing the dialog 
+window. I need it to work that way when I want to check things fast.</p>
+
+<p>Is it possible to make apply button  work like ok button without 
+closing dialog window by changing callback, for example. Or any other 
+way.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/112261">Felix Goldberg</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi!</p>
+
+<p>This looks like a great tool and I'm sure i'll use it.</p>
+
+<p>For now, though, I need just a simple thing which appears to be 
+unaddressed: I want to create a dialog box - just like inputdlg - with 
+an arbitrary number of buttons. </p>
+
+<p>Do you know how one does that?</p>
+
+<p>Thanks!</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Terry - Thanks for reporting the 
+bug. I've confirmed it. Since I'm in a process of making a major update,
+ this bug won't be fixed until v2.0 (there is v1.3 just submitted &amp; 
+pending for MathWorks approval) but here's how to fix it.</p>
+
+<p>Replace the two if-else-end clauses that you posted above with the following:</p>
+
+<p>if isempty(UserOptions) % no option specified, use default
+<br>   err = {};
+<br>   return;
+<br>elseif ischar(UserOptions) &amp;&amp; any(strcmpi(UserOptions,{'on','off'}))
+<br>	% check if User Resize Option is given as on/off string
+<br>   UserOptions.Resize = UserOptions;
+<br>elseif ~isstruct(UserOptions) &amp;&amp; numel(UserOptions)~=1
+<br>   err{2} = 'Options must be ''on'', ''off'', or a scalar struct.';
+<br>   return;
+<br>end</p>
+
+<p>Let me know if you encounter any other bugs!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36891">Terrance Nearey</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice. And thanks for revising.
+<br>I'm trying to write some preprocessors for inputsdlg and have been 
+exercises many of its possibilities in testing the  front end code.
+<br>I think I've come across a bug. in the call to checkcptions() following line 1535:</p>
+
+<p>The first if-then-else group will fail  if Options on input is 'on', 
+<br>so second one will not be reached.
+<br>--------
+<br>if isempty(UserOptions) % no option specified, use default
+<br>   err = {};
+<br>  return;
+<br>elseif numel(UserOptions)~=1
+<br>   err{2} = 'Options struct must be a scalar.';
+<br>    if errdbg, disp('errdbg: Keyboarding'),sysbeep(2),dbstack, keyboard; end; return;
+<br>end</p>
+
+<p>% check if User Resize Option is given as on/off string
+<br>if ischar(UserOptions) &amp;&amp; strcmpi(UserOptions,{'on','off'})
+<br>   UserOptions.Resize = UserOptions;
+<br>elseif ~isstruct(UserOptions)
+<br>   err{2} = 'Options must be ''on'', ''off'', or a struct.';
+<br>    if errdbg, disp('errdbg: Keyboarding'),sysbeep(2),dbstack, keyboard; end; return;
+<br>end
+<br>---------
+<br>If your interested, I'll send you the front-ends when I've finished them
+<br>Thanks again,
+<br>Terry Nearey</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jason,</p>
+
+<p>I agree with your take on checkoptions(). I've scrapped the function 
+and rewritten it in more-or-so of what you suggested. Also, this change 
+made the user option field names to be case insensitive.</p>
+
+<p>Hopefully, v1.2.2 just upped would fix all checkoptions() related bugs.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56917">Jason Kaeding</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Kesh,</p>
+
+<p>New bug for you.  This is related to the last one I posted on 11 Jun.
+  Because you modified the Fields to handle the cellstr correctly, the 
+problem migrated to line 1653.  I think this line should be changed to </p>
+
+<p>Options.ButtonNames = Fields{2,6}{1};</p>
+
+<p>Personally, I think that the way that this checkoptions function is 
+coded is a little bit strange.  If the user specifies a struct as the 
+input, then the struct is not built until later.  I think that the 
+struct should be built at the top regardless (using an else), then only 
+add the fields if the user specifies them.  This would reduce the 
+problems that you are having now because you are creating fields if they
+ don't exist, but you already specified all of the default values 
+anyway.</p>
+
+<p>Regards,
+<br>Jason</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jason,</p>
+
+<p>Thanks for the bug report. The fixed version has been uploaded (v.1.2.1).</p>
+
+<p>As for the calender support, I'd like to keep this function 
+completely standalone. So, unless there is a built-in function (either 
+MATLAB or JAVA) for the calender dialog, I'll leave it as the text 
+field. I have an idea to let you interface inputsdlg with external 
+functions, but I'm a little too busy at this time to work on that.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56917">Jason Kaeding</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Kesh,</p>
+
+<p>I think there's a bug in v1.2.  It seems you modified checkoptions a 
+lot, but if I do not specify an option as input (nargin &lt; 5), then I 
+get the error "Options must be scalar."</p>
+
+<p>This stems from when you call Options = struct(Fields{:}).  Because 
+the ButtonNames field is a cell, it deals these to a 1x3 struct.  What 
+you need to do is declare ButtonNames as a "double cell": 
+{{'OK','Cancel','Apply'}}.  This will put the inner cell into a signle 
+struct element.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56917">Jason Kaeding</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Kesh, see UIGETDATE or UICALsubmissions as examples (or even use them directly).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 May 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Nick, "active" control is an 
+interesting one, and I think I can incorporate that fairly easily. I'll 
+try to include it in the next version.</p>
+
+<p>@Jason, Thanks for the bug report. I'll fix it in the next version. 
+Also, 'date' format is a good one. ActiveX... not so sure as I've never 
+used it myself. May be one of these days I'll learn.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56917">Jason Kaeding</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Kesh,</p>
+
+<p>I found a bug in line 295.  You reference handles.Figure, but it appears handles.fig is the correct fieldname.</p>
+
+<p>Regards</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56917">Jason Kaeding</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Kesh,</p>
+
+<p>First, I wanted to say that this is a great submission.  One 
+suggestion: a 'date' format would be nice.  Could even use the ActiveX 
+calendar control, but at least a normal date validation option would be 
+enough.</p>
+
+<p>Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/54641">Nick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Awesome, just what I've needed for 
+years. Just one suggestion: would it be possible to include another 
+input argument (perhaps a logical array) that indicates whether each 
+control is active or not. This way some controls could be "greyed out" 
+or turned off on a particular dialog layout rather than having to create
+ a new dialog layout whithout including those controls.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/911">Brett Shoelson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/82856">Aalya</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Good work! Could you suggest me some applications of this dialog box. I am new to Matlab and still learning many suffs.</p>
+
+<p>Reards.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Leon,</p>
+
+<p>The function was developed in r2008a; so, I am not surprised if it is not compatible with r14. </p>
+
+<p>Since I do not have r14, there is no way for me to make inputsdlg 
+compatible with r14 on my own. If you email me the errors that you are 
+encountering, I can help you modifying the code.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58364">Leon</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello</p>
+
+<p>I am having some troubles to run the package, may it be that I do not have the latest matlab release, I am running r14.</p>
+
+<p>Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/46561">Andreas Greuer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This inputsdlg should be standard in matlab like the inputdlg. We will use it. Good job.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/63710">Mohammed El-Said</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great work,
+<br>it is really useful,
+<br>Thanks....</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36665">Kesh Ikuma</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Andreas,</p>
+
+<p>Thanks for the bug report (and I'm a little embarrassed by such blatant bugs in my very demo...).</p>
+
+<p>I fixed the bugs, added a couple more features, and uploaded the updated files.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/46561">Andreas Greuer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The concept looks nice and quiet flexible. </p>
+
+<p>But there are still some bugs in. 
+<br>The Cancel is not indicated and gives just the default values back.
+<br>For an edit field comes not the text entered in the field, but a crazy structure (in the example the field "Name")
+<br>The answer gives back default instead of the new changed values. (in the example the field "SSN")</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">19 Nov 2009</td>
+                  <td><p>v1.1 (Nov. 19, 2009)
+<br>* Several bug fixes (thanks Andreas!)
+<br>* Apply button feature added
+<br>* Unit label (to the right of control) feature added</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 Nov 2009</td>
+                  <td><p>v1.11
+<br>More bug fixes (again thanks Andreas!)
+</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 Nov 2009</td>
+                  <td><p>(v.1.12) More bug fixes</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 May 2010</td>
+                  <td><p>* Fixed a couple bugs
+<br>* Added edit::date format
+<br>* Added formats.enable support
+<br>* Added options.CancelButton support
+<br>* Added options.ButtonNames support
+</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 Jun 2010</td>
+                  <td><p>Bug Fix: Default Options bug reported by Jason</p></td>
+                </tr>
+                <tr>
+                  <td class="date">15 Jul 2010</td>
+                  <td><p>v.1.2.2 (July 15, 2010)
+<br>* Rewritten checkoptions() (to correct issues reported by Jason)
+<br>* Bug Fix: file &amp; dir control enable config were interpreted backwards
+</p></td>
+                </tr>
+                <tr>
+                  <td class="date">19 Jul 2010</td>
+                  <td><p>v1.2.3
+<br>* Yet another checkoptions() bug fixes...</p></td>
+                </tr>
+                <tr>
+                  <td class="date">13 Aug 2010</td>
+                  <td><p>v1.3 (by Luke Reisner)
+<br>* Several bug fixes
+<br>* Improved dialog UI layout
+<br>* Other small modifications
+</p></td>
+                </tr>
+                <tr>
+                  <td class="date">18 Jul 2013</td>
+                  <td><p>v.2.0 (T. Ikuma &amp; F. Hatz)
+<br>* Major update with majority of innards rewritten. See version history in the m-file
+<br>* Supports 3 additional types: color, table, and button
+<br>* Supports custom callbacks</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Aug 2013</td>
+                  <td><p>Bug fix release</p></td>
+                </tr>
+                <tr>
+                  <td class="date">09 Aug 2013</td>
+                  <td><p>Made compatible with pre-R2013a releases</p></td>
+                </tr>
+                <tr>
+                  <td class="date">09 Sep 2013</td>
+                  <td><p>v2.0.3: bug fix release</p></td>
+                </tr>
+                <tr>
+                  <td class="date">25 Nov 2013</td>
+                  <td><p>Bug fix: parsing empty callback format field (Thanks David!)</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Mar 2014</td>
+                  <td><p>* Improved error message on FORMATS-PROMPT size mismatch.
+<br>* Fixed several bugs relating to neglected ToolTipString support (thanks David v.B!)
+<br>* FORMATS.items for Slider style now sets uicontrol's SliderStep property</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Mar 2014</td>
+                  <td><p>updated title</p></td>
+                </tr>
+                <tr>
+                  <td class="date">01 Jul 2014</td>
+                  <td><p>v2.0.6 - bug fixes
+<br>* default type
+<br>* text control positioning</p></td>
+                </tr>
+                <tr>
+                  <td class="date">03 Jul 2014</td>
+                  <td><p>v.2.1.0 (Jul 03, 2014)
+<br>* Added support for 'none' Format type as a placeholder for an empty row or column.
+<br>* Removed restriction on Cancel &amp; Apply buttons.
+<br>* Bug fixes</p></td>
+                </tr>
+                <tr>
+                  <td class="date">03 Jul 2014</td>
+                  <td><p>v2.1a (same day bug fixes)</p></td>
+                </tr>
+                <tr>
+                  <td class="date">03 Jul 2014</td>
+                  <td><p>v2.1b - same day bug fixes #2</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Sep 2014</td>
+                  <td><p>bug fix &amp; extended compatibility to pre-R2011b</p></td>
+                </tr>
+                <tr>
+                  <td class="date">19 Sep 2014</td>
+                  <td><p>v.2.1.2
+<br>* Improved check_formats sub-function</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415495506680&amp;cv=7&amp;fst=1415495506680&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/25862-inputsdlg--enhanced-input-dialog-box--v2-1-2-&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D15%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

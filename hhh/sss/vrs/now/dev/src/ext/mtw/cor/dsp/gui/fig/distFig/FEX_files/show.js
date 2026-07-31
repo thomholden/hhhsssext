@@ -1,0 +1,1 @@
+$(function(){var a=function(){var a=s_gi(s_account);a.linkTrackVars="events",a.linkTrackEvents="event45",a.events="event45",a.tl(this,"o","fileexdwl")},b=function(a){window.open(a,"_blank")},c=function(c){a(),b(c.href)};$("a.link--download.nologin").click(function(a){a.preventDefault(),c(this)})})
