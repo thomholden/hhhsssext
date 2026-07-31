@@ -1,0 +1,260 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>X_Trader Order Submission Example</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-08-27"><meta name="DC.source" content="Demo6c_TTOrderSubmitExample.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+
+  </style></head><body><div class="content"><h1>X_Trader Order Submission Example</h1><!--introduction--><p>This example shows how to create an order and submit it.    Note that X_Trader is a 32-bit application and will only work with 32-bit Windows installations of MATLAB.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Start or connect to XTrader</a></li><li><a href="#2">Register event handler for order server</a></li><li><a href="#3">Create OrderSet</a></li></ul></div><h2>Start or connect to XTrader<a name="1"></a></h2><pre class="codeinput">x = xtrdr;
+
+<span class="comment">%%Create an instrument</span>
+x.createInstrument(<span class="string">'Exchange'</span>,<span class="string">'TTSIM-G'</span>,<span class="string">'Product'</span>,<span class="string">'IPE e-Brent'</span>,<span class="string">'ProdType'</span>,<span class="string">'Future'</span>,<span class="string">'Contract'</span>,<span class="string">'Oct12'</span>,<span class="string">'Alias'</span>,<span class="string">'Demo5a_OrderSubmit'</span>);
+</pre><h2>Register event handler for order server<a name="2"></a></h2><pre class="codeinput">sExchange = x.Instrument.Exchange;
+x.Gate.registerevent({<span class="string">'OnExchangeStateUpdate'</span>,@(varargin)ttorderserverstatus(varargin{:},sExchange)})
+</pre><h2>Create OrderSet<a name="3"></a></h2><pre class="codeinput">x.createOrderSet;
+
+<span class="comment">%%Set order set properties and detail level of order status events</span>
+x.OrderSet(1).EnableOrderRejectData = 1;
+x.OrderSet(1).EnableOrderUpdateData = 1;
+x.OrderSet(1).OrderStatusNotifyMode = <span class="string">'ORD_NOTIFY_NORMAL'</span>;
+
+<span class="comment">%Set whether the order set checks self-imposed position limits when</span>
+<span class="comment">%submitting an order</span>
+x.OrderSet(1).Set(<span class="string">'NetLimits'</span>,false)
+
+<span class="comment">%Set events to get status of order</span>
+<span class="comment">%The command</span>
+<span class="comment">%</span>
+<span class="comment">% events(x.OrderSet)</span>
+<span class="comment">%</span>
+<span class="comment">%shows the events associated with the OrderSet object</span>
+x.OrderSet(1).registerevent({<span class="string">'OnOrderFilled'</span>,@(varargin)ttorderevent(varargin{:},x)})
+x.OrderSet(1).registerevent({<span class="string">'OnOrderRejected'</span>,@(varargin)ttorderevent(varargin{:},x)})
+x.OrderSet(1).registerevent({<span class="string">'OnOrderSubmitted'</span>,@(varargin)ttorderevent(varargin{:},x)})
+x.OrderSet(1).registerevent({<span class="string">'OnOrderDeleted'</span>,@(varargin)ttorderevent(varargin{:},x)})
+
+<span class="comment">%%Enable send orders</span>
+x.OrderSet(1).Open(1);
+
+<span class="comment">%%Build order profile with existing instrument</span>
+orderProfile = x.createOrderProfile(<span class="string">'Instrument'</span>,x.Instrument(1));
+
+<span class="comment">%The code</span>
+<span class="comment">%</span>
+<span class="comment">% orderProfile = x.createOrderProfile;</span>
+<span class="comment">% orderProfile.Instrument = x.Instrument(1);</span>
+<span class="comment">%</span>
+<span class="comment">%performs the same task.</span>
+
+<span class="comment">%Set customer default property</span>
+orderProfile.Customer = <span class="string">'&lt;Default&gt;'</span>;
+
+<span class="comment">%%Set up order profile as a market order to buy 100 shares</span>
+orderProfile.Set(<span class="string">'BuySell'</span>,<span class="string">'Buy'</span>);
+orderProfile.Set(<span class="string">'Qty'</span>,<span class="string">'100'</span>);
+<span class="comment">%orderProfile.Set('OrderType','M');</span>
+
+<span class="comment">%Limit order, set the ordertype and limit order price</span>
+<span class="comment">%</span>
+orderProfile.Set(<span class="string">'OrderType'</span>,<span class="string">'L'</span>);
+orderProfile.Set(<span class="string">'Limit$'</span>,<span class="string">'110.00'</span>);
+
+<span class="comment">%Stop market order, set the order restriction to stop order and stop price</span>
+<span class="comment">%</span>
+<span class="comment">% orderProfile.Set('OrderType','M');</span>
+<span class="comment">% orderProfile.Set('OrderRestr','S');</span>
+<span class="comment">% orderProfile.Set('Stop$','110.00');</span>
+
+<span class="comment">%Stop limit order, set order restriction, type, limit price and stop price</span>
+<span class="comment">%</span>
+<span class="comment">% orderProfile.Set('OrderType','L');</span>
+<span class="comment">% orderProfile.Set('OrderRestr','S');</span>
+<span class="comment">% orderProfile.Set('Limit$','110.00');</span>
+<span class="comment">% orderProfile.Set('Stop$','109.00');</span>
+</pre><pre class="codeinput"><span class="comment">%Check order server status before submitting order, added counter so that</span>
+<span class="comment">%demo never gets stuck</span>
+nCounter = 1;
+<span class="keyword">while</span> ~exist(<span class="string">'bServerUp'</span>,<span class="string">'var'</span>) &amp;&amp; nCounter &lt; 20
+  <span class="comment">%bServerUp is created by ttorderserverstatus</span>
+  pause(1)
+  nCounter = nCounter + 1;
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> exist(<span class="string">'bServerUp'</span>,<span class="string">'var'</span>) &amp;&amp; bServerUp
+  <span class="comment">%Submit the order</span>
+  submittedQuantity = x.OrderSet(1).SendOrder(orderProfile);
+  disp([<span class="string">'Quantity Sent: '</span>  num2str(submittedQuantity)])
+<span class="keyword">else</span>
+  disp(<span class="string">'Order server is down.  Unable to submit order.'</span>)
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Quantity Sent: 100
+</pre><pre class="codeinput"><span class="comment">%To delete an order</span>
+OrderObj = orderProfile.GetLastOrder;
+<span class="keyword">if</span> ~isempty(OrderObj)
+  <span class="keyword">if</span> ~OrderObj.IsNull
+    OrderObj.DeleteOrder;
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><pre class="codeinput">disp(<span class="string">'Shutting down communications to X_Trader.'</span>)
+close(x)
+</pre><pre class="codeoutput">Shutting down communications to X_Trader.
+</pre><p class="footer">Copyright 2012 The MathWorks, Inc.<br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+%% X_Trader Order Submission Example
+% This example shows how to create an order and submit it.    Note that X_Trader is a 32-bit application and will only
+% work with 32-bit Windows installations of MATLAB.
+%
+%  Copyright 2012 The MathWorks, Inc.
+%% Start or connect to XTrader
+x = xtrdr;
+
+%%Create an instrument
+x.createInstrument('Exchange','TTSIM-G','Product','IPE e-Brent','ProdType','Future','Contract','Oct12','Alias','Demo5a_OrderSubmit');
+
+%% Register event handler for order server
+sExchange = x.Instrument.Exchange;
+x.Gate.registerevent({'OnExchangeStateUpdate',@(varargin)ttorderserverstatus(varargin{:},sExchange)})
+
+%% Create OrderSet
+x.createOrderSet;
+
+%%Set order set properties and detail level of order status events
+x.OrderSet(1).EnableOrderRejectData = 1;
+x.OrderSet(1).EnableOrderUpdateData = 1;
+x.OrderSet(1).OrderStatusNotifyMode = 'ORD_NOTIFY_NORMAL';
+
+%Set whether the order set checks self-imposed position limits when
+%submitting an order
+x.OrderSet(1).Set('NetLimits',false)
+
+%Set events to get status of order
+%The command
+%
+% events(x.OrderSet)
+%
+%shows the events associated with the OrderSet object
+x.OrderSet(1).registerevent({'OnOrderFilled',@(varargin)ttorderevent(varargin{:},x)})
+x.OrderSet(1).registerevent({'OnOrderRejected',@(varargin)ttorderevent(varargin{:},x)})
+x.OrderSet(1).registerevent({'OnOrderSubmitted',@(varargin)ttorderevent(varargin{:},x)})
+x.OrderSet(1).registerevent({'OnOrderDeleted',@(varargin)ttorderevent(varargin{:},x)})
+
+%%Enable send orders
+x.OrderSet(1).Open(1);
+
+%%Build order profile with existing instrument 
+orderProfile = x.createOrderProfile('Instrument',x.Instrument(1));
+
+%The code
+%
+% orderProfile = x.createOrderProfile;
+% orderProfile.Instrument = x.Instrument(1);
+%
+%performs the same task.
+
+%Set customer default property
+orderProfile.Customer = '<Default>';
+
+%%Set up order profile as a market order to buy 100 shares
+orderProfile.Set('BuySell','Buy');
+orderProfile.Set('Qty','100');
+%orderProfile.Set('OrderType','M');
+
+%Limit order, set the ordertype and limit order price
+%
+orderProfile.Set('OrderType','L');
+orderProfile.Set('Limit$','110.00');
+
+%Stop market order, set the order restriction to stop order and stop price
+%
+% orderProfile.Set('OrderType','M');
+% orderProfile.Set('OrderRestr','S');
+% orderProfile.Set('Stop$','110.00');
+
+%Stop limit order, set order restriction, type, limit price and stop price
+%
+% orderProfile.Set('OrderType','L');
+% orderProfile.Set('OrderRestr','S');
+% orderProfile.Set('Limit$','110.00');
+% orderProfile.Set('Stop$','109.00');
+%%
+%Check order server status before submitting order, added counter so that
+%demo never gets stuck
+nCounter = 1;
+while ~exist('bServerUp','var') && nCounter < 20
+  %bServerUp is created by ttorderserverstatus
+  pause(1)
+  nCounter = nCounter + 1;
+end
+
+if exist('bServerUp','var') && bServerUp
+  %Submit the order
+  submittedQuantity = x.OrderSet(1).SendOrder(orderProfile);
+  disp(['Quantity Sent: '  num2str(submittedQuantity)])
+else
+  disp('Order server is down.  Unable to submit order.')
+end
+%%
+%To delete an order
+OrderObj = orderProfile.GetLastOrder;
+if ~isempty(OrderObj)
+  if ~OrderObj.IsNull
+    OrderObj.DeleteOrder;
+  end
+end
+
+%%
+disp('Shutting down communications to X_Trader.')
+close(x)
+##### SOURCE END #####
+--></body></html>

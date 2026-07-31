@@ -1,0 +1,255 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Commodities Trading with MATLAB - Importing and cleaning data</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-08-01"><meta name="DC.source" content="Demo_A_DataImportAndCleanup.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Commodities Trading with MATLAB - Importing and cleaning data</h1><!--introduction--><p>Importing data from a variety of sources and aligning / cleaning up the data consumes a significant portion of an analyst workflow. It can be challenging to align and synchronize data from multiple sources, and to transform the data into multiple useful formats, e.g. rolling up daily data into weekly and monthly data.</p><p>This script demonstrates one possible way to automate this workflow; commodity data is stored across multiple data sources: as a group of CSV files in the <i>.\Datasets</i> folder, as an SQLite database (<i>ohlcdata.db</i>) in the current folder, as well as index data from <i>Yahoo! Finance</i> . The script figures out what data to retrieve using the CommodityMetadata spreadsheet in the current folder (<i>CommodityMetadata.xlsx</i>), and then connects to the appropriate data source to retrieve the data. Once the data has been retrieved, the next step in the workflow is to align the data for each of the commodities to the same starting and ending dates, after which we can compute data sets on a weekly and monthly basis.</p><p>Finally, once the data has been retrieved, aligned and transformed, we save it into a MAT file for easy access later.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Read commodity metadata and initialize other boring housekeeping</a></li><li><a href="#2">2. Get all data into workspace</a></li><li><a href="#3">4. Align the data to the same starting and ending dates</a></li><li><a href="#4">5. Create monthly and weekly data containers</a></li><li><a href="#5">6. Divide into training and testing datasets</a></li><li><a href="#6">7. Perform book-keeping and save clean data into MAT file</a></li></ul></div><h2>1. Read commodity metadata and initialize other boring housekeeping<a name="1"></a></h2><p>In this section, commodity metadata is imported into the workspace, and literals are setup for use later. We also setup the connection parameters for the local SQLite database that we connect to.</p><pre class="codeinput">clc;clear
+ImportCommodityMetadata;
+SetupLiterals;
+SetupDBParameters;
+</pre><h2>2. Get all data into workspace<a name="2"></a></h2><p>In this section, we iterate through the commodity metadata information in order to figure out which data source to access to retrieve that particular data. We set up separate struct arrays for commodities data and equities data, and add the retrieved data to the corresponding struct as a dataset, along with its metadata information.</p><pre class="codeinput">fprintf(<span class="string">'Getting data into workspace.\n'</span>);
+
+DataContainer = struct;
+EquitiesContainer = struct;
+
+<span class="keyword">for</span> i = 1:length(CommodityMetadata)
+    symbol = CommodityMetadata.Symbol{i};
+    source = CommodityMetadata.Source{i};
+
+    <span class="keyword">switch</span> source
+        <span class="keyword">case</span> <span class="string">'CSV'</span> <span class="comment">% Import data from CSV files</span>
+            DataContainer.(symbol).Metadata = CommodityMetadata(i,:);
+            ReadAllContractsFromCSV;
+        <span class="keyword">case</span> <span class="string">'Database'</span> <span class="comment">% Import data from SQLite database</span>
+            DataContainer.(symbol).Metadata = CommodityMetadata(i,:);
+            ReadAllContractsFromDB;
+        <span class="keyword">case</span> <span class="string">'Yahoo'</span> <span class="comment">% Import data from Yahoo! Finance</span>
+            EquitiesContainer.(symbol) = currDataset;
+            ReadDataFromYahoo;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Getting data into workspace.
+Reading from CSV: .\Datasets\CL1.csv
+Reading from CSV: .\Datasets\CL2.csv
+Reading from CSV: .\Datasets\CL4.csv
+Reading from CSV: .\Datasets\BRN1.csv
+Reading from CSV: .\Datasets\BRN2.csv
+Reading from CSV: .\Datasets\BRN4.csv
+Reading from CSV: .\Datasets\HO1.csv
+Reading from CSV: .\Datasets\HO2.csv
+Reading from CSV: .\Datasets\HO4.csv
+Reading from CSV: .\Datasets\NG1.csv
+Reading from CSV: .\Datasets\NG2.csv
+Reading from CSV: .\Datasets\NG4.csv
+Reading from CSV: .\Datasets\XRB1.csv
+Reading from CSV: .\Datasets\XRB2.csv
+Reading from CSV: .\Datasets\XRB4.csv
+Reading from CSV: .\Datasets\GC1.csv
+Reading from CSV: .\Datasets\GC2.csv
+Reading from CSV: .\Datasets\GC4.csv
+Reading from CSV: .\Datasets\HG1.csv
+Reading from CSV: .\Datasets\HG2.csv
+Reading from CSV: .\Datasets\HG4.csv
+Reading from CSV: .\Datasets\SI1.csv
+Reading from CSV: .\Datasets\SI2.csv
+Reading from CSV: .\Datasets\SI4.csv
+Reading from CSV: .\Datasets\C1.csv
+Reading from CSV: .\Datasets\C2.csv
+Reading from CSV: .\Datasets\C4.csv
+Reading from CSV: .\Datasets\S1.csv
+Reading from CSV: .\Datasets\S2.csv
+Reading from CSV: .\Datasets\S4.csv
+Reading from CSV: .\Datasets\BO1.csv
+Reading from CSV: .\Datasets\BO2.csv
+Reading from CSV: .\Datasets\BO4.csv
+Reading from CSV: .\Datasets\W1.csv
+Reading from CSV: .\Datasets\W2.csv
+Reading from CSV: .\Datasets\W4.csv
+Reading from CSV: .\Datasets\SB1.csv
+Reading from CSV: .\Datasets\SB2.csv
+Reading from CSV: .\Datasets\SB4.csv
+Reading from CSV: .\Datasets\KC1.csv
+Reading from CSV: .\Datasets\KC2.csv
+Reading from CSV: .\Datasets\KC4.csv
+Reading from CSV: .\Datasets\CC1.csv
+Reading from CSV: .\Datasets\CC2.csv
+Reading from CSV: .\Datasets\CC4.csv
+Reading from CSV: .\Datasets\CT1.csv
+Reading from CSV: .\Datasets\CT2.csv
+Reading from CSV: .\Datasets\CT4.csv
+Database: LH.1
+Database: LH.2
+Database: LH.4
+Reading from CSV: .\Datasets\LC1.csv
+Reading from CSV: .\Datasets\LC2.csv
+Reading from CSV: .\Datasets\LC4.csv
+Yahoo: SPY
+</pre><h2>4. Align the data to the same starting and ending dates<a name="3"></a></h2><p>The retrieved data can have different starting and ending dates; in this section, we call a custom filtering function that aligns every dataset to the same start and end dates.</p><pre class="codeinput">fprintf(<span class="string">'Aligning data to same starting and ending dates.\n'</span>);
+DataContainer = FilterByDate(DataContainer,FirstDay,LastDay);
+</pre><pre class="codeoutput">Aligning data to same starting and ending dates.
+</pre><h2>5. Create monthly and weekly data containers<a name="4"></a></h2><p>For parts of our analysis, we will need to "roll up" daily OHLC data into weekly and monthly formats. In this section, we call a custom filtering function that performs this task easily.</p><pre class="codeinput">fprintf(<span class="string">'Computing monthly and weekly OHLC data containers.\n'</span>);
+DataContainerWeekly=RollupDailyData(DataContainer,<span class="string">'w'</span>);
+DataContainerMonthly=RollupDailyData(DataContainer,<span class="string">'m'</span>);
+</pre><pre class="codeoutput">Computing monthly and weekly OHLC data containers.
+</pre><h2>6. Divide into training and testing datasets<a name="5"></a></h2><p>Finally, in order to protect ourselves against the worst excesses of data mining, we will split our data into separate training and test sets. Our test set will only be used at the very end of our analysis workflow.</p><pre class="codeinput">fprintf(<span class="string">'Creating training and test data containers.\n'</span>);
+LastDayOfTrainingSet=<span class="string">'12/31/2005'</span>;
+SetupTrainingAndTestSets;
+</pre><pre class="codeoutput">Creating training and test data containers.
+</pre><h2>7. Perform book-keeping and save clean data into MAT file<a name="6"></a></h2><p>Once we are done with importing and cleaning up our data, we save everything into a MAT file (<i>StageA.mat</i>) for access by other scripts.</p><pre class="codeinput">ClearBunchOfVariables;
+save(<span class="string">'StageA'</span>)
+</pre><p class="footer">Copyright 2013 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Commodities Trading with MATLAB - Importing and cleaning data
+% Importing data from a variety of sources and aligning / cleaning up the
+% data consumes a significant portion of an analyst workflow. It can be
+% challenging to align and synchronize data from multiple sources, and to
+% transform the data into multiple useful formats, e.g. rolling up daily
+% data into weekly and monthly data.
+%
+% This script demonstrates one possible way to automate this workflow;
+% commodity data is stored across multiple data sources: as a group of CSV
+% files in the _.\Datasets_ folder, as an SQLite database (_ohlcdata.db_) in
+% the current folder, as well as index data from _Yahoo! Finance_ . The script
+% figures out what data to retrieve using the CommodityMetadata spreadsheet
+% in the current folder (_CommodityMetadata.xlsx_), and then connects to 
+% the appropriate data source to retrieve the data. 
+% Once the data has been retrieved, the next step in the workflow is to
+% align the data for each of the commodities to the same starting and
+% ending dates, after which we can compute data sets on a weekly and
+% monthly basis.
+%
+% Finally, once the data has been retrieved, aligned and transformed, we
+% save it into a MAT file for easy access later.
+%
+% Copyright 2013 The MathWorks, Inc.
+
+%% 1. Read commodity metadata and initialize other boring housekeeping
+% In this section, commodity metadata is imported into the workspace, and
+% literals are setup for use later. We also setup the connection parameters
+% for the local SQLite database that we connect to.
+clc;clear
+ImportCommodityMetadata;
+SetupLiterals;
+SetupDBParameters;
+
+%% 2. Get all data into workspace
+% In this section, we iterate through the commodity metadata information in
+% order to figure out which data source to access to retrieve that
+% particular data. We set up separate struct arrays for commodities data and
+% equities data, and add the retrieved data to the corresponding struct as
+% a dataset, along with its metadata information.
+fprintf('Getting data into workspace.\n');
+
+DataContainer = struct;
+EquitiesContainer = struct;
+
+for i = 1:length(CommodityMetadata)
+    symbol = CommodityMetadata.Symbol{i};
+    source = CommodityMetadata.Source{i};
+    
+    switch source
+        case 'CSV' % Import data from CSV files
+            DataContainer.(symbol).Metadata = CommodityMetadata(i,:);
+            ReadAllContractsFromCSV;
+        case 'Database' % Import data from SQLite database
+            DataContainer.(symbol).Metadata = CommodityMetadata(i,:);
+            ReadAllContractsFromDB;
+        case 'Yahoo' % Import data from Yahoo! Finance
+            EquitiesContainer.(symbol) = currDataset;
+            ReadDataFromYahoo;            
+    end
+end
+
+%% 4. Align the data to the same starting and ending dates
+% The retrieved data can have different starting and ending dates; in this
+% section, we call a custom filtering function that aligns every dataset to
+% the same start and end dates.
+fprintf('Aligning data to same starting and ending dates.\n');
+DataContainer = FilterByDate(DataContainer,FirstDay,LastDay);
+
+%% 5. Create monthly and weekly data containers
+% For parts of our analysis, we will need to "roll up" daily OHLC data into
+% weekly and monthly formats. In this section, we call a custom filtering
+% function that performs this task easily.
+fprintf('Computing monthly and weekly OHLC data containers.\n');
+DataContainerWeekly=RollupDailyData(DataContainer,'w');
+DataContainerMonthly=RollupDailyData(DataContainer,'m');
+
+%% 6. Divide into training and testing datasets
+% Finally, in order to protect ourselves against the worst excesses of data
+% mining, we will split our data into separate training and test sets. Our
+% test set will only be used at the very end of our analysis workflow.
+fprintf('Creating training and test data containers.\n');
+LastDayOfTrainingSet='12/31/2005';
+SetupTrainingAndTestSets;
+
+%% 7. Perform book-keeping and save clean data into MAT file
+% Once we are done with importing and cleaning up our data, we save
+% everything into a MAT file (_StageA.mat_) for access by other scripts.
+ClearBunchOfVariables;
+save('StageA')
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,210 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>fxforward</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-08-14"><meta name="DC.source" content="fxforward.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Intro</a></li><li><a href="#3">Step 1 - Loading in the data</a></li><li><a href="#4">Import Libor data from the input spreadsheet</a></li><li><a href="#5">Import Euribor data from the input spreadsheet</a></li><li><a href="#6">Import foreign exchange rate data from the input spreadsheet</a></li><li><a href="#7">Import deal data from the input spreadsheet</a></li><li><a href="#8">Import as of date from the input spreadsheet</a></li><li><a href="#9">Step 2 - Interpolate Libor and Euribor rates for each maturity date linearly</a></li><li><a href="#10">Step 3 - Calculating forward rate for each maturity &amp; pricing cross-currency forward contract</a></li><li><a href="#11">Step 4 - Plot Forward Rate Curve</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span>[fxforward] = fxforward
+</pre><h2>Intro<a name="2"></a></h2><p>This file replicates cross-currency forward pricing using covered interest parity (CIP). It generates and plots CIP-implied forward exchange rates and calculates forward contract value. There are five inputs - domestic interest rate curve, foreign interest rate curve, spot exchange rate, maturity date, and strike price</p><h2>Step 1 - Loading in the data<a name="3"></a></h2><h2>Import Libor data from the input spreadsheet<a name="4"></a></h2><p>Import the data</p><pre class="codeinput">[~, ~, raw] = xlsread(<span class="string">'C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls'</span>,<span class="string">'Libor'</span>);
+raw = raw(2:30,1:2);
+<span class="comment">% Create output variable</span>
+data = cell2mat(raw);
+<span class="comment">% Allocate imported array to column variable names</span>
+LiborNodes = data(:,1);
+Libor = data(:,2);
+<span class="comment">% Clear temporary variables</span>
+clearvars <span class="string">data</span> <span class="string">raw</span> <span class="string">columnIndices</span>;
+</pre><h2>Import Euribor data from the input spreadsheet<a name="5"></a></h2><p>Import the data</p><pre class="codeinput">[~, ~, raw] = xlsread(<span class="string">'C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls'</span>,<span class="string">'Euribor'</span>);
+raw = raw(2:end,:);
+<span class="comment">% Create output variable</span>
+data = cell2mat(raw);
+<span class="comment">% Allocate imported array to column variable names</span>
+EuriborNodes = data(:,1);
+Euribor = data(:,2);
+<span class="comment">% Clear temporary variables</span>
+clearvars <span class="string">data</span> <span class="string">raw</span> <span class="string">columnIndices</span>;
+</pre><h2>Import foreign exchange rate data from the input spreadsheet<a name="6"></a></h2><p>Import the data</p><pre class="codeinput">[~, ~, raw] = xlsread(<span class="string">'C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls'</span>,<span class="string">'EURUSD'</span>);
+raw = raw(end,:);
+<span class="comment">% Create output variable</span>
+EURUSD = cell2mat(raw);
+<span class="comment">% Clear temporary variables</span>
+clearvars <span class="string">raw</span>;
+</pre><h2>Import deal data from the input spreadsheet<a name="7"></a></h2><p>Import the data, extracting spreadsheet dates in MATLAB datenum format</p><pre class="codeinput">[~, ~, raw, dateNums] = xlsread(<span class="string">'C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls'</span>,<span class="string">'Deals'</span>,<span class="string">''</span>,<span class="string">''</span>,@convertSpreadsheetDates);
+raw = raw(2:end,:);
+dateNums = dateNums(2:end,:);
+<span class="comment">% Replace date strings by MATLAB datenums</span>
+R = ~cellfun(@isequalwithequalnans,dateNums,raw) &amp; cellfun(<span class="string">'isclass'</span>,raw,<span class="string">'char'</span>); <span class="comment">% Find Excel dates</span>
+raw(R) = dateNums(R);
+<span class="comment">% Create output variable</span>
+data = cell2mat(raw);
+<span class="comment">% Allocate imported array to column variable names</span>
+Deal = data(:,1);
+Position = data(:,2);
+Strike = data(:,3);
+Maturity = data(:,4);
+<span class="comment">% Clear temporary variables</span>
+clearvars <span class="string">data</span> <span class="string">raw</span> <span class="string">dateNums</span> <span class="string">R</span> <span class="string">columnIndices</span>;
+</pre><h2>Import as of date from the input spreadsheet<a name="8"></a></h2><p>Import the data, extracting spreadsheet dates in MATLAB datenum format</p><pre class="codeinput">[~, ~, raw, dateNums] = xlsread(<span class="string">'C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls'</span>,<span class="string">'AsOfDate'</span>,<span class="string">''</span>,<span class="string">''</span>,@convertSpreadsheetDates);
+raw = raw(end,:);
+dateNums = dateNums(end,:);
+<span class="comment">% Replace date strings by MATLAB datenums</span>
+R = ~cellfun(@isequalwithequalnans,dateNums,raw) &amp; cellfun(<span class="string">'isclass'</span>,raw,<span class="string">'char'</span>); <span class="comment">% Find Excel dates</span>
+raw(R) = dateNums(R);
+<span class="comment">% Create output variable</span>
+Today = cell2mat(raw);
+<span class="comment">% Clear temporary variables</span>
+clearvars <span class="string">raw</span> <span class="string">dateNums</span> <span class="string">R</span>;
+</pre><h2>Step 2 - Interpolate Libor and Euribor rates for each maturity date linearly<a name="9"></a></h2><pre class="codeinput">Maturity=Maturity-Today;
+LiborInterp=interp1(LiborNodes, Libor, Maturity, <span class="string">'linear'</span>, <span class="string">'extrap'</span>);
+EuriborInterp=interp1(EuriborNodes, Euribor, Maturity, <span class="string">'linear'</span>, <span class="string">'extrap'</span>);
+</pre><h2>Step 3 - Calculating forward rate for each maturity &amp; pricing cross-currency forward contract<a name="10"></a></h2><pre class="codeinput">n = length(Deal);
+Value=zeros(1,n);
+Forward=zeros(1,n);
+<span class="keyword">for</span> i = 1:n
+    Forward(i)=EURUSD * ((1+LiborInterp(i))/(1+EuriborInterp(i)))^(Maturity(i)/365);
+    Value(i)=Position(i)*(Forward(i)-Strike(i));
+<span class="keyword">end</span>
+</pre><h2>Step 4 - Plot Forward Rate Curve<a name="11"></a></h2><pre class="codeinput">plot(Maturity/365,Forward,<span class="string">'bo'</span>)
+title(<span class="string">'Forward Rate Curve for EURUSD'</span>);
+xlabel(<span class="string">'Time in Years'</span>);
+ylabel(<span class="string">'Forward Exchnage Rate'</span>);
+</pre><img vspace="5" hspace="5" src="fxforward_01.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+function[fxforward] = fxforward
+%% Intro
+% This file replicates cross-currency forward pricing using covered
+% interest parity (CIP). It generates and plots CIP-implied forward exchange rates
+% and calculates forward contract value.
+% There are five inputs - domestic interest rate curve, foreign interest
+% rate curve, spot exchange rate, maturity date, and strike price
+%% Step 1 - Loading in the data
+%% Import Libor data from the input spreadsheet
+% Import the data
+[~, ~, raw] = xlsread('C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls','Libor');
+raw = raw(2:30,1:2);
+% Create output variable
+data = cell2mat(raw);
+% Allocate imported array to column variable names
+LiborNodes = data(:,1);
+Libor = data(:,2);
+% Clear temporary variables
+clearvars data raw columnIndices;
+%% Import Euribor data from the input spreadsheet
+% Import the data
+[~, ~, raw] = xlsread('C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls','Euribor');
+raw = raw(2:end,:);
+% Create output variable
+data = cell2mat(raw);
+% Allocate imported array to column variable names
+EuriborNodes = data(:,1);
+Euribor = data(:,2);
+% Clear temporary variables
+clearvars data raw columnIndices;
+%% Import foreign exchange rate data from the input spreadsheet
+% Import the data
+[~, ~, raw] = xlsread('C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls','EURUSD');
+raw = raw(end,:);
+% Create output variable
+EURUSD = cell2mat(raw);
+% Clear temporary variables
+clearvars raw;
+%% Import deal data from the input spreadsheet
+% Import the data, extracting spreadsheet dates in MATLAB datenum format
+[~, ~, raw, dateNums] = xlsread('C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls','Deals','','',@convertSpreadsheetDates);
+raw = raw(2:end,:);
+dateNums = dateNums(2:end,:);
+% Replace date strings by MATLAB datenums
+R = ~cellfun(@isequalwithequalnans,dateNums,raw) & cellfun('isclass',raw,'char'); % Find Excel dates
+raw(R) = dateNums(R);
+% Create output variable
+data = cell2mat(raw);
+% Allocate imported array to column variable names
+Deal = data(:,1);
+Position = data(:,2);
+Strike = data(:,3);
+Maturity = data(:,4);
+% Clear temporary variables
+clearvars data raw dateNums R columnIndices;
+%% Import as of date from the input spreadsheet
+% Import the data, extracting spreadsheet dates in MATLAB datenum format
+[~, ~, raw, dateNums] = xlsread('C:\Program Files\MATLAB\R2012a\MatLab Publish\FX Forward\input.xls','AsOfDate','','',@convertSpreadsheetDates);
+raw = raw(end,:);
+dateNums = dateNums(end,:);
+% Replace date strings by MATLAB datenums
+R = ~cellfun(@isequalwithequalnans,dateNums,raw) & cellfun('isclass',raw,'char'); % Find Excel dates
+raw(R) = dateNums(R);
+% Create output variable
+Today = cell2mat(raw);
+% Clear temporary variables
+clearvars raw dateNums R;
+%% Step 2 - Interpolate Libor and Euribor rates for each maturity date linearly
+Maturity=Maturity-Today;
+LiborInterp=interp1(LiborNodes, Libor, Maturity, 'linear', 'extrap');
+EuriborInterp=interp1(EuriborNodes, Euribor, Maturity, 'linear', 'extrap');
+%% Step 3 - Calculating forward rate for each maturity & pricing cross-currency forward contract
+n = length(Deal);
+Value=zeros(1,n);
+Forward=zeros(1,n);
+for i = 1:n
+    Forward(i)=EURUSD * ((1+LiborInterp(i))/(1+EuriborInterp(i)))^(Maturity(i)/365);
+    Value(i)=Position(i)*(Forward(i)-Strike(i));
+end
+%% Step 4 - Plot Forward Rate Curve
+plot(Maturity/365,Forward,'bo')
+title('Forward Rate Curve for EURUSD');
+xlabel('Time in Years');
+ylabel('Forward Exchnage Rate');
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,1501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Credit Risk Modeling with MATLAB -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27847-credit-risk-modeling-with-matlab" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27847-credit-risk-modeling-with-matlab" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=27847" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab" class="manifest_title">Credit Risk Modeling with MATLAB</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/Excel%20Deployment/Credit_VaR.m" class="function" title="Function">...
+</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/Excel%20Deployment/Credit_Rating.m" class="function" title="Function">Credit_Rating(newData)
+</a>
+            <span class="description">This function uses the previously constructed classification ensemble to
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/Excel%20Deployment/GetMigrationFtsCell.m" class="function" title="Function">GetMigrationFtsCell(id,date,n...</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/GetMigrationFtsCell.m" class="function" title="Function">GetMigrationFtsCell(id,date,n...</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/Excel%20Deployment/GetTransProb.m" class="function" title="Function">GetTransProb(migrMat,nRatings...</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/GetTransProb.m" class="function" title="Function">GetTransProb(migrMat,nRatings...</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/Excel%20Deployment/TransitionProbabilitiesFunction.m" class="function" title="Function">TransitionProbabilitiesFuncti...</a>
+            <span class="description">Importing the data
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/Excel%20Deployment/betarndms.m" class="function" title="Function">betarndms(mu, sigma, m, n)
+</a>
+            <span class="description">BETARNDMS Random arrays from beta distribution given the mean and standard
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/betarndms.m" class="function" title="Function">betarndms(mu, sigma, m, n)
+</a>
+            <span class="description">BETARNDMS Random arrays from beta distribution given the mean and standard
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/Excel%20Deployment/cell2dataset.m" class="function" title="Function">cell2dataset(cellobj, varargi...</a>
+            <span class="description">CELL2DATASET converts a Cell array into a Dataset array. In this process
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/heatmap.m" class="function" title="Function">heatmap(mat, xlab, ylab, text...</a>
+            <span class="description">HEATMAP displays a matrix as a heatmap image
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/loadNewData.m" class="function" title="Function">loadNewData(fileToRead1)
+</a>
+            <span class="description">LOADNEWDATA(FILETOREAD1)
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/Credit_Rating.m" class="script" title="Script">Credit_Rating.m</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/Credit_VaR.m" class="script" title="Script">Credit_VaR.m</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/TransitionProbabilities.m" class="script" title="Script">TransitionProbabilities.m</a>
+            
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/content/MATLAB%20files/getdbdata.m" class="script" title="Script">getdbdata.m</a>
+            
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              5.0
+              <span class="divider"> | </span>
+              <a href="#feedback">8 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">68 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 3.99 MB</span>
+          <span id="fileid">File ID: #27847</span>
+        </div>
+          <div id="thumbnail" style="padding-bottom: 3px;">
+            <a href="http://www.mathworks.com/matlabcentral/fx_files/27847/6/VaR.jpg" border="0"><img src="FEX_files/preview.jpg" alt="image thumbnail"></a>
+          </div>
+
+        <div id="details">
+          <h1>Credit Risk Modeling with MATLAB</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31422">Ameya Deoras</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">07 Jun 2010 </span>
+              <span id="date_updated">(Updated 10 Nov 2011)</span>
+          </p>
+
+
+
+          <p id="summary">These are the supporting MATLAB files for the MathWorks webinar of the same name.</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F27847-credit-risk-modeling-with-matlab&amp;watching=27847" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>In this Credit Risk Modeling webinar, you will learn 
+how MATLAB can help risk teams build an agile Credit Risk Management 
+infrastructure. If you are interested in developing and deploying risk 
+analytics, this webinar will be ideal for you.</p>
+
+<p>Webinar highlights include:
+<br>• Credit rating classification
+<br>• Transition matrices and probabilities of default
+<br>• Credit risk analysis</p>
+
+<p>This webinar is for practitioners or academics in finance whose focus
+ is risk management, credit structuring, quantitative analysis, or asset
+ valuation. Familiarity with MATLAB is helpful, but not required.</p></td>
+          </tr>
+  
+        
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="http://www.mathworks.com/products/database/" id="product_link_Database Toolbox">Database Toolbox</a><br>
+                  <a href="http://www.mathworks.com/products/finance/" id="product_link_Financial Toolbox">Financial Toolbox</a><br>
+                  <a href="http://www.mathworks.com/products/matlabxl/" id="product_link_MATLAB Builder EX">MATLAB Builder EX</a><br>
+                  <a href="http://www.mathworks.com/products/compiler/" id="product_link_MATLAB Compiler">MATLAB Compiler</a><br>
+                  <a href="http://www.mathworks.com/products/optimization/" id="product_link_Optimization Toolbox">Optimization Toolbox</a><br>
+                  <a href="http://www.mathworks.com/products/statistics/" id="product_link_Statistics Toolbox">Statistics Toolbox</a><br>
+              </td>
+            </tr>
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.10 (R2010a)
+            </td>
+          </tr>
+  
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bond%22" rel="nofollow">bond(5)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22credit+risk%22" rel="nofollow">credit risk(3)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cvar%22" rel="nofollow">cvar(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22monte+carlo%22" rel="nofollow">monte carlo</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22transition+matrices%22" rel="nofollow">transition matrices(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22treebagger%22" rel="nofollow">treebagger(5)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22var%22" rel="nofollow">var(4)</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(31)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">23 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/265886">Princewill Olali</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I created an ODBC datasource but it's not showing in my querrybuilder (no item to select or insert). Who can help me pls?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">12 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/245243">Nikolay</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I can't import the database file. I think my matlab can only import the JDBC files. I use Mac OS by the way.</p>
+
+<p>I would appreciate any help. I am new at this</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">10 Nov 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Michelle-</p>
+
+<p>These results are entirely consistent with how classification trees 
+work.  Simply rescaling each of the inputs by multiplying them with 
+different coefficients should have no effect on the tree.  </p>
+
+<p>For exactly why this is, I'd recommend Breiman's book (which is 
+referenced in the doc), but the short answer is that trees sort each 
+predictor's observations and try a candidate split within each of the 
+gaps.  The tree will then select the split that gives the "best" 
+splitting criterion (and that's an entirely different discussion).  
+Scaling the predictor only serves to scale this process, but it doesn't 
+fundamentally change the results.</p>
+
+<p>As an example: suppose we have a simple set of obervations where the 
+predictor has been measured at 1, 2, 4, and 10.  The tree will try 
+splits at 1.5, 3, and 7.  Let's say that the "best" split is at 7.</p>
+
+<p>Now we go ahead and rescale this input-- mulitply it by 100 or some 
+other coefficient.  Now, the tree tries splits at 150, 300, and 700, and
+ it will still select the split at 700.  Rescaling doesn't change 
+anything.</p>
+
+<p>Now, if we were to cleverly create _new_ predictors out of a 
+well-chosen combination (linear or otherwise) of our existing 
+predictors, then that certainly would change the tree's performance.  
+For instance, make a 6th predictor in your X from Altman's coefficient's
+ times your original X-- then you might get some interesting results.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">10 Nov 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179295">Michelle</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Michael,</p>
+
+<p>I've noticed a very curious result of the treebagger, and was wondering if you have had experience with this.</p>
+
+<p>I send a matrix X which has 5 columns of a variety of accounting 
+data.  I also send Y, which is a vector of credit ratings.  I have about
+ 3000 rows of data.</p>
+
+<p>I understand that the bankruptcy academic community have done 
+extensive research to determine optimal coefficients to predict 
+bankruptcy.  I thought it would be interesting to see what the impacts 
+of the coefficients are on the bagging results.  So I created a vector, 
+coeff, and multiplied each row of X by the parameters in coeff.</p>
+
+<p>for example:  Altman's coefficients are {0.717 0.847 3.107 0.42 0.998}</p>
+
+<p>Curiously, varying the coefficients has NO effect on the oobErrors.  
+I've run exhaustive loops to vary all of the coefficients to track this 
+down.  </p>
+
+<p>It seems like in the case of the limit where the coefficient goes to zero, there should be an effect.</p>
+
+<p>thanks for any insights.</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">09 Nov 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/118711">Ab</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">20 Oct 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179295">Michelle</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank you Michael for the 
+clarification on the use of the predict vs oobPredict functions.  I am 
+aware of the benefits of the treebagger in automatically splitting the 
+data, I just wanted to be able to see the individual bits.</p>
+
+<p>Your point about the histogram is well taken, but I do think 
+histograms have some value in seeing the data distribution before and 
+after, even if it doesn't provide insight into the performance of the 
+bagger.  The various methods you highlighted in your code are great for 
+this.  </p>
+
+<p>I am working with real credit data, so being a visual person, I like 
+to see what the ratings distribution looks like at the beginning/end of 
+the process.  I should think it would be curious if the classified data 
+had a completely different distribution.</p>
+
+<p>Thanks again for your demo and webinar, I'm finding it incredibly helpful.
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">19 Oct 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Michelle - </p>
+
+<p>I'm afriad that I don't understand what histograms will do for you in
+ this case.  One typically matches the "actual" outputs to the model's 
+"predicted" outputs and compares the difference between them in some way
+ to assess the model's performance.  Confusion matrices, ROC curves, and
+ other techniques are commonly used to do this.  Histograms are not used
+ because they can hide a lot of information.  Consider this simple case 
+of classifying data that can take values of either "1" or "2":</p>
+
+<p>% The "actual" data:
+<br>Y = [1 2 1 2 2 1];
+<br>% The "predicted" data, arrived at through some model:
+<br>Y_Pred = [2 1 2 1 1 2];</p>
+
+<p>Most would argue that this "model" is terrible: it has a 100% 
+misclassification rate!  In spite of this, hist(Y) and hist(Y_Pred) give
+ the exact same plot.</p>
+
+<p>That visualization concern aside, I think there is some confusion 
+about how Bagging works.  In this example, the "actual" ratings are Y, 
+and every observation is used for training in some way.  So, Y also 
+represents the training ratings.  One of the strengths of ensemble 
+methods like Bagging is that it's not necessary to manually split the 
+data into training and validation sets: you can have your proverbial 
+cake and eat it, too.  The out-of-bag errors in this case, though, have a
+ special significance that is too much to explain here-- you should 
+check the doc or (better yet) Breiman's original article for more 
+details on that.  Suffice to say, you should not use the OOB errors in 
+the way that you seem to be using them here.  If you're looking for the 
+ensemble's predicted ratings, they are simply found by 
+<br>Y_Pred = predict(b,X);</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Oct 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179295">Michelle</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Michael,
+<br>I am trying to add lines to the code to plot histograms of ratings for three sets of observations.
+<br>I would like to see three different histograms as a result of 
+calling the treebagger:  ground truth ratings, training ratings, 
+predicted ratings.</p>
+
+<p>Would you be able to confirm that I have implemented the code 
+correctly and advise on the possibility of the 2nd?  I have added my own
+ data file with different ratings, but using the same ideas.</p>
+
+<p>1)  Ground Truth Ratings</p>
+
+<p>hist(Y)</p>
+
+<p>2) Training Ratings
+<br>Can't seem to find the matrix that stores these ratings.</p>
+
+<p>3)  Predicted Ratings:  Out-of-bag predictions made within the treebagger routine.  
+<br>The documentation says that the routine automatically partitions the data as training and to be predicted.</p>
+
+<p>Y_Pred = oobPredict(b);
+<br>Y_Pred_Num=ordinal(Y_Pred,[],{'AAA' 'AA+' 'AA' 'AA-' 'A+' 'A' 'A-'...
+<br>    'BBB+' 'BBB' 'BBB-' 'BB+' 'BB' 'BB-' 'B+' 'B' 'B-'...
+<br>    'CCC+' 'CCC' 'CCC-' 'CC' 'C' 'D'});
+<br>figure(4);
+<br>hist(Y_Pred_Num);
+<br>xlabel('Ratings');
+<br>ylabel('Out of Bag  Occurrences');
+<br>title('Out of Bag Prediction Results');</p>
+
+<p>Thanks for your help!
+<br>Michelle
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">24 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179394">Philip</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Michael,
+<br>I still have the error message, "??? Undefined function or method 'fetch' for input arguments of type 'struct'.</p>
+
+<p>Error in ==&gt; getdbdata at 23
+<br>e = fetch(e);"</p>
+
+<p>and when I run the CreditRisk_pkg.exe, I still have the 
+"LoadLibrary("CreditRisk_1_0.dll) failed - The specified module could 
+not be found". Can you help please? Thanks. By the way, how do I specify
+ where is the file in the code, "conn = database('Historical Credit 
+Ratings','','password');? I could have saved the HistoricalCreditRatings
+ anywhere in the hard drive. </p>
+
+<p>By the way, I can run the Credit_VaR.m though. Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">24 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Philip: On the top of this page we 
+list the required products to run this code.  R2010b of MATLAB should be
+ fine as long as you have all of the needed toolboxes as well.</p>
+
+<p>Within this package is a README file that provides step-by-step 
+instructions on how to define the data sources (which is what seems to 
+be going wrong in your error message above), how to get a copy of the 
+MCR, and when you might need to recompile the code.  I'm always looking 
+for ways to improve those instructions, so let me know where you find 
+them lacking.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179394">Philip</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi. I have MATLAB 7.11.0 (R2010b). Am I able to run the code?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">22 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179394">Philip</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I got this error message when I run 
+the getdbdata." ??? Undefined function or method 'fetch' for input 
+arguments of type 'struct'.</p>
+
+<p>Error in ==&gt; getdbdata at 23
+<br>e = fetch(e);"</p>
+
+<p>By the way, how do I assign data source name? I also got error 
+message when I tried to run "CreditRisk_pkg.exe" file, 
+"LoadLibrary("CreditRisk_1_0.dll) failed - The specified module could 
+not be found". How do I get "MCR version 7.13"? Thanks. 
+<br> </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">15 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>That's useful feedback, Michelle.  
+I've taken it back to our development team, and we're looking into 
+incorporating those suggestions.  Thanks!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">15 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179295">Michelle</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank you for the tip on curly 
+braces.  It makes sense now.  It's very interesting to be able to 
+graphically see the various trees.  </p>
+
+<p>On a side note, perhaps I am overlooking some features of the 
+standard MATLAB window to view the decision trees leaves, but it would 
+be extremely helpful to be able to:</p>
+
+<p>a) read all of the node/leaf labels. Some of them currently get overwritten.
+<br>b) cut/paste diagram so it could be manipulated/printed in powerpoint.
+<br>c) write in the window to make comments </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">14 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Kostas:  You're basically correct.  
+PRBYZERO quotes clean prices; to worry about the partial coupon period, 
+you'd need to use a dirty price convention or (equivalently) calculate 
+the accrued interest.  The ACCRFRAC function is useful in this case, as 
+is the (more robust) BONDBYZERO function within Financial Derivatives 
+Toolbox.</p>
+
+<p>You're also correct that our choice of clean or dirty prices doesn't 
+really affect the result as long as we're consistent: if present, the 
+accrued interests from the original bond prices and the simulated bond 
+prices just end up cancelling each other out.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">14 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Michelle:  You have the right idea but the syntax is a little off.  If you instead try (note the curly braces):</p>
+
+<p>a = b.Trees{1}
+<br>view(a)</p>
+
+<p>Then you'll see what you want.  Note that the trees in a bagged 
+ensemble tend to be much bushier than in a well-pruned decision tree on 
+its own-- this typically makes the ensemble a stronger learner.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">14 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179295">Michelle</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This is a great demo!  I am 
+interested in "viewing" some of the individual decision trees generated 
+by the treebagger function.  When I look at
+<br> b.Trees(1)</p>
+
+<p>ans = </p>
+
+<p>    [1x1 classregtree]</p>
+
+<p>the fact that this is associated with the classregtree leads me to 
+believe that I should be able to call the "view" command on this 
+variable.  The Iris Data examples show this to be the case.  For 
+example:</p>
+
+<p> a = b.Trees(1)
+<br> view(a)</p>
+
+<p>But I get an error statement:
+<br>??? Error using ==&gt; view at 37
+<br>Invalid input arguments</p>
+
+<p>Could you please advise if there is a way to plot individual decision trees as a result of the treebagger function?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">08 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/32910">Konstantinos</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Michael thank you for this great demo
+<br>I have some question regarding the valuation of bonds in the |Credit_VaR.m| file. </p>
+
+<p>1. Regarding the valuation date I guess it must be the one year ahead date, since we are using one-year forward interest rates
+<br>2. If we assume (as in Credit Metrics – technical Document. p27), a 
+bond with Face value: 100, Maturity: 5 years, Coupon: 6%, and a one-year
+ forward zero curve, Year 1  3.72  %,Year 2  4.32 %,Year 3  4.93 %,Year 4
+  5.32 %
+<br>Then we will have a cash flow [6 6 6 6 106] and a price
+<br>P = 6 + 6/(1+3.72/100) + 6/(1+4.32/100)^2 + 6/(1+4.93/100)^3 + 106/(1+5.32/100)^4 =  108.6430</p>
+
+<p>However if we use the prbyzero function (as you use in Credit_VaR.m file)
+<br>prbyzero([datenum('1-Dec-2005'),0.06],datenum('1-Dec-2001'),[3.72 
+4.32 4.93 
+5.32]'/100,datenum({'1-Dec-2001';'1-Dec-2002';'1-Dec-2003';'1-Dec-2004'})')
+ 
+<br>will get   102.5294</p>
+
+<p>I think this happens because with the above syntax we lose the coupon at the end of the first year. 
+<br>Is there any syntax that can help us price correctly the bond N - years ahead?</p>
+
+<p>I suppose that there is no difference in results as 
+<br>we are interesting in the difference of original and new portfolio values (please confirm) 
+<br>thank you
+<br>Kostas</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/32910">Konstantinos</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Eli: It depends on which version of 
+Credit_Rating you are looking at.  The version within the "MATLAB files"
+ folder gives the full development process workflow and definitely shows
+ TreeBagger in all its glory.  </p>
+
+<p>The version within the "Excel Deployment" folder follows a different 
+workflow.  In this workflow, we have already trained the classifier on 
+historical data, and our only remaining task is to apply it to new data.
+  As such, it simply loads a pre-trained TreeBagger from the included 
+MAT-file (thus creating the TreeBagger viariable "b" in the workspace) 
+and runs the PREDICT method on the new data.</p>
+
+<p>I'd recommend focusing on the code in the "MATLAB files" folder first
+ and only looking at "Excel Deployment" once you need to push the 
+analytics to another environment.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Bill: I'm pretty sure that the issue 
+is the version of Office you are running.  Note that these spreadsheets 
+are in the XLSX and XLSM file formats, which were only supported with 
+Office 2007 and later.  Since MATLAB uses Microsoft technology to read 
+from its own file formats, your Office 2003 isn't up to the task of 
+reading that file properly.</p>
+
+<p>That's my best guess-- I hope that helps.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/170498">Eli Haroch</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi,
+<br>I can not find the reference to TreeBagger in the Credit_Rating file. Do I miss something ?
+</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">15 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/172400">Bill Zou</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Michael: Thank you very much for the code. I try to run your code Credit_VaR, but the sytem give me the following message </p>
+
+<p>??? Error using ==&gt; setobsnames at 28
+<br>NEWNAMES must be a nonempty string or a cell array of nonempty strings.</p>
+
+<p>when I track the problem, it is due the the following line:</p>
+
+<p>BondData = dataset( ...
+<br>   'XLSFile', 'CreditPortfolio.xlsx', ...
+<br>    'Sheet', 'Portfolio Information', ...
+<br>    'ReadObsNames', true, ...
+<br>    'ReadVarNames', true);</p>
+
+<p>I am not sure what's wrong with it. Can you give me a clue. My version for matlab is 7.12.0.635. excel is 2003 version. </p>
+
+<p>thank you again for the help!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">08 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Panagiotis--</p>
+
+<p>That is an excellent catch that you've made.  My choice to create a 
+very large "ratingsMask" variable was decided through balancing concerns
+ of computational speed and memory overhead.  The code that you see here
+ does have big memory usage, but in return it runs faster than any other
+ variation on the code that I tried.</p>
+
+<p>In fact, I specifically chose the number of simulations to be just 
+under the 32-bit memory limit for the number of bonds in this portfolio.
+  This is useful for seminar and webinar purposes, but you're correct 
+that it leads to memory issues when the portfolio grows in size.</p>
+
+<p>If you do wish to grow the size of the portfolio and/or the number of simulations, you do have options:</p>
+
+<p>1. Use a 64-bit version of MATLAB.  That should clear everything up nicely with no code changes.</p>
+
+<p>2. Reduce the number of simulations done at a time, potentially 
+performing the simulations in blocks instead of all at once.  This will 
+require some code changes, like an outer FOR-loop for the simulation 
+blocks.  If you have access to Parallel Computing, these blocks should 
+be able to be evaluated in parallel.</p>
+
+<p>3. Refactor the simulation code, perhaps by moving to a 
+one-bond-at-a-time structure instead of the heavily vectorized version 
+shown here.  This will easily remove the memory concerns, but it will 
+require more rewriting of the code and will slow down the speed 
+considerably, too.</p>
+
+<p>Of course, I may easily have missed some solution that offers a 
+perfect mix of speed and memory efficiency-- if I did, please let me 
+know!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">26 Jul 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/77560">Panagiotis Braimakis</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Michael very nice illustration. I got a small point to stress on this part of your code in Credit_VaR: </p>
+
+<p>%% 2. Compute original value of portfolio
+<br>OriginalPrices = zeros(size(BondData, 1), 1);
+<br>dates = [valDate; valDate+365; valDate+2*365; valDate+3*365];</p>
+
+<p>% The |prbyzero| function in the Financial Toolbox allows us to value
+<br>% these bonds.
+<br>for idx = 1 : length(Ratings)-1
+<br>    ratingsMask = BondData.Rating == Ratings{idx};
+<br>    OriginalPrices(ratingsMask) = prbyzero( ...
+<br>        [x2mdate(BondData.Maturity(ratingsMask)) BondData.Coupon(ratingsMask)],... %x2mdate was missing
+<br>        valDate, Rates.(Ratings{idx}), dates);
+<br>end</p>
+
+<p>i think is not very optimal cause it leads to big Memory usage on 
+larger portfolios more than 3K bonds. You can check that for bigger 
+portfolios this is were you have memory problems. </p>
+
+<p>OriginalPrices(ratingsMask) = prbyzero( ...
+<br>Ones needs to rewrite this part i guess since the direct assignment 
+of the 0,1s ratings Mask has some problems. What do you think?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">14 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Good questions, Luis.  In order to 
+accurately compare the value of the initial portfolio and the simulated 
+portfolios, I could roll the simulated valuation dates one year forward 
+as you suggest.  But then to accurately compare the two results, I'd 
+need to discount the simulated values back to the original valuation 
+date.  Those two effects exactly cancel each other (as they should in an
+ arbitrage-free environment), so there's no real harm in using the same 
+valuation date for both the original and the simulated portfolios.  This
+ is a bit of a simplification, but it works for this demo.</p>
+
+<p>Note also that this ignores the risks associated with interest rates 
+changing over the simulated year.  A risk manager could easily worry 
+about those types of risks (and MATLAB provides tools to help), but this
+ code is focusing on credit risk only.</p>
+
+<p>As for the interest rates: yes, they're basically the one-year 
+forward rates.  This isn't necessarily a realistic view of interest 
+rates-- again, the focus of the demo is on credit risk, so we make some 
+simplification on secondary matters like the rates.  More realistic 
+interest rate curves can be calibrated and simulated using the 
+IRDataCurve object in Fixed-Income Toolbox and related functions.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/44022">Luis</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks for the code. It is well 
+written and very well documented. In particular, I have a question 
+regarding the code in Credit_VaR.m. In step 2 (initial portfolio 
+valuation) and in step 6 (valuation based on the simulated ratings) you 
+use the same dates for pricing. I think one should use dates one year 
+ahead (or at the end of the VaR estimation horizon) in step 6 (using the
+ prbyzero function). Furthermore, could you be more specific on what you
+ mean by interest rates in the file Credit Portfolio.xlsx (sheet 
+Transitions and Rates). Are these one year forward rates?
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">10 Dec 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/119176">Yen Hanning</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>exactly what i want. please make more toolkit for financial analysis as well.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">02 Jul 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Andres - I am happy that you found 
+this code useful!  This use of the tilde ("~") operator is a feature of 
+MATLAB R2009b and later.  It allows us to ignore function arguments if 
+we don't need them.  In earlier versions of MATLAB, a dummy variable 
+(like "a1") would be used instead.</p>
+
+<p>Also, note that in addition to this syntax above, other parts of the 
+MATLAB analysis (especially those using TreeBagger) require more recent 
+versions of MATLAB because they are using newer features.</p>
+
+<p>Thanks again!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">01 Jul 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/57183">Andres Licona</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Line 67 in TransitionProbabilities.m you can replace[~,idx,~] by [a1,idx,a1].</p>
+
+<p>Great code Michael!! </p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">24 Jun 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/50441">Lisheng Su</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/27847-credit-risk-modeling-with-matlab">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr class="title">
+              <th colspan="2"><span class="heading">Updates</span></th>
+            </tr>
+              <tr>
+                <td class="date">10 Nov 2011</td>
+                <td><p>Small update to heatmap.m to remove a warning that is thrown in R2011a and later.</p></td>
+              </tr>
+          </tbody></table>
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22credit+risk%22" rel="nofollow">credit risk</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a></td>
+        <td>23 Jun 2010 11:51:14</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22transition+matrices%22" rel="nofollow">transition matrices</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a></td>
+        <td>23 Jun 2010 11:51:14</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22var%22" rel="nofollow">var</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a></td>
+        <td>23 Jun 2010 11:51:14</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cvar%22" rel="nofollow">cvar</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a></td>
+        <td>23 Jun 2010 11:51:14</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22monte+carlo%22" rel="nofollow">monte carlo</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a></td>
+        <td>23 Jun 2010 11:51:15</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22treebagger%22" rel="nofollow">treebagger</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a></td>
+        <td>23 Jun 2010 11:51:15</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bond%22" rel="nofollow">bond</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/31739">Michael Weidman</a></td>
+        <td>23 Jun 2010 11:51:15</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22treebagger%22" rel="nofollow">treebagger</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/111381">Sundeep Kumar</a></td>
+        <td>10 Oct 2010 19:47:19</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22treebagger%22" rel="nofollow">treebagger</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/86785">Ray Ducharme</a></td>
+        <td>11 Nov 2010 14:09:38</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22credit+risk%22" rel="nofollow">credit risk</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/107762">Scott Treloar</a></td>
+        <td>23 Dec 2010 04:49:38</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bond%22" rel="nofollow">bond</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/133109">Borja</a></td>
+        <td>12 Apr 2011 11:02:48</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22credit+risk%22" rel="nofollow">credit risk</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/153117">Mar</a></td>
+        <td>05 Jun 2011 11:52:03</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cvar%22" rel="nofollow">cvar</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/151340">Jacek</a></td>
+        <td>21 Jul 2011 11:11:35</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bond%22" rel="nofollow">bond</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/139705">petar radkov</a></td>
+        <td>30 Aug 2011 07:54:47</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22treebagger%22" rel="nofollow">treebagger</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/179295">Michelle</a></td>
+        <td>14 Sep 2011 12:26:42</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22var%22" rel="nofollow">var</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/192167">Polina Tarasova</a></td>
+        <td>26 Oct 2011 10:27:05</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22var%22" rel="nofollow">var</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/190660">Annalisa Beato</a></td>
+        <td>21 May 2012 09:41:59</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22var%22" rel="nofollow">var</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/285433">Daniel Olafsson</a></td>
+        <td>12 Oct 2012 08:08:51</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22treebagger%22" rel="nofollow">treebagger</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/285433">Daniel Olafsson</a></td>
+        <td>12 Oct 2012 08:08:52</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bond%22" rel="nofollow">bond</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/285433">Daniel Olafsson</a></td>
+        <td>12 Oct 2012 08:08:54</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bond%22" rel="nofollow">bond</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/295294">David</a></td>
+        <td>16 Nov 2012 19:05:06</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22transition+matrices%22" rel="nofollow">transition matrices</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/245644">Jaime</a></td>
+        <td>14 Jan 2013 22:40:16</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

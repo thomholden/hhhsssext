@@ -1,0 +1,169 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Algorithmic Trading with MATLAB: Intraday trading</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-08-26"><meta name="DC.source" content="Demo3_Intraday.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+
+  </style></head><body><div class="content"><h1>Algorithmic Trading with MATLAB: Intraday trading</h1><!--introduction--><p>This demo expands on the previous demo to incorporate a larger, intraday trading set (loaded from a database).  More data implies more calculations, so we use Parallel Computing Toolbox to accelerate the analysis.</p><p>Copyright 2010-2012, The MathWorks, Inc. All rights reserved.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Load intraday data from a database</a></li><li><a href="#2">Open a parallel computing environment</a></li><li><a href="#3">Perform the parameter sweep</a></li><li><a href="#4">Plot iso-surface</a></li></ul></div><h2>Load intraday data from a database<a name="1"></a></h2><p>Our large, intraday data set is stored in a database instead of in an Excel spreadsheet.  MATLAB can read in data from these data sources thanks to Database Toolbox.</p><pre class="codeinput"><span class="comment">% Rather than forcing the customer to define and populate a database, we</span>
+<span class="comment">% will instead read from a prepared data file.  If you wish, you may write</span>
+<span class="comment">% the data from this file to a database of your choosing and adapt the</span>
+<span class="comment">% GETMINUTEDATAFROMDB command to connect to and read from it.</span>
+
+<span class="comment">% LCO = getMinuteDataFromDB('LCO');</span>
+
+load <span class="string">oilData</span>
+LCO = double(brent);
+clearvars <span class="string">-except</span> <span class="string">LCO</span>
+
+LCOClose = LCO(:,4);
+cost     = 0.01;     <span class="comment">% Bid/ask spread</span>
+</pre><h2>Open a parallel computing environment<a name="2"></a></h2><p>We will be performing many more backtests on a larger data set than before, so we would like to take advantage of as many processors as we can in order to speed up the computation.  MATLAB's Parallel Computing Toolbox makes this straightforward.  First, we open a pool of parallel workers:</p><pre class="codeinput"><span class="comment">% Use all the cores on my laptop</span>
+<span class="keyword">if</span> matlabpool(<span class="string">'size'</span>) == 0
+    matlabpool <span class="string">local</span>
+<span class="keyword">end</span>
+
+<span class="comment">% Then we use MATLAB's |parfor| construct to parallelize our |for|-loops:</span>
+edit <span class="string">leadlagFun</span>
+</pre><h2>Perform the parameter sweep<a name="3"></a></h2><p>We will sweep not just across many combinations of leading and lagging averages, but we will furthermore sweep across many different granularities of data in an effort to find the 'best' frequency to use. The variable 'ts' below is the sampling time and varies from 1 minute up to 420 minutes (i.e.: about 1 trading day)</p><pre class="codeinput">seq = generateSpacedInts(1, 200, 25);
+ts  = generateSpacedInts(1, 420, 25);
+
+range = {seq,seq,ts};
+annualScaling = sqrt(250*7*60);
+llfun =@(x) leadlagFun(x,LCOClose,annualScaling,cost);
+
+tic
+[~,param,sh,xyz] = parameterSweep(llfun,range);
+toc
+
+leadlag(LCOClose(1:param(3):end),param(1),param(2),<span class="keyword">...</span>
+        sqrt(annualScaling^2/param(3)),cost)
+xlabel([<span class="string">'Frequency ('</span>,num2str(param(3)),<span class="string">' minute intervals)'</span>])
+</pre><pre class="codeoutput">Elapsed time is 39.793099 seconds.
+</pre><img vspace="5" hspace="5" src="Demo3_Intraday_01.png" alt=""> <h2>Plot iso-surface<a name="4"></a></h2><p>Before, we used a surface plot to show how the Sharpe ratio depended on the two underlying parameters.  Now that we have three parameters, we will plot an iso-surface, a 3D volume plot where color indicates the Sharpe ratio.</p><pre class="codeinput">figure
+isoplot(xyz, sh)
+</pre><img vspace="5" hspace="5" src="Demo3_Intraday_02.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Algorithmic Trading with MATLAB: Intraday trading
+% This demo expands on the previous demo to incorporate a larger, intraday
+% trading set (loaded from a database).  More data implies more
+% calculations, so we use Parallel Computing Toolbox to accelerate the
+% analysis.
+%
+% Copyright 2010-2012, The MathWorks, Inc.
+% All rights reserved.
+
+%% Load intraday data from a database
+% Our large, intraday data set is stored in a database instead of in an
+% Excel spreadsheet.  MATLAB can read in data from these data sources
+% thanks to Database Toolbox.
+
+% Rather than forcing the customer to define and populate a database, we
+% will instead read from a prepared data file.  If you wish, you may write
+% the data from this file to a database of your choosing and adapt the
+% GETMINUTEDATAFROMDB command to connect to and read from it.
+
+% LCO = getMinuteDataFromDB('LCO');
+
+load oilData
+LCO = double(brent);
+clearvars -except LCO
+
+LCOClose = LCO(:,4);
+cost     = 0.01;     % Bid/ask spread
+
+%% Open a parallel computing environment
+% We will be performing many more backtests on a larger data set than
+% before, so we would like to take advantage of as many processors as we
+% can in order to speed up the computation.  MATLAB's Parallel Computing
+% Toolbox makes this straightforward.  First, we open a pool of parallel
+% workers:
+
+% Use all the cores on my laptop
+if matlabpool('size') == 0
+    matlabpool local
+end
+
+% Then we use MATLAB's |parfor| construct to parallelize our |for|-loops:
+edit leadlagFun
+
+%% Perform the parameter sweep
+% We will sweep not just across many combinations of leading and lagging
+% averages, but we will furthermore sweep across many different
+% granularities of data in an effort to find the 'best' frequency to use.
+% The variable 'ts' below is the sampling time and varies from 1 minute up
+% to 420 minutes (i.e.: about 1 trading day)
+seq = generateSpacedInts(1, 200, 25);
+ts  = generateSpacedInts(1, 420, 25);
+
+range = {seq,seq,ts};
+annualScaling = sqrt(250*7*60);
+llfun =@(x) leadlagFun(x,LCOClose,annualScaling,cost);
+
+tic
+[~,param,sh,xyz] = parameterSweep(llfun,range);
+toc
+
+leadlag(LCOClose(1:param(3):end),param(1),param(2),...
+        sqrt(annualScaling^2/param(3)),cost)
+xlabel(['Frequency (',num2str(param(3)),' minute intervals)'])
+%% Plot iso-surface
+% Before, we used a surface plot to show how the Sharpe ratio depended on
+% the two underlying parameters.  Now that we have three parameters, we
+% will plot an iso-surface, a 3D volume plot where color indicates the
+% Sharpe ratio.
+figure
+isoplot(xyz, sh)
+##### SOURCE END #####
+--></body></html>

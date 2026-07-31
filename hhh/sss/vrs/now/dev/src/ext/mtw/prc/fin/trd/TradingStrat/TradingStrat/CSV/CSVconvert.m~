@@ -1,0 +1,204 @@
+% This script reads the current directory for .csv files.
+% It takes the files and output three things.
+% First, another .csv file with the data filled in.
+% Second, another .csv file with period data filtered out.
+% Third, a matrix so as to be used in MATLAB.
+% All outputs are to be specificed by the user.
+
+% This functions gets pass the csv file.
+
+function CSVconvert(thelist)
+
+
+figure;
+set(gcf,'Position',[100 100 500 800]);
+set(gcf,'name','Phillip Securities One-minute Data editor')
+title = uicontrol('Style','Text','String','Phillip Securities One-minute Data editor v.1.5','FontName','Monaco','units','normalized',...
+    'Position',[0.1 0.82 0.8 0.16],'FontSize',24,'BackgroundColor',[0.2 0.3 0.76]);
+
+% Status bars.
+
+readbar = uibuttongroup('Parent',gcf,'Title','Reading:',...
+        'BackgroundColor',[0.9 0.9 0.9],'FontName','Monaco','FontSize',10,... 
+        'Position',[.5 0.02 .2 .1]);
+    
+readname = uicontrol(readbar,'style','text','String','0%','Position',[0.1 0.2 0.85 0.7],'Units','normalized','BackgroundColor',[0.9 0.9 0.9],...
+    'FontName','Monaco','FontSize',20);
+
+writebar = uibuttongroup('Parent',gcf,'Title','Writing:',...
+        'BackgroundColor',[0.9 0.9 0.9],'FontName','Monaco','FontSize',10,... 
+        'Position',[.7 0.02 .2 .1]);
+    
+writename = uicontrol(writebar,'style','text','String','0%','Position',[0.1 0.2 0.85 0.7],'Units','normalized','BackgroundColor',[0.9 0.9 0.9],...
+    'FontName','Monaco','FontSize',20);    
+    
+% End of status bars.
+
+
+
+% Create an array of String to represent the files.
+clear mat;
+clear stringlist;
+stringlist = '';
+pos = 1;
+mat = strfind(thelist,'|');
+for (i = 1:length(mat))
+    stringlist = strvcat(stringlist,thelist(pos:mat(i)-1));
+    pos = mat(i) + 1;
+end
+
+
+desc = uicontrol('Style','Text','String','This program displays the available .csv files in the current directory, allows the user to select one, and then output three things: A one-minute data, periodeic one-minute data, and a data matrix.',...
+    'FontName','Monaco','units','normalized',...
+    'Position',[0.1 0.68 0.8 0.12],'FontSize',10,'BackgroundColor',[0.9 0.9 0.9]);
+
+grp1 = uibuttongroup('Parent',gcf,'Title','Input:',...
+        'BackgroundColor',[0.8 0.8 0.8],'FontName','Monaco',... 
+        'Position',[.1 0.55 .8 .12]);
+    
+stock = uicontrol(grp1,'style','popup','Position',[0.1 0.5 0.8 0.4],'Units','normalized','BackgroundColor',[0.8 0.8 0.8],...
+    'String',thelist,'FontName','Monaco','FontSize',18);
+
+perbox = uicontrol(grp1,'style','edit','Position',[0.1 0.1 0.8 0.4],'Units','normalized','BackgroundColor',[0.8 0.8 0.9],...
+    'FontName','Monaco','String','300','FontSize',10);
+        
+grp2 = uibuttongroup('Parent',gcf,'Title','Output:',...
+        'BackgroundColor',[0.8 0.8 0.8],'FontName','Monaco',... 
+        'Position',[.1 0.13 .8 .4]);
+
+file1nametag = uicontrol(grp2,'style','text','Position',[0.05 0.8 0.9 0.15],'Units','normalized','BackgroundColor',[0.9 0.9 0.9],...
+    'FontName','Monaco','String','File name (use .csv) of the completed one-minute data:','FontSize',10);    
+    
+file1name = uicontrol(grp2,'style','edit','Position',[0.1 0.65 0.8 0.15],'Units','normalized','BackgroundColor',[0.8 0.8 0.9],...
+    'FontName','Monaco','String','default1.csv','FontSize',12);
+
+file2nametag = uicontrol(grp2,'style','text','Position',[0.05 0.5 0.9 0.15],'Units','normalized','BackgroundColor',[0.9 0.9 0.9],...
+    'FontName','Monaco','String','File name (use .csv) of the periodic one-minute data:','FontSize',10);
+
+file2name = uicontrol(grp2,'style','edit','Position',[0.1 0.35 0.8 0.15],'Units','normalized','BackgroundColor',[0.8 0.8 0.9],...
+    'FontName','Monaco','String','default2.csv','FontSize',12);
+
+matnametag = uicontrol(grp2,'style','text','Position',[0.05 0.2 0.9 0.15],'Units','normalized','BackgroundColor',[0.9 0.9 0.9],...
+    'FontName','Monaco','String','The output matrix which will appear in matlab: (For editing purposes)','FontSize',10);
+
+matname = uicontrol(grp2,'style','edit','Position',[0.1 0.05 0.8 0.15],'Units','normalized','BackgroundColor',[0.8 0.8 0.9],...
+    'FontName','Monaco','String','defaultmatrix','FontSize',12);
+    
+
+exebutton = uicontrol(gcf,'Style', 'pushbutton', 'String','Execute',...
+    'Callback',{@execute,stringlist},'FontName','Monaco','units','normalized',...
+    'Position', [0.1 0.08 0.3 0.05]);
+
+
+
+function execute(src,evt,thelist)
+% Read and fill in the data using the readdata command, a file name the
+% user selected.
+%get(stock,'Value')
+
+value = get(stock,'Value');
+clear nameofstock;
+clear Output;
+tempname = thelist(value,:);
+tempname = strtrim(tempname);
+[TheData TheName] = readdata(tempname);
+
+% writetofile(TheData,TheName,get(file1name,'String'));
+
+EditedData = cand2(TheData,str2num(get(perbox,'String')));
+
+% writetofile(EditedData,TheName,get(file2name,'String'));
+% Output = EditedData(:,[3:6]);
+
+% We open a new window for selecting of dates. We need to get the start and
+% end date and then we will edit the Output matrix.
+EditedData(:,1)
+startdate = EditedData(2,1);
+enddate = EditedData(length(EditedData(:,1)),1);
+sdate = num2str(startdate);
+edate = num2str(enddate);
+sdate
+edate
+
+select = figure;
+
+set(select,'Position',[500 500 800 400]);
+set(select,'name','Selection screen');
+
+namelabel = uicontrol(select,'Style','Text','String',['Name of stock: ' tempname],...
+    'FontName','Monaco','FontSize',18,'Position',[0.25 0.85 0.5 0.1],'Units','Normalized','BackgroundColor',[0.8 0.8 0.8]);
+
+datelabel = uicontrol(select,'Style','Text','String',...
+    ['Analysis of stock is during: '...
+    sdate(1:length(sdate)-4) '/' sdate(length(sdate)-3:length(sdate)-2) '/' sdate(length(sdate)-1:length(sdate))...
+    ' to ' edate(1:length(edate)-4) '/' edate(length(edate)-3:length(edate)-2) '/' edate(length(edate)-1:length(edate))],...
+    'FontName','Monaco','FontSize',14,'Position',[0.15 0.7 0.7 0.1],'Units','Normalized','BackgroundColor',[0.8 0.8 0.8]);
+
+datelabel2 = uicontrol(select,'Style','Text','String','Trim dates to: ',...
+    'FontName','Monaco','FontSize',14,'Position',[0.15 0.6 0.7 0.1],'Units','Normalized','BackgroundColor',[0.8 0.8 0.8]);
+
+% We have the editable textboxes here.
+
+edit1 = uicontrol(select,'Style','edit','String',num2str( ( startdate - rem(startdate,10000) ) / 10000 ),...
+    'FontName','Monaco','FontSize',14,'Position',[0.10 0.45 0.1 0.1],'Units','Normalized','BackgroundColor',[0.55 0.55 0.55]);
+
+edit2 = uicontrol(select,'Style','edit','String',num2str( ( rem(startdate,10000) - rem(startdate,100) ) / 100 ),...
+    'FontName','Monaco','FontSize',14,'Position',[0.20 0.45 0.1 0.1],'Units','Normalized','BackgroundColor',[0.55 0.55 0.55]);
+
+edit3 = uicontrol(select,'Style','edit','String',num2str(rem(startdate,100)),...
+    'FontName','Monaco','FontSize',14,'Position',[0.30 0.45 0.1 0.1],'Units','Normalized','BackgroundColor',[0.55 0.55 0.55]);
+
+editto = uicontrol(select,'Style','text','String','to',...
+    'FontName','Monaco','FontSize',14,'Position',[0.45 0.45 0.1 0.1],'Units','Normalized','BackgroundColor',[0.8 0.8 0.8]);
+
+edit4 = uicontrol(select,'Style','edit','String',num2str( ( enddate - rem(enddate,10000) ) / 10000 ),...
+    'FontName','Monaco','FontSize',14,'Position',[0.60 0.45 0.1 0.1],'Units','Normalized','BackgroundColor',[0.55 0.55 0.55]);
+
+edit5 = uicontrol(select,'Style','edit','String',num2str( ( rem(enddate,10000) - rem(enddate,100) ) / 100 ),...
+    'FontName','Monaco','FontSize',14,'Position',[0.70 0.45 0.1 0.1],'Units','Normalized','BackgroundColor',[0.55 0.55 0.55]);
+
+edit6 = uicontrol(select,'Style','edit','String',num2str(rem(enddate,100)),...
+    'FontName','Monaco','FontSize',14,'Position',[0.80 0.45 0.1 0.1],'Units','Normalized','BackgroundColor',[0.55 0.55 0.55]);
+
+formatlab = uicontrol(select,'Style','text','String','MM     DD     YY                     MM     DD     YY',...
+    'FontName','Monaco','FontSize',14,'Position',[0.1 0.35 0.8 0.07],'Units','Normalized','BackgroundColor',[0.55 0.55 0.55]);
+
+
+
+gobut = uicontrol(select,'style','pushbutton','String','Execute','FontName','Monaco','FontSize',14,'Callback',@mainwin,...
+    'Position',[0.4 0.22 0.2 0.1],'units','normalized');
+
+function mainwin(src,evt)
+    
+    % Get the new start and end dates.
+    newstart = str2num ([get(edit1,'Value') get(edit1,'Value') get(edit1,'Value')])
+    newend =
+    %newstart = str2num(get(edit1,'String')) * 10000 + str2num(get(edit2,'String')) * 100 + str2num(get(edit3,'String'));
+    %newend = str2num(get(edit4,'String')) * 10000 + str2num(get(edit5,'String')) * 100 + str2num(get(edit6,'String'));
+    cuttop = 0; cutbot = 0;
+    
+    for (i = 1:length(EditedData(:,1)))
+       if (EditedData(i,1) == newstart)
+          cuttop = i;
+          break;
+       end
+    end
+    
+    for (i = cuttop:length(EditedData(:,1)))
+       if (EditedData(i,1) == newend)
+          cutbot = i;
+          break;
+       end
+    end
+        
+    Output = EditedData(cuttop:cutbot,[3:6]);
+    EditedData(cuttop:cutbot,1)
+    mainwindow(Output,1,1,1,1);
+end
+
+% We want to input the edited matrix into mainwindow.
+% mainwindow(Output,1,1,1,1);
+
+end
+
+end

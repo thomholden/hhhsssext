@@ -1,0 +1,215 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>cfh</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-08-09"><meta name="DC.source" content="cfhHelp.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+
+  </style></head><body><div class="content"><h1>cfh</h1><!--introduction--><p>Graphical user interface implementing most of the CFH Toolbox functionalities. Part of the <a href="Main.html">CFH Toolbox</a>.</p><p><b>Syntax</b></p><pre class="language-matlab">cfh()
+</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">The GUI</a></li><li><a href="#2">Tab: General</a></li><li><a href="#3">Tab: Drift/Variance</a></li><li><a href="#4">Tab: Jump</a></li><li><a href="#5">Examples</a></li></ul></div><h2>The GUI<a name="1"></a></h2><p>After calling</p><pre class="language-matlab">&gt;&gt;cfh;
+</pre><p>at the Matlab prompt, the GUI is loaded in its initial state. It consists of three tabs: <a href="cfh.html#general">General</a>, <a href="cfh.html#drift">Drift/Variance</a>, and <a href="cfh.html#jump">Jump</a>. In each of these tabs, the corresponding parameters of the process dynamics are specified. For applications, see the <a href="cfh.html#ex1">examples</a>.</p><p><a name=general></a></p><h2>Tab: General<a name="2"></a></h2><p><img vspace="5" hspace="5" src="cfh1.jpg" alt=""> </p><p>In this tab, the initial conditions of the process as well as the system's discount factor and credit risk loadings (if any) are specified.</p><p>The first panel contains the table <b>Names</b> where the process variables can be named, and in <b>initial value</b>, their starting values are set. For assets such as stocks or currencies, whose prices are usually stated as a fraction of some numeraire asset, the <b>LOG</b> checkbox should be set. See the <a href="cfh.html#ex1">examples</a> for details.</p><p>The discount rate dynamics are specified in the next panel. The <b>constant</b> corresponds to <b><tt>R0</tt></b> and the <b>affine</b> table contains the state dependent parameters, i.e. <b><tt>R1</tt></b>.</p><p>If you are furthermore interested in credit risk applications, you may supply the loadings of the default intensity process - mathematically, a second discount rate process - in the corresponding panel. The recovery rate assumption for CDS pricing goes to <b>recovery</b>.</p><p>The time to maturity for option and bond application goes to <b>Time to maturity</b>. It corresponds to the expiry date of the <b>Option Pricing</b> panel, and it corresponds to the maximum maturity for term structure applications in <b>Bonds</b>.</p><p>If your process contains dividend dynamics, supply these via the <b>Add dividends</b> in the <b>Dividends/Neutralize</b> panel. A sub GUI pops up, where you can add the constant dividend yields for each asset as well as coefficient loadings which tie the asset's dividend to any of the other processes. Afterwards, you can click on <b>Neutralize Dividends</b> to again transform the discounted asset processes into martingales.</p><p><img vspace="5" hspace="5" src="cfh4divyields.jpg" alt=""> </p><p>The button group <b>Options</b> accommodates a set of standard applications. <b>Option Pricing</b> will result in a figure containing the prices of put and call options written on the <b>first</b> asset process specified, whereas <b>Implied Volatility</b> results in the corresponding implied volatilities. The <b>Implied Density</b> button yields the implied probability densities of each process variable at maturity. For those assets where <b>LOG</b> is checked, the density plot's x axis is retransformed into price units. A click on <b>Greeks</b> will yield the Greeks sensitivies of a call option written on the first process with respect to a change in all other process variables. <b>G(a,b,y)</b> finally, opens a sub GUI where more advanced conditional expectations can be computed. This function evaluates the conditional expectation:</p><p><img vspace="5" hspace="5" src="figGaby.jpg" alt=""> </p><p>Place the parameters <b>a,b,y</b> in the corresponding tables and field, and press <b>Go</b> for evaluation.</p><p><img vspace="5" hspace="5" src="cfh5gaby.jpg" alt=""> </p><p>The button group <b>Bonds</b> offers a set of term structure related functions. <b>Yield Curves</b> creates the risk free and risky term structures (if specified), whereas <b>CDS spreads</b> offers a plot of fair CDS spreads that are in line with the stated discount factor and credit risk dynamics.</p><p>The <b>General</b> button group hosts input/output/reset buttons and the <b>Preferences</b>.</p><p><a name=drift></a></p><h2>Tab: Drift/Variance<a name="3"></a></h2><p>In this tab, specify the drift and variance coefficients of your proceses. <tt>K0</tt> contains the constant drift terms, whereas <tt>K1</tt> contains the drift's state coefficient matrix.</p><p>The constant covariance matrix <b>H0</b> goes exactly there. For adding a covariance matrix <b>(H1)i</b> that corresponds to factor <b>i</b>, select it from the dropdown on the left and then supply the submatrix of <b>H1</b>.</p><p><img vspace="5" hspace="5" src="cfh2.jpg" alt=""> </p><p><a name=jump></a></p><h2>Tab: Jump<a name="4"></a></h2><p>In the jump tab, you may specify the jump distribution of your process as well as the jump intensity coefficients. In the <b>jump distribution</b> panel, select a jump distribution from the dropdown and supply the parameters in the corresponding tables.</p><p>In the <b>Jump intensity loadings</b> panel, you can specify the constant and state coefficients of the system's jump intensity.</p><p>After specifying the drift and the jump dynamics and intensities, you can compensate selected assets with respect to the chosen jump specification. Simply tick all processes that you wish to compensate, and press <b>correct drift</b>. The corresponding constant and affine drift coefficients have now been adjusted accordingly, so that the jump process is a martingale.</p><p><img vspace="5" hspace="5" src="cfh3.jpg" alt=""> </p><p><a name=ex1></a></p><h2>Examples<a name="5"></a></h2><p>The folder <b>examples</b> contains an array of predefined models.</p><div><ul><li><b>BlackScholes</b> contains two hypothetical stocks following correlated Brownian motions. The interest rate is constant at 5% and the asset's drifts correctly incorprate the drift adjustment due to the constant asset variances. A click on <b>Implied Volatility</b> will reveal a flat volatility smile for options written on BMW. <b>G(a,b,y)</b> with <b>b</b> set to -1 and +1 will reveal the probability that BMW will be above GM at maturity.</li><li><b>Heston</b> contains Heston's stochastic volatility model. The initial volatility is struck at 20% (0.04 is the initial variance), the interest rate is again constant at 5%. The asset process is now tied to the variance process via -0.5, so that it remains a martingale. The long term variance level is 0.09 (i.e. 0.135/1.5), the corresponding long run volatility is 30%. <b>(H1)2</b> shows that the volatility process is correlated with the spot asset process, the correlation coefficient is <img src="cfhHelp_eq93863.png" alt="$\frac{-0.07}{\sqrt{1\times 0.01}}=-0.7$"></li><li><b>SVJ</b> contains a jump-augmented Heston model. The jumps are of the Merton type (normally distributed jumps in the log process). The asset is assumed to jump by -12% on average, with a jump standard deviation of 10%. The jump intensity is constant at 0.08, translating into an average of eight jumps per year. We see that the asset's drift constant reflects the expected jump size now: As the expected jump is negative, the drift must go up so that the disocunted asset process is still a martingale.</li><li><b>DefaultRisk</b> contains a dataset where the risk-free short rate process is modelled as a CIR process and the default intensity process is driven by two CIR processes, where both may jump according to an exponential distribution.</li></ul></div><p class="footer"><br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+%% cfh
+% Graphical user interface implementing most of the CFH Toolbox 
+% functionalities. Part of the <Main.html CFH Toolbox>.
+%
+% *Syntax*
+%
+%   cfh()
+%
+%% The GUI
+%
+% After calling
+%
+%   >>cfh;
+% 
+% at the Matlab prompt, the GUI is loaded in its initial state. It consists
+% of three tabs: <cfh.html#general General>, 
+% <cfh.html#drift Drift/Variance>, and <cfh.html#jump Jump>. In 
+% each of these tabs, the corresponding parameters of the process dynamics 
+% are specified. For applications, see the <cfh.html#ex1 examples>.
+% 
+% <html><a name=general></a></html>
+%% Tab: General
+%
+% <<cfh1.jpg>>
+% 
+% In this tab, the initial conditions of the process as well as the
+% system's discount factor and credit risk loadings (if any) are specified.
+%
+% The first panel contains the table *Names* where the process variables 
+% can be named, and in *initial value*, their starting values are set. For 
+% assets such as stocks or currencies, whose prices are usually stated as a 
+% fraction of some numeraire asset, the *LOG* checkbox should be set. See 
+% the <cfh.html#ex1 examples> for details. 
+%
+% The discount rate dynamics are specified in the next panel. The
+% *constant* corresponds to *|R0|* and the *affine* table contains the state
+% dependent parameters, i.e. *|R1|*.
+%
+% If you are furthermore interested in credit risk applications, you may
+% supply the loadings of the default intensity process - mathematically, a
+% second discount rate process - in the corresponding panel. The recovery
+% rate assumption for CDS pricing goes to *recovery*. 
+%
+% The time to maturity for option and bond application goes to *Time to
+% maturity*. It corresponds to the expiry date of the *Option Pricing*
+% panel, and it corresponds to the maximum maturity for term structure
+% applications in *Bonds*.
+%
+% If your process contains dividend dynamics, supply these via the
+% *Add dividends* in the *Dividends/Neutralize* panel. A sub GUI pops up,
+% where you can add the constant dividend yields for each asset as well as
+% coefficient loadings which tie the asset's dividend to any of the other
+% processes. Afterwards, you can click on *Neutralize Dividends* to again
+% transform the discounted asset processes into martingales.
+%
+% <<cfh4divyields.jpg>>
+%
+% The button group *Options* accommodates a set of standard applications. 
+% *Option Pricing* will result in a figure containing the prices of put and
+% call options written on the *first* asset process specified, whereas
+% *Implied Volatility* results in the corresponding implied volatilities. 
+% The *Implied Density* button yields the implied probability densities of 
+% each process variable at maturity. For those assets where *LOG* is
+% checked, the density plot's x axis is retransformed into price units.
+% A click on *Greeks* will yield the Greeks sensitivies of a call option
+% written on the first process with respect to a change in all other
+% process variables. *G(a,b,y)* finally, opens a sub GUI where more
+% advanced conditional expectations can be computed. This function
+% evaluates the conditional expectation:
+%
+% <<figGaby.jpg>>
+%
+% Place the parameters *a,b,y* in the corresponding tables and field, and
+% press *Go* for evaluation.
+%
+% <<cfh5gaby.jpg>>
+%
+% The button group *Bonds* offers a set of term structure related
+% functions. *Yield Curves* creates the risk free and risky term structures
+% (if specified), whereas *CDS spreads* offers a plot of fair CDS spreads
+% that are in line with the stated discount factor and credit risk
+% dynamics.
+%
+% The *General* button group hosts input/output/reset buttons and the
+% *Preferences*.
+%
+% <html><a name=drift></a></html>
+%% Tab: Drift/Variance
+% 
+% In this tab, specify the drift and variance coefficients of your 
+% proceses. |K0| contains the constant drift terms, whereas |K1| contains 
+% the drift's state coefficient matrix.
+%
+% The constant covariance matrix *H0* goes exactly there. For adding a
+% covariance matrix *(H1)i* that corresponds to factor *i*, select it from
+% the dropdown on the left and then supply the submatrix of *H1*. 
+%
+% <<cfh2.jpg>>
+%
+% <html><a name=jump></a></html>
+%% Tab: Jump
+%
+% In the jump tab, you may specify the jump distribution of your process as
+% well as the jump intensity coefficients. In the *jump distribution* 
+% panel, select a jump distribution from the dropdown and supply the 
+% parameters in the corresponding tables.
+%
+% In the *Jump intensity loadings* panel, you can specify the constant and
+% state coefficients of the system's jump intensity. 
+%
+% After specifying the drift and the jump dynamics and intensities, you can
+% compensate selected assets with respect to the chosen jump specification.
+% Simply tick all processes that you wish to compensate, and press *correct
+% drift*. The corresponding constant and affine drift coefficients have now
+% been adjusted accordingly, so that the jump process is a martingale.
+%
+% <<cfh3.jpg>>
+%
+% <html><a name=ex1></a></html>
+%% Examples
+%
+% The folder *examples* contains an array of predefined models.
+%
+% 
+% 
+% * *BlackScholes* contains two hypothetical stocks following correlated
+% Brownian motions. The interest rate is constant at 5% and the asset's
+% drifts correctly incorprate the drift adjustment due to the constant
+% asset variances. A click on *Implied Volatility* will reveal a flat
+% volatility smile for options written on BMW. *G(a,b,y)* with *b* set to
+% -1 and +1 will reveal the probability that BMW will be above GM at
+% maturity.
+% * *Heston* contains Heston's stochastic volatility model. The initial
+% volatility is struck at 20% (0.04 is the initial variance), the interest 
+% rate is again constant at 5%. The asset process is now tied to the
+% variance process via -0.5, so that it remains a martingale. The long term
+% variance level is 0.09 (i.e. 0.135/1.5), the corresponding long run
+% volatility is 30%. *(H1)2* shows that the volatility process is
+% correlated with the spot asset process, the correlation coefficient is
+% $\frac{-0.07}{\sqrt{1\times 0.01}}=-0.7$
+% * *SVJ* contains a jump-augmented Heston model. The jumps are of the
+% Merton type (normally distributed jumps in the log process). The asset is
+% assumed to jump by -12% on average, with a jump standard deviation of
+% 10%. The jump intensity is constant at 0.08, translating into an average
+% of eight jumps per year. We see that the asset's drift constant reflects
+% the expected jump size now: As the expected jump is negative, the drift 
+% must go up so that the disocunted asset process is still a martingale.
+% * *DefaultRisk* contains a dataset where the risk-free short rate process
+% is modelled as a CIR process and the default intensity process is driven
+% by two CIR processes, where both may jump according to an exponential
+% distribution. 
+##### SOURCE END #####
+--></body></html>

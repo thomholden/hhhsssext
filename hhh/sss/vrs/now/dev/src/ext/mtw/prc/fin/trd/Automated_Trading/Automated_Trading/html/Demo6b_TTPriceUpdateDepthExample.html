@@ -1,0 +1,177 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>X_Trader Price Update Depth example</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-08-27"><meta name="DC.source" content="Demo6b_TTPriceUpdateDepthExample.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+
+  </style></head><body><div class="content"><h1>X_Trader Price Update Depth example</h1><!--introduction--><p>This example populates a table with market depth information as the prices update.  Note that X_Trader is a 32-bit application and will only work with 32-bit Windows installations of MATLAB.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Start or connect to XTrader</a></li><li><a href="#2">Create event notifier and enable depth updates</a></li><li><a href="#3">Create an instrument</a></li><li><a href="#4">Attach an instrument to a notifier</a></li><li><a href="#5">Define events</a></li><li><a href="#6">Depth data will be displayed in figure window</a></li><li><a href="#7">Listen for event data with depth updates enabled</a></li><li><a href="#8">Pause 10 seconds, then close</a></li></ul></div><h2>Start or connect to XTrader<a name="1"></a></h2><pre class="codeinput">x = xtrdr;
+</pre><h2>Create event notifier and enable depth updates<a name="2"></a></h2><pre class="codeinput">x.createNotifier;
+x.InstrNotify(1).EnableDepthUpdates = 1;
+</pre><h2>Create an instrument<a name="3"></a></h2><pre class="codeinput">x.createInstrument(<span class="string">'Exchange'</span>,<span class="string">'TTSIM-G'</span>,<span class="string">'Product'</span>,<span class="string">'IPE e-Brent'</span>,<span class="keyword">...</span>
+    <span class="string">'ProdType'</span>,<span class="string">'Future'</span>,<span class="string">'Contract'</span>,<span class="string">'Oct12'</span>,<span class="string">'Alias'</span>,<span class="string">'Demo6b_PriceUdateDepth'</span>);
+</pre><h2>Attach an instrument to a notifier<a name="4"></a></h2><pre class="codeinput">x.InstrNotify(1).AttachInstrument(x.Instrument(1));
+</pre><h2>Define events<a name="5"></a></h2><pre class="codeinput">x.InstrNotify(1).registerevent({<span class="string">'OnNotifyFound'</span>,@ttinstrumentfound})
+x.InstrNotify(1).registerevent({<span class="string">'OnNotifyNotFound'</span>,@ttinstrumentnotfound})
+x.InstrNotify(1).registerevent({<span class="string">'OnNotifyDepthData'</span>,@ttinstrumentdepthupdate})
+</pre><h2>Depth data will be displayed in figure window<a name="6"></a></h2><pre class="codeinput">figure(<span class="string">'Numbertitle'</span>,<span class="string">'off'</span>,<span class="string">'Tag'</span>,<span class="string">'TTPriceUpdateDepthFigure'</span>,<span class="string">'Name'</span>,[<span class="string">'Order Book - '</span> x.Instrument(1).Alias]);
+pos = get(gcf,<span class="string">'Position'</span>);
+set(gcf,<span class="string">'Position'</span>,[pos(1) pos(2) 360 315],<span class="string">'Resize'</span>,<span class="string">'off'</span>)
+
+<span class="comment">% Create controls for last price data</span>
+bspc = 5;
+bwid = 80;
+bhgt = 20;
+uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'String'</span>,<span class="string">'Exchange'</span>,<span class="string">'Position'</span>,[bspc 4*bspc+3*bhgt bwid bhgt]);
+uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'String'</span>,<span class="string">'Product'</span>,<span class="string">'Position'</span>,[2*bspc+bwid 4*bspc+3*bhgt bwid bhgt]);
+uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'String'</span>,<span class="string">'Type'</span>,<span class="string">'Position'</span>,[3*bspc+2*bwid 4*bspc+3*bhgt bwid bhgt]);
+uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'String'</span>,<span class="string">'Contract'</span>,<span class="string">'Position'</span>,[4*bspc+3*bwid 4*bspc+3*bhgt bwid bhgt]);
+ui.Exchange = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'Tag'</span>,<span class="string">''</span>,<span class="string">'Position'</span>,[bspc 3*bspc+2*bhgt bwid bhgt]);
+ui.Product = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'Tag'</span>,<span class="string">''</span>,<span class="string">'Position'</span>,[2*bspc+bwid 3*bspc+2*bhgt bwid bhgt]);
+ui.Type = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'Tag'</span>,<span class="string">''</span>,<span class="string">'Position'</span>,[3*bspc+2*bwid 3*bspc+2*bhgt bwid bhgt]);
+ui.Contract = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'Tag'</span>,<span class="string">''</span>,<span class="string">'Position'</span>,[4*bspc+3*bwid 3*bspc+2*bhgt bwid bhgt]);
+uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'String'</span>,<span class="string">'Last Price'</span>,<span class="string">'Position'</span>,[bspc 2*bspc+bhgt bwid bhgt]);
+uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'String'</span>,<span class="string">'Last Qty'</span>,<span class="string">'Position'</span>,[2*bspc+bwid 2*bspc+bhgt bwid bhgt]);
+uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'String'</span>,<span class="string">'Change'</span>,<span class="string">'Position'</span>,[3*bspc+2*bwid 2*bspc+bhgt bwid bhgt]);
+ui.Last = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'Tag'</span>,<span class="string">''</span>,<span class="string">'Position'</span>,[bspc bspc bwid bhgt]);
+ui.Quantity = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'Tag'</span>,<span class="string">''</span>,<span class="string">'Position'</span>,[2*bspc+bwid bspc bwid bhgt]);
+ui.Change = uicontrol(<span class="string">'Style'</span>,<span class="string">'text'</span>,<span class="string">'Tag'</span>,<span class="string">''</span>,<span class="string">'Position'</span>,[3*bspc+2*bwid bspc bwid bhgt]);
+
+<span class="comment">%Create table with order information</span>
+data = {<span class="string">' '</span>};
+data = data(ones(10,4));
+uibook = uitable(<span class="string">'Data'</span>, data, <span class="string">'ColumnName'</span>, <span class="keyword">...</span>
+                {<span class="string">'Bid'</span>,<span class="string">'Bid Size'</span>,<span class="string">'Ask'</span>,<span class="string">'Ask Size'</span>}, <span class="keyword">...</span>
+                 <span class="string">'Position'</span>, [5 105 350 205]);
+
+<span class="comment">%Store ui data</span>
+setappdata(0,<span class="string">'TTOrderBookHandle'</span>,uibook)
+setappdata(0,<span class="string">'TTOrderBookUIData'</span>,ui)
+</pre><img vspace="5" hspace="5" src="Demo6b_TTPriceUpdateDepthExample_01.png" alt=""> <h2>Listen for event data with depth updates enabled<a name="7"></a></h2><pre class="codeinput">x.Instrument(1).Open(1);
+</pre><img vspace="5" hspace="5" src="Demo6b_TTPriceUpdateDepthExample_02.png" alt=""> <h2>Pause 10 seconds, then close<a name="8"></a></h2><pre class="codeinput">pause(10)
+disp(<span class="string">'Shutting down communications to X_Trader.'</span>)
+close(x)
+</pre><pre class="codeoutput">Shutting down communications to X_Trader.
+</pre><img vspace="5" hspace="5" src="Demo6b_TTPriceUpdateDepthExample_03.png" alt=""> <p class="footer">Copyright 2012 The MathWorks, Inc.<br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+%% X_Trader Price Update Depth example
+% This example populates a table with market depth information as the
+% prices update.  Note that X_Trader is a 32-bit application and will only
+% work with 32-bit Windows installations of MATLAB.
+%
+%  Copyright 2012 The MathWorks, Inc.
+
+%% Start or connect to XTrader
+x = xtrdr;
+
+%% Create event notifier and enable depth updates
+x.createNotifier;
+x.InstrNotify(1).EnableDepthUpdates = 1;
+
+%% Create an instrument
+x.createInstrument('Exchange','TTSIM-G','Product','IPE e-Brent',...
+    'ProdType','Future','Contract','Oct12','Alias','Demo6b_PriceUdateDepth');
+
+%% Attach an instrument to a notifier
+x.InstrNotify(1).AttachInstrument(x.Instrument(1));
+
+%% Define events
+x.InstrNotify(1).registerevent({'OnNotifyFound',@ttinstrumentfound})
+x.InstrNotify(1).registerevent({'OnNotifyNotFound',@ttinstrumentnotfound})
+x.InstrNotify(1).registerevent({'OnNotifyDepthData',@ttinstrumentdepthupdate})
+
+%% Depth data will be displayed in figure window
+figure('Numbertitle','off','Tag','TTPriceUpdateDepthFigure','Name',['Order Book - ' x.Instrument(1).Alias]);
+pos = get(gcf,'Position');
+set(gcf,'Position',[pos(1) pos(2) 360 315],'Resize','off')
+
+% Create controls for last price data
+bspc = 5;
+bwid = 80;
+bhgt = 20;
+uicontrol('Style','text','String','Exchange','Position',[bspc 4*bspc+3*bhgt bwid bhgt]);
+uicontrol('Style','text','String','Product','Position',[2*bspc+bwid 4*bspc+3*bhgt bwid bhgt]);
+uicontrol('Style','text','String','Type','Position',[3*bspc+2*bwid 4*bspc+3*bhgt bwid bhgt]);
+uicontrol('Style','text','String','Contract','Position',[4*bspc+3*bwid 4*bspc+3*bhgt bwid bhgt]);
+ui.Exchange = uicontrol('Style','text','Tag','','Position',[bspc 3*bspc+2*bhgt bwid bhgt]);
+ui.Product = uicontrol('Style','text','Tag','','Position',[2*bspc+bwid 3*bspc+2*bhgt bwid bhgt]);
+ui.Type = uicontrol('Style','text','Tag','','Position',[3*bspc+2*bwid 3*bspc+2*bhgt bwid bhgt]);
+ui.Contract = uicontrol('Style','text','Tag','','Position',[4*bspc+3*bwid 3*bspc+2*bhgt bwid bhgt]);
+uicontrol('Style','text','String','Last Price','Position',[bspc 2*bspc+bhgt bwid bhgt]);
+uicontrol('Style','text','String','Last Qty','Position',[2*bspc+bwid 2*bspc+bhgt bwid bhgt]);
+uicontrol('Style','text','String','Change','Position',[3*bspc+2*bwid 2*bspc+bhgt bwid bhgt]);
+ui.Last = uicontrol('Style','text','Tag','','Position',[bspc bspc bwid bhgt]);
+ui.Quantity = uicontrol('Style','text','Tag','','Position',[2*bspc+bwid bspc bwid bhgt]);
+ui.Change = uicontrol('Style','text','Tag','','Position',[3*bspc+2*bwid bspc bwid bhgt]);
+
+%Create table with order information
+data = {' '};
+data = data(ones(10,4));
+uibook = uitable('Data', data, 'ColumnName', ...
+                {'Bid','Bid Size','Ask','Ask Size'}, ...
+                 'Position', [5 105 350 205]);
+
+%Store ui data
+setappdata(0,'TTOrderBookHandle',uibook)
+setappdata(0,'TTOrderBookUIData',ui)
+
+%% Listen for event data with depth updates enabled
+x.Instrument(1).Open(1);
+
+%% Pause 10 seconds, then close
+pause(10)
+disp('Shutting down communications to X_Trader.')
+close(x)
+##### SOURCE END #####
+--></body></html>

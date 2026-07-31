@@ -1,0 +1,2582 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Algorithmic Trading with MATLAB and Bloomberg EMSX: Online System</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-09-02"><meta name="DC.source" content="MovingAverageTradingRule_BloombergEMSX_liveSystem.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Algorithmic Trading with MATLAB and Bloomberg EMSX: Online System</h1><!--introduction--><p>This demo uses our simple intraday moving average strategy to develop a trading system. Based on historical and current data, the decision engine decides whether or not to trade, and sends orders to the desktop trade executation system in real time. The desktop trade execution system is Bloomberg EMSX. We will use Bloomberg API's test server and one of their dummy broker's, BB.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Pre-Trading Tasks</a></li><li><a href="#5">Fetch equity data from Bloomberg BLP datafeed</a></li><li><a href="#6">Execute strategy</a></li><li><a href="#9">Save Results</a></li></ul></div><h2>Pre-Trading Tasks<a name="1"></a></h2><p><b>Add BLPAPI3.jar to java class path</b> javaaddpath('C:\blp\API\blpapi3.jar')</p><p><b>Connect to Bloomberg V3 Communications Server</b> For the data</p><pre class="codeinput">b = blp;
+</pre><p><b>Connect to the EMSX API Production Server</b> c = emsx('//blp/emapisvc');</p><p><b>Connect to EMSX API Test Server</b> This creates a Bloomberg EMSX connection object.</p><pre class="codeinput">c = emsx(<span class="string">'//blp/emapisvc_beta'</span>);
+</pre><h2>Fetch equity data from Bloomberg BLP datafeed<a name="5"></a></h2><pre class="codeinput">equity = <span class="string">'SBK'</span>; <span class="comment">% Ticker symbol for equity around which we will develop the strategy. This can be changed.</span>
+
+startTime = today;
+endTime = now;
+annualScaling = sqrt(250*7*60);
+
+Ticker = strcat(equity,<span class="string">' Equity'</span>);
+
+<span class="comment">% Get raw tick data:</span>
+todaysData = timeseries(b,Ticker,{startTime,endTime}); <span class="comment">% gives back trade, time stamp, price, quantity</span>
+
+todaysTimes = cell2mat(todaysData(:,2));
+todaysPrices = cell2mat(todaysData(:,3));
+</pre><h2>Execute strategy<a name="6"></a></h2><pre class="codeinput"><span class="comment">% Parameters:</span>
+lagParam = 43;
+leadParam = 34;
+</pre><p>First Trade</p><pre class="codeinput">currentPrices = todaysPrices(end-(lagParam - 1):end);
+currentTimes = todaysTimes(end-(lagParam - 1):end);
+
+signal = constructTradingSignal(currentPrices,leadParam,lagParam);
+
+<span class="keyword">if</span> signal ~= 0
+    executeTrades(c, equity, signal)
+<span class="keyword">end</span>
+</pre><p>Go for 5 minutes</p><pre class="codeinput">presentTime = now;
+initialTime = presentTime;
+
+<span class="keyword">while</span> presentTime &lt;= initialTime + 5/60/24;
+    newData = timeseries(b,Ticker,{endTime,presentTime}); <span class="comment">% get raw tick data between now and endTime</span>
+
+    newPrices = [currentPrices; cell2mat(todaysData(:,3))];<span class="comment">% append to previous data</span>
+    newTimes = [currentTimes; cell2mat(todaysData(:,2))];
+
+    signal = constructTradingSignal(currentPrices,leadParam,lagParam);
+
+    <span class="keyword">if</span> signal ~= 0
+        executeTrades(c, equity, signal)
+    <span class="keyword">end</span>
+
+    <span class="comment">% update times</span>
+    endtTime = presentTime;
+    presentTime = now;
+<span class="keyword">end</span>
+</pre><h2>Save Results<a name="9"></a></h2><pre class="codeinput">save <span class="string">OnlineSystemCurrentTicker20130902</span>
+</pre><pre class="codeoutput">Warning: com.bloomberglp.blpapi.Session@57cb7ea is not serializable 
+Warning: com.bloomberglp.blpapi.Session@57cb7ea is not serializable 
+Warning: com.bloomberglp.blpapi.Session@3f0e6676 is not serializable 
+Warning: Service //blp/emapisvc_beta
+
+Operations = {
+
+    OPERATION CreateOrder = {
+
+        Request = {
+
+            TYPE CreateOrderRequest(SEQUENCE) {
+
+                DEFINITION EMSX_SIDE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE SideEnum(ENUMERATION) {
+
+                        SideEnum(STRING) {
+
+                            BUY = BUY
+
+                            BUYM = BUYM
+
+                            COVR = COVR
+
+                            SELL = SELL
+
+                            SHRT = SHRT
+
+                            SHRX = SHRX
+
+                            SLPL = SLPL
+
+                            B/O = B/O
+
+                            B/C = B/C
+
+                            S/C = S/C
+
+                            S/O = S/O
+
+                        } // End ConstantsList
+
+                    } // End Type: SideEnum
+
+                } // End Definition: EMSX_SIDE
+
+                DEFINITION EMSX_AMOUNT {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_AMOUNT
+
+                DEFINITION EMSX_TICKER {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_TICKER
+
+                DEFINITION EMSX_ORDER_TYPE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE OrderTypeEnum(ENUMERATION) {
+
+                        OrderTypeEnum(STRING) {
+
+                            CD = CD
+
+                            FUN = FUN
+
+                            LMT = LMT
+
+                            LOC = LOC
+
+                            MKT = MKT
+
+                            MOC = MOC
+
+                            OC = OC
+
+                            SL = SL
+
+                            ST = ST
+
+                            PEG = PEG
+
+                        } // End ConstantsList
+
+                    } // End Type: OrderTypeEnum
+
+                } // End Definition: EMSX_ORDER_TYPE
+
+                DEFINITION EMSX_TIF {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE TifEnum(ENUMERATION) {
+
+                        TifEnum(STRING) {
+
+                            DAY = DAY
+
+                            FOK = FOK
+
+                            GTC = GTC
+
+                            GTD = GTD
+
+                            GTX = GTX
+
+                            IOC = IOC
+
+                            OPG = OPG
+
+                            CLO = CLO
+
+                        } // End ConstantsList
+
+                    } // End Type: TifEnum
+
+                } // End Definition: EMSX_TIF
+
+                DEFINITION EMSX_HAND_INSTRUCTION {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_HAND_INSTRUCTION
+
+                DEFINITION EMSX_LIMIT_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_LIMIT_PRICE
+
+                DEFINITION EMSX_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_BROKER
+
+                DEFINITION EMSX_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ACCOUNT
+
+                DEFINITION EMSX_NOTES {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_NOTES
+
+                DEFINITION EMSX_GTD_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GTD_DATE
+
+                DEFINITION EMSX_EXEC_INSTRUCTION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXEC_INSTRUCTION
+
+                DEFINITION EMSX_SETTLE_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_SETTLE_DATE
+
+                DEFINITION EMSX_STOP_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_STOP_PRICE
+
+                DEFINITION EMSX_P_A {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_P_A
+
+                DEFINITION EMSX_EXCHANGE_DESTINATION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXCHANGE_DESTINATION
+
+                DEFINITION EMSX_ODD_LOT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_ODD_LOT
+
+                DEFINITION EMSX_CFD_FLAG {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_CFD_FLAG
+
+                DEFINITION EMSX_RELEASE_TIME {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_RELEASE_TIME
+
+                DEFINITION EMSX_GET_WARNINGS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GET_WARNINGS
+
+                DEFINITION EMSX_ORDER_ORIGIN {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ORDER_ORIGIN
+
+                DEFINITION EMSX_CLEARING_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_ACCOUNT
+
+                DEFINITION EMSX_CLEARING_FIRM {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_FIRM
+
+                DEFINITION REQUEST_EXT {
+
+                    Min Value = 0
+
+                    Max Value = unbounded
+
+                    TYPE String
+
+                } // End Definition: REQUEST_EXT
+
+                DEFINITION EMSX_LOCATE_REQ {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_REQ
+
+                DEFINITION EMSX_LOCATE_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_BROKER
+
+                DEFINITION EMSX_LOCATE_ID {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_ID
+
+                DEFINITION EMSX_STRATEGY_PARAMS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Strategy(SEQUENCE) {
+
+                        DEFINITION EMSX_STRATEGY_NAME {
+
+                            Min Value = 1
+
+                            Max Value = 1
+
+                            TYPE String
+
+                        } // End Definition: EMSX_STRATEGY_NAME
+
+                        DEFINITION EMSX_STRATEGY_FIELDS {
+
+                            Min Value = 1
+
+                            Max Value = 20
+
+                            TYPE FieldData(SEQUENCE) {
+
+                                DEFINITION EMSX_FIELD_DATA {
+
+                                    Min Value = 1
+
+                                    Max Value = 1
+
+                                    TYPE String
+
+                                } // End Definition: EMSX_FIELD_DATA
+
+                            } // End Type: FieldData
+
+                 
+Warning: com.bloomberglp.blpapi.Session@3f0e6676 is not serializable 
+Warning: Service //blp/emapisvc_beta
+
+Operations = {
+
+    OPERATION CreateOrder = {
+
+        Request = {
+
+            TYPE CreateOrderRequest(SEQUENCE) {
+
+                DEFINITION EMSX_SIDE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE SideEnum(ENUMERATION) {
+
+                        SideEnum(STRING) {
+
+                            BUY = BUY
+
+                            BUYM = BUYM
+
+                            COVR = COVR
+
+                            SELL = SELL
+
+                            SHRT = SHRT
+
+                            SHRX = SHRX
+
+                            SLPL = SLPL
+
+                            B/O = B/O
+
+                            B/C = B/C
+
+                            S/C = S/C
+
+                            S/O = S/O
+
+                        } // End ConstantsList
+
+                    } // End Type: SideEnum
+
+                } // End Definition: EMSX_SIDE
+
+                DEFINITION EMSX_AMOUNT {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_AMOUNT
+
+                DEFINITION EMSX_TICKER {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_TICKER
+
+                DEFINITION EMSX_ORDER_TYPE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE OrderTypeEnum(ENUMERATION) {
+
+                        OrderTypeEnum(STRING) {
+
+                            CD = CD
+
+                            FUN = FUN
+
+                            LMT = LMT
+
+                            LOC = LOC
+
+                            MKT = MKT
+
+                            MOC = MOC
+
+                            OC = OC
+
+                            SL = SL
+
+                            ST = ST
+
+                            PEG = PEG
+
+                        } // End ConstantsList
+
+                    } // End Type: OrderTypeEnum
+
+                } // End Definition: EMSX_ORDER_TYPE
+
+                DEFINITION EMSX_TIF {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE TifEnum(ENUMERATION) {
+
+                        TifEnum(STRING) {
+
+                            DAY = DAY
+
+                            FOK = FOK
+
+                            GTC = GTC
+
+                            GTD = GTD
+
+                            GTX = GTX
+
+                            IOC = IOC
+
+                            OPG = OPG
+
+                            CLO = CLO
+
+                        } // End ConstantsList
+
+                    } // End Type: TifEnum
+
+                } // End Definition: EMSX_TIF
+
+                DEFINITION EMSX_HAND_INSTRUCTION {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_HAND_INSTRUCTION
+
+                DEFINITION EMSX_LIMIT_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_LIMIT_PRICE
+
+                DEFINITION EMSX_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_BROKER
+
+                DEFINITION EMSX_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ACCOUNT
+
+                DEFINITION EMSX_NOTES {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_NOTES
+
+                DEFINITION EMSX_GTD_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GTD_DATE
+
+                DEFINITION EMSX_EXEC_INSTRUCTION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXEC_INSTRUCTION
+
+                DEFINITION EMSX_SETTLE_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_SETTLE_DATE
+
+                DEFINITION EMSX_STOP_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_STOP_PRICE
+
+                DEFINITION EMSX_P_A {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_P_A
+
+                DEFINITION EMSX_EXCHANGE_DESTINATION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXCHANGE_DESTINATION
+
+                DEFINITION EMSX_ODD_LOT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_ODD_LOT
+
+                DEFINITION EMSX_CFD_FLAG {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_CFD_FLAG
+
+                DEFINITION EMSX_RELEASE_TIME {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_RELEASE_TIME
+
+                DEFINITION EMSX_GET_WARNINGS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GET_WARNINGS
+
+                DEFINITION EMSX_ORDER_ORIGIN {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ORDER_ORIGIN
+
+                DEFINITION EMSX_CLEARING_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_ACCOUNT
+
+                DEFINITION EMSX_CLEARING_FIRM {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_FIRM
+
+                DEFINITION REQUEST_EXT {
+
+                    Min Value = 0
+
+                    Max Value = unbounded
+
+                    TYPE String
+
+                } // End Definition: REQUEST_EXT
+
+                DEFINITION EMSX_LOCATE_REQ {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_REQ
+
+                DEFINITION EMSX_LOCATE_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_BROKER
+
+                DEFINITION EMSX_LOCATE_ID {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_ID
+
+                DEFINITION EMSX_STRATEGY_PARAMS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Strategy(SEQUENCE) {
+
+                        DEFINITION EMSX_STRATEGY_NAME {
+
+                            Min Value = 1
+
+                            Max Value = 1
+
+                            TYPE String
+
+                        } // End Definition: EMSX_STRATEGY_NAME
+
+                        DEFINITION EMSX_STRATEGY_FIELDS {
+
+                            Min Value = 1
+
+                            Max Value = 20
+
+                            TYPE FieldData(SEQUENCE) {
+
+                                DEFINITION EMSX_FIELD_DATA {
+
+                                    Min Value = 1
+
+                                    Max Value = 1
+
+                                    TYPE String
+
+                                } // End Definition: EMSX_FIELD_DATA
+
+                            } // End Type: FieldData
+
+                 
+Warning: com.bloomberglp.blpapi.Session@3f0e6676 is not serializable 
+Warning: Service //blp/emapisvc_beta
+
+Operations = {
+
+    OPERATION CreateOrder = {
+
+        Request = {
+
+            TYPE CreateOrderRequest(SEQUENCE) {
+
+                DEFINITION EMSX_SIDE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE SideEnum(ENUMERATION) {
+
+                        SideEnum(STRING) {
+
+                            BUY = BUY
+
+                            BUYM = BUYM
+
+                            COVR = COVR
+
+                            SELL = SELL
+
+                            SHRT = SHRT
+
+                            SHRX = SHRX
+
+                            SLPL = SLPL
+
+                            B/O = B/O
+
+                            B/C = B/C
+
+                            S/C = S/C
+
+                            S/O = S/O
+
+                        } // End ConstantsList
+
+                    } // End Type: SideEnum
+
+                } // End Definition: EMSX_SIDE
+
+                DEFINITION EMSX_AMOUNT {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_AMOUNT
+
+                DEFINITION EMSX_TICKER {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_TICKER
+
+                DEFINITION EMSX_ORDER_TYPE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE OrderTypeEnum(ENUMERATION) {
+
+                        OrderTypeEnum(STRING) {
+
+                            CD = CD
+
+                            FUN = FUN
+
+                            LMT = LMT
+
+                            LOC = LOC
+
+                            MKT = MKT
+
+                            MOC = MOC
+
+                            OC = OC
+
+                            SL = SL
+
+                            ST = ST
+
+                            PEG = PEG
+
+                        } // End ConstantsList
+
+                    } // End Type: OrderTypeEnum
+
+                } // End Definition: EMSX_ORDER_TYPE
+
+                DEFINITION EMSX_TIF {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE TifEnum(ENUMERATION) {
+
+                        TifEnum(STRING) {
+
+                            DAY = DAY
+
+                            FOK = FOK
+
+                            GTC = GTC
+
+                            GTD = GTD
+
+                            GTX = GTX
+
+                            IOC = IOC
+
+                            OPG = OPG
+
+                            CLO = CLO
+
+                        } // End ConstantsList
+
+                    } // End Type: TifEnum
+
+                } // End Definition: EMSX_TIF
+
+                DEFINITION EMSX_HAND_INSTRUCTION {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_HAND_INSTRUCTION
+
+                DEFINITION EMSX_LIMIT_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_LIMIT_PRICE
+
+                DEFINITION EMSX_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_BROKER
+
+                DEFINITION EMSX_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ACCOUNT
+
+                DEFINITION EMSX_NOTES {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_NOTES
+
+                DEFINITION EMSX_GTD_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GTD_DATE
+
+                DEFINITION EMSX_EXEC_INSTRUCTION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXEC_INSTRUCTION
+
+                DEFINITION EMSX_SETTLE_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_SETTLE_DATE
+
+                DEFINITION EMSX_STOP_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_STOP_PRICE
+
+                DEFINITION EMSX_P_A {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_P_A
+
+                DEFINITION EMSX_EXCHANGE_DESTINATION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXCHANGE_DESTINATION
+
+                DEFINITION EMSX_ODD_LOT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_ODD_LOT
+
+                DEFINITION EMSX_CFD_FLAG {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_CFD_FLAG
+
+                DEFINITION EMSX_RELEASE_TIME {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_RELEASE_TIME
+
+                DEFINITION EMSX_GET_WARNINGS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GET_WARNINGS
+
+                DEFINITION EMSX_ORDER_ORIGIN {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ORDER_ORIGIN
+
+                DEFINITION EMSX_CLEARING_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_ACCOUNT
+
+                DEFINITION EMSX_CLEARING_FIRM {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_FIRM
+
+                DEFINITION REQUEST_EXT {
+
+                    Min Value = 0
+
+                    Max Value = unbounded
+
+                    TYPE String
+
+                } // End Definition: REQUEST_EXT
+
+                DEFINITION EMSX_LOCATE_REQ {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_REQ
+
+                DEFINITION EMSX_LOCATE_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_BROKER
+
+                DEFINITION EMSX_LOCATE_ID {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_ID
+
+                DEFINITION EMSX_STRATEGY_PARAMS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Strategy(SEQUENCE) {
+
+                        DEFINITION EMSX_STRATEGY_NAME {
+
+                            Min Value = 1
+
+                            Max Value = 1
+
+                            TYPE String
+
+                        } // End Definition: EMSX_STRATEGY_NAME
+
+                        DEFINITION EMSX_STRATEGY_FIELDS {
+
+                            Min Value = 1
+
+                            Max Value = 20
+
+                            TYPE FieldData(SEQUENCE) {
+
+                                DEFINITION EMSX_FIELD_DATA {
+
+                                    Min Value = 1
+
+                                    Max Value = 1
+
+                                    TYPE String
+
+                                } // End Definition: EMSX_FIELD_DATA
+
+                            } // End Type: FieldData
+
+                 
+Warning: com.bloomberglp.blpapi.Session@3f0e6676 is not serializable 
+Warning: Service //blp/emapisvc_beta
+
+Operations = {
+
+    OPERATION CreateOrder = {
+
+        Request = {
+
+            TYPE CreateOrderRequest(SEQUENCE) {
+
+                DEFINITION EMSX_SIDE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE SideEnum(ENUMERATION) {
+
+                        SideEnum(STRING) {
+
+                            BUY = BUY
+
+                            BUYM = BUYM
+
+                            COVR = COVR
+
+                            SELL = SELL
+
+                            SHRT = SHRT
+
+                            SHRX = SHRX
+
+                            SLPL = SLPL
+
+                            B/O = B/O
+
+                            B/C = B/C
+
+                            S/C = S/C
+
+                            S/O = S/O
+
+                        } // End ConstantsList
+
+                    } // End Type: SideEnum
+
+                } // End Definition: EMSX_SIDE
+
+                DEFINITION EMSX_AMOUNT {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_AMOUNT
+
+                DEFINITION EMSX_TICKER {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_TICKER
+
+                DEFINITION EMSX_ORDER_TYPE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE OrderTypeEnum(ENUMERATION) {
+
+                        OrderTypeEnum(STRING) {
+
+                            CD = CD
+
+                            FUN = FUN
+
+                            LMT = LMT
+
+                            LOC = LOC
+
+                            MKT = MKT
+
+                            MOC = MOC
+
+                            OC = OC
+
+                            SL = SL
+
+                            ST = ST
+
+                            PEG = PEG
+
+                        } // End ConstantsList
+
+                    } // End Type: OrderTypeEnum
+
+                } // End Definition: EMSX_ORDER_TYPE
+
+                DEFINITION EMSX_TIF {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE TifEnum(ENUMERATION) {
+
+                        TifEnum(STRING) {
+
+                            DAY = DAY
+
+                            FOK = FOK
+
+                            GTC = GTC
+
+                            GTD = GTD
+
+                            GTX = GTX
+
+                            IOC = IOC
+
+                            OPG = OPG
+
+                            CLO = CLO
+
+                        } // End ConstantsList
+
+                    } // End Type: TifEnum
+
+                } // End Definition: EMSX_TIF
+
+                DEFINITION EMSX_HAND_INSTRUCTION {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_HAND_INSTRUCTION
+
+                DEFINITION EMSX_LIMIT_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_LIMIT_PRICE
+
+                DEFINITION EMSX_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_BROKER
+
+                DEFINITION EMSX_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ACCOUNT
+
+                DEFINITION EMSX_NOTES {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_NOTES
+
+                DEFINITION EMSX_GTD_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GTD_DATE
+
+                DEFINITION EMSX_EXEC_INSTRUCTION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXEC_INSTRUCTION
+
+                DEFINITION EMSX_SETTLE_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_SETTLE_DATE
+
+                DEFINITION EMSX_STOP_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_STOP_PRICE
+
+                DEFINITION EMSX_P_A {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_P_A
+
+                DEFINITION EMSX_EXCHANGE_DESTINATION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXCHANGE_DESTINATION
+
+                DEFINITION EMSX_ODD_LOT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_ODD_LOT
+
+                DEFINITION EMSX_CFD_FLAG {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_CFD_FLAG
+
+                DEFINITION EMSX_RELEASE_TIME {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_RELEASE_TIME
+
+                DEFINITION EMSX_GET_WARNINGS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GET_WARNINGS
+
+                DEFINITION EMSX_ORDER_ORIGIN {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ORDER_ORIGIN
+
+                DEFINITION EMSX_CLEARING_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_ACCOUNT
+
+                DEFINITION EMSX_CLEARING_FIRM {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_FIRM
+
+                DEFINITION REQUEST_EXT {
+
+                    Min Value = 0
+
+                    Max Value = unbounded
+
+                    TYPE String
+
+                } // End Definition: REQUEST_EXT
+
+                DEFINITION EMSX_LOCATE_REQ {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_REQ
+
+                DEFINITION EMSX_LOCATE_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_BROKER
+
+                DEFINITION EMSX_LOCATE_ID {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_ID
+
+                DEFINITION EMSX_STRATEGY_PARAMS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Strategy(SEQUENCE) {
+
+                        DEFINITION EMSX_STRATEGY_NAME {
+
+                            Min Value = 1
+
+                            Max Value = 1
+
+                            TYPE String
+
+                        } // End Definition: EMSX_STRATEGY_NAME
+
+                        DEFINITION EMSX_STRATEGY_FIELDS {
+
+                            Min Value = 1
+
+                            Max Value = 20
+
+                            TYPE FieldData(SEQUENCE) {
+
+                                DEFINITION EMSX_FIELD_DATA {
+
+                                    Min Value = 1
+
+                                    Max Value = 1
+
+                                    TYPE String
+
+                                } // End Definition: EMSX_FIELD_DATA
+
+                            } // End Type: FieldData
+
+                 
+Warning: com.bloomberglp.blpapi.Session@3f0e6676 is not serializable 
+Warning: Service //blp/emapisvc_beta
+
+Operations = {
+
+    OPERATION CreateOrder = {
+
+        Request = {
+
+            TYPE CreateOrderRequest(SEQUENCE) {
+
+                DEFINITION EMSX_SIDE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE SideEnum(ENUMERATION) {
+
+                        SideEnum(STRING) {
+
+                            BUY = BUY
+
+                            BUYM = BUYM
+
+                            COVR = COVR
+
+                            SELL = SELL
+
+                            SHRT = SHRT
+
+                            SHRX = SHRX
+
+                            SLPL = SLPL
+
+                            B/O = B/O
+
+                            B/C = B/C
+
+                            S/C = S/C
+
+                            S/O = S/O
+
+                        } // End ConstantsList
+
+                    } // End Type: SideEnum
+
+                } // End Definition: EMSX_SIDE
+
+                DEFINITION EMSX_AMOUNT {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_AMOUNT
+
+                DEFINITION EMSX_TICKER {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_TICKER
+
+                DEFINITION EMSX_ORDER_TYPE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE OrderTypeEnum(ENUMERATION) {
+
+                        OrderTypeEnum(STRING) {
+
+                            CD = CD
+
+                            FUN = FUN
+
+                            LMT = LMT
+
+                            LOC = LOC
+
+                            MKT = MKT
+
+                            MOC = MOC
+
+                            OC = OC
+
+                            SL = SL
+
+                            ST = ST
+
+                            PEG = PEG
+
+                        } // End ConstantsList
+
+                    } // End Type: OrderTypeEnum
+
+                } // End Definition: EMSX_ORDER_TYPE
+
+                DEFINITION EMSX_TIF {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE TifEnum(ENUMERATION) {
+
+                        TifEnum(STRING) {
+
+                            DAY = DAY
+
+                            FOK = FOK
+
+                            GTC = GTC
+
+                            GTD = GTD
+
+                            GTX = GTX
+
+                            IOC = IOC
+
+                            OPG = OPG
+
+                            CLO = CLO
+
+                        } // End ConstantsList
+
+                    } // End Type: TifEnum
+
+                } // End Definition: EMSX_TIF
+
+                DEFINITION EMSX_HAND_INSTRUCTION {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_HAND_INSTRUCTION
+
+                DEFINITION EMSX_LIMIT_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_LIMIT_PRICE
+
+                DEFINITION EMSX_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_BROKER
+
+                DEFINITION EMSX_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ACCOUNT
+
+                DEFINITION EMSX_NOTES {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_NOTES
+
+                DEFINITION EMSX_GTD_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GTD_DATE
+
+                DEFINITION EMSX_EXEC_INSTRUCTION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXEC_INSTRUCTION
+
+                DEFINITION EMSX_SETTLE_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_SETTLE_DATE
+
+                DEFINITION EMSX_STOP_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_STOP_PRICE
+
+                DEFINITION EMSX_P_A {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_P_A
+
+                DEFINITION EMSX_EXCHANGE_DESTINATION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXCHANGE_DESTINATION
+
+                DEFINITION EMSX_ODD_LOT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_ODD_LOT
+
+                DEFINITION EMSX_CFD_FLAG {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_CFD_FLAG
+
+                DEFINITION EMSX_RELEASE_TIME {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_RELEASE_TIME
+
+                DEFINITION EMSX_GET_WARNINGS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GET_WARNINGS
+
+                DEFINITION EMSX_ORDER_ORIGIN {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ORDER_ORIGIN
+
+                DEFINITION EMSX_CLEARING_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_ACCOUNT
+
+                DEFINITION EMSX_CLEARING_FIRM {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_FIRM
+
+                DEFINITION REQUEST_EXT {
+
+                    Min Value = 0
+
+                    Max Value = unbounded
+
+                    TYPE String
+
+                } // End Definition: REQUEST_EXT
+
+                DEFINITION EMSX_LOCATE_REQ {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_REQ
+
+                DEFINITION EMSX_LOCATE_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_BROKER
+
+                DEFINITION EMSX_LOCATE_ID {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_ID
+
+                DEFINITION EMSX_STRATEGY_PARAMS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Strategy(SEQUENCE) {
+
+                        DEFINITION EMSX_STRATEGY_NAME {
+
+                            Min Value = 1
+
+                            Max Value = 1
+
+                            TYPE String
+
+                        } // End Definition: EMSX_STRATEGY_NAME
+
+                        DEFINITION EMSX_STRATEGY_FIELDS {
+
+                            Min Value = 1
+
+                            Max Value = 20
+
+                            TYPE FieldData(SEQUENCE) {
+
+                                DEFINITION EMSX_FIELD_DATA {
+
+                                    Min Value = 1
+
+                                    Max Value = 1
+
+                                    TYPE String
+
+                                } // End Definition: EMSX_FIELD_DATA
+
+                            } // End Type: FieldData
+
+                 
+Warning: com.bloomberglp.blpapi.Session@3f0e6676 is not serializable 
+Warning: Service //blp/emapisvc_beta
+
+Operations = {
+
+    OPERATION CreateOrder = {
+
+        Request = {
+
+            TYPE CreateOrderRequest(SEQUENCE) {
+
+                DEFINITION EMSX_SIDE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE SideEnum(ENUMERATION) {
+
+                        SideEnum(STRING) {
+
+                            BUY = BUY
+
+                            BUYM = BUYM
+
+                            COVR = COVR
+
+                            SELL = SELL
+
+                            SHRT = SHRT
+
+                            SHRX = SHRX
+
+                            SLPL = SLPL
+
+                            B/O = B/O
+
+                            B/C = B/C
+
+                            S/C = S/C
+
+                            S/O = S/O
+
+                        } // End ConstantsList
+
+                    } // End Type: SideEnum
+
+                } // End Definition: EMSX_SIDE
+
+                DEFINITION EMSX_AMOUNT {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_AMOUNT
+
+                DEFINITION EMSX_TICKER {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_TICKER
+
+                DEFINITION EMSX_ORDER_TYPE {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE OrderTypeEnum(ENUMERATION) {
+
+                        OrderTypeEnum(STRING) {
+
+                            CD = CD
+
+                            FUN = FUN
+
+                            LMT = LMT
+
+                            LOC = LOC
+
+                            MKT = MKT
+
+                            MOC = MOC
+
+                            OC = OC
+
+                            SL = SL
+
+                            ST = ST
+
+                            PEG = PEG
+
+                        } // End ConstantsList
+
+                    } // End Type: OrderTypeEnum
+
+                } // End Definition: EMSX_ORDER_TYPE
+
+                DEFINITION EMSX_TIF {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE TifEnum(ENUMERATION) {
+
+                        TifEnum(STRING) {
+
+                            DAY = DAY
+
+                            FOK = FOK
+
+                            GTC = GTC
+
+                            GTD = GTD
+
+                            GTX = GTX
+
+                            IOC = IOC
+
+                            OPG = OPG
+
+                            CLO = CLO
+
+                        } // End ConstantsList
+
+                    } // End Type: TifEnum
+
+                } // End Definition: EMSX_TIF
+
+                DEFINITION EMSX_HAND_INSTRUCTION {
+
+                    Min Value = 1
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_HAND_INSTRUCTION
+
+                DEFINITION EMSX_LIMIT_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_LIMIT_PRICE
+
+                DEFINITION EMSX_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_BROKER
+
+                DEFINITION EMSX_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ACCOUNT
+
+                DEFINITION EMSX_NOTES {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_NOTES
+
+                DEFINITION EMSX_GTD_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GTD_DATE
+
+                DEFINITION EMSX_EXEC_INSTRUCTION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXEC_INSTRUCTION
+
+                DEFINITION EMSX_SETTLE_DATE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_SETTLE_DATE
+
+                DEFINITION EMSX_STOP_PRICE {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Float64
+
+                } // End Definition: EMSX_STOP_PRICE
+
+                DEFINITION EMSX_P_A {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_P_A
+
+                DEFINITION EMSX_EXCHANGE_DESTINATION {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_EXCHANGE_DESTINATION
+
+                DEFINITION EMSX_ODD_LOT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_ODD_LOT
+
+                DEFINITION EMSX_CFD_FLAG {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_CFD_FLAG
+
+                DEFINITION EMSX_RELEASE_TIME {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_RELEASE_TIME
+
+                DEFINITION EMSX_GET_WARNINGS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Int32
+
+                } // End Definition: EMSX_GET_WARNINGS
+
+                DEFINITION EMSX_ORDER_ORIGIN {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_ORDER_ORIGIN
+
+                DEFINITION EMSX_CLEARING_ACCOUNT {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_ACCOUNT
+
+                DEFINITION EMSX_CLEARING_FIRM {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_CLEARING_FIRM
+
+                DEFINITION REQUEST_EXT {
+
+                    Min Value = 0
+
+                    Max Value = unbounded
+
+                    TYPE String
+
+                } // End Definition: REQUEST_EXT
+
+                DEFINITION EMSX_LOCATE_REQ {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_REQ
+
+                DEFINITION EMSX_LOCATE_BROKER {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_BROKER
+
+                DEFINITION EMSX_LOCATE_ID {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE String
+
+                } // End Definition: EMSX_LOCATE_ID
+
+                DEFINITION EMSX_STRATEGY_PARAMS {
+
+                    Min Value = 0
+
+                    Max Value = 1
+
+                    TYPE Strategy(SEQUENCE) {
+
+                        DEFINITION EMSX_STRATEGY_NAME {
+
+                            Min Value = 1
+
+                            Max Value = 1
+
+                            TYPE String
+
+                        } // End Definition: EMSX_STRATEGY_NAME
+
+                        DEFINITION EMSX_STRATEGY_FIELDS {
+
+                            Min Value = 1
+
+                            Max Value = 20
+
+                            TYPE FieldData(SEQUENCE) {
+
+                                DEFINITION EMSX_FIELD_DATA {
+
+                                    Min Value = 1
+
+                                    Max Value = 1
+
+                                    TYPE String
+
+                                } // End Definition: EMSX_FIELD_DATA
+
+                            } // End Type: FieldData
+
+                 
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Algorithmic Trading with MATLAB and Bloomberg EMSX: Online System
+% This demo uses our simple intraday moving average strategy to develop a
+% trading system. Based on historical and current data, the decision engine
+% decides whether or not to trade, and sends orders to the desktop trade
+% executation system in real time. The desktop trade execution system is
+% Bloomberg EMSX. We will use Bloomberg API's test server and one of their
+% dummy broker's, BB.
+%
+%% Pre-Trading Tasks
+%%
+% *Add BLPAPI3.jar to java class path*
+% javaaddpath('C:\blp\API\blpapi3.jar')
+
+%%
+% *Connect to Bloomberg V3 Communications Server*
+% For the data
+b = blp;
+%%
+% *Connect to the EMSX API Production Server*
+% c = emsx('//blp/emapisvc');
+%
+% *Connect to EMSX API Test Server*
+% This creates a Bloomberg EMSX connection object.
+c = emsx('//blp/emapisvc_beta');
+
+%% Fetch equity data from Bloomberg BLP datafeed
+
+equity = 'SBK'; % Ticker symbol for equity around which we will develop the strategy. This can be changed.
+
+startTime = today;
+endTime = now;
+annualScaling = sqrt(250*7*60);
+
+Ticker = strcat(equity,' Equity');
+
+% Get raw tick data:
+todaysData = timeseries(b,Ticker,{startTime,endTime}); % gives back trade, time stamp, price, quantity
+
+todaysTimes = cell2mat(todaysData(:,2));
+todaysPrices = cell2mat(todaysData(:,3));
+
+%% Execute strategy
+
+% Parameters:
+lagParam = 43;
+leadParam = 34;
+
+%%
+% First Trade
+
+currentPrices = todaysPrices(end-(lagParam - 1):end);
+currentTimes = todaysTimes(end-(lagParam - 1):end);
+
+signal = constructTradingSignal(currentPrices,leadParam,lagParam);
+
+if signal ~= 0
+    executeTrades(c, equity, signal)
+end
+
+%%
+% Go for 5 minutes
+presentTime = now;
+initialTime = presentTime;
+
+while presentTime <= initialTime + 5/60/24;
+    newData = timeseries(b,Ticker,{endTime,presentTime}); % get raw tick data between now and endTime
+    
+    newPrices = [currentPrices; cell2mat(todaysData(:,3))];% append to previous data
+    newTimes = [currentTimes; cell2mat(todaysData(:,2))];
+    
+    signal = constructTradingSignal(currentPrices,leadParam,lagParam);
+    
+    if signal ~= 0
+        executeTrades(c, equity, signal)
+    end
+    
+    % update times
+    endtTime = presentTime;
+    presentTime = now;
+end
+
+%% Save Results
+save OnlineSystemCurrentTicker20130902
+
+
+
+
+##### SOURCE END #####
+--></body></html>

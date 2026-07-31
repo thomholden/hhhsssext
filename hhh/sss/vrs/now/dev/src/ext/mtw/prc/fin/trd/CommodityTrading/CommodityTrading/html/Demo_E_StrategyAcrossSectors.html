@@ -1,0 +1,230 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Commodities Trading with MATLAB - Catch-up strategy across sectors</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-08-01"><meta name="DC.source" content="Demo_E_StrategyAcrossSectors.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Commodities Trading with MATLAB - Catch-up strategy across sectors</h1><!--introduction--><p>Once a trading strategy has been identified and refined by the analyst, the next steps in the workflow involve backtesting the strategy and generating multiple analytics to capture different aspects of the strategy.</p><p>In this script, we backtest a refined version of our momentum catch-up strategy. This version picks one commodity from each of the five groups we have previously identified - energy, metal, livestock, grains and softs - on an equally-weighted basis and trades it on an equally-weighted monthly basis. After computing the performance of the strategy, the script generates overall statistics for the strategy while drilling down into how each of the groups performed.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Setup</a></li><li><a href="#2">2. Set up constant parameters</a></li><li><a href="#3">3. Loop through commodity sectors, generate stats</a></li><li><a href="#4">4. Plot B&amp;H performance with strategy performance</a></li><li><a href="#5">5. Generate relative performance plots</a></li></ul></div><h2>1. Setup<a name="1"></a></h2><p>Load the cleaned, aligned data that was retrieved using the Demo_A script.</p><pre class="codeinput">clc;clear;
+load(<span class="string">'StageA'</span>);
+cmd = CommodityMetadata;
+</pre><h2>2. Set up constant parameters<a name="2"></a></h2><p>In this section, we set up the parameters for our strategy. We define a lookback window in months, the indicator that we are going to use, the number of commodities that we will pick from each group, the number of months to skip before trading the "catch-up" commodity, and finally we take into account transaction costs.</p><pre class="codeinput">params = struct;
+params.LookbackWindow=6;
+params.Indicator=@IndicatorSMADiff;
+params.HowMany=1;
+params.SkipPeriod=2;
+params.TxnCost=20/10000;
+frequency=<span class="string">'m'</span>;
+</pre><h2>3. Loop through commodity sectors, generate stats<a name="3"></a></h2><p>This section computes the strategy performance on an equally-weighted basis, by iterating through each defined commodity group and calling a custom function that picks a "catch-up" candidate every month and trades it. We use the function outputs to construct statistics (CAGR, Sharpe ratio, Sortino ratio, maximum drawdown) for every group on a strategy basis and buy and hold basis.</p><pre class="codeinput">cagrSet=[];sortinoSet=[];sharpeSet=[];drawdownSet=[];
+rtnSet=[];bahSet=[];
+<span class="keyword">for</span> i=1:(length(CommodityTypes)-1)
+    container = TrainingSetMonthly;
+    container = FilterByType(container,CommodityTypes{i});
+    params.DataContainer = container;
+    params.ContractMonth = 1;
+    [sectorRtn, bahRtn] = ComputeCrossSectionalMomentum(params);
+
+    rtnSet = [rtnSet sectorRtn];
+    bahSet = [bahSet bahRtn];
+    GetAllStatistics;
+<span class="keyword">end</span>
+</pre><h2>4. Plot B&amp;H performance with strategy performance<a name="4"></a></h2><p>This section plots the performance of the multi-sector cross-sectional momentum strategy, and compares it with a buy and hold strategy.</p><pre class="codeinput">[bahStats, bahIndex, labels] = ComputeStatistics(mean(bahSet,2),<span class="string">'m'</span>);
+[stratStats, stratIndex, ~] = ComputeStatistics(mean(rtnSet,2),<span class="string">'m'</span>);
+
+comp = [flipud(struct2array(bahStats)') <span class="keyword">...</span>
+        flipud(struct2array(stratStats)')];
+comp = [comp comp(:,2)-comp(:,1)];
+
+figure;
+h=subplot(2,1,1);
+plot(bahIndex,<span class="string">'DisplayName'</span>,<span class="string">'B&amp;H'</span>);hold <span class="string">all</span>;
+plot(stratIndex,<span class="string">'DisplayName'</span>,<span class="string">'Strategy'</span>);
+legend(<span class="string">'toggle'</span>);
+legend(<span class="string">'Location'</span>,<span class="string">'NorthWest'</span>);
+title(sprintf(<span class="string">'Backtest CAGRs - Strategy: %3.2f%%, B&amp;H: %3.2f%%'</span>, <span class="keyword">...</span>
+      cagr(stratIndex,12)*100,cagr(bahIndex,12)*100));
+hold <span class="string">off</span>;
+h=subplot(2,1,2,<span class="string">'XTickLabel'</span>,labels,<span class="string">'XTick'</span>,1:length(labels));
+box(h,<span class="string">'on'</span>);
+hold(h,<span class="string">'all'</span>);
+bar(comp,<span class="string">'Parent'</span>,h);
+</pre><img vspace="5" hspace="5" src="Demo_E_StrategyAcrossSectors_01.png" alt=""> <h2>5. Generate relative performance plots<a name="5"></a></h2><p>This section generates plots to compare the relative performance of each sector on multiple analytics - CAGR, Sortino ratio, Sharpe ratio, and maximum drawdown.</p><pre class="codeinput">figure;
+cmdTypes=CmdTypesShort;
+
+h=subplot(2,2,1); <span class="comment">% CAGR</span>
+PlotPerf(h,cmdTypes,cagrSet*100,<span class="string">'CAGR%'</span>,<span class="string">'Sector CAGRs'</span>);
+h=subplot(2,2,2); <span class="comment">% Sortino</span>
+PlotPerf(h,cmdTypes,sortinoSet,<span class="string">'Sortino Ratio'</span>,<span class="keyword">...</span>
+    <span class="string">'Sector Sortino Ratios'</span>);
+h=subplot(2,2,3); <span class="comment">% Drawdowns</span>
+PlotPerf(h,cmdTypes,drawdownSet*100,<span class="string">'DD %'</span>,<span class="keyword">...</span>
+    <span class="string">'Max Drawdowns by Sector'</span>);
+h=subplot(2,2,4); <span class="comment">% Sharpe</span>
+PlotPerf(h,cmdTypes,sharpeSet,<span class="string">'Sharpe Ratio'</span>,<span class="keyword">...</span>
+    <span class="string">'Sector Sharpe Ratios'</span>);
+hold <span class="string">off</span>;
+</pre><img vspace="5" hspace="5" src="Demo_E_StrategyAcrossSectors_02.png" alt=""> <p class="footer">Copyright 2013 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Commodities Trading with MATLAB - Catch-up strategy across sectors
+% Once a trading strategy has been identified and refined by the analyst,
+% the next steps in the workflow involve backtesting the strategy and
+% generating multiple analytics to capture different aspects of the
+% strategy. 
+%
+% In this script, we backtest a refined version of our momentum
+% catch-up strategy. This version picks one commodity from each of the five
+% groups we have previously identified - energy, metal, livestock, grains
+% and softs - on an equally-weighted basis and trades it on an
+% equally-weighted monthly basis. After computing the performance of the
+% strategy, the script generates overall statistics for the strategy while
+% drilling down into how each of the groups performed. 
+
+% Copyright 2013 The MathWorks, Inc.
+
+%% 1. Setup
+% Load the cleaned, aligned data that was retrieved using the Demo_A script.
+clc;clear;
+load('StageA');
+cmd = CommodityMetadata;
+
+%% 2. Set up constant parameters 
+% In this section, we set up the parameters for our strategy. We define a
+% lookback window in months, the indicator that we are going to use, the
+% number of commodities that we will pick from each group, the number of
+% months to skip before trading the "catch-up" commodity, and finally we
+% take into account transaction costs.
+params = struct;
+params.LookbackWindow=6;
+params.Indicator=@IndicatorSMADiff;
+params.HowMany=1;
+params.SkipPeriod=2;
+params.TxnCost=20/10000;
+frequency='m';
+
+%% 3. Loop through commodity sectors, generate stats
+% This section computes the strategy performance on an equally-weighted
+% basis, by iterating through each defined commodity group and calling a
+% custom function that picks a "catch-up" candidate every month and trades
+% it. We use the function outputs to construct statistics (CAGR, Sharpe
+% ratio, Sortino ratio, maximum drawdown) for every group on a strategy
+% basis and buy and hold basis.
+cagrSet=[];sortinoSet=[];sharpeSet=[];drawdownSet=[];
+rtnSet=[];bahSet=[];
+for i=1:(length(CommodityTypes)-1)
+    container = TrainingSetMonthly;
+    container = FilterByType(container,CommodityTypes{i});
+    params.DataContainer = container;
+    params.ContractMonth = 1;
+    [sectorRtn, bahRtn] = ComputeCrossSectionalMomentum(params);
+
+    rtnSet = [rtnSet sectorRtn];
+    bahSet = [bahSet bahRtn];
+    GetAllStatistics;
+end
+
+%% 4. Plot B&H performance with strategy performance
+% This section plots the performance of the multi-sector cross-sectional
+% momentum strategy, and compares it with a buy and hold strategy.
+[bahStats, bahIndex, labels] = ComputeStatistics(mean(bahSet,2),'m');
+[stratStats, stratIndex, ~] = ComputeStatistics(mean(rtnSet,2),'m');
+
+comp = [flipud(struct2array(bahStats)') ...
+        flipud(struct2array(stratStats)')];
+comp = [comp comp(:,2)-comp(:,1)];   
+
+figure;
+h=subplot(2,1,1);
+plot(bahIndex,'DisplayName','B&H');hold all;
+plot(stratIndex,'DisplayName','Strategy');
+legend('toggle');
+legend('Location','NorthWest');
+title(sprintf('Backtest CAGRs - Strategy: %3.2f%%, B&H: %3.2f%%', ...
+      cagr(stratIndex,12)*100,cagr(bahIndex,12)*100));
+hold off;
+h=subplot(2,1,2,'XTickLabel',labels,'XTick',1:length(labels));
+box(h,'on');
+hold(h,'all');
+bar(comp,'Parent',h);
+
+%% 5. Generate relative performance plots
+% This section generates plots to compare the relative performance of each
+% sector on multiple analytics - CAGR, Sortino ratio, Sharpe ratio, and
+% maximum drawdown.
+figure;
+cmdTypes=CmdTypesShort;
+
+h=subplot(2,2,1); % CAGR
+PlotPerf(h,cmdTypes,cagrSet*100,'CAGR%','Sector CAGRs');
+h=subplot(2,2,2); % Sortino
+PlotPerf(h,cmdTypes,sortinoSet,'Sortino Ratio',...
+    'Sector Sortino Ratios');
+h=subplot(2,2,3); % Drawdowns
+PlotPerf(h,cmdTypes,drawdownSet*100,'DD %',...
+    'Max Drawdowns by Sector');
+h=subplot(2,2,4); % Sharpe
+PlotPerf(h,cmdTypes,sharpeSet,'Sharpe Ratio',...
+    'Sector Sharpe Ratios');
+hold off;
+
+##### SOURCE END #####
+--></body></html>

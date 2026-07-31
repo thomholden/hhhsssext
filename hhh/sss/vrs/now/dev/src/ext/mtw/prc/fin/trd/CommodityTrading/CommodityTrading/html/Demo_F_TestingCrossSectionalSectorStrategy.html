@@ -1,0 +1,146 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Commodities Trading with MATLAB - Parameter selection</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-08-02"><meta name="DC.source" content="Demo_F_TestingCrossSectionalSectorStrategy.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Commodities Trading with MATLAB - Parameter selection</h1><!--introduction--><p>While backtesting a trading strategy, the analyst is often required to determine the optimal values of various strategy parameters and measure the sensitivity of the strategy's profits to changes in these parameters. Manual parameter value selection can be performed if the number of independent parameters is low; in other cases, it might be worthwhile to automate the process of parameter optimization using local or global optimization solvers across multi-dimensional parameter spaces.</p><p>In this script, we demonstrate how to map the parameter space of our trading strategy for our chosen set of parameters - the momentum indicator and the lookback window. The script computes and plots the strategy performance across multiple lookback periods for the three different momentum indicators included in this webinar.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Setup</a></li><li><a href="#2">2. Compute Cross-sectional strategy for various indicators and lookback periods</a></li><li><a href="#3">3. Plot the indices vs B&amp;H per indicator</a></li></ul></div><h2>1. Setup<a name="1"></a></h2><p>Load the cleaned, aligned data that was retrieved using the Demo_A script.</p><pre class="codeinput">clc;clear;
+load(<span class="string">'StageA'</span>);
+cmd = CommodityMetadata;
+cmdtypes=CommodityTypes;
+</pre><h2>2. Compute Cross-sectional strategy for various indicators and lookback periods<a name="2"></a></h2><p>In this section, we call a function that computes normalized index values for our momentum catch-up strategy as well as for a buy and hold strategy. This function accepts a momentum indicator function as one of its parameters, and returns the above index values for each value specified in the lookback window vector. Looking at the indices, we can hopefully figure out which indicator works best, and which lookback window sizes are most suitable for our strategy.</p><pre class="codeinput">lookbackWindow=[6:3:15];
+container=TrainingSetMonthly;
+clc;
+[allIdxSMADiff, idxBAH]=ComputeCrossSectionalStrategy(cmdtypes,<span class="keyword">...</span>
+                    container,@IndicatorSMADiff,lookbackWindow);
+[allIdxSMASlope,~]=ComputeCrossSectionalStrategy(cmdtypes,<span class="keyword">...</span>
+                    container,@IndicatorSMASlope,lookbackWindow);
+[allIdxROC,~]=ComputeCrossSectionalStrategy(cmdtypes,<span class="keyword">...</span>
+                    container,@IndicatorROC,lookbackWindow);
+</pre><h2>3. Plot the indices vs B&amp;H per indicator<a name="3"></a></h2><p>This section plots the results of the test above.</p><pre class="codeinput">h=subplot(2,2,1);
+PlotIndicatorTest(h,[allIdxSMADiff idxBAH],<span class="string">'SMA Diff'</span>);
+
+h=subplot(2,2,2);
+PlotIndicatorTest(h,[allIdxSMASlope idxBAH],<span class="string">'SMA Slope'</span>);
+
+h=subplot(2,2,3);
+PlotIndicatorTest(h,[allIdxROC idxBAH],<span class="string">'ROC'</span>);
+</pre><img vspace="5" hspace="5" src="Demo_F_TestingCrossSectionalSectorStrategy_01.png" alt=""> <p class="footer">Copyright 2013 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Commodities Trading with MATLAB - Parameter selection
+% While backtesting a trading strategy, the analyst is often required to
+% determine the optimal values of various strategy parameters and measure
+% the sensitivity of the strategy's profits to changes in these parameters.
+% Manual parameter value selection can be performed if the number of
+% independent parameters is low; in other cases, it might be worthwhile to
+% automate the process of parameter optimization using local or global
+% optimization solvers across multi-dimensional parameter spaces.
+%
+% In this script, we demonstrate how to map the parameter space of our
+% trading strategy for our chosen set of parameters - the momentum
+% indicator and the lookback window. The script computes and plots the
+% strategy performance across multiple lookback periods for the three
+% different momentum indicators included in this webinar.
+
+% Copyright 2013 The MathWorks, Inc.
+
+%% 1. Setup
+% Load the cleaned, aligned data that was retrieved using the Demo_A script.
+clc;clear;
+load('StageA');
+cmd = CommodityMetadata;
+cmdtypes=CommodityTypes;
+
+%% 2. Compute Cross-sectional strategy for various indicators and lookback periods
+% In this section, we call a function that computes normalized index values
+% for our momentum catch-up strategy as well as for a buy and hold
+% strategy. This function accepts a momentum indicator function as one of
+% its parameters, and returns the above index values for each value
+% specified in the lookback window vector. Looking at the indices, we can
+% hopefully figure out which indicator works best, and which lookback
+% window sizes are most suitable for our strategy.
+lookbackWindow=[6:3:15];
+container=TrainingSetMonthly;
+clc;
+[allIdxSMADiff, idxBAH]=ComputeCrossSectionalStrategy(cmdtypes,...
+                    container,@IndicatorSMADiff,lookbackWindow);
+[allIdxSMASlope,~]=ComputeCrossSectionalStrategy(cmdtypes,...
+                    container,@IndicatorSMASlope,lookbackWindow);
+[allIdxROC,~]=ComputeCrossSectionalStrategy(cmdtypes,...
+                    container,@IndicatorROC,lookbackWindow);
+                
+
+%% 3. Plot the indices vs B&H per indicator
+% This section plots the results of the test above.
+h=subplot(2,2,1);
+PlotIndicatorTest(h,[allIdxSMADiff idxBAH],'SMA Diff');
+
+h=subplot(2,2,2);
+PlotIndicatorTest(h,[allIdxSMASlope idxBAH],'SMA Slope');
+
+h=subplot(2,2,3);
+PlotIndicatorTest(h,[allIdxROC idxBAH],'ROC');
+
+##### SOURCE END #####
+--></body></html>

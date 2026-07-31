@@ -1,0 +1,815 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="generator" content="MediaWiki 1.16alpha-wmf">
+		<meta name="keywords" content="Fixed income attribution,Algorithm,Bond (finance),Carl Bacon,Collateralized debt obligation,Covariance matrix,Discounted cash flow,Eigenvalue,Eigenvector,Extrapolation,Interpolation">
+		<link rel="canonical" href="http://en.wikipedia.org/wiki/Fixed_income_attribution">
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit">
+		<link rel="edit" title="Edit this page" href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://en.wikipedia.org/apple-touch-icon.png">
+		<link rel="shortcut icon" href="http://en.wikipedia.org/favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://en.wikipedia.org/w/opensearch_desc.php" title="Wikipedia (en)">
+		<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/">
+		<link rel="alternate" type="application/rss+xml" title="Wikipedia RSS Feed" href="http://en.wikipedia.org/w/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom Feed" href="http://en.wikipedia.org/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+		<title>Fixed income attribution - Wikipedia, the free encyclopedia</title>
+		<link rel="stylesheet" href="Nelson-Siegel_files/shared.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="Nelson-Siegel_files/commonPrint.css" type="text/css" media="print">
+		<link rel="stylesheet" href="Nelson-Siegel_files/main_002.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="Nelson-Siegel_files/main.css" type="text/css" media="handheld">
+		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE50Fixes.css?233zz2" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE55Fixes.css?233zz2" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 6]><link rel="stylesheet" href="/skins-1.5/monobook/IE60Fixes.css?233zz2" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="/skins-1.5/monobook/IE70Fixes.css?233zz2" type="text/css" media="screen" /><![endif]-->
+		<link rel="stylesheet" href="Nelson-Siegel_files/index_004.css" type="text/css">
+		<link rel="stylesheet" href="Nelson-Siegel_files/index_005.css" type="text/css" media="print">
+		<link rel="stylesheet" href="Nelson-Siegel_files/index_003.css" type="text/css" media="handheld">
+		<link rel="stylesheet" href="Nelson-Siegel_files/index_002.css" type="text/css">
+		<link rel="stylesheet" href="Nelson-Siegel_files/index.css" type="text/css">
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins-1.5/common/IEFixes.js?233zz2"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+
+		<script type="text/javascript">/*<![CDATA[*/
+		var skin = "monobook";
+		var stylepath = "/skins-1.5";
+		var wgArticlePath = "/wiki/$1";
+		var wgScriptPath = "/w";
+		var wgScript = "/w/index.php";
+		var wgVariantArticlePath = false;
+		var wgActionPaths = {};
+		var wgServer = "http://en.wikipedia.org";
+		var wgCanonicalNamespace = "";
+		var wgCanonicalSpecialPageName = false;
+		var wgNamespaceNumber = 0;
+		var wgPageName = "Fixed_income_attribution";
+		var wgTitle = "Fixed income attribution";
+		var wgAction = "view";
+		var wgArticleId = "8748548";
+		var wgIsArticle = true;
+		var wgUserName = null;
+		var wgUserGroups = null;
+		var wgUserLanguage = "en";
+		var wgContentLanguage = "en";
+		var wgBreakFrames = false;
+		var wgCurRevisionId = 306259071;
+		var wgVersion = "1.16alpha-wmf";
+		var wgEnableAPI = true;
+		var wgEnableWriteAPI = true;
+		var wgSeparatorTransformTable = ["", ""];
+		var wgDigitTransformTable = ["", ""];
+		var wgMainPageTitle = "Main Page";
+		var wgMWSuggestTemplate = "http://en.wikipedia.org/w/api.php?action=opensearch\x26search={searchTerms}\x26namespace={namespaces}\x26suggest";
+		var wgDBname = "enwiki";
+		var wgSearchNamespaces = [0];
+		var wgMWSuggestMessages = ["with suggestions", "no suggestions"];
+		var wgRestrictionEdit = [];
+		var wgRestrictionMove = [];
+		/*]]>*/</script>
+
+		<script type="text/javascript" src="Nelson-Siegel_files/wikibits.js"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript">/*<![CDATA[*/
+		redirectToFragment("#Modeling_the_yield_curve");
+		/*]]>*/</script>
+		<script type="text/javascript" src="Nelson-Siegel_files/ajax.js"></script>
+		<script type="text/javascript" src="Nelson-Siegel_files/mwsuggest.js"></script>
+		<script type="text/javascript">/*<![CDATA[*/
+		var wgNotice='';var wgNoticeLocal='';
+		/*]]>*/</script>
+		<script type="text/javascript" src="Nelson-Siegel_files/centralnotice.js"></script><style type="text/css">
+#centralNotice .siteNoticeSmall{display:none;}
+#centralNotice .siteNoticeSmallAnon{display:none;}
+#centralNotice .siteNoticeSmallUser{display:none;}
+#centralNotice.collapsed .siteNoticeBig{display:none;}
+#centralNotice.collapsed .siteNoticeSmall{display:block;}
+#centralNotice.collapsed .siteNoticeSmallUser{display:block;}
+#centralNotice.collapsed .siteNoticeSmallAnon{display:block;}
+#centralNotice.anonnotice .siteNoticeSmallUser{display:none !important;}
+#centralNotice.usernotice .siteNoticeSmallAnon{display:none !important;}
+</style>
+
+
+		<script type="text/javascript" src="Nelson-Siegel_files/index.php"><!-- site js --></script><script type="text/javascript" src="Nelson-Siegel_files/index_002.php"></script>
+	<style type="text/css">#bodyContent { position:relative; } 
+.topicon { position:absolute; top:-2em !important;}
+#coordinates{ position:absolute; top:1px !important; }</style></head><body class="mediawiki ltr ns-0 ns-subject page-Fixed_income_attribution skin-monobook">
+	<div id="globalWrapper"><div style="position: absolute; z-index: 40; left: 155px; top: 1px; clear: both; float: left; font-size: 90%; font-style: italic; white-space: nowrap;" class="noprint" id="anon-banner"><a href="http://en.wikipedia.org/wiki/Wikipedia:Basic_navigation" title="Wikipedia:Basic navigation">Find out more about navigating Wikipedia and finding information.</a></div>
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+		<div id="siteNotice"><script type="text/javascript">if (wgNotice != '') document.writeln(wgNotice);</script><div id="centralNotice" class="expanded anonnotice"><style type="text/css"> 
+/*
+Styles for Notices
+*/
+
+.notice-wrapper-strategy, .notice-collapsed-wrapper-strategy {
+ margin: 2px auto 0;
+ width: 100%;
+ padding: 0;
+ font-family: 'Arial','Helvetica','Tahoma',sans-serif;
+ color: #333;
+ background-color: #ddd;
+ font-size: .9em;
+ font-weight: 200;
+}
+
+.notice-wrapper-strategy
+{
+ border: 1px solid #bbb;
+ background-color: #fcfcfc;
+ text-align: left;
+ font-size: .9em;
+}
+
+.notice-wrapper-strategy a
+{
+ color: #006699;
+}
+
+.trans-box
+{
+ text-align: right;
+ padding: 0;
+ white-space: nowrap;
+}
+
+.toggle-box-strategy
+{
+ text-align: right;
+ padding: 0;
+ white-space: nowrap;
+}
+
+.notice-text-strategy
+{
+ margin: 0 auto;
+ padding: 0 5px 3px 5px;
+ font-size: 1.1em;
+}
+
+.notice-links-strategy
+{
+ text-align:right;
+ padding-right:4px;
+ font-size: .9em;
+}
+
+.line-ht-fix
+{
+ line-height: 1em;
+}
+
+#centralNotice.anonnotice .siteNoticeUser 
+{
+ display:none !important;
+}
+
+#centralNotice.collapsed .siteNoticeUser
+{
+ display:none;
+}
+
+</style>
+
+<table class="siteNoticeUser notice-wrapper-strategy">
+<tbody><tr>
+ <td>
+<div class="notice-text-strategy">
+Where would you like to see Wikimedia in five years? <a href="http://strategy.wikimedia.org/wiki/Call_for_proposals"><b>Submit a proposal!</b></a> (<a href="http://strategy.wikimedia.org/wiki/Main_Page">Learn more.</a>)
+  </div>
+ </td>
+ <td class="line-ht-fix">
+  <div class="notice-links-strategy">
+   <span class="toggle-box-strategy">[<a href="#" onclick="toggleNotice();return
+false">Hide</a>]</span> <span class="trans-box">[<a href="http://strategy.wikimedia.org/wiki/Strategic_Planning:Translation">Help us with translations!</a>]</span>
+  </div>
+ </td>
+</tr>
+</tbody></table></div>
+</div>		<h1 id="firstHeading" class="firstHeading">Fixed income attribution</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+			<div id="contentSub">&nbsp;&nbsp;(Redirected from <a href="http://en.wikipedia.org/w/index.php?title=Nelson-Siegel&amp;redirect=no" title="Nelson-Siegel">Nelson-Siegel</a>)</div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<p><b>Fixed income attribution</b> refers to the process of measuring returns generated by various sources of <a href="http://en.wikipedia.org/wiki/Risk" title="Risk">risk</a> in a fixed income <a href="http://en.wikipedia.org/wiki/Portfolio" title="Portfolio">portfolio</a>, particularly when multiple sources of return are active at the same time.</p>
+<p>For example, the risks affecting the return of a <a href="http://en.wikipedia.org/wiki/Bond_%28finance%29" title="Bond (finance)">bond</a> portfolio include the overall level of the <a href="http://en.wikipedia.org/wiki/Yield_curve" title="Yield curve">yield curve</a>,
+the slope of the yield curve, and the credit spreads of the bonds in
+the portfolio. A portfolio manager may hold firm views on the ways in
+which these factors will change in the near future, so in three
+separate risk decisions he positions the assets in the portfolio to
+take advantage of the expected forthcoming market movements. If all
+views subsequently prove to be correct, then each decision will
+generate a profit. If one view is wrong, it will generate a loss, but
+the effect of the other bets may compensate. The overall performance
+will then be the sum of the performance contributions from each source
+of risk.</p>
+<p>Attribution is therefore an extremely useful tool in verifying a
+fund manager’s claims to possessing particular investment skills. If a
+fund is marketed as being interest-rate neutral while providing
+consistent returns from superior credit research, then an attribution
+report will confirm this claim. Conversely, if the attribution report
+shows that this same manager is making non-zero returns from interest
+rate movements, then his exposure to interest rate risk is clearly not
+zero and his investment process clearly differs from his stated
+position.</p>
+<p>Fixed income attribution therefore provides a much deeper level of
+information than is available from a simple portfolio performance
+report. Typically, such a report only shows returns at an aggregated
+level, and provides no feedback as to where the investor’s true skills
+lie. For these reasons, fixed income attribution is rapidly growing in
+importance in the investment industry.</p>
+<table id="toc" class="toc" summary="Contents">
+<tbody><tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+ <span class="toctoggle">[<a href="javascript:toggleToc()" class="internal" id="togglelink">hide</a>]</span></div>
+<ul>
+<li class="toclevel-1"><a href="#Sector-based_attribution"><span class="tocnumber">1</span> <span class="toctext">Sector-based attribution</span></a></li>
+<li class="toclevel-1"><a href="#Yield_curve_attribution"><span class="tocnumber">2</span> <span class="toctext">Yield curve attribution</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Sources_of_return"><span class="tocnumber">2.1</span> <span class="toctext">Sources of return</span></a></li>
+<li class="toclevel-2"><a href="#First_principles_versus_perturbational_attribution"><span class="tocnumber">2.2</span> <span class="toctext">First principles versus perturbational attribution</span></a></li>
+<li class="toclevel-2"><a href="#Modeling_the_yield_curve"><span class="tocnumber">2.3</span> <span class="toctext">Modeling the yield curve</span></a></li>
+<li class="toclevel-2"><a href="#Factor-based_attribution"><span class="tocnumber">2.4</span> <span class="toctext">Factor-based attribution</span></a></li>
+<li class="toclevel-2"><a href="#Interest_returns"><span class="tocnumber">2.5</span> <span class="toctext">Interest returns</span></a></li>
+<li class="toclevel-2"><a href="#Roll_return"><span class="tocnumber">2.6</span> <span class="toctext">Roll return</span></a></li>
+<li class="toclevel-2"><a href="#Yield_curve_attribution_2"><span class="tocnumber">2.7</span> <span class="toctext">Yield curve attribution</span></a></li>
+<li class="toclevel-2"><a href="#Appropriate_yield_curves"><span class="tocnumber">2.8</span> <span class="toctext">Appropriate yield curves</span></a></li>
+<li class="toclevel-2"><a href="#Credit_attribution"><span class="tocnumber">2.9</span> <span class="toctext">Credit attribution</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Attribution_on_mortgage-_backed_securities"><span class="tocnumber">3</span> <span class="toctext">Attribution on mortgage- backed securities</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Simple_risk_measures"><span class="tocnumber">3.1</span> <span class="toctext">Simple risk measures</span></a></li>
+<li class="toclevel-2"><a href="#Key_rate_durations"><span class="tocnumber">3.2</span> <span class="toctext">Key rate durations</span></a></li>
+<li class="toclevel-2"><a href="#Other_risk_factors"><span class="tocnumber">3.3</span> <span class="toctext">Other risk factors</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Benchmarks"><span class="tocnumber">4</span> <span class="toctext">Benchmarks</span></a></li>
+<li class="toclevel-1"><a href="#Future_challenges"><span class="tocnumber">5</span> <span class="toctext">Future challenges</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">6</span> <span class="toctext">References</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Sector-based_attribution" id="Sector-based_attribution"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=1" title="Edit section: Sector-based attribution">edit</a>]</span> <span class="mw-headline">Sector-based attribution</span></h2>
+<p>One of the simplest fixed income attribution techniques is <i>sector-based</i>
+attribution. This is based on the standard Brinson-Fachler attribution
+scheme, where the securities in the portfolio and benchmark are divided
+up into buckets based on their modified duration.</p>
+<p>This scheme has the advantage that it is readily understandable,
+particularly by managers who have an equity background. However, it
+does not provide a very deep analysis. The overall effects of a
+parallel change in the yield curve are supplied but there is none of
+the more detailed analysis supplied by a true fixed-income
+decomposition.</p>
+<p>A useful account of sector-based attribution, with worked examples, is provided in Dynkin <i>et al.</i> (1998).</p>
+<p><a name="Yield_curve_attribution" id="Yield_curve_attribution"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=2" title="Edit section: Yield curve attribution">edit</a>]</span> <span class="mw-headline">Yield curve attribution</span></h2>
+<p>A more widely-used approach to fixed income attribution is to
+decompose the returns of individual securities by source of risk, and
+then to aggregate these risk-specific returns over an entire portfolio.
+Typical sources of risk include yield return, return due to yield curve
+movements, and credit spread shifts. These sub-returns can then be
+aggregated over time and sector to give the overall portfolio return,
+attributed by source of risk. For a description of the mechanics of
+combining these sub-returns in a self-consistent manner, see Bacon
+(2004).</p>
+<p><a name="Sources_of_return" id="Sources_of_return"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=3" title="Edit section: Sources of return">edit</a>]</span> <span class="mw-headline">Sources of return</span></h3>
+<p>Over a given interval, the return of each security will be made up
+of return from various sub-returns (see below for explanations)</p>
+<ul>
+<li>return due to yield (equivalently coupon, or accrued interest, or running yield);</li>
+<li>return due to rolling down the yield curve;</li>
+<li>return due to movements in the reference yield curve;</li>
+<li>return due to credit shifts;</li>
+<li>other sources of return, such as option-adjusted spread (OAS), liquidity, inflation, etc.</li>
+</ul>
+<p><a name="First_principles_versus_perturbational_attribution" id="First_principles_versus_perturbational_attribution"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=4" title="Edit section: First principles versus perturbational attribution">edit</a>]</span> <span class="mw-headline">First principles versus perturbational attribution</span></h3>
+<p>To calculate the return arising from each effect, we can reprice the
+security from first principles by using a pricing formula, or some
+other algorithm, before and after each source of return is considered.
+For instance, in calculating yield return, we might calculate the price
+of the security at the start and end of the calculation interval, but
+using the yield at the beginning of the interval. Then the difference
+between the two prices may be used to calculate the portfolio of the
+security’s return due to the passage of time.</p>
+<p>This approach is simple in principle but can lead to operational difficulties. It requires</p>
+<ul>
+<li>accurate pricing formulae including, where relevant, ex-coupon, settlement, and country-specific conventions;</li>
+<li>security-specific data, such as day-count conventions and whether a bond has a non-standard first and last coupons;</li>
+<li>accurate inputs to these formulae, including market yields and
+other variable quantities such as the 90-day bank bill swap rate (BBSW)
+and consumer price index (CPI) factors for floating rate notes and
+inflation-linked securities, and regular updates for these quantities;</li>
+<li>a reconciliation function between existing performance measurement systems and the attribution system</li>
+</ul>
+<p>For these reasons, a pricing model-based approach to attribution may
+not be the right one where data sourcing or reconciliation is an issue.
+An alternative solution is to perform a Taylor expansion on the price
+of a security <img class="tex" alt="P\left( {y,t} \right)" src="Nelson-Siegel_files/112267d971ec5e61545778e01434c9e0.png"> and remove higher order terms, which gives</p>
+<p><img class="tex" alt="\delta P = \frac{{\partial P}}{{\partial t}}\delta t + \frac{{\partial P}}{{\partial y}}\delta y + \frac{1}{2}\frac{{\partial ^2 P}}{{\partial y^2 }}\delta y^2  + O\left( {\delta t^2 ,\delta y^3 } \right)" src="Nelson-Siegel_files/79d32a5db2d65f49cac212ba9714fded.png"></p>
+<p>Writing the return of the security as</p>
+<p><img class="tex" alt="\delta r = \frac{{\delta P}}{P}" src="Nelson-Siegel_files/fe23bbf1dfa26decdfc3ff709e7089be.png">,</p>
+<p>this leads to the perturbation equation</p>
+<p><img class="tex" alt="\delta r = y \cdot \delta t - MD \cdot \delta y + \frac{1}{2}C \cdot \delta y^2  + O\left( {\delta t^2 ,\delta y^3 } \right)" src="Nelson-Siegel_files/36a1dbde3f022e36009bc427f9327c8b.png"></p>
+<p>where the last term denotes higher-order corrections that may be ignored, and</p>
+<p><img class="tex" alt="MD =  - \frac{1}{P}\frac{{\partial P}}{{\partial y}}" src="Nelson-Siegel_files/c3b8a4e0f357fcef6cfbc28d6038ede9.png"></p>
+<p><img class="tex" alt="C = \frac{1}{P}\frac{{\partial ^2 P}}{{\partial y^2 }}" src="Nelson-Siegel_files/3fd8e2c63b36020a4905588e9dbcc50b.png"></p>
+<p>The terms <span class="texhtml"><i>M</i><i>D</i></span> and <span class="texhtml"><i>C</i></span> measure first- and second-order interest rate sensitivity. These are conventionally referred to refer to as the <i>modified duration</i> and <i>convexity</i> of the security, and are often called risk numbers.</p>
+<p>The data requirements for this approach to attribution are less
+onerous than for the first-principle approach. The perturbation
+equation does require externally calculated risk numbers, but this may
+not be a major obstacle, since these quantities are readily available
+from the same sources as yields and prices. There may also be inherent
+advantages in this approach with its ability to work with user-supplied
+risk numbers, since it allows the user to use sensitivity measures from
+in-house models, which is particularly useful where (for instance) the
+user has custom repayment models for mortgage-backed securities.</p>
+<p>The approach is also self-checking, in that the size of the residual
+returns should be very low. If this is not the case, there will be
+presumably be an error in the calculated return or the risk numbers, or
+some other source of risk will be distorting the returns.</p>
+<p>Conveniently, the perturbational approach may be extended to new
+asset types without requiring any new pricing code or types of data,
+and it also works for benchmark sectors as well as individual
+securities, which is useful if benchmark data is only available at
+sector level.</p>
+<p><a name="Modeling_the_yield_curve" id="Modeling_the_yield_curve"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=5" title="Edit section: Modeling the yield curve">edit</a>]</span> <span class="mw-headline">Modeling the yield curve</span></h3>
+<p>Historically, one of the most important drivers of return in fixed income portfolios has been the <a href="http://en.wikipedia.org/wiki/Yield_curve" title="Yield curve">yield curve</a>,
+and many investment strategies are expressed in terms of changes in the
+curve. Any discussion of fixed income attribution therefore requires an
+appreciation of how changes in the curve are described, and their
+effect on the performance of a portfolio.</p>
+<p>If one is only interested in gross changes in the yield curve at a
+particular maturity, then one can read yields off the various datasets,
+using <a href="http://en.wikipedia.org/wiki/Interpolation" title="Interpolation">interpolation</a> where necessary, and there is no need to model any part of the curve.</p>
+<p>If, on the other hand, one wants to describe curve movements in terms used by traders (or to <a href="http://en.wikipedia.org/wiki/Extrapolation" title="Extrapolation">extrapolate</a>), then some form of <a href="http://en.wikipedia.org/wiki/Parameter" title="Parameter">parameterization</a>
+is required. The most widely used nomenclature for describing yield
+curve changes uses the terms "shift", "twist" and "butterfly". Briefly:</p>
+<ul>
+<li>shift measures the degree to which a curve has moved upwards or downwards, in parallel, across all maturities</li>
+<li>twist measures the degree to which the curve has steepened or
+flattened. For instance, one might measure the steepness of the
+Australian yield curve as the difference between the 10-year bond
+future yield and the 3-year bond future yield.</li>
+<li>curvature (or butterfly, or curve reshaping) measures the degree to
+which the term structure has become more or less curved. For instance,
+a yield curve that can be fitted to a straight line exhibits no
+curvature at all.</li>
+</ul>
+<p>To describe these movements in numerical terms, typically requires
+fitting a model to the observed yield curve with a limited number of
+parameters. These parameters can then translated into shift, twist, and
+butterfly movements – or whatever other interpretation the trader
+chooses to use.</p>
+<p>Two of the most widely used models are <a href="http://en.wikipedia.org/wiki/Polynomial_function" title="Polynomial function" class="mw-redirect">polynomial functions</a> and <a href="http://en.wikipedia.org/wiki/Nelson-Siegel" title="Nelson-Siegel" class="mw-redirect">Nelson-Siegel functions</a>.</p>
+<ul>
+<li>Here, polynomial functions are usually of the form</li>
+</ul>
+<dl>
+<dd><img class="tex" alt="y\left( m \right) = a_0  + a_1 m + a_2 m^2" src="Nelson-Siegel_files/fbc21545ce0c1432c35213909177af8e.png"></dd>
+</dl>
+<dl>
+<dd>where <span class="texhtml"><i>m</i></span> is maturity, <span class="texhtml"><i>a</i><sub>0</sub>,<i>a</i><sub>1</sub>,<i>a</i><sub>2</sub></span> are parameters to be fitted, and <img class="tex" alt="y\left( m \right)" src="Nelson-Siegel_files/f7e1abf1a2efae358a7c5c89eb7f29e6.png"> is the yield of the curve at maturity <span class="texhtml"><i>m</i></span>.</dd>
+</dl>
+<ul>
+<li>Nelson-Siegel functions take the form</li>
+</ul>
+<dl>
+<dd><img class="tex" alt=" y\left( m \right) = \beta _0  + \beta _1\frac{{\left[ {1 - \exp \left( { - m/\tau} \right)} \right]}}{m/\tau} + \beta _2  {\left(\frac{{\left[ {1 - \exp \left( { - m/\tau} \right)} \right]}}{m/\tau} - \exp \left( { - m/\tau}\right)\right)} " src="Nelson-Siegel_files/31f188c684764cd431619dbb59fed5ae.png"></dd>
+</dl>
+<dl>
+<dd>where <img class="tex" alt="y\left( m \right)" src="Nelson-Siegel_files/f7e1abf1a2efae358a7c5c89eb7f29e6.png"> and <span class="texhtml"><i>m</i></span> are as above, and <span class="texhtml">β<sub>0</sub></span>, <span class="texhtml">β<sub>1</sub></span>, <span class="texhtml">β<sub>2</sub></span> and <span class="texhtml">τ</span>, are parameters to be fitted via a <a href="http://en.wikipedia.org/wiki/Least-squares" title="Least-squares" class="mw-redirect">least-squares</a> or similar <a href="http://en.wikipedia.org/wiki/Algorithm" title="Algorithm">algorithm</a> (see Diebold and Li [2006]):</dd>
+</dl>
+<ul>
+<li>
+<ul>
+<li><span class="texhtml">β<sub>0</sub></span> is interpreted as the long run levels of interest rates (the loading is 1, it is a constant that does not decay);</li>
+<li><span class="texhtml">β<sub>1</sub></span> is the short-term component (it starts at 1, and decays <a href="http://en.wikipedia.org/wiki/Monotonic" title="Monotonic" class="mw-redirect">monotonically</a> and quickly to 0);</li>
+<li><span class="texhtml">β<sub>2</sub></span> is the medium-term component (it starts at 0, increases, then decays to zero);</li>
+<li><span class="texhtml">τ</span> is the decay factor: small values
+produce slow decay and can better fit the curve at long maturities,
+while large values produce fast decay and can better fit the curve at
+short maturities; <span class="texhtml">τ</span> also governs where <span class="texhtml">β<sub>2</sub></span> achieves its maximum.</li>
+</ul>
+</li>
+</ul>
+<p>Once a curve has been fitted, the user can then define various
+measures of shift, twist and butterfly, and calculate their values from
+the calculated parameters. For instance, the amount of shift in a curve
+modeled by a polynomial function can be modeled as the difference
+between the polynomial <span class="texhtml"><i>a</i><sub>0</sub></span>
+parameters at successive dates. In practice, the Nelson-Siegel function
+has the advantages that it is well-behaved at long maturities, and that
+its parameters can be set to model virtually any yield curve (see
+Nelson and Siegel [1987]).</p>
+<p><a name="Factor-based_attribution" id="Factor-based_attribution"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=6" title="Edit section: Factor-based attribution">edit</a>]</span> <span class="mw-headline">Factor-based attribution</span></h3>
+<p>A factor-based model of yield curve movements is calculated by deriving the <a href="http://en.wikipedia.org/wiki/Covariance_matrix" title="Covariance matrix">covariance matrix</a> of yield shifts at predefined maturities, and calculating the <a href="http://en.wikipedia.org/wiki/Eigenvector" title="Eigenvector" class="mw-redirect">eigenvectors</a> and <a href="http://en.wikipedia.org/wiki/Eigenvalue" title="Eigenvalue" class="mw-redirect">eigenvalues</a> of this matrix. Each eigenvector corresponds to a fundamental model of the yield curve, and each eigenvector is <a href="http://en.wikipedia.org/wiki/Orthogonal" title="Orthogonal" class="mw-redirect">orthogonal</a>,
+so that the curve movement on any given day is a linear combination of
+the basis eigenvectors. The eigenvalues of this matrix then give the
+relative weights, or importance, of these curve shifts. [Phoa (1998)].</p>
+<p><a href="http://en.wikipedia.org/w/index.php?title=Factor_model&amp;action=edit&amp;redlink=1" class="new" title="Factor model (page does not exist)">Factor models</a>
+use a large sample of historical yield curve data and construct a set
+of basis functions that can be linearly combined to represent these
+curve movements in the most economical way. The algorithm always
+attributes as much of the curve movement to the first basis function,
+then as much as possible to the second, and so on. Since these
+functions roughly correspond to our shift and twist motions, this
+approach attributes almost all of the curve change to these two modes,
+leaving a very small contribution from higher modes. Typical results
+attribute 90% of curve movements to shift changes, 8% to twist, and 2%
+to curvature (or butterfly) movements. However, the issue that these
+basis functions may be different from those in which the risk decisions
+were expressed is not widely appreciated.</p>
+<p>Since conventional risk analysis for fixed income instruments
+usually assumes a parallel yield shift across all maturities, it would
+be most convenient if a parallel motion mode turned out to dominate the
+other modes, and in fact this is more or less what occurs.</p>
+<p>While a factor-based decomposition of term structure changes is
+mathematically elegant, it does have some significant drawbacks for
+attribution purposes:</p>
+<ul>
+<li>Firstly, there is no agreement as to what these fundamental modes
+actually are, since they depend on the historical dataset used in the
+calculation (unlike, say, a parallel curve shift – which may be defined
+in purely mathematical terms). Each market, over each analysis
+interval, will therefore produce a different set of fundamental modes
+and hence different attribution decompositions, and so it may be
+impossible to compare sets of attribution results over longer intervals.</li>
+<li>By deciding to use such an approach, one is implicitly locked into
+a particular data history and (in practice) data/software vendor.</li>
+<li>The shape of the modes may not match user expectations, and in
+practice it will be most unlikely that the portfolio will be managed
+and hedged with reference to these fundamental modes. A manager is more
+likely to view future curve movements in terms of a simple shift and
+twist.</li>
+</ul>
+<p>The great advantage of a factor-based approach is that it ensures
+that as much curve movement as possible is attributed to shift
+movement, and that shift and twist motion are given as small values as
+possible. This allows apparently straightforward reporting, because
+hard-to-understand curve movements are always assigned small weights in
+an attribution analysis. However, this is at the cost of a distortion
+of the other results. On the other hand, a naïve interpretation of the
+terms shift, twist, curvature when applied to yield curve movements may
+well give rise to higher order movements that are much higher than
+investors would expect.</p>
+<p>There are also problems in the exact definition of the terms shift
+and twist. Without fixing a twist point at the outset, there is no
+unique value for these terms in either a Nelson-Siegel or polynomial
+formulation. However, the location of this twist point may not match
+user expectations. For a deeper discussion of this point, see Colin
+(2005).</p>
+<p><a name="Interest_returns" id="Interest_returns"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=7" title="Edit section: Interest returns">edit</a>]</span> <span class="mw-headline">Interest returns</span></h3>
+<p>The first source of return in a fixed income portfolio is that due
+to interest. The majority of securities will pay a regular coupon, and
+this is paid irrespective of what happens in the marketplace (ignoring
+defaults and similar catastrophes). For instance, a bond paying a 10%
+annual coupon will always pay 10% of its face value to the owner each
+year, even if there is no change in market conditions.</p>
+<p>However, the effective yield on the bond may well be different,
+since the market price of the bond is usually different from the face
+value.</p>
+<p>Yield return is calculated from</p>
+<p><img class="tex" alt="r_{yield}  = y \cdot \delta t" src="Nelson-Siegel_files/5d24f5a5a3fd464327f004ac8c84f79b.png"></p>
+<p>where <span class="texhtml"><i>y</i></span> is the security’s yield to maturity, and <span class="texhtml">δ<i>t</i></span> is the elapsed time.</p>
+<p>Towards the end of the bond’s life we often see a pull-to-parity
+effect. As maturity approaches, a bond’s price converges to its nominal
+amount, irrespective of the level of interest rates, and this may cause
+a bond’s price to move in a different way to what would normally be
+expected.</p>
+<p><a name="Roll_return" id="Roll_return"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=8" title="Edit section: Roll return">edit</a>]</span> <span class="mw-headline">Roll return</span></h3>
+<p>Roll return can occur when a yield curve is steeply sloped. In the
+absence of any changes in the curve, as a security is held over time
+its maturity will decrease and the yield (as read off the curve) will
+change. If the slope is positive, the yield will decrease and the
+security’s price will increase.</p>
+<p>Positioning a portfolio’s assets to take advantage of a steeply
+sloping yield curve is sometimes called riding the yield curve.
+Strictly speaking, roll return belongs in a separate category, as it is
+neither a strict yield effect nor a return caused by a change in the
+yield curve.</p>
+<p><a name="Yield_curve_attribution_2" id="Yield_curve_attribution_2"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=9" title="Edit section: Yield curve attribution">edit</a>]</span> <span class="mw-headline">Yield curve attribution</span></h3>
+<p>Changes in term structure form one of the most important sources of
+risk in a portfolio. Unlike an equity price, which just moves
+one-dimensionally, the price of a fixed income security is calculated
+from sum of <a href="http://en.wikipedia.org/wiki/Discounted_cash_flow" title="Discounted cash flow">discounted cash flows</a>,
+where the discount rate used depends on the interest rate at that
+maturity. The magnitude and shape of curve changes are therefore of
+major importance to fixed income managers.</p>
+<p>At the most basic level, we can break down yield changes in terms of
+treasury shift and credit shift. At any maturity, we can compare the
+change in the target security with the change in the corresponding
+government-backed security, which will have the highest credit rating
+and hence the lowest yield. All securities have yields equal or greater
+than their equivalent-maturity government securities, which act as a
+benchmark for movements in the marketplace.</p>
+<p>Many investment-grade securities are traded at a spread to the
+Treasury curve, with the size of this spread depending on current
+economic conditions and the credit rating of the individual security.
+For instance, in April 2005 General Motors debt was downgraded to
+non-investment, or junk, status by the ratings agencies. As a result
+the credit spread (or return demanded by investors for holding this
+riskier investment) rose by over 150 basis points, and the value of
+General Motors bonds accordingly fell. The loss in performance this
+caused was attributed entirely due to credit effects.</p>
+<p>Since the yield of virtually any fixed income instrument is affected
+by changes in the shape of the Treasury curve, it is not surprising
+that traders examine future and past performance in the light of
+changes to this curve.</p>
+<p><a name="Appropriate_yield_curves" id="Appropriate_yield_curves"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=10" title="Edit section: Appropriate yield curves">edit</a>]</span> <span class="mw-headline">Appropriate yield curves</span></h3>
+<p>It is not always appropriate to use a single yield curve throughout
+a portfolio, even for instruments traded from a particular country.
+Inflation-linked securities use their own curve, whose movements may
+not show strong correlation with the yield curve of the broader market.
+Short-term money market securities may be better modeled by a separate
+model for the bill curve, and other markets may use the swap curve
+rather than the treasury curve.</p>
+<p><a name="Credit_attribution" id="Credit_attribution"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=11" title="Edit section: Credit attribution">edit</a>]</span> <span class="mw-headline">Credit attribution</span></h3>
+<p>The situation is complicated by recent innovations in the credit
+markets and explosive growth of instruments that allow credit risk to
+be precisely targeted, such as credit-default swaps and the ability to
+split different tranches of instruments in <a href="http://en.wikipedia.org/wiki/Collateralized_debt_obligation" title="Collateralized debt obligation">collateralized debt obligations</a> (CDO).</p>
+<p>The simplest way to regard return on credit is to see it as return
+made by changes in a security’s yield, after changes due to movements
+in the market’s reference curve have been removed. This may be quite
+adequate for a simple portfolio, but for traders who are deliberately
+interest-rate neutral and are making all their returns from credit
+bets, something more detailed is probably necessary.</p>
+<p>An alternative way to regard the higher yields of credit instruments
+is to regard them as being priced off different yield curves, where
+these credit curves lie above the reference curve. The lower the credit
+rating, the higher the spread, thus reflecting the extra yield premium
+demanded for greater risk. Using this model we can describe returns of,
+say, an A-rated security in terms of movements in the AAA curve, plus
+movements (tightening or widening) in the credit spread.</p>
+<p>Other ways to look at the return generated by credit spreads is to
+measure the yield of each security against an industry sector curve, or
+(in the case of Eurobonds) to measure the spread between bonds of the
+same credit rating and currency but differing by country of issue.</p>
+<p><a name="Attribution_on_mortgage-_backed_securities" id="Attribution_on_mortgage-_backed_securities"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=12" title="Edit section: Attribution on mortgage- backed securities">edit</a>]</span> <span class="mw-headline">Attribution on mortgage- backed securities</span></h2>
+<p>Mortgage-backed securities (MBS) are substantially more complex to
+price than vanilla bonds, due to the uncertainties implied by the
+prepayment option included in the instrument’s structure. Ideally, the
+returns generated by these other risks should be shown in the
+attribution report.</p>
+<p><a name="Simple_risk_measures" id="Simple_risk_measures"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=13" title="Edit section: Simple risk measures">edit</a>]</span> <span class="mw-headline">Simple risk measures</span></h3>
+<p>The simplest measure of interest-rate sensitivity for an MBS is its
+effective duration. The modified duration of a bond assumes that cash
+flows do not change in response to movements in the term structure,
+which is not the case for an MBS. For instance, when rates fall, the
+rate of prepayments will probably rise and the duration of the MBS will
+also fall, which is entirely the opposite behavior to a vanilla bond.
+For this reason, effective duration <span class="texhtml"><i>D</i><sub><i>e</i></sub></span> is a better single-figure measure of interest-rate sensitivity, where</p>
+<p><img class="tex" alt="D_e  =  - \frac{{P\left( {y + \delta y} \right) - P\left( {y - \delta y} \right)}}{{2 \cdot P\left( y \right) \cdot \delta y}}" src="Nelson-Siegel_files/a6bc6cdc3d424ee7946034305b417d08.png"></p>
+<p>Here, <img class="tex" alt="P\left( y \right)" src="Nelson-Siegel_files/19f5f3ae1727fca571ea0d533934ba71.png"> is the price of the MBS at yield <span class="texhtml"><i>y</i></span> , calculated using an appropriate prepayment model.</p>
+<p>While compact, effective duration only measures the effect of a
+parallel shift in the yield curve across all maturities. It does not
+take into effect other risk factors, such as non-parallel yield curve
+shifts, convexity, option-adjusted spreads, and others. However,
+effective duration may suffice for many managers as a basic risk
+measure.</p>
+<p>Virtually no research has been published on the attribution of other sources of risk for MBS.</p>
+<p><a name="Key_rate_durations" id="Key_rate_durations"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=14" title="Edit section: Key rate durations">edit</a>]</span> <span class="mw-headline">Key rate durations</span></h3>
+<p>For managers who need to account for changes in the shape of the
+yield curve in detail, a single risk measure for interest-rate
+sensitivity is insufficient and a more detailed way of measuring
+changes across the entire term structure is required.</p>
+<p>One of the most popular techniques to accomplish this is the use of
+key-rate durations (KRDs), introduced by Ho (1992). Ho defines a number
+of maturities on the yield curve as being the key rate durations, with
+typical values of 3 months, 1, 2, 3, 5, 7, 10, 15, 20, 25 and 30 years.
+At each point, we define a duration that measures interest-rate
+sensitivity to a movement at that point only, with the effect of the
+duration at other maturities decreasing linearly to the neighboring
+points.</p>
+<p>In other words, a key rate duration measures the effect of a change
+in the yield curve that is localized at a particular maturity, and
+restricted to the immediate vicinity of that maturity, usually by
+having the change drop linearly to zero at neighboring points.</p>
+<p>Of course, the yield curve is most unlikely to behave in this way.
+The idea is that the actual change in the yield curve can be modeled in
+terms of a sum of such saw-tooth functions. At each key-rate duration,
+we know the change in the curve’s yield, and can combine this change
+with the KRD to calculate the overall change in value of the portfolio.
+In other words,</p>
+<p><img class="tex" alt="\delta r_{yield}  = \sum\limits_{i = 1}^m {KRD_i  \cdot \delta y_i } " src="Nelson-Siegel_files/e592c2e6b9164ad93566686defd96304.png"></p>
+<p>where the sum is across all key rate maturities.</p>
+<p>The sum of an instrument’s key rate durations is approximately equal
+to its modified duration. The sum may not be exact because modified
+duration assumes a flat yield curve, which is seldom the case.</p>
+<p>This approach can easily be combined with the earlier decomposition
+into shift, twist and curvature components to give price changes due to
+these yield curve movement types. For instance, suppose we know the
+amount by which the yield curve has steepened at each key rate
+maturity. Then the return of the MBS due to a steepening Treasury curve
+is given by</p>
+<p><img class="tex" alt="\delta r_{yield}^{steepening}  = \sum\limits_{i = 1}^m {KRD_i  \cdot \delta y_i^{steepening} } " src="Nelson-Siegel_files/a523185eb6a67d9330b7446e3a2592d2.png"></p>
+<p><a name="Other_risk_factors" id="Other_risk_factors"></a></p>
+<h3><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=15" title="Edit section: Other risk factors">edit</a>]</span> <span class="mw-headline">Other risk factors</span></h3>
+<p>MBS have many more risk factors than are used for vanilla bonds, and an attribution scheme needs to model them all. They include</p>
+<ul>
+<li>option-adjusted spread, or the extra yield demanded by the security holder to compensate for the mortgage repayment option;</li>
+<li>current-coupon spread</li>
+<li>volatilities</li>
+<li>convexity</li>
+<li>cost of carry</li>
+</ul>
+<p>While all these factors can be important in accounting for changes
+in MBS returns, in practice a particular user may only select a subset.
+The reason is that a perturbational analysis requires the provision of
+risk sensitivity numbers for each factor, and in some cases these may
+simply not be available. The return made by such uncomputed risks may
+be grouped into an ‘Other’ category in the attribution report.</p>
+<p><a name="Benchmarks" id="Benchmarks"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=16" title="Edit section: Benchmarks">edit</a>]</span> <span class="mw-headline">Benchmarks</span></h2>
+<p>The importance of benchmarks in fixed income attribution remains widely underestimated.</p>
+<p>To perform attribution on a portfolio, one must also run attribution
+on its associated benchmark, and this frequently presents substantial
+difficulties. To provide attribution information at the same level of
+detail for a benchmark, one needs extensive, detailed weights and
+returns, and these are often hard to find. For instance, many widely
+used benchmarks contain thousands of bonds. Deriving the security-level
+returns of an industry benchmark so that the overall returns match the
+published figures remains a major challenge for most practitioners.</p>
+<p>While benchmarks may have much greater uniformity of instrument type
+than managed portfolios, the sheer number of securities – and the data
+maintenance issues required to reprice each one, and to ensure that the
+correct coupon amount and timing is used when a coupon is paid – means
+that detailed benchmark modeling remains extremely difficult. There are
+also issues involving transparency of benchmark calculations, with many
+of the underlying actions remaining obscure.</p>
+<p>Even pricing data can be difficult to come by in some cases. For
+some Asian benchmarks, illiquid markets can mean that accurate yield
+data is not published at all, which can make calculation of risks very
+difficult.</p>
+<p><a name="Future_challenges" id="Future_challenges"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=17" title="Edit section: Future challenges">edit</a>]</span> <span class="mw-headline">Future challenges</span></h2>
+<p>The sheer variety of the fixed income markets, and the pace of
+innovation in this area, means that provision of an attribution
+capability from scratch will continue to present significant
+challenges. In no particular order, issues to be faced include</p>
+<ul>
+<li>many more risk factors than in the equity world</li>
+<li>much more complex instrument types</li>
+<li>new types of instrument continually appear</li>
+<li>no standard approach to attribution – sector, yield-curve based, factor based</li>
+</ul>
+<p>While there remain numerous challenges to solve, the state of fixed
+income attribution is much less murky than was the case even five years
+ago. The reasons include</p>
+<ul>
+<li>better third-party software systems</li>
+<li>more demanding users</li>
+<li>easier access to data</li>
+<li>cheaper and more powerful computing systems</li>
+<li>better understanding of how to perform attribution</li>
+</ul>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit&amp;section=18" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Carl_Bacon" title="Carl Bacon">Bacon, C.</a> (2004). Practical portfolio performance measurement and attribution, Wileys</li>
+<li>Colin, A.M. (2005). Fixed income attribution, Wileys</li>
+<li>Diebold, F.X. and Li, C. (2006). Forecasting the term structure of
+government bond yields. Journal of Econometrics, 130, pp. 337–364</li>
+<li>Dynkin, L., Hyman, J., Vankudre, P., (1998). Attribution of
+portfolio performance relative to an index, Lehman Brothers Fixed
+Income Research, March</li>
+<li>Ho, T. (1992). Key rate durations: measures of interest rate risk, Journal of Fixed Income, 2, pp. 29–44</li>
+<li>Nelson, C.R., Siegel, A.F. (1987). Parsimonious modeling of yield curves, Journal of Business, 60(4), pp.473–489</li>
+<li>Phoa, W. (1998). Advanced fixed income Analytics, Frank Fabozzi Associates</li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 127/1000000
+Post-expand include size: 0/2048000 bytes
+Template argument size: 0/2048000 bytes
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:8748548-0!1!0!default!!en!2 and timestamp 20090826120740 -->
+<div class="printfooter">
+Retrieved from "<a href="http://en.wikipedia.org/wiki/Fixed_income_attribution#Modeling_the_yield_curve">http://en.wikipedia.org/wiki/Fixed_income_attribution#Modeling_the_yield_curve</a>"</div>
+			<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://en.wikipedia.org/wiki/Special:Categories" title="Special:Categories">Categories</a>: <span dir="ltr"><a href="http://en.wikipedia.org/wiki/Category:Finance" title="Category:Finance">Finance</a></span></div></div>			<!-- end content -->
+						<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul xml:lang="en" lang="en">
+	
+				 <li id="ca-nstab-main" class="selected"><a href="http://en.wikipedia.org/wiki/Fixed_income_attribution" title="View the content page [alt-shift-c]" accesskey="c">Article</a></li>
+				 <li id="ca-talk"><a href="http://en.wikipedia.org/wiki/Talk:Fixed_income_attribution" title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-edit"><a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=edit" title="You can edit this page. 
+Please use the preview button before saving. [alt-shift-e]" accesskey="e">Edit this page</a></li>
+				 <li id="ca-history"><a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;action=history" title="Past versions of this page [alt-shift-h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul xml:lang="en" lang="en">
+				<li id="pt-acaibeta"><a href="http://en.wikipedia.org/w/index.php?title=Special:UsabilityInitiativeOptIn&amp;from=Fixed_income_attribution" class="no-text-transform">Try Beta</a></li>
+				<li id="pt-login"><a href="http://en.wikipedia.org/w/index.php?title=Special:UserLogin&amp;returnto=Fixed_income_attribution" title="You are encouraged to log in; however, it is not mandatory. [alt-shift-o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(http://upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png);" href="http://en.wikipedia.org/wiki/Main_Page" title="Visit the main page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class="generated-sidebar portlet" id="p-navigation">
+		<h5 xml:lang="en" lang="en">Navigation</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-mainpage-description"><a href="http://en.wikipedia.org/wiki/Main_Page" title="Visit the main page [alt-shift-z]" accesskey="z">Main page</a></li>
+				<li id="n-contents"><a href="http://en.wikipedia.org/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+				<li id="n-featuredcontent"><a href="http://en.wikipedia.org/wiki/Portal:Featured_content" title="Featured content — the best of Wikipedia">Featured content</a></li>
+				<li id="n-currentevents"><a href="http://en.wikipedia.org/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+				<li id="n-randompage"><a href="http://en.wikipedia.org/wiki/Special:Random" title="Load a random article [alt-shift-x]" accesskey="x">Random article</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5 xml:lang="en" lang="en"><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/w/index.php" id="searchform"><div>
+				<input name="title" value="Special:Search" type="hidden">
+				<input autocomplete="off" id="searchInput" name="search" title="Search Wikipedia [alt-shift-f]" accesskey="f" type="text">
+				<input name="go" class="searchButton" id="searchGoButton" value="Go" title="Go to a page with this exact name if one exists" type="submit">&nbsp;
+				<input name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search Wikipedia for this text" type="submit">
+			</div></form>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-interaction">
+		<h5 xml:lang="en" lang="en">Interaction</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-aboutsite"><a href="http://en.wikipedia.org/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+				<li id="n-portal"><a href="http://en.wikipedia.org/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-recentchanges"><a href="http://en.wikipedia.org/wiki/Special:RecentChanges" title="The list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-contact"><a href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact Wikipedia</a></li>
+				<li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate/Now/en?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=spontaneous_donation" title="Support us">Donate to Wikipedia</a></li>
+				<li id="n-help"><a href="http://en.wikipedia.org/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5 xml:lang="en" lang="en">Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://en.wikipedia.org/wiki/Special:WhatLinksHere/Fixed_income_attribution" title="List of all English Wikipedia pages containing links to this page [alt-shift-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://en.wikipedia.org/wiki/Special:RecentChangesLinked/Fixed_income_attribution" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="http://en.wikipedia.org/wiki/Wikipedia:Upload" title="Upload files [alt-shift-u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="http://en.wikipedia.org/wiki/Special:SpecialPages" title="List of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="http://en.wikipedia.org/w/index.php?title=Fixed_income_attribution&amp;oldid=306259071" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-cite"><a href="http://en.wikipedia.org/w/index.php?title=Special:Cite&amp;page=Fixed_income_attribution&amp;id=306259071">Cite this page</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="Nelson-Siegel_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki"></a></div>
+				<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="Nelson-Siegel_files/wikimedia-button.png" alt="Wikimedia Foundation" width="88" height="31"></a></div>
+			<ul id="f-list">
+					<li id="lastmod"> This page was last modified on 5 August 2009 at 19:05.</li>
+					<li id="copyright">Text is available under the <a href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a>;
+additional terms may apply.
+See <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> for details.<br>
+Wikipedia® is a registered trademark of the <a href="http://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+					<li id="privacy"><a href="http://wikimediafoundation.org/wiki/Privacy_policy" class="extiw" title="wikimedia:Privacy policy">Privacy policy</a></li>
+					<li id="about"><a href="http://en.wikipedia.org/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+					<li id="disclaimer"><a href="http://en.wikipedia.org/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served by srv203 in 0.074 secs. --></body></html>

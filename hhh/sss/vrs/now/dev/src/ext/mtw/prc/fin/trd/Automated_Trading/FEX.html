@@ -1,0 +1,1158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Automated Trading with MATLAB - 2012 -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/37932-automated-trading-with-matlab-2012" rel="canonical">
+<meta content="Automated Trading with MATLAB - 2012 - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/37932-automated-trading-with-matlab-2012" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/59299/original.jpg" property="og:image"><meta content="Files from the Automated Trading webinar showing X_Trader and QuickFIX/J integration." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F37932-automated-trading-with-matlab-2012" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F37932-automated-trading-with-matlab-2012" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_toolbox_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/64039" class="link--download " title="Download Now">Download Toolbox</a></div>
+            </div>
+          </div>
+    <div id="download_toolbox_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/64040" class="link--download " title="Download Now">Download Toolbox</a></div>
+            </div>
+          </div>
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/64038" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=37932" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012" class="manifest_title">Automated Trading with MATLAB - 2012</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo3_Intraday.html" class="example" title="Example">Algorithmic Trading with ...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo2_MA_Rule.html" class="example" title="Example">Algorithmic Trading with ...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo5_Pairs_Trading.html" class="example" title="Example">Algorithmic Trading with ...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo1_Intro.html" class="example" title="Example">Algorithmic Trading with ...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo4_Rule_Selection.html" class="example" title="Example">Algorithmic Trading with ...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/CalibrateModels.html" class="example" title="Example">Calibrate 3 Models</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo7b_QuickFIXExample.html" class="example" title="Example">Integrating MATLAB with Q...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo7a_helloWorldNET.html" class="example" title="Example">Utilize .NET Objects in M...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo6c_TTOrderSubmitExample.html" class="example" title="Example">X_Trader Order Submission...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo6b_TTPriceUpdateDepthExample.html" class="example" title="Example">X_Trader Price Update Dep...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/html/Demo6a_TTPriceUpdateExample.html" class="example" title="Example">X_Trader Price Update exa...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/createMSMQ.m" class="function" title="Function">createMSMQ()
+</a><span class="description">Copyright 2010-2012, The MathWorks, Inc.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/gaFiles/crossover.m" class="function" title="Function">crossover(parents,options...</a><span class="description">CROSSOVER generates kids from parents
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Data/dsample.m" class="function" title="Function">dsample(HLC, factor)
+</a><span class="description">Downsamples our time series by a given factor, preserving the HIGH and
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/gaFiles/fitness.m" class="function" title="Function">fitness(pop,indicator,pri...</a><span class="description">See also tradeSignal, initializePopulation
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Data/generateSpacedInts.m" class="function" title="Function">generateSpacedInts(lb, ub...</a><span class="description">GENERATESPACEDINTS Generates approximately NUMBER integers between LB and
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/generateTradeSignal.m" class="function" title="Function">generateTradeSignal(signa...</a><span class="description">GENERATETRADESIGNAL produces a buy/sell signal depending using parameters
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Data/getMinuteDataFromDB.m" class="function" title="Function">getMinuteDataFromDB(table...</a><span class="description">Copyright 2010-2012, The MathWorks, Inc.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Charts/indicatorChartALL.m" class="function" title="Function">indicatorChartALL(price, ...</a><span class="description">INDICATORCHARTALL A chart showing prices and trading signals sent from
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Charts/indicatorChartMA.m" class="function" title="Function">indicatorChartMA(YMatrix1)
+</a><span class="description">INDICATORCHARTMA(YMATRIX1)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Charts/indicatorChartWPR.m" class="function" title="Function">indicatorChartWPR(w1)
+</a><span class="description">INDICATORCHARTWPR(W1)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/gaFiles/initializePopulation.m" class="function" title="Function">initializePopulation(I,po...</a><span class="description">INITIALIZEPOPULATION generates an initial population of 1's and 0's
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Charts/isoplot.m" class="function" title="Function">isoplot(xyz,u)
+</a><span class="description">Copyright 2010-2012, The MathWorks, Inc.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/leadlag.m" class="function" title="Function">leadlag(P,N,M,scaling,cost)
+</a><span class="description">LEADLAG returns a trading signal for a simple lead/lag ema indicator
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/leadlagFun.m" class="function" title="Function">leadlagFun(x,data,scaling...</a><span class="description">define leadlag to accept vectorized inputs and return only sharpe ratio
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/gaFiles/locateConnectors.m" class="function" title="Function">locateConnectors(rule);
+</a><span class="description">LOCATECONNECTORS finds locations of connectors in RULE
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/gaFiles/mutation.m" class="function" title="Function">mutation(parents,options,...</a><span class="description">MUTATION mutate childrend accordinlgy
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/pairs.m" class="function" title="Function">pairs(series2, M, N, spre...</a><span class="description">PAIRS returns a trading signal for a simple pairs trading strategy
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Charts/pairsChart.m" class="function" title="Function">pairsChart(LCO, WTI)
+</a><span class="description">PAIRSCHART: Shows the full time history for LCO and WTI
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/pairsFun.m" class="function" title="Function">pairsFun(x,data,scaling,c...</a><span class="description">define pairs to accept vectorized inputs and return only sharpe ratio
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/parameterSweep.m" class="function" title="Function">parameterSweep(fun,range)
+</a><span class="description">PARAMETERSWEEP performs a parameters sweep for a given function
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/gaFiles/plotRules.m" class="function" title="Function">plotRules(options, state,...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/plotTrades.m" class="function" title="Function">plotTrades(tradeSignal,se...</a><span class="description">Create plot
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/rsi.m" class="function" title="Function">rsi(price,M,thresh,scalin...</a><span class="description">RSI returns a trading signal for a simple relative strength index
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/rsiFun.m" class="function" title="Function">rsifun(x,data,scaling,cost)
+</a><span class="description">define rsi to accept vectorized inputs and return only sharpe ratio
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Charts/ruleChartALL.m" class="function" title="Function">ruleChartALL(prices, sh, ...</a><span class="description">RULECHARTALL Shows the performance of the combined model, after it has
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Charts/ruleChartMA.m" class="function" title="Function">ruleChartMA(YMatrix1, YMa...</a><span class="description">CREATEFIGURE(YMATRIX1,YMATRIX2)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/runTradingAlgo.m" class="function" title="Function">runTradingAlgo()
+</a><span class="description">Copyright 2010-2012, The MathWorks, Inc.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/sendOrder.m" class="function" title="Function">sendOrder(signal, signalD...</a><span class="description">SENDORDER produces a message on a Microsoft Messaging Queue
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/sendOrderQuickFIX.m" class="function" title="Function">sendOrderQuickFIX(signal)
+</a><span class="description">SENDORDERQUICKFIX submits an order to Banzai application
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/sendOrderXT.m" class="function" title="Function">sendOrderXT(signal)
+</a><span class="description">SENDORDERXT submits an order to XTRADER
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/startBanzai.m" class="function" title="Function">startBanzai(configFile)
+</a><span class="description">Copyright 2010-2012, The MathWorks, Inc.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Charts/sweepPlotMA.m" class="function" title="Function">sweepPlotMA(xdata, ydata,...</a><span class="description">SWEEPPLOTMA(XDATA, YDATA, ZDATA)
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/gaFiles/tradeSignal.m" class="function" title="Function">tradeSignal(pop,ind)
+</a><span class="description">TRADSIGNAL generates the trading signal from population
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/tradingSystem.m" class="function" title="Function">tradingSystem(varargin)
+</a><span class="description">This is for illustration purposes only.
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/gaFiles/validRule.m" class="function" title="Function">validRule(rule)
+</a><span class="description">VALIDRULE determines if the rule is valid
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/wpr.m" class="function" title="Function">wpr(price,N,scaling,cost)
+</a><span class="description">WPR returns a trading signal for a simple Williams %R indicator
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Models/wprFun.m" class="function" title="Function">wprFun(x,data,scaling,cost)
+</a><span class="description">WPR wrapper
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/TradingSystem/helloWorldNET.m" class="script" title="Script">helloWorldNET.m</a><span class="description">Utilize .NET Objects in MATLAB
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012/content/Automated_Trading.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:92.0%;">
+                <p>4.6</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.6</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">6</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">175 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 7.47 MB</span>
+          <span id="fileid">File ID: #37932</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/7555/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Automated Trading with MATLAB - 2012</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/24834">Stuart Kozola</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      31 Aug 2012
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-11-05">05 Nov 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Files from the Automated Trading webinar showing X_Trader and QuickFIX/J integration.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F37932-automated-trading-with-matlab-2012&amp;watching=37932" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Files used in the webinar - Automated Trading with MATLAB broadcast on August 21, 2012. This webinar can be viewed at <a href="http://www.mathworks.com/videos/automated-trading-with-matlab-81911.html">www.mathworks.com/videos/automated-trading-with-matlab-81911.html</a>
+<br>Specific topics include:</p>
+
+<p>* Data gathering options, including daily historic, intraday, and real-time data
+<br>* Model building and prototyping in MATLAB
+<br>* Backtesting and calibrating a model
+<br>* Interacting with existing libraries and software for trade execution (X_Trader, QuickFIX/J, messaging queues)</p>
+
+<p>It is recommended that you watch the webinar to see the "live" system running.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/29489-algorithmic-trading-with-matlab-2010">Algorithmic Trading With Matlab   2010</a> inspired <i>this file.</i></p>
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/43869-algorithmic-trading-with-bloomberg-emsx-and-matlab">Algorithmic Trading With Bloomberg Emsx And Matlab</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/43258-commodities-trading-with-matlab">Commodities Trading With Matlab</a>.</p>
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/database/" id="product_link_Database Toolbox">Database Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/datafeed/" id="product_link_Datafeed Toolbox">Datafeed Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/finance/" id="product_link_Financial Toolbox">Financial Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/global-optimization/" id="product_link_Global Optimization Toolbox">Global Optimization Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/parallel-computing/" id="product_link_Parallel Computing Toolbox">Parallel Computing Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+                  <a href="https://www.mathworks.com/products/econometrics/" id="product_link_Econometrics Toolbox">Econometrics Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/statistics/" id="product_link_Statistics Toolbox">Statistics Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/dsp-system/" id="product_link_DSP System Toolbox">DSP System Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/control/" id="product_link_Control System Toolbox">Control System Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/signal/" id="product_link_Signal Processing Toolbox">Signal Processing Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/simverification/" id="product_link_Simulink Verification and Validation">Simulink Verification and Validation</a><br>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+                  <a href="https://www.mathworks.com/products/econometrics/" id="product_link_Econometrics Toolbox">Econometrics Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/statistics/" id="product_link_Statistics Toolbox">Statistics Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/dsp-system/" id="product_link_DSP System Toolbox">DSP System Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/control/" id="product_link_Control System Toolbox">Control System Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/signal/" id="product_link_Signal Processing Toolbox">Signal Processing Toolbox</a><br>
+                  <a href="https://www.mathworks.com/products/simverification/" id="product_link_Simulink Verification and Validation">Simulink Verification and Validation</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.14 (R2012a)
+            </td>
+          </tr>
+
+            <tr>
+              <td class="label">MATLAB Search Path</td>
+              <td><pre class="path_list">/
+/Charts
+/Data
+/Models
+/TradingSystem
+/gaFiles
+/html</pre></td>
+            </tr>
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F37932-automated-trading-with-matlab-2012">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22algorithmic+trading%22" rel="nofollow">algorithmic trading</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22automated+trading%22" rel="nofollow">automated trading</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22evolutionary+learning%22" rel="nofollow">evolutionary learning</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22fix%22" rel="nofollow">fix</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22genetic+programming%22" rel="nofollow">genetic programming</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22gentici+algorithm%22" rel="nofollow">gentici algorithm</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22java+integration%22" rel="nofollow">java integration</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22moving+average%22" rel="nofollow">moving average</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22quickfix%22" rel="nofollow">quickfix</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22rsi%22" rel="nofollow">rsi</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22sharpe+ratio%22" rel="nofollow">sharpe ratio</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22toolbox%22" rel="nofollow">toolbox</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22trading%22" rel="nofollow">trading</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22trading+strategy%22" rel="nofollow">trading strategy</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22willams+percent+r%22" rel="nofollow">willams percent r</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22x_trader%22" rel="nofollow">x_trader</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="37932" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/37932-automated-trading-with-matlab-2012" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F37932-automated-trading-with-matlab-2012">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(18)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">07 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/422658">Anthony Salazar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks for share it help me a lot, if we continue on this motion, everyone will be rich.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/436505">cyril</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>nice work, @Stuart is there so much
+ a need to use GA for finding the best rule? there are 
+3*2+3*2^2*3+2^3*3^2 possibilities of rules with the scheme you did, so 
+it's not a big deal to test them 1 by 1</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/327300">Bruno</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Could you help me with this 
+<br>http://www.mathworks.it/matlabcentral/answers/119571-problem-with-movavg-not-enough-input-arguments
+<br>??</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/419071">Bradley</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/419071">Bradley</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Stuart,</p>
+
+<p>I am having trouble with starting banzai on my computer. I know it 
+has to probably deal with not having the the config file on the correct 
+path.
+<br>I am receiving the error that SessionSettings is a undefined 
+function.  I am not sure where to put the correct file and what files to
+ put there.  Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/313434">Frank Weissbach</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Stuart,</p>
+
+<p>I solved the issue. It was indeed a path issue. If classes depend on 
+other .jar then those need to be added to the javaclasspath as well.
+<br>Following the quickfix installation guide the following 4 jar files need to be in the path:</p>
+
+<p>quickfixj-all.jar(includes core and message JARs) 
+<br>mina-core-1.1.0.jar
+<br>slf4j-api.jar
+<br>slf4j-jdk14.jar 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/324796">Mark</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Those following this thread my find
+ the website: http://www.openAlgo.org interesting.  Some of the work 
+here inspired it along with work from 'Algorithmic Trading With Matlab  
+ 2010'</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/313434">Frank Weissbach</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Stuart,</p>
+
+<p>1) The Banzai example is running correctly on my system.
+<br>2)  The javaclasspath is set correct.
+<br>I'm successful calling (and creating the output objects in Matlab) other classes from the same quickfixj-all jar files.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/24834">Stuart Kozola</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Frank</p>
+
+<p>The error is telling you it can not find the SocketInitiator method.  This error is likely due to one of these reasons:
+<br>1) the required library is not on the javaclasspath
+<br>2) a mis-match in required java libraries</p>
+
+<p>When you download and install quickfix/j, run the banzai example 
+outside of MATLAB to make sure your system has all of the required java 
+libraries.  If it runs correctly, then the problem is in the 
+importing/classpath.txt reference to the required java libraries, which 
+you can fix by importing the libraries from the same directory as the 
+installation of quikcfix/j.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/313434">Frank Weissbach</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have an error when I trying to execute 'Demo7b_QuickFIXExample.m' </p>
+
+<p>Everything works fine up to the line:
+<br>initiator = SocketInitiator(application,storeFactory,settings,logFactory,messageFactory);</p>
+
+<p>which gives me the error:
+<br>Undefined function 'SocketInitiator' for input arguments of type
+<br>'quickfix.examples.banzai.BanzaiApplication'.</p>
+
+<p>Operating System: Microsoft Windows 7 Version 6.1 (Build 7601: Service Pack 1)
+<br>Java VM Version: Java 1.6.0_17-b04 with Sun Microsystems Inc. Java HotSpot(TM) 64-Bit Server VM mixed mode</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/313434">Frank Weissbach</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm working on Windows 7:
+<br>Operating System: Microsoft Windows 7 Version 6.1 (Build 7601: Service Pack 1)
+<br>Java VM Version: Java 1.6.0_17-b04 with Sun Microsystems Inc. Java HotSpot(TM) 64-Bit Server VM mixed mode</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/324796">Mark</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for this collection.  On a
+ cursory read of the code, if I am correct there is an issue with the 
+logic employed in tradeSignal if I have understood it correctly.  
+Specifically, the input 'ind' and logical 'AND'.  As I understand it, 
+'ind' is normalized such that 0 = sell, 0.5 = "skip", 1 = buy.  If you 
+logically AND 0 &amp; 1 (sell and buy) the result is a 0 (sell) however 
+this is not the desired result.  I'm posting this in the spirit of 
+others trying to review this code and welcome any correction on my 
+understanding.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/302956">nicholas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>amazing!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/246507">Piment</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/24834">Stuart Kozola</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Goryn,</p>
+
+<p>Did you try inputStream = java.io.FileInputStream('C:\\MATLAB_CODES\\Automated_Trading\\banzai.cfg');</p>
+
+<p>settings = SessionSettings(inputStream);</p>
+
+<p>It is a JAVA path issue, not MATLAB.  Try this and it should work.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62647">Goryn</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for your answer, Stuart. But it is another error. Firstly, I've tried to run Demo7b_QuickFIXExample.m and it writes:</p>
+
+<p>Java exception occurred:
+<br>quickfix.ConfigError: banzai.cfg (The system cannot find the file
+<br>specified)</p>
+
+<p>	at quickfix.SessionSettings.&lt;init&gt;(SessionSettings.java:110)</p>
+
+<p>Error in Demo7b_QuickFIXExample (line 23)
+<br>settings = SessionSettings('banzai.cfg');</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/24834">Stuart Kozola</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This error occurs when trying to 
+reference a file path on Windows that is not a valid URL.  See 
+http://sourceforge.net/tracker/index.php?func=detail&amp;aid=3506051&amp;group_id=176742&amp;atid=878458
+ for an example.</p>
+
+<p>You can either:
+<br>1) Run the commands with banzai.cfg in the current working directory</p>
+
+<p>OR</p>
+
+<p>2) change the MATLAB file to accept inputStreams:
+<br>inputStream = java.io.FileInputStream('C:\\MATLAB_CODES\\Automated_Trading\\banzai.cfg');</p>
+
+<p>settings = SessionSettings(inputStream);</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62647">Goryn</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have an error when I trying to execute 'Demo7b_QuickFIXExample.m' script:
+<br>- firstly I've added path to 'classpath.txt'
+<br>- then after loading quickfix packages I try to execute 'settings = SessionSettings('banzai.cfg');' it writes me:
+<br>Java exception occurred:
+<br>quickfix.ConfigError: banzai.cfg (Cannot find)	at quickfix.SessionSettings.&lt;init&gt;(SessionSettings.java:110)</p>
+
+<p>If I try to execute a line of code with full path, like "settings = 
+SessionSettings('c:\MATLAB_CODES\Automated_Trading\banzai.cfg');" it 
+writes:</p>
+
+<p>Java exception occurred:
+<br>java.lang.IllegalArgumentException: name</p>
+
+<p>	at sun.misc.URLClassPath$Loader.findResource(Unknown Source)</p>
+
+<p>	at sun.misc.URLClassPath.findResource(Unknown Source)</p>
+
+<p>	at java.net.URLClassLoader$2.run(Unknown Source)</p>
+
+<p>	at java.security.AccessController.doPrivileged(Native Method)</p>
+
+<p>	at java.net.URLClassLoader.findResource(Unknown Source)</p>
+
+<p>	at java.lang.ClassLoader.getResource(Unknown Source)</p>
+
+<p>	at java.lang.ClassLoader.getResourceAsStream(Unknown Source)</p>
+
+<p>	at quickfix.SessionSettings.&lt;init&gt;(SessionSettings.java:105)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">04 Sep 2012</td>
+                  <td><p>Updated zip file contents.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Nov 2014</td>
+                  <td><p>Updated with toolbox packaging.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415400876245&amp;cv=7&amp;fst=1415400876245&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/37932-automated-trading-with-matlab-2012&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fsort%3Ddate_desc_updated%26term%3D&amp;vis=2"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

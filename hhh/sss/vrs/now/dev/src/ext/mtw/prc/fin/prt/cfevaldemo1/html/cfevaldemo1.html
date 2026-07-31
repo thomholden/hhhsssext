@@ -1,0 +1,394 @@
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>CFEVALDEMO1</title>
+      <meta name="generator" content="MATLAB 7.2">
+      <meta name="date" content="2007-10-17">
+      <meta name="m-file" content="cfevaldemo1"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows.  On Gecko-based browsers, the shrink-to-fit doesn't work. */ 
+p,h1,h2,div.content div {
+  /* for MATLAB's browser */
+  width: 600px;
+  /* for Mozilla, but the "width" tag overrides it anyway */
+  max-width: 600px;
+  /* for IE */
+  width:expression(document.body.clientWidth > 620 ? "600px": "auto" );
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>CFEVALDEMO1</h1>
+         <introduction>
+            <p>Function <tt>cfeval</tt> calculates cash flows of fixed-income portfolios and structured products, given a quasi-symbolic, Matlab-syntax, typically
+               recursive description of principal and coupon dynamics. Combined, these descriptions are passed to <tt>cfsim</tt> in cell arrays of strings, whose rows correspond to securities, and columns to periods.
+            </p>
+         </introduction>
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#2">Example 1. Fixed-coupon bond</a></li>
+               <li><a href="#8">Example 2. Floating-rate note</a></li>
+               <li><a href="#17">Example 3. Floater and inverse floater</a></li>
+               <li><a href="#26">Example 4. CDO with senior and subordinate tranches</a></li>
+            </ul>
+         </div><pre class="codeinput">help <span class="string">cfeval</span>
+</pre><pre class="codeoutput">  CFEVAL    Evaluate portfolio cash flows given their symbolic definitions
+  INPUTS  : N*T cell arrays of strings, where cell (i,t) contains definition
+            of .. on security i in period t:
+              pofun - principal outstanding
+              cpfun - coupon payment
+              psfun - scheduled principal repayment
+              ppfun - unscheduled principal repayment
+            par   - parameter structure, available  to calculations  defined 
+                    in pofun, cpfun, psfun, ppfun 
+  OUTPUTS : N*T arrays, where element (i,t) contains value of .. on security
+            i in period t:
+              cfval - total cash flow (sum of cfval, psval and ppval)
+              poval - principal outstanding
+              cpval - coupon payment
+              psval - scheduled principal repayment
+              ppval - unscheduled principal repayment
+  NOTES   : Cells of input arrays are evaluated sequentially, iterating over 
+            * periods: t = 1,..,T 
+            * securities: i = 1,..,N
+            * input arrays: pofun, cpfun, psfun, ppfun
+            Computing xval(i,t) - note that xfun arrays definitions must use
+            indexes i and t - one can reference already-evaluated quantities 
+  EXAMPLE : See CFEVALDEMO
+  AUTHOR  : Dimitri Shvorob, dimitri.shvorob@vanderbilt.edu, 9/25/07
+
+</pre><h2>Example 1. Fixed-coupon bond<a name="2"></a></h2>
+         <p>a) set up security definitions</p><pre class="codeinput">T = 3;
+[pofun,cpfun,psfun,ppfun] = deal(cell(1,T));
+</pre><div>
+            <ul>
+               <li>Principal outstanding: constant, normalized to 1</li>
+            </ul>
+         </div><pre class="codeinput">[pofun{:}] = deal(<span class="string">'1'</span>);
+</pre><div>
+            <ul>
+               <li>Coupon: 5%</li>
+            </ul>
+         </div><pre class="codeinput">[cpfun{:}] = deal(<span class="string">'0.05*poval(i,t)'</span>);
+</pre><div>
+            <ul>
+               <li>Principal repayment: outstanding principal at maturity</li>
+            </ul>
+         </div><pre class="codeinput">[psfun{:}] = deal(<span class="string">'0'</span>); psfun{T} = <span class="string">'poval(i,t)'</span>;
+</pre><pre class="codeinput">[ppfun{:}] = deal(<span class="string">'0'</span>);
+</pre><p>b) calculate total cash flows</p><pre class="codeinput">cfeval(pofun,cpfun,psfun,ppfun)
+</pre><pre class="codeoutput">
+ans =
+
+          0.05          0.05          1.05
+
+</pre><h2>Example 2. Floating-rate note<a name="8"></a></h2>
+         <p>a) set up security definitions</p><pre class="codeinput">[pofun,cpfun,psfun,ppfun] = deal(cell(1,T));
+</pre><div>
+            <ul>
+               <li>Principal outstanding: constant, normalized to 1</li>
+            </ul>
+         </div><pre class="codeinput">[pofun{:}] = deal(<span class="string">'1'</span>);
+</pre><div>
+            <ul>
+               <li>Coupon: linked to a variable rate, its path passed to <tt>cfeval</tt> in parameter structure <tt>par</tt></li>
+            </ul>
+         </div><pre class="codeinput">clear <span class="string">par</span>
+</pre><pre class="codeinput">par.libor  = 0.1*rand(1,T)                                 <span class="comment">%#ok</span>
+</pre><pre class="codeoutput">
+par = 
+
+    libor: [0.04 0.06 0.08]
+
+</pre><pre class="codeinput">[cpfun{:}] = deal(<span class="string">'par.libor(t)*poval(i,t)'</span>);
+</pre><div>
+            <ul>
+               <li>Principal repayment: outstanding principal at maturity</li>
+            </ul>
+         </div><pre class="codeinput">[psfun{:}] = deal(<span class="string">'0'</span>); psfun{T} = <span class="string">'poval(i,t)'</span>;
+</pre><pre class="codeinput">[ppfun{:}] = deal(<span class="string">'0'</span>);
+</pre><p>b) calculate coupon payments and total cash flows</p><pre class="codeinput">[cfval,poval,cpval] = cfeval(pofun,cpfun,psfun,ppfun,par); <span class="comment">%#ok</span>
+</pre><pre class="codeinput">cpval, cfval                                               <span class="comment">%#ok</span>
+</pre><pre class="codeoutput">
+cpval =
+
+          0.04          0.06          0.08
+
+
+cfval =
+
+          0.04          0.06          1.08
+
+</pre><h2>Example 3. Floater and inverse floater<a name="17"></a></h2>
+         <p>a) set up security definitions</p><pre class="codeinput">[pofun,cpfun,psfun,ppfun] = deal(cell(2,T));
+</pre><div>
+            <ul>
+               <li>Principal outstanding: constant, normalized to 1, split 50/50 between floater and inverse floater</li>
+            </ul>
+         </div><pre class="codeinput">par.w = [.5 .5];
+</pre><pre class="codeinput">[pofun{:}] = deal(<span class="string">'par.w(i)'</span>);
+</pre><div>
+            <ul>
+               <li>Coupon: <tt>(LIBOR + 2%)</tt> for floater, <tt>max(5%-LIBOR,0)</tt> for inverse floater
+               </li>
+            </ul>
+         </div><pre class="codeinput">[cpfun{1,:}] = deal(<span class="string">'(par.libor(t) + 0.02)*poval(i,t)'</span>);
+</pre><pre class="codeinput">[cpfun{2,:}] = deal(<span class="string">'max(0.05 - par.libor(t),0)*poval(i,t)'</span>);
+</pre><div>
+            <ul>
+               <li>Principal repayment: outstanding principal at maturity</li>
+            </ul>
+         </div><pre class="codeinput">[psfun{:}] = deal(<span class="string">'0'</span>); [psfun{:,T}] = deal(<span class="string">'poval(i,t)'</span>);
+</pre><pre class="codeinput">[ppfun{:}] = deal(<span class="string">'0'</span>);
+</pre><p>b) calculate coupon payments and total cash flows</p><pre class="codeinput">[cfval,poval,cpval] = cfeval(pofun,cpfun,psfun,ppfun,par); <span class="comment">%#ok</span>
+</pre><pre class="codeinput">cpval, cfval                                               <span class="comment">%#ok</span>
+</pre><pre class="codeoutput">
+cpval =
+
+          0.03          0.04          0.05
+          0.00             0             0
+
+
+cfval =
+
+          0.03          0.04          0.55
+          0.00             0          0.50
+
+</pre><h2>Example 4. CDO with senior and subordinate tranches<a name="26"></a></h2>
+         <p>a) set up security definitions</p><pre class="codeinput">[pofun,cpfun,psfun,ppfun] = deal(cell(2,T));
+</pre><div>
+            <ul>
+               <li>Principal: normalized to 1, split 75/25 between senior and subordinate tranches,   and subsequently reduced by collateral
+                  defaults, occuring at random rate <tt>d(t)</tt>,   so that fraction <tt>1-d(t)</tt> of principal outstanding in period <tt>t</tt> remains at <tt>t+1</tt></li>
+            </ul>
+         </div><pre class="codeinput">clear <span class="string">par</span>
+</pre><pre class="codeinput">par.w = [.75 .25];
+</pre><pre class="codeinput">par.d = .1*ones(1,T);
+</pre><pre class="codeinput">[pofun{:,1}] = deal(<span class="string">'par.w(i)'</span>);
+</pre><p>Credit loss on overall portfolio:</p><pre class="codeinput">clp  = <span class="string">'par.d(t-1)*sum(poval(:,t-1),1)'</span>                    <span class="comment">%#ok</span>
+</pre><pre class="codeoutput">
+clp =
+
+par.d(t-1)*sum(poval(:,t-1),1)
+
+</pre><p>Credit loss on senior tranche:</p><pre class="codeinput">cls = [<span class="string">'max(0,'</span> clp <span class="string">' - poval(2,t-1))'</span>]                    <span class="comment">%#ok</span>
+</pre><pre class="codeoutput">
+cls =
+
+max(0,par.d(t-1)*sum(poval(:,t-1),1) - poval(2,t-1))
+
+</pre><p>Subordinate tranche: principal reduced by credit losses, but cannot go negative</p><pre class="codeinput">[pofun{2,2:end}] = deal([<span class="string">'max(0,poval(2,t-1) - '</span> clp <span class="string">')'</span>]);
+</pre><p>Senior tranche: principal reduced only if credit losses exceed subordinate tranche's principal</p><pre class="codeinput">[pofun{1,2:end}] = deal([<span class="string">'max(0,poval(1,t-1) - '</span> cls <span class="string">')'</span>]);
+</pre><div>
+            <ul>
+               <li>Coupon: 5% on senior tranche, 10% on subordinate tranche</li>
+            </ul>
+         </div><pre class="codeinput">par.r = [.05 .10];
+</pre><pre class="codeinput">[cpfun{:}] = deal(<span class="string">'par.r(i)*poval(i,t)'</span>);
+</pre><div>
+            <ul>
+               <li>Principal repayment: outstanding principal at maturity</li>
+            </ul>
+         </div><pre class="codeinput">[psfun{:}] = deal(<span class="string">'0'</span>); [psfun{:,T}] = deal(<span class="string">'poval(i,t)'</span>);
+</pre><pre class="codeinput">[ppfun{:}] = deal(<span class="string">'0'</span>);
+</pre><p>b) calculate principal outstanding, coupon payments, and overall cash flows</p><pre class="codeinput">[cfval,poval,cpval] = cfeval(pofun,cpfun,psfun,ppfun,par); <span class="comment">%#ok</span>
+</pre><pre class="codeinput">poval, cpval, cfval                                        <span class="comment">%#ok</span>
+</pre><pre class="codeoutput">
+poval =
+
+          0.75          0.75          0.75
+          0.25          0.15          0.06
+
+
+cpval =
+
+          0.04          0.04          0.04
+          0.03          0.01          0.01
+
+
+cfval =
+
+          0.04          0.04          0.79
+          0.03          0.01          0.07
+
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.2<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% CFEVALDEMO1 
+% Function |cfeval| calculates cash flows of fixed-income portfolios and structured products, 
+% given a quasi-symbolic, Matlab-syntax, typically recursive description of principal and coupon
+% dynamics. Combined, these descriptions are passed to |cfsim| in cell arrays of strings, whose
+% rows correspond to securities, and columns to periods. 
+%%
+help cfeval
+
+%% Example 1. Fixed-coupon bond
+% a) set up security definitions
+T = 3;
+[pofun,cpfun,psfun,ppfun] = deal(cell(1,T));
+%%
+% * Principal outstanding: constant, normalized to 1
+[pofun{:}] = deal('1');
+%%
+% * Coupon: 5%
+[cpfun{:}] = deal('0.05*poval(i,t)');
+%%
+% * Principal repayment: outstanding principal at maturity
+[psfun{:}] = deal('0'); psfun{T} = 'poval(i,t)'; 
+%%
+[ppfun{:}] = deal('0');
+%%
+% b) calculate total cash flows
+cfeval(pofun,cpfun,psfun,ppfun)
+
+%% Example 2. Floating-rate note
+% a) set up security definitions
+[pofun,cpfun,psfun,ppfun] = deal(cell(1,T));
+%%
+% * Principal outstanding: constant, normalized to 1
+[pofun{:}] = deal('1');
+%%
+% * Coupon: linked to a variable rate, its path passed to |cfeval| in parameter structure |par| 
+clear par
+%%
+par.libor  = 0.1*rand(1,T)                                 %#ok
+%%
+[cpfun{:}] = deal('par.libor(t)*poval(i,t)');
+%%
+% * Principal repayment: outstanding principal at maturity
+[psfun{:}] = deal('0'); psfun{T} = 'poval(i,t)'; 
+%%
+[ppfun{:}] = deal('0');
+%%
+% b) calculate coupon payments and total cash flows
+[cfval,poval,cpval] = cfeval(pofun,cpfun,psfun,ppfun,par); %#ok
+%%
+cpval, cfval                                               %#ok
+
+%% Example 3. Floater and inverse floater 
+% a) set up security definitions
+[pofun,cpfun,psfun,ppfun] = deal(cell(2,T));
+%%
+% * Principal outstanding: constant, normalized to 1, split 50/50 between
+% floater and inverse floater
+par.w = [.5 .5];
+%%
+[pofun{:}] = deal('par.w(i)');
+%%
+% * Coupon: |(LIBOR + 2%)| for floater, |max(5%-LIBOR,0)| for inverse floater
+[cpfun{1,:}] = deal('(par.libor(t) + 0.02)*poval(i,t)');
+%%
+[cpfun{2,:}] = deal('max(0.05 - par.libor(t),0)*poval(i,t)');
+%%
+% * Principal repayment: outstanding principal at maturity
+[psfun{:}] = deal('0'); [psfun{:,T}] = deal('poval(i,t)'); 
+%%
+[ppfun{:}] = deal('0');
+%%
+% b) calculate coupon payments and total cash flows
+[cfval,poval,cpval] = cfeval(pofun,cpfun,psfun,ppfun,par); %#ok
+%%
+cpval, cfval                                               %#ok
+
+%% Example 4. CDO with senior and subordinate tranches
+% a) set up security definitions
+[pofun,cpfun,psfun,ppfun] = deal(cell(2,T));
+%%
+% * Principal: normalized to 1, split 75/25 between senior and subordinate tranches, 
+%   and subsequently reduced by collateral defaults, occuring at random rate |d(t)|, 
+%   so that fraction |1-d(t)| of principal outstanding in period |t| remains at |t+1|
+%%
+clear par
+%%
+par.w = [.75 .25];
+%%
+par.d = .1*ones(1,T);
+%%
+[pofun{:,1}] = deal('par.w(i)');
+%%
+% Credit loss on overall portfolio:
+clp  = 'par.d(t-1)*sum(poval(:,t-1),1)'                    %#ok
+%%
+% Credit loss on senior tranche:
+cls = ['max(0,' clp ' - poval(2,t-1))']                    %#ok
+%%
+% Subordinate tranche: principal reduced by credit losses, but cannot go negative 
+[pofun{2,2:end}] = deal(['max(0,poval(2,t-1) - ' clp ')']);
+%%
+% Senior tranche: principal reduced only if credit losses exceed subordinate tranche's principal
+[pofun{1,2:end}] = deal(['max(0,poval(1,t-1) - ' cls ')']);
+%%
+% * Coupon: 5% on senior tranche, 10% on subordinate tranche
+par.r = [.05 .10];
+%%
+[cpfun{:}] = deal('par.r(i)*poval(i,t)');
+%%
+% * Principal repayment: outstanding principal at maturity
+[psfun{:}] = deal('0'); [psfun{:,T}] = deal('poval(i,t)'); 
+%%
+[ppfun{:}] = deal('0');
+%%
+% b) calculate principal outstanding, coupon payments, and overall cash flows
+[cfval,poval,cpval] = cfeval(pofun,cpfun,psfun,ppfun,par); %#ok
+%%
+poval, cpval, cfval                                        %#ok
+##### SOURCE END #####
+-->
+   </body>
+</html>

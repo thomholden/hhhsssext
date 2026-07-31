@@ -1,0 +1,390 @@
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>Mean-variance portfolio optimization using GA and PATTERNSEARCH</title>
+      <meta name="generator" content="MATLAB 7.2">
+      <meta name="date" content="2007-10-15">
+      <meta name="m-file" content="portoptgads"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows.  On Gecko-based browsers, the shrink-to-fit doesn't work. */ 
+p,h1,h2,div.content div {
+  /* for MATLAB's browser */
+  width: 600px;
+  /* for Mozilla, but the "width" tag overrides it anyway */
+  max-width: 600px;
+  /* for IE */
+  width:expression(document.body.clientWidth > 620 ? "600px": "auto" );
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>Mean-variance portfolio optimization using GA and PATTERNSEARCH</h1>
+         <introduction>
+            <p>We seek to try out <tt>ga</tt> and <tt>patternsearch</tt> functions of the Genetic Algorithm and Direct Search Toolbox. We consider the unconstrained mean-variance portfolio optimization
+               problem, handled by <tt>portopt</tt> and <tt>portalloc</tt> of the Financial Toolbox - note that in absence of constraints other than <tt>sum(w) = 1</tt>, the problem admits a simple closed-form analytic solution - and see whether <tt>ga</tt> and <tt>patternsearch</tt> succeed at locating the optimal portfolio identified by <tt>portalloc</tt>.
+            </p>
+         </introduction>
+         <p>In the event, <tt>patternsearch</tt> delivers respectable performance, whereas <tt>ga</tt> does not. (Can this be improved via judicious choice of <tt>ga</tt> options?) Oddly enough, <tt>patternsearch</tt> solutions commonly register higher utility levels than their <tt>portalloc</tt> counterparts.
+         </p>
+         <p>Hopefully, this code sample will aid other Matlab users experimenting with Matlab's optimization facilities.</p>
+         <p><b>Exercise parameters</b>:
+         </p><pre class="codeinput">expRet = [0.1 0.2 0.15];
+</pre><pre class="codeinput">expCov = [0.005   -0.010    0.004
+         -0.010    0.040   -0.002
+          0.004   -0.002    0.023];
+</pre><pre class="codeinput">risklessRate  = 0.12;
+</pre><pre class="codeinput">borrowingRate = risklessRate;
+</pre><p><b><tt>portalloc</tt> solution</b></p>
+         <p>Optimal portfolio as a function of risk-aversion parameter:</p><pre class="codeinput">[portRisk,portReturn,portWts] = portopt(expRet,expCov,20);
+</pre><pre class="codeinput">numRAValues     = 50;
+riskAversionMin = .01;
+riskAversionMax = 3;
+</pre><pre class="codeinput">riskAversion = logspace(riskAversionMin,riskAversionMax,numRAValues);
+</pre><pre class="codeinput">[riskyReturn,riskyFraction,overallRisk,overallReturn] = deal(nan(numRAValues,1));
+<span class="keyword">for</span> i = 1:numRAValues
+    [riskyRisk,riskyReturn(i),riskyWts,riskyFraction(i),overallRisk(i),overallReturn(i)] = <span class="keyword">...</span>
+        portalloc(portRisk,portReturn,portWts,risklessRate,borrowingRate,riskAversion(i));
+<span class="keyword">end</span>
+</pre><pre class="codeinput">figure
+plot(overallRisk,overallReturn,<span class="string">'k'</span>), hold <span class="string">on</span>
+plot(portRisk,portReturn,<span class="string">'LineWidth'</span>,3,<span class="string">'Color'</span>,[.8 .8 .8])
+
+xlabel(<span class="string">'portfolio risk, \sigma_{p}'</span>)
+ylabel(<span class="string">'portfolio return, r_{p}'</span>)
+
+xlim = [0 max(overallRisk)];
+ylim = [risklessRate max(expRet)];
+axis([xlim ylim])
+
+title(<span class="string">'Capital allocation line'</span>)
+set(gcf,<span class="string">'color'</span>,<span class="string">'white'</span>)
+</pre><img vspace="5" hspace="5" src="portoptgads_01.png"> <p>Optimal share of risky assets and portfolio return as functions of the risk-aversion parameter:</p><pre class="codeinput">figure
+[a,h1,h2] = plotyy(riskAversion,riskyFraction,riskAversion,overallReturn,<span class="string">'semilogx'</span>);
+set(a(1),<span class="string">'XColor'</span>,<span class="string">'k'</span>,<span class="string">'YColor'</span>,<span class="string">'k'</span>), set(h1,<span class="string">'Color'</span>,<span class="string">'k'</span>), ylabel(a(1),<span class="string">'Risky-asset fraction'</span>)
+set(a(2),<span class="string">'XColor'</span>,<span class="string">'k'</span>,<span class="string">'YColor'</span>,<span class="string">'r'</span>), set(h2,<span class="string">'Color'</span>,<span class="string">'r'</span>), ylabel(a(2),<span class="string">'Portfolio return, r_{p}'</span>)
+xlabel(<span class="string">'Risk-aversion parameter, \lambda'</span>)
+title(<span class="string">'Optimal risky-assets share and portfolio return as functions of the risk-aversion parameter'</span>)
+set(gcf,<span class="string">'color'</span>,<span class="string">'white'</span>)
+</pre><img vspace="5" hspace="5" src="portoptgads_02.png"> <p><b>Genetic-algorithm and direct-search optimization</b></p><pre class="codeinput">optMethods = {<span class="string">'Benchmark: portalloc'</span>, <span class="keyword">...</span>
+              <span class="string">'Genetic algorithm'</span>, <span class="keyword">...</span>
+              <span class="string">'Direct search'</span>};
+numMethods = length(optMethods);
+</pre><p>Means and covariances of returns, including the riskless asset:</p><pre class="codeinput">expRetExt = [risklessRate expRet]; numAssets = length(expRetExt);    <span class="comment">%#ok</span>
+</pre><pre class="codeinput">expCovExt = zeros(numAssets); expCovExt(2:end,2:end) = expCov;       <span class="comment">%#ok</span>
+</pre><p>Values of the risk-aversion parameter, resulting in a long-only optimal allocation:</p>
+         <p>(We make things easier for <tt>ga</tt> and <tt>patternsearch</tt>, restricting optima to the unit hypercube)
+         </p><pre class="codeinput">riskAversion = riskAversion(riskyFraction &lt; 1);
+numRAValues  = 10;
+</pre><p>Objective-function definition used by <tt>ga</tt> and <tt>patternsearch</tt>:
+         </p>
+         <p><tt>util = -(expRetExt*(Wts') - A*Wts*expCovExt*(Wts')/2)</tt></p><pre class="codeinput">objfun = @(Wts) util(Wts);
+</pre><p>Objective function is the negative of utility, since <tt>ga</tt> and <tt>patternsearch</tt> are minimizers. Refer to the Financial Toolbox documentation page entitled 'Portfolio selection and risk aversion' for a
+            (rather misleading) definition of the utility function.
+         </p>
+         <p>Constraint definitions used by <tt>ga</tt> and <tt>patternsearch</tt>:
+         </p><pre class="codeinput">Aeq = ones(1,4); beq = 1;     <span class="comment">% weights sum to 1</span>
+lb  = zeros(1,4);             <span class="comment">% weights are positive  (see above)</span>
+ub  = ones(1,4);              <span class="comment">% weights are below one (see above)</span>
+</pre><p>Options used by <tt>ga</tt> and <tt>patternsearch</tt>:
+         </p><pre class="codeinput">gaoptions = gaoptimset(<span class="string">'Display'</span>,<span class="string">'off'</span>,<span class="string">'MutationFcn'</span>,@mutationadaptfeasible);
+psoptions = psoptimset(<span class="string">'Display'</span>,<span class="string">'off'</span>);
+</pre><p>We suppress the functions' interim command-window output, and modify <tt>MutationFcn</tt> property of <tt>ga</tt>, as suggested by the <tt>ga</tt> warning produced with the option's default setting 'mutationgaussian'.
+         </p>
+         <p>Arrays storing optimization results:</p><pre class="codeinput">optFun = nan(numRAValues,1,numMethods);
+optWts = nan(numRAValues,numAssets,numMethods);
+</pre><p>Optimization:</p>
+         <p><tt>portalloc</tt> is invoked once for each risk-aversion case, whereas <tt>ga</tt> and <tt>patternsearch</tt> are allowed <tt>numAttempts</tt> = 10 attempts. Only successful attempts, exiting with an 'appropriate' value of <tt>exittext</tt> or <tt>exitflag</tt> (see the functions' documentation), count towards the limit.
+         </p><pre class="codeinput">numAttempts = 10;
+</pre><pre class="codeinput">warning <span class="string">off</span>                                                          <span class="comment">%#ok</span>
+<span class="keyword">global</span> expRetExt expCovExt A
+</pre><p>An unappealing temporary fix. Documentation-suggested ways to parameterize the objective function resulted in errors and irregularities.</p><pre class="codeinput">tic
+<span class="keyword">for</span> i = 1:numRAValues
+    <span class="keyword">for</span> j = 1:numMethods
+        <span class="keyword">if</span> j == 1
+           A = riskAversion(i);
+           [a,c,riskyWts,riskyFraction,d,e] = portalloc(portRisk,portReturn,portWts,risklessRate,borrowingRate,A);
+           Wts = [(1 - riskyFraction) riskyFraction*riskyWts];
+           optWts(i,:,j) = Wts;
+           optFun(i,:,j) = expRetExt*Wts' - A*Wts*expCovExt*(Wts')/2;
+        <span class="keyword">else</span>
+           fmax = -Inf;
+           <span class="keyword">for</span> k = 1:numAttempts
+               goOn = true;
+               <span class="keyword">while</span> goOn
+                  <span class="keyword">if</span> j == 2
+                     [x f exittext] = ga(objfun,4,[],[],Aeq,beq,lb,ub,[],gaoptions);
+                     goOn = isempty(strfind(exittext,<span class="string">'change in the fitness value less than options.TolFun'</span>));
+                  <span class="keyword">else</span>
+                     x0 = rand(1,numAssets);
+                     [x f exitflag] = patternsearch(objfun,x0,[],[],Aeq,beq,lb,ub,psoptions);
+                     goOn = exitflag &lt; 1;
+                  <span class="keyword">end</span>
+               <span class="keyword">end</span>
+               <span class="keyword">if</span> -f &gt; fmax
+                  optWts(i,:,j) = x;
+                  fmax = -f;
+               <span class="keyword">end</span>
+           <span class="keyword">end</span>
+           optFun(i,:,j) = fmax;
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+toc
+</pre><pre class="codeoutput">Elapsed time is 363.962409 seconds.
+</pre><p>Selected outputs of alternative optimizers:</p><pre class="codeinput">metricNames  = {<span class="string">'Maximized value of objective function'</span>, <span class="keyword">...</span>
+                <span class="string">'Optimal portfolio share of the riskless asset'</span>, <span class="keyword">...</span>
+                <span class="string">'Optimal share of asset 1 relative to the risky-asset portfolio'</span>, <span class="keyword">...</span>
+                <span class="string">'Optimal share of asset 2 relative to the risky-asset portfolio'</span>};
+metricValues = {optFun, <span class="keyword">...</span>
+                optWts(:,1,:), <span class="keyword">...</span>
+                optWts(:,2,:)./(1 - optWts(:,1,:)), <span class="keyword">...</span>
+                optWts(:,3,:)./(1 - optWts(:,1,:))};
+</pre><pre class="codeinput"><span class="keyword">for</span> i = 1:length(metricValues)
+    figure
+    plot(riskAversion(1:numRAValues),squeeze(metricValues{i}))
+    legend(optMethods,<span class="string">'Location'</span>,<span class="string">'SouthEast'</span>)
+    xlabel(<span class="string">'Risk-aversion parameter, \lambda'</span>)
+    title(metricNames{i})
+    set(gcf,<span class="string">'color'</span>,<span class="string">'white'</span>)
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="portoptgads_03.png"> <img vspace="5" hspace="5" src="portoptgads_04.png"> <img vspace="5" hspace="5" src="portoptgads_05.png"> <img vspace="5" hspace="5" src="portoptgads_06.png"> <pre class="codeinput">close <span class="string">all</span>
+<span class="comment">% Example: portoptgads (Oh, FEX code metrics..)</span>
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.2<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% Mean-variance portfolio optimization using GA and PATTERNSEARCH
+%
+% We seek to try out |ga| and |patternsearch| functions of the Genetic Algorithm and Direct Search Toolbox.
+% We consider the unconstrained mean-variance portfolio optimization problem, handled by |portopt| and 
+% |portalloc| of the Financial Toolbox - note that in absence of constraints other than |sum(w) = 1|, the 
+% problem admits a simple closed-form analytic solution - and see whether |ga| and |patternsearch| succeed 
+% at locating the optimal portfolio identified by |portalloc|. 
+%%
+% In the event, |patternsearch| delivers respectable performance, whereas |ga| does not. (Can this be improved
+% via judicious choice of |ga| options?) Oddly enough, |patternsearch| solutions commonly register higher
+% utility levels than their |portalloc| counterparts. 
+%%
+% Hopefully, this code sample will aid other Matlab users experimenting with Matlab's optimization facilities.
+%% 
+% *Exercise parameters*:
+expRet = [0.1 0.2 0.15]; 
+%%
+expCov = [0.005   -0.010    0.004 
+         -0.010    0.040   -0.002 
+          0.004   -0.002    0.023];
+%%
+risklessRate  = 0.12;
+%%
+borrowingRate = risklessRate;
+%%
+% *|portalloc| solution*
+%% 
+% Optimal portfolio as a function of risk-aversion parameter:
+[portRisk,portReturn,portWts] = portopt(expRet,expCov,20);
+%%
+numRAValues     = 50;
+riskAversionMin = .01;
+riskAversionMax = 3;
+%%
+riskAversion = logspace(riskAversionMin,riskAversionMax,numRAValues); 
+%%
+[riskyReturn,riskyFraction,overallRisk,overallReturn] = deal(nan(numRAValues,1));
+for i = 1:numRAValues
+    [riskyRisk,riskyReturn(i),riskyWts,riskyFraction(i),overallRisk(i),overallReturn(i)] = ...
+        portalloc(portRisk,portReturn,portWts,risklessRate,borrowingRate,riskAversion(i));
+end
+
+%%
+figure
+plot(overallRisk,overallReturn,'k'), hold on
+plot(portRisk,portReturn,'LineWidth',3,'Color',[.8 .8 .8])
+
+xlabel('portfolio risk, \sigma_{p}')
+ylabel('portfolio return, r_{p}')
+
+xlim = [0 max(overallRisk)];
+ylim = [risklessRate max(expRet)];
+axis([xlim ylim])
+
+title('Capital allocation line')
+set(gcf,'color','white')
+%% 
+% Optimal share of risky assets and portfolio return as functions of the risk-aversion parameter:
+figure
+[a,h1,h2] = plotyy(riskAversion,riskyFraction,riskAversion,overallReturn,'semilogx');
+set(a(1),'XColor','k','YColor','k'), set(h1,'Color','k'), ylabel(a(1),'Risky-asset fraction')  
+set(a(2),'XColor','k','YColor','r'), set(h2,'Color','r'), ylabel(a(2),'Portfolio return, r_{p}') 
+xlabel('Risk-aversion parameter, \lambda')
+title('Optimal risky-assets share and portfolio return as functions of the risk-aversion parameter')
+set(gcf,'color','white')
+%%
+% *Genetic-algorithm and direct-search optimization*
+optMethods = {'Benchmark: portalloc', ...
+              'Genetic algorithm', ...
+              'Direct search'};
+numMethods = length(optMethods);
+%%
+% Means and covariances of returns, including the riskless asset:
+expRetExt = [risklessRate expRet]; numAssets = length(expRetExt);    %#ok
+%%
+expCovExt = zeros(numAssets); expCovExt(2:end,2:end) = expCov;       %#ok
+%%
+% Values of the risk-aversion parameter, resulting in a long-only optimal allocation:
+%%
+% (We make things easier for |ga| and |patternsearch|, restricting optima to the unit hypercube)
+riskAversion = riskAversion(riskyFraction < 1);
+numRAValues  = 10; 
+%%
+% Objective-function definition used by |ga| and |patternsearch|:
+%%
+% |util = -(expRetExt*(Wts') - A*Wts*expCovExt*(Wts')/2)|
+objfun = @(Wts) util(Wts);
+%%
+% Objective function is the negative of utility, since |ga| and |patternsearch| are minimizers.
+% Refer to the Financial Toolbox documentation page entitled 'Portfolio selection and risk aversion' for 
+% a (rather misleading) definition of the utility function.
+%%
+% Constraint definitions used by |ga| and |patternsearch|:
+Aeq = ones(1,4); beq = 1;     % weights sum to 1
+lb  = zeros(1,4);             % weights are positive  (see above)
+ub  = ones(1,4);              % weights are below one (see above)
+%% 
+% Options used by |ga| and |patternsearch|:
+gaoptions = gaoptimset('Display','off','MutationFcn',@mutationadaptfeasible);
+psoptions = psoptimset('Display','off');
+%%
+% We suppress the functions' interim command-window output, and modify |MutationFcn| property of |ga|,
+% as suggested by the |ga| warning produced with the option's default setting 'mutationgaussian'. 
+%%
+% Arrays storing optimization results:
+optFun = nan(numRAValues,1,numMethods);
+optWts = nan(numRAValues,numAssets,numMethods);
+%%
+% Optimization:
+%%
+% |portalloc| is invoked once for each risk-aversion case, whereas |ga| and |patternsearch| are allowed |numAttempts| = 10 attempts. 
+% Only successful attempts, exiting with an 'appropriate' value of |exittext| or |exitflag| (see the functions' documentation),
+% count towards the limit.
+%%
+numAttempts = 10;
+%%
+warning off                                                          %#ok
+global expRetExt expCovExt A
+%%
+% An unappealing temporary fix. Documentation-suggested ways to parameterize the objective function resulted in errors 
+% and irregularities.
+%%
+tic
+for i = 1:numRAValues
+    for j = 1:numMethods
+        if j == 1
+           A = riskAversion(i);
+           [a,c,riskyWts,riskyFraction,d,e] = portalloc(portRisk,portReturn,portWts,risklessRate,borrowingRate,A);
+           Wts = [(1 - riskyFraction) riskyFraction*riskyWts];
+           optWts(i,:,j) = Wts;
+           optFun(i,:,j) = expRetExt*Wts' - A*Wts*expCovExt*(Wts')/2;
+        else
+           fmax = -Inf;
+           for k = 1:numAttempts
+               goOn = true;  
+               while goOn
+                  if j == 2
+                     [x f exittext] = ga(objfun,4,[],[],Aeq,beq,lb,ub,[],gaoptions);
+                     goOn = isempty(strfind(exittext,'change in the fitness value less than options.TolFun'));
+                  else
+                     x0 = rand(1,numAssets); 
+                     [x f exitflag] = patternsearch(objfun,x0,[],[],Aeq,beq,lb,ub,psoptions);
+                     goOn = exitflag < 1; 
+                  end   
+               end
+               if -f > fmax
+                  optWts(i,:,j) = x; 
+                  fmax = -f;
+               end   
+           end
+           optFun(i,:,j) = fmax;
+        end
+    end
+end
+toc
+%%
+% Selected outputs of alternative optimizers:
+metricNames  = {'Maximized value of objective function', ...
+                'Optimal portfolio share of the riskless asset', ...
+                'Optimal share of asset 1 relative to the risky-asset portfolio', ...
+                'Optimal share of asset 2 relative to the risky-asset portfolio'};
+metricValues = {optFun, ...
+                optWts(:,1,:), ...
+                optWts(:,2,:)./(1 - optWts(:,1,:)), ...
+                optWts(:,3,:)./(1 - optWts(:,1,:))};
+%%            
+for i = 1:length(metricValues)
+    figure
+    plot(riskAversion(1:numRAValues),squeeze(metricValues{i}))
+    legend(optMethods,'Location','SouthEast')
+    xlabel('Risk-aversion parameter, \lambda')
+    title(metricNames{i})
+    set(gcf,'color','white')
+end    
+%%
+close all
+% Example: portoptgads (Oh, FEX code metrics..) 
+##### SOURCE END #####
+-->
+   </body>
+</html>

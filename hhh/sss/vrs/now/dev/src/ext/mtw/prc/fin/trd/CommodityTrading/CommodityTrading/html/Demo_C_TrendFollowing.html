@@ -1,0 +1,278 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Commodities Trading with MATLAB - Testing a trend following strategy</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-08-01"><meta name="DC.source" content="Demo_C_TrendFollowing.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Commodities Trading with MATLAB - Testing a trend following strategy</h1><!--introduction--><p>One of the more common trading strategies within the commodities trading community is trend following. Trend following is an absolute momentum strategy in that it assumes that a particular commodity is trending if it's latest closing price is above the highest high (or below the lowest low) over the last few trading sessions. Note that there can be multiple ways to measure the likelihood of a trend; we capture this aspect in other scripts.</p><p>In this script, we demonstrate a simple trend following strategy: the strategy will go long a particular commodity at next period's opening price if the previous period's closing price is higher than the highest high in a specified lookback window, and will then hold the commodity for a specified holding period. Note that this is a long-only strategy, on weekly training data.</p><p>We test the strategy on every commodity in our specified container (weekly training data), under multiple lookback windows, and see how it has performed as the holding period increases. We then further test the strategy by slicing our data into specific commodity groups to determine if any particular group has a greater propensity towards trending behavior than others.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Setup</a></li><li><a href="#2">2. Set up commodity data container; only front month contracts</a></li><li><a href="#3">3. Basic Trend Following: all products, multiple lookbacks/holding</a></li><li><a href="#4">4. Plot summary charts of holding period returns with varying lookbacks</a></li><li><a href="#5">5. Backtest strategy on specific commodity groups</a></li></ul></div><h2>1. Setup<a name="1"></a></h2><p>Load the cleaned, aligned data that was retrieved using the Demo_A script.</p><pre class="codeinput">clc;clear;
+load(<span class="string">'StageA'</span>);
+</pre><h2>2. Set up commodity data container; only front month contracts<a name="2"></a></h2><p>We want to test our strategy only on weekly front-month contract data. In this section, we process our data accordingly.</p><pre class="codeinput">clc;
+container = TrainingSetWeekly;
+container = FilterByContractNumber(container,1);
+</pre><h2>3. Basic Trend Following: all products, multiple lookbacks/holding<a name="3"></a></h2><p>This section sets up the trading strategy. The core parameters are the sizes of the lookback window and the maximum holding period, both measured in weeks. The main loop iterates through every commodity and, for every lookback window, computes the average performance of the long-only trend following strategy over a holding period ranging from 1 week to the maximum. Finally, it plots the performance on subplots separated by lookback window size.</p><pre class="codeinput"><span class="comment">% Parameters</span>
+lookbackArray = [10 20 40 80];
+holdingPeriod = 100;
+
+<span class="comment">% Set up plotting</span>
+clf;
+
+<span class="comment">% Set up loops and aggregators</span>
+ctr = 1;
+summary = [];worst = [];best = [];
+symbols = fields(container);
+clc;
+
+<span class="comment">% Main loop</span>
+<span class="keyword">for</span> lookback = lookbackArray
+    h = subplot(numel(lookbackArray)/2,2,ctr);
+    allComms = [];
+    fprintf(<span class="string">'Computing strategy for lookback window: %2i\n'</span>,lookback);
+    <span class="keyword">for</span> i = 1:length(symbols)
+        currSym = container.(symbols{i});
+        numMonths = length(currSym.Month);
+        <span class="keyword">for</span> j = 1:numMonths
+            ohlc = currSym.Month{j};
+            <span class="comment">% Set up lookback window and holding period window</span>
+            laggedHigh=max(createLags(ohlc.High,1:lookback),[],2);
+            fwdClose=createLags(ohlc.Close,-(1:holdingPeriod));
+            <span class="comment">% Remove NaNs</span>
+            nans=any([isnan(fwdClose) isnan(laggedHigh)],2);
+            laggedHigh(nans)=0;
+            fwdClose(nans)=0;
+            <span class="comment">% Compute signal; lag by 1 to trade from next period open</span>
+            signal=createLags(ohlc.Close &gt; laggedHigh,1);
+            signal(nans)=0;
+            signal=any(signal,2);
+            <span class="comment">% Compute holding period returns;</span>
+            <span class="comment">% average across multiple trades;</span>
+            <span class="comment">% aggregate across products</span>
+            fwdRtnSeries=fwdClose .*repmat(signal,1,holdingPeriod) <span class="keyword">...</span>
+                        ./repmat(ohlc.Open.*signal,1,holdingPeriod);
+            avgRtnSeries=nanmean(fwdRtnSeries);
+            allComms=[allComms; avgRtnSeries];
+        <span class="keyword">end</span>
+        <span class="comment">% Plot avg performance across multiple trades for current product</span>
+        plot(h,100*avgRtnSeries);
+        title(gca,[sprintf(<span class="string">'%3i'</span>,lookback) <span class="string">' periods'</span>]);
+        hold <span class="string">all</span>;
+    <span class="keyword">end</span>
+
+    ctr=ctr+1;
+    range=1:holdingPeriod;
+    worst=[worst; min(allComms(:,range))];
+    summary=[summary; median(allComms(:,range))];
+    best=[best; max(allComms(:,range))];
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Computing strategy for lookback window: 10
+Computing strategy for lookback window: 20
+Computing strategy for lookback window: 40
+Computing strategy for lookback window: 80
+</pre><img vspace="5" hspace="5" src="Demo_C_TrendFollowing_01.png" alt=""> <h2>4. Plot summary charts of holding period returns with varying lookbacks<a name="4"></a></h2><p>It might be difficult to make out individual details within the subplots in the above section. This optional section plots a summary of the best, worst and average commodity performance at each step in the holding period.</p><pre class="codeinput">figure;
+<span class="keyword">for</span> i=1:size(summary,1)
+    lookback=lookbackArray(1,i);
+    h=subplot(size(summary,1)/2,2,i);
+    plot(h,100*summary(i,:));hold <span class="string">all</span>;
+    plot(h,100*worst(i,:));
+    plot(h,100*best(i,:));
+    title(gca,[sprintf(<span class="string">'%3i'</span>,lookback) <span class="string">' periods'</span>]);
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="Demo_C_TrendFollowing_02.png" alt=""> <h2>5. Backtest strategy on specific commodity groups<a name="5"></a></h2><p>Now that we have seen our trading strategy performs across all commodities in aggregate over our training data, in this section we perform the same backtest over specific commodity groups such as 'Energy', 'Metal', 'Soft', or 'Grain'.</p><p>In this case, we can see that the strategy manages to capture the trending behavior of energy commodities fairly well.</p><pre class="codeinput">container = TrainingSetWeekly;
+container = FilterByContractNumber(container,1);
+container = FilterByType(container,<span class="string">'Energy'</span>);
+
+ComputeBacktestAndPlot(container);
+</pre><img vspace="5" hspace="5" src="Demo_C_TrendFollowing_03.png" alt=""> <p class="footer">Copyright 2013 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Commodities Trading with MATLAB - Testing a trend following strategy
+% One of the more common trading strategies within the commodities trading
+% community is trend following. Trend following is an absolute momentum
+% strategy in that it assumes that a particular commodity is trending if
+% it's latest closing price is above the highest high (or below the lowest
+% low) over the last few trading sessions. Note that there can be multiple
+% ways to measure the likelihood of a trend; we capture this aspect in
+% other scripts.
+%
+% In this script, we demonstrate a simple trend following strategy: the
+% strategy will go long a particular commodity at next period's opening
+% price if the previous period's closing price is higher than the highest
+% high in a specified lookback window, and will then hold the commodity for
+% a specified holding period. Note that this is a long-only strategy, on
+% weekly training data. 
+%
+% We test the strategy on every commodity in our specified container
+% (weekly training data), under multiple lookback windows, and see how it
+% has performed as the holding period increases. We then further test the
+% strategy by slicing our data into specific commodity groups to determine
+% if any particular group has a greater propensity towards trending
+% behavior than others.
+
+% Copyright 2013 The MathWorks, Inc.
+
+%% 1. Setup
+% Load the cleaned, aligned data that was retrieved using the Demo_A script.
+clc;clear;
+load('StageA');
+
+%% 2. Set up commodity data container; only front month contracts
+% We want to test our strategy only on weekly front-month contract data. In
+% this section, we process our data accordingly.
+clc;
+container = TrainingSetWeekly;
+container = FilterByContractNumber(container,1);
+
+%% 3. Basic Trend Following: all products, multiple lookbacks/holding
+% This section sets up the trading strategy. The core parameters are the
+% sizes of the lookback window and the maximum holding period, both
+% measured in weeks. The main loop iterates through every commodity and,
+% for every lookback window, computes the average performance of the
+% long-only trend following strategy over a holding period ranging from 1
+% week to the maximum. Finally, it plots the performance on subplots
+% separated by lookback window size.
+
+% Parameters
+lookbackArray = [10 20 40 80];
+holdingPeriod = 100;
+
+% Set up plotting
+clf;
+
+% Set up loops and aggregators
+ctr = 1;
+summary = [];worst = [];best = [];
+symbols = fields(container);
+clc;
+
+% Main loop
+for lookback = lookbackArray
+    h = subplot(numel(lookbackArray)/2,2,ctr);
+    allComms = [];
+    fprintf('Computing strategy for lookback window: %2i\n',lookback);
+    for i = 1:length(symbols)
+        currSym = container.(symbols{i});
+        numMonths = length(currSym.Month);
+        for j = 1:numMonths
+            ohlc = currSym.Month{j};
+            % Set up lookback window and holding period window
+            laggedHigh=max(createLags(ohlc.High,1:lookback),[],2);
+            fwdClose=createLags(ohlc.Close,-(1:holdingPeriod));
+            % Remove NaNs
+            nans=any([isnan(fwdClose) isnan(laggedHigh)],2);
+            laggedHigh(nans)=0;
+            fwdClose(nans)=0;
+            % Compute signal; lag by 1 to trade from next period open
+            signal=createLags(ohlc.Close > laggedHigh,1);
+            signal(nans)=0;
+            signal=any(signal,2);
+            % Compute holding period returns; 
+            % average across multiple trades;
+            % aggregate across products
+            fwdRtnSeries=fwdClose .*repmat(signal,1,holdingPeriod) ...
+                        ./repmat(ohlc.Open.*signal,1,holdingPeriod);
+            avgRtnSeries=nanmean(fwdRtnSeries);
+            allComms=[allComms; avgRtnSeries];
+        end
+        % Plot avg performance across multiple trades for current product
+        plot(h,100*avgRtnSeries);
+        title(gca,[sprintf('%3i',lookback) ' periods']);
+        hold all;
+    end
+
+    ctr=ctr+1;
+    range=1:holdingPeriod;
+    worst=[worst; min(allComms(:,range))];
+    summary=[summary; median(allComms(:,range))];
+    best=[best; max(allComms(:,range))];
+end
+
+%% 4. Plot summary charts of holding period returns with varying lookbacks
+% It might be difficult to make out individual details within the subplots
+% in the above section. This optional section plots a summary of the best,
+% worst and average commodity performance at each step in the holding
+% period.
+figure;
+for i=1:size(summary,1)
+    lookback=lookbackArray(1,i);
+    h=subplot(size(summary,1)/2,2,i);
+    plot(h,100*summary(i,:));hold all;
+    plot(h,100*worst(i,:));
+    plot(h,100*best(i,:));
+    title(gca,[sprintf('%3i',lookback) ' periods']);
+end
+
+%% 5. Backtest strategy on specific commodity groups
+% Now that we have seen our trading strategy performs across all
+% commodities in aggregate over our training data, in this section we
+% perform the same backtest over specific commodity groups such as
+% 'Energy', 'Metal', 'Soft', or 'Grain'.
+%
+% In this case, we can see that the strategy manages to capture the
+% trending behavior of energy commodities fairly well.
+container = TrainingSetWeekly;
+container = FilterByContractNumber(container,1);
+container = FilterByType(container,'Energy');
+
+ComputeBacktestAndPlot(container);
+
+##### SOURCE END #####
+--></body></html>

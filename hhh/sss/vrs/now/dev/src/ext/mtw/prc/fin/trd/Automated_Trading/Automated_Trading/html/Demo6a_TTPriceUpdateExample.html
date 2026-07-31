@@ -1,0 +1,198 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>X_Trader Price Update example</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-08-27"><meta name="DC.source" content="Demo6a_TTPriceUpdateExample.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+
+  </style></head><body><div class="content"><h1>X_Trader Price Update example</h1><!--introduction--><p>This example show how to set up a listener and callback for a change in price.  Note that X_Trader is a 32-bit application and will only work with 32-bit Windows installations of MATLAB.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Start or connect to XTrader</a></li><li><a href="#2">Available methods</a></li><li><a href="#3">Available properties</a></li><li><a href="#4">Create event notifier</a></li><li><a href="#5">Create an instruments</a></li><li><a href="#6">Attach instruments to a notifier</a></li><li><a href="#7">Define events</a></li><li><a href="#8">Set the update filter to monitor only desired fields</a></li><li><a href="#9">Listen for event data</a></li><li><a href="#10">Display prices for 10 seconds, then shut down</a></li></ul></div><h2>Start or connect to XTrader<a name="1"></a></h2><pre class="codeinput">x = xtrdr
+</pre><pre class="codeoutput">
+x = 
+
+  xtrdr handle
+
+  Properties:
+           Gate: [1x1 COM.Xtapi_TTGate_1]
+    InstrNotify: []
+     Instrument: []
+       OrderSet: []
+
+
+</pre><h2>Available methods<a name="2"></a></h2><pre class="codeinput">methods(x)
+</pre><pre class="codeoutput">
+Methods for class xtrdr:
+
+addlistener         eq                  le                  
+close               findobj             lt                  
+createInstrument    findprop            ne                  
+createNotifier      ge                  notify              
+createOrderProfile  getData             xtrdr               
+createOrderSet      gt                  
+delete              isvalid             
+
+</pre><h2>Available properties<a name="3"></a></h2><pre class="codeinput">properties(x)
+</pre><pre class="codeoutput">
+Properties for class xtrdr:
+
+    Gate
+    InstrNotify
+    Instrument
+    OrderSet
+
+</pre><h2>Create event notifier<a name="4"></a></h2><pre class="codeinput">x.createNotifier
+</pre><h2>Create an instruments<a name="5"></a></h2><pre class="codeinput">x.createInstrument(<span class="string">'Exchange'</span>,<span class="string">'TTSIM-G'</span>,<span class="string">'Product'</span>,<span class="string">'IPE e-Brent'</span>,<span class="keyword">...</span>
+    <span class="string">'ProdType'</span>,<span class="string">'Future'</span>,<span class="string">'Contract'</span>,<span class="string">'Oct12'</span>,<span class="string">'Alias'</span>,<span class="string">'Demo6a_PriceUdate'</span>)
+</pre><h2>Attach instruments to a notifier<a name="6"></a></h2><pre class="codeinput">x.InstrNotify(1).AttachInstrument(x.Instrument(1))
+</pre><h2>Define events<a name="7"></a></h2><pre class="codeinput">x.InstrNotify(1).registerevent({<span class="string">'OnNotifyFound'</span>,@(varargin)ttinstrumentfound(varargin{:})})
+x.InstrNotify(1).registerevent({<span class="string">'OnNotifyNotFound'</span>,@(varargin)ttinstrumentnotfound(varargin{:})})
+x.InstrNotify(1).registerevent({<span class="string">'OnNotifyUpdate'</span>,@(varargin)ttinstrumentupdate(varargin{:},x)})
+</pre><h2>Set the update filter to monitor only desired fields<a name="8"></a></h2><pre class="codeinput">x.InstrNotify(1).UpdateFilter = <span class="string">'Last$,LastQty$,~LastQty$,Change$'</span>;
+</pre><h2>Listen for event data<a name="9"></a></h2><pre class="codeinput">x.Instrument(1).Open(0)
+</pre><h2>Display prices for 10 seconds, then shut down<a name="10"></a></h2><pre class="codeinput">pause(10)
+disp(<span class="string">'Shutting down communications to X_Trader.'</span>)
+close(x)
+</pre><pre class="codeoutput">Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.88, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.89, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.87, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.88, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.89, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.87, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.87, LastQty: 2
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.86, LastQty: 2
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.86, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.86, LastQty: 4
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.85, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.84, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.85, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.84, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.85, LastQty: 1
+ 
+Exchange: TTSIM-G, Product: IPE e-Brent, ProdType: FUTURE, Contract:  IPE e-Brent Oct12
+Last: 113.85, LastQty: 2
+ 
+Shutting down communications to X_Trader.
+</pre><p class="footer">Copyright 2012 The MathWorks, Inc.<br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+%% X_Trader Price Update example
+% This example show how to set up a listener and callback for a change in
+% price.  Note that X_Trader is a 32-bit application and will only
+% work with 32-bit Windows installations of MATLAB.
+%
+%  Copyright 2012 The MathWorks, Inc.
+%% Start or connect to XTrader
+x = xtrdr
+
+%% Available methods
+methods(x)
+
+%% Available properties
+properties(x)
+
+%% Create event notifier
+x.createNotifier
+
+%% Create an instruments
+x.createInstrument('Exchange','TTSIM-G','Product','IPE e-Brent',...
+    'ProdType','Future','Contract','Oct12','Alias','Demo6a_PriceUdate')
+
+%% Attach instruments to a notifier
+x.InstrNotify(1).AttachInstrument(x.Instrument(1))
+
+%% Define events
+x.InstrNotify(1).registerevent({'OnNotifyFound',@(varargin)ttinstrumentfound(varargin{:})})
+x.InstrNotify(1).registerevent({'OnNotifyNotFound',@(varargin)ttinstrumentnotfound(varargin{:})})
+x.InstrNotify(1).registerevent({'OnNotifyUpdate',@(varargin)ttinstrumentupdate(varargin{:},x)})
+
+%% Set the update filter to monitor only desired fields
+x.InstrNotify(1).UpdateFilter = 'Last$,LastQty$,~LastQty$,Change$';
+
+%% Listen for event data
+x.Instrument(1).Open(0)
+
+%% Display prices for 10 seconds, then shut down
+pause(10)
+disp('Shutting down communications to X_Trader.')
+close(x)
+
+##### SOURCE END #####
+--></body></html>

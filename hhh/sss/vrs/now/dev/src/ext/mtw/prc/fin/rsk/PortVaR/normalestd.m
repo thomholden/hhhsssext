@@ -1,0 +1,1 @@
+function y = normalestd(x)%NORMALESTD	standardized normal density function.%%	Standardized normal distribution (0,1) %%	Copyright (c) 2004 by Flavio Bazzana%   Department of Computer and Management Sciences%   University of Trento%   38100 - Trento ITALY%   flavio.bazzana@economia.unitn.ity = (1./sqrt(2*pi)).*exp(-0.5.*x.^2);

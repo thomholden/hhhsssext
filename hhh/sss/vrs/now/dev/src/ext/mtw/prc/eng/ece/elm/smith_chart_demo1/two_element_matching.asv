@@ -1,0 +1,267 @@
+%tw0_elelment_matching.m
+%This is a file to calculate series/shunt or shunt/series 
+%2 element matching components from a given
+%normalized impedance at a specific frequency.
+%this calculation assumes a 50 ohm system
+% John Wetters
+clear all
+close all
+delete diary.txt
+diary diary.txt
+echo on 
+
+j=sqrt(-1) %use j as the complex operator to keep 
+           %consistent with electronic literature on this subject
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%input section for characteristic impedance Zo
+%input section for frequency of operation in Mhz
+%input section for real part of desired impedance
+%input section for imaginary part of desired impedance
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+z=input('What is the characteristic impedance Zo?   ','s')
+if isempty(z)
+    z = '50';
+end
+Zo=str2num(z)
+
+freq=input('What is the frequency of the network in Mhz?  ','s')
+if isempty(freq)
+    freq = '150';
+end
+s5=[ freq 'Mhz']
+f=str2num(freq)*1e6
+
+w=2*pi*f %calculate omega, w from frequency of operation
+
+zr=input('What is the real part of the normalized impedance needed?   ','s')
+if isempty(zr)
+    zr = '.1';
+end
+z1=str2num(zr)
+
+
+zi=input('What is the imaginary part of the normalized impedance needed?   ','s')
+if isempty(zi)
+    zi = '.6';
+end
+z2=str2num(zi)
+
+
+zcomplex=z1+j*z2 %this is the desired impedance
+gama=(zcomplex-1)/(zcomplex+1) %this is the desired reflection coefficient
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%plot the reflection coefficient on the Smith chart
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+figure(1)
+smith3
+plot(gama,'rx')
+title('normalized desired complex impedance')
+s3=['  z=' zr '+j' zi]
+text(real(gama),imag(gama),s3)
+ycomplex=1/zcomplex %this is the needed complex admittance
+mag=abs(gama)
+angle1=180/pi*angle(gama) %angle in degrees
+xlabel(['y desired=' num2str(ycomplex) '   gama desired= ' num2str(mag) ' deg=' num2str(angle1)])
+
+
+%intersections to the 1+/-js admittance circle
+%*******************************************
+	s=sqrt(1/z1-1)
+	yInterceptP=1+j*s
+    yInterceptM=1-j*s
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%intersections to the 1+/-jX impedance circle
+%*******************************************   
+    zInterceptM=1/yInterceptP
+    zInterceptP=1/yInterceptM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%impdeances to rotate from the  1+/-js admittance circle
+%*******************************************
+	deltaZP=imag(zInterceptP)-z2
+    deltaZM=imag(zInterceptM)-z2
+    
+   
+if (deltaZP > 0 & imag(s)==0) % Shunt L Series C zInterceptP
+	%case1
+	shuntL=Zo/(s*w)
+    seriesC=1/(w*abs(deltaZP*Zo))
+	figure(2)
+	smith3
+	gama1=(zInterceptP-1)/(zInterceptP+1) %reflection coeffients of the interscetion to 1+js
+	t=num2str(s);
+	s4=[ '  Y=1 - j' t]
+	plot(gama1,'rx')
+	text(real(gama1),imag(gama1),s4) %plot intersection point
+    s1=['Shunt L ' num2str(shuntL) '  Series C '  num2str(seriesC)] %list 2 element match on figure
+	title(s1)
+	plot(gama,'rx') %plot desired complex impedance
+	text(real(gama),imag(gama),s3)
+	text(.5,1,s5)
+    %check solution
+    [z]=shuntL_seriesC(shuntL,seriesC,w,Zo)
+    xlabel(['actual impdeance=' num2str(z)])
+    
+    %*******************************************
+elseif (deltaZP < 0 & imag(s)==0) % Shunt L Series L zInterceptP
+	%case2
+	shuntL=Zo/(w*s)
+    seriesL=abs(deltaZP*Zo)/w
+	figure(3)
+	smith3
+	gama1=(zInterceptP-1)/(zInterceptP+1)
+	t=num2str(s);
+	s4=[ '  Y=1 - j' t]
+	plot(gama1,'rx')
+	text(real(gama1),imag(gama1),s4)
+    s1=['Shunt L ' num2str(shuntL) '  Series L '  num2str(seriesL)]
+	title(s1)
+	plot(gama,'rx')
+	text(real(gama),imag(gama),s3)
+	text(.5,1,s5)
+    [z]=shuntL_seriesL(shuntL,seriesL,w,Zo)
+    xlabel(['actual impdeance=' num2str(z)])
+    %*******************************************
+end
+
+    if (deltaZM < 0 & imag(s)==0) % Shunt C Series L zInterceptM
+	%case3
+    shuntC=s/(Zo*w)
+    seriesL=abs(deltaZM*Zo)/w
+	figure(4)
+	smith3
+	gama1=(zInterceptM-1)/(zInterceptM+1)
+	t=num2str(s);
+	s4=[ '  Y=1 +  j' t]
+	plot(gama1,'rx')
+	text(real(gama1),imag(gama1),s4)
+    s1=['Shunt C ' num2str(shuntC) '  Series L '  num2str(seriesL)]
+	title(s1)
+	plot(gama,'rx')
+	text(real(gama),imag(gama),s3)
+	text(.5,1,s5)
+    [z]=shuntC_seriesL(shuntC,seriesL,w,Zo)
+    xlabel(['actual impdeance=' num2str(z)])
+   
+    %*******************************************
+elseif (deltaZM > 0 & imag(s)==0) % Shunt C Series C zInterceptM
+	%case4
+	shuntC=s/(Zo*w)
+    seriesC=1/(Zo*deltaZM*w)
+	figure(5)
+	smith3
+	gama1=(zInterceptM-1)/(zInterceptM+1)
+	t=num2str(s);
+	s4=[ '  Y=1 + j' t]
+	plot(gama1,'rx')
+	text(real(gama1),imag(gama1),s4)
+    s1=['Shunt C ' num2str(shuntC) '  Series C '  num2str(seriesC)]
+	title(s1)
+	plot(gama,'rx')
+	text(real(gama),imag(gama),s3)
+	text(.5,1,s5)
+    [z]=shuntC_seriesC(shuntC,seriesC,w,Zo)
+    xlabel(['actual impdeance=' num2str(z)])
+   
+    %*******************************************
+end
+		
+%intersections to the 1+/-z circle
+%Series L or C to shunt L or C
+	z=sqrt(1/real(ycomplex)-1)
+	zInterceptP=1+j*z
+    zInterceptM=1-j*z
+    yInterceptM=1/zInterceptP
+    yInterceptP=1/zInterceptM
+	deltaYP=imag(yInterceptP)-imag(ycomplex)
+    deltaYM=imag(yInterceptM)-imag(ycomplex)
+    %intersections to the 1+/-z circle
+
+    %*******************************************
+if (deltaYM < 0 & imag(z)==0 ) % Series L Shunt C zInterceptP
+	%case1
+    seriesL=abs(z*Zo)/w
+    shuntC=abs(deltaYM)/(Zo*w)
+	figure(6)
+	smith3
+	gama1=(zInterceptP-1)/(zInterceptP+1)
+	t=num2str(z);
+	s4=[ '  Z=1 +j' t]
+	plot(gama1,'rx')
+	text(real(gama1),imag(gama1),s4)
+    s=['Series L ' num2str(seriesL) '  Shunt C '  num2str(shuntC)]
+	title(s)
+	plot(gama,'rx')
+	text(real(gama),imag(gama),s3)
+	text(.5,1,s5)
+    [z]=seriesL_shuntC(seriesL,shuntC,w,Zo)
+    xlabel(['actual impdeance=' num2str(z)])
+    %*******************************************
+elseif (deltaYM > 0 & imag(z)==0) % Series L Shunt L zInterceptP
+	%case2
+	seriesL=abs(z*Zo)/w
+    shuntL=Zo/(abs(deltaYM)*w)
+	figure(7)
+	smith3
+	gama1=(zInterceptP-1)/(zInterceptP+1)
+	t=num2str(z);
+	s4=[ '  Z=1 +j' t]
+	plot(gama1,'rx')
+	text(real(gama1),imag(gama1),s4)
+    s=['Series L ' num2str(seriesL) '  Shunt L '  num2str(shuntL)]
+	title(s)
+	plot(gama,'rx')
+	text(real(gama),imag(gama),s3)
+	text(.5,1,s5)
+     [z]=seriesL_shuntL(seriesL,shuntL,w,Zo)
+    xlabel(['actual impdeance=' num2str(z)])
+    %*******************************************
+end
+
+    if (deltaYP > 0 & imag(z)==0) % Series C Shunt L zInterceptM
+	%case3
+    seriesC=1/(Zo*z*w)
+    shuntL=Zo/(abs(deltaYP)*w)
+	figure(8)
+	smith3
+	gama1=(zInterceptM-1)/(zInterceptM+1)
+	t=num2str(z);
+	s4=[ '  Z=1 - j' t]
+	plot(gama1,'rx')
+	text(real(gama1),imag(gama1),s4)
+    s=['Series C ' num2str(seriesC) '  Shunt L '  num2str(shuntL)]
+	title(s)
+	plot(gama,'rx')
+	text(real(gama),imag(gama),s3)
+	text(.5,1,s5)
+    [z]=seriesC_shuntL(seriesC,shuntL,w,Zo)
+    xlabel(['actual impdeance=' num2str(z)])
+    %*******************************************
+elseif (deltaYP < 0 & imag(z)==0) % Series C Shunt C zInterceptM
+	%case4
+    seriesC=1/(Zo*z*w)
+	shuntC=abs(deltaYP)/(Zo*w)
+	figure(9)
+	smith3
+	gama1=(zInterceptM-1)/(zInterceptM+1)
+	t=num2str(z);
+	s4=[ '  z=1 -j' t]
+	plot(gama1,'rx')
+	text(real(gama1),imag(gama1),s4)
+    s=['Series C ' num2str(seriesC) '  Shunt C '  num2str(shuntC)]
+	title(s)
+	plot(gama,'rx')
+	text(real(gama),imag(gama),s3)
+	text(.5,1,s5)
+     [z]=seriesC_shuntC(seriesC,shuntC,w,Zo)
+    xlabel(['actual impdeance=' num2str(z)])
+    %*******************************************
+end	
+
+	diary off
+    edit diary.txt
+

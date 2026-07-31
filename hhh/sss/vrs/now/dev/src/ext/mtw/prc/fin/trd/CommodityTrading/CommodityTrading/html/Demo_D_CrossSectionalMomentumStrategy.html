@@ -1,0 +1,279 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Commodities Trading with MATLAB - Cross Sectional Momentum</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-08-02"><meta name="DC.source" content="Demo_D_CrossSectionalMomentumStrategy.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Commodities Trading with MATLAB - Cross Sectional Momentum</h1><!--introduction--><p>Another popular form of trading strategy that is often employed by commodities traders and analysts is cross-sectional momentum, which seeks to measure and rank momentum across multiple commodities.</p><p>In this script, we demonstrate a simple way to analyze and rank momentum for each commodity in our monthly training set. We have included three different momentum indicator functions that can be used to measure absolute momentum. The script implements a basic momentum catch-up strategy, in which we go rank commodities by momentum, pick the one that has the lowest momentum, wait a couple of months, and then go long that commodity, holding it for a month. This is repeated every month.</p><p>The script starts off by computing momentum signals for every commodity included in the group to be analyzed, ranks the signals, and picks the appropriate intra-period (i.e. monthly) return. It then goes on to compute a normalized index for the strategy's performance, as well as a comparative index that measures the performance of a buy-and-hold strategy that invests equal amounts of capital in each commodity in the group. Finally, the script computes the CAGR and other relevant statistics, and plots a chart displaying this information.</p><p>The final portion of the script demonstrates that, though the strategy does not perform very well on a loosely-defined group of commodities, for more focused groups the strategy manages to capture the trend if any that is driving the group's returns.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Setup</a></li><li><a href="#2">2. Compute momentum signal for every commodity</a></li><li><a href="#3">3. Compute returns &amp; cross-sectional momentum ranking</a></li><li><a href="#4">4. Extract intraperiod returns (long &amp; short), add costs</a></li><li><a href="#5">5. Compute buy &amp; hold and strategy indices, other statistics</a></li><li><a href="#6">6. Plot indices and display CAGR, other statistics</a></li><li><a href="#7">7. Perform backtests on focused groups</a></li></ul></div><h2>1. Setup<a name="1"></a></h2><p>Load the cleaned, aligned data that was retrieved using the Demo_A script.</p><pre class="codeinput">clc;clear;
+load(<span class="string">'StageA'</span>);
+cmd = CommodityMetadata;
+</pre><h2>2. Compute momentum signal for every commodity<a name="2"></a></h2><p>In this section, we specify the data we want to analyze (monthly training data, front-month contracts) and the momentum indicator we will use to compute the momentum signal for every commodity in our set.</p><pre class="codeinput">container = TrainingSetMonthly;
+container = FilterByContractNumber(container,1);
+indicatorFcn = @IndicatorSMASlope;
+windowSize = 6;
+symbols = fields(container);
+signal=[];allOpen=[];allClose=[];
+<span class="comment">% Compute indicator values for each commodity</span>
+<span class="keyword">for</span> i=1:length(symbols)
+    currSym = container.(symbols{i});
+    ohlcData = currSym.Month{1};
+    newSignal = indicatorFcn(ohlcData,windowSize);
+    signal = [signal newSignal];
+    allOpen = [allOpen ohlcData.Open];
+    allClose = [allClose ohlcData.Close];
+    dates=ohlcData.Date;
+<span class="keyword">end</span>
+</pre><h2>3. Compute returns &amp; cross-sectional momentum ranking<a name="3"></a></h2><p>This section computes intra-period returns for every commodity, and ranks the momentum for each period across commodities.</p><pre class="codeinput">intraperiodRtn=(allClose - allOpen)./allOpen;
+numCommodities=size(allOpen,2);
+howMany=1;
+lagMonths=2;
+[sortedSignal,sortedIdx]=sort(signal,2);
+
+pickedIndexValues=1:howMany;
+pickedIndices=createLags(sortedIdx(:,pickedIndexValues),2);
+<span class="keyword">for</span> i=1:lagMonths
+    pickedIndices(i,:)=pickedIndexValues;
+<span class="keyword">end</span>
+</pre><h2>4. Extract intraperiod returns (long &amp; short), add costs<a name="4"></a></h2><p>This section extracts the returns for the "catch-up" commodity at each period, factoring in costs per round turn.</p><pre class="codeinput">cost = 20/10000; <span class="comment">% basis points per round turn per position</span>
+rows=size(intraperiodRtn,1);
+cols=howMany;
+pickedRtns=zeros(rows,cols);
+
+<span class="comment">% Compute returns</span>
+<span class="keyword">for</span> i=(windowSize+lagMonths):rows
+    <span class="keyword">for</span> j=1:cols
+        pickedRtns(i,j)=intraperiodRtn(i,pickedIndices(i,j))-cost;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><h2>5. Compute buy &amp; hold and strategy indices, other statistics<a name="5"></a></h2><p>This section computes normalized indices and statistics for our momentum catch-up strategy as well as for our comparative buy-and-hold strategy.</p><pre class="codeinput">bahRtn=mean(intraperiodRtn,2);
+stratRtn=mean(pickedRtns,2);
+
+[bahStats, bahIndex, labels]=ComputeStatistics(bahRtn,<span class="string">'m'</span>);
+[stratStats, stratIndex, ~]=ComputeStatistics(stratRtn,<span class="string">'m'</span>);
+
+comp = [flipud(struct2array(bahStats)') <span class="keyword">...</span>
+        flipud(struct2array(stratStats)')];
+comp = [comp comp(:,2)-comp(:,1)];
+</pre><h2>6. Plot indices and display CAGR, other statistics<a name="6"></a></h2><p>This section generates plots for our strategy index and our buy and hold index, and also displays relevant statistics such as CAGR, Sharpe ratio, Sortino ratio, and maximum drawdown for the period. The plots compare the differences in these statistics to show how our strategy index has over-performed or under-performed compared to the buy and hold index.</p><pre class="codeinput">figure1=figure;
+h=subplot(2,1,1,<span class="string">'Parent'</span>,figure1);
+plot(h,dates,bahIndex(2:end),<span class="string">'DisplayName'</span>,<span class="string">'B&amp;H Basket'</span>);
+hold(h,<span class="string">'all'</span>);
+plot(h,dates,stratIndex(2:end),<span class="string">'DisplayName'</span>,<span class="string">'Strategy'</span>);
+datetick(<span class="string">'x'</span>,<span class="string">'mmmyyyy'</span>,<span class="string">'keepticks'</span>,<span class="string">'keeplimits'</span>);
+legend(<span class="string">'toggle'</span>);
+legend(<span class="string">'Location'</span>,<span class="string">'NorthWest'</span>);
+hold <span class="string">off</span>
+h=subplot(2,1,2,<span class="string">'Parent'</span>,figure1, <span class="keyword">...</span>
+                <span class="string">'XTickLabel'</span>,labels, <span class="keyword">...</span>
+                <span class="string">'XTick'</span>, [1:length(labels)]);
+box(h,<span class="string">'on'</span>);
+hold(h,<span class="string">'all'</span>);
+bar(comp,<span class="string">'Parent'</span>,h);
+</pre><img vspace="5" hspace="5" src="Demo_D_CrossSectionalMomentumStrategy_01.png" alt=""> <h2>7. Perform backtests on focused groups<a name="7"></a></h2><p>In this section, we perform similar backtests on specific commodity groups and measure performance. We notice that the performance of this strategy manages to capture major trends that moves the entire group, but is unsuccessful with certain groups such as 'soft' commodities.</p><pre class="codeinput">container = TrainingSetMonthly;
+container = FilterByContractNumber(container,1);
+container = FilterByType(container,<span class="string">'Energy'</span>);
+
+ComputeIndicatorsAndReturns;
+PerformCrossSectionalRanking;
+ComputeReturnsWithCosts;
+ComputeIndicesAndPlot;
+</pre><img vspace="5" hspace="5" src="Demo_D_CrossSectionalMomentumStrategy_02.png" alt=""> <p class="footer">Copyright 2013 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Commodities Trading with MATLAB - Cross Sectional Momentum
+% Another popular form of trading strategy that is often employed by
+% commodities traders and analysts is cross-sectional momentum, which seeks
+% to measure and rank momentum across multiple commodities.
+%
+% In this script, we demonstrate a simple way to analyze and rank momentum
+% for each commodity in our monthly training set. We have included three
+% different momentum indicator functions that can be used to measure
+% absolute momentum. The script implements a basic momentum catch-up
+% strategy, in which we go rank commodities by momentum, pick the one that
+% has the lowest momentum, wait a couple of months, and then go long that
+% commodity, holding it for a month. This is repeated every month.
+%
+% The script starts off by computing momentum signals for every commodity
+% included in the group to be analyzed, ranks the signals, and picks the
+% appropriate intra-period (i.e. monthly) return. It then goes on to
+% compute a normalized index for the strategy's performance, as well as a
+% comparative index that measures the performance of a buy-and-hold
+% strategy that invests equal amounts of capital in each commodity in the
+% group. Finally, the script computes the CAGR and other relevant
+% statistics, and plots a chart displaying this information.
+%
+% The final portion of the script demonstrates that, though the strategy
+% does not perform very well on a loosely-defined group of commodities, for
+% more focused groups the strategy manages to capture the trend if any that
+% is driving the group's returns.
+
+% Copyright 2013 The MathWorks, Inc.
+
+%% 1. Setup
+% Load the cleaned, aligned data that was retrieved using the Demo_A script.
+clc;clear;
+load('StageA');
+cmd = CommodityMetadata;
+
+%% 2. Compute momentum signal for every commodity
+% In this section, we specify the data we want to analyze (monthly training
+% data, front-month contracts) and the momentum indicator we will use to
+% compute the momentum signal for every commodity in our set.
+container = TrainingSetMonthly;
+container = FilterByContractNumber(container,1);
+indicatorFcn = @IndicatorSMASlope;
+windowSize = 6;
+symbols = fields(container);
+signal=[];allOpen=[];allClose=[];
+% Compute indicator values for each commodity
+for i=1:length(symbols)
+    currSym = container.(symbols{i});
+    ohlcData = currSym.Month{1};
+    newSignal = indicatorFcn(ohlcData,windowSize);
+    signal = [signal newSignal];
+    allOpen = [allOpen ohlcData.Open];
+    allClose = [allClose ohlcData.Close];
+    dates=ohlcData.Date;
+end
+
+%% 3. Compute returns & cross-sectional momentum ranking
+% This section computes intra-period returns for every commodity, and ranks
+% the momentum for each period across commodities.
+intraperiodRtn=(allClose - allOpen)./allOpen;
+numCommodities=size(allOpen,2);
+howMany=1;
+lagMonths=2;
+[sortedSignal,sortedIdx]=sort(signal,2);
+
+pickedIndexValues=1:howMany;
+pickedIndices=createLags(sortedIdx(:,pickedIndexValues),2);
+for i=1:lagMonths
+    pickedIndices(i,:)=pickedIndexValues;
+end
+
+%% 4. Extract intraperiod returns (long & short), add costs
+% This section extracts the returns for the "catch-up" commodity at each
+% period, factoring in costs per round turn.
+cost = 20/10000; % basis points per round turn per position
+rows=size(intraperiodRtn,1);
+cols=howMany;
+pickedRtns=zeros(rows,cols);
+
+% Compute returns
+for i=(windowSize+lagMonths):rows
+    for j=1:cols
+        pickedRtns(i,j)=intraperiodRtn(i,pickedIndices(i,j))-cost;
+    end
+end
+
+%% 5. Compute buy & hold and strategy indices, other statistics
+% This section computes normalized indices and statistics for our momentum
+% catch-up strategy as well as for our comparative buy-and-hold strategy.
+bahRtn=mean(intraperiodRtn,2);
+stratRtn=mean(pickedRtns,2);
+
+[bahStats, bahIndex, labels]=ComputeStatistics(bahRtn,'m');
+[stratStats, stratIndex, ~]=ComputeStatistics(stratRtn,'m');
+
+comp = [flipud(struct2array(bahStats)') ...
+        flipud(struct2array(stratStats)')];
+comp = [comp comp(:,2)-comp(:,1)];    
+
+%% 6. Plot indices and display CAGR, other statistics
+% This section generates plots for our strategy index and our buy and hold
+% index, and also displays relevant statistics such as CAGR, Sharpe ratio,
+% Sortino ratio, and maximum drawdown for the period. The plots compare
+% the differences in these statistics to show how our strategy index has
+% over-performed or under-performed compared to the buy and hold index.
+figure1=figure;
+h=subplot(2,1,1,'Parent',figure1);
+plot(h,dates,bahIndex(2:end),'DisplayName','B&H Basket');
+hold(h,'all');
+plot(h,dates,stratIndex(2:end),'DisplayName','Strategy');
+datetick('x','mmmyyyy','keepticks','keeplimits');
+legend('toggle');
+legend('Location','NorthWest');
+hold off
+h=subplot(2,1,2,'Parent',figure1, ...
+                'XTickLabel',labels, ...
+                'XTick', [1:length(labels)]);
+box(h,'on');
+hold(h,'all');
+bar(comp,'Parent',h);
+
+%% 7. Perform backtests on focused groups
+% In this section, we perform similar backtests on specific commodity
+% groups and measure performance. We notice that the performance of this
+% strategy manages to capture major trends that moves the entire group, but
+% is unsuccessful with certain groups such as 'soft' commodities. 
+container = TrainingSetMonthly;
+container = FilterByContractNumber(container,1);
+container = FilterByType(container,'Energy');
+
+ComputeIndicatorsAndReturns;
+PerformCrossSectionalRanking;
+ComputeReturnsWithCosts;
+ComputeIndicesAndPlot;
+
+##### SOURCE END #####
+--></body></html>

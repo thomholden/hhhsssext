@@ -1,0 +1,389 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>Symbolic Derivatives for Econometric Tests</title><meta name="generator" content="MATLAB 7.11"><meta name="date" content="2010-02-08"><meta name="m-file" content="symbolic_econometric_tests"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>Symbolic Derivatives for Econometric Tests</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Introduction to Derivatives for Econometric Tests</a></li><li><a href="#2">Example: Data, Hypothesis, and Basic Regression Analysis</a></li><li><a href="#4">Analysis using Symbolic Math Toolbox and Econometric Functions</a></li><li><a href="#5">Write a symbolic expression for the loglikelihood function</a></li><li><a href="#6">Call <tt>matlabFunction</tt> to generate a function handle for evaluating the loglikelihood</a></li><li><a href="#7">Call fmincon to evaluate the maximizers of the restricted and unrestricted loglikelihood</a></li><li><a href="#8">Call <tt>jacobian</tt> to calculate the gradient and Hessian of the loglikelihood</a></li><li><a href="#9">Call <tt>matlabFunction</tt> to generate a function handle for evaluating the score and covariance</a></li><li><a href="#10">Test the hypothesis with <tt>lmtest</tt> and <tt>waldtest</tt></a></li><li><a href="#12">Conclusion</a></li></ul></div><h2>Introduction to Derivatives for Econometric Tests<a name="1"></a></h2><p>Two Econometric Toolbox&#8482; model misspecification tests, <tt>lmtest</tt> and <tt>waldtest</tt>, require you to provide expressions for derivatives as inputs. While most of us learned to compute derivatives in school, these computations can be tedious and error-prone.</p><p>The Symbolic Math Toolbox&#8482; <tt>jacobian</tt> function calculates derivatives of symbolic expressions. <tt>matlabFunction</tt> converts symbolic expressions into function handles or files that calculate numerically as if substituting values for symbolic variables. Between these two functions you can automate the calculation of derivatives and use the resulting expressions in econometric applications. This example shows how to include data in your symbolic setup, and how to use the results in <tt>lmtest</tt> and <tt>waldtest</tt>.</p><h2>Example: Data, Hypothesis, and Basic Regression Analysis<a name="2"></a></h2><p>This example models the real GNP data series from the Nelson-Plosser data set as a loglinear series plus Gaussian noise. The question is whether the long-term growth rate might, in fact, be less than 2.9%, when the fitted model shows it is about 3.1%.</p><p>There are several ways of answering this question. The simplest is probably to use the <tt>regress</tt> function from Statistics Toolbox&#8482;. Load the Nelson-Plosser dataset and extract the real GNP series. Find the best linear fit and a 95% confidence interval for the coefficients of the fit.</p><pre class="codeinput">load <span class="string">Data_NelsonPlosser</span> <span class="comment">% your computer might have to use</span>
+<span class="comment">% load NelsonPlosser</span>
+gnp = Dataset.GNPR;
+gnpr = log(gnp(not(isnan(gnp)))); <span class="comment">% log scaled</span>
+datesr = dates(not(isnan(gnp))); <span class="comment">% Date series</span>
+X = [ones(size(datesr)) datesr]; <span class="comment">% include constant term in fit</span>
+alpha = 0.05;
+[betahat,Ibeta] = regress(gnpr,X,alpha);
+fprintf(<span class="string">'Best slope = %4.3g\n'</span>,betahat(2))
+fprintf(<span class="string">'95%% confidence interval = [%4.3g %4.3g]'</span>,Ibeta(2,:))
+</pre><pre class="codeoutput">Best slope = 0.031
+95% confidence interval = [0.0291 0.0329]</pre><p>The 95% confidence interval does not contain the slope 0.029. Therefore, this test indicates rejection of the hypothesis that the true slope is 2.9%.</p><p>To see the results of calculating the best fitting line with slope 0.029, regress (gnpr - 0.29*datesr) on a constant:</p><pre class="codeinput">x = ones(size(datesr));
+[xhat Ix] = regress(gnpr-0.029*datesr,x,alpha);
+gnpx = xhat + 0.029*datesr;
+hold <span class="string">on</span>
+plot(datesr,gnpr,<span class="string">'bo'</span>);lsline <span class="comment">% data points and least squares fit</span>
+plot(datesr,gnpx,<span class="string">'r-'</span>) <span class="comment">% 0.029 line</span>
+legend(<span class="string">'Data'</span>,<span class="string">'Best linear fit'</span>,<span class="string">'0.029 Linear fit'</span>,<span class="string">'Location'</span>,<span class="string">'nw'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="symbolic_econometric_tests_01.png" alt=""> <h2>Analysis using Symbolic Math Toolbox and Econometric Functions<a name="4"></a></h2><p>We now show how to use <tt>lmtest</tt> and <tt>waldtest</tt> to examine the hypothesis that the true slope is 2.9%. <tt>lmtest</tt> requires three inputs: the 'score' (gradient) at the restricted maximizer of the loglikelihood, a covariance estimated at this restricted maximizer, and the number of restrictions. <tt>waldtest</tt> requires the restriction functions and their Jacobian evaluated at the unrestricted maximizer, and also requires a covariance estimated at the unrestricted maximizer. To calculate the score and covariance, you need to calculate derivatives.</p><p>There are several covariance estimates in general use. One, the outer product of gradients (OPG), is not very accurate for small data sets, but is in widespread use because it requires only first derivatives (gradients). This example shows how to compute an OPG estimate for <tt>lmtest</tt>. Another estimator, <img src="symbolic_econometric_tests_eq34683.png" alt="$-\rm{Hessian}^{-1}$">, is often more accurate than the OPG estimate, but requires a second derivative. This example shows how to compute this estimator for <tt>waldtest</tt>.</p><p>Now begin the process of evaluating whether the 0.029 slope is statistically distinguishable from the 0.031 slope.</p><h2>Write a symbolic expression for the loglikelihood function<a name="5"></a></h2><p>Assume independent normal zero-mean deviates, with standard deviation <img src="symbolic_econometric_tests_eq24873.png" alt="$\sigma$">. The loglikelihood of an observation <img src="symbolic_econometric_tests_eq44020.png" alt="$y$"> when the expected value is <img src="symbolic_econometric_tests_eq45960.png" alt="$\bar{y}$"> is</p><p><img src="symbolic_econometric_tests_eq89604.png" alt="$$\log\bigg (\frac{1}{\sigma\sqrt{2\pi}}\exp\bigg (-\frac{(\bar{y}-y)^2}{2\sigma^2}\bigg )\bigg ).$$"></p><pre class="codeinput">syms <span class="string">a</span> <span class="string">b</span> <span class="string">x</span> <span class="string">y</span> <span class="string">real</span>
+syms <span class="string">sigma</span> <span class="string">positive</span> <span class="comment">% 'real' and 'positive' aid simplification</span>
+indeps = [a b sigma]; <span class="comment">% the decision variables, or parameters</span>
+mydata = [x y]; <span class="comment">% symbolic variables for the data</span>
+L = 1/sqrt(sym(2)*pi*sigma^2) * exp(-(a*x+b-y)^2/(2*sigma^2));
+logL = simplify(log(L)); <span class="comment">% simplify leads to shorter expressions that compute faster</span>
+</pre><h2>Call <tt>matlabFunction</tt> to generate a function handle for evaluating the loglikelihood<a name="6"></a></h2><p>Since MATLAB&reg; optimization functions minimize, rather than maximize, use <tt>matlabFunction</tt> on the negative of logL.</p><pre class="codeinput"><span class="comment">% take negative loglikelihood since solvers minimize</span>
+llfcn0 = matlabFunction(-logL,<span class="string">'vars'</span>,{indeps,mydata});
+
+<span class="comment">% Take the sum of the loglikelihoods for the function evaluated</span>
+<span class="comment">% at the data points</span>
+llfcn = @(x)sum(llfcn0(x,[datesr,gnpr]));
+</pre><h2>Call fmincon to evaluate the maximizers of the restricted and unrestricted loglikelihood<a name="7"></a></h2><p>Let the fitted regression line be <img src="symbolic_econometric_tests_eq46610.png" alt="$g(x) = \alpha x + \beta$">. Find the maximum-likelihood regression (MLR) with <img src="symbolic_econometric_tests_eq87919.png" alt="$\alpha$"> set to 0.029 (restricted) and with <img src="symbolic_econometric_tests_eq87919.png" alt="$\alpha$"> allowed to vary (unrestricted). The MLR is the same as the least-squares regression line, so there are two ways of computing this line: least squares with <tt>regress</tt> as above, or maximum likelihood with <tt>fmincon</tt>. For generality we show how to use <tt>fmincon</tt> for these calculations.</p><p>Take an initial point [.03,&#8211;54,.03], because the least-squares solution has slope 0.031 and intercept &#8211;54.5. The starting value for <img src="symbolic_econometric_tests_eq24873.png" alt="$\sigma$">, 0.03, is simply a guess. The guess is not very accurate, since the unrestricted maximum value turns out to be 0.13.</p><p>For both the restricted and unrestricted maximum loglikelihoods, bound the variable <img src="symbolic_econometric_tests_eq24873.png" alt="$\sigma$"> below by 0. For the restricted problem, bound the variable <img src="symbolic_econometric_tests_eq87919.png" alt="$\alpha$"> above and below by 0.029; this restricts the variable <img src="symbolic_econometric_tests_eq87919.png" alt="$\alpha$"> to be 0.029 without having to rewrite the objective function.</p><pre class="codeinput">opts = optimset(<span class="string">'Algorithm'</span>,<span class="string">'interior-point'</span>,<span class="string">'Display'</span>,<span class="string">'off'</span>);
+unrestricted = fmincon(llfcn,[.03 -54 .03],<span class="keyword">...</span>
+   [],[],[],[],[-inf -inf 0],[],[],opts)
+restricted = fmincon(llfcn,[.029 -54 .03],<span class="keyword">...</span>
+   [],[],[],[],[.029 -inf 0],.029,[],opts)
+</pre><pre class="codeoutput">
+unrestricted =
+
+    0.0309  -54.4034    0.1318
+
+
+restricted =
+
+    0.0290  -50.6860    0.1365
+
+</pre><h2>Call <tt>jacobian</tt> to calculate the gradient and Hessian of the loglikelihood<a name="8"></a></h2><p>Now that we have the restricted and unrestricted maximization points, we calculate the gradient of the loglikelihood function and the Hessian. The gradient is calculated only for the independent variables, not for the data.</p><pre class="codeinput">grad = jacobian(logL,indeps); <span class="comment">% Gradient loglikelihood</span>
+hessLL = jacobian(grad,indeps); <span class="comment">% Symbolic Hessian</span>
+</pre><h2>Call <tt>matlabFunction</tt> to generate a function handle for evaluating the score and covariance<a name="9"></a></h2><p>Recall that we need the score at the restricted maximum for <tt>lmtest</tt>, and a covariance estimate at both the restricted maximum (<tt>lmtest</tt>) and the unrestricted maximum (<tt>waldtest</tt>). We use the OPG estimator for <tt>lmtest</tt>, and the observed Hessian estimator for <tt>waldtest</tt>.</p><pre class="codeinput">gradnle = matlabFunction(grad,<span class="string">'vars'</span>,{indeps,mydata});
+<span class="comment">% gradnle computes the gradient for numeric inputs</span>
+totgradr = gradnle(restricted,[datesr gnpr]); <span class="comment">% Matrix of</span>
+<span class="comment">% gradients evaluated at the data points, restricted maximum</span>
+scorer = sum(totgradr); <span class="comment">% the 'score' at the restricted max</span>
+OLLestr = inv(totgradr'*totgradr); <span class="comment">% Restricted OPG estimate</span>
+<span class="comment">% of the Hessian</span>
+hessLLhandle = matlabFunction(hessLL,<span class="string">'vars'</span>,{indeps,mydata});
+<span class="comment">% Calculates the Hessian for input parameters</span>
+hessum = zeros(length(indeps));
+<span class="keyword">for</span> ii = 1:length(datesr)
+    hessum = hessum + hessLLhandle(unrestricted,[datesr(ii) gnpr(ii)]);
+    <span class="comment">% Adds the Hessians at the unrestricted maximum</span>
+    <span class="comment">% evaluated at all the data points</span>
+<span class="keyword">end</span>
+escov = -inv(hessum); <span class="comment">% The unrestricted covariance estimate</span>
+</pre><h2>Test the hypothesis with <tt>lmtest</tt> and <tt>waldtest</tt><a name="10"></a></h2><p>We now have all the inputs for <tt>lmtest</tt>. For <tt>waldtest</tt>, we still need the value of the restriction function and its gradient at the unrestricted maximum. The restriction is given by the function <img src="symbolic_econometric_tests_eq03455.png" alt="$r(a)\le 0$">, where <img src="symbolic_econometric_tests_eq98545.png" alt="$r(a) = a - 0.029$">. Clearly r = <tt>unrestricted</tt>(1) &#8211; 0.029, and the Jacobian of the gradient <img src="symbolic_econometric_tests_eq87016.png" alt="$R = \partial r/\partial a$"> is <img src="symbolic_econometric_tests_eq08934.png" alt="$R = 1$">. For more complex restriction functions, you could use <tt>jacobian</tt> and <tt>matlabFunction</tt> to obtain these inputs.</p><pre class="codeinput">r = unrestricted(1) - 0.029;
+R = [1 0 0]; <span class="comment">% independent variables a,b,sigma</span>
+[hlm,pValue,stat,criticalValue] = lmtest(scorer,OLLestr,1)
+[hwald,pValue,stat,criticalValue]  = waldtest(r,R,escov)
+</pre><pre class="codeoutput">
+hlm =
+
+     1
+
+
+pValue =
+
+    0.0022
+
+
+stat =
+
+    9.3759
+
+
+criticalValue =
+
+    3.8415
+
+
+hwald =
+
+     1
+
+
+pValue =
+
+    0.0405
+
+
+stat =
+
+    4.1965
+
+
+criticalValue =
+
+    3.8415
+
+</pre><p>Since <tt>hlm</tt> and <tt>hwald</tt> are both 1, both <tt>lmtest</tt> and <tt>waldtest</tt> reject the hypothesis that the growth rate of GNP in the Nelson-Plosser data is only 2.9%. Note that the p-value for <tt>waldtest</tt> is almost 5%, meaning <tt>waldtest</tt> just barely rejects the hypothesis. This close call reflects the initial confidence interval that just barely missed a slope of 0.029.</p><h2>Conclusion<a name="12"></a></h2><p>Symbolic Math Toolbox functions give straightforward ways of incorporating derivatives into MATLAB calculations. They speed the tedious, error-prone process of calculating derivatives, and reduce the possibility of error. They ease the use of some econometric functions.</p><p>&copy; 2010 The MathWorks, Inc.</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.11<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Symbolic Derivatives for Econometric Tests
+%
+%% Introduction to Derivatives for Econometric Tests
+%
+% Two Econometric Toolbox(TM) model misspecification tests,
+% |lmtest| and |waldtest|, require you to provide expressions
+% for derivatives as inputs. While most of us learned to compute
+% derivatives in school, these computations can be tedious and
+% error-prone.
+%
+% The Symbolic Math Toolbox(TM) |jacobian| function calculates
+% derivatives of symbolic expressions. |matlabFunction| converts
+% symbolic expressions into function handles or files that
+% calculate numerically as if substituting values for symbolic
+% variables. Between these two functions you can automate the
+% calculation of derivatives and use the resulting expressions
+% in econometric applications. This example shows how to include
+% data in your symbolic setup, and how to use the results in
+% |lmtest| and |waldtest|.
+%
+%% Example: Data, Hypothesis, and Basic Regression Analysis
+%
+% This example models the real GNP data series from the
+% Nelson-Plosser data set as a loglinear series plus Gaussian
+% noise. The question is whether the long-term growth rate
+% might, in fact, be less than 2.9%, when the fitted model shows
+% it is about 3.1%. 
+%
+% There are several ways of answering this question. The
+% simplest is probably to use the |regress| function from
+% Statistics Toolbox(TM). Load the Nelson-Plosser dataset and
+% extract the real GNP series. Find the best linear fit and a
+% 95% confidence interval for the coefficients of the fit.
+
+load Data_NelsonPlosser % your computer might have to use
+% load NelsonPlosser
+gnp = Dataset.GNPR;
+gnpr = log(gnp(not(isnan(gnp)))); % log scaled
+datesr = dates(not(isnan(gnp))); % Date series
+X = [ones(size(datesr)) datesr]; % include constant term in fit
+alpha = 0.05;
+[betahat,Ibeta] = regress(gnpr,X,alpha);
+fprintf('Best slope = %4.3g\n',betahat(2))
+fprintf('95%% confidence interval = [%4.3g %4.3g]',Ibeta(2,:))
+
+%% 
+% The 95% confidence interval does not contain the slope 0.029. 
+% Therefore, this test indicates rejection of the hypothesis
+% that the true slope is 2.9%.
+%
+% To see the results of calculating the best fitting line with
+% slope 0.029, regress (gnpr - 0.29*datesr) on a constant:
+
+x = ones(size(datesr));
+[xhat Ix] = regress(gnpr-0.029*datesr,x,alpha);
+gnpx = xhat + 0.029*datesr;
+hold on
+plot(datesr,gnpr,'bo');lsline % data points and least squares fit
+plot(datesr,gnpx,'r-') % 0.029 line
+legend('Data','Best linear fit','0.029 Linear fit','Location','nw')
+hold off
+
+%% Analysis using Symbolic Math Toolbox and Econometric Functions
+%
+% We now show how to use |lmtest| and |waldtest| to examine the
+% hypothesis that the true slope is 2.9%. |lmtest| requires
+% three inputs: the 'score' (gradient) at the restricted
+% maximizer of the loglikelihood, a covariance estimated at this
+% restricted maximizer, and the number of restrictions.
+% |waldtest| requires the restriction functions and their
+% Jacobian evaluated at the unrestricted maximizer, and also
+% requires a covariance estimated at the unrestricted maximizer.
+% To calculate the score and covariance, you need to calculate
+% derivatives. 
+%
+% There are several covariance estimates in general use. One,
+% the outer product of gradients (OPG), is not very accurate for
+% small data sets, but is in widespread use because it requires
+% only first derivatives (gradients). This example shows how to
+% compute an OPG estimate for |lmtest|. Another estimator,
+% $-\rm{Hessian}^{-1}$, is often more accurate than the OPG
+% estimate, but requires a second derivative. This example shows
+% how to compute this estimator for |waldtest|. 
+%
+% Now begin the process of evaluating whether the 0.029 slope is
+% statistically distinguishable from the 0.031 slope.
+
+%% Write a symbolic expression for the loglikelihood function
+%
+% Assume independent normal zero-mean deviates, with standard
+% deviation $\sigma$. The loglikelihood of an observation $y$
+% when the expected value is $\bar{y}$ is
+%
+% $$\log\bigg (\frac{1}{\sigma\sqrt{2\pi}}\exp\bigg (-\frac{(\bar{y}-y)^2}{2\sigma^2}\bigg )\bigg ).$$
+
+syms a b x y real
+syms sigma positive % 'real' and 'positive' aid simplification
+indeps = [a b sigma]; % the decision variables, or parameters
+mydata = [x y]; % symbolic variables for the data
+L = 1/sqrt(sym(2)*pi*sigma^2) * exp(-(a*x+b-y)^2/(2*sigma^2));
+logL = simplify(log(L)); % simplify leads to shorter expressions that compute faster
+
+%% Call |matlabFunction| to generate a function handle for evaluating the loglikelihood
+%
+% Since MATLAB(R) optimization functions minimize, rather than
+% maximize, use |matlabFunction| on the negative of logL.
+
+% take negative loglikelihood since solvers minimize
+llfcn0 = matlabFunction(-logL,'vars',{indeps,mydata});
+
+% Take the sum of the loglikelihoods for the function evaluated
+% at the data points
+llfcn = @(x)sum(llfcn0(x,[datesr,gnpr]));
+
+%% Call fmincon to evaluate the maximizers of the restricted and unrestricted loglikelihood
+%
+% Let the fitted regression line be $g(x) = \alpha x + \beta$.
+% Find the maximum-likelihood regression (MLR) with $\alpha$ set
+% to 0.029 (restricted) and with $\alpha$ allowed to vary
+% (unrestricted). The MLR is the same as the least-squares
+% regression line, so there are two ways of computing this line:
+% least squares with |regress| as above, or maximum likelihood
+% with |fmincon|. For generality we show how to use |fmincon|
+% for these calculations.
+%
+% Take an initial point [.03,–54,.03], because the least-squares
+% solution has slope 0.031 and intercept –54.5. The starting
+% value for $\sigma$, 0.03, is simply a guess. The guess is not
+% very accurate, since the unrestricted maximum value turns out
+% to be 0.13.
+%
+% For both the restricted and unrestricted maximum
+% loglikelihoods, bound the variable $\sigma$ below by 0. For
+% the restricted problem, bound the variable $\alpha$ above and
+% below by 0.029; this restricts the variable $\alpha$ to be
+% 0.029 without having to rewrite the objective function.
+
+
+opts = optimset('Algorithm','interior-point','Display','off');
+unrestricted = fmincon(llfcn,[.03 -54 .03],...
+   [],[],[],[],[-inf -inf 0],[],[],opts)
+restricted = fmincon(llfcn,[.029 -54 .03],...
+   [],[],[],[],[.029 -inf 0],.029,[],opts)
+
+%% Call |jacobian| to calculate the gradient and Hessian of the loglikelihood
+%
+% Now that we have the restricted and unrestricted maximization
+% points, we calculate the gradient of the loglikelihood
+% function and the Hessian. The gradient is calculated only for
+% the independent variables, not for the data.
+
+grad = jacobian(logL,indeps); % Gradient loglikelihood
+hessLL = jacobian(grad,indeps); % Symbolic Hessian
+
+%% Call |matlabFunction| to generate a function handle for evaluating the score and covariance
+%
+% Recall that we need the score at the restricted maximum for
+% |lmtest|, and a covariance estimate at both the restricted
+% maximum (|lmtest|) and the unrestricted maximum (|waldtest|).
+% We use the OPG estimator for |lmtest|, and the observed
+% Hessian estimator for |waldtest|.
+
+gradnle = matlabFunction(grad,'vars',{indeps,mydata});
+% gradnle computes the gradient for numeric inputs
+totgradr = gradnle(restricted,[datesr gnpr]); % Matrix of 
+% gradients evaluated at the data points, restricted maximum
+scorer = sum(totgradr); % the 'score' at the restricted max
+OLLestr = inv(totgradr'*totgradr); % Restricted OPG estimate
+% of the Hessian
+hessLLhandle = matlabFunction(hessLL,'vars',{indeps,mydata});
+% Calculates the Hessian for input parameters
+hessum = zeros(length(indeps));
+for ii = 1:length(datesr)
+    hessum = hessum + hessLLhandle(unrestricted,[datesr(ii) gnpr(ii)]);
+    % Adds the Hessians at the unrestricted maximum
+    % evaluated at all the data points
+end
+escov = -inv(hessum); % The unrestricted covariance estimate
+
+%% Test the hypothesis with |lmtest| and |waldtest|
+%
+% We now have all the inputs for |lmtest|. For |waldtest|, we
+% still need the value of the restriction function and its
+% gradient at the unrestricted maximum. The restriction is given
+% by the function $r(a)\le 0$, where $r(a) = a - 0.029$. Clearly
+% r = |unrestricted|(1) – 0.029, and the Jacobian of the
+% gradient $R = \partial r/\partial a$ is $R = 1$. For more
+% complex restriction functions, you could use |jacobian| and
+% |matlabFunction| to obtain these inputs.
+
+r = unrestricted(1) - 0.029;
+R = [1 0 0]; % independent variables a,b,sigma
+[hlm,pValue,stat,criticalValue] = lmtest(scorer,OLLestr,1)
+[hwald,pValue,stat,criticalValue]  = waldtest(r,R,escov)
+%%
+% Since |hlm| and |hwald| are both 1, both |lmtest| and
+% |waldtest| reject the hypothesis that the growth rate of GNP
+% in the Nelson-Plosser data is only 2.9%. Note that the p-value
+% for |waldtest| is almost 5%, meaning |waldtest| just barely
+% rejects the hypothesis. This close call reflects the initial
+% confidence interval that just barely missed a slope of 0.029.
+
+%% Conclusion
+%
+% Symbolic Math Toolbox functions give straightforward ways of
+% incorporating derivatives into MATLAB calculations. They speed
+% the tedious, error-prone process of calculating derivatives,
+% and reduce the possibility of error. They ease the use of some
+% econometric functions.
+%
+% © 2010 The MathWorks, Inc.
+displayEndOfDemoMessage(mfilename)
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,194 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Algorithmic Trading with MATLAB: Moving Average Rule</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-08-26"><meta name="DC.source" content="Demo2_MA_Rule.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+
+  </style></head><body><div class="content"><h1>Algorithmic Trading with MATLAB: Moving Average Rule</h1><!--introduction--><p>This demo is uses MATLAB to develop and test a simple trading strategy using an exponential moving average.</p><p>Copyright 2010-2012, The MathWorks, Inc. All rights reserved.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">(Re)Load data</a></li><li><a href="#2">Using functions to automate our workflow</a></li><li><a href="#3">Performing a simple parameter sweep</a></li><li><a href="#4">Estimate parameters over a range of values</a></li><li><a href="#5">Plot best Sharpe ratio</a></li><li><a href="#6">More automation and more real-world considerations</a></li></ul></div><h2>(Re)Load data<a name="1"></a></h2><pre class="codeinput">data     = xlsread(<span class="string">'brent_1D.xlsx'</span>);
+LCOClose = data(:,3);
+annualScaling = sqrt(250);
+</pre><h2>Using functions to automate our workflow<a name="2"></a></h2><p>The <tt>leadlag</tt> function copies over most of the functionality from the previous script and places it in a reusable format.  All we need to specify is the historical data, our leading and lagging day lengths, and our scaling parameter.</p><p>We can demonstrate the use of this function by setting the leading average to 1 (i.e.: not an average at all) and the lagging average to, say, 20 days.</p><pre class="codeinput">leadlag(LCOClose,1,20,annualScaling)
+</pre><img vspace="5" hspace="5" src="Demo2_MA_Rule_01.png" alt=""> <h2>Performing a simple parameter sweep<a name="3"></a></h2><p>Perform a parameter sweep to identify the best lagging parameter, given a leading value of 1.</p><pre class="codeinput">sharpes = nan(100,1);
+
+<span class="keyword">for</span> m = 1:100
+    [~,~,sharpes(m)] = leadlag(LCOClose,1,m);
+<span class="keyword">end</span>
+
+[~,mxInd] = max(sharpes);
+leadlag(LCOClose,1,mxInd,annualScaling)
+</pre><img vspace="5" hspace="5" src="Demo2_MA_Rule_02.png" alt=""> <h2>Estimate parameters over a range of values<a name="4"></a></h2><p>Allows both moving average lengths to vary and identify the best combo.</p><pre class="codeinput">sharpes = nan(100,100);
+
+tic
+<span class="keyword">for</span> n = 1:100
+    <span class="keyword">for</span> m = n:100
+        [~,~,sharpes(n,m)] = leadlag(LCOClose,n,m,annualScaling);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+toc
+
+<span class="comment">% We can again use plotting tools to create a custom plot.  In this case,</span>
+<span class="comment">% we show the Sharpe ratio as a function of both the leading and lagging</span>
+<span class="comment">% days.  MATLAB can easily deplay 3D data like this using surface and</span>
+<span class="comment">% contour plots.</span>
+sweepPlotMA(sharpes)
+</pre><pre class="codeoutput">Elapsed time is 4.412662 seconds.
+</pre><img vspace="5" hspace="5" src="Demo2_MA_Rule_03.png" alt=""> <h2>Plot best Sharpe ratio<a name="5"></a></h2><pre class="codeinput">[~, bestInd] = max(sharpes(:)); <span class="comment">% (Linear) location of max value</span>
+[bestM, bestN] = ind2sub(100, bestInd); <span class="comment">% Lead and lag at best value</span>
+
+leadlag(LCOClose, bestM, bestN,annualScaling)
+</pre><img vspace="5" hspace="5" src="Demo2_MA_Rule_04.png" alt=""> <h2>More automation and more real-world considerations<a name="6"></a></h2><p>Next, we'll add the trading costs associated with the bid/ask spread. This will get us closer to the actual profit we could expect.  As an exercise, you should extend this to account for additional trading costs and slippage considerations.</p><p>Note also that we have automated our parameter sweep process.  Just as before, when we adapted our script into the <tt>leadlag</tt> function, we are now taking the double-|for| loop above and turning it into its own function.</p><pre class="codeinput">cost  = 0.05;           <span class="comment">% Bid/ask spread</span>
+range = {1:120, 1:120}; <span class="comment">% Leading and lagging average parameter ranges</span>
+llfun =@(x) leadlagFun(x, LCOClose, annualScaling, cost);
+
+tic
+[maxSharpe, param, sh, vars] = parameterSweep(llfun, range);
+toc
+
+<span class="comment">% Plot Sharpe surface</span>
+sweepPlotMA(vars{1}, vars{2}, sh)
+
+<span class="comment">% Plot best Sharpe ratio</span>
+figure
+leadlag(LCOClose,param(1),param(2),annualScaling,cost)
+</pre><pre class="codeoutput">Elapsed time is 1.811124 seconds.
+</pre><img vspace="5" hspace="5" src="Demo2_MA_Rule_05.png" alt=""> <img vspace="5" hspace="5" src="Demo2_MA_Rule_06.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Algorithmic Trading with MATLAB: Moving Average Rule
+% This demo is uses MATLAB to develop and test a simple trading strategy
+% using an exponential moving average.
+%
+% Copyright 2010-2012, The MathWorks, Inc.
+% All rights reserved.
+
+%% (Re)Load data
+data     = xlsread('brent_1D.xlsx');
+LCOClose = data(:,3);
+annualScaling = sqrt(250);
+
+%% Using functions to automate our workflow
+% The |leadlag| function copies over most of the functionality from the
+% previous script and places it in a reusable format.  All we need to
+% specify is the historical data, our leading and lagging day lengths, and
+% our scaling parameter.
+%
+% We can demonstrate the use of this function by setting the leading
+% average to 1 (i.e.: not an average at all) and the lagging average to,
+% say, 20 days.
+leadlag(LCOClose,1,20,annualScaling)
+
+%% Performing a simple parameter sweep
+% Perform a parameter sweep to identify the best lagging parameter, given a
+% leading value of 1.
+
+sharpes = nan(100,1);
+
+for m = 1:100
+    [~,~,sharpes(m)] = leadlag(LCOClose,1,m);
+end
+
+[~,mxInd] = max(sharpes);
+leadlag(LCOClose,1,mxInd,annualScaling)
+
+%% Estimate parameters over a range of values
+% Allows both moving average lengths to vary and identify the best combo.
+sharpes = nan(100,100);
+
+tic
+for n = 1:100  
+    for m = n:100
+        [~,~,sharpes(n,m)] = leadlag(LCOClose,n,m,annualScaling);
+    end
+end
+toc
+
+% We can again use plotting tools to create a custom plot.  In this case,
+% we show the Sharpe ratio as a function of both the leading and lagging
+% days.  MATLAB can easily deplay 3D data like this using surface and
+% contour plots.
+sweepPlotMA(sharpes)
+
+%% Plot best Sharpe ratio
+[~, bestInd] = max(sharpes(:)); % (Linear) location of max value
+[bestM, bestN] = ind2sub(100, bestInd); % Lead and lag at best value
+
+leadlag(LCOClose, bestM, bestN,annualScaling)
+
+%% More automation and more real-world considerations
+% Next, we'll add the trading costs associated with the bid/ask spread.
+% This will get us closer to the actual profit we could expect.  As an
+% exercise, you should extend this to account for additional trading costs
+% and slippage considerations.
+%
+% Note also that we have automated our parameter sweep process.  Just as
+% before, when we adapted our script into the |leadlag| function, we are
+% now taking the double-|for| loop above and turning it into its own
+% function.
+
+cost  = 0.05;           % Bid/ask spread
+range = {1:120, 1:120}; % Leading and lagging average parameter ranges
+llfun =@(x) leadlagFun(x, LCOClose, annualScaling, cost);
+
+tic
+[maxSharpe, param, sh, vars] = parameterSweep(llfun, range);
+toc
+
+% Plot Sharpe surface
+sweepPlotMA(vars{1}, vars{2}, sh)
+
+% Plot best Sharpe ratio
+figure
+leadlag(LCOClose,param(1),param(2),annualScaling,cost)
+##### SOURCE END #####
+--></body></html>
