@@ -1,0 +1,1713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>LBFGSB (L-BFGS-B) mex wrapper -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/35104-lbfgsb--l-bfgs-b--mex-wrapper" rel="canonical">
+<meta content="LBFGSB (L-BFGS-B) mex wrapper - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/35104-lbfgsb--l-bfgs-b--mex-wrapper" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/43092/original.jpg" property="og:image"><meta content="Mex wrapper for lbfgsb v3.0 fortan library. L-bfgs-b solves box-constrained
+optimization." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35104-lbfgsb--l-bfgs-b--mex-wrapper" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35104-lbfgsb--l-bfgs-b--mex-wrapper" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/16529" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=35104" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper" class="manifest_title">LBFGSB (L-BFGS-B) mex wrapper</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper/content//lbfgsb3.0_mex1.2/html/example_NNLS.html" class="example" title="Example">Non-negative least-square...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper/content//lbfgsb3.0_mex1.2/html/compile_mex.html" class="example" title="Example">compile_mex</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper/content//lbfgsb3.0_mex1.2/html/lbfgsb.html" class="example" title="Example">lbfgsb</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper/content//lbfgsb3.0_mex1.2/driver1.m" class="function" title="Function">driver1(x)</a><span class="description">An example function, from "driver1.f" in the fortran releaes</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper/content//lbfgsb3.0_mex1.2/fminunc_wrapper.m" class="function" title="Function">fminunc_wrapper(x,F,G,H)</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper/content//lbfgsb3.0_mex1.2/compile_mex_forWindows.m" class="script" title="Script">compile_mex_forWindows.m</a></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper/content/lbfgsb.3.0_1.2.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">5.0</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">9</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">113 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 79.9 KB</span>
+          <span id="fileid">File ID: #35104</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/8086/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">LBFGSB (L-BFGS-B) mex wrapper</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      16 Feb 2012
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-01-18">18 Jan 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">Mex wrapper for lbfgsb v3.0 fortan library. L-bfgs-b solves box-constrained
+optimization.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F35104-lbfgsb--l-bfgs-b--mex-wrapper&amp;watching=35104" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Description: L-BFGS-B is a variant of the well-known 
+"BFGS" quasi-Newton method. This variant uses limited-memory (like 
+L-BFGS), and also handles simple constraints (to be specific, bound 
+constraints, so this includes x &gt;=0 constraints).</p>
+
+<p>The authors of LBFGSB have had fortran implementations available 
+since 1996, but in 2011 they released a major update (v3.0) which has an
+ improved algorithm (you should use this version!). There are existing 
+mex file wrappers for earlier versions, but none worked with v3.0, so I 
+created this file.</p>
+
+<p>This submission tries to make the mex wrapper simple, and then 
+includes a nice .m file solver that requires very few parameters, yet is
+ customizable for advanced users.  Run the compile_mex.m file to compile
+ the files. compile_mex.m also includes two quick sanity checks (the 
+file driver1.m is a helper file for one of these checks)</p>
+
+<p>I also have an example of using L-BFGS-B to solve the non-negative least-squares
+<br>(NNLS) problem, and comparing it to other existing solvers. To put it simply,
+<br>L-BFGS-B is a fantastic NNLS solver, and much better than Matlab's lsqnonneg.</p>
+
+<p>Links:</p>
+
+<p>The fortran lbfgsb is at <a href="http://users.eecs.northwestern.edu/%7Enocedal/lbfgsb.html">http://users.eecs.northwestern.edu/~nocedal/lbfgsb.html</a>,</p>
+
+<p>&nbsp;There are also versions 2.1 and 2.4 of the library.</p>
+
+<p>For v 2.1, Peter Carbonetto's mex interface works; see <a href="http://www.mathworks.com/matlabcentral/fileexchange/15061-matlab-interface-for-l-bfgs-b">http://www.mathworks.com/matlabcentral/fileexchange/15061-matlab-interface-for-l-bfgs-b</a>  and also <a href="http://www.cs.ubc.ca/%7Epcarbo/lbfgsb-for-matlab.html">http://www.cs.ubc.ca/~pcarbo/lbfgsb-for-matlab.html</a></p>
+
+<p>&nbsp;&nbsp;&nbsp;For v 2.4 (I don't know where you can find this version though), use the mex files from here: <a href="http://www.cs.toronto.edu/%7Eliam/software.shtml">http://www.cs.toronto.edu/~liam/software.shtml</a></p>
+
+<p>The wikipedia page (this was mainly edited by one of the authors of the L-BFGS-B algorithm): <a href="http://en.wikipedia.org/wiki/L-BFGS-B:_Optimization_subject_to_simple_bounds">http://en.wikipedia.org/wiki/L-BFGS-B:_Optimization_subject_to_simple_bounds</a></p>
+
+<p>For installing on 64-bit Windows, if you need a compiler, see <a href="http://www.mathworks.com/support/compilers/R2011b/win64.html">http://www.mathworks.com/support/compilers/R2011b/win64.html</a></p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/3388-nnls-and-constrained-regression">Nnls And Constrained Regression</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/8157-nnls">Nnls</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/10908-active-set-algorithm">Active Set Algorithm</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/14848-mtron">Mtron</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/15061-matlab-interface-for-l-bfgs-b">Matlab Interface For L Bfgs B</a> inspired <i>this file.</i></p>
+      
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.10 (R2010a)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Compile the mex file with compile_mex.m. It should work on all
+platforms (windows, mac, linux, 32 or 64 bit) but I haven't tested it everywhere. Needs a C and fortran compiler.</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35104-lbfgsb--l-bfgs-b--mex-wrapper">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22bfgs%22" rel="nofollow">bfgs</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22bound+constraints%22" rel="nofollow">bound constraints</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22constrained+optimization%22" rel="nofollow">constrained optimization</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22lsqnonneg%22" rel="nofollow">lsqnonneg</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22nnls%22" rel="nofollow">nnls</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22nonnegative+leastsquares%22" rel="nofollow">nonnegative leastsquares</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22optimization%22" rel="nofollow">optimization</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22quasinewton%22" rel="nofollow">quasinewton</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="35104" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/35104-lbfgsb--l-bfgs-b--mex-wrapper" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35104-lbfgsb--l-bfgs-b--mex-wrapper">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(45)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">22 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386727">Daniel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Thomas,</p>
+
+<p>Please download (it's free) the Dependency Walker 64 program and use 
+it to analyze the mex file you created. Dependency Walker will tell you 
+what dll's are missing and causing the "Attempt to access invalid 
+address". 
+<br>This problem can be solved if you are using Windows 7 64bit. In the 
+case of Windows 8.1 I could not get it to work as the dylib libraries 
+from the cygwin fortran make use of some dll's that are no longer 
+available in Windows 8.1  </p>
+
+<p>Daniel</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/515274">Thomas Humphries</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>So I was happily using this code on
+ my 32-bit workstation and now am enjoying trying to get it to work on 
+my 64-bit laptop... I have followed Daniel's instructions below and have
+ managed to get the .mexw64 file to compile, but when I try to run the 
+example I get</p>
+
+<p>Invalid MEX-file 'C:\Users\...\lbfgsb.3.0_1.2\lbfgsb_wrapper.mexw64': Attempt to access invalid address.</p>
+
+<p>Error in lbfgsb (line 179)
+<br>    [f, task, csave, lsave, isave, dsave] = ...</p>
+
+<p>Error in example_NNLS (line 100)
+<br>[xk, ~, info] = lbfgsb(fun, l, u, opts );</p>
+
+<p>Probably a longshot, but does anyone have any suggestion what could 
+be causing this? I am guessing some kind of library linking issue but 
+nothing comes up during the compilation process...</p>
+
+<p>-TH</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386727">Daniel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Lucas,</p>
+
+<p>Sorry for my late reply, I haven't checked the posts in a while. I 
+think the problem you describe is quite simple, namely you have to add 
+in the PATH variable in Windows the path to the "lib" command from the 
+Visual Studio folder. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478768">Alexandre</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have received a couple of email asking me how to compile. Here how I proceeds in 2 steps on Linux (Mint 17 distro)</p>
+
+<p>mex -v -c lbfgsb_wrapper.c -largeArrayDims  -UDEBUG CFLAGS="\$CFLAGS -O3" ;
+<br>    
+<br>mex -v -output lbfgsb_wrapper lbfgsb_wrapper.o Lbfgsb.3.0/lbfgsb32.f
+ Lbfgsb.3.0/linpack32.f Lbfgsb.3.0/timer.f FC="gfortran" -lm 
+-lmwblascompat32 
+LINKEXPORT='Wl,--version-script,/usr/local/MATLAB/R2014a/extern/lib/glnxa64/mexFunction.map'</p>
+
+<p>It is a colleague of mine who found out how to compile, therefore I am afraid I cannot explain why it works.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/511781">wenbin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have the same problem as Alexandre. When I try to compile it under Linux with matlab R2014a, I get the following error:
+<br>Error using mex 
+<br>Cannot compile both C and FORTRAN source files in a single call to MEX.</p>
+
+<p>Error in compile_mex (line 61) 
+<br>mex -v lbfgsb_wrapper.c -largeArrayDims -UDEBUG ...</p>
+
+<p>Anyone had meet this problem? Please kindly show me the solution, I'm really in trouble.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478768">Alexandre</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Problem sloved. It seems that 
+Matlab R2014a does not allow to compile Fortran and C in a single MEX 
+call. I believe that it allowed to link the files automatically.</p>
+
+<p>I had to compile the Fortran code to .o objects and link them to the .c files manually.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478768">Alexandre</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Stephen,</p>
+
+<p>I managed to compile the Fortran part by splitting into 2 MEX calls:</p>
+
+<p>mex   Lbfgsb.3.0/lbfgsb.f Lbfgsb.3.0/linpack.f Lbfgsb.3.0/timer.f -lm -lmwblas  CFLAGS="\$CFLAGS -O3"FC="gfortran" </p>
+
+<p>mex -v lbfgsb_wrapper.c -largeArrayDims  -UDEBUG ;</p>
+
+<p>The Fortran part is fine, but not the C compilation. I get the following error message:</p>
+
+<p>Error using mex
+<br>/tmp/mex_29407351995475_5199/lbfgsb_wrapper.o: In function `mexFunction':
+<br>lbfgsb_wrapper.c:(.text+0x738): undefined reference to `setulb_'
+<br>collect2: error: ld returned 1 exit status</p>
+
+<p>I have tried to play with the -DNOUNDERSCORE -UUPPERCASE_FORTRAN flags but none of them seem to help.</p>
+
+<p>How can I fix this issue?</p>
+
+<p>Thank you very much</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alexandre,
+<br>  I've never seen that error either. Maybe ask the mathworks help about it.
+<br>-Stephen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/478768">Alexandre</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have tried to compile it under Linux Mint 17, with Matlab 2014a. I got the following error message:</p>
+
+<p>Error using mex
+<br>Cannot compile both C and FORTRAN source files in a single call to MEX.</p>
+
+<p>Error in compile_mex (line 61)
+<br>    mex -v lbfgsb_wrapper.c -largeArrayDims  -UDEBUG ...</p>
+
+<p>I've tried to find out about this error but it is nowhere to be found, as if it is an issue related to Matlab 2014 only. </p>
+
+<p>Any suggestion?
+<br>Cheers
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/450691">Lucas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi everyone,</p>
+
+<p>As I'm trying to compile the mex file on a W7 x64 with Matlab R2013a,
+ I follow the tutorial of Daniel, and I would need some specification 
+(thanks by the way for sharing this) :
+<br>- the line "lib /def:liblbfgsb.def /machine:x64" gives me 
+<br>&gt;&gt;&gt; 
+<br>$ lib /def:liblbfgsb.def /machine:x64
+<br>-bash: lib: command not found
+<br>&lt;&lt;&lt;</p>
+
+<p>-I tried to run the compilation anyway, and it gives me this :
+<br>&gt;&gt;&gt; 
+<br>/cygdrive/c/Progra~1/MATLAB/R2013a/bin</p>
+
+<p>$ mex.bat -O -largeArrayDims -UDEBUG lbfgsb_wrapper.c liblbfgsb.lib -lmex -lmx -lopenblas</p>
+
+<p>  C:\PROGRA~1\MATLAB\R2013A\BIN\MEX.PL: Error: 'lbfgsb_wrapper.c' not found.
+<br>&lt;&lt;&lt;</p>
+
+<p>I'm not a great expert on bash's command, and I can't figure out what's the real problem behind these.</p>
+
+<p>-LS</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386727">Daniel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I succeded to compile and test the mex module for Windows 7 x64 (Sp1)
+ linking with the multithreded OpenBlas. In this way one can take 
+advantage of the multicore architecture of the available CPU. For the 
+Windows operating system the process is rather convoluted and delicate 
+(one can easily get into the so called "dll hell" problem). The solution
+ is indeed based on creating a dll file. I got it working following a 
+script from Roland, so many thanks to him who pioneered a way to compile
+ using Cygwin and gracefully shared his own script.
+<br>The idea is the following:
+<br>1) install Openblas and add its lib folder to the $Path$ Environment variable.
+<br>2) install Cygwin64 (the Devel package)
+<br>3) make sure you have SDK 7.1 installed along with Visual Studio 10.0 (it's free) and all the updates for Win7.
+<br>4) add to the $Path$ environment variable "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\amd64"
+<br>5) find and copy the x64 version of IESHIMS.dll into a folder added 
+to $Path$ environment variable. (I know, this is counterintuitive and 
+seems esoteric but if you don't it may not work) To check that this is 
+needed one can use "Dependency Walker".
+<br>6) open the Cygwin64 terminal and go to the "lbfgsb3.0_mex1.2" 
+folder and make sure the "Lbfgsb.3.0" subfolder with all its files is 
+inside (if not download it).
+<br>7) Type (or creat a .sh script to run at once):
+<br>cd Lbfgsb.3.0
+<br>rm *.o
+<br>rm *.dll
+<br>rm *.lib
+<br>rm *.dll.a</p>
+
+<p>x86_64-w64-mingw32-gfortran.exe -c -Wall -Wno-uninitialized lbfgsb.f linpack.f blas.f timer.f
+<br>echo EXPORTS &gt; liblbfgsb.def
+<br>echo setulb_ &gt;&gt; liblbfgsb.def
+<br>echo _setulb_=setulb_ &gt;&gt; liblbfgsb.def</p>
+
+<p>dlltool -D liblbfgsb.dll -d liblbfgsb.def -e liblbfgsb.o -l liblbfgsb.dll.a lbfgsb.o linpack.o blas.o timer.o 
+<br>lib /def:liblbfgsb.def /machine:x64</p>
+
+<p>x86_64-w64-mingw32-gfortran.exe -mdll -static-libgfortran -o liblbfgsb.dll liblbfgsb.o lbfgsb.o linpack.o timer.o blas.o</p>
+
+<p>cp liblbfgsb.dll liblbfgsb.dll.a liblbfgsb.lib .
+<br>cp liblbfgsb.dll liblbfgsb.dll.a liblbfgsb.lib ..
+<br>cp /usr/x86_64-w64-mingw32/sys-root/mingw/bin/libgcc_s_seh-1.dll ..
+<br>cd ..</p>
+
+<p>/cygdrive/c/Progra~1/MATLAB/R2013b/bin/mex.bat -O -largeArrayDims -UDEBUG lbfgsb_wrapper.c liblbfgsb.lib -lmex -lmx -lopenblas</p>
+
+<p>8) Test example_NNLS.m</p>
+
+<p>Good Luck!</p>
+
+<p> </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/408223">Robert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Chenchen Tong,</p>
+
+<p>I got the same error, when running compile_mex.m on Ubuntu 12.04, gcc-4.6 and MATLAB R2013a:</p>
+
+<p>=== lbfgsb "driver1" test problem, 2D === 
+<br>Invalid MEX-file
+<br>'.../lbfgsb.3.0_1.2/lbfgsb3.0_mex1.2/lbfgsb_wrapper.mexa64':'.../matlabR2013a/bin/glnxa64/../../sys/os/glnxa64/libgfortran.so.3:
+ version
+<br>`GFORTRAN_1.4' not found (required by
+<br>.../lbfgsb.3.0_1.2/lbfgsb3.0_mex1.2/lbfgsb_wrapper.mexa64)</p>
+
+<p>For me the problem was solved by running MATLAB with LD_PRELOAD and LD_LIBRARY_PATH, pointing to the system libraries:</p>
+
+<p>LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgfortran.so.3 LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu matlab</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/128855">Ryan Muir</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386727">Daniel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Roland,</p>
+
+<p>Could you please post detailed instructions for how to compile the lbfgsb_wrapper in Windows 7 64bit?
+<br>I was only able to compile in Linux and Mac OS X so far . I also 
+linked with the OpenBlas library which is very fast ( if you have a 
+multi-core cpu). </p>
+
+<p>Thank you very much.</p>
+
+<p>Daniel</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Roland,
+<br>  That's great it works! If you wouldn't mind, can you post detailed
+ instructions here? I think many others would find them useful.</p>
+
+<p>  You're right about the typo in the nrhs. I'll fix that in the next update.</p>
+
+<p>  Right now, the gradient is necessary. The Python and R versions use
+ large packages to get around this. They might have a finite-differences
+ gradient approximation mode, but I suspect they are really doing 
+automatic differentiation (the good news is that this is the exact 
+gradient, no approximation. The bad news is that it can be sometimes 
+slow). There are automatic differentiation packages for Matlab, but none
+ that seem to be very "mature". So you could try some of those, but if 
+you can work out an explicit function to compute the gradient, that is 
+usually the simplest (no automatic differentiation packages to get 
+working) and the fastest for computation.
+<br>Best, Stephen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/372827">Roland</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I finally managed to run it on Win7 64 with mingw fortran and msvc c compilers. </p>
+
+<p>Stephan, is it necessary to give the gradient in any case? I know 
+that the Python and R versions can use numerical approximations to the 
+gradient. Do you know of a function that does that for me?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/372827">Roland</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Steven, I'm still trying to 
+get this to work. At the moment I got it compiled but it crashes when I 
+run it with no expressive error messages. Still debugging... but on a 
+different not, in line 266:</p>
+
+<p>if (nrhs &lt; N_g-1 ) {</p>
+
+<p>shouldn't it read "nrhs &lt; N_g+1", so a "+" instead of "-"?</p>
+
+<p>Cheers
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Roland,
+<br>  I think that's with trying the f2c'd version of the code. It might
+ be that your C compiler is stricter than the f2c code. Maybe you can 
+tell the compiler to allow a newer standard? In gcc, it would be 
+something like -std=gnu99 or -ansi. You can probably look up the 
+equivalent for MSVC.
+<br>  Or, if you can get a fortran compiler, then use the original fortran code and don't mess with the f2c version.
+<br>  Either way, I'm afraid I can't help much because I work with a 
+Windows computer. Judging from the other comments here, it is quite 
+difficult to get this code to work with 64 it Windows. We really need a 
+pure C version of the code; if you want to do this (you can use the f2c 
+version as a base), please let me know!
+<br>Best,
+<br>Stephen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/372827">Roland</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Stephen,</p>
+
+<p>Thanks for all your efforts. I would love to use your script but it 
+doesn't compile. I have Matlab R2012b on Win 7 64bit. I use the 
+compile_for_windows script and get the following error:</p>
+
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</p>
+
+<p>&gt;&gt; compile_mex_forWindows
+<br>Sorry
+<br>Compiling abort_.c
+<br>Compiling arithchk.c
+<br>Compiling backspac.c
+<br>Compiling c_abs.c
+<br>Compiling c_cos.c
+<br>c_cos.c 
+<br>c_cos.c(14) : error C2143: syntax error : missing ')' before '*' 
+<br>c_cos.c(14) : error C2143: syntax error : missing '{' before '*' 
+<br>c_cos.c(14) : error C2143: syntax error : missing ';' before '*' 
+<br>c_cos.c(14) : error C2059: syntax error : ')' 
+<br>c_cos.c(16) : error C2054: expected '(' to follow 'z' 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\R2012B\BIN\MEX.PL: Error: Compile of 'c_cos.c' failed. 
+<br> 
+<br>Error using mex (line 206)
+<br>Unable to complete successfully.</p>
+
+<p>Error in compile_mex_forWindows (line 116)
+<br>                mex('-largeArrayDims','-I./','-c','-DMSDOS','-DNOUNDERSCORE','-DNO_ISATTY',src_file); </p>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+
+<p>Any suggestions how to fix that would be very much appreciated.</p>
+
+<p>Thanks,</p>
+
+<p>Roland
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Xin,
+<br>  You are using the f2c version I included, so this adds more 
+complication. The problem is almost surely that your BLAS requires 
+integers of different lengths. So try two things:
+<br> First, define _BLAS64_ when you compile. You can do this by adding 
+-D_BLAS64_ to the mex compilation command. Hopefully this will fix it.
+<br> Second, try a different BLAS. You can install another version (e.g.
+ ATLAS) and use that. If there are still problems, use the netlib source
+ code (for CBLAS)  and link with this source; this way your compiler 
+will give you errors if there are incompatibilities and they will be 
+easy to fix.
+<br>Best, Stephen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/365470">xin yu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Stephen
+<br>Thank you for the wrapper, which can work pretty well on my windows7 32bit.
+<br>But when compiling the wrapper on my desktop, win7 64bit, I met some problems.
+<br>I can compile the wrapper, but when running the examples, matlab 
+will crash. I debug the problem. In the loop, when calling the lbfgsb.c 
+at the first time, it is ok, but the second iteration, a breakpoint is 
+triggered. When calling dcopy, matlab will crash down. I have no idea 
+how can I solve the problem. My BLAS is 10.3.11. My matlab version is 
+R2013a.
+<br>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm not sure what's going on. It's 
+odd that it compiles if it can't find the symbol. It could be an issue 
+with a run-time library. On linux, I had the option of using either g95 
+or gfortran, and I use g95, so maybe try that if it's easy on the mac. 
+Otherwise, I'm afraid I can't be of much help. You could also try 
+following the basic ideas outline in the compile_mex_forWindows (i.e. 
+convert fortran to C). Best of luck!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122912">Tim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>My apologies for the numerous 
+replies. I had to manually update dcopy dscal and daxpy as you 
+suggested. The mex file is generated ("lbfgsb_wrapper.mexmaci64") but it
+ crashes matlab. The error report says: "I should have added that the 
+error report listed "Symbol not found: __gfortran_transfer_real_write""</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122912">Tim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I should have added that the error report listed "Symbol not found: __gfortran_transfer_real_write"</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Tim,
+<br>The crash, the fact that the mwblas seemed to work (for 
+compilation), and the fact that it was looking for _daxpy_ and not 
+_daxpy32_, all suggest that maybe the ddot's and so on were not replaced
+ by ddot32. The C files should be OK, so check the fortran files. You 
+can try running the script from the shell yourself, or just edit the .f 
+files with an editor and do find-replace.</p>
+
+<p>If you verify that the ddot/dcopy/dscal/daxpy are replaced with their
+ ddot32/dcopy32/dscal32/daxpy32 and it still fails, then we have a 
+different problem on our hands. Try compiling with -v and let me know 
+the output.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122912">Tim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>Thank you for writing this code. I hope to be able to use it, but I 
+am having some compilation problems. I am running a 64 bit mac, OS 
+10.6.8, running Matlab v. R2010b.</p>
+
+<p>I get the error "script failed, try running script by hand perhaps?,"
+ though the files are still generated with ddot32 replacing dot. It does
+ not, however, compile when using the subsequent mex command ("can't 
+find "_daxpy_" etc). It did compile using the previous, commented out 
+mex command using lmwblas, and generated a mexmaci64 file. If I try 
+running the example code calling lfbgs, Matlab crashes.</p>
+
+<p>The libblas version is 10.2.3 for R2010b. If you could offer any solutions I would be grateful,</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Xunkai, I can't help much 
+because I don't have access to Intel's compiler. But if you adapt the 
+gfortran lines to work with the intel fortran compiler, then the rest of
+ the compilation (the C code) should be similar.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29672">Xunkai Wei</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Win 7, 64bit system, I have intel fortran compiler and vs 2012 C++ compiler, could you show me how to compile the source code ? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/4640">Ernst Kloppenburg</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Chris, I must have missed that 
+file with my last update; thanks for noticing. I have included it now 
+and the update should be on the web in the next day.
+<br>-Stephen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/127849">Chris Barber</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Stephen,</p>
+
+<p>I can't seem to find compile_mex_forWindows.m in your file submission. Would you be able to upload it?
+<br>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72439">Dominic</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot for this wrapper. Works beautifully on my UBUNTU 64 bit system :)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/49215">Paul</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Couldn't get it to run despite 
+trying all options including the f2c. Compiles and crashes when I try to
+ run an example. I'm running OS X 10.6, Matlab 2011a, 64 bit, with gcc 
+4.6.2 (prerelease) and Blas 10.2.6. Could it be that my compiler is too 
+new? Matlab documentation says I need an older gcc, 3.2, and older 
+gfortran, 4.3.x. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/261587">Georg Altenstein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot for the wrapper. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have updated the package to 
+include a new install script that should work for 64-bit BLAS, and it 
+works for Vicenc's case at least.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/260028">Vicenç Gomez</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/260028">Vicenç Gomez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Stehpen,</p>
+
+<p>thanks for your fast answer. The different versions of libblas I tried with are:</p>
+
+<p>for R2009a : 10.1.1 
+<br>for R2011b : 10.3.2
+<br>for R2012a : 10.3.5</p>
+
+<p>Intel(R) Math Kernel Library Version 10.1.1 Product Build 082212.12 for Intel(R) 64 architecture applications</p>
+
+<p>Intel(R) Math Kernel Library Version 10.3.2 Product Build 20110112 for Intel(R) 64 architecture applications</p>
+
+<p>Intel(R) Math Kernel Library Version 10.3.5 Product Build 20110720 for Intel(R) 64 architecture applications</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Vicenc, I'm sorry to hear about 
+the 64-bit problems. I don't think it's an issue with the compiler, but 
+rather it's probably a BLAS issue. Can you run "version -blas" in Matlab
+ and let me know what it says? I might be able to supply an update in a 
+few days that helps these 64-bit issues, but I need to be able to 
+recreate the problem first.
+<br>-Stephen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/260028">Vicenç Gomez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I'm using the wrapper in the laptop using ubuntu 32bit. I works perfectly.</p>
+
+<p>However, as desktop machine I have a 64bit processor and both tests 
+crash. I can compile successfully and the crashing point is arbitrary: 
+sometimes at iteration 4, sometimes in the beginning, depending on the 
+Matlab version.</p>
+
+<p>I tried with R2009b, R2011b, R2012a and always crashes. I also tried 
+with both 4.4 and 4.3 gfortran and gcc. What could be the problem?</p>
+
+<p>I'm using:</p>
+
+<p>Intel(R) Core(TM)2 Duo CPU     E8500  @ 3.16GHz
+<br>Linux 2.6.32-41-generic #90-Ubuntu SMP Tue May 22 11:29:51 UTC 2012 x86_64 GNU/Linux
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Okan,
+<br>  The L-BFGS-B software calls the BLAS library to perform most of 
+its linear algebra, and unfortunately, the conventions for BLAS have 
+changed over time. I suspect that is the problem.
+<br>  To get some more information, run this command in both versions of Matlab:</p>
+
+<p>version -blas</p>
+
+<p>If you have different versions of BLAS, that could be the issue. You 
+could try running R2011b using the BLAS library that R2011a uses. To 
+change the BLAS library, export the environment variable BLAS_VERSION to
+ point to the location of the BLAS library (on linux, it might look 
+like:</p>
+
+<p>export BLAS_VERSION=/opt/matlab-R2011a/bin/glnxa64/libmwblas.so )</p>
+
+<p>Hope that helps. If you have more issues, please email me.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/257193">Okan Irfanoglu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>First of all, thanks for this wrapper.</p>
+
+<p>I had a quick question. When I compile everything with gcc/gfortran 
+4.3.3 and call the mex file from Matlab 2011a, everything works fine and
+ both tests succeed.</p>
+
+<p>However, when i use the same compilers and Matlab R2011b, matlab 
+crashes in the tests. The two compilers are still supported by this 
+matlab as well so I wanted to ask you if you had any thoughts about 
+this.</p>
+
+<p>Thank you.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/241261">Michael</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am trying to compile on a 32 bit 
+Windows 7 machine, running Matlab 2010a. Supposing that I have the f2c 
+library correctly compiled could you try and give me some suggestions on
+ how to rewrite the mex function call within compile_mex.m?</p>
+
+<p>This is what I am currently trying:
+<br>mex lbfgsb_wrapper.c -largeArrayDims  -DDEBUG ...
+<br>    Lbfgsb.3.0/lbfgsb.f Lbfgsb.3.0/linpack.f Lbfgsb.3.0/timer.f ...
+<br>    -lm -lblas -lvcf2c -LC:\Users\Mike\Documents\MATLAB\libf2c ...
+<br>    CFLAGS="\$CFLAGS -O3"</p>
+
+<p>I get a long series or errors which appear to be complaining about syntax:</p>
+
+<p>Error lbfgsb_wrapper.c: 422  illegal statement termination 
+<br>Error lbfgsb_wrapper.c: 422  skipping `int' 
+<br>Error lbfgsb_wrapper.c: 422  undeclared identifier `ndim' 
+<br>Error lbfgsb_wrapper.c: 423  illegal use of type name `mwSize' ..........</p>
+
+<p>I have a feeling that I may need to change something in my 
+mexopts.bat file. Not sure where to start though. Any help/suggestions 
+would be greatly appreciated! Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30530">Stephen Becker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Another comment: on Windows, you 
+need a fortran compiler, and might need to do some fiddling around. But 
+it is possible because someone did it successfully; email me if you want
+ more help. But in general, it is difficult on windows.  It might be 
+best to use f2c.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/234210">Krishnamurthy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I was having the same problem with 
+2012a. The error gets fixed if you install gcc-4.4,g++-4.4,gfortran-4.4 
+and change the default compilers in mexopts.sh to these. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/143516">Chenchen Tong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi,Stephen, thank a lot for your 
+brilliant work. This is just what I need now. I am trying to use this 
+optimizer on image registration. However, I am not able to make it work.
+ I compile with the mex file on 64bit ubuntu 11.1 with matlab 2011b. The
+ GCC version is 4.6.1. I managed to make the mexa64 file. But when 
+running the test 1, I got error like:
+<br>=== lbfgsb "driver1" test problem, 2D === 
+<br>Invalid MEX-file '/media/Data/project/codes/Lbfgsb.3.0/lbfgsb_wrapper.mexa64':
+<br>/usr/local/MATLAB/R2011b/bin/glnxa64/../../sys/os/glnxa64/libgfortran.so.3:
+<br>version `GFORTRAN_1.4' not found (required by
+<br>/media/Data/project/codes/Lbfgsb.3.0/lbfgsb_wrapper.mexa64)</p>
+
+<p>Error in lbfgsb (line 174)
+<br>    [f, task, csave, lsave, isave, dsave] = ...</p>
+
+<p>could you kindly help me with this? Thanks </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">25 Jun 2012</td>
+                  <td><p>June 25, minor tweaks to code and install 
+script to help with 64-bit computers. I also include an experimental f2c
+ version (all in C) that doesn't require a fortran.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">02 Nov 2012</td>
+                  <td><p>adding compile_mex_forWindows.m</p></td>
+                </tr>
+                <tr>
+                  <td class="date">18 Jan 2013</td>
+                  <td><p>Removed unnecessary zip file from the package</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416087308098&amp;cv=7&amp;fst=1416087308098&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/35104-lbfgsb--l-bfgs-b--mex-wrapper&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D129%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

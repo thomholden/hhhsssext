@@ -1,0 +1,2331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Adaptive Robust Numerical Differentiation -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/13490-adaptive-robust-numerical-differentiation" rel="canonical">
+<meta content="Adaptive Robust Numerical Differentiation - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/13490-adaptive-robust-numerical-differentiation" property="og:url"><meta content="Numerical derivative of an analytically supplied function, also gradient, Jacobian &amp; Hessian" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F13490-adaptive-robust-numerical-differentiation" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F13490-adaptive-robust-numerical-differentiation" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/11701" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=13490" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation" class="manifest_title">Adaptive Robust Numerical Differentiation</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content//DERIVESTsuite/demo/html/derivest_demo.html" class="example" title="Example">derivest_demo</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content//DERIVESTsuite/demo/html/multivariable_calc_demo.html" class="example" title="Example">multivariable_calc_demo</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content//DERIVESTsuite/derivest.m" class="function" title="Function">derivest(fun,x0,varargin)</a><span class="description">DERIVEST: estimate the n'th derivative of fun at x0, provide an error estimate</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content//DERIVESTsuite/directionaldiff.m" class="function" title="Function">directionaldiff(fun,x0,vec)</a><span class="description">directionaldiff: estimate of the directional derivative of a function of n variables</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content//DERIVESTsuite/gradest.m" class="function" title="Function">gradest(fun,x0)</a><span class="description">gradest: estimate of the gradient vector of an analytical function of n variables</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content//DERIVESTsuite/hessdiag.m" class="function" title="Function">hessdiag(fun,x0)</a><span class="description">HESSDIAG: diagonal elements of the Hessian matrix (vector of second partials)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content//DERIVESTsuite/hessian.m" class="function" title="Function">hessian(fun,x0)</a><span class="description">hessian: estimate elements of the Hessian matrix (array of 2nd partials)</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content//DERIVESTsuite/jacobianest.m" class="function" title="Function">jacobianest(fun,x0)</a><span class="description">gradest: estimate of the Jacobian matrix of a vector valued function of n variables</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation/content/DERIVESTsuite.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:97.14280000000001%;">
+                <p>4.85714</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">35</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">244 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 166 KB</span>
+          <span id="fileid">File ID: #13490</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">Adaptive Robust Numerical Differentiation</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      27 Dec 2006
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2011-06-01">01 Jun 2011</span>)
+      </span>
+  </p>
+
+  <p id="summary">Numerical derivative of an analytically supplied function, also gradient, Jacobian &amp; Hessian</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F13490-adaptive-robust-numerical-differentiation&amp;watching=13490" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>The DERIVESTsuite provides a fully adaptive numerical
+ differentiation tool for both scalar and vector valued functions. Tools
+ for derivatives (up to 4th order) of a scalar function are provided, as
+ well as the gradient vector, directional derivative, Jacobian matrix, 
+and Hessian matrix. Error estimates are provided for all tools.</p>
+
+<p>DERIVEST provides a robust adaptive numerical differentiation (up to 
+the fourth derivative) of a user supplied function, much as quad does 
+for integration. It is semi-intelligent, trying to use that step size 
+which minimizes its estimate of the uncertainty in the derivative.</p>
+
+<p>High order methods are used, although full control is provided to the
+ user when you want it. You can direct the order of the method to be 
+used, the general class of difference method employed (forward, 
+backward, or central differences), the number of terms employed in its 
+generalized Richardson acceleration scheme, step sizes, etc.
+<br>&nbsp;
+<br>Although you can not provide a user supplied tolerance, DERIVEST 
+does return an estimate of its uncertainty in the final result. </p>
+
+<p>For example, the derivative of exp(x), at x=1 is exp(1)==2.71828182845905. DERIVEST does quite well.</p>
+
+<p>[d,err]=derivest(@(x) exp(x),1)
+<br>d =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.71828182845904</p>
+
+<p>err =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.02015503167879e-14</p>
+
+<p>See the provided demos for many more examples.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/11870-numerical-derivative-of-analytic-function">Numerical Derivative Of Analytic Function</a> inspired <i>this file.</i></p>
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/35116-hessiananalysisdemo">Hessian Analysis Demo</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/42156-object-tracking-with-an-iterative-extended-kalman-filter--iekf-">Object Tracking With An Iterative Extended Kalman Filter (Iekf)</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/20058-adaptive-numerical-limit-estimation">Adaptive Numerical Limit Estimation</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/22807-numerical-differentiation">Numerical Differentiation</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/38118-accelerated-failure-time--aft--models">Accelerated Failure Time (Aft) Models</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/38226-fit-distributions-to-censored-data">Fit Distributions To Censored Data</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.0.1 (R14SP1)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F13490-adaptive-robust-numerical-differentiation">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22adaptive%22" rel="nofollow">adaptive</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22automatic%22" rel="nofollow">automatic</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22derivative%22" rel="nofollow">derivative</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22diff%22" rel="nofollow">diff</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22differential%22" rel="nofollow">differential</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22differentiation%22" rel="nofollow">differentiation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22error+estimate%22" rel="nofollow">error estimate</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22estimation%22" rel="nofollow">estimation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22gradient%22" rel="nofollow">gradient</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hessian%22" rel="nofollow">hessian</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22jacobian%22" rel="nofollow">jacobian</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22numerical%22" rel="nofollow">numerical</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22toolbox%22" rel="nofollow">toolbox</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="13490" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/13490-adaptive-robust-numerical-differentiation" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F13490-adaptive-robust-numerical-differentiation">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(67)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">27 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/507097">Guilherme</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great File, many thanks for it.</p>
+
+<p>However, I am currently facing some issues with my function (bad 
+scaled parameters), and therefore with the second derivatives matrix 
+(Hessian).</p>
+
+<p>Here is the deal: I am minimizing a cost function (xˆ2 = (y - 
+ymodel)^2), where my model is 3 nonlinear parameter one, using a Nelder 
+Mead algo.</p>
+
+<p>Using the |hessian| function from your package using best-fit 
+parameters, yielded me some strange results (since Parameter_1 ranges 
+from [0.1:0.9], Parameter_2 from [10:30] and Parameter_3 from 
+[150:250]), that is, I need to re-escale them. My question is, what is 
+the best way to do that and does your code endogenously scale the 
+results by any chance ?</p>
+
+<p>Thank you very much in advance,</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/50204">Niklas</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/448376">kartik srinivasan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/221000">Andres Tovar</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/27495">Adam Auton</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/404595">Tim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Loads better than fmincon's output</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/312442">Danny</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/383272">Camille</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great submission, saves me a lot of work, thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/376947">Matthew</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>retrobytes - not all functions will
+ be able to use complex arguments, so derivest avoids that approach. 
+Hyper-dual numbers would appear to have the same flaw, at least without a
+ great deal of effort invested.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/370110">retrobytes</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A very useful tool, John, thanks!</p>
+
+<p>Did any of you guys think about implementing the hyper-dual numbers approach for this? I recently came across this:
+<br>http://www.stanford.edu/~jfike/SNUpresentation_rev4.pdf
+<br>and:
+<br>http://www.stanford.edu/~jfike/hyperdual.html
+<br>and I was wondering if any of you tried it instead of using complex numbers?
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/265589">Anders Munk-Nielsen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Absolutely awesome work! So easy to
+ use, brilliantly done. This is probably the best thing to happen to 
+mankind since sliced bread. And to put it up for free? John, you sir are
+ a good man!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/169038">Roberto Calandra</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just great</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/77706">daisy</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/249379">Md. Ikramul Hasan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/142049">ehs</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124390">Woodeast</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot for this useful tool!</p>
+
+<p>I have a question about how far away will the program evaluate the 
+fun from the initial point. I have a function which only exits in a 
+certain range around the initial point(but big enough in my sense, e.g. 
+starting at .1, requiring &gt;0). However, the program will break down 
+for evaluating out of range points after a fare amount of calculation. 
+Could you please give me some idea about why this happens?</p>
+
+<p>(BTW, my function has some randomness, does this matter?)</p>
+
+<p>Thanks so much!   </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73465">Andrew Newell</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent! Some of its predecessors
+ also do accurate derivatives, but this one is particularly easy to use 
+for gradients and Hessians.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/133892">Mark</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>H John,</p>
+
+<p>This looks great. I'm trying to use the Hessian function to find the 
+Fisher Information Matrix for Max-likelihood. However the Hessian 
+program is choosing parameters which are not allowable in my chosen 
+model. How can I restrict the Hessian algorythmn for permissible 
+parameter values</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Your problem is in the way you called the code.</p>
+
+<p>H=hessian(@(p) @reg2002, [0.03 3 -5])</p>
+
+<p>Here is part of the error message:</p>
+
+<p>"??? The following error occurred converting from function_handle to double: 
+<br>Error using ==&gt; double 
+<br>Conversion to double from function_handle is not possible."</p>
+
+<p>Is reg2002 a function m-file, into which you are trying to pass the variable p? If so, then you could have done this</p>
+
+<p>   H=hessian('reg2002', [0.03 3 -5])</p>
+
+<p>or, you could have done this</p>
+
+<p>   H=hessian(@reg2002, [0.03 3 -5])</p>
+
+<p>In either case, it assumes that reg2002 is an m-file, and passes in a
+ variable with two elements in it asa vector. It would return a 2x2 
+Hessian matrix. The use of @reg2002 turns that into a function handle.</p>
+
+<p>See the error message you had though. Matlab sees this:</p>
+
+<p>@(p) @reg2002</p>
+
+<p>and tries to return a function handle as the result of a function. 
+Then my code looks at it, and tries to use the function handle as a 
+number. Of course it fails.</p>
+
+<p>Finally, you might also have done this</p>
+
+<p>   H=hessian(@(p) reg2002(p), [0.03 3 -5])</p>
+
+<p>Here, you would be creating an anonymous function, a function of the 
+variable p. It is yet another function handle that the code can use 
+properly.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/132082">emma liu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi John, many thanks for the wonderful suite!</p>
+
+<p>I met a problem when I use the function from the m-file. my code is:</p>
+
+<p>H=hessian(@(p) @reg2002, [0.03 3 -5])</p>
+
+<p>??? The following error occurred converting from function_handle to double:
+<br>Error using ==&gt; double
+<br>Conversion to double from function_handle is not possible.</p>
+
+<p>Error in ==&gt; derivest at 330
+<br>      f_x0(j) = fun(x0(j));</p>
+
+<p>Error in ==&gt; hessdiag at 59
+<br>  [HD(ind),err(ind),finaldelta(ind)] = derivest( ...</p>
+
+<p>Error in ==&gt; hessian at 74
+<br>[hess,err] = hessdiag(fun,x0);</p>
+
+<p>I don't what is wrong here. is there mistakes I made? many thanks in advance.</p>
+
+<p>Emma</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Felipe - Note that the submissions 
+#15235 and #26807 actually appeared AFTER my tool (#13490) did. 
+Submissions are assigned sequential numbers on the FEX. I see no reason 
+to acknowledge a later submission on the FEX. In general, since forward 
+acknowledgement would seem to require precognition of some sort, it is 
+rather difficult to accomplish. In fact, most of the references in that 
+Wikipedia article referenced appeared several years after this tool was 
+written and posted on the FEX.</p>
+
+<p>I will modify the title in light of your comment though, since the phrase might conceivably confuse some people.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/79753">Felipe G. Nievinski</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>"Automatic" in the title might 
+confound viewers that it implements "automatic differentiation", see 
+&lt;http://en.wikipedia.org/wiki/Automatic_differentiation&gt; and 
+submission # 26807.</p>
+
+<p>You might want to use the acknowledgement field so that related submission #15235 back-links to yours.</p>
+
+<p>Haven't tried it yet, reason why I'm not rating it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131096">Kulan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126897">Sturla Kvamsdal</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,</p>
+
+<p>Thank you very much for the great suite!</p>
+
+<p>The information on the Hessian-function explicitly states that it is 
+not for frequent use on an expensive to evaluate objective function. I 
+tried it anyway, because that is what I need. Most of the time, I get 
+something reasonable (hard to check, but I'll worry about that later), 
+but sometimes I get NaN's. Any idea what the problem might be?</p>
+
+<p>Perhaps some more details are warranted: The function I want to 
+differentiate is a likelihood-function. It is a function of time, and I 
+need the Hessian at the maximum for each timestep. (The maximum is one 
+point associated to the last time period.) The function takes 5 
+parameters.</p>
+
+<p>Any help or ideas appreciated!</p>
+
+<p>Thank you very much,
+<br>Sturla</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>If you are looking for all of the second partials, then yes, a loop on the Hessian computation seems the solution.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/123674">Aydin Buluc</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,
+<br>Thanks much for the quick response. 
+<br>jacobianest was indeed what I needed, should have looked into the whole package first.</p>
+
+<p>I was looking at the hessian function, which doesn't allow me to use a
+ vector function (perhaps understandably, as the output would be a 
+tensor otherwise). </p>
+
+<p>Proceeding with the matrix-vector example 
+<br>@(x) A*x;
+<br>Should I loop over the rows of and call hessian m times to get all the Hessians?
+<br>for i=1:m
+<br>       f = @(x) A(i,:)*x; // Returns a scalar
+<br>       [h(i) herr(i)] = hessian(f, x0);
+<br>end</p>
+
+<p>Thanks,
+<br>- Aydin</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Aydin,</p>
+
+<p>The trick is, derivest itself takes only a function of a single 
+variable. Suppose I had a scalar function of three variables. Thus it 
+takes a set of three variables, returning a single number. If you wish 
+to compute a partial derivative of that function, then you get a single 
+number out. But that is a partial derivative, NOT a derivative. "The" 
+derivative of a scalar function of three variables is given by the 
+gradient vector, composed of three partial derivatives. So I have 
+provided the tool gradest. Use it for scalar functions of multiple 
+variables.</p>
+
+<p>Now, suppose I have a function of n variables, that produces m output
+ results? (This is what you have by the way.) Now you must compute a 
+Jacobian MATRIX, an m by n matrix of partial derivatives. Again, 
+derivest is not the tool, nor is gradest. This is a different problem 
+that requires a different tool yet, so I wrote jacobianest.</p>
+
+<p>&gt;&gt; A = magic(3)
+<br>A =
+<br>     8     1     6
+<br>     3     5     7
+<br>     4     9     2</p>
+
+<p>&gt;&gt; [J,Jerr] = jacobianest(fun,[1;2;3])
+<br>J =
+<br>            8            1            6
+<br>            3            5            7
+<br>            4            9            2</p>
+
+<p>Jerr =
+<br>   7.7667e-14   9.7084e-15   5.3057e-14
+<br>   2.6528e-14   4.3706e-14     7.09e-14
+<br>   3.8833e-14   9.4059e-14   1.9417e-14</p>
+
+<p>In the case that you really only wanted to know the derivative of a 
+specific element of the result, with respect to a specific single 
+variable out of the several inputs, you need to define a function where 
+the OTHER variables are held fixed. Thus...</p>
+
+<p>&gt;&gt; x1 = 1;
+<br>&gt;&gt; x2 = 2;
+<br>&gt;&gt; fun2 = @(x3) [0 1 0]*fun([x1;x2;x3]);
+<br>&gt;&gt; [d23,derr] = derivest(fun2,3,'vectorized','no')
+<br>d23 =
+<br>            7
+<br>derr =
+<br>    4.785e-14</p>
+
+<p>Thus, fun2 fixes the first two variables, then extracts out the 
+second output result. derivest can now operate, as long as I tell it 
+that this function is not vectorized. It is not set up to take a vector 
+of inputs and produce one result for each. fun2 takes only a scalar 
+input, and produces only a scalar output.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/123674">Aydin Buluc</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John, 
+<br>Thanks for the lovely tool.
+<br>I couldn't figure out how to differentiate multivariable functions with it though. For example, 
+<br>f = @(x) A*x</p>
+
+<p>where A is a matrix and x is a vector.</p>
+
+<p>Your code seems to do the following:</p>
+
+<p>% Loop over the elements of x0, reducing it to
+<br>% a scalar problem. Sorry, vectorization is not
+<br>% complete here, but this IS only a single loop.
+<br>der = zeros(nx0);
+<br>errest = der;
+<br>finaldelta = der;
+<br>for i = 1:n
+<br>  ...
+<br>end</p>
+
+<p>while A*x doesn't really reduce to a single scalar problem as far as I can see. Any suggestions?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104192">Alessandro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry John, sorted out the problem, was my fault... thanks again for these useful codes.
+<br>Alessandro</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104192">Alessandro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,</p>
+
+<p>I tried to run the Rosenbrock example included in the help of your routine hessian, i.e. I ran </p>
+
+<p>rosen = @(x) (1-x(1)).^2 + 105*(x(2)-x(1).^2).^2;
+<br>[h,err] = hessian(rosen,[1 1])</p>
+
+<p>I get the following error:</p>
+
+<p>"??? Error using ==&gt; subsindex
+<br>Function 'subsindex' is not defined for values of class 'function_handle'."</p>
+
+<p>do you know how to solve this?
+<br>thank you.
+<br>Alessandro</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I believe that fmincon has improved
+ since my statement in the past, so that the hessian as returned is now a
+ better approximation. Of course, if you supply the hessian, no updates 
+are needed.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/120032">Januj</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Errico, </p>
+
+<p>In another post, you stated that matlab does not compute the Hessian 
+very well. Is this why the Hessian may not get updated in fmincon? 
+Secondly, would providing a user-suppled Hessian (through the DERIVEST 
+routine, for e.g.) be able to improve the ability of fmincon to update 
+the Hessian in all cases? Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/99146">Kimonas Fountoulakis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>HI Errico</p>
+
+<p>I tried to expand your code in order to derivate Bilinear Matrix 
+inequalities. The program is still in a rough form, in particular I 
+didn't implement the error part of the estimation, but I was able to 
+produce derivatives of a BMI function correctly. If you are interested 
+in sending you the programm please let me know. I will try though one of
+ these days to implement the error term as well.</p>
+
+<p>Kimonas </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Andrew,</p>
+
+<p>The point is, derivest uses a sequence of nested approximations, 
+using a geometric sequence of points for the steps. For example, suppose
+ we chose to compute the derivative of tan(x), at x = pi*2/3.</p>
+
+<p>[D,errest] = derivest(@tan,pi*2/3)</p>
+
+<p>D =
+<br>            4</p>
+
+<p>errest =
+<br>   7.0302e-13</p>
+
+<p>Tan(x) has a singularity at x = pi/2, so if the step size is chosen 
+to be large enough, the approximations will actually span that 
+singularity. This will cause the corresponding estimate to be useless, 
+but since there are multiple estimates produced, some of them will be 
+good, and I can figure out which estimates in the sequence ARE good and 
+which ones are bad.</p>
+
+<p>I pick that estimate with the lowest predicted error, along with some additional criteria.</p>
+
+<p>A nice thing about the nested sequence of approximations is it allows
+ me to deal with functions that have problem scaling. I can almost 
+always find a viable solution.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73465">Andrew Newell</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>In derivest_demo.m, I found the following statement:
+<br>"Although a central rule may put some samples in the wrong places, it may still succeed"</p>
+
+<p>How would it put samples in the "wrong places"?
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Prasanna,
+<br>In theory, I could have written derivest to provide higher 
+derivatives. In practice, high order numerical differentiation is 
+difficult to do. Differentiation is a noise amplifier. It takes any tiny
+ noise in your system, and boosts it. By the time you get up to the 4th 
+derivative or so, the noise down in the least significant bits can start
+ to cause numerical problems. For this reason, I limited it there. Any 
+further, and I was no longer able to trust what was coming out in some 
+test cases. And since I had to put a limit somewhere, I chose 4 as the 
+maximum order of derivative it would provide.</p>
+
+<p>You can use the error estimate provided as a measure of how well I 
+think I was able to do. As an example, try a simple trig function. 
+Differentiate sin(x), at x = pi/4. The result will always be plus or 
+minus sqrt(2)/2, depending on the derivative order.</p>
+
+<p>&gt;&gt; fun = @sin;
+<br>&gt;&gt; [D,DE] = derivest(fun,pi/4,'derivativeorder',1)
+<br>D =
+<br>      0.70711
+<br>DE =
+<br>   7.0617e-15</p>
+
+<p>For the first derivative, I can give virtually full precision. 
+However, the second derivative is not quite so verifiably computable, 
+and the error estimate reflects that fact.</p>
+
+<p>&gt;&gt; [D,DE] = derivest(fun,pi/4,'derivativeorder',2)
+<br>D =
+<br>     -0.70711
+<br>DE =
+<br>    1.666e-12</p>
+
+<p>&gt;&gt; [D,DE] = derivest(fun,pi/4,'derivativeorder',3)
+<br>D =
+<br>     -0.70711
+<br>DE =
+<br>   6.6146e-11</p>
+
+<p>&gt;&gt; [D,DE] = derivest(fun,pi/4,'derivativeorder',4)
+<br>D =
+<br>      0.70711
+<br>DE =
+<br>   1.9122e-05</p>
+
+<p>See that by the time I've gotten to the 4th derivative, derivest 
+tells me only to trust the first 4 or 5 digits in the result. Had I 
+allowed higher orders here, the result would rapidly become a virtual 
+random number generator.</p>
+
+<p>Now, with care, one could modify the code to work for 5th 
+derivatives. Just look for par.DerivativeOrder, and see what was done, 
+extending the code for 5th order derivatives. A quick check through the 
+code finds only one or two spots where serious understanding of the 
+methods employed was necessary. (To be honest, leave such a modification
+ of the code to me.)</p>
+
+<p>Can you nest derivest calls? Yes, in theory you can do so to produce 
+higher order derivatives, and the error estimate will tell you if it 
+thinks it is generating garbage for a result. This test computes the 5th
+ derivative of sin(x), at pi/4.</p>
+
+<p>&gt;&gt; format long g
+<br>&gt;&gt; d2 = @(x) derivest(fun,pi/4 + x,'derivativeorder',2);</p>
+
+<p>&gt;&gt; [d5,d5err] = derivest(d2,0,'derivativeorder',3)
+<br>d5 =
+<br>         0.707106775613828
+<br>d5err =
+<br>      4.17633428512851e-08</p>
+
+<p>&gt;&gt; sqrt(2)/2
+<br>ans =
+<br>         0.707106781186548</p>
+
+<p>Note that derivest thinks it was able to do so reasonably well, and 
+it was just about right on where it tells you to no longer trust the 
+digits in the result. In fact, in this case, the nested result is 
+probably more accurate than a direct computation of the 5th derivative. 
+So the 3rd derivative of the second derivative is more accurate (but a 
+bit slower!) than a direct computation of the 5th derivative.</p>
+
+<p>HTH,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/117723">Prasanna Venkatesh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello John,
+<br>This piece of code is great. I had one question, I have a function 
+for which I have no analytical expression, hence cannot vectorize it. 
+But I can do pretty fast numerical computation of it and I know that it 
+has smooth first, second, third and fourth derivatives by applying your 
+DerivTest function on it. I need one more derivative to complete my 
+calculation and I was wondering if I should make an anonymous function 
+out of the fourth derivative calculation using DerivTest and take its 
+first derivative to get the fifth. I wanted to know if there is some 
+specific reason for which this code goes only upto 4th derivative?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116279">J West</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks very much, that was exceptionally helpful. These are a nice set of functions and very much appreciated.</p>
+
+<p>Unsurprisingly, calling a loop to gradest for several points inside 
+fminsearch is not the fastest thing in the world, but such are the 
+trade-offs, and it does seem to do the job!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have provided the related 
+function gradest to compute a gradient, zipped with derivest. For 
+example, I'll pick arbitrary values for the parameters k1,k2,k3,k4,k5, 
+and then define a function handle.</p>
+
+<p>k1 = 1/2;
+<br>k2 = 1/3;
+<br>k3 = 1/4;
+<br>k4 = 1/5;
+<br>k5 = 1/6;</p>
+
+<p>fun = @(xyz) k1*xyz(1)*(1- ...
+<br>    exp(-k2*(xyz(2)^k3)*(xyz(3)^k4)*(xyz(1)^k5)))</p>
+
+<p>Now, call gradest...</p>
+
+<p>gradest(fun,[1 2 3])
+<br>ans =
+<br>      0.21997     0.018836     0.010046</p>
+
+<p>For multiple points, wrap a loop around the call to gradest.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116279">J West</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I may be missing something obvious here, but is there a clever way to use derivest to calculate a set of partial derivatives?</p>
+
+<p>I have a function something like
+<br>f = k1 * x * (1 - exp(-k2*(y^k3)*(z^k4)*(x^k5))
+<br>and would like to be able to calculate partial derivatives df/dx, df/dy, and df/dz for sets of specific values of x, y, and z. </p>
+
+<p>I am doing this in order to calculate an error weighting for least 
+squares fitting -- I have uncertainties in x, y, and z which I would 
+like to map onto f in order to determine a weighting factor for the 
+minimization (so I want the gradient at each point). I would prefer to 
+determine the derivative numerically because that will allow me the most
+ flexibility in being able to try different forms of the function, etc.</p>
+
+<p>Many thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Large relative reported errors 
+might mean that the derivative computed is small compared to the 
+uncertainty in it. It may also mean that there is some problem in the 
+computation, leaving the derivative uncertain. It is difficult to know 
+what has happened from only this description.</p>
+
+<p>One option is to compute the derivative in question using derivest in
+ stead of the hessian tool. While this will be less efficient, there are
+ many more options for overcoming problems that I have provided in 
+derivest itself. That way you could be sure of what is the problem, and 
+hopefully overcome it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/89428">pekka</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I have some problem that sometimes when I compute the hessian I get 
+that err contains terms that are larger than terms in the reported 
+hessian. What are the reasons for this and are there any general ways to
+ rewrite something to avoid this problem? </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/87174">V</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thank you very much for your quick reply
+<br>i'll get release 14 or 7</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi V,</p>
+
+<p>You must be using an old MATLAB release. Here is what happens when I try your example in R2010a:</p>
+
+<p>&gt;&gt; myfun1 = inline('exp(x)'); 
+<br>[d,err]=derivest(myfun1,1,'Vectorized','no')</p>
+
+<p>d =</p>
+
+<p>       2.7183</p>
+
+<p>err =</p>
+
+<p>   2.1641e-14</p>
+
+<p>So then I looked more carefully at your comment. I see the warning message gives the answer away. </p>
+
+<p>Warning: File: C:\MATLAB6p5\work\derivest.m Line: 463 Column: 1 
+<br>Unmatched "end". </p>
+
+<p>You are running version 6.5 (i.e., release 13.) Derivest was written 
+in Release 14, or version 7. As such, it uses several things that will 
+cause your MATLAB release to be quite unhappy.</p>
+
+<p>Sorry,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/87174">V</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi john,</p>
+
+<p>i tried this </p>
+
+<p>myfun1 = inline('exp(x)'); 
+<br>[d,err]=derivest(myfun1,1,'Vectorized','no')</p>
+
+<p>and i got the error below,
+<br>thanks for any help you can provide</p>
+
+<p>Warning: File: C:\MATLAB6p5\work\derivest.m Line: 463 Column: 1
+<br>Unmatched "end".
+<br>(Type "warning off MATLAB:m_warning_end_without_block" to suppress this warning.)
+<br>Warning: File: C:\MATLAB6p5\work\derivest.m Line: 523 Column: 1
+<br>Unmatched "end".
+<br>(Type "warning off MATLAB:m_warning_end_without_block" to suppress this warning.)
+<br>Warning: File: C:\MATLAB6p5\work\derivest.m Line: 538 Column: 1
+<br>Unmatched "end".
+<br>(Type "warning off MATLAB:m_warning_end_without_block" to suppress this warning.)
+<br>Warning: File: C:\MATLAB6p5\work\derivest.m Line: 573 Column: 1
+<br>Unmatched "end".
+<br>(Type "warning off MATLAB:m_warning_end_without_block" to suppress this warning.)
+<br>Warning: File: C:\MATLAB6p5\work\derivest.m Line: 659 Column: 1
+<br>Unmatched "end".
+<br>(Type "warning off MATLAB:m_warning_end_without_block" to suppress this warning.)
+<br>Warning: File: C:\MATLAB6p5\work\derivest.m Line: 759 Column: 1
+<br>Unmatched "end".
+<br>(Type "warning off MATLAB:m_warning_end_without_block" to suppress this warning.)
+<br>??? Error using ==&gt; factorial
+<br>N must be a positive integer.</p>
+
+<p>Error in ==&gt; C:\MATLAB6p5\work\derivest.m (fdamat)
+<br>On line 564  ==&gt;     c = 1./factorial(1:2:(2*nterms));</p>
+
+<p>Error in ==&gt; C:\MATLAB6p5\work\derivest.m
+<br>On line 275  ==&gt;           fdarule = [1 0]/fdamat(par.StepRatio,1,2);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34660">Richard Crozier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Another really excellent piece of 
+code, I hope TMW buy you a nice christmas present every year for 
+extending their software so extensively for them.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32130">David Doria</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73137">Adam</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello,</p>
+
+<p>Hessian does not work, neither in any example nor when I try to use it. It gives the message:
+<br>Function 'subsindex' is not defined for values of class 'function_handle'.
+<br>All other functions seem to be great though..
+<br>Best,</p>
+
+<p>Adam</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/66625">Michelle</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,</p>
+
+<p>Thanks for the timely and detailed reply!  I had assumed that 
+derivest handles all cases.  Now I see jacobianest is a standalone 
+function.  Thanks again! And great code!</p>
+
+<p>Michelle</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Michelle,</p>
+
+<p>The problem is, when you define myfun as you have, it is not a scalar
+ valued function. It returns a vector argument. Thus we can do this:</p>
+
+<p>myfun=inline('[exp(x);exp(2*x)]');</p>
+
+<p>myfun(2)
+<br>ans =
+<br>       7.3891
+<br>       54.598</p>
+
+<p>See that there are two numbers returned for a scalar input.</p>
+
+<p>(By the way, I'd strongly recommend the use of function handles and 
+anonymous functions instead of inline functions. An inline function is 
+comparatively very slow to evaluate.)</p>
+
+<p>The derivest code computes the derivative of a scalar valued 
+function. Change your function to return a scalar value, as do myfun1 
+and myfun2 below, and derivest works as designed.</p>
+
+<p>myfun1 = inline('exp(x)');
+<br>[d,err]=derivest(myfun1,1,'Vectorized','no')</p>
+
+<p>d =
+<br>       2.7183
+<br>err =
+<br>   9.3127e-15</p>
+
+<p>myfun2 = inline('exp(2*x)');
+<br>[d,err]=derivest(myfun2,1,'Vectorized','no')
+<br>d =
+<br>       14.778
+<br>err =
+<br>   1.8401e-13</p>
+
+<p>Now, how might one define the derivative of a vector valued function?
+ This is defined mathematically as the Jacobian. In fact, in the 
+derivest suite, I have provided the jacobianest function to compute what
+ you wish. It works on a vector valued function, returning a jacobian 
+matrix. Here, since the parameter of these functions is a scalar, the 
+Jacobian matrix is just a vector of length 2.</p>
+
+<p>[d,err] = jacobianest(myfun,1)
+<br>d =
+<br>       2.7183
+<br>       14.778
+<br>err =
+<br>   3.6841e-14
+<br>   1.4736e-13
+<br> 
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/66625">Michelle</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks so much for making such a useful suite available!  </p>
+
+<p>I was experimenting with the code and typed in the following two commands:</p>
+
+<p>&gt;&gt; myfun=inline('[exp(x);exp(2*x)]')
+<br>&gt;&gt; [d,err]=derivest(myfun,1,'Vectorized','no')</p>
+
+<p>but got back error messages that read</p>
+
+<p>???  In an assignment  A(I) = B, the number of elements in B and
+<br> I must be the same.</p>
+
+<p>Error in ==&gt; &lt;a 
+href="error:/a/fmalx1/lcl/fma/res1/mxw/research/min/code/matlab/DERIVESTsuite/derivest.m,362,1"&gt;derivest
+ at 362&lt;/a&gt;
+<br>        f_plusdel(j) = fun(x0i+h*delta(j));</p>
+
+<p>I'm posting it here because I thought you might be able to spot the 
+problem much more quickly than I could. Could you let me know?</p>
+
+<p>Thanks in advance for your help! </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Benn,</p>
+
+<p>My guess is that you have written your own factorial function, 
+probably as a homework assignment, since the error messages show a 
+recursive implementation of factorial. This causes a failure in 
+derivest, since your version is not properly vectorized. By vectorized, I
+ mean that when called with a list of numbers, the Mathworks version of 
+factorial computes the factorial of each number.</p>
+
+<p>You can learn which factorial version is called by typing this at the command line:</p>
+
+<p>which factorial -all</p>
+
+<p>MATLAB will show which version of the factorial function will be 
+used. You should see the version that you wrote listed at the very top.</p>
+
+<p>At first, I thought that possibly you simply are using an old version
+ of MATLAB, but this is unlikely, since the Mathworks would never have 
+written the factorial function to have a recursive definition as I see. 
+(Recursive factorial definitions are a nice way to teach a student 
+recursive coding styles, but they are a terrible coding style in 
+practice because of the extraneous, wasted function call overhead just 
+to multiply a list of consecutive numbers together.)</p>
+
+<p>The solution is to remove the bad (homework assignment) version of 
+factorial from your search path. It will be inefficient anyway compared 
+to the supplied version of factorial that MATLAB already comes with, and
+ your version is not properly vectorized. At the very least, move it to 
+another place far down on your search path so that matlab will use the 
+correct version of factorial instead.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/61876">Benn Eifert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>help! just downloaded the toolbox and tried to run the most basic example in the derivest documentation:</p>
+
+<p>[d,e]=derivest(@(x) exp(x),1)</p>
+
+<p>and got a bunch of errors of this form:</p>
+
+<p>Error in ==&gt; factorial at 8
+<br>  x = n*factorial(n-1);</p>
+
+<p>Error in ==&gt; factorial at 8
+<br>  x = n*factorial(n-1);</p>
+
+<p>Error in ==&gt; derivest&gt;fdamat at 564
+<br>    c = 1./factorial(1:2:(2*nterms));</p>
+
+<p>Error in ==&gt; derivest at 283
+<br>          fdarule = [0 1 0]/fdamat(par.StepRatio,1,3);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37251">Serter YILMAZ</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works really fine! very helpful! Thanks...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30859">Mark A. Mikofski</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This worked better than fminsearch 
+when used as a damped newton method for finding a root with extremely 
+high sensitivity. fminsearch was overly slow, and often overshot the 
+root, even though the tolerance was high, and fzero didn't work at all. 
+Derivest was fast.
+<br>This is the second time I've used great code from John D'Erico.
+<br>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've just uploaded a new release 
+that repairs the problem of complex domain differentiation. For example,
+ the current release now gets this correct:</p>
+
+<p>exp(1+i)
+<br>ans =
+<br>       1.4687 +     2.2874i</p>
+
+<p>derivest(@(z) exp(z),1+i)
+<br>ans =
+<br>       1.4687 +     2.2874i
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40720">liuxbin xbin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>When I use this function to get the derivative at the complex numbers,problem appears.For example:
+<br>derivest(@(z) exp(z),1+i)
+<br>ans =
+<br>1.46869393991590 - 2.28735528717885i
+<br>However,the derivative of exp(z) at z(complex numbers) should be exp(z)
+<br>exp(1+i)
+<br>ans =
+<br>  1.46869393991589 + 2.28735528717884i
+<br>which is the conjucate of the above.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Aug 2008</span></td>
+        <td>
+          <span class="author">
+            Golam Kibria Chowdhury
+          </span>
+        </td>
+        <td><span class="comment"><p>Rock 'n' Roll</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Aug 2008</span></td>
+        <td>
+          <span class="author">
+            Golam Kibria Chowdhury
+          </span>
+        </td>
+        <td><span class="comment"><p>Rock 'n' Roll</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Mar 2008</span></td>
+        <td>
+          <span class="author">
+            Scott Miller
+          </span>
+        </td>
+        <td><span class="comment"><p>Works just great.  I was in a 
+situation where using hessiancs was problematic because the functions 
+being evaluated had a transiently complex nature.  hessiancs works well 
+with functions that never use any complex arithmetic, but watch out for 
+using complex steps if the internals use any complex arithmetic, even if
+ the inputs and outputs are both real.  Downloaded the package, changed 
+function names, and it worked right out of the box - slower, but 
+'bullet-proof' sometimes beats 'fast'.  Good documentation, etc., too.  I
+ appreciate that hessiancs used a similar form to the one you used - 
+I'll go back to it when I need more speed and have the time to fix my 
+loss functions.</p>
+
+<p>Scott</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            John D'Errico
+          </span>
+        </td>
+        <td><span class="comment"><p>Can anyone let me know what 
+conflicted with lightspeed? I'll try to fix it if possible. It might be a
+ function name that I chose. Otherwise, this is just basic Matlab code.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            Matlab User
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful!  I was able to use 
+this to check my symbolically derived hessian matrix in an optimization 
+routine... optimset('DerivativeCheck','on') checks the gradient 
+numerically, but apparently not the hessian.</p>
+
+<p>In case anyone else has a problem, I found that this was incompadible
+ with the matlab Lightspeed toolbox, but that is no doubt the Lightspeed
+ toolbox's fault.  Removing lightspeed fixed the issue.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Dec 2007</span></td>
+        <td>
+          <span class="author">
+            Johannes Wunsch
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Oct 2007</span></td>
+        <td>
+          <span class="author">
+            Arun kumar
+          </span>
+        </td>
+        <td><span class="comment"><p>THIS WEBSITE IS VERY HELPFULL :)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Sep 2007</span></td>
+        <td>
+          <span class="author">
+            serge koulayev
+          </span>
+        </td>
+        <td><span class="comment"><p>I get this error sometimes:
+<br>??? Improper assignment with rectangular empty matrix.</p>
+
+<p>Error in ==&gt; derivest at 457
+<br>    [errest(i),ind] = min(errors);</p>
+
+<p>- why that would be?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            Zahid Ullah Khan
+          </span>
+        </td>
+        <td><span class="comment"><p>The best!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">27 Dec 2006</td>
+                  <td><p>Minor changes</p></td>
+                </tr>
+                <tr>
+                  <td class="date">08 Feb 2007</td>
+                  <td><p>Added an option for differentiating a non-vectorized function.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">12 Feb 2007</td>
+                  <td><p>Added gradient and Hessian tools, also hessdiag, plus a gradient/hessian demo.
+<br>Fixed a bug in derivest which sometimes occurred for very small values of the variable.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">08 Mar 2007</td>
+                  <td><p>Added jacobian matrix and directional derivative support, also a ReadMe file.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Sep 2007</td>
+                  <td><p>Repaired a bug, operating at fixed step sizes for the 2nd order method. Removed mac origin .DS_store files.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">01 Jun 2011</td>
+                  <td><p>Repaired problem when the point to evaluate the derivative happens to be the same as the period of a periodic function.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416122161610&amp;cv=7&amp;fst=1416122161610&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/13490-adaptive-robust-numerical-differentiation&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fterm%3Dauthorid%253A679&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

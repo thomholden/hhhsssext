@@ -1,0 +1,3006 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>fminsearchbnd, fminsearchcon -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/8277-fminsearchbnd--fminsearchcon" rel="canonical">
+<meta content="fminsearchbnd, fminsearchcon - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/8277-fminsearchbnd--fminsearchcon" property="og:url"><meta content="Bound constrained optimization using fminsearch" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8277-fminsearchbnd--fminsearchcon" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8277-fminsearchbnd--fminsearchcon" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/13585" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=8277" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon" class="manifest_title">fminsearchbnd, fminsearchcon</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon/content//FMINSEARCHBND/demo/html/fminsearchbnd_demo.html" class="example" title="Example">fminsearchbnd_demo</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon/content//FMINSEARCHBND/demo/html/fminsearchcon_demo.html" class="example" title="Example">fminsearchcon_demo</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon/content//FMINSEARCHBND/fminsearchcon.m" class="function" title="Function">[x,fval,exitflag,output]=...</a><span class="description">FMINSEARCHCON: Extension of FMINSEARCHBND with general inequality constraints</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon/content//FMINSEARCHBND/fminsearchbnd.m" class="function" title="Function">fminsearchbnd(fun,x0,LB,U...</a><span class="description">FMINSEARCHBND: FMINSEARCH, but with bound constraints by transformation</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon/content//FMINSEARCHBND/test/test_main.m" class="script" title="Script">test_main.m</a><span class="description">Optimization of a simple (Rosenbrock) function, with no constraints</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon/content/FMINSEARCHBND.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:98.9656%;">
+                <p>4.94828</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">61</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">287 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 20.4 KB</span>
+          <span id="fileid">File ID: #8277</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">fminsearchbnd, fminsearchcon</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      11 Aug 2005
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2012-02-06">06 Feb 2012</span>)
+      </span>
+  </p>
+
+  <p id="summary">Bound constrained optimization using fminsearch</p>
+
+    <div id="editorsnote">
+      <h3>Editor's Notes:</h3>
+      <p></p><p><br>This is a <b>File Exchange Select</b> file.
+<br><br><br>
+<br>Select files are submissions that have been peer-reviewed and approved as meeting a high standard of utility and quality.</p><p></p>
+    </div>
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F8277-fminsearchbnd--fminsearchcon&amp;watching=8277" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Fminsearch does not admit bound constraints. 
+<br>However simple transformation methods exist to 
+<br>convert a bound constrained problem into an 
+<br>unconstrained problem. </p>
+
+<p>Fminsearchbnd is used exactly like fminsearch,
+<br>except that bounds are applied to the variables.
+<br>The bounds are applied internally, using a 
+<br>transformation of the variables. (Quadratic for 
+<br>single bounds, sin(x) for dual bounds.)</p>
+
+<p>The bounds are inclusive inequalities, which admit
+<br>the boundary values themselves, but will not permit 
+<br>ANY function evaluations outside the bounds.</p>
+
+<p>Note that fminsearchbnd allows the user to exactly fix a variable at 
+some given value, by setting both bounds to the exact same value.</p>
+
+<p>Example usage:
+<br>rosen = @(x) (1-x(1)).^2 + 105*(x(2)-x(1).^2).^2;</p>
+
+<p>% unconstrained fminsearch solution
+<br>fminsearch(rosen,[3 3])
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;1.0000    1.0000</p>
+
+<p>% Lower bounds, no upper bounds
+<br>fminsearchbnd(rosen,[2.5 2.5],[2 2],[])
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;2.0000    4.0000</p>
+
+<p>Lower bounds on both vars, upper bound on x(2)
+<br>fminsearchbnd(rosen,[2.5 2.5],[2 2],[inf 3])
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;2.0000    3.0000</p>
+
+<p>I've now included fminsearchcon in the package, a tool that also allows nonlinear constraints.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/26386-zfitgui-varargin--fits-and-simulates-impedance-data">Zfit Gui(Varargin) Fits And Simulates Impedance Data</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/26067-easyfitgui">Easyfit Gui</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/10093-fminspleas">Fminspleas</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/17804-fminsearchbnd-new">Fminsearchbnd New</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/19460-zfit">Zfit</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/25948-variogramfit">Variogramfit</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/38118-accelerated-failure-time--aft--models">Accelerated Failure Time (Aft) Models</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/38226-fit-distributions-to-censored-data">Fit Distributions To Censored Data</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method">Total Least Squares Method</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/24298-minimize">Minimize</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.0.1 (R14SP1)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>This code should work on any release of matlab which allows the use of sub-functions.</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8277-fminsearchbnd--fminsearchcon">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22bound%22" rel="nofollow">bound</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22bound+constrained%22" rel="nofollow">bound constrained</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22constraint%22" rel="nofollow">constraint</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22fminsearch%22" rel="nofollow">fminsearch</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22maximization%22" rel="nofollow">maximization</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22minimization%22" rel="nofollow">minimization</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22optimization%22" rel="nofollow">optimization</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22transformation%22" rel="nofollow">transformation</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="8277" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/8277-fminsearchbnd--fminsearchcon" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8277-fminsearchbnd--fminsearchcon">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(102)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">21 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/281252">Alexandre Laurin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/329954">Simon Mæng</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/356721">Dmitry</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It uses fminsearch, which is part 
+of MATLAB, not in the optimization toolbox. If you already had the 
+optimization toolbox, I'd just tell you to use fmincon.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/77250">Seb Biass</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey, thanks for that. I was just wondering… does it work without the optimization toolbox?
+<br>Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/492989">Sani</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have no idea why you are having a
+ problem installing it, after apparently many days of trying to do so. I
+ can't tell you much more than what I've already said.</p>
+
+<p>1. Click on the button that says DOWNLOAD SUBMISSION. Use your mouse to do so.</p>
+
+<p>2. Unzip the file. There are MANY utilities that will unzip a file. In fact, MATLAB itself contains an unzip tool. Use it.</p>
+
+<p>3. Add the resulting top level directory to your search path. Use either pathtool or addpath to do this.</p>
+
+<p>I don't know which of the above things has caused you a problem, but they all seem pretty basic.</p>
+
+<p>I have NO idea what you are asking about how to use an if statement in this context.</p>
+
+<p>Finally, I'm sorry, but I won't go into depth about the differences 
+between fminsearch and fmincon. That would take far too much time to do 
+on my part. There are many places online where Nelder/Mead tools are 
+explained for you to learn about FMINSEARCH. As far as fmincon goes, 
+start with reading the doc for it. If you bother to look at the bottom, 
+you will find references.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/431821">Nathalie</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, i'm struggling how to install it?</p>
+
+<p>I'll be thankful if you help me with that.</p>
+
+<p>And also, can i instead write some loop with 'if..' , imposing 
+constraints/conditions on the values my parameters can take, so to 
+double check my constrained problem. Also, why 'fmincon' may work worse 
+than 'fminsearch'. I can't find the mechanics of how these two commands 
+work? thank you in advance.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>1. Download it.
+<br>2. Install it as directed.
+<br>3. Read the help, look at the examples.</p>
+
+<p>What else can I possibly say?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/431821">Nathalie</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi, how to use this command?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/335692">Matthew</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/77250">Seb Biass</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Always good to see Mathworks relying on users to provide such functions...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/48538">Kees de Kapper</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,</p>
+
+<p>Thank you for your contribution to the community.
+<br>I’ve got a question regarding the initial step. Probably it is related to the Q/A by Nguyen, but I’m not completely sure.</p>
+
+<p>If the initial value is at the boundary, the initial step is very 
+small and therefore the optimization is stuck at the boundary value (in 
+case of my optimization function). If the initial value is middle of the
+ boundaries, the initial step is reasonable, and the optimization can 
+walk to the “global” minimum (which can be close to one of the 
+boundaries). Apparently there is scaling of the step size between the 
+boundaries.
+<br>Is it possible to avoid this scaling? </p>
+
+<p>Thanks in advance,
+<br>Kees 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/432442">Nguyen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,
+<br>Thank you very much for your last help.
+<br>May I have a further question about algorithm?
+<br>Regarding Trust-Region-Reflective algorithm, minimization for example, basically its four steps are repeated until convergence.
+<br>How about the relationship between this convergence and TolFun or TolX?
+<br>Thank you again!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/176426">Jakob Sievers</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks John! This resolved a problem I had been dealing with, very nicely!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/69469">Christophe</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,
+<br>No problem, thank you so much for taking the time to answer my 
+question. So very much appreciated. I am using fminsearchbnd a lot and 
+have also included rmsearch in my list of tools for optimization. Thank 
+you so much for making these tools available!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Christophe,</p>
+
+<p>The problem is, these tools are really just wrappers around 
+fminsearch, which uses only a restricted set of parameters. From the 
+help for fminsearch, I see only:</p>
+
+<p>fminsearch uses
+<br>    these options: Display, TolX, TolFun, MaxFunEvals, MaxIter, FunValCheck,
+<br>    PlotFcns, and OutputFcn.</p>
+
+<p>So I could never be able to control the problem as you would desire. 
+Sorry. Even that limited set of variables becomes corrupted, since 
+fminsearchbnd uses a transformation, which will prevent you from 
+controlling things using TolX as it is designed.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/69469">Christophe</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,
+<br>So many thanks for this program. I was wondering if there was an 
+easy way to modify the fminsearchbnd to be able to handle the input of 
+an argument like ( 'DiffMinChange',1e-2 )? My variables are in 
+millimetres and I would like to have the variables changing by at least 
+0.01mm.
+<br>Once again, thank you for fminsearchbnd!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/432442">Nguyen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you so much for your support.
+<br>I have total 7 variables.
+<br>With a support from my friend, we tried to devide constrained range of each variable into n value.
+<br>We carried out n^7 local optimization and chose the best.
+<br>We tried to globalize the local minimization function.
+<br>However, we hope to find other ways/tools.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How clear can I make this? These 
+are search routines, just like fminsearch, fmincon, fsolve, etc. In 
+fact, the tools I have supplied are based on fminsearch. All of those 
+tools search for a local minimizer, based on their starting point.</p>
+
+<p>If you choose a good starting point, then you get a good solution. 
+Your knowledge of the system you will optimize will always help. </p>
+
+<p>NO such tool can EVER be assured of finding a global optimum on a completely general function. Period.</p>
+
+<p>If you will insist on positively finding a globally optimal solution,
+ regardless of your starting point, then these are the wrong tools for 
+you. Of course, unless you can be assured that your function has some 
+nice properties, global optimization can be a terribly tricky problem. 
+Good luck in that.</p>
+
+<p>At best, a scheme that has some decent properties is to start with 
+many random starting points, then choose the best of the solutions that 
+result. This is implemented in my rmsearch tool, also found on the file 
+exchange, although it is fairly trivial to do on your own. A virtue of 
+such a stochastic scheme is that if you start in the basin of attraction
+ of the global optimizer, then it should converge to that solution. So 
+as long as that basin is not too small that it is never visited, then 
+you can succeed here. And because of the Monte Carlo starts, you can 
+even assign a probability that the global solution was found. But 
+certainty? Sorry, no. Again, good luck.</p>
+
+<p>Finally, you say only that you have MORE than 4 variables. How many 
+more? My advice has always been that too many variables make tools like 
+fminsearch work poorly. I have suggested that 6 variables is a 
+reasonable upper limit, but I have heard of people solving larger 
+problems.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/432442">Nguyen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much for your file.
+<br>But I still have an unclear issue regarding fminsearchbnd.
+<br>When I change the starting value x0, the fval result will be changed (a lot).
+<br>So I have an initial conclusion that your function will find out local minimum, depends on starting guess.
+<br>Is it right?
+<br>In such that case, please help me how to find global minimum between
+ lower and upper boundaries of variables (more than 4 variables)?</p>
+
+<p>Again, thank you very much.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/27495">Adam Auton</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/424747">Blake Milner</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/396205">Lorenz</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/81687">Jacob Kirkensgaard</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/270546">Poorya</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/349323">Alvaro Campos Duque</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yeah, it works =) Thank u so much!!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fminsearchcon uses your objective 
+function, which for 5 parameter models, must take vector input. Thus it 
+will pass in a vector x to the objective function that has 5 elements 
+here. The constraint function must then also accept a vector of length 
+5. So your call to fminsearchcon might look like this:</p>
+
+<p>[x,fval]=fminsearchcon(@fit,x0,lb,ub,[],[],@(x) 2.3*(x(4)^2+x(3))^0.5-x(5)-x(2));</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/349323">Alvaro Campos Duque</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Congrats again for the useful 
+function John. I just have a qestion: i'm trying to use fminsearchcon in
+ a 5 parameter function i've created:</p>
+
+<p>function error=fit(parameters)
+<br>x1=parameters(1);
+<br>x2=parameters(2);
+<br>x3=parameters(3);
+<br>x4=parameters(4);
+<br>x5=parameters(5);
+<br>(...) Here there is a long script but, at the end, the important thing are the input and outputs (...)</p>
+
+<p>What I wonder is to find the parameters that optimize the error 
+function. These parameters are interelated by the non-linear constrain:</p>
+
+<p>-2.3*(x4^2+x3)^0.5+x5+x2&gt;0</p>
+
+<p>The problem is that I don't know how to implement this constrain, the
+ examples I have seen are just with one parameter. I have tried this:</p>
+
+<p>x0=[0.5,0.05,0.05,1,0.5];
+<br>lb=[0,0,0,0,0];
+<br>ub=[2,1,1,10,5];
+<br>[x,fval]=fminsearchcon(@fit,x0,lb,ub,[],[],@(x2,x3,x4,x5) 2.3*(x4^2+x3)^0.5-x5-x2)</p>
+
+<p>But, of course, it doesn't recognise what is x2, x3, x4, or x5 because it is defined nowhere.</p>
+
+<p>Any clue?? Thanks in advance! :)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/349323">Alvaro Campos Duque</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Congratulations John, thank you so much for such a good job! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/57096">Jeff Warner</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Congratulations on a great job 
+creating this function.  This is something I have been searching for.  I
+ have been using the fminsearch in the past but it is not a very robust 
+fitting routine because you cannot constrain the fitting parameters so I
+ would not always obtain a good fit. 
+<br>Now that I am using your fminsearchbnd, every time I run the program
+ on the same file the fitting result is close to the previous fits.  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alfonso - sorry, but I strenuously 
+refuse to answer questions that are not directly related to a 
+submission. The comments field really is not for consulting, which by 
+the way, is something I now avoid anyway. Your question is related only 
+peripherally to this tool.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/156256">Alfonso</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi again,</p>
+
+<p>thanks for your "non-answer".</p>
+
+<p>My previous comment was just a general question on box constrained 
+optimization using variable transformation, and not a critics on your 
+code (which, btw, I judge 4 stars). </p>
+
+<p>Thought it is just a wrapper..., I have not doubts on the quality of your work.... </p>
+
+<p>However, in a real world, multidimensional problems are very common 
+and they need to be solved without waiting years to converge to the 
+minimum. </p>
+
+<p>In this context, gradient-based methods (e.g. L-BFGS, SD or CG) can be used togheter with variable transformation. </p>
+
+<p>Then, I ask you again, how can we avoid to be stuck on the bonduary 
+of the constraints (where the transformation gradient is 0)? </p>
+
+<p>This is not a trivial problem, and it can lead to early stopping the optimization iterations on a sub-optimal saddle point. </p>
+
+<p>Regards, Alfonso</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/166605">Alessandro Magnani</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>(Part 3, continued from my previous responses.)</p>
+
+<p>So, has fminsearch succeeded in this task? Well, yes, a qualified 
+yes. It was fairly slow. For example, lets try fminunc from the 
+optimization toolbox.</p>
+
+<p>&gt;&gt; [xfinal,fval,exitflag] = fminunc(fofx,x0,optimset('display','iter'))</p>
+
+<p>                                                        First-order 
+<br> Iteration  Func-count       f(x)        Step-size       optimality
+<br>     0          26             2500                            20
+<br>     1          52             2025           0.05             18  
+<br>     2          78                0              1       1.49e-08  </p>
+
+<p>Local minimum found.</p>
+
+<p>Optimization completed because the size of the gradient is less than
+<br>the default value of the function tolerance.</p>
+
+<p>&lt;stopping criteria details&gt;</p>
+
+<p>xfinal =
+<br>     0     0     0     0     0     0     0     0     0     0     0  
+   0     0     0     0     0     0     0     0     0     0     0     0  
+   0     0</p>
+
+<p>fval =
+<br>     0</p>
+
+<p>exitflag =
+<br>     1</p>
+
+<p>Fminunc took 0.014 seconds to run, requiring 2 iterations and 78 
+function evaluations. When done, the solution was composed of exact 
+zeros.</p>
+
+<p>&gt;&gt; format long g
+<br>&gt;&gt; max(abs(xfinal))
+<br>ans =
+<br>     0</p>
+
+<p>As I said, this was a really really REALLY simple problem. There is 
+no curved valley to follow, as many optimization problems will have. 
+There are no bounds or constraints here to bounce away from. Did 
+fminsearch succeed on that problem? Well, yes, but it took some effort. 
+There are better tools to be found, but fminsearch based tools will 
+manage to stumble along. I generally advise that fminsearch is perfectly
+ fine for small problems. For  2 or 3 variables, fminsearch is often my 
+"go to" algorithm. (I'll even use it on 1 variable problems at times.) 
+There is no reason to pull out a big gun there, and fminsearch has some 
+very nicely robust qualities about it for small problems. It is 
+insensitive to some irregularities in your function, and can even 
+survive some things like derivative discontinuities that may make 
+gradient based optimizers unhappy campers.</p>
+
+<p>Up to about 6 variables it is still ok. I tend to be careful above 6 
+variables or so, and that limit is pretty problem dependent, pretty 
+soft. Even 10 or 12 variables might be ok.</p>
+
+<p>But really, by the time a problem has more than 10 variables, I'll be
+ looking at a tool from the optimization toolbox. fminunc, fmincon will 
+be common choices here. Even better is lsqlin for the problems that 
+really are "linear" in nature. As such, you can almost think of lsqlin 
+(or quadprog) as almost not being iterative solvers at all, in the sense
+ that you don't need to provide starting values.</p>
+
+<p>So fminsearch and the derived tools I provide here are good, workable
+ tools. These are NOT toy functions, but they have their limits. They 
+work splendidly on smaller problems, giving you an easy way to implement
+ simple constraints. They MAY do a reasonable job for your problem, but I
+ won't push them too far. Even as the author of fminsearchbnd, the very 
+first toolbox I would recommend buying is the optimization toolbox if 
+you do at all many optimizations of any size.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>(Part 2, continued from the last response.)</p>
+
+<p>Lets try being more explicit here. Vary the MaxFunEvals parameter.</p>
+
+<p>&gt;&gt; [xfinal,fval,exitflag] = fminsearch(fofx,x0,optimset('maxfunevals',1000))
+<br> 
+<br>Exiting: Maximum number of function evaluations has been exceeded
+<br>         - increase MaxFunEvals option.
+<br>         Current function value: 887.434654 </p>
+
+<p>xfinal =
+<br>  Columns 1 through 12
+<br>       -2.923       12.909       3.1561       3.0168      -1.2408   
+    3.0691       4.9753       2.4416       7.3143      -2.3687       
+3.5243       5.8719
+<br>  Columns 13 through 24
+<br>        2.311      -10.707       6.0148      0.45126       11.192   
+    4.6186       3.3215        5.484       3.3361       4.2973       
+1.9503       12.542
+<br>  Column 25
+<br>       3.2774</p>
+
+<p>fval =
+<br>       887.43</p>
+
+<p>&gt;&gt; [xfinal,fval,exitflag] = fminsearch(fofx,x0,optimset('maxfunevals',2000))
+<br> 
+<br>Exiting: Maximum number of function evaluations has been exceeded
+<br>         - increase MaxFunEvals option.
+<br>         Current function value: 64.925968 </p>
+
+<p>xfinal =
+<br>  Columns 1 through 12
+<br>       1.1789      -1.8439       1.2661      -1.4893      0.20456   
+    3.6405     -0.75783      0.82694     -0.63308     -0.96542       
+1.5783       1.6521
+<br>  Columns 13 through 24
+<br>     -0.07538       -2.409      0.76939       1.9824      -1.9948   
+   0.87846     -0.94908       2.7612        0.351     -0.74091      
+0.32458       3.1321
+<br>  Column 25
+<br>       1.0073</p>
+
+<p>fval =
+<br>       64.926</p>
+
+<p>&gt;&gt; [xfinal,fval,exitflag] = fminsearch(fofx,x0,optimset('maxfunevals',4000))
+<br> 
+<br>Exiting: Maximum number of function evaluations has been exceeded
+<br>         - increase MaxFunEvals option.
+<br>         Current function value: 5.887733 </p>
+
+<p>xfinal =
+<br>  Columns 1 through 12
+<br>    -0.039379     -0.62272       0.3608     0.033666      -0.3333   
+  -0.43402     -0.30185      0.16978        0.106      0.41576       
+0.3982     -0.15116
+<br>  Columns 13 through 24
+<br>      0.48606     -0.83993      0.66158      0.95052      0.20017   
+   0.77219     -0.80237      0.57812      0.10016      0.62498     
+-0.36942     -0.37967
+<br>  Column 25
+<br>      0.06037</p>
+
+<p>fval =
+<br>       5.8877</p>
+
+<p>&gt;&gt; [xfinal,fval,exitflag] = fminsearch(fofx,x0,optimset('maxfunevals',8000))
+<br> 
+<br>Exiting: Maximum number of iterations has been exceeded
+<br>         - increase MaxIter option.
+<br>         Current function value: 1.364211 </p>
+
+<p>xfinal =
+<br>  Columns 1 through 12
+<br>    0.0085952     -0.12505     0.034718     -0.21946     -0.16216   
+  0.020216      0.21074    -0.054082      0.25911      0.16582      
+0.41984      0.15747
+<br>  Columns 13 through 24
+<br>    -0.049798     -0.12582      0.45415       0.4152    -0.093939   
+   0.38964     -0.40392     -0.12336     0.055191    -0.077377     
+-0.39227     -0.14665
+<br>  Column 25
+<br>    -0.094889</p>
+
+<p>fval =
+<br>       1.3642</p>
+
+<p>Ok, so after 8000 function evaluations, now it is hitting the default iteration limit.</p>
+
+<p>mean(abs(xfinal))
+<br>ans =
+<br>      0.18638</p>
+
+<p>I can really let it go wild. For example, this next example took under 2 seconds to solve on my machine:</p>
+
+<p>&gt;&gt; [xfinal,fval,exitflag] = fminsearch(fofx,x0,optimset('maxfunevals',100000,'maxiter',100000))</p>
+
+<p>xfinal =
+<br>  Columns 1 through 12
+<br>   0.00012307   2.9632e-05  -5.5942e-05  -6.4526e-05  -0.00013126  
+-0.00019728  -8.2417e-05   3.2675e-05   8.4082e-05  -5.6463e-06  
+-0.00017336  -0.00015729
+<br>  Columns 13 through 24
+<br>  -4.7605e-05   0.00023687  -1.0958e-05   0.00019857  -9.4663e-05  
+-3.9436e-05   6.2949e-05  -5.8151e-05   4.9917e-05  -8.9443e-05   
+1.8443e-06   0.00011523
+<br>  Column 25
+<br>   3.8857e-05</p>
+
+<p>fval =
+<br>   2.9028e-07</p>
+
+<p>exitflag =
+<br>     1</p>
+
+<p>&gt;&gt; mean(abs(xfinal))
+<br>ans =
+<br>   8.7266e-05</p>
+
+<p>All of the other examples had exitflag==0 by the way. It finally went
+ far enough that fminsearch is tripping on its convergence tolerances, 
+rather than on the function or iteration limits. It thinks it may have 
+converged!</p>
+
+<p>(End of part 2. Part 3 to follow.)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jessica,</p>
+
+<p>The problem is, fminsearch tools are simply not very efficient at 
+searching spaces that are at all high dimensional. The polytope flops 
+around, expanding, contracting, etc., but the human mind simply does not
+ appreciate how large a 25 dimensional space is. That makes sense, 
+because we are built to visualize things in 3 dimensions, so we tend to 
+think of everything in terms of our experience.</p>
+
+<p>I'll give a simple example that illustrates the problem. Consider a 
+perfectly circular well in 25 dimensions. I don't need to worry about 
+bounds or anything, because the characteristics won't change in any 
+material way.</p>
+
+<p>The function is a paraboloid of revolution, centered at the 25 
+dimensional origin, and I'll start out at repmat(10,1,25) so it has to 
+go a little ways, but this is a really simple problem. How does 
+fminsearch handle it?</p>
+
+<p>&gt;&gt; fofx = @(x) sum(x.^2,2);
+<br>&gt;&gt; x0 = repmat(10,1,25);
+<br>&gt;&gt; [xfinal,fval] = fminsearch(fofx,x0)</p>
+
+<p>Exiting: Maximum number of function evaluations has been exceeded
+<br>         - increase MaxFunEvals option.
+<br>         Current function value: 3.762363 </p>
+
+<p>xfinal =
+<br>  Columns 1 through 12
+<br>      0.15208     -0.37597      0.47583      -0.4156     -0.47475   
+  -0.22822      0.30263      0.15141      0.25204      0.45515      
+0.48452     -0.16627
+<br>  Columns 13 through 24
+<br>      0.18958     -0.65985      0.55836      0.54621    -0.012447   
+   0.32472     -0.55204      0.29942      0.13633      0.28518     
+-0.69201     -0.25536
+<br>  Column 25
+<br>      0.21961</p>
+
+<p>fval =
+<br>       3.7624</p>
+
+<p>As you can see, starting at a vector of all 10's, it got down to something that averaged roughly 0.35, so it was an improvement.</p>
+
+<p>mean(abs(xfinal))
+<br>ans =
+<br>      0.34662</p>
+
+<p>So by the time it had run out of iterations, it had gone 96.5% of the
+ way it had to go along a straight line, so some might say it has done 
+pretty well. On the other hand, we can also think of what it has done is
+ to improve the starting estimate by only enough to get the first 
+decimal digit correct.</p>
+
+<p>(End of part 1, of avery long response.)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/120837">Jessica Piper</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John, love fminsearchbnd, thank 
+you! Just a quick question. I've been using fminsearchbnd on a problem 
+with 26 variables, and I've been getting good results. But based on your
+ comments below, I worry I'm just getting lucky! What algorithm would 
+you suggest for larger problems? (I'm fitting data from an optics 
+experiment, but the objective is nonlinear, and the problem isn't even 
+quasi-convex.)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alfonso, It appears that you 
+totally misunderstand how these tools work. fminsearchbnd and its cousin
+ are based on fminsearch, a Nelder-Mead (polytope) optimizer. In fact, 
+they call fminsearch to do the actual work. Fminsearch is NOT a gradient
+ based tool. No gradient is EVER computed or even approximated. As such,
+ they tend not to get stuck at such a point unless that is where the 
+optimization drives them. You might want to do some reading about how 
+the class of Nelder-Mead style tools work before you judge the 
+algorithm.</p>
+
+<p>Any optimization is of course subject to problem specific issues. 
+Singularities, ill-conditioning, and multiple local solutions are all 
+problems. But that point at the boundary is not as much an issue as you 
+seem to fear.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/156256">Alfonso</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,</p>
+
+<p>One simple question for you.</p>
+
+<p>When you apply a quadratic transformation x=y^2 for x&gt;=0 (btw, the
+ same question holds for sin(x)); how you prevent the case that the 
+optimizer is stuck on the bonduary (y=0)? Indeed, in the case that the 
+actual solution is not on the bonduary, but during optimization 
+iterations your gradient-based optimizer arrives in a point that lies on
+ the bonduary, it cannot improve towards the minimum since the 
+transformation gradient is 0 (dx/dy=2y=0) there.</p>
+
+<p>I hope I was clear enough,</p>
+
+<p>thanks in advance for your kind answer.</p>
+
+<p>Alfonso  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Kirk - when you change the bounds, 
+you change the implicit transformation. It will still find a minimizer, 
+but the problem has been changed, so there is no absolute guarantee it 
+will converge to the same solution. When you have a problem with 
+multiple local minimizers, any optimization tool can suffer from this 
+issue.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/260347">Kirk Smith</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I found some odd behavior. I had my
+ bounds on 7 variables [0,1].  My last 2 came out to be below 0.01.  
+Next I changed the bounds for these last two variables to [0,0.4] and I 
+got a new set of values.... shouldn't these be the same seeing as how in
+ the first run they never even got close to 0.4?
+<br>Anyways I just added something like e*(max(x-1,0)+max(-x,0)) for my 
+ub and lb with original fminsearch and it worked great. (Choose e large 
+enough)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm sorry Pietro, but if you are 
+using a Nelder-Mead solver to solve a 20 variable problem, you are 
+wasting your time and I'm afraid mine too. I will not try to debug that 
+mass of code for a problem that should never be thrown at this tool 
+anyway.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>john here can find my code....</p>
+
+<p>http://www.mathworks.se/matlabcentral/newsreader/view_thread/320630#879608</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Pietro - without a specific example
+ that shows there is a problem, I cannot know what is happening. You may
+ be mistaken about whether the start point truly does satisfy the 
+constraints. You may be supplying the constraints or the objective 
+itself improperly. There may be a bug. Or, perhaps your starting point 
+is right on a constraint boundary, or even epsilon over that edge. How 
+can I guess? Again, fmincon does NOT require a feasible solution to 
+start, although that surely helps. So that fmincon succeeds is 
+irrelevant as these are different algorithms.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>the starting point provided satisfies all the constrains. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fmincon uses a different algorithm,
+ that can better handle infeasible starting values. The style of penalty
+ used by fminsearchcon fails there, so you need to provide a starting 
+point that at least satisfies your constraints.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks John! I got this message: </p>
+
+<p>Infeasible starting values (nonlinear inequalities failed).
+<br> </p>
+
+<p>But with the same starting point, with fmincon the optimization works.  Do you have any suggestion to give me? </p>
+
+<p>thanks. </p>
+
+<p>Best regards</p>
+
+<p>Pietro</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Pietro - function handles make it 
+easy to pass parameters in. For example, suppose you wish to find the 
+minimum of the function (x-a)^2 for some fixed value of a. (Yes, you and
+ I know that the min happens at a, but the computer does not, and I'm 
+feeling too lazy to be more creative.)</p>
+
+<p>myfun = @(x,a) (x-a).^2;
+<br>x0 = 1;
+<br>% Solve for the unconstrained min, with a = 12.
+<br>[xmin,fmin] = fminsearchbnd(@(x) myfun(x,12),x0)</p>
+
+<p>xmin =
+<br>                        12
+<br>fmin =
+<br>      6.18466949693273e-28</p>
+
+<p>The above example, really just passes the call directly into fminsearch, but the point is how to pass in a.</p>
+
+<p>% Solve for a constrained min, with a = 12.
+<br>ub = 5;
+<br>[xmin,fmin] = fminsearchbnd(@(x) myfun(x,12),x0,[],ub)</p>
+
+<p>xmin =
+<br>     5
+<br>fmin =
+<br>    49</p>
+
+<p>And of course, the min was found at the upper bound, at the point nearest to a that was allowed.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great function. How can I pass extra parameters to the objective function using the function handle?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/249761">Davide</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks John! I fixed it. </p>
+
+<p>Thanks again. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I should point out that these tools
+ use fminsearch as the optimizer, just providing an overlay on top to 
+implement constraints. That means that any parameters that fminsearch 
+ignores are ignored here too. So diffminchange and diffmaxchange are 
+completely irrelevant.</p>
+
+<p>I can't really test out what is happening since I don't have any 
+data. But I looked at the code, and usually when you get a nan as a 
+result, it comes from some parameter going into a bad place.</p>
+
+<p>So I'd put some debugging effort into the code, letting you drop in 
+with the debugger as soon as a nan gets generated. Do one of these 
+before you execute the code:</p>
+
+<p>dbstop if naninf</p>
+
+<p>I'm a bit confused why you are calling det on a diagonal matrix too. 
+That would be far more efficiently done as simply the product of the 
+elements. And since you are then computing the log of the determinant, 
+do it as the sum of the logs of the elements, avoiding potential 
+underflows or overflows.</p>
+
+<p>Anyway, before you do any optimizations, always test your objective 
+function. Make sure that it does what you expect, that it yields valid 
+results, and that the results change when you perturb the parameters. 
+Next, when you run an optimizer and you see strange things happening, 
+set the "Display" option in the optimizer to 'iter'. In fact, I always 
+do this on every optimization the first time I run one for any problem. 
+Verify that it is doing something intelligent. Are the parameters 
+changing? (Note that fminsearchbnd transforms the parameters, so that 
+fminsearch is working with different numbers than you expect.)</p>
+
+<p>And, finally, 9 parameters is at the very upper limit of what I'd 
+ever recommend for a Nelder-Mead based tool, but it should run, albeit a
+ bit slowly.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/249761">Davide</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John, very nice function! It 
+worked very well. I have used it in my optimization problems. However, 
+in my last code I get a problem. The output is NaN and the function 
+parameters seem not optimized. Perhaps you you may help me... Here is my
+ code. I get the necessary data from an excel table. </p>
+
+<p>I cannot realize where the problem is. Thanks in advance! Cheers</p>
+
+<p>function [H,par,output]=mygarch()
+<br>format short
+<br>data=xlsread('select3stocks.xlsx',2,'A1:D249');   
+<br>data1=data(1:149,:);                               
+<br>data2=data(150:199,:);                            
+<br>[L1, L2]=size(data2);                              </p>
+
+<p>C0=[0.01,0.02,0.03]';
+<br>A0=[0.04,0.02,0.06]';
+<br>B0=[0.05,0.09,0.03]';
+<br>matr=[C0,A0,B0];
+<br>par0=reshape(matr,1,9);</p>
+
+<p>X=zeros(L1-1,L2);     
+<br>m=mean(data2);                  
+<br>X(1,:)=data2(1,:)-m; </p>
+
+<p>s=0;  </p>
+
+<p>H=zeros(L1-1,L2);                      
+<br>H(1,:)=(std(data1)).^2;               </p>
+
+<p>lb=zeros(1,9);
+<br>ub=ones(1,9);
+<br> 
+<br>options =optimset('MaxIter',50000,'TolX',1e-10,'DiffMaxChange',0.00005,'DiffMinChange',0.00001,'MaxFunEvals',10000000);
+<br>[par,output]=fminsearchbnd(@maxlikelyhood,par0,lb,ub,options);
+<br> 
+<br>function y=maxlikelyhood(par)
+<br>   C=par(1:3); A=par(4:6); B=par(7:9);
+<br>for i=2:L1
+<br>    for j=1:L2
+<br>    H(i,j)=C(j)+A(j)*X(i-1,j)^2+B(j)*H(i-1,j);
+<br>    end
+<br>    X(i,:)=data2(i,:)-m;
+<br>    D=diag(H(i,:));
+<br>    s=s+3*log(2*pi)+log(det(D))+X(i,:)*D.^(-2)*X(i,:)';
+<br>end
+<br>y=s;
+<br>end</p>
+
+<p>end  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>(I've fixed the bug about the outputfcn problem and re-posted it. The new version should appear sometime this morning.)</p>
+
+<p>As far as Stefan's problem goes, anytime you throw problems with 
+variables that vary by 20 to 30 powers of 10 at ANY numerical optimizer,
+ expect serious things to go wrong. This is a no-no for literally ANY 
+numerical tool. And setting a convergence tolerance (TolX) to eps is 
+just as silly, especially when your parameters vary by that many orders 
+of magnitude. </p>
+
+<p>Essentially, you are asking that one variable, which can apparently 
+vary somewhere between 1 and 1e30, must be computed to an absolute 
+accuracy of roughly 2e-16.</p>
+
+<p>A common solution is to normalize your variables, so that both are at
+ least of similar orders of magnitude. If you were trying to solve a 
+problem where one variable had bounds of 1e20 to 5e20, and a second 
+variable was bounded in the interval 1e-6 to 1e-5, then normalizing the 
+variables to both be of order 1 would make complete sense. But your 
+variables each vary by many powers of 10!</p>
+
+<p>One thing all novices need to learn about computing, is that when 
+things vary by that many powers of 10, is to use logs! Let fminsearch 
+vary the log10 of your variables, so they now have bound vectors that 
+look like [0, -6] for the lower bounds, and [30, 0] for the upper bound.
+ Now, inside your function, take the parameters and raise 10 to that 
+power BEFORE they are used. Do the same with the output when it is 
+returned. As far as fminsearch is concerned, your numbers are perfectly 
+normal looking, but your objective sees the numbers in their proper 
+scales.</p>
+
+<p>You will find that any optimizer runs much more happily when you do 
+this, as now the variables are very nicely normalized. All of the 
+mathematics works more simply when you work in the log space. In fact, 
+this is surely the natural way to work with variables that vary by many 
+powers of 10. A nice consequence is the tolerances in TolX become 
+relative tolerances on the variables, something that surely makes much 
+more sense.</p>
+
+<p>And DON'T use eps as a convergence tolerance. Fminsearch will never 
+be able to give you even a reasonable shot at convergence in even 10000 
+function evals with that fine of a tolerance. So what happens is 
+fminsearch will keep on iterating until it runs out of function 
+evaluations. Use a meaningful, realistic tolerance. You were probably 
+only setting that fine of a tolerance because of the ridiculous variable
+ scaling anyway.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/115145">Stefan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The following test shows strange results: 
+<br>----------------------------------
+<br>G0bnd 2.22e+014 L0bnd 2.707e-006</p>
+
+<p>G0 2e+014 L0 3e-006</p>
+
+<p>----------------------------------</p>
+
+<p>function test()
+<br>options=optimset('Display','on', ...
+<br>                   'MaxFunEvals',1e4, ...
+<br>                   'MaxIter',1e4, ...
+<br>                   'TolFun', eps, ...
+<br>                   'TolX', eps, ...
+<br>                   'FunValCheck', 'on' ...
+<br>                   );
+<br> 
+<br> w= 150e-6;
+<br> xData = 1e-6:1e-6:w;
+<br> G0 = 2e14;
+<br> L0 = 3e-6;
+<br> yData = G0*exp(-xData./L0);
+<br> 
+<br> start_params = [G0, L0];
+<br> min_params   = [   1, 1e-6];
+<br> max_params   = [1e30,    1]; 
+<br> 
+<br> 
+<br> plot(xData,yData,'-r');
+<br> hold('on');
+<br> 
+<br> 
+<br> result_params=fminsearchbnd(@fitG_error_function,start_params,min_params,max_params,options,xData,yData);
+<br> ['G0bnd ' num2str(result_params(1),4) ' L0bnd ' num2str(result_params(2),4)]
+<br> plot(xData, result_params(1)*exp(-xData./result_params(2)),'-g');
+<br> 
+<br> result_params=fminsearch(@fitG_error_function,start_params,options,xData,yData); 
+<br> ['G0 ' num2str(result_params(1),4) ' L0 ' num2str(result_params(2),4)] 
+<br> plot(xData, result_params(1)*exp(-xData./result_params(2)),'-b');
+<br>  
+<br> 
+<br> function fiterror = fitG_error_function(start_params,xData,yData)  
+<br>   Fitted_Curve= start_params(1) * exp(-xData./start_params(2));
+<br>   Error_Vector=Fitted_Curve - yData;
+<br>   fiterror=sum(Error_Vector.^2);		
+<br>   results.fiterror=fiterror;
+<br> end
+<br>end</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/220527">Romain</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great function, very handy.</p>
+
+<p>I have noticed a small error, though. If fminsearch is not called, 
+the function returns output.funcount, whereas it returns 
+output.funcCount otherwise.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry. I'd been playing with 
+various alternatives sometime ago. The name on the header will be 
+correct now when the latest update comes alive.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74530">Martin Richard</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John,
+<br>I've been using that function for years now. Love it. Perhaps you 
+may want to change the function name so that it fits the file name in 
+the new version (fminsearchbnd3 in new file).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>HI Kathleen - I've been asked about citing many of my submissions before. WE came up with a few options, detailed here:</p>
+
+<p>http://blogs.mathworks.com/desktop/2010/12/13/citing-file-exchange-submissions/</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/201678">Kathleen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John</p>
+
+<p>I use fminsearchbnd a lot and I'd like to cite it in my work. Do you have a reference you would like used?
+<br>Thanks
+<br>Kathleen</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/201678">Kathleen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John</p>
+
+<p>I use fminsearchbnd a lot and I'd like to cite it in my work. Do you have a reference you would like used?
+<br>Thanks
+<br>Kathleen</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nick - fminsearchbnd is a simple 
+optimizer, a close cousin to fminsearch. All it cares about is finding 
+an optimum value, and it has no idea that your objective is based on a 
+least squares estimation problem of some sort. If you need confidence 
+bounds, a simple solution is to use a linear approximation to your 
+function at the optimum, computing the Jacobian matrix at that point. 
+Then it is a simple problem to compute approximate confidence intervals 
+on the parameters. You can find this procedure explained, with an 
+example, in my Optimization Tips &amp; Tricks, also on the File 
+Exchange.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121644">Brennan Smith</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks! Very useful</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/186941">Nick M.</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John</p>
+
+<p>This is a great work and I actually used it and worked for me. I have
+ a question though. I used fminsearchbnd and it turned it parameters, 
+how can I compute uncertainty for those parameters?(covariance matrix?)
+<br>Thanks!</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/69469">Christophe</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,</p>
+
+<p>Many thanks for this very useful program. I have a question if I may:</p>
+
+<p>I deal with the optimization of "physical" problems, keeping in mind 
+the manufacturing-accuracies available to me. I know, for example, that I
+ cannot have my parameters (defining the geometry I optimize) accurately
+ machined. To me, a parameter set at 12.000, 12.001 or even 12.01 would 
+give pretty much the same value for the output function.
+<br>So, I would like to be able to ensure that the parameters are moved 
+by at least a minimum "delta" in the optimization, say 1e-2 for example.
+<br>Is this something that fminsearchbnd can handle?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126924">Yankun</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/159158">ks</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much. It works Great! :)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122307">Oleg</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is great! Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58998">Prabuddha  Mukherjee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much...very useful</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/94338">nico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful...thank you !</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36358">Sahin Aktas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent Code...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ryan,</p>
+
+<p>This is really not a bound constrained problem. Your constraint is a 
+general one, either a linear or a nonlinear inequality constraint.</p>
+
+<p>The simple solution is to use a code that allows explicit linear or 
+nonlinear constraints. There are a few on the FEX. In fact my 
+fminsearchcon on the FEX does that, by applying a penalty to the problem
+ when a constraint is violated. You might also look at optimize, by Rody
+ Oldenhuis. This code allows explicit constraints of all forms.</p>
+
+<p>However, there is a simple way to solve this class of problem with 
+fminsearchbnd. Use another class of transformation. For example, suppose
+ one wishes to minimize the function f(x,y), subject to the "bound" 
+constraint that x &lt;= erf(y).</p>
+
+<p>Transform your problem such that </p>
+
+<p>u = x + erf(y)
+<br>v = x - erf(y)</p>
+
+<p>Clearly, v must be bounded above by 0. So use fminsearchbnd to 
+optimize over the two dimensional domain (u,v). Inside your objective 
+function, for any value of (u,v) you will compute the parameters (x,y) 
+as</p>
+
+<p>x = (u + v)/2;
+<br>y = erfinv(u - x);</p>
+
+<p>Now you can finish evaluating the function f(x,y).</p>
+
+<p>The only problem here happens if you also had other fixed bounds on x
+ and y. But many other transformations would also have worked. For 
+example, this transformation:</p>
+
+<p>u = x
+<br>v = x - erf(y)</p>
+
+<p>will still allow simple bound constraints on the parameter x, as well
+ as allowing the nonlinear constraint x &lt;= erf(y) as a bound 
+constraint.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/69461">Ryan Webb</a>
+          </span>
+        </td>
+        <td><span class="comment"><p> Great Function. Used it mane times.</p>
+
+<p>However, now I have a trickier problem where one of the boundaries is
+ a function of one of the variables. Making UB a function of xtrans is 
+possible, but how would fminsearchbnd determine this intent given that 
+the cases for transformation (k) are determined solely by the initial 
+numerical values of the constraints? Thoughts?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58599">Will</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent modification to create a very useful algorithm. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/64375">Srinivasa Chemudupati</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Cannot Thank you enough John!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 May 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/52758">Chris Men</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>the beauty is yours.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Nov 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36250">Umesh Rudrapatna</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot! Helped me a lot.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Nov 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34388">leo nidas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks John!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            Chirackel Yoonus
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Apr 2008</span></td>
+        <td>
+          <span class="author">
+            M. P.
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Apr 2008</span></td>
+        <td>
+          <span class="author">
+            M. P.
+          </span>
+        </td>
+        <td><span class="comment"><p>Worked beautifully for my own optimization problem. Thanks John.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Nov 2007</span></td>
+        <td>
+          <span class="author">
+            Ken Purchase
+          </span>
+        </td>
+        <td><span class="comment"><p>Notice: I have submitted a slightly
+ modified version that includes output and plot functions as well as 
+slightly improved handling of varargin.  Search for fminsearch.</p>
+
+<p>The original is excellent and very useful- I hope the changes didn't break anything.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Nov 2007</span></td>
+        <td>
+          <span class="author">
+            Mert Sabuncu
+          </span>
+        </td>
+        <td><span class="comment"><p>excellent code - gets the job done!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jun 2007</span></td>
+        <td>
+          <span class="author">
+            Yossef Ehrlichman
+          </span>
+        </td>
+        <td><span class="comment"><p>It's really working. Helped alot! Matlab should incoprate it into its libraries.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2007</span></td>
+        <td>
+          <span class="author">
+            Alex Chirokov
+          </span>
+        </td>
+        <td><span class="comment"><p>I really like this code: it is very well written and useful.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 May 2007</span></td>
+        <td>
+          <span class="author">
+            John D'Errico
+          </span>
+        </td>
+        <td><span class="comment"><p>See fminsearchcon for linear and 
+nonlinear inequality constraints. Equality constraints are more 
+difficult to implement when coupled with bound constraints as 
+implemented using transformations - John.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 May 2007</span></td>
+        <td>
+          <span class="author">
+            Yang Zhang
+          </span>
+        </td>
+        <td><span class="comment"><p>I like this program and do you think it is possible to expand it to deal with linear constraints?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 May 2007</span></td>
+        <td>
+          <span class="author">
+            Lauren Cooney
+          </span>
+        </td>
+        <td><span class="comment"><p>thank you for this great program!  it saved me a lot of time and frustration!  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Mar 2007</span></td>
+        <td>
+          <span class="author">
+            Eli Tom
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice indeed.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Mar 2007</span></td>
+        <td>
+          <span class="author">
+            jimmy tsai
+          </span>
+        </td>
+        <td><span class="comment"><p>It's great. I couldn't solve my problem with fmincon but did it with this file. I really appreciate it.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Feb 2007</span></td>
+        <td>
+          <span class="author">
+            Natis Angarita
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2006</span></td>
+        <td>
+          <span class="author">
+            Dmitrey Kroshko
+          </span>
+        </td>
+        <td><span class="comment"><p>I connected John D'Errico file to the OpenOpt project
+<br>http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=13115&amp;objectType=file
+<br>&amp; informed him (I hope my letter passed antispam filter OK)
+<br>if any pretensions will be received, I promise to exclude the one
+<br>btw now default inner solver is Shor ralg with AST, which is better 
+than current implementation of fminsearch, at least, for those task I 
+tried with. Also, it can handle (sub)gradient info provided by user, and
+ corresponding changes in John code were made.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Aug 2006</span></td>
+        <td>
+          <span class="author">
+            Umberto .
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jul 2006</span></td>
+        <td>
+          <span class="author">
+            Yes its Good
+          </span>
+        </td>
+        <td><span class="comment"><p>works very well!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jun 2006</span></td>
+        <td>
+          <span class="author">
+            CC Gomez
+          </span>
+        </td>
+        <td><span class="comment"><p>Nicely written.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            G.H. Rao
+          </span>
+        </td>
+        <td><span class="comment"><p>excellent program. on these lines I applied bounds successfully to the genetic algorithm program 'ga' of Matlab release 14</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jan 2006</span></td>
+        <td>
+          <span class="author">
+            cedric penard
+          </span>
+        </td>
+        <td><span class="comment"><p>Works very well, exellent ! Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Dec 2005</span></td>
+        <td>
+          <span class="author">
+            Rui Miguel
+          </span>
+        </td>
+        <td><span class="comment"><p>I was really needing it! thanks a lot.
+<br>Has worked flawlessly for me.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Oct 2005</span></td>
+        <td>
+          <span class="author">
+            Kaushik b
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot. It really useful and works beautifully.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Sep 2005</span></td>
+        <td>
+          <span class="author">
+            Evan Palmer
+          </span>
+        </td>
+        <td><span class="comment"><p>Works really well and is very handy!  Nice job!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Aug 2005</span></td>
+        <td>
+          <span class="author">
+            Vijit Nair
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a great funcn. Thanks John.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Aug 2005</span></td>
+        <td>
+          <span class="author">
+            Ken Campbell
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice trick solving a common problem</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">11 Oct 2005</td>
+                  <td><p>Fixed a problem when a variable with dual bounds
+<br>is started at exactly the mid-point of the bounds.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">09 Nov 2005</td>
+                  <td><p>Allow the user to fix a variable by setting the lower 
+<br>and upper bounds equal.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">09 Nov 2005</td>
+                  <td><p>Version 3: also solves unbounded problems.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">12 Jun 2006</td>
+                  <td><p>Release 2.1: Fixed a bug when some variables are fixed and other variables are bounded from both above and below.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">24 Jul 2006</td>
+                  <td><p>Update for FX Select nomination structure - added demo, test and doc files</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Feb 2012</td>
+                  <td><p>Fixed outputfcn bug when fminsearch is never actually called</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416122009493&amp;cv=7&amp;fst=1416122009493&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fterm%3Dauthorid%253A679&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

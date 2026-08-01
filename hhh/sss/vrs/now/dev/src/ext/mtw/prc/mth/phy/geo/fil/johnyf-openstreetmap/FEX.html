@@ -1,0 +1,1906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>OpenStreetMap Functions -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/35819-openstreetmap-functions" rel="canonical">
+<meta content="OpenStreetMap Functions - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/35819-openstreetmap-functions" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/57553/original.jpg" property="og:image"><meta content="Load map, extract connectivity, plot road network &amp; find shortest paths from OpenStreetMap XML file." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35819-openstreetmap-functions" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35819-openstreetmap-functions" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+    <h1> Get from <img alt="Ico-github-logo" src="FEX_files/ico-github-logo.png"> </h1>
+    <div id="download_github_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/35819-openstreetmap-functions?download=true" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+    <div id="#github_links">
+      <p>View license information and collaborate at <a href="https://github.com/johnyf/openstreetmap">johnyf/openstreetmap</a></p>
+      <p class="github_footnote"><em>Note:</em> Information from GitHub is updated daily.</p>
+	  <h3 class="highlights_title">GitHub Highlights</h3>
+      <a href="https://github.com/johnyf/openstreetmap/issues"><div id="issues">Issues<span id="issues_count">0</span></div></a>
+      <a href="https://github.com/johnyf/openstreetmap/branches"><div id="branches">Branches<span id="branches_count">1</span></div></a>
+      <a href="https://github.com/johnyf/openstreetmap/graphs/contributors"><div id="contributors">Contributors<span id="contributors_count">1</span></div></a>
+    </div>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/35819-openstreetmap-functions" class="manifest_title">OpenStreetMap Functions</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><div class="function" title="Function">...
+</div><span class="description">get the x,y coordinates of unique nodes at road intersections
+</span></li>
+      <li class="manifest"><div class="function" title="Function">...
+</div><span class="description">EXTRACT_CONNECTIVITY   extract road connectivity from parsed OpenStreetMap
+</span></li>
+      <li class="manifest"><div class="function" title="Function">assign_from_parsed(parsed...</div><span class="description">assign from parsed osm structure
+</span></li>
+      <li class="manifest"><div class="function" title="Function">get_way_tag_key(tag)
+</div><span class="description">get tags and key values for ways
+</span></li>
+      <li class="manifest"><div class="function" title="Function">load_osm_xml(filename)
+</div><span class="description">load OpenStreetMap XML file contents as a MATLAB structure
+</span></li>
+      <li class="manifest"><div class="function" title="Function">main_mapping(varargin)
+</div><span class="description">handle application map
+</span></li>
+      <li class="manifest"><div class="function" title="Function">parse_openstreetmap(opens...</div><span class="description">PARSE_OPENSTREETMAP    parse an OpenStreetMap XML file (OSM XML)
+</span></li>
+      <li class="manifest"><div class="function" title="Function">parse_osm(osm_xml)
+</div><span class="description">PARSE_OSM  Parse into a structure a loaded OSM XML structure.
+</span></li>
+      <li class="manifest"><div class="function" title="Function">plot_nodes(ax, parsed_osm...</div><span class="description">plot (selected) nodes and label each with index and id
+</span></li>
+      <li class="manifest"><div class="function" title="Function">plot_road_network(ax, con...</div><span class="description">plot the nodes and edges connecting them
+</span></li>
+      <li class="manifest"><div class="function" title="Function">plot_route(ax, route, par...</div><span class="description">plot (over map) the route found by route planner
+</span></li>
+      <li class="manifest"><div class="function" title="Function">plot_way(ax, parsed_osm, ...</div><span class="description">PLOT_WAY   plot parsed OpenStreetMap file
+</span></li>
+      <li class="manifest"><div class="function" title="Function">route_planner(dg, S, T)
+</div><span class="description">find shortest path in graph of road intersections (nodes)
+</span></li>
+      <li class="manifest"><div class="function" title="Function">show_map(ax, bounds, map_...</div><span class="description">plot raster map in figure and fix plot bounds
+</span></li>
+      <li class="manifest"><div class="script" title="Script">debug_openstreetmap.m</div><span class="description">example script for using the OpenStreetMap functions
+</span></li>
+      <li class="manifest"><div class="script" title="Script">usage_example.m</div><span class="description">example script for using the OpenStreetMap functions
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/35819-openstreetmap-functions/content/github_repo.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details--github details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:87.2728%;">
+                <p>4.36364</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.4</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">12</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">139 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 16.1 KB</span>
+          <span id="fileid">File ID: #35819</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/9670/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">OpenStreetMap Functions</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      22 Mar 2012
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-09-21">21 Sep 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Load map, extract connectivity, plot road network &amp; find shortest paths from OpenStreetMap XML file.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F35819-openstreetmap-functions&amp;watching=35819" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This software package includes functions for working with OpenStreetMap XML Data files (extension .osm), as downloaded from <a href="http://www.openstreetmap.org/">http://www.openstreetmap.org</a>, to:
+<br>1) Import and parse the XML data file and store the parsed data in a
+ MATLAB structure. This data represents the graph of the transportation 
+network.</p>
+
+<p>2) Plot the MATLAB structure to get a visualization of the transportation network, its nodes and their labels.</p>
+
+<p>3) Extract the adjacency matrix of the directed graph representing the network's connectivity (i.e., road intersections).</p>
+
+<p>4) Find shortest routes between nodes within the network. Note that 
+distance is measured as the number of transitions between intersection 
+nodes, not over the map.</p>
+
+<p>Development and releases on GitHub:
+<br>&nbsp;&nbsp;&nbsp;<a href="https://github.com/johnyf/openstreetmap">https://github.com/johnyf/openstreetmap</a>
+<br>(linked also here).</p>
+
+<p>An example map.osm is included to be used with usage_example.m</p></td>
+          </tr>
+
+          
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.14 (R2012a)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35819-openstreetmap-functions">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22automotive%22" rel="nofollow">automotive</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22data+import%22" rel="nofollow">data import</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22geography%22" rel="nofollow">geography</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22gis%22" rel="nofollow">gis</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22mapping%22" rel="nofollow">mapping</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22matrix%22" rel="nofollow">matrix</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22modeling%22" rel="nofollow">modeling</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22network%22" rel="nofollow">network</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22openstreetmap%22" rel="nofollow">openstreetmap</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22routing%22" rel="nofollow">routing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22toolbox%22" rel="nofollow">toolbox</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22transportation%22" rel="nofollow">transportation</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="35819" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/35819-openstreetmap-functions" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F35819-openstreetmap-functions">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(47)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">30 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/518350">Hong Khai</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I downloaded all the dependencies and also the map.osm file from github, and I  tried running the usage_example.m
+<br>I got an error:
+<br>Error using bioinfoprivate.opttf
+<br>which is an error with the Bioinformatics_Toolbox</p>
+
+<p>Hence, I commented out line 38,39,40,41 and 55 in the route_planner.m
+ file, to make sure that it only runs the part not for 
+Bioinformatics_Toolbox.</p>
+
+<p>However, when I run the example again, it shows:
+<br>Parsed OpenStreetMap given.
+<br>Found 370 common nodes.
+<br>Connectivity matrix contains 1350 nonzero elements.
+<br>Although the unique ones were 226.
+<br>Warning: No route found by the route planner. Try without road directions. 
+<br>&gt; In route_planner at 59
+<br>  In usage_example at 47 
+<br>Parsed OpenStreetMap given.
+<br>Bounds: xmin = -73.8573, xmax = -73.8337, ymin = 40.7788, ymax = 40.7974
+<br>Number of nodes: 2098
+<br>Number of ways: 95
+<br>way without tag.
+<br>way without tag.
+<br>way without tag.
+<br>way without tag.
+<br>way without tag.
+<br>way without tag.
+<br>way without tag.</p>
+
+<p>and also 2 windows like this:
+<br>http://i57.tinypic.com/f4iqlt.png</p>
+
+<p>What did I do wrong? I am supposed to get something like this: 
+http://www.mathworks.com/matlabcentral/fileexchange/screenshots/9670/original.jpg</p>
+
+<p>right?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33744">Matthew</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@kavita: Have you downloaded the 
+dependencies.tar, extracted and added it to your matlab path ? It can be
+ found here: https://github.com/johnyf/openstreetmap/releases</p>
+
+<p>In there you will find the renamed xml2struct_fex28518 function. The 
+rename is to avoid name conflicts with the bioinformatics toolbox 
+(removing that from your installation is not recommended).</p>
+
+<p>The original error that you see did not relate to the bioinformatics 
+toolbox, since it couldn't find xml2struct_fex28518, not xml2struct.</p>
+
+<p>The persistency of xml2struct in matlab's path may be due to caching 
+(e.g., compare `which` with `hash` in a bash shell). Perhaps after 
+restarting matlab it won't find xml2struct any more. In any case, it is 
+not the cause for the error.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/504247">kavita</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>dear all</p>
+
+<p>i started with usage_example but the follwoing error comes </p>
+
+<p>&gt;&gt; usage_example
+<br>Undefined function 'xml2struct_fex28518' for input arguments
+<br>of type 'char'.</p>
+
+<p>Error in load_osm_xml (line 27)
+<br>map_osm = xml2struct_fex28518(filename); % downloaded osm
+<br>file</p>
+
+<p>Error in parse_openstreetmap (line 36)
+<br>map_osm = load_osm_xml(openstreetmap_filename);</p>
+
+<p>Error in usage_example (line 28)
+<br>[parsed_osm, osm_xml] =
+<br>parse_openstreetmap(openstreetmap_filename);</p>
+
+<p>then i read the various comments from this page, then i tried the following </p>
+
+<p>1)i extracted the smaller map file from www.openstreetmap.org  , even the error is same.</p>
+
+<p>2) the i typed the command 
+<br>&gt;&gt; which xml2struct
+<br>C:\Program Files\MATLAB\R2013a\toolbox\bioinfo\biodemos\xml2struct.m</p>
+
+<p>as a solution i removed the bioinfo folder from the follwing path 
+<br>C:\Program Files\MATLAB\R2013a\toolbox\</p>
+
+<p>even then the same error appears and when i am typing the command "&gt;&gt; which xml2struct
+<br>" again it shows the same result. how to resolve this error.kindly suggest and help me plz. </p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/490442">Gummi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@shiva I had the same problem, I fixed it with a quick check in the for-loop in parse-osm.m : 
+<br>    for j=1:Nnd
+<br>        if Nnd == 1
+<br>            ndtemp(1,j) = str2double(waytemp.nd.Attributes.ref);
+<br>        else
+<br>            ndtemp(1, j) = str2double(waytemp.nd{j}.Attributes.ref);
+<br>        end
+<br>    end</p>
+
+<p>As you see, the else part is what your line 78 looks like. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/483101">shiva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>first of all i have to thank you for your great package.
+<br>can you help me about why i get this error:
+<br>??? Cell contents reference from a non-cell array object.</p>
+
+<p>Error in ==&gt; parse_osm&gt;parse_way at 78
+<br>        ndtemp(1, j) = str2double(waytemp.nd{j}.Attributes.ref);</p>
+
+<p>Error in ==&gt; parse_osm at 37
+<br>parsed_osm.way = parse_way(osm_xml.way);</p>
+
+<p>Error in ==&gt; parse_openstreetmap at 43
+<br>parsed_osm = parse_osm(osm_xml);</p>
+
+<p>Error in ==&gt; usage_example at 29
+<br>[parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename);</p>
+
+<p>thanks in advance</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Ioannis for your help, </p>
+
+<p>so I need to zoom in the area and then I can analyze it through 
+matlab, right? I have a huge gpx file and I need to create several 
+papermaps. Can I do it with your functionset?</p>
+
+<p>thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just select "Export" at the top 
+left and zoom in enough so that it won't complain on the export pane 
+(opens on the left after you click "Export") that the area is too large 
+to be exported. Then hit the blue "Export" button on the left pane, and 
+that will download the ".osm" file that contains the XML data you need.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/58379">pietro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi I can't find the OpenStreetMap XML Data file in the openstreet map website. Where can I find it?</p>
+
+<p>thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>gist for importing osm graphs as networkx graphs in python:
+<br>https://gist.github.com/aflaxman/287370/</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi wes, thanks you for the review. 
+If I recollect correctly, the ids should refer to the OSM database, so 
+be global ids over the whole world, rather than indices in the 
+connectivity matrix (which is a sample of the OSM database).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/438375">wes</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ioannis,</p>
+
+<p>Great package you have here, working perfectly for what i need! thank you for taking the time to upload.</p>
+
+<p>I am having a few problems with the route planner though. when i take
+ the node id out of the parsed osm file i get a big number such as 
+1151088456 but i get an eorror message saying source node index invalid.
+ if i randomly pick one of the small numbers out of the connectivity 
+matrix i can get it working but i have no idea how to relate to these 
+locations to there real world position untill i run it and see where 
+they appear.</p>
+
+<p>any advice on where i'm going wrong?</p>
+
+<p>thanks in advance</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/340268">ghufran</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Also: http://stackoverflow.com/questions/11321718/how-can-i-display-osm-tiles-using-python</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Please consider switching to Python. There are numerous OpenStreetMap facilities there and excellent visualization capabilities:</p>
+
+<p>https://pypi.python.org/pypi?%3Aaction=search&amp;term=openstreetmap&amp;submit=search</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Gaurav,</p>
+
+<p> I've updated the submission on github (and here, waits review) to 
+fix the name shadowing conflict that presumably causes the "no osm 
+field" error.</p>
+
+<p>@Matthew:
+<br>the restorehold function is now included (rename was needed) and an example map.osm as well.</p>
+
+<p>What was your reason for commenting that the "chosen XML parser is 
+not appropriate for anything but the extremely simple example." ?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/397251">gaurav</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hey, 
+<br>I have been trying to use this distribution to convert the region 
+Dharavi,Mumbai, India to data set. However, I am not able to understand 
+how to use the package and which is the main file which would call the 
+matlab files given. 
+<br>Also, I tried using the usage_example.m, however it shows error :
+<br>"Reference to non-existent field 'osm'.</p>
+
+<p>Error in parse_openstreetmap (line 42)
+<br>osm_xml = map_osm.osm;</p>
+
+<p>Error in usage_example (line 29)
+<br>[parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename);"</p>
+
+<p>my input file was with name same as in example - map.osm and saved in
+ the same directory as all other files in the distribution. 
+<br>Your help would be highly valued as I am in urgent need for this thing to work</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386649">Reham</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks so much for your reply.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The osm is loaded in MATLAB as a 
+directed graph represented by an adjacency matrix. Assuming constant 
+speed, travel time is proportional to distance. So for them to be 
+different, different speeds need to be assumed for different types of 
+roads. I would suggest assigning weights to roads (edges) depending on 
+their size by storing the weights in the adjacency matrix. Then you can 
+run Dijkstra's shortest path algorithm on the weighted graph.</p>
+
+<p>Recommended reading the wikipedia article on Dijkstra's algorithm, 
+which you can find implemented e.g. in 
+http://www.mathworks.com/matlabcentral/fileexchange/10922-matlabbgl, as a
+ starting point to learn more about the connectivity matrix you can look
+ at the help text of extract_connectivity.m .</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386649">Reham</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Okay, Problem resolved. I could 
+change the start and target nodes based in the (index) values generated 
+from my map and it worked!</p>
+
+<p>Now I need your suggestions if I want to get the fastest route (based
+ on travel time not distance). What should I do? should I add these data
+ into the map osm file? so I have to search for such info/tags. or 
+should this be modified into the algorithms weights? I see it's mainly 
+based on the distance. I'm really confused what to do next!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386649">Reham</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Ioannis,</p>
+
+<p> I'm sorry for my previous comment, I wasn't setting the path correctly inside Matlab. Now the file runs but I have this: 
+<br>Warning: path is empty. This means that the planner found no path. 
+<br>&gt; In plot_route at 24
+<br>  In my_example at 37 </p>
+
+<p>the ways are plotted but the shortest route is not! Should I change the start and target nodes values?</p>
+
+<p>and based on what? should  I copy/paste nodes IDs from the XML file? 
+knowing that I've already tried this but I get an error that the node ID
+ is invalid.</p>
+
+<p>Please I need your help since I have to modify all of the code to 
+work on fastest route instead of the shortest as a part of my thesis, 
+and I need to resolve all these errors and warnings first and start 
+thinking on modifying the algorithm and add traffic or travel time info 
+and start working on the map and algorithm to produce the fastest route.
+ I still have no  clue how to implement this, since I'm totally new  to 
+Matlab. But if you could at least help with the file you provided I'd be
+ grateful.</p>
+
+<p>Thanks,</p>
+
+<p>Best,</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386649">Reham</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello, 
+<br>I'd like to thank you for this submission, it's really helpful in my
+ masters thesis, but I really need your help in this error I get when I 
+run the usage_example:</p>
+
+<p>Reference to non-existent field 'osm'.</p>
+
+<p>Error in parse_openstreetmap (line 42)
+<br>osm_xml = map_osm.osm;</p>
+
+<p>Error in usage_example (line 29)
+<br>[parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename);</p>
+
+<p>knowing that I copied the map.osm file in the home directory of 
+openstreetmap and I've traced the code line by line and referred to each
+ function to see how it works and try to solve the problem but nothing, 
+and found no similar errors in the comments below. I can't even see the 
+output of your code in the end. So could you please help? 
+<br>Thanks in advance</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33744">Matthew</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I wanted to give this 5 stars. May I suggest the following issues are addressed:
+<br>1. The usage_example throws an error: there is no restorehold() function within the distribution.
+<br>2. The chosen XML parser is not appropriate for anything but the extremely simple example.
+<br>3. The example does not work out of the box. Why not included a example map.osm file?
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Nermeen,</p>
+
+<p> Thank you, I would suggest against parsing 30GB files in any 
+context, MATLAB certainly cannot handle that, but neither does any other
+ tool. The issue is that your RAM and virtual memory won't support this,
+ unless you have a very unusual hardware or software setup.</p>
+
+<p> So what I would suggest is file-based operations, where you 
+gradually process your input, while at the same time dumping the results
+ into a (possibly big) output file. Then you can access them from that 
+file.</p>
+
+<p>You may also consider if your task really requires brute-force 
+parsing of whole countries, vs somehow pre-filtering the information at 
+the source from where you get it (I don't know if that's possible in 
+this case, but it's an option worth considering, if you don't need all 
+that data).</p>
+
+<p>The PBF format is currently not supported by this toolbox. There is already a Python solution here:
+<br>http://blog.lifeeth.in/2011/02/extract-pois-from-osm-pbf.html
+<br>(pointed to by this: http://wiki.openstreetmap.org/wiki/PBF_Format)
+<br>and I'm suggesting switching to Python anyway (see below).</p>
+
+<p>Please feel free to contribute towards that, btw motivated by 
+people's interest, it will probably migrate to github not far in the 
+future.</p>
+
+<p>Finally I would advise switching to Python for heavy GIS tasks as the
+ one you describe, as it is more suited for system-oriented operations 
+and you will find a much wider set of tools already available, though it
+ takes more searching. Starting points (though haven't tried them):
+<br>http://wiki.openstreetmap.org/wiki/PythonOsmApi
+<br>http://stackoverflow.com/questions/11321718/how-can-i-display-osm-tiles-using-python/11325174#11325174
+<br>https://ep2013.europython.eu/media/conference/slides/making-use-of-openstreetmap-data-with-python.pdf
+<br>http://nzjrs.github.io/osm-gps-map/</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/365497">Nermeen Ahmed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>The tool has been magically helpful in my environment classification 
+project. I was just wondering about the osm file size limitation that 
+can be parsed. As i need to parse files of complete countries; osm files
+ that can reach up to 30 GB. Also is there a way to parse PBF files 
+instead of XML using this tool? Thanks in advance</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Happy that it proves useful. No, I 
+haven't considered processing administrative boundaries. If you write 
+some enhancement, please consider sending it in.</p>
+
+<p>Also, when I find some time this project will probably appear in github for people to contribute.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/77250">Seb Biass</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi there,</p>
+
+<p>This toolbox is brilliant. I was wondering if you saw a way to 
+extract and perform connectivity analysis on a road network that is 
+within an administrative boundary of a given level. I am looking at the 
+API, but fairly new, so still struggling...
+<br>Please do let me know if you do, and again, a bunch of thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/359639">Preeti Goel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I get an error when I try to load and parse an osm file, I have tried with different file sizes:</p>
+
+<p>Cell contents reference from a non-cell array object.</p>
+
+<p>Error in parse_osm&gt;parse_way (line 61)
+<br>        ndtemp(1, j) = str2double(waytemp.nd{j}.Attributes.ref);</p>
+
+<p>Error in parse_osm (line 20)
+<br>parsed_osm.way = parse_way(osm_xml.way);</p>
+
+<p>Error in parse_openstreetmap (line 43)
+<br>parsed_osm = parse_osm(osm_xml);</p>
+
+<p>Error in OSMExample (line 29)
+<br>[parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename);</p>
+
+<p>Any suggestions? </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/359381">Rinat</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have error ??? Reference to non-existent field 'osm'. osm_xml = map_osm.osm;?</p>
+
+<p>matlab file xml2struct.m
+<br>tree = 
+<br>[#document: null]
+<br>theStruct = 
+<br>          Name: 'osm'
+<br>    Attributes: [1x5 struct]
+<br>          Data: ''
+<br>      Children: [1x439 struct]</p>
+
+<p>parse_openstreetmap.m
+<br>map_osm = 
+<br>          Name: 'osm'
+<br>    Attributes: [1x5 struct]
+<br>          Data: ''
+<br>      Children: [1x439 struct]</p>
+
+<p>name file
+<br>openstreetmap_filename = 'map.osm';</p>
+
+<p>I do not understand where the error, using Matlab 2013a and 2009a?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Richard,</p>
+
+<p> It appears that the Java Virtual Machine run out of memory, you can 
+increase that (depending on the limits of your system). Please see here:
+<br>  http://www.mathworks.com/support/solutions/en/data/1-18I2C/
+<br>This can also be the case when plotting a lot of data.</p>
+
+<p>I would suggest trying to instead reduce the piece of the map you 
+attempt to import, based on what is the purpose for further processing.
+<br>Otherwise even if it does load after increasing the java heap size, it will still be cumbersome to process.</p>
+
+<p>Another suggestion might be to break into pieces and load those 
+separately, one at a time, extracting the structure of interest and then
+ identifying common nodes between different patches. However this is 
+much more involved, because it involves the global (unique) IDs of the 
+nodes, representing them in the openstreetmap database (and file).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/287487">Richard</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm trying to get a street map of Beijing, but encountering an out of memory error:</p>
+
+<p>??? Java exception occurred: 
+<br>java.lang.OutOfMemoryError: Java heap space
+<br>.</p>
+
+<p>Error in ==&gt; xmlread at 91
+<br>parseResult = p.parse(fileName);</p>
+
+<p>Error in ==&gt; xml2struct at 40
+<br>    xDoc = xmlread(file);</p>
+
+<p>Error in ==&gt; load_osm_xml at 26
+<br>map_osm = xml2struct(filename); % downloaded osm file</p>
+
+<p>Error in ==&gt; parse_openstreetmap at 41
+<br>map_osm = load_osm_xml(openstreetmap_filename);</p>
+
+<p>Error in ==&gt; GeoLife_main at 21
+<br>        [parsed_osm, osm_xml] = parse_openstreetmap('beijing.osm');</p>
+
+<p>Beijing.osm is 75.35 MB</p>
+
+<p>Any suggestions?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Some recent feedback I received 
+suggests that the xml loading error might be caused by a name conflict 
+between the function xml2struct included with the openstreetmap 
+functions and a function with the same name in the MATLAB Bioinformatics
+ toolbox.</p>
+
+<p>My version of the bioinformatics toolbox does not have such a 
+function, however it does have some functions for xml handling, so 
+probably there existed xml2struct function in previous versions.</p>
+
+<p>The Bioinformatics toolbox function (when it exists) can shadow the 
+one included with this software package, depending on their relative 
+placement in the MATLAB path.</p>
+
+<p>Please check if this is the case for you by typing:
+<br> which xml2struct
+<br>This issue might be fixed in some future version by just renaming 
+xml2struct, although in general it is preferable to maintain original 
+names for files from the file exchange to keep better track of code and 
+avoid duplicates.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Fabio,</p>
+
+<p>Are you sure that xml2struct is in your path? It appears that the 
+file is not loaded correctly, maybe you could check to see the fields of
+ the structure returned, containing the loaded xml.</p>
+
+<p>A minimal example reproducing the issue would help resolve it.</p>
+
+<p>Best,
+<br>Ioannis</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/293472">Fabio Lopez</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Loannis</p>
+
+<p>I have just begun to use the functions package, and as a start a 
+wanted to run the usage example. The following error arises indistinctly
+ of the geographical location of the file or its size: </p>
+
+<p>??? Reference to non-existent field 'osm'.</p>
+
+<p>Error in ==&gt; parse_openstreetmap at 42
+<br>osm_xml = map_osm.osm;</p>
+
+<p>Error in ==&gt; usage_example at 29
+<br>[parsed_osm, osm_xml] = parse_openstreetmap(openstreetmap_filename);
+<br>Could you maybe know the reason for this error?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/270593">Paula</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey Ioannis!
+<br>Thanks a lot for your help! Now I’m still working at the details to 
+develop an addition for the run of the power network.  I want to find 
+out this run for whole Germany. I got the data directly from the 
+openstreetmap homepage, where I exported them. But I just can get a 
+really small part of Germany, if I export the data from this homepage. 
+Do you know another page, where I can get the whole data base of Germany
+ in once? It would be another great help for me!
+<br>Thank you again, Paula
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Paula,</p>
+
+<p>A connectivity matrix represents the existence of connections between nodes.
+<br>In one-way roads the connections are directed, so the connectivity matrix is not symmetric.
+<br>In other words, you can go from node a to node b, but not the opposite way.
+<br>The route planner just searches within the graph represented by the 
+connectivity matrix, in order to find a path from the initial to the 
+final node.
+<br>Sometimes, certain roads are assumed symmetric when extracting the connectivity, but actually they are not.
+<br>For this reason, assuming that directions do not matter may work better if the first attempt fails.
+<br>This requires that the connectivity matrix be made symmetric.
+<br>Both of these two approaches are described in lines 35-48 of the usage_example file.</p>
+
+<p>Since the road network was of interest in this package (at least until now), only roads qualified as valid connections.
+<br>So the code searches for road connections only.</p>
+
+<p>Roads can be identified by their special tag, which has a key and a value, see
+<br>  http://wiki.openstreetmap.org/wiki/Key:highway
+<br>  http://wiki.openstreetmap.org/wiki/Highway_tag_usage
+<br>  http://wiki.openstreetmap.org/wiki/Highways
+<br>for the related documentation on highways.
+<br>If the object has a tag, then the function get_way_tag_key gets the key and its value.</p>
+
+<p>The tag's key is called "highway" and can take on many values (those 
+of the possible values which were of interest are defined in the 
+"road_vals" cell array in line 39 of extract_connectivity).</p>
+
+<p>However, objects which are not highways do not have a tag with key named "highway".
+<br>This is checked in line 54 of extract_connectivity.
+<br>In this case, they are ignored, as far as connectivity is concerned.</p>
+
+<p>Further, even if they do have the "highway" key, they may not be of interest (i.e., have a value included in "road_vals").
+<br>In this case, they are again ignored, see line 59 of extract_connectivity.</p>
+
+<p>So the first warning means that the object is not a highway.
+<br>Taking the previous into consideration, it follows that this object 
+does not contribute to the road connectivity (since it is not a road).</p>
+
+<p>This is probably the reason that no route has been found.
+<br>The connectivity matrix produced from the current version of this 
+code does not incorporate any information about the power lines or 
+cables.</p>
+
+<p>The second warning is just a suggestion by the route planner to use a
+ symmetric network assumption, for the reasons described previously. 
+(i.e., in case the one-way assumption does not hold exactly. For 
+example, this could happen when we are interested in walking only and 
+not cars. One would need to change "road_vals" as well in this case.)</p>
+
+<p>To work with power networks, you would need to extract their connectivity from the loaded openstreetmap xml data.
+<br>You can do this by altering the function extract_connectivity to identify key="power" and the appropriate values, please see
+<br>  http://wiki.openstreetmap.org/wiki/WikiProject_Power_networks</p>
+
+<p>Extracting various networks is a good idea, I may add this capability when I have time.
+<br>If you develop an addition towards that direction, I would be happy to add it to the current distribution.</p>
+
+<p>Best regards,
+<br>Ioannis
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/270593">Paula</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey Ioannis,
+<br>I want to create a connectivity matrix for th run of cables and 
+powerlines. Right now I'm trying to understand the function of the 
+connectivity matrix and the rout planner, but I'm not even able to 
+create one simple route. It always says: 
+<br>"Warning: Way has NO tag. 
+<br>&gt; In get_way_tag_key at 20
+<br>  In extract_connectivity at 53"
+<br>and:
+<br>"Warning: No route found by the route planner. Try without road directions."</p>
+
+<p>What does it mean exactly and what can I do now?    </p>
+
+<p>Thanks a lot!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/242134">Catherine Holloway</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/238243">Jingjing Wang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>One more comments. 
+<br>For the route planner, it differentiates one-way roads from normal 
+roads only by not making the directed graph symmetric. However, it does 
+not take into account the tag "oneway=yes" which can be extracted from 
+the original osm file. I think maybe using that info. will make more 
+sense.</p>
+
+<p>Thanks,
+<br>Jingjing</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/238243">Jingjing Wang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Loannis,</p>
+
+<p>I'm using your functions to get the connectivity matrix of Shanghai 
+road network. It seems that there are several things to be modified.
+<br>1. the tag "highway" may not be always the first tag in each 
+&lt;way&gt; element so in the function 'get_way_tag_key', it should 
+traverse all the tags to see whether there is a "highway" tag.
+<br>2. In terms of the connectivity matrix, it seems to me that you are 
+trying to get the directed graph only containing the intersection nodes.
+ If so, 'node1_index' should not be initiated to be the first node but 
+an empty set '[]' since the first node not necessarily belongs to the 
+intersection nodes.</p>
+
+<p>Could you help me check it?</p>
+
+<p>Thanks,
+<br>Jingjing</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/183666">Mate</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Catherine,</p>
+
+<p> Thank you for providing feedback on these functions. I have released
+ an updated version which fixes this bug and adds more functionality.</p>
+
+<p>Best regards,
+<br>Ioannis</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/242134">Catherine Holloway</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ioannis,</p>
+
+<p>Thanks for taking the time to post this. I am trying to use your 
+functions to plot the area of Genoa, Italy but I am getting the 
+following errors:</p>
+
+<p>??? Cell contents reference from a non-cell array object.</p>
+
+<p>Error in ==&gt; get_way_tag_key at 16
+<br>    key = tag{1}.Attributes.k;</p>
+
+<p>Error in ==&gt; plot_way&gt;show_ways at 43
+<br>    [key, val] = get_way_tag_key(way.tag{1,i} );</p>
+
+<p>Error in ==&gt; plot_way at 34
+<br>show_ways(ax, bounds, node, way, map_img_filename);</p>
+
+<p>Error in ==&gt; genoa at 34
+<br>plot_way(ax, parsed_osm)</p>
+
+<p>Do you have any suggestions?</p>
+
+<p>Thanks,
+<br>Catherine</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>continued:</p>
+
+<p>Please consider replacing:</p>
+
+<p>parse_osm&gt;parse_way line 59
+<br>    tag{1,i} = waytemp.tag;</p>
+
+<p>with:</p>
+
+<p>if isfield(waytemp, 'tag')
+<br>    tag{1, i} = waytemp.tag;
+<br>else
+<br>    tag{1, i} = [];
+<br>end</p>
+
+<p>I am going to post an update, fixing this bug. It would be helpful if
+ you can post the geographical region you exported from OpenStreetmap 
+which caused this issue. (Particularly if you can e-mail me the .osm 
+file).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212069">Ioannis Filippidis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David,</p>
+
+<p> Thanks for noting this behavior.
+<br>Please consider replacing:
+<br>   parse_osm&gt;parse_way, line 59
+<br> 
+<br>if isfield(waytemp, 'tag')
+<br>    tag{1, i} = waytemp.tag;
+<br>else
+<br>    tag{1, i} = [];
+<br>end</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37110">RED STONE</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/235576">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ioannis</p>
+
+<p>I like your OpenStreetMap Matlab functions a lot. However, for some osm files I get the following error:</p>
+
+<p>[parsed_osm] = parse_openstreetmap('openstreetmap/map.osm');
+<br>??? Reference to non-existent field 'tag'.</p>
+
+<p>Error in ==&gt; parse_osm&gt;parse_way at 59
+<br>    tag{1,i} = waytemp.tag;</p>
+
+<p>Error in ==&gt; parse_osm at 14
+<br>parsed_osm.way = parse_way(osm.way);</p>
+
+<p>Error in ==&gt; parse_openstreetmap at 40
+<br>parsed_osm = parse_osm(map_osm.osm);</p>
+
+<p>Do you have an idea how this can be resolved?</p>
+
+<p>Regards,
+<br>David</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">03 May 2012</td>
+                  <td><p>Bug fixes associated with some ways having no tags.
+<br>Included routing functionality.
+<br>Added more plotting functions.
+<br>Updated manual.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">19 Sep 2013</td>
+                  <td><p>development on github</p></td>
+                </tr>
+                <tr>
+                  <td class="date">25 Nov 2013</td>
+                  <td><p>included restorehold.m, fix warning, rename xml2struct to avoid name shadowing</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 Sep 2014</td>
+                  <td><p>link to github using matlabcentral itself</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415495252263&amp;cv=7&amp;fst=1415495252263&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=2&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/35819-openstreetmap-functions&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D15%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

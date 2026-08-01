@@ -1,0 +1,1615 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>LAPJV - Jonker-Volgenant Algorithm for Linear Assignment Problem V3.0 -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0" rel="canonical">
+<meta content="LAPJV - Jonker-Volgenant Algorithm for Linear Assignment Problem V3.0 - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0" property="og:url"><meta content="A Matlab implementation of the Jonker-Volgenant algorithm solving LAPs." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/17255" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=26836" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0" class="manifest_title">LAPJV - Jonker-Volgenant Algorithm for Linear Assignment Problem V3.0</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0/content//lapjv.m" class="function" title="Function">lapjv(costMat,resolution)
+</a><span class="description">LAPJV  Jonker-Volgenant Algorithm for Linear Assignment Problem.
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0/content/lapjv.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:97.5%;">
+                <p>4.875</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">16</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">60 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 4.35 KB</span>
+          <span id="fileid">File ID: #26836</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">LAPJV - Jonker-Volgenant Algorithm for Linear Assignment Problem V3.0</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      03 Mar 2010
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-04-11">11 Apr 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">A Matlab implementation of the Jonker-Volgenant algorithm solving LAPs.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0&amp;watching=26836" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>The Jonker-Volgenant algorithm is much faster than 
+the famous Hungarian algorithm for the Linear Assignment Problem (LAP). 
+This Matlab implementation is modified from the original C++ code made 
+by Roy Jonker, one of the inventors of the algorithm. It is about 10 
+times faster than the munkres code (v2.2) of the author. It can solve a 
+1000 x 1000 problem in about 3 seconds in a normal Intel Centrino 
+processor.</p>
+
+<p>V1.1 returns the dual variables and the reduced cost matrix as well. 
+<br>V1.2 can deal with nonsquare assignment problems. 
+<br>V2.0 is faster for problems with a large range of costs. 
+<br>V2.1 includes an option to change the cost resolution to improve performance for some problems.
+<br>v2.2 removes a small bug to avoid NAN for 1x1 case.
+<br>v2.3 removes a small bug to handle a cost matrix with all inf's.
+<br>v2.4 fixes a bug associated with resolution to address the known problem of the algorithm.
+<br>v3.0 fixes a bug introduced since v2.0.
+<br>Reference:
+<br>R. Jonker and A. Volgenant, "A shortest augmenting path algorithm 
+for dense and spare linear assignment problems", Computing, Vol. 38, pp.
+ 325-340, 1987.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/20328-munkres-assignment-algorithm">Munkres Assignment Algorithm</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/20652-hungarian-algorithm-for-linear-assignment-problems--v2-3-">Hungarian Algorithm For Linear Assignment Problems (V2.3)</a> inspired <i>this file.</i></p>
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/30837-k-best-assignment-algorithm">K Best Assignment Algorithm</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/30838-faster-jonker-volgenant-assignment-algorithm">Faster Jonker Volgenant Assignment Algorithm</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.10 (R2010a)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hungarian+algorithm%22" rel="nofollow">hungarian algorithm</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22linear+assignment+problem%22" rel="nofollow">linear assignment problem</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22linear+assignment+problemoptimizationhungarian+algorithmmunkres+%22" rel="nofollow">linear assignment problemoptimizationhungarian algorithmmunkres </a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22munkres+algorithm%22" rel="nofollow">munkres algorithm</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22optimization%22" rel="nofollow">optimization</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="26836" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(47)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">22 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/495643">Jay</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Granted I ran this in Octave but 
+I'm fairly certain it gave me an incorrect alignment using the following
+ code "px = lapjv(magic(90))"</p>
+
+<p>The result was
+<br>px =</p>
+
+<p>Columns 1 through 31: (Note: beware of line wrapping)</p>
+
+<p>72   23   73   74   75   76   77   78   79   71   24   88   86   84  
+ 85   83   87   82   89   90   81   80    1   45   44   43   42   41   
+40   39   38</p>
+
+<p> Columns 32 through 62:</p>
+
+<p>37   36   35   34   33   32   31   30   29   28   27   26   70   25  
+ 68   22   21   67   66   18   20   65   64   19   63   57   62   17   
+61   16   60</p>
+
+<p> Columns 63 through 90:</p>
+
+<p>15   59   14   58   13   46   12   56   11   10   55   54    9   53  
+  8   52    7   51    6   50    5   49    4    3   48   47    2   69</p>
+
+<p>When it should have been this (obtained in R using GraphAlignment package LinearAssignment function)</p>
+
+<p>&gt; px1
+<br>Cols 1 through 37 (Again Note: beware of line wrapping)
+<br>23 89 87 84 82 80 78 76 74 73 71 69 66 64 62 61 58 56 54 52 50 49  2 11 45 10  1  3  4  5  6  7  8  9 22 21 18</p>
+
+<p>Cols 38 through 74
+<br>16 14 15 13 17 12 19 20 68 88 86 85 83 81 79 77 75 72 70 57 67 65 63 60 59 51 55 53 48 47 46 90 44 43 42 41 40</p>
+
+<p>Cols 75 through 90
+<br>39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24</p></span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/420331">pang kuo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>great!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116714">Don Natale</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yi,</p>
+
+<p>I'm running the example you have in the comments of your code:</p>
+
+<p>% Example 2: 1000 x 1000 random data
+<br>%{
+<br>n=1000;
+<br>A=randn(n)./rand(n);
+<br>tic
+<br>[a,b]=lapjv(A);
+<br>toc                 % about 0.5 seconds 
+<br>%}</p>
+
+<p>And it's taking substantially longer than a few seconds to solve, 
+more like 40 seconds.  This is on a fairly new Intel core i5-2400 
+3.10GHz processor with 64-bit Windows 7 and 16 Gb RAM.</p>
+
+<p>In your great amount of experience optimizing your code here, could 
+you suggest a reason why this may be taking so long to compute?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/346209">Fabio</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>This code looks very interesting.
+<br>I am using v3.0 and I possibly hit a bug/problem. It seems to me 
+that, for different cost matrices (coming from the underlying problem 
+with a varying size) the solution switches between being in row mode and
+ col mode.
+<br>I don't see any parameter/switch to control this behavior, is it 
+intended to be like that? how can I get the solution always in term of 
+e.g. col indices? Fabio</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/339761">Bill Otto</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>v3.0 seems to give correct result 
+every time, with a 4x speed advantage over Munkres for a 100 by 100 
+matrix. Thanks for the great routine, Yi.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/339761">Bill Otto</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yi, It seems to fail for 2x2 
+(0.0022% of the time) and 3x3 cost matrices about 0.014% of random 
+cases. For 4x4, it hasn't failed in over 1 million cases, but that 
+doesn't mean that it won't in some larger sample. That means it's a real
+ tough bug to track down, I would guess. Bill</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/339761">Bill Otto</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yi, I have tried Jen's example below, and it appears to be a bona fide bug. Bill</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/311822">Jacob</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have the following error, can anybody help me here?</p>
+
+<p>??? Error: File: lapjv.m Line: 146 Column: 7
+<br>Expression or statement is incorrect--possibly unbalanced (, {, or [.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/289800">Jen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It seems like the code returns the wrong solution for this cost matrix:</p>
+
+<p>costs = 
+<br>[0.2593    0.0697    0.7715;
+<br> 0.1671    0.3699    0.0671;
+<br> 0.1117    0.1462    0.0611]</p>
+
+<p>[a, b] = lapjv(costs);
+<br>a = [2 1 3]
+<br>b = 0.2979</p>
+
+<p>The correct solution would be a = [2 3 1] with b = 0.2486.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93144">Kristofer Kusano</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the post, this worked great.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37453">joshua vogelstein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>this is a really great piece of code, thanks!
+<br>i noticed that "Faster Jonker-Volgenant Assignment Algorithm" seems 
+to have a nice feature which is not yet implemented in this version?  do
+ you have plans to include it? many thanks, joshua</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/259993">Ming</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you Dmitri, the bug has been fixed now.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/247302">Dmitri Kamenetsky</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I think I found a bug in lapjv when Inf values are used. In the following lapjv gives the wrong answer (compared to munkres):</p>
+
+<p>A=magic(5);
+<br>A(1,3)=Inf
+<br>[munkresAssignment munkresCost]=munkres(A)
+<br>[lapjvAssignment lapjvCost]=lapjv(A)</p>
+
+<p>The problem goes away when Inf is replaced with a large value:</p>
+
+<p>A(1,3)=1000
+<br>[munkresAssignment munkresCost]=munkres(A)
+<br>[lapjvAssignment lapjvCost]=lapjv(A)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/149431">Andy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>My post was deleted somehow</p>
+
+<p>I am having a problem with bad assignments. The data I am using is 
+two sets of 8x2 centroids specified by (row,col). The first set is 
+measured data and tsecond data is predicted via alpha-beta filter. I 
+using the assignemtn algorithm to match up masured data with existing 
+filter pipelines, but even for a simple scenario such as:</p>
+
+<p>meas = 
+<br>[122.9178,122.9178;122.9178,202.9178;0,0;0,0;0,0;0,0;0,0;0,0];
+<br>pred = 
+<br>[122.4879,121.0182;0,0;0,0;0,0;0,0;0,0;0,0;0,0];</p>
+
+<p>i get
+<br>rowsol = [2;3;6;7;8;1;4;5],</p>
+
+<p>wich is obviously not right. Even with Munkres i get
+<br>rowsol_munkres  = [2;1;3;4;5;6;7;8],</p>
+
+<p>which is still off.</p>
+
+<p>Any suggestions?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/149431">Andy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry here is the costmat code:</p>
+
+<p>costMat = zeros(n,n);</p>
+
+<p>%Populate nxn error matrix
+<br>%--------------------------------
+<br>for j = 1:n
+<br>    for k = 1:n
+<br>        costMat(j,k) = ( x_pred(j)-x_meas(k) )^2 + ( y_pred(j)-y_meas(k) )^2;
+<br>    end
+<br>end</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/71743">Eric Trautmann</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've been using both of your 
+Munkres and JV LAP algorithm implementations.  JV is much faster for a 
+single matrix, as expected, but I also found that when I used the JV 
+algorithm within the Murty k-best assignment algorithm, it was much 
+slower than your implementation of Munkres.  When I dug into this, I 
+found that the JV implementation does not cull out rows or columns all 
+marked as inf.  When I made this modification (copied the 
+validRow/validCols lines from munkres.m), it sped up the algorithm by a 
+factor of ~7.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122487">Andrew McFarland</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alexander,
+<br>Thanks for the help...I tried this out and it did help a lot, but it
+ is still taking much longer with my dataset (for example, 80X80 cost 
+matrix takes ~150 seconds to solve) vs the example ones.  Any 
+ideas--maybe normalizing of some sort?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/83071">Alexander Kosenkov</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Andrew McFarland, you should 
+specify second parameter - minimum resoulution for your data. If several
+ values are very close to each other, then it hangs because of a minor 
+bug in programming.</p>
+
+<p>I made a patch to the function - originally  EPS function was used incorrectly. I hope, Mr. Cao will fix this in next releases.</p>
+
+<p>Index: lapjv.m
+<br>@@ -68,7 +68,7 @@
+<br> if nargin&lt;2
+<br>-    resolution=eps;
+<br>+    resolution=4 * eps(max(max(A)));
+<br> end
+<br>@@ -164,7 +164,7 @@
+<br>         i0 = colsol(j1);
+<br>-        if usubmin - umin &gt; eps 
+<br>+        if usubmin - umin &gt; resolution 
+<br>             % change the reduction of the minmum column to increase the
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122487">Andrew McFarland</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great code--I have found some 
+interesting behavior.  When I run the "standard" examples like 
+A=rand(1000,1000) for the cost matrix, solves in seconds.  However, I 
+have an assignment problem (for PCB assignment) and when I run a 500X500
+ cost matrix it takes more than a day to solve.  I have tried scaling 
+the matrix values and also randomly shuffling the matrix elements and 
+still doesn't reduce the solver time.  Is there something inherent in 
+the structure of the cost matrix that can cause the solution to take 
+longer??</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/115663">KS</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>KS,</p>
+
+<p>The code is updated with more clear explaination. Wish this helps.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/115663">KS</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>What does N stand for in the function parameters? Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Roberto,</p>
+
+<p>Thanks for pointing this out. Initially, a full Inf cost matrix is not considered. Now, this has been corrected in v2.3.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31434">Roberto Olmi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've noticed a little bug for scalar input Inf ( lapjv(inf) ). The error occurs at line 85.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31434">Roberto Olmi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very usefull code!! Compared to the
+ version 1.1 the version 2.2 seems to be also capable to manage Inf 
+values in the cost matrix. Yi, is it correct? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/99692">Jiangmin zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>i think matlab should take this code into itself as a build-in function </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101710">Amir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>anyone has lapjv v1.2?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/39614">Immanuel Weber</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yi,
+<br>that was fast! Okay, that's the solution I want to avoid, as the 
+task in my case is very time critical and resizing an existing 2d array 
+appears to be very unattractive. But nevertheless thanks for your 
+information and your good code.</p>
+
+<p>Immanuel</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Immanuel,</p>
+
+<p>Thanks for pointing out the bug. It has been removed in v2.2. In 
+terms of rectangular matriices, I did not know these two references you 
+mentioned. I just used a simple approach to fill the cost matrix with 
+zeros to square it.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/39614">Immanuel Weber</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yi,
+<br>as I used your Hungarian-Code before and I want to implement 
+Jonkers&amp;Volgenant's algorithm for rectangular matrices in C, your 
+code was a nice finding. Do you use any of the algorithm modifications 
+presented in Volgenant's papers "Linear and semi-assignment problems, a 
+core oriented approach"[1996] and/or "Solving the Rectangular assignment
+ problem and applications"[2010] to solve rectangular matrices? Or do 
+you use a different, maybe simplier to understand approach?
+<br>I'm trying to implement the modifications presented in the last one,
+ but I'm having difficulties with some of the lines in the pseudo code.
+<br>In addition I want to point out a little bug, which rarely will 
+occur, but if you use 1x1 matrix as an input for your code, it will 
+compute a NaN cost.</p>
+
+<p>Immanuel
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, Kishore,</p>
+
+<p>No, this is not an error. This is a new feature of Matlab since 
+2009(a?), which indicates that the corresponding output arguments are 
+not needed. If you use  an older version, you need to replace ~ with a 
+dummy variable.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/105160">Kishore Mosaliganti</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>There is an error in line 85 in the downloaded code. It is not running.
+<br>[~,c]=min(v1);</p>
+
+<p>Should the ~ be r ?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101710">Amir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p> it is a wonderful code. I have 
+some questions which directly or indirectly are related to your code. I 
+would really appreciate if you could find some time and answer my 
+questions:</p>
+
+<p>1.       If I want to exclude some assignments such as i--&gt;i 
+assignment, I consider Cii as Big-M. Does the value of Big-M affect the 
+computing time? What is the best value?
+<br>2.       If I have a matrix whose elements are random integers from 
+the following interval [0 10000] and another one whose elements are from
+ [0 100], does the computing time differ? My experience is that the 
+first one is lengthier.
+<br>3.       Do you have any experience working with a sparse matrix?
+<br>Everybody claims the computing time has to decrease. However, I have
+ a different experience. It remains more or less the same. I think the 
+main reason can be referred to the above item. I think solving a matrix 
+with larger element with LAPJV is lengthier.
+<br>4.       Can I have negative elements?
+<br>5.       Is LAPJV v1.1 faster than LAPJV v1.2? Because, in that one you don't calculate dual variables and reduced cost matrix.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103142">Chaoran Du</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yi, I've got the m-file, thanks a lot!!!</p>
+
+<p>Chaoran</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Chaoran,</p>
+
+<p>The page has not been updated. You can check the 'updates' list for 
+another 22 Jul 2010 item to ensure the file has been updated.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103142">Chaoran Du</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yi, </p>
+
+<p>I still can't download the updated version and I don't know if there 
+is something wrong here. Do you mind email me the updated m-file? Thank 
+you very much for all your help!</p>
+
+<p>Email: C.Du@ed.ac.uk</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Chaoran, </p>
+
+<p>I reloaded the file now. Wish this time it works.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103142">Chaoran Du</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yi, I download the file but the 
+m-file is the same as V1.1, and it shows that the m-file was modified on
+ 19th July while license.txt was modified today.  Could you please check
+ the file? </p>
+
+<p>Really appreciate all your help!</p>
+
+<p>Chaoran</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Chaoran,</p>
+
+<p>Yes, it has been posted and should be online within a day.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103142">Chaoran Du</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fantastic! 
+<br>But I can't find V1.2, have you posted it yet?
+<br>Thanks again for all your help!</p>
+
+<p>Chaoran  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Chaoran,</p>
+
+<p>The new version (V1.2) has the ability to deal with nonsquare cases.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103142">Chaoran Du</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for your code. Its really useful.
+<br>Do you know how to solve an asymmetric assignment problem by using 
+the Jonker-Volgenant algorithm? (assign n people to m jobs and n&lt;m)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22524">Yi Cao</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Amir,</p>
+
+<p>In the new version (V1.1), dual variables are returned.</p>
+
+<p>Yi</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101710">Amir</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>it is a great code. how can i get the dual variables?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/39759">Amir Hossein</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/92540">Turkay YILDIZ</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you. Great algorithm and 
+matlab code. I would also very much like to see this algorithm's 
+solution for TSP and other problems, if it's possible.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">04 Mar 2010</td>
+                  <td><p>update descriptions</p></td>
+                </tr>
+                <tr>
+                  <td class="date">31 Mar 2010</td>
+                  <td><p>a bug fixed</p></td>
+                </tr>
+                <tr>
+                  <td class="date">19 Jul 2010</td>
+                  <td><p>Version 1.1 returns dual variables and reduced cost matrix</p></td>
+                </tr>
+                <tr>
+                  <td class="date">22 Jul 2010</td>
+                  <td><p>V1.2 is able to deal with nonsquare cases.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">22 Jul 2010</td>
+                  <td><p>update the file</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Jul 2010</td>
+                  <td><p>V2.0 is faster for problems with a large range of cost values.  </p></td>
+                </tr>
+                <tr>
+                  <td class="date">13 Aug 2010</td>
+                  <td><p>option to change cost resolution.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Aug 2010</td>
+                  <td><p>v2.2 removes a small bug to avoid NAN for 1x1 case.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Nov 2010</td>
+                  <td><p>Removes a small bug to handle a cost matrix with all inf's.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">18 Nov 2010</td>
+                  <td><p>update description</p></td>
+                </tr>
+                <tr>
+                  <td class="date">16 Jan 2011</td>
+                  <td><p>Big fix</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 May 2012</td>
+                  <td><p>A bugg fix</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 Apr 2013</td>
+                  <td><p>A bug introduced since v2.0 is fixed</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416013154135&amp;cv=7&amp;fst=1416013154135&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/26836-lapjv-jonker-volgenant-algorithm-for-linear-assignment-problem-v3-0&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D116%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

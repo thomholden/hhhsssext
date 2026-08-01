@@ -1,0 +1,341 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>DimensionedVariable Class for MATLAB - notes and demos</title><meta name="generator" content="MATLAB 8.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-03-09"><meta name="DC.source" content="unitsDocumentation.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>DimensionedVariable Class for MATLAB - notes and demos</h1><!--introduction--><p>Author: Sky Sartorius. Original base code (and deserving much credit): Rob deCarvalho.</p><p>A DimensionedVariable contains both a value (any numeric type) and units (any combination of mass, length, time, etc.). Math operations performed on dimensioned variables will automatically perform dimensional analysis to ensure that units are consistent.</p><p>Both the m-files (units.m, unitsOf.m, etc.) and the directory ..\@DimensionedVariable must be placed on the current path (or in the current working directory).</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Basic Use</a></li><li><a href="#9">Consistency Enforcement</a></li><li><a href="#12">Strings Representing Dimensioned Variables</a></li><li><a href="#13">Changing the Base Unit System</a></li><li><a href="#15">Speed</a></li><li><a href="#16">Examples</a></li></ul></div><h2>Basic Use<a name="1"></a></h2><p>Step one whenever using the DimensionedVariable class is to create the units struct.</p><pre class="codeinput">u = units;
+</pre><p>To create a dimensioned variable, <b>multiply</b> the value by the unit in the units struct.</p><pre class="codeinput">l = 5*u.in
+</pre><pre class="codeoutput">
+l =
+
+    0.1270
+
+		 m
+</pre><p>The variable will be displayed in base SI units. To display in another unit, <b>divide</b> by that unit.</p><pre class="codeinput">l/u.ft
+</pre><pre class="codeoutput">
+ans =
+
+    0.4167
+
+</pre><p>To convert between units, multiply by the starting unit and divide by the ending unit.</p><pre class="codeinput">conversionFactor = u.mi^2/u.ft^2;
+fprintf(<span class="string">'There are %d sq. feet in a sq. mile.'</span>, conversionFactor)
+</pre><pre class="codeoutput">There are 27878400 sq. feet in a sq. mile.</pre><p>More complicated units can be made by combining other units.</p><pre class="codeinput">mach1 = 340.294*u.m/u.s
+</pre><pre class="codeoutput">
+mach1 =
+
+  340.2940
+
+		m
+		-
+		s
+
+</pre><p>If you wnat to use the speed of sound at sea level in your application often, expand the units struct with a new field after creating it. (You can also edit units.m and add a line to make mach1 available whenever working with the units struct.)</p><pre class="codeinput">u = units;
+u.mach1 = 340.294*u.m/u.s;
+</pre><p>Note that there is no such thing as a dimensioned variable with no units. If you perform operations that make the units cancel, a normal variable will be returned.</p><pre class="codeinput">class(u.s)
+</pre><pre class="codeoutput">
+ans =
+
+DimensionedVariable
+
+</pre><pre class="codeinput">class(u.W/u.hp)
+</pre><pre class="codeoutput">
+ans =
+
+double
+
+</pre><h2>Consistency Enforcement<a name="9"></a></h2><p>Math with dimensioned variables is just like numeric variables except that dimensional/unit consistency is enforced. For example, adding two variables having different dimesions will result in an error.</p><pre class="language-matlab">3*u.s + 2*u.kg
+</pre><p>Returns an error ("Unit inconsistency in addition").</p><p>Many MATLAB functions will not accept dimensioned variables. This is because most non-mathematical functions are only defined for dimensionless arguments.</p><pre class="codeinput">t = (0:.1:1)*u.s;
+w = (2*pi)*10*u.Hz;
+<span class="comment">% y = (3*u.in)*sin(t); % sin undefined for dimensioned argument t.</span>
+y = (3*u.in)*sin(w.*t); <span class="comment">% sin function now defined (w*t cancels units).</span>
+</pre><p>It can be convenient to define some dimensionless units, for example radians and degrees.</p><pre class="codeinput">fprintf(<span class="string">'The class of u.deg is "%s."\n'</span>,class(u.deg))
+fprintf(<span class="string">'There are %g degrees in one radian.\n'</span>,u.rad/u.deg)
+</pre><pre class="codeoutput">The class of u.deg is "double."
+There are 57.2958 degrees in one radian.
+</pre><h2>Strings Representing Dimensioned Variables<a name="12"></a></h2><p>The static method DimensionedVariable.strconv finds the conversion factor that converts from a unit indicated by a string to another unit indicated by a string.</p><pre class="codeinput">DimensionedVariable.strconv(<span class="string">'MPa/min'</span>,<span class="string">'(lbf/cm^2)/hr'</span>,u)
+</pre><pre class="codeoutput">
+ans =
+
+   1.3489e+03
+
+</pre><h2>Changing the Base Unit System<a name="13"></a></h2><p>It is possible to work in a non-SI units system. Several common alternatives are provided and can be selected by providing the function with a string indicating the desired system.</p><pre class="codeinput">u = units(<span class="string">'verbose'</span>);
+u.Ohm
+</pre><pre class="codeoutput">
+ans =
+
+     1
+
+		[meter^2][kilogram]
+		--------------------
+		[second^3][ampere^2]
+
+</pre><pre class="codeinput">u = units(<span class="string">'IPS'</span>); <span class="comment">% Inch-pound(mass)-second</span>
+u.mW
+</pre><pre class="codeoutput">
+ans =
+
+    3.4171
+
+		[in^2][lbm]
+		-----------
+		    s^3
+
+</pre><h2>Speed<a name="15"></a></h2><p>While writing code using the DimensionedVariable class makes code faster to develop, easier to read, and easier to debug, it will slow the code down due to all the calls to the DimensionedVariable methods. The units function itself also takes time. One good solution to working with the class is to develop the code using the class, but <i>after</i> it's all tested and debugged, replace the "u = units;" line with a list as generated by the static method DimensionedVariable.unitslist. For this demo file that would be</p><pre class="codeinput">DimensionedVariable.unitslist([mfilename(<span class="string">'fullpath'</span>) <span class="string">'.m'</span>], <span class="string">'-copy'</span>)
+</pre><pre class="codeoutput">
+u.Hz        = 1                     ; % [s^-1]
+u.Ohm       = 1                     ; % [m^2][kg^1][s^-3][A^-2]
+u.W         = 1                     ; % [m^2][kg^1][s^-3]
+u.atm       = 101325                ; % [m^-1][kg^1][s^-2]
+u.cc        = 1e-06                 ; % [m^3]
+u.cm        = 0.01                  ; % [m^1]
+u.deg       = 0.017453292519943     ; % 
+u.ft        = 0.3048                ; % [m^1]
+u.g0        = 9.80665               ; % [m^1][s^-2]
+u.gram      = 0.001                 ; % [kg^1]
+u.hp        = 745.69987158227       ; % [m^2][kg^1][s^-3]
+u.in        = 0.0254                ; % [m^1]
+u.knot      = 0.51444444444444      ; % [m^1][s^-1]
+u.lbf       = 4.4482216152605       ; % [m^1][kg^1][s^-2]
+u.m         = 1                     ; % [m^1]
+u.mW        = 0.001                 ; % [m^2][kg^1][s^-3]
+% "u.mach1" not defined in UNITS function.
+u.mi        = 1609.344              ; % [m^1]
+u.rad       = 1                     ; % 
+u.s         = 1                     ; % [s^1]
+u.slug      = 14.593902937206       ; % [kg^1]
+
+***List text copied to system clipboard.***
+
+</pre><h2>Examples<a name="16"></a></h2><p>Example 1: Use the units struct to calculate the force at the bottom of a long vertical pipe that is capped at the bottom and filled with oil.</p><pre class="codeinput">u = units;
+pipeInnerDiameter = 4*u.in;
+pipeHeight = 30*u.ft;
+densityOfOil = 0.926*u.gram/u.cc;
+pipeCrossSectionArea = pi*(pipeInnerDiameter/2)^2;
+
+<span class="comment">% Find pressure of oil in the pipe using gravitational acceleration, u.g0.</span>
+pressurePipeBottom = densityOfOil * u.g0 * pipeHeight;
+forceOnPipeBottom = pressurePipeBottom * pipeCrossSectionArea;
+</pre><p>Note that each variable holds its value as expressed in SI units.  To express these values in different units, divide by the desired unit.</p><pre class="codeinput">fprintf(<span class="string">'Bottom pressure is %g atmospheres. '</span>, pressurePipeBottom/u.atm)
+fprintf(<span class="string">'Force on the bottom cap is %g pounds.'</span>, forceOnPipeBottom/u.lbf)
+</pre><pre class="codeoutput">Bottom pressure is 0.819504 atmospheres. Force on the bottom cap is 151.342 pounds.</pre><p>Example 2: Find the Reynolds number (dimensionless) of an aircraft flying at 100 knots at sea level with chord of 223 cm using a mixture of units.</p><pre class="codeinput">u = units;
+rho = .002377*u.slug/u.ft^3;
+V = 100*u.knot;
+c = 223*u.cm;
+mu = 28.8*u.gram/u.mi/u.s;
+Re = rho*V*c/mu
+</pre><pre class="codeoutput">
+Re =
+
+   7.8534e+06
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% DimensionedVariable Class for MATLAB - notes and demos
+% Author: Sky Sartorius. Original base code (and deserving much credit):
+% Rob deCarvalho.
+%
+% A DimensionedVariable contains both a value (any numeric type) and units
+% (any combination of mass, length, time, etc.). Math operations performed
+% on dimensioned variables will automatically perform dimensional analysis
+% to ensure that units are consistent.
+%
+% Both the m-files (units.m, unitsOf.m, etc.) and the directory
+% ..\@DimensionedVariable must be placed on the current path (or in the
+% current working directory).
+
+%% Basic Use
+% Step one whenever using the DimensionedVariable class is to create the
+% units struct.
+u = units;
+
+%%
+% To create a dimensioned variable, *multiply* the value by the unit in the
+% units struct.  
+l = 5*u.in
+
+%% 
+% The variable will be displayed in base SI units. To display in another
+% unit, *divide* by that unit. 
+l/u.ft
+
+%%
+% To convert between units, multiply by the starting unit and divide by the
+% ending unit.
+conversionFactor = u.mi^2/u.ft^2;
+fprintf('There are %d sq. feet in a sq. mile.', conversionFactor)
+
+%%
+% More complicated units can be made by combining other units.
+
+mach1 = 340.294*u.m/u.s
+
+%%
+% If you wnat to use the speed of sound at sea level in your application
+% often, expand the units struct with a new field after creating it. (You
+% can also edit units.m and add a line to make mach1 available whenever
+% working with the units struct.)
+
+u = units;
+u.mach1 = 340.294*u.m/u.s;
+
+%%
+% Note that there is no such thing as a dimensioned variable with no units.
+% If you perform operations that make the units cancel, a normal variable
+% will be returned.
+class(u.s)
+
+%%
+class(u.W/u.hp)
+
+%% Consistency Enforcement
+% Math with dimensioned variables is just like numeric variables except
+% that dimensional/unit consistency is enforced. For example, adding two
+% variables having different dimesions will result in an error.
+% 
+%   3*u.s + 2*u.kg
+% 
+%% 
+% Returns an error ("Unit inconsistency in addition").
+%
+% Many MATLAB functions will not accept dimensioned variables. This is
+% because most non-mathematical functions are only defined for
+% dimensionless arguments.
+t = (0:.1:1)*u.s;
+w = (2*pi)*10*u.Hz;
+% y = (3*u.in)*sin(t); % sin undefined for dimensioned argument t.
+y = (3*u.in)*sin(w.*t); % sin function now defined (w*t cancels units).
+
+%%
+% It can be convenient to define some dimensionless units, for example
+% radians and degrees.
+fprintf('The class of u.deg is "%s."\n',class(u.deg))
+fprintf('There are %g degrees in one radian.\n',u.rad/u.deg)
+
+
+%% Strings Representing Dimensioned Variables
+% The static method DimensionedVariable.strconv finds the conversion factor
+% that converts from a unit indicated by a string to another unit indicated
+% by a string.
+
+DimensionedVariable.strconv('MPa/min','(lbf/cm^2)/hr',u)
+
+
+%% Changing the Base Unit System
+% It is possible to work in a non-SI units system. Several common
+% alternatives are provided and can be selected by providing the function
+% with a string indicating the desired system.
+
+u = units('verbose');
+u.Ohm
+
+%%
+
+u = units('IPS'); % Inch-pound(mass)-second
+u.mW
+
+
+%% Speed
+% While writing code using the DimensionedVariable class makes code faster
+% to develop, easier to read, and easier to debug, it will slow the code
+% down due to all the calls to the DimensionedVariable methods. The units
+% function itself also takes time. One good solution to working with the
+% class is to develop the code using the class, but _after_ it's all tested
+% and debugged, replace the "u = units;" line with a list as generated by
+% the static method DimensionedVariable.unitslist. For this demo file that
+% would be
+DimensionedVariable.unitslist([mfilename('fullpath') '.m'], '-copy')
+
+
+%% Examples
+% Example 1: Use the units struct to calculate the force at the bottom of a
+% long vertical pipe that is capped at the bottom and filled with oil.
+u = units;
+pipeInnerDiameter = 4*u.in; 
+pipeHeight = 30*u.ft;      
+densityOfOil = 0.926*u.gram/u.cc; 
+pipeCrossSectionArea = pi*(pipeInnerDiameter/2)^2;
+
+% Find pressure of oil in the pipe using gravitational acceleration, u.g0.
+pressurePipeBottom = densityOfOil * u.g0 * pipeHeight; 
+forceOnPipeBottom = pressurePipeBottom * pipeCrossSectionArea; 
+
+%%
+% Note that each variable holds its value as expressed in SI units.  To
+% express these values in different units, divide by the desired unit.
+fprintf('Bottom pressure is %g atmospheres. ', pressurePipeBottom/u.atm)
+fprintf('Force on the bottom cap is %g pounds.', forceOnPipeBottom/u.lbf)
+
+%%
+% Example 2: Find the Reynolds number (dimensionless) of an aircraft flying
+% at 100 knots at sea level with chord of 223 cm using a mixture of units.
+u = units;
+rho = .002377*u.slug/u.ft^3;
+V = 100*u.knot;
+c = 223*u.cm;
+mu = 28.8*u.gram/u.mi/u.s;
+Re = rho*V*c/mu
+
+##### SOURCE END #####
+--></body></html>

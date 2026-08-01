@@ -1,0 +1,1299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>geotiffwrite -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27959-geotiffwrite" rel="canonical">
+<meta content="geotiffwrite - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/27959-geotiffwrite" property="og:url"><meta content="Write a 2D or 3D array to a single or multi-band GeoTIFF file
+" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27959-geotiffwrite" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27959-geotiffwrite" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/15969" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=27959" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/27959-geotiffwrite" class="manifest_title">geotiffwrite</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27959-geotiffwrite/content//geotiffwrite.m" class="function" title="Function">geotiffwrite(filename, bb...</a><span class="description">GEOTIFFWRITE  Write a 2D or 3D array to a single or multi-band GeoTIFF file
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/27959-geotiffwrite/content//make_option.m" class="function" title="Function">make_option(action)
+</a><span class="description">MAKE_OPTION  GUI to generate 'option' argument for geotiffwrite program
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/27959-geotiffwrite/content/geotiffwrite_20121203.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:98.0%;">
+                <p>4.9</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">10</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">60 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 24 KB</span>
+          <span id="fileid">File ID: #27959</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">geotiffwrite</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      19 Jun 2010
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2012-12-04">04 Dec 2012</span>)
+      </span>
+  </p>
+
+  <p id="summary">Write a 2D or 3D array to a single or multi-band GeoTIFF file
+</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F27959-geotiffwrite&amp;watching=27959" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This program can write a 2D or 3D array to a single or multi-band GeoTIFF file. For more information and examples, please visit:
+<br><a href="http://research.baycrest.org/%7Ejimmy/geotiffwrite">http://research.baycrest.org/~jimmy/geotiffwrite</a>
+<br>or type: help geotiffwrite</p>
+
+<p>MATLAB's Mapping Toolbox only provides a "geotiffread" function, but 
+it does not have a "geotiffwrite" function (Note). This is the MATLAB 
+program to write a 2D or 3D array to a single or multi-band GeoTIFF 
+file, where data can be either 1-bit monochrome data (i.e. binary or 
+bilevel), 8-bit unsigned integer, 16-bit signed / unsigned integer, 
+32-bit signed integer, or 32-bit floating point.</p>
+
+<p>Note:  Starting from version R2011a, MATLAB also provides its own "geotiffwrite" function
+<br>(<a href="http://www.mathworks.com/help/toolbox/map/rn/bsq4us7-1.html#bsu1ro5-1">http://www.mathworks.com/help/toolbox/map/rn/bsq4us7-1.html#bsu1ro5-1</a>).</p>
+
+<p>This program is based on GeoTIFF Format Specification under:
+<br><a href="http://www.remotesensing.org/geotiff/spec/geotiffhome.html">http://www.remotesensing.org/geotiff/spec/geotiffhome.html</a>
+<br>or <a href="http://download.osgeo.org/geotiff/spec">http://download.osgeo.org/geotiff/spec</a></p>
+
+<p>It does not need MATLAB's Mapping Toolbox, or any other library.</p>
+
+<p>Usage:
+<br>[option bbox] = make_option([bbox]);
+<br>geotiffwrite(filename, bbox, image, [bit_depth, option]);</p>
+
+<p>For more information on arguments and detail examples, please visit:
+<br><a href="http://research.baycrest.org/%7Ejimmy/geotiffwrite">http://research.baycrest.org/~jimmy/geotiffwrite</a>
+<br>or type: help geotiffwrite</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/37605-utm2latlong-geotiff-converter">Utm2 Lat Long Geo Tiff Converter</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 5.3.1 (R11.1)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27959-geotiffwrite">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22dem%22" rel="nofollow">dem</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22earth%22" rel="nofollow">earth</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22earth+science%22" rel="nofollow">earth science</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22earth+sciences%22" rel="nofollow">earth sciences</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22elevation%22" rel="nofollow">elevation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22format%22" rel="nofollow">format</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22garmin%22" rel="nofollow">garmin</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22geotiff%22" rel="nofollow">geotiff</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22geotiff+format+write+save+dem+elevation+image+gis+gps+garmin+top%22" rel="nofollow">geotiff format write save dem elevation image gis gps garmin top</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22gis%22" rel="nofollow">gis</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22gps%22" rel="nofollow">gps</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22image%22" rel="nofollow">image</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22map%22" rel="nofollow">map</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multiband+geotiff%22" rel="nofollow">multiband geotiff</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22save%22" rel="nofollow">save</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22science%22" rel="nofollow">science</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22topo%22" rel="nofollow">topo</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22write%22" rel="nofollow">write</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="27959" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/27959-geotiffwrite" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F27959-geotiffwrite">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(29)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/473136">Sharon  Veerayah</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Do i need a special toolbox to access geotiffread and geotiffwrite?
+<br>I can't find either using help geotiffread or write.
+<br>I get this error: Undefined function 'geotiffread' 
+<br>I am using R2014a</p>
+
+<p>Thank you.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/200903">yann</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jimmy,</p>
+
+<p>sorry i just realized my mistake. I read your code too fast and kept 
+using -8 for 8-bit unsigned integer instead of 8 (i thought that the 
+'minus' sign meant unsigned).</p>
+
+<p>Everything works fine now. Thanks again for this great piece of work!
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/200903">yann</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jimmy, thanks for your answer.</p>
+
+<p>I got confused because the code runs into an error at line 1108 when 
+the bit depth is set to -8. This seems to be because this case is not 
+considered at lines 828-837, and the 'ifd.SampleFormat' variable is not 
+created.
+<br>However, if i replace line 831 with 'case {-8, 8, -16}' then the code seems to run just fine.</p>
+
+<p>Is it correct or did i miss something?</p>
+
+<p>Thanks
+<br>Yann</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>No, it is not a typo.</p>
+
+<p>"bit_depth" value -16 &amp; -32 were designed to expand datatype to "16-bit unsigned integer" &amp; "32-bit signed integer".</p>
+
+<p>If "bit_depth" is -8, it will be treated as 8 anyway, since only 
+abstract value is considered. However, if it is 1 or -1, according to 
+TIFF Revision 6.0 (Final-June 3, 1992), "SampleFormat" field has to be 
+set to "undefined data format", since it is binary monochrome data.</p>
+
+<p>If you look further down a little bit to line 932, you will find how I write data strip based on "bit_depth" value.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/200903">yann</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jimmy,</p>
+
+<p>Thanks for the great code! It's really useful for those who have not switched to the new Matlab version.</p>
+
+<p>I just would like to suggest a correction. I'm not sure but I think 
+that there is a typo at line 829. Shouldn't it be 'case {1, -8}' instead
+ of 'case {1, -1}' ?</p>
+
+<p>Thanks,
+<br>Yann</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Please check: http://research.baycrest.org/~jimmy/geotiffwrite</p>
+
+<p>You need to add:</p>
+
+<p>option.ColorMap                                                                  [Nx3 array]</p>
+
+<p>Where N = 2^bit_depth, and bit_depth can only be 8 or 16. Values in 
+option.ColorMap range from 0 to 65535, and value 0 in image points to 
+the first row in the ColorMap. Columns in option.ColorMap are [R G B]. 
+Black is represented by [0 0 0], and white is represented by [65535 
+65535 65535].
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/217072">Val Schmidt</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jimmy,
+<br>I'm having some trouble with your code and need some advice. I'm 
+trying to read a JPEG image, and write it as a GeoTiff. Specifically, 
+I'm unable to properly specify a colormap to retain the color in the 
+resulting tif. I suspect, I simply don't understand how to properly 
+specify the "options". </p>
+
+<p>I'm not explicitly specifying a colormap (see code snippet below) and
+ the resulting tiff is black and white (from an original color image). </p>
+
+<p>I've tried using rgb2ind to create a colormap and apply it and I 
+either get an unreadable image or a black and white one whose colors are
+ scrambled. </p>
+
+<p>Do you have any suggestions on how to do this properly?</p>
+
+<p>Thanks,
+<br>Val</p>
+
+<p>% Read the image
+<br>I = imread('inputimage,jpg');
+<br>outfile = 'outputimage.tif');</p>
+
+<p>% Set the options:
+<br>option.GTModelTypeGeoKey = 1;
+<br>option.ModelTiepointTag = [0, 0, 0, P(1,:),...
+<br>    I_info.Height, 0,0, P(2,:),...
+<br>    I_info.Height, I_info.Width, 0, P(3,:),...
+<br>    0, I_info.Width, 0, P(4,:)];
+<br>option.GeogEllipsoidGeoKey = 7030; % WGS-84
+<br>option.PCSCitationGeoKey = ['UTM Zone ' zone ' with WGS84'];</p>
+
+<p>if zone(end) &gt;= 'N'
+<br>    option.ProjectedCSTypeGeoKey = str2double(['326' zone(1:2)]);
+<br>else
+<br>    option.ProjectedCSTypeGeoKey = str2double(['327' zone(1:2)]);
+<br>end</p>
+
+<p>% Write the file:
+<br>geotiffwrite(outfile,[],I,8,option)</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/213157">Sunke</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks for this export option! It helps sharing my MatLab data with colleagues that do not use MatLab, but ArcGIS, a lot !</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/267662">Kyle Mayer</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/253810">Jesse Angle</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>In order to make this code fully support the ModelTransformationTag the following changes are necessary:</p>
+
+<p>line 873: comment out 
+<br>   error('ModelPixelScale is required...'); </p>
+
+<p>as this isn't necessarily a true statement and will cause problems when trying to use only the ModelTransformationTag.  </p>
+
+<p>line 1213 - 1214: 
+<br>   fwrite(fid, gifd.ModelPixelScaleTag,'double'); and 
+<br>   fwrite(fid, gifd.ModelTiePointTag, 'double'); </p>
+
+<p>should be surrounded by 
+<br>   if isfield(gifd,'Model...Tag') 
+<br>   
+<br>   end</p>
+
+<p>statements for when these tags are not being used as is the case with ModelTransformationTag.  </p>
+
+<p>Finally, add in the code that actually writes the ModelTransformationTag portion (previously missing).  Mine looks like this:
+<br> 
+<br>if isfield(gifd,'ModelPixelScaleTag')
+<br>   fwrite(fid,gifd.ModelPixelScaleTag,'double'); 
+<br>end
+<br>if isfield(gifd,'ModelTiePointTag')
+<br>   fwrite(fid,gifd.ModelTiePointTag,'double');
+<br>end
+<br>if isfield(gifd,'ModelTransformationTag')
+<br>   fwrite(fid,gifd.ModelTransformationTag,'double') 
+<br>end</p>
+
+<p>That being said, great work Jimmy getting this put together and thank you for your efforts.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67395">Carlo M</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thank you very much Jimmy</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You need to use MATLAB's 
+geotiffread to read L7 file into matrix, with all attributes. Then find 
+out the index of your sub-region, and assign the sub-region to a new 
+matrix. You can now use the make_option option in my package to select 
+optional fields. However, you need to match the attributes that you 
+read, and select the correct fields by yourself in order to create the 
+optional fields to be used in my geotiffwrite. Since I don't have 
+Mapping toolbox, I am afraid that I cannot provide you with more 
+details.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67395">Carlo M</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thank you for your response... i'm 
+trying to select a region of a Landsat 7 geotiff image and then to save 
+it with all its atributes. Please, how can I select the rectangular 
+window?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>My geotiffwrite can only write a 
+rectangular dataset into the file. As long as your sub-region is a 
+rectangular dataset, you should be able to write it into a separate 
+file.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67395">Carlo M</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>there is possible to select a sub-region of a geotiff image? i'm trying to do that but it seems not possible</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>MATLAB finally has its own 
+"geotiffwrite" function. So I suggest you use its geotiffread / 
+geotiffwrite pair to load your Antarctica background, and superimpose 
+your ship track data on top, and then re-write the entire data into 
+GeoTIFF format using Matlab's geotiffwrite function.</p>
+
+<p>I am currently no longer working in GeoScience field, so I am afraid that I cannot provide you with more useful advise.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/235555">Kaycee</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jimmy, I found your post very 
+informative, so I was hoping you could help me with a problem.  I'm 
+having issues attempting to plot a ship track on top of an already made 
+geotiff image from Antarctica.  The issue i believe is that it is 
+stereographic, so i cannot use geotiff2mstruct.  I am able to get the 
+track on the ice image using profwd however the track is not exactly in 
+the right spot.  Also I cannot figure out how to get the latitude and 
+longitude on the axes, the file has intrinsic or world x,y. Any advice?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/201515">Evan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the fast response.  I 
+changed the colormap to include 256 elements and got it working.  Seems 
+to be a very useful script although it requires some troubleshooting 
+with the 'option' inputs. Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Please notice that the values in 
+colormap range from 0 to 65535 (instead of from 0 to 1). So black is 
+represented by [0 0 0], and white is represented by [65535 65535 65535].
+ If you put [1 1 1], it will be black. Please see more details from my 
+web site: http://www.rotman-baycrest.on.ca/~jimmy/geotiffwrite</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/201515">Evan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've been playing around with this 
+code for a bit, but I'm having trouble with colormaps.  If I use a 
+standard colormap (which I am currently using to write standard tifs of 
+my data), I get a solid black image.  Any advice of support on the 
+specific data format/colormap format required to successfully created a 
+colored geotiff?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>If Model Type is "projected", you 
+cannot use "bbox" variable directly, and you have to use "make_option.m"
+ program to generate "option" variable.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160485">Matthew</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>great program. If the Model Type is
+ not geographic, it clears the bbox variable ? My model type is 
+"projected". So what should happen there? Thanks Matt
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/135970">E</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excelent job! Works with Octave too. Just replace '&amp;' with '&amp;&amp;' in lines 257 and 1165.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David:</p>
+
+<p>SRTM (Shuttle Radar Topography Mission) data are nothing but 
+Big-Endian, 16-bit Signed Integer binary numbers with either in 
+1201x1201 (SRTM3) or in 3601x3601 (SRTM1) dimension. You can simply use 
+the following script to do the job:</p>
+
+<p>function srtm=load_srtm(fn)
+<br>fid=fopen(fn,'rb','ieee-be');
+<br>srtm.dat=fread(fid,inf,'*int16');
+<br>if length(srtm.dat)==1442401
+<br>srtm.dat=reshape(srtm.dat,[1201 1201]);
+<br>elseif length(srtm.dat)==12967201
+<br>srtm.dat=reshape(srtm.dat,[3601 3601]);
+<br>end
+<br>srtm.dat=rot90(srtm.dat);</p>
+
+<p>Please let me know if you encounter any problem.</p>
+
+<p>Jimmy
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/107802">David Davenish</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very helpful program, Thank you!</p>
+
+<p>I have a question though, where can I find the "load_srtm" command 
+that you 
+examplhttp://www.mathworks.com/matlabcentral/fileexchange/27959-geotiffwrite#ed
+ in link http://www.rotman-baycrest.on.ca/~jimmy/geotiffwrite in 
+"Description"?
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20638">Jimmy Shen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi David:</p>
+
+<p>Thanks for you comments and rating.</p>
+
+<p>Yes, you can use some of the fields contents returned by geotiffinfo 
+to provide information for my option struct when you run the 
+"make_option.m" program. However, please be careful, since my struct 
+fields are DIRECTLY correspond to GeoTIFF Format Specification (like IDL
+ software does); while struct fields from geotiffinfo in MATLAB software
+ are NOT DIRECTLY correspond to GeoTIFF Format Specification. Here's a 
+simple example: you can use geotiffinfo.TiePoints.WorldPoints for 
+TiepointXYZ; but you cannot use geotiffinfo.TiePoints.ImagePoints for 
+TiepointIJK.</p>
+
+<p>I have just submitted 1-bit GeoTIFF support, so please come back in 2~3 days to see if they make my program available for you.</p>
+
+<p>Jimmy
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/105546">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great capability that Matlab has 
+needed for a long time.  I found that I can use the struct returned by 
+geotiffinfo as the option struct for the input.  I'd like to write a 
+1-bit geotiff.  Any pointers would be appreciated.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/49091">Karl</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>MATLAB has been needing this for years. Thanks Jimmy. I really like the flexibility of this program.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103221">Zina</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">25 Jun 2010</td>
+                  <td><p>It now supports to write any kind of data info a GeoTIFF file. Examples are provided.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 Jul 2010</td>
+                  <td><p>1. 3D array is supported to write Multi-band 
+GeoTIFF data; 2. "make_option" program is created to provide a GUI 
+window to generate option argument for "geotiffwrite" program;
+</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Aug 2010</td>
+                  <td><p>1-bit GeoTIFF is supported</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Mar 2012</td>
+                  <td><p>Full Color (24-bit RGB) GeoTIFF is supported
+</p></td>
+                </tr>
+                <tr>
+                  <td class="date">04 Dec 2012</td>
+                  <td><p>Thanks to Jesse Angle for the detail fix of ModelTransformationTag bug.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416092482542&amp;cv=7&amp;fst=1416092482542&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/27959-geotiffwrite&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D136%26sort%3Ddate_desc_updated%26term%3D&amp;vis=2"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>
