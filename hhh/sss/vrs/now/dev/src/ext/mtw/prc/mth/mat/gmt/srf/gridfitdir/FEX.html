@@ -1,0 +1,4317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Surface Fitting using gridfit -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/8998-surface-fitting-using-gridfit" rel="canonical">
+<meta content="Surface Fitting using gridfit - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/8998-surface-fitting-using-gridfit" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/22387/original.jpg" property="og:image"><meta content="Model 2-d surfaces from scattered data" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8998-surface-fitting-using-gridfit" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8998-surface-fitting-using-gridfit" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/9937" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=8998" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/8998-surface-fitting-using-gridfit" class="manifest_title">Surface Fitting using gridfit</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/8998-surface-fitting-using-gridfit/content//gridfitdir/demo/html/gridfit_demo.html" class="example" title="Example">gridfit_demo</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/8998-surface-fitting-using-gridfit/content//gridfitdir/gridfit.m" class="function" title="Function">gridfit(x,y,z,xnodes,ynod...</a><span class="description">gridfit: estimates a surface on a 2d grid, based on scattered data</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/8998-surface-fitting-using-gridfit/content//gridfitdir/test/test_main.m" class="script" title="Script">test_main.m</a><span class="description">Gridfit test script</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/8998-surface-fitting-using-gridfit/content/gridfitdir.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:97.57580000000002%;">
+                <p>4.87879</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">107</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">536 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 1.38 MB</span>
+          <span id="fileid">File ID: #8998</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/4403/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Surface Fitting using gridfit</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      11 Nov 2005
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2010-07-29">29 Jul 2010</span>)
+      </span>
+  </p>
+
+  <p id="summary">Model 2-d surfaces from scattered data</p>
+
+    <div id="editorsnote">
+      <h3>Editor's Notes:</h3>
+      <p></p><p>This file was a <b>File Exchange Select</b> file. <br><br></p>
+
+<p>Select files are submissions that have been peer-reviewed and approved as meeting a high standard of utility and quality.</p><p></p>
+    </div>
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F8998-surface-fitting-using-gridfit&amp;watching=8998" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Those wishing to model a surface from data in the 
+<br>form of z(x,y) from scattered or semi-scattered 
+<br>data have had few options in matlab - mainly
+<br>griddata.</p>
+
+<p>Griddata is a valuable tool for interpolation of 
+<br>scattered data. However it fails when there are 
+<br>replicates or when the data has many collinear 
+<br>points. Griddata is also unable to extrapolate 
+<br>beyond the convex hull of the data unless the 'v4' 
+<br>option is used, which is slow.</p>
+
+<p>Gridfit solves all of these problems, although it
+<br>is not an interpolant. It builds a surface over a 
+<br>complete lattice, extrapolating smoothly into the 
+<br>corners. You have control of the amount of 
+<br>smoothing done, as well as interpolation methods, 
+<br>which solver to use, etc.</p>
+
+<p>This release allows the user to solve much larger problems using a 
+new tiling option. There is essentially no limit on the size of the 
+suface one builds now, as long as you have dense enough data and enough 
+memory to store the final gridded surface.</p>
+
+<p>Example uses are found in the file gridfit_demo.m,
+<br>as well as comparisons to griddata on the same 
+<br>surfaces.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/28761-bi-dimensional-emperical-mode-decomposition--bemd-">Bi Dimensional Emperical Mode Decomposition (Bemd)</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/46223-regularizedata3d">Regularize Data3 D</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.0.1 (R14SP1)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Gridfit should be accessible to older versions of 
+matlab, as long as symamd and colamd are
+available. Older releases could use one of the
+iterative solvers, such as symmlq.</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8998-surface-fitting-using-gridfit">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22approximation%22" rel="nofollow">approximation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22extrapolation%22" rel="nofollow">extrapolation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22interpolation%22" rel="nofollow">interpolation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22modeling%22" rel="nofollow">modeling</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22surface%22" rel="nofollow">surface</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="8998" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/8998-surface-fitting-using-gridfit" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F8998-surface-fitting-using-gridfit">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(178)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">12 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/517670">Judith</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a fantastic function and it
+ runs perfectly with my 2D-data. Do you also provide a gridfit3d 
+version? That whould save a lot of time in my post-processing work. 
+Thanks in advance.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>http://blogs.mathworks.com/community/2010/12/13/citing-file-exchange-submissions/</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/496225">Chaipichit</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How to cited your code in research paper?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Evgheny - If you seriously need to 
+fit such a surface in spherical coordinates, I might be able to help you
+ out with a separate, un-posted toolbox that is capable of fitting a 
+surface in spherical coordinates. You would need to contact me directly.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/257037">Evgheny</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks, function does do its job great!</p>
+
+<p>Does anyone know alternative of this function for closed surface (sphere-like).
+<br>If I try this function with spherical coordinates, it works fine, but there are problems with the seam (line of joint)
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry. I've never heard of a Java 
+implementation. Not that it counts, I've written it 7 times in MATLAB, 
+once each in Fortran and APL, those last were very old though. The 
+difference each time was what I learned from the previous incarnation. 
+Were someone to do a Java implementation perhaps the most important 
+thing is to use sparse linear algebra capabilities for the solve, else 
+it would take forever.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/418367">behruz</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>is there any implementation of this in java? that get some points location and value and give a grdi?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/505959">Alex</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just to add my $0.02 to this whole 
+sphere discussion. By math definition of what is function it means for 
+each x we have only one F(x). If there are more than one F(x) relation 
+between x and F(x) is not a function. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/504614">Jacob</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I wish I could remove my previous 
+question, 2 seconds on google pointed me to Matlab's interp2 which I'm 
+using now on the output of your excellent gridfit. Thanks for sharing!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/504614">Jacob</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I found that it is very 
+straightforward to fit a nice looking surface to some 55 data-points 
+using gridfit. I was wondering though, is there a way to get values of 
+the surface that are not on the nodes? I wish to interpolate between my 
+55 samples using the surface. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/504614">Jacob</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For those of you who don't 
+appreciate why Felon's comment is silly, think of it like this. Gridfit 
+fits a surface of the form f(x,y), over a rectangular grid. It does so 
+quite well, as many people have found over the years.</p>
+
+<p>While you may think of the surface of a sphere as a surface, it is 
+not of the form that gridfit can fit. It is multi-valued, so for any 
+single (x,y) pair, there will be zero, one, or two values of z that 
+would apply. As well, that "surface" (better to call it a manifold) has 
+derivative singularities, if we were to look at it as a function of x 
+and y. So even a hemisphere will be problematic for this tool.</p>
+
+<p>You would not use gridfit to fit something that is not representable 
+as a function of two variables over a rectangular grid, any more than 
+you would expect it to do numerical integration, numerical optimization,
+ or compute an FFT. Nor would you expect it to cook dinner for you, do 
+your laundry, etc. Use the right tool to solve your problem, but if you 
+try to force the wrong tool to solve a random problem, expect poor 
+results and don't complain about what you get.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Felon -</p>
+
+<p>So you are using a tool that builds a single valued function to fit something that is obviously not. What did you expect? Magic?</p>
+
+<p>Software does what it is programmed to do. It does not magically 
+rewrite itself when you give it a problem of a completely different 
+sort. In fact, I fail to understand why you would downrate a tool for 
+not solving a class of problem it is explicitly not designed to solve.</p>
+
+<p>If you have a closed manifold, like a ball or some other multivalued 
+form, then don't use this tool. I have NEVER claimed it would solve that
+ problem. Instead, you might look into tools like convex hulls, alpha 
+shapes, CRUST, etc. Or, you might choose to convert the problem into 
+spherical coordinates, at which point gridfit would be able to build a 
+viable surface.</p>
+
+<p>Or maybe you just wanted to complain with no good reason.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/492267">Felon Highman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Still it cannot surface a cluster 
+of points that looks like a ball. The result the interpolation is always
+ a surface of single-value function.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/492267">Felon Highman</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/468703">Angelo Tafuni</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>No, gridfit does not explicitly 
+allow you to apply derivative constraints. That does not say it is 
+impossible, only that I did not offer it as an option.</p>
+
+<p>The main reason why not, is it would require a set of linear 
+inequality constraints on the unknowns. For a not uncommon grid of size 
+100x100, there are 100*100=10000 unknowns to solve for. This is not a 
+problem, since the linear system is a sparse one. However, to solve a 
+sparse linear inequality constrained system, one would need to use 
+LSQLIN, or a solver like it. And the last time I checked, LSQLIN was not
+ set up yet to handle sparse large scale inequality constrained 
+problems. (That may have changed with the most recent release, but I 
+have not checked.)  If I made all of the matrices full ones, the solve 
+time would probably be incredibly slow and memory intensive.</p>
+
+<p>So I'm sorry, but gridfit will not handle the problem as is.</p>
+
+<p>If you were willing to build a fairly coarse grid, AND add the 
+constraint system, it would probably be doable in a reasonable time. I 
+don't know how small the grid would need to be to make the solve time 
+reasonable. And your definition of reasonable would surely differ from 
+mine, depending on how badly you needed the answer.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/488443">Javier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey John, would gridfit allow me to constraint the slope of the fitted surface for a given range of data? </p>
+
+<p>I'm needing to model a surface in the form of z(x,y) from scattered 
+data points while keeping the first derivative of z negative in both 
+directions.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Feb 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/435848">Kim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm trying to make a surface 
+approximation to describe the required input torque to drive a hydraulic
+ motor operating under certain load conditions. My inputs are: output 
+flow, output pressure and input shaft speed. I have scattered 
+measurement data where the relationship between these variables are to 
+be found. I read in some of the earlier posts that gridfit could be 
+extended to higher-dimension fits. Do you have any version where a 3rd 
+dimension can be included that I could try?
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/392114">Jamal</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Gridfit is very nice.  I have 
+written an update that adds bicubic interpolation and improves the 
+internal scaling (makes surface smoothness completely independent of the
+ x/y grid size).  If I send you the code, would you update Gridfit?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/83450">Jon Griffiths</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alejandro - while I would like to 
+implement that capability one day in the future, that day may be a long 
+time away before I find the time. Until then, all I can offer is to use a
+ finer grid, which will mimic a higher order interpolant.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dominik - Sorry, but no. You could 
+use this tool to generate a gridded surface, then use interp2, to 
+interpolate, but that is perhaps too much if you only wanted to 
+interpolate a few scattered points.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/362301">dominik</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey
+<br>i wonder, can this code also be used like an interpolant (e.g. 
+gridded interpolant), i.e. such that the output is not the smooth 
+funtion on a grid, but on certain points queried?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/46440">Alejandro Arrizabalaga</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great function!
+<br>I was just wondering: would it be difficult to extend it for a cubic
+ interpolation? (it was mentioned in the code as a future enhancement).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129316">Roman Voronov</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129316">Roman Voronov</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Exactly what I was looking for, the help could start with a simpler example:
+<br>[X,Y] = meshgrid(1:5);
+<br>Zsmooth = gridfit(X,Y,A,1:5,1:5,'smooth',10)
+<br>Zsmooth =
+<br>       0.9638 1.9517 2.9512 3.9517 4.9638
+<br>       1.9517 2.8162 3.7338 4.8162 5.9517
+<br>       2.9512 3.7338 4.5266 5.7338 6.9512
+<br>       3.9517 4.8162 5.7338 6.8162 7.9517
+<br>       4.9638 5.9517 6.9512 7.9517 8.9638</p></span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Andrew - It sounds like your goal 
+is to reproduce the local shape of your surface over a region that lies 
+inside the bounds of your data. Gridfit can do this, if you are willing 
+to expand that grid so that it fully contains the data. Simply add some 
+nodes that extend to the boundaries of your data in both x and y. The 
+nodes used by gridfit need not be equally spaced, so this should not be a
+ problem, but to retain the essential shape of the surface, you may need
+ to add a few such nodes in each direction. Once the fit is obtained, 
+then you can always extract only that portion of the surface that you 
+wish to retain.</p>
+
+<p>If this is not what you are looking for, then feel free to contact me
+ directly, perhaps with some data so that I can better understand your 
+problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/239628">Andrew</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is an amazing program. I do 
+have one question. I have a scattered grid of latitude(Y) and 
+longitude(X) coordinates corresponding to brightness(Z) values. I've 
+been using GRIDDATA to interpolate to a new grid that is not scattered 
+and within a smaller range of latitude and longitude values, but 
+GRIDDATA smooths the data so much that it becomes useless.  </p>
+
+<p>I understand that GRIDFIT is not an interpolant, and from my reading 
+of the help, it does not seem that it was meant to be used in this 
+fashion, but I just want to make sure.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Collin - What you wish is 
+essentially a 3-d version of gridfit, that could use time as the third 
+dimension. Sorry, but perhaps one day...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Atul Ingle - Yes, it is possible to
+ extend gridfit to higher dimensions. In practice it tends to turn into a
+ memory &amp; cpu hog before long. 5 or 6 dimensions were the practical 
+extreme when I've done it before, although computers are bigger and 
+faster since those days. 64 bit MATLAB and lots of RAM will help here, 
+but even with that, the curse of dimensionality is huge and arrives 
+quickly. Sadly, the n-d version I wrote many years ago is not mine to 
+give away.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/101376">Atul Ingle</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is it possible to extend this idea 
+to fit 3d volume to scattered data, and in general, to higher 
+dimensions? The only limitation I can see is matrix size.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/215901">Collin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent bit of code that has made my life a lot easier.</p>
+
+<p>If you have knowledge of the evolution of your surface in time, how 
+would you suggest incorporating knowledge of a previous state to help 
+improve interpolation/extrapolation of the current state?</p>
+
+<p>Thanks</p>
+
+<p>Collin
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Laura, I do have a tool (based on 
+the same philosophy as gridfit) to handle fitting over a non-rectangular
+ domain. That set of tools can also test for points inside a general 
+domain, although inpolygon can handle that problem in 2-dimensions. I've
+ not posted the code although it is fully functional, because I've never
+ been sufficiently happy with the entire toolset. feel free to send me 
+e-mail if you want to try it though.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243309">Laura</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I recently (today) submitted a 
+question entitled "availble solutions for 2D interpolation on non 
+monotonic scattered data". Right after I discovered gridfit. 
+<br>Thanks a lot for such a routine, really solid and with the best fitting I was looking for!.</p>
+
+<p>However I would like to ask one thing that partially has already been
+ addressed. Indeed I am most interested in the good interpolation it 
+performs (although not the objective) than the extrapolation. My x y 
+data points do not define a square domain but more a distorted 
+"trapezoidal" one with curved contours. I would like to get rid of the 
+data out of the original domain. 
+<br>Ignacio proposed an interesting way (maybe not very clean but 
+working) to know which points fall inside or outside the domain. But I 
+can not apply it to my case since due to these convex borders the 
+Delaunay triangulation produces spurious triangles there that indeed are
+ out of the domain.</p>
+
+<p>Could you suggest me in which way I could identify which of the 
+points of my "square box grid" fall actually inside the trapezoidal 
+domain?</p>
+
+<p>Thanks a lot </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Bruno - There are a couple of issues to watch out for here.</p>
+
+<p>First of all, if you wish to find the area that is strictly above 
+zero and below the surface, be careful if the surface goes below zero. 
+(Some individuals miss this point, but it is crucial.) You could simply 
+compute the area by calling trapz(trapz(max(0,Z))). This would be an 
+approximation of course, missing out on the subtle issue of exactly 
+where the surface passes below zero.</p>
+
+<p>Next, depending on how the surface is intended to be interpolated, if
+ you want the EXACT integral of that volume, then be careful. For the 
+first order tensor product surface, i.e., that which interp2 would call 
+'linear', or what is called 'bilinear' in gridfit, then it suffices to 
+interpolate at the center of each cell in the lattice of points. Sum up 
+those values and you will have an exact volume. (Be careful to scale 
+this result by the width of the cells in each dimension.) As pointed 
+out, trapz (called twice, so once in each dimension) will also be exact 
+here. It turns out that merely computing the average value over each of 
+these cells is also equivalent to that act, then sum up the volumes in 
+each cell of the lattice. </p>
+
+<p>For the triangular faceted surface, trapz is not exact, but the 
+difference may be subtle. Here we end up with a weighted linear 
+combination of the values of each corner of the square cell in the 
+lattice, but the 4 corners are not weighted equally. Send me an e-mail 
+and I can detail how to do this more clearly.</p>
+
+<p>Really though, the easy answer is to use trapz, but you should not ignore these subtleties I've pointed out.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290965">IainIsm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John - thank you, 'springs' seems to be doing the job!</p>
+
+<p>Bruno - you can use trapz twice: http://blogs.mathworks.com/loren/2011/06/13/calculating-the-area-under-a-surface/</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/291111">Bruno</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent work. I have one 
+question... how can I calculate the volume beneath the interpolated 
+surface and above the plane xy? Maybe it's a simple task but i can't 
+figure out how it's done.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>IainIsm - You cannot (easily) place
+ bound constraints on this fit. That would result in a very large scale 
+bound constrained fit. While doable in theory with a quadratic 
+programming tool or lsqlin, these problems are huge. It would simply 
+take too long to solve.</p>
+
+<p>Having said that, there is a possible solution that might work. 
+Choose the 'springs' regularizer as an option. That option was designed 
+to avoid extrapolation wherever possible, so if your data never goes 
+negative, then the surface will hopefully not do so either.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290965">IainIsm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Lovely function - just one 
+question, is it possible to put constraints on the range of values that 
+zgrid can take please? for example, I'm using this to create a surface 
+for a motor rpm/torque/efficiency map (which I am then querying with 
+interp2 to provide an efficiency estimate for a given speed and 
+loading), but every now and then I find that some of the zgrid values 
+are negative.  I could set these to zero using find, but I'm hoping to 
+find(!) something a little more elegant!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/203271">Chenjie</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/157942">Rijk</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/265418">Jesse</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/119342">Jordan Malof</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great stuff!  Additionally, and refreshingly, it worked "right out of the box".  Thanks John!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/245519">bouncing</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104480">Josh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John, </p>
+
+<p>Thanks a lot. Not only did I enjoy an excellent bit of code, but also
+ for your variety of stimulating and entertaining responses.  Thank you 
+for breaking up my day with at least 5 minutes of enjoyable rhetoric and
+ exceptional references (Mark Twain / god and little green apples) ... 
+brilliant!  Have a few extra stars.</p>
+
+<p>Josh</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/63624">K E</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Lovely, thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/248113">Rodrigo R. Oliveira</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It is wonderfull. Easy solve my problem!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/95400">Gonzalo</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/197423">Peter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Oops.  In my explanation above P = 1/sqrt(2), not sqrt(2).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/197423">Peter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Lanis, John, et al.</p>
+
+<p>This is how to get consistent behavior with different grid sizes.</p>
+
+<p>--------</p>
+
+<p>Save a copy of gridfit.m to gridfit2.m.</p>
+
+<p>In gridfit2.m make the following changes at the locations of the commented-out code (near Lines 550-600):</p>
+
+<p>% Sorry, John D.
+<br>%      dy1 = dy(j(:)-1)/params.yscale;
+<br>%      dy2 = dy(j(:))/params.yscale;
+<br>      dy1 = dy(j(:)-1);
+<br>      dy2 = dy(j(:));</p>
+
+<p>			
+<br>% Sorry, John D.
+<br>  % Append the regularizer to the interpolation equations,
+<br>  % scaling the problem first. Use the 1-norm for speed.
+<br>  %NA = norm(A,1);
+<br>  %NR = norm(Areg,1);
+<br>  %A = [A;Areg*(smoothparam*NA/NR)];
+<br>  FidelityEquationCount = size(A, 1);
+<br>  RegularizerEquationCount = nx * (ny - 2) + ny * (nx - 2);
+<br>  NewSmoothParam = smoothparam * sqrt(FidelityEquationCount / RegularizerEquationCount);
+<br>  A = [A; Areg * NewSmoothParam];
+<br>	
+<br>--------</p>
+
+<p>Run the following script to demonstrate:
+<br>	
+<br>x = [0, 1.333333333, 2.666666667, 4, 0, 0, 4, 4, 2];
+<br>y = [2, 2, 2.1, 1.8114, 0, 4, 0, 4, 0];
+<br>z = [0.5, 0.82, 0.4, 0.7, 0.5, 0.7, 0, 0.7, 0];</p>
+
+<p>% Set the smoothness for the original GridFit.  This smoothness produces inconsistent results if the grid size changes.
+<br>Smoothness = 10;</p>
+
+<p>% Set up the grids with different spacings...
+<br>x_coarse = linspace(0, 4, 11);
+<br>y_coarse = x_coarse;
+<br>x_fine = linspace(0, 4, 41);
+<br>y_fine = x_fine;</p>
+
+<p>% We're taking a slice through each surface at the same coordinate.
+<br>% They have different indexes but the same coordinate of 1.2.
+<br>Index_coarse = find(y_coarse == 1.2);
+<br>Index_fine = find(y_fine == 1.2);</p>
+
+<p>% Run GridFit.
+<br>z_coarse = gridfit(x, y, z, x_coarse, y_coarse, 'Smoothness', Smoothness);
+<br>z_fine = gridfit(x, y, z, x_fine, y_fine, 'Smoothness', Smoothness);</p>
+
+<p>% Try the same thing with the updated GridFit.  Note that the smoothness parameter is on a different scale compared to
+<br>% the original GridFit.  However, all choices of smoothness value should produce consistent results for any grid size.
+<br>UpdatedGridFitSmoothness = 1;
+<br>% Run the updated version of GridFit, GridFit2.
+<br>z_coarse2 = gridfit2(x, y, z, x_coarse, y_coarse, 'interp', 'bilinear', 'Smoothness', UpdatedGridFitSmoothness);
+<br>z_fine2 = gridfit2(x, y, z, x_fine, y_fine, 'interp', 'bilinear', 'Smoothness', UpdatedGridFitSmoothness);</p>
+
+<p>% Show the results for GridFit...
+<br>% These lines only line up when you use a very large or very small smoothness value.
+<br>subplot(1, 2, 1)
+<br>hold on
+<br>plot(x_coarse, z_coarse(Index_coarse, :), 'color', 'blue');
+<br>plot(x_fine, z_fine(Index_fine, :), 'color', 'red')
+<br>title('Profiles from the Original GridFit');
+<br>axis([1, 4, 0.3, 0.6]);
+<br>hold off</p>
+
+<p>% Show the results for GridFit2...
+<br>% These lines have the same profile for all smoothness values.
+<br>subplot(1, 2, 2)
+<br>hold on
+<br>plot(x_coarse, z_coarse2(Index_coarse, :), 'color', 'blue');
+<br>plot(x_fine, z_fine2(Index_fine, :), 'color', 'red')
+<br>title('Profiles from the Updated GridFit');
+<br>axis([1, 4, 0.3, 0.6]);
+<br>hold off</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/197423">Peter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Lanis, John, et al.</p>
+
+<p>How it works:</p>
+
+<p>GridFit is a function that regularizes a dataset.  It constructs a 
+series of linear equations that are the "fidelity equations" (how 
+closely the output matches your input data) and the "smoothness 
+equations" (how close the surface's second derivatives are to zero).  It
+ assembles these equations and solves them in a way that minimizes the 
+sum of the squared error (SSE) of the output surface.</p>
+
+<p>The key is to recognize that the SSE is just a sum of squared 
+residuals, the fidelity squared residuals (SSE_F) and the smoothness 
+squared residuals (SSE_Sm).
+<br>SSE = SSE_F + SSE_Sm</p>
+
+<p>If we have a certain number of input points, that tells us how many 
+terms are in SSE_F.  The number of grid points (more precisely, the 
+number of second derivatives within the grid) tells us how many terms 
+are in SSE_Sm.</p>
+
+<p>Imagine that we are trying to fit this parabola: y = x^2 to our data.
+  The fidelity terms are some finite value (which doesn't matter for 
+this example), such as 100.  Because we're using this parabola, the 
+second derivative is always 2.  If we have a grid such that there are 20
+ smoothness terms, then SSE_Sm = 20 * (2^2) = 80.</p>
+
+<p>The ratio SSE_F / SSE_Sm = 100 / 80 = 1.25.  This ratio determines how to weigh the smoothness against the goodness of fit.</p>
+
+<p>Now suppose that we suddenly double the number of grid points.  Now 
+SSE_Sm = 2 * 20 * (2^2) = 160.  That means SSE_F / SSE_Sm = 100 / 160 = 
+0.625.  Uh-Oh!  The ratio has changed, which means our fit will favor 
+smoothness more than it did before!</p>
+
+<p>The way to fix this is to reduce the values of the second derivatives
+ by multiplying them by a constant, which we'll call P.  In this 
+example, if P = sqrt(2), then the individual terms in SSE_Sm will have 
+half of the value they had before.  That's ok because there are twice as
+ many of them.  In other words, 0.5 * 2 = 1.</p>
+
+<p>Now using P, SSE_Sm = 2 * 20 * ((P * 2) ^ 2) = 80.  This provides the
+ same balance of fidelity vs. smoothness that we originally had.</p>
+
+<p>What I did in GridFit2 is a little more complicated because it also 
+considers the smoothness parameter and the number of fidelity equations.
+  I hope this helps!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Peter - if you can do better, feel free to write your own code. (It is NOT the use of the 1-norm that impacts your question.)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/197423">Peter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm not convinced that the 
+smoothness parameter produces consistent results for different grid 
+sizes.  I think the problem comes from the use of the 1-norm instead of 
+just using the numbers of fidelity equations vs. derivatives.</p>
+
+<p>Here is an example.</p>
+
+<p>x = [0, 1.333333333, 2.666666667, 4, 0, 0, 4, 4, 2];
+<br>y = [2, 2, 2.1, 1.8114, 0, 4, 0, 4, 0];
+<br>z = [0.5, 0.82, 0.4, 0.7, 0.5, 0.7, 0, 0.7, 0];</p>
+
+<p>Smoothness = 10;</p>
+
+<p>x_coarse = linspace(0, 4, 11);
+<br>y_coarse = x_coarse;
+<br>Index_coarse = find(y_coarse == 1.2);</p>
+
+<p>x_fine = linspace(0, 4, 41);
+<br>y_fine = x_fine;
+<br>Index_fine = find(y_fine == 1.2);</p>
+
+<p>z_coarse = gridfit(x, y, z, x_coarse, y_coarse, 'Smoothness', Smoothness);
+<br>z_fine = gridfit(x, y, z, x_fine, y_fine, 'Smoothness', Smoothness);</p>
+
+<p>hold on
+<br>plot(x_coarse, z_coarse(Index_coarse, :), 'color', 'blue');
+<br>plot(x_fine, z_fine(Index_fine, :), 'color', 'red')
+<br>hold off</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/221466">Daniel</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>yes, Hendawi Mohamed I removed points below the edge of my data. My data is roughly bounded by a triangle in X-Y so I used:</p>
+
+<p>gf=gridfit(....);
+<br>Z=griddata(... same limits);
+<br>N=find(isnan(Z));</p>
+
+<p>gf(N)=NaN;</p>
+
+<p>to removed the complete estimated results. When I plotted my data, the points on the graph corresponded to area were I had data.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You would normally first decide 
+what size result you wish to see, thus the number of nodes in x and y. 
+Then you would choose some amount of smoothing.</p>
+
+<p>I've set it up so that as well as I could so that changing the grid 
+size for a fixed smoothness will have a minimal impact on the overall 
+look of the surface. For example, try this example:</p>
+
+<p>xy = rand(100,2);
+<br>z = rand(100,1);
+<br>zgrid50 = gridfit(xy(:,1),xy(:,2),z,50,50);
+<br>zgrid200 = gridfit(xy(:,1),xy(:,2),z,200,200);
+<br>subplot(1,2,1)
+<br>surf(zgrid50)
+<br>shading interp
+<br>subplot(1,2,2)
+<br>surf(zgrid200)
+<br>shading interp</p>
+
+<p>The two surfaces will look qualitatively similar, although the second
+ one will look less jagged because it is 4 times finer in each 
+dimension. As expected, this is what you gain by using a finer grid, at 
+some cost in time for the solve. In this sense, smoothness is fully 
+decoupled (as well as I could do that) from the size of the grid itself,
+ for any given set of data.</p>
+
+<p>Given a choice of grid, a smoothness of 1 means that there is an 
+equal amount of importance associated with reducing the residuals 
+compared to the overall smoothness of the surface. Be careful however, 
+in making the smoothness too large or too small, as then you may find 
+numerical artifacts generated from the solution. Floating point 
+arithmetic only goes so far.</p>
+
+<p>By the way, a good rule of thumb is if you cannot get the result you 
+wish with a smoothness somewhere between 0.001 and 1000, then I would 
+look to see if there may be a fundamental problem in the data.</p>
+
+<p>As well, if one chose to fit a 2x2 surface through 1000 data points, 
+you will never get a perfect fit regardless of how small a smoothing 
+parameter you choose, UNLESS the data happens to perfectly fit the 
+implicit model used to interpolate inside a unit square. (For example, 
+tensor product linear interpolation uses an implicit local model of a0 +
+ a1*x + a2*y + a3*x*y within any cell.) There simply are not sufficient 
+degrees of freedom in the model for a very coarse grid if you have many 
+data points.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/237367">Ianis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi! Thank you for this useful 
+function ! I needed to fit scattered points with noise added, and 
+Gridfit handles that  nicely ! Now,  I would like to test with different
+ values of smoothness and number of x-y-  nodes in order to find the 
+best couple of parameters for my problem. So, I have some questions 
+about the 'smoothness' parameter. You explain in the help that the 
+smoothness parameter is ''normalized'' so a value of '1' may generate 
+reasonable results.  I would like to know with respect to which 
+parameter do you normalize the ''smoothness'' value ?  If I use either 
+'gradient ' or ' laplacian' as regularizer, is the smoothness  defined 
+in the same way ?
+<br>Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/237367">Ianis</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Gridfit is not a tool to do 2-d interpolation. Use interp2 instead.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/203778">MAN CHIA</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How could I use gridfit to interpolate a set of 2D data on a image?
+<br>Just let all z  equals 0 ?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/203778">MAN CHIA</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212272">R</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John,</p>
+
+<p>All your submissions I have tried are great quality! Thank you very 
+much. I have a directory for your functions, they could easily be part 
+of Matlab's distribution in my opinion. 
+<br>Re gridfit, do you still have in mind submitting a 3D/ND version of it? </p>
+
+<p>Rodrigo.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/215146">Katie</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/209582">Tomas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>What can I say? You can have a good result, or a faster one. Pick only one.</p>
+
+<p>The fact is, gridfit is actually blazingly fast given what it does, 
+which in this case requires the solution of a linear system with 90,000 
+unknowns. A quick test shows that took only about 2 seconds on my 
+system. Perhaps you want me to do magic? Even a wave of a magic wand 
+takes about 2 seconds.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/199856">Yan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, this is an awesome program!  
+But it seems to be very memory consuming.  I can solve for Zgrid points 
+with a rather small dimension only (e.g. 300x300). Griddata seems to be 
+able solver for a larger matrix faster, but the interpolation is not 
+nearly as good.  Is there anyways to obtain higher resolution?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>By default, it uses triangular 
+interpolation. If you read the help, you will see that a bilinear (quad 
+based) interpolation method is an option. Is one better than another? In
+ general, I'd claim that if you can see the difference, then your grid 
+is far too coarse! In any event, HAD you actually read the help before 
+posting, in your example you might have tried adding one more option to 
+the call.</p>
+
+<p>[zGrid, xGrid, yGrid] = gridfit(SourceData(:, 1), SourceData(:, 2), 
+SourceData(:, 3), xNodes, yNodes, 'smoothness', 0.1,'interp','bi');</p>
+
+<p>Your second comment is about the smoothing parameter. Note that 
+gridfit allows a common scheme for the smoothness penalty function - 
+that the Laplacian is biased towards zero. This is the sum of the second
+ partials, and it is arguably the logical choice for SOME physical 
+surfaces. HOWEVER, note that the default is NOT that method. In fact, 
+the default is a method that DOES uncouple those second 
+partials!!!!!!!!!!!!!!!! Again, read the help, rather than assuming you 
+know the answer and then asking a question based on that wrong 
+assumption.</p>
+
+<p>As for the optimal smoothness parameter changing based on the grid 
+spacing, I have found that for virtually any method of choosing a 
+smoothness parameter, I can also come up with a case where it will not 
+be the best. Gridfit uses a default smoothing parameter that is 
+"reasonable" for many problems out of the box. Is it optimal? Probably 
+not. Any degree of true optimality might involve algorithms that would 
+be slower to run, and algorithmic speed is desirable here. Should there 
+be an adaptive option in gridfit, that would allow the user to set it 
+and walk away, knowing that it will be slower to run, but it will give 
+an always optimal result, for all users? Truly good adaptive methods 
+that will never fail are also terribly difficult to write. Look at the 
+numerical integration tools in MATLAB (quad, quadl, quadgk, etc.) I can 
+easily make those tools fail by a careful choice of integrand and 
+interval.</p>
+
+<p>All that I can suggest is to use the facilities built into gridfit as
+ a computational tool. If it produces by default not exactly what you 
+want, then I have provided a few knobs you can adjust. Only you know if 
+you like the surface you create with a tool like gridfit. But at least 
+the knobs are there to turn to generally produce something that will 
+make you happy.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/197423">Peter</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>GridFit is pretty good, but I have a few questions.</p>
+
+<p>1) The interpolation seems to be triangular, which causes some 
+symmetry problems.  Below is an example program to illustrate this.  
+Does anybody know if there is an advantage to using triangular 
+interpolation (three points) instead of rectangular interpolation (four 
+points)?</p>
+
+<p>2) If I change the grid spacing, I also have to adjust the smoothness
+ parameter or GridFit gives different results.  This appears to be 
+related to the way GridFit sets up its derivative equations.  It mixes 
+horizontal and vertical second derivatives in the same equation.  For 
+example, if the residual in the horizontal direction is +0.1 and the 
+residual in the vertical direction is -0.1, the regularizer wrongly 
+deems that point a "perfect fit" because the derivatives are added 
+together.  Would it be better to separate the derivatives into separate 
+equations (separate rows in Areg)?  If so, is it possible to produce the
+ same results (same smoothness or curve profile) for a single 
+"smoothness" parameter, no matter what grid spacing is used?  I think 
+that would be really helpful and convenient to GridFit users so that we 
+wouldn't have to fiddle with the smoothness number manually.</p>
+
+<p>% Choose four points at each of four corners and one point in the center.
+<br>% Make sure everything is symmetric around the center.
+<br>SourceData = [
+<br>  0, 0, 0
+<br>  0, 1, 0
+<br>  1, 0, 0
+<br>  1, 1, 0
+<br>  0.5, 0.5, 1
+<br>  ];</p>
+
+<p>% Create a 4x4 grid.
+<br>xNodes = linspace(0, 1, 4);
+<br>yNodes = xNodes;</p>
+
+<p>% Run GridFit.  The smoothness parameter has little effect on the result
+<br>% for this demonstration.
+<br>[zGrid, xGrid, yGrid] = gridfit(SourceData(:, 1), SourceData(:, 2), SourceData(:, 3), xNodes, yNodes, 'smoothness', 0.1);</p>
+
+<p>% Display the surface so that we can see the asymmetry.
+<br>surf(xGrid, yGrid, zGrid);
+<br>xlabel('x');
+<br>ylabel('y');
+<br>zlabel('z');</p>
+
+<p>% Calculate the asymmetry.
+<br>disp(['GridFit asymmetry is ', num2str(zGrid(2, 2) - zGrid(3, 2)), '.']);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This will definitely have much 
+better performance around the edges compared to a delaunay based tool. 
+They often show serious interpolation artifacts around the edges. </p>
+
+<p>In terms of how good is the fit, I'm surprised that I did not return 
+an array of residuals or predicted values, but this is easy enough to 
+build. Use interp2 to compute predicted values, since what comes out of 
+gridfit is now a nice regular one that interp2 will handle. Once you 
+have the predictions, residuals are easy enough to get by subtraction, 
+or you could compute a standard error, etc.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187749">Mark</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice, currently using this to 
+perform a calibration between an imager and a gimbaled laser pointer. 
+It's not quite optimized to get the best expected performance over the 
+full FOV, but it's close.  Toward the edges, it works much better than 
+other routines I've tried.  Is there a way to see how good the fit is?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187749">Mark</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/123048">Darin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the great tool.   Trying
+ to find a way around "pull ins" when the regularizer has a significant 
+low spatial frequency bias over extended areas... for example, around 
+the top of a higly resolved gaussian peak with 'gradient'.  Using a 
+higher order regularizer doesn't help (I've implemented a 4th order 
+gradient): that just gives a surface that's highly "puckered" around 
+indiviual sample errors.  Any ideas?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/119699">Christian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm sorry - that was a typo: I 
+meant gridfit when I typed griddata. I since figured it out it was a 
+MATLAB environment issue, unrelated to gridfit. Contour plots just 
+weren't showing up in the display. Restart solved the problem. I would 
+edit or remove my original post, but this forum doesn't allow for it. 
+Thanks for the quick reply.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How can anybody guess what you are 
+doing wrong? How exactly does it fail? What are you doing exactly? What 
+is your data? And why are you saying that griddata output is a problem, 
+in a question about gridfit?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/119699">Christian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm trying to use gridfit to 
+produce a contour map (functions: contour and contourf). MATLAB seems to
+ interpret the griddata output okay for the surf() function, but fails 
+with contour(). Anyone else run into this problem? I think it has 
+something to do with grid orientation.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/169185">M. C Ertem</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you!!! Saved the day. (Actually, night.)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116089">Yang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John, 
+<br>I tried some smaller parameters (say 0.1 for smoothness), but then I get wave-like artifact pattern in my image. 
+<br>What I am looking for is a combination:  griddata in the inner part 
+(so no smearing at all), and gridfit at the edge (where griddata 
+produces NaN). Hence smearing is minimized. Can I achieve that by tuning
+ parameters? Thank you very much!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Smaller values of the smoothing parameter give less smoothing, although zero as a value may result in a singularity.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116089">Yang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John, I have a set of 2d 
+scattering data, and I want to have interpolation values at a regular 
+(1:N,1:N) lattice. What parameters should I use to minimize the 
+smoothing? (I need to iterate the interpolation for 50+ times, setting 
+"smoothness"=1 for 50 times makes the resulting image very blur). 
+<br>Thanks! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/166590">Qiang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi John,
+<br>I got error information now, but not last year. Seemingly it is 
+because the code is not consistent with the new Matlab version (2011a). 
+Maybe I am wrong. Do you have ideas about this? The error is as 
+following:</p>
+
+<p>??? Error using ==&gt; mldivide
+<br>MLDIVIDE is not supported for one sparse input and one single input.</p>
+
+<p>Error in ==&gt; gridfit at 616
+<br>        zgrid = reshape(A\rhs,ny,nx);</p>
+
+<p>Thanks
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/161767">stefano pasquali</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi John.
+<br>i'm pretty new in matlab. so maybe i'm going to do a stupid question.</p>
+
+<p>i have my data already in a matrix form. 
+<br>tipically 200x200.</p>
+
+<p>i cannot use your function because it expect 3 vectors and nodes ... </p>
+
+<p>can you help me ? </p>
+
+<p>basically i have this surface, results of observation (along x and y 
+there are categorical variables) and i'm expecting a monotonic 
+decreasing surface ... i got it but with some outliers ... i think your 
+function can help me.</p>
+
+<p>any suggestion ? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Melissa - gridfit merely generates a
+ function defined at a set of discrete node points, on a regular 
+lattice. It does not deliver an interpolated prediction at any point. 
+But you can easily enough get that prediction from the surface produced 
+from gridfit.</p>
+
+<p>There are three interpolation methods that are allowed in gridfit. 
+Those methods define how gridfit treated your data when it built the 
+surface itself. Nothing requires that you use the same method to 
+interpolate that gridfit used when it built the surface though.</p>
+
+<p>The nice thing is, we already have interp2 to do 2-dimensional 
+interpolation once the surface is defined on a regular lattice, with 
+several good methods already there. The case of 'linear' for interp2 is 
+equivalent to that employed in gridfit for the 'bilinear' case. It turns
+ out that this is also a method used by tools like photoshop for image 
+interpolation.</p>
+
+<p>You can also use the other methods of interp2 though - splines for 
+example. Or, if you prefer a simplicial interpolant, where each square 
+of the lattice is split into a pair of triangles, then a truly linear 
+interpolation is done across those triangles, you can find my interpns 
+on the file exchange. </p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/30932</p>
+
+<p>So yes, you can easily do interpolation at any arbitrary point that lies inside the lattice as defined by gridfit.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/146163">Melissa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is an amazing piece of work 
+John. I bow to your superior programming skills and knowledge. I have a 
+question though, is it possible for me to evaluate a point or a series 
+of points on the surface?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72613">John Reinert Nash</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent tool that much improved 
+my visualization of some photographic exposure data.  Thanks, John, 
+great to use one of your tools (again).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72613">John Reinert Nash</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/36866">Januka</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great piece of work John. No hassle and easy to use. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/132351">Ignacio</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Really good </p>
+
+<p>One way of using gridfit just for interpolation is :
+<br>- Use gridfit in the whole grid   zifit=gridfit(X,Y,Z,xi,yi)
+<br>- Use griddata in the same grid
+<br>zidata=griddata(X,Y,Z,xi,yi)
+<br>- Use isnan to know which elements are NaN in zidata, and apply it to zifit</p>
+
+<p>At least for me it worked
+<br>- Use a isnan(griddata) to know which points are inside the original data, and apply it to the points created with gridfit</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/130894">jose tapia</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank's for your answer John D'Errico. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>You have asked this question in 
+multiple places. I have no idea what simulink does, so I cannot answer 
+your question, nor can I even be sure what it is you wish to do.</p>
+
+<p>Matt already answered (as an answer) that if you just desire to 
+interpolate the function at a specific location, then interpne (from the
+ file exchange) will solve that problem. I believe that is the correct 
+answer from what little I know about your problem.</p>
+
+<p>If you wish to create a new surface that extends further out, gridfit
+ can do that. Just supply the new coordinates that include the old x and
+ y, but will create a new grid that extends out as far as you wish. </p>
+
+<p>Remember that any extrapolation is a risky business, trying to 
+predict the unknown. It is RARELY accurate or even intelligent, and is 
+only as good as the data it is built on. If you are trying to 
+extrapolate a long distance out, don't be upset at the result.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/130894">jose tapia</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>I'm having the following problem. I have a 2d table that contains 
+data from some measurements. How can I do the same kind of Extrapolation
+ that is possible in SIMULINK 2-D table lookup using 
+interpolation-extrapolation lookup method, but in Matlab. As I figured 
+out 'griddata' and 'interp2' can not do the job for me. 
+<br>This is the dimension of my data:
+<br>x &lt;1x37 double&gt;
+<br>y &lt;1x28 double&gt;
+<br>z &lt;28x37 double&gt;</p>
+
+<p>Thanks in advance.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/54428">Mikkel Lund</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice.. Just what I have been looking for</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jason - This is a problem of 
+extrapolation, something often difficult to do intelligently. My 
+standard response is to quote Mark Twain:</p>
+
+<p>“In the space of one hundred and seventy six years the Lower 
+Mississippi has shortened itself two hundred and forty-two miles. That 
+is an average of a trifle over a mile and a third per year. Therefore, 
+any calm person, who is not blind or idiotic, can see that in the Old 
+Oölitic Silurian Period, just a million years ago next November, the 
+Lower Mississippi was upwards of one million three hundred thousand 
+miles long, and stuck out over the Gulf of Mexico like a fishing-pole. 
+And by the same token any person can see that seven hundred and 
+forty-two years from now the Lower Mississippi will be only a mile and 
+three-quarters long, and Cairo [Illinois] and New Orleans will have 
+joined their streets together and be plodding comfortably along under a 
+single mayor and a mutual board of aldermen. There is something 
+fascinating about science. One gets such wholesale returns of conjecture
+ out of such a trifling investment of fact.”</p>
+
+<p>"Life on the Mississippi", Mark Twain, 1884</p>
+
+<p>The point is, extrapolation is difficult, especially if all you use 
+is a tool that tries to take data that it sees and predict into the 
+unknown. How should matlab know that zero is a special number? How 
+should gridfit know that it is ok to predict smoothly beyond the extent 
+of your data, yet stop at zero?</p>
+
+<p>Having said all of that, there are several options open to you, both 
+of which might work nicely. First, you can use the 'springs' method in 
+gridfit. It tries to prevent extrapolation beyond your data. This is 
+sometimes the proper solution. Try it, and you might be happy, or not. 
+This I cannot say.</p>
+
+<p>A second option is a transformation. Very often when a system has a 
+property that it cannot go less than zero, you are working in the wrong 
+"space". The trick here is to use a transformation to fix it. Here, I 
+might log your data. Now, use gridfit to model the surface, allowing it 
+to extrapolate smoothly as it wishes with the default options. Now, 
+exponentiate the result. In effect, you have done an interpolation in 
+the log domain, but then transformed back. Do you care if the logs went 
+negative? Of course not. exp is a function that is positive for all real
+ inputs. This trick often works very nicely. In effect, it is just 
+recognizing that the interpolation is best done in the proper domain, 
+one where your system is truly more additive.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/127972">Jason</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have scattered 3d data of a 
+membrane subject to tensile loads at the corners resulting in transverse
+ displacement.  I'm trying to use gridfit to look at a the 3d surface 
+representing the data.  The problem is around the edges the 
+representation gridfit and surf produce is very inaccurate.  In fact, at
+ the corners the resulting plot shows negative values when there are no 
+negative z displacements in the data!  Any ideas?  Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>There is no functional form for the
+ surface, at least unless you are willing to accept a tool like interp2 
+to interpolate it at any point. The best that you can do is to view that
+ surface as a low order spline in two dimensions, but as a spline, all 
+you have are a large number of tiny linear segments all neatly connected
+ together. (This applies to the default method, which uses a 
+triangulation of the regular lattice. The alternative is the bilinear 
+interpolant, which in effect is not even truly linear, but an oddly and 
+mildly piecewise quadratic form.)</p>
+
+<p>The virtue of this approach is you can fit any set of data that 
+follows the general form of a function z = f(x,y). You need not 
+formulate a model as other modeling tools force you to do. But you can't
+ get a model out of this either.</p>
+
+<p>If you really want to do empirical modeling, you need to make the 
+effort of posing a model, of choosing some form that will represent your
+ surface. That model may be polynomial (as my polyfitn would allow you 
+to fit) or it may be nonlinear. Then you need to use a tool that can fit
+ that model to your data. There are many such tools on the file exchange
+ to serve that purpose, or you can use the curve fitting toolbox.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/127873">Lennert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi there! I have a question in 
+relation to this tool. Suppose you have already fit a surface through 
+the data. Is there a command to extract the formula/function of that 
+surface? Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/70619">Michael Brown</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just wanted to extend my gratitude 
+that you made this available.  The documentation is excellent, it works 
+as advertised and saved me several days of setting up and debugging a 
+regularization scheme for fitting an appropriately smoothed surface 
+through some unequally spaced thermodynamic data that have error and do 
+not extend to all corners of the needed P-T grid. It was a relief to be 
+able to focus on the science rather than on debugging the scheme to 
+process the data.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/47914">Toni</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry!
+<br>Still stumbling about these issues.
+<br>Thanks for the right directions!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Argh.</p>
+
+<p>Gridfit is set up to ignore any nan data. So your question is 
+meaningless and irrelevant, because gridfit in fact ignores the nan 
+data. See the following code fragment, taken directly from the code...</p>
+
+<p>% also drop any NaN data
+<br>x=x(:);
+<br>y=y(:);
+<br>z=z(:);
+<br>k = isnan(x) | isnan(y) | isnan(z);
+<br>if any(k)
+<br>  x(k)=[];
+<br>  y(k)=[];
+<br>  z(k)=[];
+<br>end</p>
+
+<p>So giving this code a rating of only 4 stars because a different code (griddata) did not work for you seems a bit silly.</p>
+
+<p>If your goal is to fill in the nan elements, while leaving the actual
+ data alone, then use inpaint_nans to interpolate. Use the right tool to
+ solve your problem.</p>
+
+<p>If your goal is to do smoothing, while also interpolating the empty 
+(nan) data, then use gridfit. It will solve your problem, but only if 
+you call gridfit and not griddata.</p>
+
+<p>Finally, if your problem is that griddata is not working as you wish 
+or that you don't understand griddata, then why in the name of god and 
+little green apples, why are you asking it here, in a place intended for
+ comments on gridfit?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/47914">Toni</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello!
+<br>I have an 512x512 array z where ~11000 points are non zero and the 
+rest must be nans! Why is the following code giving me an array zgd 
+filled with only nans? How does this program deal with nans?</p>
+
+<p>xi = linspace(0,1,512);
+<br>[xg,yg]=meshgrid(xi,xi);
+<br>x = 1:512;
+<br>y = 1:512;
+<br>zgd = griddata(x,y,z,xg,yg);</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74972">Lars Robert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>excellent job on meteorological balloon data!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/38498">Alexis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>+1 vote for gridfitn ;)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/42010">Ben</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks John for your code.  I enjoy it very much!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/105795">xfactor y</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103225">Adam Chapman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>the new setting "'smoothness',[xsmooth ysmooth]" is a Godsend. Many Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I like Adam's idea, and this is easily enough put into the code.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103225">Adam Chapman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is brilliant, but a capability to vary the degree of smoothing in x and y exclusively would be very useful</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/99740">Jeff</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've responded via direct e-mail, 
+but the gist of it is that I have plans to introduce a gridfitn one day,
+ but it will take some time to write, and I have many things to write on
+ that same list.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/98615">Janine Bijsterbosch</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi there! Is there a gridfit3d 
+available at all? I have a 3d array of electric field data (369x551x325)
+ on a irregular but highly collinear grid and griddata3 therefore does 
+not work. As I understand, the gridfit code would be perfect for this if
+ it could deal with 3d data. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alternatively, a simple citation style for a FEX submission is found here, if all you wish is a citation:</p>
+
+<p>http://matlabwiki.mathworks.com/Citing_Files_from_the_File_Exchange</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Perhaps I should add this...</p>
+
+<p>If you really desire something written, many years ago I was granted a
+ pair of US patents on a similar idea, there applied to higher 
+dimensional problems in color modeling. Gridfit only works in 
+2-dimensions of course.</p>
+
+<p>US Patent # 4992861, 4941039</p>
+
+<p>At least for me, actually reading a patent is about as miserable a pastime as I can imagine.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/87376">Matteo Niccoli</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent work! I needed a sound 
+extrapolation algorithm to pad some gravity data to use with both 
+vertical continuation and source depth inversion. It worked very well 
+for me. Might I add this has one of the best and most easily understood 
+helps I've seen for Matlab code, even for someone like me whose first 
+language is not English. 
+<br>SOmeone asked before about journal reference and I did not see your 
+reply. I'd like to know as well if there's anything published we can 
+reference. Thank you.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40398">Jeff Evans</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/89350">Panagiotis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John thank you for you prompt reply.</p>
+
+<p>I really need a tool that only interpolates in a given arbitrary 
+domain, as I need to create contour lines in it, which wouldn't make 
+sense out of the domain boundaries.</p>
+
+<p>Could you please post a message here when you post your new tool?
+<br>many thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>In answer to the question of extrapolation, there are several issues here.</p>
+
+<p>Gridfit tries to extrapolate gracefully, that is, it will extrapolate
+ as smoothly and linearly as possible. This is the default mode. It is 
+also possible to specify the 'springs' method for gridfit. This method 
+tries to extrapolate minimally, while still generating solutions over 
+the entire domain of interest. Think of that method as extrapolating as a
+ constant, where it can do so, at least as a continuous, smooth 
+function.</p>
+
+<p>Regardless, these methods still do extrapolation. If you absolutely 
+must avoid any extrapolation, leaving the entire domain outside of the 
+convex hull empty, then an option is to use griddata. Griddata is of 
+course an interpolant. It will do no smoothing as gridfit allows you to 
+control. But griddata will interpolate inside the convex hull, and leave
+ points outside as NaN.</p>
+
+<p>The last possibility is if you need to do smoothing, but only inside a
+ given, arbitrary domain, convex or not. This requires a new tool that 
+is like gridfit, one that I have written but not posted on the FEX yet, 
+but will do so.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/89350">Panagiotis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is it possible to totally avoid any extrapolation?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/85278">Félix Martin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/32034">Christine A.</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/70768">Chamane</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>excellent</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62119">Ulrich</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/70676">Michael Adsetts Edberg Hansen</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Use of an interpolant followed by a smooth is a poor second choice, for several reasons.</p>
+
+<p>Gridfit finds the surface that is as smooth as possible, that is 
+consistent with the data. Smoothing a interpolated surface after the 
+fact does not ensure that the result is consistent with the data. When 
+you do a posterior smooth of the surface, the act of smoothing is now 
+disconnected from the data.</p>
+
+<p>Next, if you use griddata to interpolate a surface in advance, you 
+will only get a result that lies within the convex hull of the data. 
+Griddata will not extrapolate unless you use the v4 option, and that 
+option is VERY slow for any significant number of points. Gridfit can 
+extrapolate using several methods, depending upon your goals.</p>
+
+<p>Extrapolation is an important capability of gridfit. But, 
+extrapolation can come in many different forms. For example, consider a 
+data set which is just slightly concave along one edge of the data. The 
+published demo has a good example of this. See the second example, 
+fitting a trigonometric surface. Along the edges of that data, see that 
+the griddata interpolant generates long, thin triangles. Long thin 
+triangles are terrible for interpolation, so what happens is you see 
+strange interpolation artifacts along the edges.</p>
+
+<p>Gridfit allows you to have replicates in your data, treating them 
+properly in a least squares sense to generate the surface. Try out 
+griddata with replicate data points. Even near replicate points can 
+introduce nasty artifacts in the interpolant. Worse, the delaunay 
+triangulation used in griddata will often have problems if you have sets
+ of collinear data points. This is no problem at all for gridfit.</p>
+
+<p>Finally, you can easily control the extent of smoothing done by gridfit.</p>
+
+<p>In short, griddata has its purposes. There are general circumstances 
+when I recommend griddata. But I would never recommend the use of 
+griddata to be then followed by a smoothing operator.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40986">Yaroslav Bulatov</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>What is the advantage of using gridfit instead of griddata followed by smoothing?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/67246">Daniel Arevalo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello John, the function is really 
+nice but I'm wondering if it would be possible to use it with 
+non-rectangular domains where the nodes are just specified with (xn,yn) 
+pairs n=1,..., N
+<br>Thanks for any help !
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62498">Angel Atanasov</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you mr. D'Errico, for making my life easier.You piece of code is really good.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/60450">Chris Sherwood</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This routine is almost magic...it 
+is the only routine I have found that finds surfaces I know are there 
+amidst very noisy elevation data. Thanks for contributing it.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/59258">Karl</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is spectacular.  I hope the Mathworks is paying you some sort of royalty for your efforts!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 May 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56781">Michael Dupin</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30958">Bryan Raines</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jan 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/42192">J Ú</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/38694">Michael Jordan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37951">Jveer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>wow! looks awesome! was wondering 
+if there was any way to fit a surface around a 3D scatter? maybe this 
+could be used on the data of for e.g x,y data corresponding to max(z) 
+and then repeating for max(x) and max(y)? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/38498">Alexis</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Good job John, beautiful tool! Very parameterizable and helps a lot in giving you a feel of how your data is behaving.</p>
+
+<p>Does anyone know how I can anchor the surface to any given point? I'd
+ like to force the surface to pass through a given set of (x,y,z) anchor
+ points, something like establishing an "infinite" weight to these 
+keypoints, while not altering the weight of the other "normal" points...
+ </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Oct 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31904">Cristina Velasco</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Oct 2008</span></td>
+        <td>
+          <span class="author">
+            Pauline Wong
+          </span>
+        </td>
+        <td><span class="comment"><p>Versatile smoothing function.  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Oct 2008</span></td>
+        <td>
+          <span class="author">
+            Cedric Testaz
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            John D'Errico
+          </span>
+        </td>
+        <td><span class="comment"><p>The review by Andrey is a bit of 
+self serving braggadocio, since he does not actually offer Matlab code 
+on the file exchange that replicates in any form what gridfit does. By 
+the way, the link he gives is for a .exe file - BEWARE.</p>
+
+<p>His time comparisons are also meaningless of course, since the times 
+referred to are for a now wildly obsolete computer, and comparing an 
+interpolation code to this class of modeling code makes no sense anyway.</p>
+
+<p>Finally, converting an interpolation code to a noise reducing surface
+ modeling code is not at all trivial. I welcome Andrey to do so and 
+provide MATLAB code for the purpose, if that is truly so easy.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            Andrey Matseevskiy
+          </span>
+        </td>
+        <td><span class="comment"><p>You wrote "For example, my computer
+ took 1020 seconds to solve a 500x500 problem." What an old comp do you 
+use? I need 5 second to solve 500x500 problem. Download my prog from 
+http://www.smartfills.com/Html/2D.zip . Compare with your own method. My
+ own is in fact interpolation, but could be modified for approximation 
+without much problems.
+<br>Andrey, Kamchatka</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            gai cs
+          </span>
+        </td>
+        <td><span class="comment"><p>it is very good toolbox ?thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            Anmol Agrawal
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent utility!! A default setting did everything I needed with minimal error.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Mar 2008</span></td>
+        <td>
+          <span class="author">
+            Carlos Adrián Vargas Aguilera
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John:  
+<br>  
+<br>I've been using your incredible program for some years and in a wide
+ range of applications. My question is, do you have written any kind of 
+documentation in a scientific journal, for example, for any citation and
+ also to know a little bit more about this super "surface fitting". Any 
+reference can help too.  
+<br>  
+<br>BTW: VP uses the more silly test to "compare" GRIDDATA and GRIDFIT, 
+and, as John says, he doesn't bother to read that by default the former 
+is 'linear' and the latter uses 'smooth' to 1. But, any way...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            Alex Gardner
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            V P
+          </span>
+        </td>
+        <td><span class="comment"><p>1. In strict accordance with the 
+help, xi and yi WERE x-nodes and y-nodes of interest, generated by 
+MESHGRID. If this kind of input is not accepted by GRIDFIT, this means 
+that GRIDFIT must be improved. 
+<br>2. This is also necessary for comparison with GRIDDATA, which has no problems with my example.
+<br>3. If these arguments are still insufficient, and you insist that I 
+am incorrect, then you have to improve the description of xi and yi in 
+your help and define them as VALID INPUT arguments for MESHGRID. 
+However, this will again mean an improvement.
+<br>4. If this is not convincing for you, look at the example below. If 
+it is not a strong indication of necessary improvements, then I have to 
+follow the principle of "haende khokh" - this is much better than the 
+cold war around an empty egg.</p>
+
+<p>Z=rand(100);
+<br>a=(1:100)';
+<br>[X,Y]=meshgrid(a,a);
+<br>z=gridfit(X(:),Y(:),Z(:),a,a);
+<br>norm(z(:)-Z(:))
+<br>ans =
+<br>    4.9225</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            John D'Errico
+          </span>
+        </td>
+        <td><span class="comment"><p>The problem that VP has is he 
+failed to read the help, or apparently bother to understand what gridfit
+ does. I'd recommend reading the help, and perhaps looking at the 
+examples when you don't understand what you are using. I do understand 
+that real men don't need no steenkin help. Perhaps this is the approach 
+that VP has followed.</p>
+
+<p>Gridfit does not interpolate a surface at some random scattered list of points, as would griddata.</p>
+
+<p>Gridfit generates a surface from scattered data on a complete, 
+regular lattice of points. The node arguments are what he might have 
+passed into meshgrid. Again, READ THE HELP.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            V P
+          </span>
+        </td>
+        <td><span class="comment"><p>What is wrong with calling GRIDFIT? Needs improvement.</p>
+
+<p>Z=rand(100);
+<br>a=1:100;
+<br>[X,Y]=meshgrid(a,a);
+<br>good=(X-50).^2+(Y-50).^2&gt;100;   
+<br>x=X(good);
+<br>y=Y(good);
+<br>z=Z(good);
+<br>bad=~good;
+<br>xi=X(bad);
+<br>yi=Y(bad);
+<br>zi=gridfit(x,y,z,xi,yi);
+<br>??? Error using ==&gt; gridfit at 404
+<br>xnodes and ynodes must be monotone increasing
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jan 2008</span></td>
+        <td>
+          <span class="author">
+            Tim Marvin
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Dec 2007</span></td>
+        <td>
+          <span class="author">
+            Gassilloud rémy
+          </span>
+        </td>
+        <td><span class="comment"><p>How to use gridfit with polar coordinates ?
+<br>[th,r] = meshgrid((0:5:360)*pi/180,0:5:300);
+<br>[X,Y] = pol2cart(th,r);
+<br>Z=griddata(x,y,z,X,Y);</p>
+
+<p>Thank you,
+<br>Rémy</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Nov 2007</span></td>
+        <td>
+          <span class="author">
+            John D'Errico
+          </span>
+        </td>
+        <td><span class="comment"><p>Henrique - My guess is that you 
+have called gridfit with no arguments. This code is not a gui or 
+command. See the demos for examples of the use of this code. It truly 
+does work, at least when called with data. John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Nov 2007</span></td>
+        <td>
+          <span class="author">
+            Henrique Mendes
+          </span>
+        </td>
+        <td><span class="comment"><p>It is not working! Matlab says:
+<br>"??? Input argument "x" is undefined.
+<br>Error in ==&gt; gridfit at 325
+<br>x=x(:);"
+<br>I tried to change x(:) to x(:,1), but the problem kepps the same. My Matlab is version 7. It had to be more recent?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Nov 2007</span></td>
+        <td>
+          <span class="author">
+            Darren Paget
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks heaps for the function, it 
+saved me a lot of work.  Surface fitting has come a long way! absolutely
+ awesome fit to my data. and really easy to use.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Aug 2007</span></td>
+        <td>
+          <span class="author">
+            Hendawi Mohamed
+          </span>
+        </td>
+        <td><span class="comment"><p>I just write to say..."Thank you"!</p>
+
+<p>PS. but I add: It would be perfect if there was a way to sidestep the
+ extrapolation of the the gridnodes beyond the datapoint boundary. It 
+should be added in matlab next release!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 May 2007</span></td>
+        <td>
+          <span class="author">
+            Juan Perez
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            gabriele flauti
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Feb 2007</span></td>
+        <td>
+          <span class="author">
+            David Sprinkle
+          </span>
+        </td>
+        <td><span class="comment"><p>Great tool and insightful docs!  
+Gridfit succeeds where griddata fails; that is, with noisy &amp; 
+ill-spaced data such as exist in the real world.  Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            Ken Lin
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for your programs. It solves my problem now:)
+<br>by the way, would you like to work out some way to interpolate the data just like the surfer does</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Jan 2007</span></td>
+        <td>
+          <span class="author">
+            Zhijun Wang
+          </span>
+        </td>
+        <td><span class="comment"><p>This is very very good work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Dec 2006</span></td>
+        <td>
+          <span class="author">
+            E Farhi
+          </span>
+        </td>
+        <td><span class="comment"><p>This is simply great, with all we can expect for a replacement to griddata (which fails too often).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Nov 2006</span></td>
+        <td>
+          <span class="author">
+            Carlos Adrián Vargas Aguilera
+          </span>
+        </td>
+        <td><span class="comment"><p>Very very good John! Take good care of Amy! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Nov 2006</span></td>
+        <td>
+          <span class="author">
+            Thomas Clark
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent function, John - this has been extremely useful to me. </p>
+
+<p>The ability to turn off extrapolation beyond the bounds of the data would be very useful, though.</p>
+
+<p>A note for the inexperienced user:
+<br>If you have repetitions (multiple points with the same (x,y) but 
+different (z)), this algorithm will handle where griddata might fall. In
+ such a case, think hard about why you have these repetitions; it may be
+ that volumetric plotting is more appropriate than surfaces. If so, you 
+could get a good-looking surface out of this algorithm; which isn't 
+totally meaningful.</p>
+
+<p>That's not a fault with this algorithm; it just means that you have 
+to think hard about why you are getting repeated points in Z: If it's 
+acceptable to average these out to a surface, this algorithm is for you!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Oct 2006</span></td>
+        <td>
+          <span class="author">
+            Phani Ivatury
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent!!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Oct 2006</span></td>
+        <td>
+          <span class="author">
+            Wolfgang Schwanghart
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent! This is exactly what I was searching for. Thank you very much for this great contribution.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Aug 2006</span></td>
+        <td>
+          <span class="author">
+            Christopher Schwalm
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent program and documentation.</p>
+
+<p>A question: the help states "Gridfit is not an interpolant." Why is 
+that? It seems to be perfectly able to be used as such, given the 
+outputs and how they were generated. One use I see in my work is to use 
+this function to interpolate where repeated values are present. I've yet
+ to find another Matlab solution that works as well as this does.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Jun 2006</span></td>
+        <td>
+          <span class="author">
+            John D'Errico
+          </span>
+        </td>
+        <td><span class="comment"><p>I'll invite Håvard Torpe to contact
+ me via e-mail to discuss this idea. But while I COULD allow the user to
+ turn off extrapolation in gridfit, this will likely cause singularities
+ - serious numerical problems, for most users who might do so.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Jun 2006</span></td>
+        <td>
+          <span class="author">
+            Håvard Torpe
+          </span>
+        </td>
+        <td><span class="comment"><p>Works like a charm right from the moment you start using it.</p>
+
+<p>However: I'd like gridfit() NOT to extrapolate values for gridnodes that has no datapoint in the vicinity. Any ideas?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 May 2006</span></td>
+        <td>
+          <span class="author">
+            Andy Lulham
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 May 2006</span></td>
+        <td>
+          <span class="author">
+            thank you
+          </span>
+        </td>
+        <td><span class="comment"><p>Marvelous!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 May 2006</span></td>
+        <td>
+          <span class="author">
+            Aslak Grinsted
+          </span>
+        </td>
+        <td><span class="comment"><p>Should be included into the default distribution of matlab! perhaps somehow integrated into griddata?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            Wen Soong
+          </span>
+        </td>
+        <td><span class="comment"><p>Does a great job!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Mar 2006</span></td>
+        <td>
+          <span class="author">
+            T O
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent Work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Mar 2006</span></td>
+        <td>
+          <span class="author">
+            Kevin Denis
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Feb 2006</span></td>
+        <td>
+          <span class="author">
+            David Barker
+          </span>
+        </td>
+        <td><span class="comment"><p>This is an excellent program.  It makes it easy to fit surfaces to 3D data. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Feb 2006</span></td>
+        <td>
+          <span class="author">
+            Julio Oliveira
+          </span>
+        </td>
+        <td><span class="comment"><p>Great !  Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jan 2006</span></td>
+        <td>
+          <span class="author">
+            CASTRY Alen
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Dec 2005</span></td>
+        <td>
+          <span class="author">
+            Kong Zuor
+          </span>
+        </td>
+        <td><span class="comment"><p>Well done John, I have been looking
+ for this while ago and I think it is a must have code. Thank you very 
+much for being so helpful to mathlab community </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Dec 2005</span></td>
+        <td>
+          <span class="author">
+            Alberto Baraldi
+          </span>
+        </td>
+        <td><span class="comment"><p>I was struggling against griddata since days, beacause of its problems when extrapolating...this is absolutely great!
+<br>Thank you for your great help to the Matlab community. We love you</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Dec 2005</span></td>
+        <td>
+          <span class="author">
+            Chaowen Liang
+          </span>
+        </td>
+        <td><span class="comment"><p>This is exactly what I am looking for...  Thanks you!!! Save me a lot of time to write one... </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Nov 2005</span></td>
+        <td>
+          <span class="author">
+            Urs (us) Schwarz
+          </span>
+        </td>
+        <td><span class="comment"><p>simply said: just another extremely
+ useful member of the d'erriconian-draconian family of must-haves if 
+you're professionally serious about nd-data investigation / 
+reconstruction / interpolation / visualization, which smoothly unites 
+with its now-famous siblings (consolidator, inpaint-nans) into a very 
+nice toolbox for those everyday cheating-with-data endeavors...
+<br>the code is very clean and the profiler reveals no unnecessary hot-spot...
+<br>HOWEVER, in contrast, the help bit is just unbelievably clumsy and 
+almost indigestible without sever anxiolytic medication - JOHN, JOHN! 
+this part requires some serious overhaul and sprucin'-up...
+<br>altogether, very well done - and thank you for this snippet
+<br>us</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Nov 2005</span></td>
+        <td>
+          <span class="author">
+            Michael Robbins
+          </span>
+        </td>
+        <td><span class="comment"><p>Neat picture!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">13 Dec 2005</td>
+                  <td><p>Allows the user to specify a number of nodes from 
+<br>min to max of the data. Also fixed it so if the user specifies a 
+list of nodes which does not bound the data, it can either recover 
+smoothly or issue an error, all at the discretion of the user.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">23 May 2006</td>
+                  <td><p>Release 2.0: Adds the option of tiling to solve much larger problems</p></td>
+                </tr>
+                <tr>
+                  <td class="date">29 Jul 2010</td>
+                  <td><p>Allow unequal smoothing parameters in x and y directions</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416000387217&amp;cv=7&amp;fst=1416000387217&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=5&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/8998-surface-fitting-using-gridfit&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Futf8%3D%25E2%259C%2593%26term%3Dgridfit&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

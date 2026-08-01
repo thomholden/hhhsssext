@@ -1,0 +1,1106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Minimum Volume Enclosing Ellipsoid -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/9542-minimum-volume-enclosing-ellipsoid" rel="canonical">
+<meta content="Minimum Volume Enclosing Ellipsoid - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/9542-minimum-volume-enclosing-ellipsoid" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/10186/original.jpg" property="og:image"><meta content="Computes the minimum-volume covering ellipoid that encloses N points in a D-dimensional space." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-a4j-ae" type="text/css"></style><style id="ki-a4j-at" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F9542-minimum-volume-enclosing-ellipsoid" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F9542-minimum-volume-enclosing-ellipsoid" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/6324" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=9542" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/9542-minimum-volume-enclosing-ellipsoid" class="manifest_title">Minimum Volume Enclosing Ellipsoid</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/9542-minimum-volume-enclosing-ellipsoid/content//MinVolEllipse.m" class="function" title="Function">MinVolEllipse(P, tolerance)
+</a></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/9542-minimum-volume-enclosing-ellipsoid/content/MinVolEllipse.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:96.923%;">
+                <p>4.84615</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.8</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">13</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">73 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 2.05 KB</span>
+          <span id="fileid">File ID: #9542</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/2660/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Minimum Volume Enclosing Ellipsoid</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/21786">Nima Moshtagh</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      06 Jan 2006
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2009-01-20">20 Jan 2009</span>)
+      </span>
+  </p>
+
+  <p id="summary">Computes the minimum-volume covering ellipoid that encloses N points in a D-dimensional space.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F9542-minimum-volume-enclosing-ellipsoid&amp;watching=9542" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>[A , c] = MinVolEllipse(P, tolerance)</p>
+
+<p>Finds the minimum volume enclosing ellipsoid (MVEE) of a set of data 
+points stored in matrix P. The following optimization problem is solved:
+ </p>
+
+<p>minimize   log(det(A))
+<br>s.t.       (P_i - c)'*A*(P_i - c)&lt;= 1
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>in variables A and c, where P_i is the i-th column of the matrix P. 
+<br>The solver is based on Khachiyan Algorithm, and the final solution 
+is different from the optimal value by the pre-specified amount of 
+'tolerance'. 
+<br>---------------------------
+<br>Outputs:</p>
+
+<p>c : D-dimensional vector containing the center of the ellipsoid.</p>
+
+<p>A : This matrix contains all the information regarding the shape of 
+the ellipsoid. To get the radii and orientation of the ellipsoid take 
+the Singular Value Decomposition ( svd function in matlab) of the output
+ matrix A:
+<br>&nbsp;
+<br>[U Q V] = svd(A);</p>
+
+<p>the radii are given by:</p>
+
+<p>r1 = 1/sqrt(Q(1,1));
+<br>r2 = 1/sqrt(Q(2,2));
+<br>...
+<br>rD = 1/sqrt(Q(D,D));</p>
+
+<p>and matrix V is the rotation matrix that gives you the orientation of the ellipsoid.</p>
+
+<p>For plotting in 2D or 3D, use MinVolEllipse_plot.m (see the link bellow)</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/13844-plot-an-ellipse-in--center-form-">Plot An Ellipse In "Center Form"</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/21930-approximate-lowner-ellipsoid">Approximate Lowner Ellipsoid</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/46206-amvidc">Amvidc</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 6.5 (R13)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F9542-minimum-volume-enclosing-ellipsoid">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22circle%22" rel="nofollow">circle</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22covering+ellipsoid%22" rel="nofollow">covering ellipsoid</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22ellipse%22" rel="nofollow">ellipse</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22enclosing%22" rel="nofollow">enclosing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22i+would+like+to+thank+you+the+author+for+the+useful+code+which+h%22" rel="nofollow">i would like to thank you the author for the useful code which h</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22minimum+volume%22" rel="nofollow">minimum volume</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22optimization%22" rel="nofollow">optimization</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22reza%22" rel="nofollow">reza</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22sphere%22" rel="nofollow">sphere</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="9542" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/9542-minimum-volume-enclosing-ellipsoid" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F9542-minimum-volume-enclosing-ellipsoid">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(23)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">14 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/493731">David</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hmmm....
+<br>det(A) = pi^2 / area^2,</p>
+
+<p>so it seems the optimization for minimum area is to maximize, rather than minimize, log(det(A)).</p>
+
+<p>Also, for small d, it may be easier to obtain semi major/minor 
+lengths (a, b) by finding the eigenvalues/vectors of A (eigenvalues are 
+1/a^2, 1/b^2, etc, rotation matrix columns are the eigenvectors).</p>
+
+<p>I'm finding this algorithm gives me det(A) &lt; 0 (a hyperbola) for 
+some point sets.  Also, A should be invariant under translation of all 
+the input points (which should just result in a translation of c), but I
+ find it is quite sensitive.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31639">Anton Semechko</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>sweet, thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/475729">Pengju</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/146218">Javier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>thanks for sharing the code it's really good. One question, please 
+could you explain me which it's the differente between this method and 
+least squares?</p>
+
+<p>Thank you very much</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232445">banjo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks. This is good.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/229798">Sepehr Farhand</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/198432">Glib</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/21786">Nima Moshtagh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Here is a link to the (unpublished) paper describing the algorithm and math behind the code:</p>
+
+<p>https://sites.google.com/site/nimamoshtagh/software/MVEE.pdf?attredirects=0</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 May 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/95471">Reza Jafari</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I would like to thank you the 
+author for the useful code which he developed. It solved many of my 
+problems. The only problem which I faced was due to the singularity of 
+Matrix X in line 76 and singularity of Matrix P * U * P' - (P * 
+u)*(P*u)' in line 96. Do you have any suggestion to avoid singularity 
+for these two matrices?</p>
+
+<p>Appreciated.</p>
+
+<p>Regards,
+<br>Reza</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/82314">Rashed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I have a problem in 3D. Say, I have an 3D array of P(5,5,5) and how 
+can I make this to work? Please suggest. Or, do I need to produce a 
+matrix P containing the coordinates of the region?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/82314">Rashed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks a lot. I was looking for something like this.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/21786">Nima Moshtagh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Here is a paper describing the algorithm and math behind the code: http://www.seas.upenn.edu/~nima/papers/Mim_vol_ellipse.pdf
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31581">Avinash Uppuluri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can you also provide a good journal reference for this algorithm. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31581">Avinash Uppuluri</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Nima Moshtagh, The code 
+posted was very useful. Is there a way to add a weight to the points, 
+giving the importance of each point to be included within the ellipse. 
+(Instead of using the tolerance which excludes points through the 
+periphery). With the idea that points that are of less significance need
+ not be included in the ellipse. Where can I include such a weighing 
+parameter. I can probably do it in the pre-processing stage but is there
+ a way to include it within your code. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Oct 2008</span></td>
+        <td>
+          <span class="author">
+            Lien Kuqn Hua
+          </span>
+        </td>
+        <td><span class="comment"><p>THank you </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Sep 2008</span></td>
+        <td>
+          <span class="author">
+            Santanu Ghorai
+          </span>
+        </td>
+        <td><span class="comment"><p>Very good program. It has helped me a lot to do with the matlab. Thanks to Nima Moshtagh for submitting the code.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Nov 2007</span></td>
+        <td>
+          <span class="author">
+            nima moshtagh
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Ondrej Danko, 
+<br>Thank you for bringing this point to my attention. The outcome that a
+ number of points fall outside of the ellipsoid is expected, because we 
+are truncating the algorithm before reaching its optimal value. The 
+amount of error that we will get by doing this, is of the order of 
+parameter 'tolerance', which represents the amount of error you can 
+tolerate in the final result. For example for t=0.001 the average 
+distance of an outside point is of the order of 10^-3. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Nov 2007</span></td>
+        <td>
+          <span class="author">
+            Ondrej Danko
+          </span>
+        </td>
+        <td><span class="comment"><p>"Computes the minimum-volume covering ellipoid that encloses N points in a D-dimensional space"...</p>
+
+<p>I would expect that resulting ellipsoid COVERS all points, I mean no points are outside of the resulting ellipsoid...</p>
+
+<p>I had ran a small test if it is so... and surprisingly not all points are necessarily inside.</p>
+
+<p>P = rand(3,N);
+<br>[A , C] = MinVolEllipse(P, t);
+<br>for j = 1:N
+<br>   if ((P(:,j)-C)'*A*(P(:,j)-C) &gt; 1)
+<br>      disp('Point is outside...');
+<br>   end
+<br>end</p>
+
+<p>I am missing something, or it is expected? If expected, any 
+suggestions to modify the algorithm to output ellipsoid strictly 
+covering all points? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Feb 2007</span></td>
+        <td>
+          <span class="author">
+            Iram Weinstein
+          </span>
+        </td>
+        <td><span class="comment"><p>I find that the run time can be 
+radically improved by recognizing that the only points that determine 
+the bounding ellipsoid are on the convex hull, as used by John D'Errico 
+in his minboundsphere. Given points P, the following code finds the 
+reduced set of points lying on the hull.</p>
+
+<p>K=convhulln(P.');
+<br>K=unique(K(:));
+<br>Q=P(:,K);</p>
+
+<p>for P=randn(3,500)
+<br>my computer runs MinVolEllipse(P, .001) in 12.54 seconds</p>
+
+<p>and finds Q followed by MinVolEllipse(Q, .001) in 0.08 seconds</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Sep 2006</span></td>
+        <td>
+          <span class="author">
+            M Doug k Vandenberg
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a very good program for doing minimum volume ellipsoids. it has been very helpful and the author has as well.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Aug 2006</span></td>
+        <td>
+          <span class="author">
+            Carl Miller
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent stuff!  This was exactly 
+what I was looking for and works quite well.  Although the math behind 
+it all was a bit beyond me, the author was more than helpful in helping 
+me make the most of what the code has to offer, thanks again Nima!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Jan 2006</span></td>
+        <td>
+          <span class="author">
+            nima moshtagh
+          </span>
+        </td>
+        <td><span class="comment"><p>For tolerance=0.01 in 2D here is how long it takes (approximatly) to find the covering ellipse on a 2.4GHz computer:</p>
+
+<p>#point     time(sec)
+<br>------     --------
+<br>100         0.03
+<br>500         1.24
+<br>1000        5.20
+<br>1500        13.26
+<br>2000        25.27</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Jan 2006</span></td>
+        <td>
+          <span class="author">
+            John D'Errico
+          </span>
+        </td>
+        <td><span class="comment"><p>This could be useful IF you have small sets of data.</p>
+
+<p>I tested this for several problems, in 1, 2 and 5 dimensions. All 
+seemed to work. The only downside is data of even moderate size. The 
+author gives an example with 100 points, solved fairly quickly. But 
+expand that to only 500 points (in 2-d) and it takes 140 seconds to run 
+on my computer.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">16 Jan 2007</td>
+                  <td><p>To explain the outputs of the function.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 Jan 2009</td>
+                  <td><p>A sample code is provided in the help section that shows a method to reduce the computation time drastically.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416723241749&amp;cv=7&amp;fst=1416723241749&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/9542-minimum-volume-enclosing-ellipsoid&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D37%26sort%3Ddownloads_desc%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

@@ -1,0 +1,2454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>N-dimensional sparse arrays -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/29832-n-dimensional-sparse-arrays" rel="canonical">
+<meta content="N-dimensional sparse arrays - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/29832-n-dimensional-sparse-arrays" property="og:url"><meta content="Creates an N-dimensional sparse array object, for arbitrary N." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F29832-n-dimensional-sparse-arrays" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F29832-n-dimensional-sparse-arrays" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/16946" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=29832" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/29832-n-dimensional-sparse-arrays" class="manifest_title">N-dimensional sparse arrays</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/29832-n-dimensional-sparse-arrays/content//ndstest.m" class="function" title="Function">varargout=ndstest(TOL)
+</a><span class="description">Performs numerous tests of ndSparse math operations, 
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/29832-n-dimensional-sparse-arrays/content//ndSparse.m" class="class" title="Class">ndSparse
+</a><span class="description">ndSparse - A class of N-dimensional sparse arrays.
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/29832-n-dimensional-sparse-arrays/content/ndSparse_G3_2013_03_13.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:92.30760000000001%;">
+                <p>4.61538</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.6</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">13</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">47 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 25.2 KB</span>
+          <span id="fileid">File ID: #29832</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">N-dimensional sparse arrays</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      26 Dec 2010
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-03-13">13 Mar 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">Creates an N-dimensional sparse array object, for arbitrary N.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F29832-n-dimensional-sparse-arrays&amp;watching=29832" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This submission defines a class of N-dimensional 
+sparse arrays for N possibly greater than 2. However, it should really 
+be thought of as a way of starting with an ordinary MATLAB sparse matrix
+ and reshaping it to have N dimensions. In other words, the sparse data 
+must first be able to exist as an ordinary 2D MATLAB sparse matrix 
+before being made N-dimensional. In fact, if the intended array has 
+dimensions MxNxP...YxZ, then the class will store it internally as an 
+ordinary 2D sparse array of dimensions (M*N*P*...*Y)xZ. This leads to 
+certain memory strains when using large numbers of dimensions. I find 
+the class useful mainly for moderate dimensional things like edge 
+detection in 3D imaging, where you often want to hold a sparse 3D edge 
+map.
+<br>&nbsp;
+<br>&nbsp;
+<br>USAGE:
+<br>&nbsp;
+<br>&nbsp;&nbsp;S=ndSparse(X) where X is an ordinary MATLAB sparse 
+matrix converts X into an ndSparse object. S can be reshaped into an 
+N-dimensional sparse array using its RESHAPE method, for arbitrary N.
+<br>&nbsp;
+<br>&nbsp;&nbsp;S=ndSparse(X,[M,N,P,...]) is equivalent to reshape(ndSparse(X),[M,N,P,...]).
+<br>&nbsp;
+<br>The class also has a variety of static methods that can be used to construct instances of the class. For example,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;S=ndSparse.build(Coordinates,Values,[m,n,p,...],nzmax) </p>
+
+<p>lets you generate an N-dimensional sparse array from a table of 
+explicit entries. This is a generalization to N dimensions of 
+S=sparse(i,j,s,m,n,nzmax). </p>
+
+<p>Other such methods include:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ndSparse.accumarray
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ndSparse.sprand
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ndSparse.sprandn
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ndSparse.spalloc </p>
+
+<p>&nbsp;
+<br>EXAMPLES:
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt; A=ndSparse.build( [1 1 1; 2 1 1;2 2 2] , [50,60 70])  %Builds a 2x2x2 sparse array from table</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A(:,:,1) =</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1,1)       50
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2,1)       60
+<br>&nbsp;</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A(:,:,2) =</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2,2)       70</p>
+
+<p>Many of the same manipulations common to ordinary multidimensional 
+MATLAB full arrays can be performed on the sparse 3D array A generated 
+above. It can be permuted, summed, concatentated, and so forth e.g.,</p>
+
+<p>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt; B=sum(  permute([A,A+10], [3,2,1])  ,2)</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B(:,:,1) =</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1,1)      120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2,1)       20
+<br>&nbsp;</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B(:,:,2) =</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1,1)      140
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2,1)      160</p>
+
+<p>Other overloaded methods include BSXFUN, REPMAT, CIRCSHIFT, CONVN, 
+FLIPDIMS, SQUEEZE, SHIFTDIM and many more. Type "methods ndSparse" for a
+ full list and use "help ndSparse.methodname" to get details of usage. </p>
+
+<p>When browsing the list of methods, note that certain common 
+operations have different implementations, optimized for different 
+situations. Specifically, SUM, ANY,ALL, MIN, MAX... have alternative 
+implementations SUMML, ANYML, ALLML,  MINML, MAXML which are optimized 
+for "low-dimensional" ndSparse objects OBJ. Here, low-dimensional means 
+that a normal N-column MATLAB sparse matrix won't consume too much 
+memory on your platform for N=MAX(NUMEL(OBJ)./SIZE(OBJ)). </p>
+
+<p>Another feature of the class is that bi-operand operations are 
+allowed between ndSparse objects and MATLAB objects of any numeric type 
+(single, uint16, etc...). This is not true of ordinary MATLAB sparse 
+matrices, as of R2010b.
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt; C=eye(2,'single')*B(:,:,2)</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C =</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1,1)      140
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2,1)      160   </p>
+
+<p>&nbsp;&nbsp;&gt;&gt; whos A B C</p>
+
+<p>&nbsp;&nbsp;Name      Size             Bytes  Class       Attributes</p>
+
+<p>&nbsp;&nbsp;A         2x2x2              136  ndSparse              
+<br>&nbsp;&nbsp;B         2x1x2              140  ndSparse              
+<br>&nbsp;&nbsp;C         2x1                104  ndSparse       
+<br>&nbsp;
+<br>To convert back to an ordinary n-D full array, use the class' 
+overloaded FULL method. To convert to a normal 2D sparse matrix, use the
+ methods SPARSE or SPARSE2D. For example, SPARSE2D will convert an 
+MxNxPx...xQ ndSparse array to the two dimensional (M*N*P*...)xQ sparse 
+matrix in native MATLAB form. </p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/30096-sub2allind">Sub2allind</a> inspired <i>this file.</i></p>
+      
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.11 (R2010b)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F29832-n-dimensional-sparse-arrays">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multidimensional%22" rel="nofollow">multidimensional</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22ndimensional%22" rel="nofollow">ndimensional</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22oop%22" rel="nofollow">oop</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22reshape%22" rel="nofollow">reshape</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22sparse%22" rel="nofollow">sparse</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22sparse+array%22" rel="nofollow">sparse array</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="29832" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/29832-n-dimensional-sparse-arrays" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F29832-n-dimensional-sparse-arrays">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(76)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">21 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/515258">Tom</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/71556">Caglayan Dicle</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Lauren,
+<br>Do you still have get that error? What version of MATLAB are you using? And what version of ndSparse?</p>
+
+<p>You seem to be the only one with this problem, I'm afraid. It doesn't
+ readily reproduce on my machine and I haven't received similar 
+complaints.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/349365">Lauren</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt-
+<br>Not sure why my previous comment no longer appears, but I had 
+mentioned that I get an error message when attempting to run ndstest -- 
+the error message being something about the inputs to kron being of the 
+wrong type, coming from line 882 of ndtest.</p>
+
+<p>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Lauren: not clear what you meant by  your "comment below". As far as I can tell, you posted no prior comments.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/349365">Lauren</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I realized that (for my comment 
+below) the problem is that one of the inputs being sent to kron is 
+ndSparse, which appears to not be ok.  (The error comes up when checking
+ convn in line 882 of ndstest).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/336206">Wei</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>OK. I will try to find other ways to solve this issue. Thanks Matt.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Wei. At minimum, you would 
+probably need to upgrade to a 64-bit OS with more RAM. Your array is 
+pretty big, though. It might be beyond the scope of what ndSparse can 
+handle :(</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/336206">Wei</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt, when I ran command of A=ndSparse.build([1e6,1e6,1e6]), I got message as following:
+<br> ??? Error using ==&gt; sparse
+<br>Sparse matrix sizes must be non-negative integers less than MAXSIZE as defined
+<br>by COMPUTER.  Use HELP COMPUTER for more details.</p>
+
+<p>Error in ==&gt; ndSparse&gt;ndSparse.build at 2282
+<br>                 data=sparse(M,N);</p>
+
+<p>My computer is 32 bit windowsXP OS. Matlab version is 2010b. How do I solve this issue? Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Racquel, I've fixed the indexing bug you reported (and one or two others). Thanks for letting me know.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/267733">Raquel A</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the quick response, yes,
+ I am aware I should be getting that, I just posted it as an example 
+that somehow, the combination (58,58,...) gave an error but other ones 
+that were close to 58 didn't.</p>
+
+<p>Thank you for looking into it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Raquel,</p>
+
+<p>When you do</p>
+
+<p> X(57,57,1) = 1</p>
+
+<p>you should be getting</p>
+
+<p>X(:,:,1) =</p>
+
+<p>  (57,57)       1</p>
+
+<p>This is what I get, so I hope what you posted was some sort of typo. 
+As for the case of X(58,58,1) = 1, I will have to investigate that. 
+Thanks for reporting it!</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/267733">Raquel A</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt, I have an issue when I run your code (thanks for submitting it though it's great)
+<br>Ok so for example I create a sparse matrix:
+<br> 
+<br>X=ndSparse.build([59,59,10])</p>
+
+<p>somehow, there is an issue if I try to input in X(58,58,1). Every 
+time I do this or any other number in the third dimension, it just fills
+ up the full two first dimensions.</p>
+
+<p>for example:</p>
+
+<p>X(57,57,1) = 1</p>
+
+<p>just gives me 
+<br>X(:,:,1) =</p>
+
+<p>  (58,57)       1</p>
+
+<p>BUT,  if I try to do the same in</p>
+
+<p>X(58,58,1) =1</p>
+
+<p>I get</p>
+
+<p>val(:,:,1) =</p>
+
+<p>   (1,1)        1
+<br>   (2,1)        1
+<br>   (3,1)        1
+<br>   (4,1)        1
+<br>   (5,1)        1
+<br>   (6,1)        1
+<br>   (7,1)        1
+<br>   (8,1)        1
+<br>   (9,1)        1
+<br>  (10,1)        1
+<br>  (11,1)        1
+<br>  (12,1)        1
+<br>  (13,1)        1
+<br>  (14,1)        1
+<br>  (15,1)        1
+<br>  (16,1)        1
+<br>  (17,1)        1
+<br>  (18,1)        1
+<br>  (19,1)        1
+<br>  (20,1)        1
+<br>  (21,1)        1
+<br>  (22,1)        1</p>
+
+<p>etc...</p>
+
+<p>How can i fix this?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Josh,</p>
+
+<p>Please give me a code sample (a short one, ideally) that let's me reproduce this.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212714">Josh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Bug report:  I have all zero 
+ndSparse matrices that return a column vector for their size().  This 
+causes all sorts of problems (cant' cat() them with otherwise 
+same-dimensioned matrices, can't use full() on them...).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yoni,</p>
+
+<p>Make sure that the 1st column of your PCoords data must range between 1 and 5</p>
+
+<p>Similarly, the 2nd and 3rd columns of your PCoords data must range between 1 and 50.</p>
+
+<p>The 4th and 5th column of your PCoords data must range between 1 and 100.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/272780">Yoni Browning</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks so much for writing this! </p>
+
+<p>I do just have one (hopefully) quick question: I would like to use 
+your class to process a 5-dimensional dataset, lets call it 'P', such 
+that size(P) = [5,50,50,100,100]. As per the recommendations for other 
+commenters, I have been storing the coordinates of each non-zero point 
+in P as the rows of one matrix (PCoords) and the values that should 
+appear at each point in a sperate vector (PVals). Only at the end of my 
+computation do I attempt to use these in a ndSparse object, which I have
+ tried building both of these ways way: 
+<br>P = ndSparse.build(PCoords,Pvals). 
+<br>and 
+<br>P = ndSparse.build(PCoords,Pvals,size(P),length(Pvals)). 
+<br>Both of these causes the error:
+<br>Error using sub2ind (line 56)
+<br>Out of range subscript.</p>
+
+<p>Error in ndSparse&gt;ndCoords2IJ (line 3070)
+<br>             II=sub2ind(ndShape(1:end-1),ndCoords{1:end-1});</p>
+
+<p>Error in ndSparse.build (line 2337)
+<br>          [I,J,dims]=ndCoords2IJ(explicitCoords,ndShape);</p>
+
+<p>Yes, I have checked, and PCoords and Pvals are the same length, dimensions, etc. </p>
+
+<p>I am really sorry if I am missing something obvious, but I am having a
+ hard time figuring out where I am going wrong from looking at your 
+code, and I would really appreciate any direction you could give.</p>
+
+<p>Thanks so much!
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Mehdi,</p>
+
+<p>The problem is that your posts here are being received not just by 
+me, but also by anyone who might be watchlisting this FEX file. This is 
+SPAM to them. They expect to be receiving news from here only about 
+ndSparse. I've moved your question to this Newsgroup thread:</p>
+
+<p>http://www.mathworks.com/matlabcentral/newsreader/view_thread/321265</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/259906">Mehdi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,</p>
+
+<p>Thanks a lot for your quick reply and sorry about my lack of 
+knowledge in this area. Since your area of expertise is image processing
+ I thought you are the right person to ask. I need to create a 3D image 
+dataset in which certain voxels (whose x,y,z values are my indices) will
+ have a non-zero value.
+<br>I don't even mind if they are being assigned any value from 1 to 656535.
+<br>Because I can then segment them to two phases to get a 2-phase system.
+<br>Could you advise on what I can do to achieve this and get a 3D binary dataset made this way.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Mehdi,</p>
+
+<p>Since this no longer concerns ndSparse, you should probably post your
+ issue in the Newsgroup. However, matrices and arrays are not functions.
+ They can only be indexed by integers&gt;=1. So, it is unclear what you 
+mean when you say you want 1s assigned to non-integer indices.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/259906">Mehdi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,</p>
+
+<p>So many thanks for your constructive comments. It all worked fine and it indeed had the issues as you mentioned. </p>
+
+<p>However, I am now facing a new issue. In a similar problem, I have to
+ assign 1's to a 3D matrix with the x,y,z values of the coordinates of 
+the points being single-precision floating numbers rather than 
+intergers. Then span the same range of 0&lt;=x&lt;=1000 0&lt;=y&lt;=1000
+ 0&lt;=z&lt;=1800 though.</p>
+
+<p>When I tried the suggestions above it simply gives an error like:</p>
+
+<p>??? Attempted to access b(39.372,36.681,44.517); index must be a positive
+<br>integer or logical.</p>
+
+<p>Error in ==&gt; matrix_3D at 24
+<br> b(a(i,c-2),a(i,c-1),a(i,c)) = 1;</p>
+
+<p>Could you please advise any solution to this problem? I much appreciate your time.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Mehdi, </p>
+
+<p>I can tell you how to do this with ndSparse, but it sounds like your problem has simpler solutions.</p>
+
+<p>First, you cannot use x,y,z coordinates that have value 0 since 
+MATLAB indexing is 1-based. Doing so should have given you an error in 
+your code. I'll assume henceforth that your mesh_data are really 1-based
+ coordinates.</p>
+
+<p>Second, since you say you have a powerful enough machine to hold a 
+full double array of dimensions 1000x1000x1800 in MATLAB memory, it's 
+not clear why simply changing the values from 0 to 1 pushes your memory 
+limits over the edge. Changing the values of a nonsparse array doesn't 
+even consume any extra memory. What's probably happenings is that your 
+mesh_data are not really bounded to 1000x1000x1800 as you think, in 
+which case MATLAB will try to grow the matrix to accomodate the new 
+data. Growing the matrix would require extra memory and is also very 
+speed inefficient. The solution, of course, would be to remove 
+out-of-bounds coordinates from mesh_data or else pre-allocate a larger b
+ to hold  the coordinates you have.</p>
+
+<p>Third, since your data consists only of 0s and 1s, you should 
+probably store b as uint8, which would reduce the memory your code above
+ is consuming by a factor of 8. You might want to see what happens if 
+you make the following simple change to your code</p>
+
+<p>b=zeros(1000,1000,1800,'uint8'); </p>
+
+<p>In any case, to create the array you are talking about using ndSparse, you could do the following</p>
+
+<p>b=full(ndSparse.build(mesh_data,1,[1000,1000,1800]));</p>
+
+<p>If you have out-of-bounds mesh_data however this will not work</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/259906">Mehdi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt, I am trying to create a 3D
+ array of size 1000x1000x1800 with all the elements being zero and then 
+assign 1 instead of 0 to some specific elements in the array and finally
+ store it as a binary file.</p>
+
+<p>Although MATLAB creates and saves the 3D array quickly, while trying to change zero's with one's , it runs out of memory.</p>
+
+<p>((The 4,470,000x3 array named "mesh_data" is the coordinates (x,y,z) 
+of the points that I need them to be assigned the value "1" in the 3D 
+array.))</p>
+
+<p>I should mention that all the x,y,z values of the coordinate matrix 
+are non-negative integer numbers with: 0&lt;=x&lt;=1000 0&lt;=y&lt;=1000
+ 0&lt;=z&lt;=1800</p>
+
+<p>My ultimate aim is to export the 3D matrix (after all th 
+esubstitutions), in a binary format (other than MATLAB's default binary 
+format) so that I can use it with other programs.
+<br> Could you guide how I can use your program for this purpose?
+<br>Any help is much appreciated.</p>
+
+<p> %================================
+<br>load mesh_data;
+<br>b=zeros(1000,1000,1800);
+<br>save('3d_matrix', 'b','-v7.3');
+<br>a=mesh_data;
+<br>[r c]=size(a);
+<br>for i = 1:r,
+<br> b(a(i,c-2),a(i,c-1),a(i,c)) = 1;
+<br>end
+<br>save('mesh_matrix', 'b','-v7.3');
+<br>%================================ </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Josh - you mean you were doing an 
+operation involving an ndSparse array and a full array of uint8s? And 
+you were hoping to get a full array of uint8s as output? If so, I see 
+what you mean. I'm considering redesigning the class so that it stores 
+the non-zero values in tabular form, instead of as a MATLAB 2D sparse 
+matrix. If I do, it will remove the need for mkCompat and you would get 
+uint8 output or anything else you wanted. Until then, though, defaulting
+ to doubles is the only way. A warning might not be a bad idea, though.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/212714">Josh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>In mkCompat, perhaps it would be 
+worth doing some extra checks before defaulting to doubles, or at least a
+ warning? Memory usage can go crazy at that spot.  For various reasons, I
+ had a huge array of uint8s.  But it was only 1s and 0s.  Converting 
+that to a double made my memory usage spike to 8+GB in just a second or 
+two.  Let the user know that it was because they gave suboptimal inputs,
+ not because your code is terribly inefficient.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/249613">Wei</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Matt:
+<br>Thanks for the quick fix. Looking forward to your new solution.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Wei: I've fixed the problem, but now I think I have a better solution. I'll post it over the next few days.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/249613">Wei</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>found bug:
+<br>cat(2, ndSparse(rand(10,1,3)), ndSparse(rand(10,2,3)));</p>
+
+<p>should be sth to do with the untrail in the permute ...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/249575">Akram Bin Sediq</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you so much. This class should be added to MATLAB soon!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/248380">Achim</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/190103">Qiao Liyong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for your program.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Siavash: 
+<br>Just as an FYI, the update a just submitted should make the kind of 
+loops over slices G(:,:,i) go significantly faster. Here's a simple test
+ I did,</p>
+
+<p>&gt;&gt; G=ndSparse.build([882,882,82]); Z=sprand(882,882,.001);</p>
+
+<p>&gt;&gt; tic; for ii=1:82, G(:,:,ii)=Z; end; toc,
+<br>Elapsed time is 0.149033 seconds.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/135003">J.D.</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This works great. I love that so many functions are overloaded.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Siavash,</p>
+
+<p>If I've understood you, it sounds a lot like the issue in the comment
+ posted above by Mircea (Aug. 27, 2011). If the application seems to 
+hang, it probably hasn't stopped or crashed, but is probably taking a 
+long time because of a sparse indexing bug in MATLAB (see my response 
+Aug. 28, 2011).</p>
+
+<p>The one thing that sounds strange in what you describe is that you 
+say your loop runs fine up until the final iteration, kk_y. Is that 
+correct? And if so, how do you know the earlier iterations run fine? 
+I'll probably need to see your code to have the best picture of what's 
+going on. You can send it through my author email link, if you like.</p>
+
+<p>Beyond that, though, I want to repeat to you, what I told Mircea. 
+Assigning into a sparse matrix (whether it be a normal MATLAB sparse 
+matrix or an ndSparse object) is a bad practice and best kept to a 
+minimum. Instead of loading data into the array slice-by-slice, you 
+should generate a complete table of values in advance and then use it to
+ build the whole 882x882x82 array in one single call to ndSparse.build. 
+This is the approach I showed you in my comment posted yesterday.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/228966">Siavash</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for your prompt reply.
+<br>Actually i have a loop and in that loop I construct a 882by882 
+sparse matrix kk_y(82) times. and I want to store them in a 882*882*82 
+sparse matrix. but when it reaches to  G(:,:,kk_y) = J_g_hat_kk; 
+<br>it crashes! (no error, nothing, but only stop everything!).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Siavash - your comment is a bit 
+hard to interpret. You haven't said what kk_y is. Also, you say you're 
+trying to make a "882 x 882 three dimensional sparse matrix", which 
+seems self-contradictory since 882x882 would suggest 2D, not 3D.</p>
+
+<p>However, if I had to guess, I would say that you're looking for this:</p>
+
+<p>[ii,jj,ss]=find(J_g_hat_kk);
+<br>kk=repmat(kk_y,size(jj));</p>
+
+<p>G = ndSparse.build([ii,jj,kk],ss,[n_st n_st,kk_y]); </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/228966">Siavash</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>  Hi,
+<br>I tried to use your code to make a 882 by 882 three dimensional 
+sparse matrix but it did not work and the computer was crashed. Simply 
+this is what I do: 
+<br> G = ndSparse.build([n_st n_st]); 
+<br> G(:,:,kk_y) = J_g_hat_kk;
+<br>J_g_hat_kk is a 882by882 sparse matrix. and n_st is 882. Could you please help me in this respect,
+<br>Thanks a lot 
+<br>Siavash
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/228966">Siavash</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,</p>
+
+<p>I tried to use your could to make a 882 by 882 three dimensional 
+sparse matrix but it did not work and the computer was crashed. Simply 
+this is what I do:
+<br> G = ndSparse.build([n_st n_st]);
+<br> G(:,:,kk_y) = J_g_hat_kk;</p>
+
+<p>J_g_hat_kk is a 882by882 sparse matrix. and n_st is 882. Could you please help me in this respect,</p>
+
+<p>Thanks a lot
+<br>Siavash</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Niklaus - sorry I didn't notice 
+until now that this is happening for you in ndstest. Please post the 
+entire error message so that I can know where in ndstest it occurs.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Niklaus - the error you describe
+ is unrelated to how new your MATLAB version is. The code is complaining
+ that the reshape operation you're attempting is invalid because it 
+doesn't preserve the number of elements in the array. Like trying to 
+reshape a 2x5 array into a 3x3 array, for example.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/224844">Niklaus</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey Matt!
+<br>Sounds like a really neat code! Unfortunately I have an old version 
+of MATLAB (R2009a). When I run ndstest, i get the following error 
+message:</p>
+
+<p>??? Error using ==&gt; ndSparse&gt;ndSparse.ndSparse at 126
+<br>The number of DATA elements is not consistent with the given ndShape.</p>
+
+<p>Do you know why this happens? Is there any way for me to fix this? Thank you very much!</p>
+
+<p>Nik</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jens: 
+<br>Incidentally, if you are now happy with the reimplementation I've 
+made of the DISPLAY method, I would appreciate it if you would change 
+your rating. One star out of five is, in any case, a harsh rating just 
+because you don't like 1 out of the 92 methods offered by the class.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jens: 
+<br>You talked me into it. I've now updated the distribution so that 
+DISPLAY will print only those A(:,:,i,j,k,...) containing non-zero data.
+ </p>
+
+<p>For displaying purposes, at least, this should solve your problem. 
+Mimicing the data you described, I'm now able to  generate the following
+ 37x37x37x37x37x37x37 data set on a 64-bit platform and get a reasonably
+ instantaneous display:</p>
+
+<p> A=ndSparse.sprand(37*ones(1,7),400/37^7)</p>
+
+<p>However, I am vaguely concerned that you are pushing the limits of 
+the class by having such a large array volume, even on a 64-bit 
+platform. The class wasn't designed to handle arbitrarily large 
+numel(A), just as ordinary MATLAB 2D sparse matrices were not.</p>
+
+<p>I now clarify this a bit more in the description section of the FEX page.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jens: The reason I don't store my 
+own tables is because then I couldn't piggy back on the fast sparse 
+arithmetic routines of MATLAB's underlying 2D sparse class. I would have
+ to implement my own.</p>
+
+<p>In any case, the problem with displaying that you mention is probably
+ not strictly related to data storage. It is related to the fact that 
+the ndSparse DISPLAY method mimics the display method for full arrays 
+and tries to print all "sheets" of the form A(:,:,i,j,k,...) to the 
+screen. Since you have 37^5 sheets, naturally this is going to take some
+ time to disaply to the screen.</p>
+
+<p>Upon reflection, I admit that a sparser display would be more 
+appropriate for an ndSparse class. For example, I could modify the 
+DISPLAY method so that it only displays non-zero sheets. </p>
+
+<p>On the other hand, as a designer, I can't really anticipate how every
+ end-user would like their data displayed. Would a display of 2D sheets 
+<br>A(:,:,i,j,k,...) offer meaningful information to someone working in 
+7-dimensional space, like yourself, even if I trimmed it down to the 
+non-zero ones? And would every end-user prefer this?</p>
+
+<p>Also, if you only want to display the non-zero data, why not use 
+FIND? Or create your own wrapper for FIND which displays the data the 
+way you want?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/178136">Jens Munk Hansen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey Matt</p>
+
+<p>Nice idea, but bad implementation. I am working with a parameter 
+study and data is extremely sparse, dimensions are 37x37x37x37x37x37x37,
+ but I have less than 400 non-zero elements. The display function takes 
+more than 10 hours to execute.</p>
+
+<p>Why not simple store tubles and use an intelligent search?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/172484">Alexander</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Illustration of my issue with sensitivity:</p>
+
+<p>profile on
+<br>N=1e5; % data points
+<br>data=rand(N,1); % random data
+<br>dims=[100,100,100,200000];
+<br>ind=NaN(N,4); % random indices
+<br>ind(:,1)=randi(dims(1),N,1);
+<br>ind(:,2)=randi(dims(2),N,1);
+<br>ind(:,3)=randi(dims(3),N,1);
+<br>ind(:,4)=randi(dims(4),N,1);</p>
+
+<p>% (100x100x100) x 200000 
+<br>A1=ndSparse.build( ind , data, dims);
+<br>% (100x200000x100) x 100
+<br>A2=ndSparse.build( circshift(ind,[0 2]) , data, circshift(dims,[0 2]));
+<br>size(A1)
+<br>size(A2)</p>
+
+<p>tic;
+<br>ans1=A1(1,:,:,:); % takes about 0.09 secs
+<br>toc;
+<br>ans2=A2(:,:,1,:); % takes about 115 secs !!!!
+<br>toc;</p>
+
+<p>% results are equal w.r.t. dimension shift
+<br>isequal(ans1,shiftdim(ans2,2)) </p>
+
+<p>profile viewer
+<br>% 99% of time is spent on a line data=builtin('subsref',obj.data,E);
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This sounds different than Mircea's
+ issue. If you can post a short example illustrating the problem, then I
+ can possibly analyze it further</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/172484">Alexander</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ok, hope they'll fix this issue. For now I'll find a workaround.</p>
+
+<p>Btw, for me the problem was not in assigning. I only create this 
+matrix once (to store a very huge dataset), and then slice different 
+data from it when I need. Sensitivity issue cames up on a line 478:</p>
+
+<p>data=builtin('subsref',obj.data,E);</p>
+
+<p>Anyway, thanks again, one of the best submissions I've seen on the exchange)</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Alexander, thanks for your 
+feedback. I admit the shape sensitivity thing is a drag. However, the 
+feature you describe would be very difficult to implement and require 
+very pervasive changes throughout the code. I would hope that TMW will 
+fix the shape sensitivity soon (it's already been reported) so that the 
+issue will become moot.</p>
+
+<p>I want to reiterate to you, though, what I said to Mircea. Assigning 
+into a sparse matrix (or ndSparse object) is always best kept to a 
+minimum, even without the shape sensitivity problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/172484">Alexander</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, this class is just wonderful. However, if you consider making another release, there's one more feature it lacks.</p>
+
+<p>I think you should give user ability to decide how to group matrices 
+to store as 2D sparse. E.g. I need a 4-D matrix MxNxPxQ, but it turns 
+out that due to shape sensitivity discussed above, the best best way for
+ me to store it is (MxN)x(PxQ), otherwise performance decrease 
+dramatically. Unfortunately, this currently can't be done in your class.
+<br>Thanks for such a great submission and looking forward to your reply</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/175247">Mircea</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you again, Matt J. It is 
+clear I was going the wrong way working with sparse matrices (this is 
+the first time I need it to use them). Thank you for your help.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Mircea, the problem you're seeing 
+is rooted in normal 2D MATLAB sparse matrices. It is related to the 
+shape sensitivity issue being discussed in this thread:</p>
+
+<p>http://www.mathworks.com/matlabcentral/newsreader/view_thread/311992</p>
+
+<p>There's not much I can do about it for now, but regardless, building 
+sparse arrays the way you are doing is a bad idea, even for normal 
+MATLAB sparse matrices. The efficient way is to create a complete table 
+of non-zero entries first, and then construct the matrix using SPARSE or
+ using ndSparse.build.</p>
+
+<p>It is also a bad idea to use matrix assignment to alter the pattern 
+of non-zeros in a sparse matrix, as illustrated by Tim Davis here:</p>
+
+<p>http://www.mathworks.com/matlabcentral/newsreader/view_thread/241852#620175</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/175247">Mircea</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you, Matt J, this class is very usefull.</p>
+
+<p>I have the following question: why does the following code</p>
+
+<p>n = 500;
+<br>A = ndSparse.build([2*n 2*n]);
+<br>A(1:2:2*n,1:2:2*n) = rand(n);</p>
+
+<p>run in 0.04 seconds, while the following similar code</p>
+
+<p>n = 500;
+<br>A = ndSparse.build([2*n 2*n 2]);
+<br>A(1:2:2*n,1:2:2*n,1) = rand(n);</p>
+
+<p>runs in 43 seconds (thats 1000 times slower!).</p>
+
+<p>Is there a way to speed up the process of assigning values to truely N-dimensional sparse arrays (N&gt;2)? Thank you.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Ohad, I think that to fix it, you just need need to change the following line</p>
+
+<p>data=builtin('subsasgn',data,E,rhs);</p>
+
+<p>to</p>
+
+<p>data=builtin('subsasgn',data,E,rhs(:));</p>
+
+<p>I'll do another release once I've had time to examine this a little further.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/155680">Ohad</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I do not seem to be able to assign matrices into arrays. e.g.:</p>
+
+<p>A=ndSparse.spalloc([3,3,2],9)
+<br>A(:,:,1) = sparse(ones(3))</p>
+
+<p>any ideas?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100343">pink</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>how do I enter "ndSparse" into the program matlab
+<br>I use matlab2010a</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Mike,  </p>
+
+<p>My latest release includes the change of representation that we were 
+talking about on Feb 10, 2011. That is, the data is now stored 
+internally as a sparse matrix of dimensions (L_1*L_2*L_3...)xL_N. The 
+memory savings should be quite noticeable. </p>
+
+<p>Since the recoding was substantial, please backup your old version 
+and give me feedback on any bugs that I may have introduced. Hopefully, 
+ndstest was a pretty good filter, but you never know...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126149">Maigo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Matt :)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Maigo, thanks for your feedback. 
+Your problem is indeed version-related. See  my similar comment above to
+ Farhad on  31 Jan 2011. </p>
+
+<p>However, in the .zip file you should have found a version compatible 
+with R2009b (or later). It contains isrow and iscolumn implementations 
+and should have been fine for you. See also my comment on 04 Feb 2011.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126149">Maigo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much. This class helped me a lot!</p>
+
+<p>But I've found a bug with the "subsref" method, which calls two functions "isrow" and "iscolumn" that are not defined.</p>
+
+<p>I am using Matlab 7.10.0 (R2010a), so I don't know if this is a 
+version-specific problem. Maybe these two function are defined in 7.11.</p>
+
+<p>Anyway, I think they're pretty easy to implement, and here's the code. Just add them to end of the class file:</p>
+
+<p>function bool = isrow(A)
+<br>% isrow - returns true if A is a row vector
+<br>    dims = size(A);
+<br>    bool = (length(dims) == 2) &amp;&amp; (dims(1) == 1);
+<br>end</p>
+
+<p>function bool = iscolumn(A)
+<br>%iscolumn - returns true if A is a column vector
+<br>    dims = size(A);
+<br>    bool = (length(dims) == 2) &amp;&amp; (dims(2) == 1);
+<br>end
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29906">Bruno Luong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Check out this discussion about memory used by sparse matrix:
+<br>http://www.mathkb.com/Uwe/Forum.aspx/matlab/147951/Sparse-Matrix-Size-gets-reduces-when-we-take-transpose-of-this</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Mike, the explanation that I gave you was imprecise. See Tim Davis' explanation here, </p>
+
+<p>http://www.mathworks.com/matlabcentral/newsreader/view_thread/235374#598253</p>
+
+<p>He also gives links to expanded discussions on the subject.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100826">Mike</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Matt: no problem. out of curiosity,
+ how were you able to find out that matlab stores the # of elmnts for 
+each column? on wiki it claims that matlab sparse uses COO format, which
+ includes only the coordinates of each non-zero entry (so this is 
+clearly a lie!). spinoffs of the Yale format seem very popular and do 
+depend on the length of one of the dimensions and so seem a likely 
+candidate, but they store something different from number of 
+entries/column or row. when i go to sparse.mat i see only the help file,
+ and the help file says nothing about what's going on behind the scenes,
+ so just curious how you got to the bottom of it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Mike: "But given that the size of 
+matlab sparse matrices is proportional to the length of the 2nd 
+dimension, I would vote strongly in favor of going to the 
+(L_1*L_2*L_3...)xL_N sparse matrix representation..."</p>
+
+<p>Yes, I've been thinking in that direction myself for a few weeks now.
+ Unfortunately, it will require pervasive changes to the code, and will 
+probably take me a few weeks at least :(</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100826">Mike</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Matt, thanks, that clarifies 
+things. i still have a hard time thinking through how number of elements
+ in each column helps on things like matrix multiplication, but perhaps 
+i'm not being imaginative enough. </p>
+
+<p>But given that the size of matlab sparse matrices is proportional to 
+the length of the 2nd dimension, I would vote strongly in favor of going
+ to the (L_1*L_2*L_3...)xL_N sparse matrix representation you mention 
+unless there's a substantial slowdown in basic linear algebra. In the 
+case of very large, very sparse, and very high dimensional matrices (of 
+interest to me), the difference in storage space will be enormous.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>"but you're saying the amount of 
+memory of sparse matrices in both cases in linearly proportional to the 
+total size of the matrix being represented??"</p>
+
+<p>The main thing to understand is that every normal MxN sparse matrix 
+internally stores a table of the number of non-zero elements in each 
+column. In  other words, it will always contain at least the same amount
+ of data as in rand(1,N).</p>
+
+<p>That's why the following two sparse vectors, even though they both contain all zeros, have very different memory consumptions.</p>
+
+<p>&gt;&gt; A=sparse(zeros(1,1e6)); At=A.';
+<br>&gt;&gt; whos A At
+<br>  Name            Size                   Bytes  Class     Attributes</p>
+
+<p>  A               1x1000000            4000016  double    sparse    
+<br>  At        1000000x1                       20  double    sparse    </p>
+
+<p>Pathological? Well, keep in mind that MATLAB sparse matrices were 
+intended mainly for doing fast linear algebra. Apparently, these 
+operations are faster if you know a priori the number of nonzeros in 
+each column, instead of having to recompute them all the time 
+on-the-fly.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100826">Mike</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I see.. but then I'm confused why 
+the memory consumed by normal sparse matrices doesn't depend entirely on
+ the number of non-zero elements, as a sparse matrix is completely 
+characterized by the coordinates and values of each non-zero element 
+(plus,e.g., a pair of integers specifying the overall size in the 2D 
+case). but you're saying the amount of memory of sparse matrices in both
+ cases in linearly proportional to the total size of the matrix being 
+represented?? if so, i think this is the far more pathological problem 
+with matlab sparse matrices than them being limited to 2 dimensions!
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Mike, just as a follow-up point, 
+one thing that would reduce memory consumption is if I store the data 
+internally as an (M*N)xP sparse matrix as opposed to a Mx(N*P) matrix. </p>
+
+<p>Since MATLAB sparse matrices with fewer columns consume less memory, 
+this would indeed help with memory consumption. I've been considering 
+this for future releases, but I need to see how pervasive the effect 
+would be. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Mike, the amount of memory consumed
+ by an MxNxP ndSparse array A, will essenitally be the same as the 
+ordinary 2D MATLAB sparse matrix of dimensions 
+<br>Mx(N*P) generated by doing
+<br>sparse(A).</p>
+
+<p>You can see this better in a larger version of your example,</p>
+
+<p> A=ndSparse([]); 
+<br> A(20,40,60)=4; 
+<br> As=sparse(A); </p>
+
+<p>&gt;&gt;whos A As
+<br>  Name       Size               Bytes  Class       Attributes</p>
+
+<p>  A         20x40x60             9696  ndSparse              
+<br>  As        20x2400              9616  double      sparse    </p>
+
+<p>In fact, the way it works is that the object A is storing its data 
+internally as the 2D matrix As. There is a difference of about 80 bytes 
+due to other minor ndSparse class data.</p>
+
+<p>So the answer to your question is, there is no memory inefficiency in
+ ndSparse that isn't in normal MATLAB matrices. Since mine is built on 
+top of theirs, there's not much I can do about it.</p>
+
+<p>One thing you should be aware of, though, is that the memory 
+consumption of sparse matrices, both mine and MATLAB's, is 
+shape-sensitive. Permuting the dimensions can significantly reduce 
+memory consumption, e.g.,</p>
+
+<p>&gt;&gt; Ap=permute(A,[3 2 1]); whos Ap</p>
+
+<p>  Name       Size               Bytes  Class       Attributes</p>
+
+<p>  Ap        60x40x20             3296  ndSparse     </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100826">Mike</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>if i do "a = ndSparse([])" and then "a(1,2,3)=4", i get back:
+<br>"a(:,:,1) =
+<br>   All zero sparse: 1-by-2
+<br>a(:,:,2) =
+<br>   All zero sparse: 1-by-2
+<br>a(:,:,3) =
+<br>   (1,2)        5"
+<br>each of these "all zero sparse" matrices take up memory and don't 
+seem worth keeping track of. is it possible to eliminate this behavior?
+<br>thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Farhad, I've now included a version of ndSparse that is compatible with R2009b. See the UpdateNotes.txt file for details.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Farhad - You don't have a recent 
+enough version of MATLAB, and so are missing some of its newer 
+functions. You should upgrade to R2010b. Alternatively, you could write 
+your own iscolumn.m</p>
+
+<p>function bool=iscolumn(v)</p>
+
+<p>bool=isequal(size(v), size(v:));</p>
+
+<p>I can't be sure that that will be the only missing function, but I'm pretty optimistic...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102934">Farhad M</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, thanks! it must be very much useful for my purpose. However, I couldn't run ndstest since it gives the following error:</p>
+
+<p>??? Undefined function or method 'iscolumn' for input arguments of type 'ndSparse'.</p>
+
+<p>Could you help me with that?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@vikranth, I'm not sure I 
+understand your question. What details are you looking for beyond the 
+description above, the GettingStarted file in the .zip, or in the help 
+doc?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122001">vikranth akkidas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>can u give some details about the topic </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121967">Michael Völker</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">04 Jan 2011</td>
+                  <td><p>*Some  improvements to CAT and SUM, including minor bug fixes.
+<br>*Added methods MIN, MAX, ANY, ALL for the class.
+<br>*Improved error checking.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">30 Jan 2011</td>
+                  <td><p>See UpdateNotes in the .zip for full details. Highlights:</p>
+
+<p>1. Lots of new methods!! For example BSXFUN, REPMAT, CIRCSHIFT,CONVN. </p>
+
+<p>2. Improved the efficiency of PERMUTE</p>
+
+<p>3. Some small backward-compatibility issues.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">04 Feb 2011</td>
+                  <td><p>See UpdateNotes in the .zip for full details. Highlights:</p>
+
+<p>1. Lots of new methods!! BSXFUN, REPMAT, CIRCSHIFT,CONVN,... 
+<br>2. Improved the efficiency of PERMUTE
+<br>3. Some small backward-compatibility issues.
+<br>4. Added an R2009b compatible version.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Feb 2011</td>
+                  <td><p>Fixed a bug in the constructor, which could cause ndSparse object to have incorrect dimensions.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">27 Feb 2011</td>
+                  <td><p>Pervasive changes, some new methods, and some bug fixes. See UpdateNotes in .zip for full details.</p>
+
+<p>Among other things, ndSparse objects should typically consume a lot less memory now.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">28 Mar 2011</td>
+                  <td><p>Fixed a bug in SUBSASGN operations that expand the size of the matrix, 
+<br>e.g., A(end+1,end+1)=5;
+<br>Thanks to Zvi Devir for reporting.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Jul 2011</td>
+                  <td><p>*Some bug fixes, including Ohad's issue of assigning a matrix into an array.</p>
+
+<p>*Improved memory efficiency of various operations, but with trade-offs. See UpdateNotes
+</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Jul 2011</td>
+                  <td><p>*Forgot to add installation instructions in my submission earlier this week
+<br>*Also, replaced ISDOUBLE in ndsparse.accumarray with something more universal.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 Nov 2011</td>
+                  <td><p>Improved the DISPLAY method, so that now only A(:,:,i,j,k,...) with non-zero data will be displayed.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 Jan 2012</td>
+                  <td><p>Fixed the output of ndSparse.build and CONVN, which sometimes had very large nzmax.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 Mar 2012</td>
+                  <td><p>Speed up indexing operations of the form A(:,:,...,:,i)</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 May 2012</td>
+                  <td><p>Fixed bug involving ndSparse arrays with singleton dimensions. It affected MIN, MAX, SUBSASGN, and CAT.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">22 May 2012</td>
+                  <td><p>Improvements to MIN/MAX when dealing with singleton dimensions.</p>
+
+<p>Improved memory efficiency in CAT and null assignment. </p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Nov 2012</td>
+                  <td><p>Indexing bug fixes.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">13 Mar 2013</td>
+                  <td><p>Indexing bug fix. Affected scalar, linear indexing (see update notes).</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416015162464&amp;cv=7&amp;fst=1416015162464&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/29832-n-dimensional-sparse-arrays&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D121%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

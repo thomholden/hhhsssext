@@ -1,0 +1,1141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>octree - partitioning 3D points into spatial subvolumes -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/40732-octree-partitioning-3d-points-into-spatial-subvolumes" rel="canonical">
+<meta content="octree - partitioning 3D points into spatial subvolumes - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/40732-octree-partitioning-3d-points-into-spatial-subvolumes" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/57802/original.jpg" property="og:image"><meta content="OcTree recursively splits a large set of points into smaller subvolumes. A QuadTree but in 3D." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F40732-octree-partitioning-3d-points-into-spatial-subvolumes" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F40732-octree-partitioning-3d-points-into-spatial-subvolumes" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/62513" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=40732" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/40732-octree-partitioning-3d-points-into-spatial-subvolumes" class="manifest_title">octree - partitioning 3D points into spatial subvolumes</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/40732-octree-partitioning-3d-points-into-spatial-subvolumes/content/OcTree.m" class="class" title="Class">OcTree</a><span class="description">OcTree point decomposition in 3D
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/40732-octree-partitioning-3d-points-into-spatial-subvolumes/content/OcTree.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:97.5%;">
+                <p>4.875</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.9</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">8</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">66 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 16.3 KB</span>
+          <span id="fileid">File ID: #40732</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/22467/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">octree - partitioning 3D points into spatial subvolumes</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      11 Mar 2013
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-09-05">05 Sep 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">OcTree recursively splits a large set of points into smaller subvolumes. A QuadTree but in 3D.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F40732-octree-partitioning-3d-points-into-spatial-subvolumes&amp;watching=40732" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>OcTree point decomposition in 3D
+<br>&nbsp;&nbsp;&nbsp;OcTree is used to create a tree data structure of bins containing 3D
+<br>&nbsp;&nbsp;&nbsp;points. Each bin may be recursively decomposed into 8 child bins.
+<br><a href="http://en.wikipedia.org/wiki/Octree">http://en.wikipedia.org/wiki/Octree</a>
+<br>&nbsp;&nbsp;&nbsp;OT = OcTree(PTS) creates an OcTree from an N-by-3 matrix of point
+<br>&nbsp;&nbsp;&nbsp;coordinates.</p>
+
+<p>&nbsp;&nbsp;&nbsp;OT = OcTree(...,'PropertyName',VALUE,...) takes any of the following
+<br>&nbsp;&nbsp;&nbsp;property values:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;binCapacity - Maximum number of points a bin may contain. If more
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;points
+ exist, the bin will be recursively subdivided.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defaults
+ to ceil(numPts/10).
+<br>&nbsp;&nbsp;&nbsp;&nbsp;maxDepth    - Maximum number of times a bin may be subdivided.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defaults to INF.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;maxSize     - Maximum size of a bin edge. If any dimension of a bin 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exceeds
+ maxSize, it will be recursively subdivided.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defaults to INF.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;minSize     - Minimum size of a bin edge. Subdivision will stop after 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any
+ dimension of a bin gets smaller than minSize.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defaults
+ to 1000*eps.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;style       - Either 'equal' (default) or 'weighted'. 'equal' 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subdivision
+ splits bins at their central coordinate
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ie,
+ one bin subdivides into 8 equally sized bins).
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'weighted'
+ subdivision divides bins based on the mean
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of
+ all points they contain. Weighted subdivision is
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slightly
+ slower than equal subdivision for a large
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number
+ of points, but it can produce a more efficient
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decomposition
+ with fewer subdivisions.</p>
+
+<p>&nbsp;&nbsp;&nbsp;Example 1: Decompose 200 random points into bins of 20 points or less,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then
+ display each bin with its points in a separate colour.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pts = (rand(200,3)-0.5).^2;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OT = OcTree(pts,'binCapacity',20);        
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boxH = OT.plot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cols = lines(OT.BinCount);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doplot3 = @(p,varargin)plot3(p(:,1),p(:,2),p(:,3),varargin{:});
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i = 1:OT.BinCount
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set(boxH(i),'Color',cols(i,:),'LineWidth', 1+OT.BinDepths(i))
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doplot3(pts(OT.PointBins==i,:),'.','Color',cols(i,:))
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis image, view(3)</p>
+
+<p>&nbsp;&nbsp;&nbsp;Example 2: Decompose 200 random points into bins of 10 points or less,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shrunk
+ to minimallly encompass their points, then display.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pts = rand(200,3);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OT = OcTree(pts,'binCapacity',10,'style','weighted');
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OT.shrink
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boxH = OT.plot;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cols = lines(OT.BinCount);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doplot3 = @(p,varargin)plot3(p(:,1),p(:,2),p(:,3),varargin{:});
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i = 1:OT.BinCount
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set(boxH(i),'Color',cols(i,:),'LineWidth', 1+OT.BinDepths(i))
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doplot3(pts(OT.PointBins==i,:),'.','Color',cols(i,:))
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axis image, view(3)</p>
+
+<p>OcTree methods:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;shrink            - Shrink each bin to tightly encompass its children
+<br>&nbsp;&nbsp;&nbsp;&nbsp;query             - Ask which bins a new set of points belong to.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;plot, plot3       - Plots bin bounding boxes to the current axes.</p>
+
+<p>OcTree properties:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Points            - The coordinate of points in the decomposition.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;PointBins         - Indices of the bin that each point belongs to.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;BinCount          - Total number of bins created.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;BinBoundaries     - BinCount-by-6 [MIN MAX] coordinates of bin edges.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;BinDepths         - The # of subdivisions to reach each bin.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;BinParents        - Indices of the bin that each bin belongs to.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Properties        - Name/Val pairs used for creation (see help above)</p>
+
+<p>&nbsp;&nbsp;Please post comments to this FEX page for this entry if 
+you find any bugs or have any feature requests. There's plenty of room 
+for improved efficiency and enhancement.
+</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/43809-3-d-hrtf-interpolation">3 D Hrtf Interpolation</a>.</p>
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 8.1 (R2013a)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F40732-octree-partitioning-3d-points-into-spatial-subvolumes">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%223d%22" rel="nofollow">3d</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22octree%22" rel="nofollow">octree</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22quadtree%22" rel="nofollow">quadtree</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22search%22" rel="nofollow">search</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22space%22" rel="nofollow">space</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22spatial%22" rel="nofollow">spatial</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22stl%22" rel="nofollow">stl</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22subdivision%22" rel="nofollow">subdivision</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22tree%22" rel="nofollow">tree</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22trees%22" rel="nofollow">trees</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22volume%22" rel="nofollow">volume</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="40732" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/40732-octree-partitioning-3d-points-into-spatial-subvolumes" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F40732-octree-partitioning-3d-points-into-spatial-subvolumes">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(22)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/518804">Peter Morovic</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice work, thanks for sharing!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jonathan,</p>
+
+<p>I haven't implemented specifically a nearest neighbour routine. You 
+could use OcTree to find which bin your query location belongs to, and 
+then find the nearest neighbour within that bin. This will be faster 
+than querying all points in a large point cloud, however this alone 
+won't guarantee correctness (since a point in an adjacent bin may be 
+closer) unless the distance to the found nearest neighbour is less than 
+the distance from your query point to any edges of its bin.</p>
+
+<p>Did that help you out? If your point cloud isn't massive (or even if 
+it is), John D'Errico's ipdm is pretty efficient, and there are some 
+nearest neighbour kdtree implementations that may be helpful too.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/511513">Jonathan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello Sven,
+<br>I would like to use your Octree code in order to find the N closest 
+point of an arbitrary position in my domain. I was using the quedtree 
+code on the Matlab File Exchange but now that I am going to 3D, I would 
+like to use your code for this for a fast localisation of neighbour 
+points of a specific coordinates. Is it something already possible with 
+your code? I found the OT.query function but this is not exactly what I 
+want to do. Any idea of I can make it from your code? Thank you very 
+much anyway for your great code. Best regards,Jonathan</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/386030">Zhouxin Xi</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Christophe, for your second question, you can force the decomposition to go to a specific level with the optional parameters:
+<br>OT = OcTree(pts,'binCapacity',inf,'maxDepth',3,'maxSize',0);</p>
+
+<p>The OT will still contain the higher levels above that, but you can easily get only the desired level bins with a mask such as:
+<br>OT.BinDepths==2</p>
+
+<p>For the neighbours that's an interesting question. It will be easy to
+ find the 3 "siblings" of a given bin (they will be the same level and 
+have the same parent bin No. as that bin). It might need a bit more work
+ to find all neighbours... what exactly would you define as a neighbour?
+ Can only "leaf-node" bins be neighbours or do you include any level's 
+bin that shares a face with your target a neighbour?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/507723">Christophe Langrenne</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>An other question : Is it possible to have only one level tree (for exemple, only bins of level 3) ?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/507723">Christophe Langrenne</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sven,
+<br>I have to find the neighbors of a given box (for a Fast Multipole Method application). Do you have an easy way to do this ?</p>
+
+<p>Thanks and "bravo" for your great job.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Jing: Yep, thanks for finding that bug. Fixed now.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Wu Jun: It's strange but QuadTree 
+decomposition in images is a different beast to QuadTree decomposition 
+of 2d points, but they both have the same name. I'm afraid it's the same
+ situation for OcTree decomposition (of image volumes vs 3d points). 
+OcTree.m is targeted at points rather than image volume data.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Greg: (sorry for the late reply) 
+This is best done *after* plotting the bins. You can just find which 
+bins don't contain a point and then delete or deactivate that bin's plot
+ handle:</p>
+
+<p>% Run example 1 and then:
+<br>binHasPts = ismember(1:OT.BinCount, OT.PointBins)
+<br>set(boxH(~binHasPts),'Visible','off')</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/499393">Jing</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A bug in the code???
+<br>should "this.BinParents(binNo)+1" be "this.BinDepths(binNo)+1" ??</p>
+
+<p>% Prevent dividing beyond the maximum depth</p>
+
+<p>if this.BinParents(binNo)+1 &gt;= this.Properties.maxDepth
+<br>    continue;
+<br>end</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/279223">Wu Jun</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sven, Thanks for your great job.
+ I want to use Octree method to divides the 3D images volume into little
+ 3D cube just like Quadree method (matlab qtdecomp()function). Do you 
+have any plan to add this feature to your code ?  Regards </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/400822">Greg</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sven,</p>
+
+<p>Thank you for your great job. 
+<br>I am an absolute beginner in Matlab but I managed to run your code 
+and got quite good results. I am wondering if it is possible to delete 
+the empty bins (i.e. bins of the higher levels)and keep only the child 
+bins of the lowest level before plotting the final OcTree.</p>
+
+<p>Kind regards
+<br>Greg</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/22683">Siyi Deng</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/336579">Moein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Sven Thank you very much. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Moein: Thanks for your feedback 
+and request, I'm looking at implementing the concept of element 
+connectivity so that you can partition based on collections of points 
+(elements) as well as the points themselves. Note that it seems you have
+ an immediate need (2:1 balancing) for a particular application (FE 
+meshing). I would suggest that if your problem is urgent then you might 
+consider either adding to the class or inheriting and making a new class
+ specific to your needs yourself. I will work on element connectivity 
+first, and node balancing will be some time away, so my schedule won't 
+necessarily fit in with yours.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/336579">Moein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sven
+<br>I need element connectivity in your code , How can I get element connectivity ? Thanks for your help </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/336579">Moein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Also, in order to balance your 
+mesh, you need information about elements connectivity. Because if you 
+have second or higher level hanging nodes in one edge, you should 
+subdivide all the elements which connected to that edge.you can find 
+some algorithms for finding neighbors in octree mesh in Journals.  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/336579">Moein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Sven Thanks for your reply. In 
+octree decomposition,  there will arise “hanging” nodes, i.e., nodes 
+that lie on the edge of an undivided box, rather than at one of its 
+corners. If, during the subdivision, a second hanging node is placed on 
+the edge of a box, that box should be itself subdivided. In this way, 
+the final mesh does not have any “second-level” hanging nodes. 
+<br>Also I think it would be better to define the binary mask to your 
+code showing which elements of a set are to be subdivided. It gives more
+ freedom to users. The suitable outputs for Finite element method are 
+the positions of the all nodes , The connectivity array which shows the 
+number of 8 points of each cubic element.(for octree case).   
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Moein: Thanks for the feedback. 
+Yes, it doesn't yet consider 2:1 balancing. I have a few plans for new 
+features, starting with including the concept of elements (ie, triangles
+ or quads or hexas... hopefully I can do N-dim elements).
+<br>I hadn't yet thought through node balancing, do you have a specific 
+example you can provide and the type of output you'd want? For example 
+are you simply looking for adjusting a current decomposition (swapping 
+neigbours) based on particular criteria? If so, is that criteria based 
+solely on points or do you need information about "element connectivity"
+ too?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/336579">Moein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi , Thanks for your great job. I 
+tested this code and I noticed that the code doesn't consider 2:1 rule 
+for neighboring mesh elements. ( I mean the final tree is not balanced).
+ Is it true? If yes, Do you have any plan to add this feature to your 
+code ? (Its very important in FEM mesh generation). Regards
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31639">Anton Semechko</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>superb job</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">18 Mar 2013</td>
+                  <td><p>Added ability to shrink bins to minimally cover their child points/bins</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Sep 2014</td>
+                  <td><p>Thanks to Jing for a BinDepths bugfix</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415502894623&amp;cv=7&amp;fst=1415502894623&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/40732-octree-partitioning-3d-points-into-spatial-subvolumes&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D19%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

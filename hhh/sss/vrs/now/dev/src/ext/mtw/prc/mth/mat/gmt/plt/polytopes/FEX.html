@@ -1,0 +1,1912 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Representing Polyhedral Convex Hulls by Vertices or (In)Equalities -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities" rel="canonical">
+<meta content="Representing Polyhedral Convex Hulls by Vertices or (In)Equalities - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/51829/original.jpg" property="og:image"><meta content="Express bounded polyhedron via equalities/inequalities or vertices." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/19757" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=30892" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities" class="manifest_title">Representing Polyhedral Convex Hulls by Vertices or (In)Equalities</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities/content//vert2lcon.m" class="function" title="Function">[A,b,Aeq,beq]=vert2lcon(V...</a><span class="description">An extension of Michael Kleder's vert2con function, used for finding the 
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities/content//lcon2vert.m" class="function" title="Function">[V,nr,nre]=lcon2vert(A,b,...</a><span class="description">An extension of Michael Kleder's con2vert function, used for finding the 
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities/content//qlcon2vert.m" class="function" title="Function">[varargout]=qlcon2vert(x0...</a><span class="description">A quicker version of lcon2vert that will skip some intensive steps when a
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities/content/polytopes_2013_12_18.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">5.0</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">12</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">60 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 8.81 KB</span>
+          <span id="fileid">File ID: #30892</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/9891/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Representing Polyhedral Convex Hulls by Vertices or (In)Equalities</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      30 Mar 2011
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-01-06">06 Jan 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Express bounded polyhedron via equalities/inequalities or vertices.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities&amp;watching=30892" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This submission contains VERT2LCON and LCON2VERT, 
+which will find the linear constraints defining a bounded polyhedron in 
+R^n, given its vertices, or vice versa. They are extensions of Michael 
+Kleder's VERT2CON and CON2VERT functions that can handle cases where the
+ polyhedron is not solid in R^n. Points in a non-solid polyhedron 
+satisfy both a set of inequalities A*x&lt;=b and a set of equalities 
+Aeq*x=beq. The inequalities define a solid polyhedron while the 
+equalities define an affine set intersecting its interior (illustrated 
+in 3D in the above screenshot). Some other refinements to the original 
+VERT2CON and CON2VERT subroutines, meant to improve speed and 
+reliability, have also been made.
+<br>&nbsp;</p>
+
+<p>SYNTAX:
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;[A,b,Aeq,beq]=VERT2LCON(V,TOL)</p>
+
+<p>&nbsp;&nbsp;&nbsp;[V,nr,nre]=LCON2VERT(A,b,Aeq,beq,TOL)
+<br>&nbsp;
+<br>The rows of the N x n matrix V are a series of N vertices of the polyhedron
+<br>in R^n, defined by the linear constraints
+<br>&nbsp;&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;A*x  &lt;= b    
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Aeq*x = beq 
+<br>&nbsp;
+<br>For LCON2VERT, Aeq=beq=[] are the default inputs, implying no 
+equality constraints. The output "nr" lists non-redundant inequality 
+constraints, and "nre" lists non-redundant equality constraints. </p>
+
+<p>It is to be emphasized that A,b must define a solid region, while Aeq
+ and beq should be used to further constrain the region to a 
+sub-manifold of R^n, if needed. You should not use the inequality 
+constraints to express a region in R^n that can be described by equality
+ constraints.
+<br>&nbsp;
+<br>The optional TOL argument is a tolerance used for rank-estimation purposes and to handle finite precision issues. Default=1e-10.
+<br>&nbsp;
+<br>&nbsp;
+<br>EXAMPLE: 
+<br>&nbsp;
+<br>Consider the 3D polyhedron defined by x+y+z=1, x&gt;=0, y&gt;=0, z&gt;=0.
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;&gt;&gt; [A,b,Aeq,beq]=vert2lcon(eye(3))
+<br>&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A =
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.4082   -0.8165    0.4082
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.4082    0.4082   -0.8165
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-0.8165    0.4082    0.4082
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b =
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.4082
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.4082
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.4082
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aeq =
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.5774    0.5774    0.5774
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beq =
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.5774</p>
+
+<p>And the reverse conversion is,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&gt;&gt; V=lcon2vert(A,b,Aeq,beq)
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V =
+<br>&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0000    0.0000    0.0000
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0000    0.0000    1.0000
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-0.0000    1.0000    0.0000</p>
+
+<p>****
+<br>NEW as of 12/18/2103</p>
+
+<p>QLCON2VERT has been added to the distribution as a quick version of 
+LCON2VERT. QLCON2VERT needs to be passed a known point x0 in the 
+relative interior of the polyhedron (see "help qlcon2vert"). This allows
+ it to skip some intensive search steps sometimes needed in LCON2VERT.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/7895-vert2con-vertices-to-constraints">Vert2 Con   Vertices To Constraints</a> and <a href="https://www.mathworks.com/matlabcentral/fileexchange/7894-con2vert-constraints-to-vertices">Con2 Vert   Constraints To Vertices</a> inspired <i>this file.</i></p>
+      
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.11 (R2010b)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22constraint%22" rel="nofollow">constraint</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22constraints%22" rel="nofollow">constraints</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22convex%22" rel="nofollow">convex</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22convex+analysis%22" rel="nofollow">convex analysis</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22convex+hull%22" rel="nofollow">convex hull</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22convhull%22" rel="nofollow">convhull</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22convhulln%22" rel="nofollow">convhulln</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hull%22" rel="nofollow">hull</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22lcon2vert%22" rel="nofollow">lcon2vert</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22optimization%22" rel="nofollow">optimization</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22polygon%22" rel="nofollow">polygon</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22polyhedron%22" rel="nofollow">polyhedron</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22polytope%22" rel="nofollow">polytope</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22solid%22" rel="nofollow">solid</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22vert2con%22" rel="nofollow">vert2con</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22vert2lcon%22" rel="nofollow">vert2lcon</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22vertex%22" rel="nofollow">vertex</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22vertices%22" rel="nofollow">vertices</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="30892" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(47)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">11 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Bhimavarapu,
+<br>The code doesn't generate any plots, but there are other utilities on the FEX that you could use for plotting polyhedra, e.g.,</p>
+
+<p>&lt;http://www.mathworks.com/matlabcentral/fileexchange/9261-plot-2d-3d-region&gt;</p>
+
+<p>As for "not getting the vertices", if you mean you are getting empty 
+output V=[], it means your polyhedron appears empty to the code. Hard to
+ say more without seeing what you're doing.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/523017">Bhimavarapu Reddy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Sir,
+<br>Even I am giving A,b I am not getting the vertices and also not getting the plot
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Cong,</p>
+
+<p>Points on the boundary of the polytope are expected to violate the 
+inequalities by small amounts due to finite precision arithmetic. When I
+ compute the violations for your A,b data with the code below, I find 
+that they are indeed very small O(1e-13),</p>
+
+<p> &gt;&gt; V=lcon2vert(A,b); 
+<br> &gt;&gt; slacks=bsxfun(@minus, b,A*V'); 
+<br> &gt;&gt; violations = slacks(slacks&lt;0)</p>
+
+<p>violations =</p>
+
+<p>   1.0e-13 *</p>
+
+<p>   -0.1066
+<br>   -0.0355
+<br>   -0.5684
+<br>   -0.0711
+<br>   -0.0355
+<br>   -0.0355
+<br>   -0.5684
+<br>   -0.0355
+<br>   -0.2842
+<br>   -0.5684
+<br>   -0.1066
+<br>   -0.2487
+<br>   -0.3375</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/264323">Cong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I just did a test about your 
+program, and I found that an extreme vertex that obtained does not 
+satisfy all inequalities. Note that I just test inequalities case (3D):
+<br>A=
+<br>-32.7680000000000	17.6400000000000	-3.20000000000000
+<br>-3.37500000000000	6.25000000000000	-1.50000000000000
+<br>17.5760000000000	2.56000000000000	2.60000000000000
+<br>79.5070000000000	10.8900000000000	4.30000000000000
+<br>32.7680000000000	-17.6400000000000	3.20000000000000
+<br>3.37500000000000	-6.25000000000000	1.50000000000000
+<br>-17.5760000000000	-2.56000000000000	-2.60000000000000
+<br>-79.5070000000000	-10.8900000000000	-4.30000000000000
+<br>b=
+<br>5
+<br>18
+<br>68
+<br>244
+<br>2
+<br>-11
+<br>-61
+<br>-219
+<br>One of the extreme vertices: [1.5530    4.9322    9.7233]
+<br>In order to test if this three values satisfy all inequalities, I 
+multiply A by [1.5530    4.9322    9.7233]' to compare the new set of b 
+values with the previous b values, and I found not all of new b values 
+less than the original b values, which means they are not satisfied.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/269665">Ivan Bogun</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Richard,
+<br>You might already have a modification that you like, but I encourage
+ you to look at QLCON2VERT, in my release yesterday. It allows you to 
+supply an x0 as you asked, but it also works when there are equality 
+constraints, i.e. x0 only has to be in the relative interior. Also, 
+QLCON2VERT will skip the boundedness check by default, which can save a 
+lot of time if you know a priori that the set is bounded. Finally, 
+LCON2VERT itself should be faster now for certain problems. It now 
+checks first whether the origin is an interior point, something it can 
+do very quickly, before performing more complicated searches.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/401853">Richard Katzwer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Disregard the previous question, I now see that it is easily modifiable.  Simply
+<br>1. pass an extra argument x0 to con2vert
+<br>2. check if x0 in the polyhedron
+<br>2a. If yes, continue as normal with s = x0;
+<br>2b. Otherwise, set s = slackfun(pinv(A)*b) and proceed as if there were no x0.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/401853">Richard Katzwer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great software, Matt J.  I've found it to be far more robust than con2vert.  </p>
+
+<p>Quick question, though.  Suppose I have a set of linear constraints 
+[A,b], and I *know* a point x0 that satisfies A*x0 &lt;= b.  Is there a 
+way to modify lcon2vert so that it doesn't have to work to find an 
+interior point and can use a user-supplied one?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Andreas,</p>
+
+<p>Thanks for your feedback.</p>
+
+<p>Your example doesn't demonstrate a bug, as far as I can see. The rows
+ of the matrix returned by lcon2vert are the vertices of the polyhedron.
+ The vertices are not guaranteed to be listed in any particular order. </p>
+
+<p>So, in your example, there is no reason that it would return eye(3), 
+if that's what you were expecting -- only some permutation of the rows 
+of eye(3).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/326337">Andreas</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,</p>
+
+<p>first of all thanks for the great work!</p>
+
+<p>It seems that the example with V=eye(3) does not work. Dimensions are
+ swapped when using the output of vert2lcon with lcon2vert. This is what
+ I get:</p>
+
+<p>&gt;&gt; V=eye(3)</p>
+
+<p>V =</p>
+
+<p>     1     0     0
+<br>     0     1     0
+<br>     0     0     1</p>
+
+<p>&gt;&gt; [A,b,Aeq,beq]=vert2lcon(V)</p>
+
+<p>A =</p>
+
+<p>    0.4082   -0.8165    0.4082
+<br>    0.4082    0.4082   -0.8165
+<br>   -0.8165    0.4082    0.4082</p>
+
+<p>b =</p>
+
+<p>    0.4082
+<br>    0.4082
+<br>    0.4082</p>
+
+<p>Aeq =</p>
+
+<p>    0.5774    0.5774    0.5774</p>
+
+<p>beq =</p>
+
+<p>    0.5774</p>
+
+<p>&gt;&gt; lcon2vert(A,b,Aeq,beq)</p>
+
+<p>ans =</p>
+
+<p>    1.0000    0.0000    0.0000
+<br>    0.0000    0.0000    1.0000
+<br>   -0.0000    1.0000    0.0000</p>
+
+<p>I am using R2012a. Is there something that can be done about this "bug"?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Sandro: that would be a problem 
+with the way you generate your constraints. It might be worth 
+elaborating on how you do that in a post to the Newsgroup, or to 
+Answers.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124908">Sandro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,</p>
+
+<p>The problem is that by changing input parameters I got different sets
+ of inequality constraints, but I don't know beforehand whether some 
+will degenerate to equality.</p>
+
+<p>How do you think?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sandro,</p>
+
+<p>The inequality constraints x2&lt;=0, -x2&lt;=0 are equivalent to x2=0. You should use the Aeq input argument to express this.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Dec 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124908">Sandro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,</p>
+
+<p>I just wonder whether lcon2vert can handle this case: 0&lt;=x1&lt;=1, x2&lt;=0, -x2&lt;=0, in R^2.</p>
+
+<p>It seems to fail in this case. Any suggestion?</p>
+
+<p>Best,
+<br>Sandro</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>If you cannot upgrade, just replace the line with</p>
+
+<p>  [trash,E]=max(P);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/180323">Xu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>My bad. Perhaps my Matlab version (2007) is too old. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/180323">Xu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Syntax error in line 89..... Could you please check that?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Cong,
+<br>No. There is no connection to Nelder-Mead that is apparent to me.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/264323">Cong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,
+<br>  Thanks for your explanation. I was wondering that if the algorithm
+ is related to the simplex method which proposed by Nelder and Mead?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Cong,
+<br>Thanks for your feedback. There is no formal reference that I can 
+give you, I'm afraid. I largely reverse-engineered Michael Kleder's 
+code. Approximately speaking, though, it works like this: every bounded 
+polyhedron has a dual polyhedron. The face normals of the original 
+polyhedron are the vertices of the dual polyedron and vice versa. 
+Because we are given the face normals of the original polyhedron, we 
+know the vertices of the dual. The code can use CONVHULLN to compute the
+ dual face normals from the dual vertices.  The dual face normals are 
+the vertices of the original polyhedron.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/264323">Cong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,</p>
+
+<p>I am sorry about my mistake, and you are right. I should only expand 
+upper values or decrease lower values to test this program, and it give 
+me the results quickly. In order to have a better understanding of this 
+program, could you provide some references to the algorithm used?
+<br>Best regards,
+<br>Cong</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Cong,</p>
+
+<p>I disagree that your second data set defines a non-empty polyhedron. 
+If it were non-empty, then I should be able to sum together any 2 of 
+your inequalities and obtain another true inequality. But if I add your 
+7th and 17th inequality together, I obtain</p>
+
+<p>0*x(1)+0*x(2) &lt;= -9.5583e+005</p>
+
+<p>which clearly cannot be satisfied by any point [x(1), x(2)].</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/264323">Cong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Matt, I agree with you that my 
+previous data does not exist a polytope. However, I think it failed to 
+give a polytope when I use another data which definitely exists a 
+polyhedron:
+<br>A=[0.1882    0.0936 
+<br>0.2080    0.0853 
+<br>0.2435    0.0393 
+<br>0.2488    -0.0170 
+<br>0.2482    -0.0211 
+<br>0.2444    -0.0366 
+<br>0.2287    -0.0668 
+<br>0.2005    -0.0892 
+<br>0.1939    -0.0918 
+<br>0.1342    -0.0913 
+<br>-0.1882    -0.0936 
+<br>-0.2080    -0.0853 
+<br>-0.2435    -0.0393 
+<br>-0.2488    0.0170 
+<br>-0.2482    0.0211 
+<br>-0.2444    0.0366 
+<br>-0.2287    0.0668 
+<br>-0.2005    0.0892 
+<br>-0.1939    0.0918 
+<br>-0.1342    0.0913];  </p>
+
+<p>b=[-7495.00 
+<br>-1048038.00 
+<br>-11224.49 
+<br>-11567.01 
+<br>-10924.00 
+<br>-11159.33 
+<br>-968495.00 
+<br>-9129.12 
+<br>-7411.05 
+<br>-6410.33 
+<br>9718.79 
+<br>1358994.00 
+<br>14616.50 
+<br>1512609.00 
+<br>14285.24 
+<br>14592.97 
+<br>12664.93 
+<br>11938.08 
+<br>9650.65 
+<br>8312.30];</p>
+
+<p>If I do not let it run sufficient time which would be quite long, 
+then the error is "Unable to locate a point near the interior of the 
+feasible region". Thus, is it possible if I just let it run and it will 
+provide a polyhedron sooner or later?</p>
+
+<p>Best regards,
+<br>Cong</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Cong - it appears that the 
+polyhedron is empty and therefore the "Initializers" cannot find a point
+ inside it. I intend to modify the code soon so that it will bail out 
+with V=[] when this occurs.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/264323">Cong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt, 
+<br>Thanks for providing the code.
+<br>However, the program will run a long time(unknown) if I use the data:
+<br>A=[0.188 0.094 
+<br>0.208 	0.085 
+<br>0.243 	0.039 
+<br>0.249 	-0.017 
+<br>0.248 	-0.021 
+<br>0.244 	-0.037 
+<br>0.229 	-0.067 
+<br>0.201 	-0.089 
+<br>0.194 	-0.092 
+<br>0.134 	-0.091 
+<br>-0.188 	-0.094 
+<br>-0.208 	-0.085 
+<br>-0.243 	-0.039 
+<br>-0.249 	0.017 
+<br>-0.248 	0.021 
+<br>-0.244 	0.037 
+<br>-0.229 	0.067 
+<br>-0.201 	0.089 
+<br>-0.194 	0.092 
+<br>-0.134 	0.091]; 
+<br>b=[-8495.00 
+<br>-11480.40 
+<br>-13224.50 
+<br>-11567.00 
+<br>-10924.00 
+<br>-11159.30 
+<br>-12684.95 
+<br>-9129.12 
+<br>-7411.05 
+<br>-7410.33 
+<br>9718.79 
+<br>11589.90 
+<br>17616.50 
+<br>15126.10 
+<br>14285.20 
+<br>14593.00 
+<br>16664.90 
+<br>11938.10 
+<br>9650.65 
+<br>8312.30];
+<br>In addition, I find the "Initializer2" always spend much time on 
+this calculation. Do you have any idea to make it more efficient?</p>
+
+<p>Best regards,
+<br>Cong</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/54832">Deepanshu Vasal</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Deepanshu - actually the 2nd case 
+doesn't appear to work for me, either. I think I've found the problem, 
+but it will take me a few days until I can fix it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/54832">Deepanshu Vasal</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Matt, Thanks for your reply. Having equality constraint was not the problem. If I take 
+<br>A = - [
+<br>    0 0 0 0 0 1 -2 1 ;
+<br>    0 0 1 -2 1 0 0 0 ;
+<br>    eye(8);
+<br>    -eye(8)];
+<br>and 
+<br>b = - [zeros(2,1); -10*ones(16,1)];</p>
+
+<p>it does not work  but if I reduce redundant dimensions and put </p>
+
+<p>A = - [
+<br>     0 0 0 1 -2 1 ;
+<br>     1 -2 1 0 0 0 ;
+<br>    eye(6);
+<br>    -eye(6)];
+<br>and 
+<br>b = - [zeros(2,1); -10*ones(12,1)];</p>
+
+<p>it works.</p>
+
+<p>but I used lrs package at http://cgm.cs.mcgill.ca/~avis/C/lrs.html</p>
+
+<p>and I got vertices for my problem.</p>
+
+<p>Anyway I  appreciate your effort and your such timely response. good luck</p>
+
+<p>Deepanshu</p></span></td>
+        <td width="80">
+            <div class="starrating" title="2">
+              <div style="width:40%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Deepanshu - Are you sure the first 8 constraints are not meant to be equality constraints? </p>
+
+<p>In any case, I answered you in an earlier email, but here's the 
+recap: the region described by your inequality constraints appears to be
+ non-solid. Such inequality constraints are numerically-unstable, which 
+is why all MATLAB Optimization Toolbox functions ask you to represent 
+your linear constraints in the form:</p>
+
+<p>Aineq*x&lt;=bineq
+<br>Aeq*x=beq</p>
+
+<p>where Aineq*x=bineq describes a SOLID region. </p>
+
+<p>LCON2VERT works similarly. You must rewrite your non-solid region as above and invoke lcon2vert in 4-argument form:</p>
+
+<p>lcon2vert(Aineq,bineq,Aeq,beq)
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/54832">Deepanshu Vasal</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,</p>
+
+<p>I am trying to use your code with my dataset, but I am getting 
+singular matrix warning with the vertices generated are out of bounds 
+(Nan, inf).
+<br>My data set is as follows :- </p>
+
+<p>A = - [
+<br>    
+<br>    0 1 0 -2 0 1 0 0 ;
+<br>    0 0 0 0 0 1 -2 1 ;
+<br>    0 0 1 -2 1 0 0 0 ;
+<br>    
+<br>    -1 1 1 -1 0 0 0 0 ;
+<br>    0 0 0 -1 1 1 -1 0 ;
+<br>    
+<br>    
+<br>    0 0 0 1 -1 0 -1 1 ;
+<br>    1 -1 0 -1 1 0 0 0 ;
+<br>    0 0 1 -1 0 -1 1 0 ;
+<br>    eye(8);
+<br>    -eye(8)];</p>
+
+<p>b = - [zeros(8,1); -10*ones(16,1)];</p>
+
+<p>is there something that cannot be handled by this code? I see that 
+the initial point taken is fine (satisfies the constraints.) but cannot 
+figure out where is the problem in the code.
+<br>If you come across any problem, please let me know. Also do you know the reference for the algorithm used in this code?</p>
+
+<p>Thanks so much.
+<br>Deepanshu
+<br>Thanks so much
+<br>Deepanshu
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@david: You need to tell me how I can reproduce the error.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72601">david</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt,
+<br>I'll be very thankful if you helps me with this problem: When I applied your function i get the following error :
+<br>  "??? Maximum recursion limit of 500 reached. Use set(0,'RecursionLimit',N)
+<br>to change the limit. Be aware that exceeding your available stack space can
+<br>crash MATLAB and/or your computer."</p>
+
+<p>What i have to do in this case ?</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sandro,</p>
+
+<p>I'm not having any such difficult in R2011a, so perhaps you need to upgrade. Here is the test that I ran, and no errors resulted</p>
+
+<p>&gt;&gt; [a,b,ae,be]=vert2lcon(eye(20));
+<br>&gt;&gt; V=lcon2vert(a,b,ae,be);
+<br>&gt;&gt; norm(V'*V-eye(20))</p>
+
+<p>ans =</p>
+
+<p>  5.7516e-015</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124908">Sandro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi Matt, </p>
+
+<p>Do you have any exposure of how high the dim could be? I am testing 
+something like x1+x2+...+xn=1, xi&gt;=0, i=1,2,...n. I randomly generate
+ some points within this region and also give the vertices like 
+(0,0,0..,0), (1,0,0,..0), (0,1,0,...0)...to help checking. </p>
+
+<p>It looks like n=10 works, but n=20 is stuck due to qullmx function called by convexhulln. </p>
+
+<p>Is there any possible we can have function like qullmx but more powerful in the sense of dim and speed?</p>
+
+<p>Sandro </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160885">Harshavardhan Sundar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt, Thanks again (Officially)....the latest of your code lcon2vert and vert2lcon are working absolutely fine....</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Harshavardhan - I've just updated 
+the package with what I believe is a more robust version of LCON2VERT. 
+At the very least, it successfully handles your example data set. Also, 
+it will more reliably report cases where it cannot find a solution.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Harshavardhan - This is a resend of a previous comment which seems to have gotten lost by the FEX. </p>
+
+<p>The data set you've provided is quite intriguing! I've traced the 
+problem you're seeing to Michael Kleder's CON2VERT code (my lcon2vert is
+ mainly a wrapper for this). </p>
+
+<p>The problem is that, in order to work, CON2VERT needs to find an 
+initial point c inside the polytope. The simple method that it uses 
+seems to have had a good rate of success historical success, but lo and 
+behold, your particular A,b data set has defeated it!</p>
+
+<p>I know this is the problem however, because</p>
+
+<p>(i) I've checked that the initial point c that it generates does not satisfy A*c&lt;b</p>
+
+<p>(ii) When I manually change CON2VERT, hardcoding the initial c to a 
+point that I know is in your polytope, I get the correct vertices.</p>
+
+<p>I've alerted Michael Kleder to this via the CON2VERT webpage, but he 
+doesn't appear to have been monitoring the page for several years. I 
+doubt he'll be responding with any input.</p>
+
+<p>I have some ideas of my own to improve the initialization scheme, but they will take some time to develop.</p>
+
+<p>In the meantime, if you're in a situation where you already know an 
+initial point, c, inside your polytope, a workaround for you might be to
+ modify CON2VERT so that it accepts this c is an additional input 
+argument.</p>
+
+<p>Beyond that, I don't know what to say. You have difficult data...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Harshavardhan - one additional note. In the meantime, you should also modify this line of code </p>
+
+<p> if ef ~= 1</p>
+
+<p>to this</p>
+
+<p>  if ~all(A*c &lt; b)</p>
+
+<p>This will at least warn you properly that the function is about to fail.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160885">Harshavardhan Sundar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt. First of all thanks a lot 
+for the wonderful piece of code. The code works fine for most of the 
+cases. However there are a few occasions where I get erroneous vertices.
+ One such example is below. My A matrix is :
+<br>A=[1	0	0
+<br>0	1	0
+<br>0	0	1
+<br>-1	0	0
+<br>0	-1	0
+<br>0	0	-1
+<br>-0.387696185212551	-0.295276274520099	0.703237014010810
+<br>5.73326513862449	-0.422448628998633	-0.113292931747631
+<br>-3.79255233000727	-0.360645958414035	-0.673892379691217
+<br>-1.27188203250127	0.544750863219514	-0.791324376598499
+<br>-2.30540199426269	-2.50522755054822	-0.291771858420232
+<br>0.616578245027929	-0.654271120193835	0.574406987898971
+<br>-1.49508806389885	-2.68877782397954	-0.989225453798092
+<br>5.34556895341194	-0.717724903518731	0.589944082263178
+<br>-3.40485614479472	-0.0653696838939366	-1.37712939370203
+<br>-0.884185847288714	0.840027137739613	-1.49456139060931
+<br>-1.91770580905014	-2.20995127602812	-0.995008872431042
+<br>0.228882059815378	-0.949547394713933	1.27764400190978
+<br>-1.10739187868630	-2.39350154945944	-1.69246246780890
+<br>1.94071280861722	-0.783094587412668	-0.787185311438849
+<br>4.46138310612323	0.122302234220881	-0.904617308346131
+<br>3.42786314436180	-2.92767617954685	-0.405064790167863
+<br>5.11668689359657	0.231822491195202	-0.687699919646602
+<br>4.23817707472564	-3.11122645297817	-1.10251838554572
+<br>-2.52067029750601	-0.905396821633549	0.117431996907282
+<br>1.48715033574458	-2.14458159213419	0.382120521270985
+<br>-3.17597408497934	-1.01491707860787	-0.0994853917922465
+<br>2.29746426610842	-2.32813186556550	-0.315333074106875
+<br>-1.03351996176143	-3.04997841376774	0.499552518178267
+<br>-0.655303787473336	-0.109520256974320	-0.216917388699529
+<br>-0.223206031397585	-3.23352868719905	-0.197901077199593
+<br>-1.68882374923476	-3.15949867074206	0.282635129478739
+<br>-0.810313930363841	0.183550273431316	0.697453595377860
+<br>-0.878509818870922	-3.34304894417337	-0.414818465899121]
+<br>b=[6
+<br>4
+<br>2
+<br>0
+<br>0
+<br>0
+<br>-0.154147860211922
+<br>16.6671436561829
+<br>-8.83179250583593
+<br>-1.48693603688105
+<br>-8.92116339978305
+<br>0.423928365940654
+<br>-8.95704617639833
+<br>16.5129957959710
+<br>-8.67764464562401
+<br>-1.33278817666913
+<br>-8.76701553957113
+<br>0.269780505728732
+<br>-8.80289831618640
+<br>7.83535115034699
+<br>15.1802076193019
+<br>7.74598025639987
+<br>16.2432152902423
+<br>7.71009747978459
+<br>-7.34485646895489
+<br>-0.0893708939471196
+<br>-8.40786413989528
+<br>-0.125253670562397
+<br>-7.43422736290201
+<br>-1.06300767094039
+<br>-7.47011013951728
+<br>-8.49723503384240
+<br>0.0358827766152754
+<br>-8.53311781045768]</p>
+
+<p>I used the plotregion command available in MATLAB central to plot the
+ region. I have reasons to believe that the plotregion command is 
+plotting the region accurately. However for this particular example the 
+vertices I get (graphically) from the plotregion command are not 
+coinciding with the vertices obtained from lcon2vert. I also tried 
+con2vert by Michael Kleder with little success. </p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160885">Harshavardhan Sundar</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/89881">Timothy Stratton</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice very powerful!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124908">Sandro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matt, </p>
+
+<p>my concern of using consolidator is because I think function unique 
+has pretty high requirement of two vectors to be the same. When run 
+vert2lcon on a large data set, i have seen a large A with many rows are 
+the same up to 6-8 digital number. This enlarges the size of A and it 
+may not be necessary for the user. </p>
+
+<p>"A and b are produced by Michael Kleder's functions which seem to normalize it this way already."</p>
+
+<p>I doubt about it. </p>
+
+<p>Best,
+<br>Sandro </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Sandro. Thanks for the feedback.
+ I'll think about your recommendations. Could you explain the advantage 
+of consolidator over unique? I chose a normalization for Aeq and beq 
+that led to nice whole integers where possible. A and b are produced by 
+Michael Kleder's functions which seem to normalize it this way already.</p>
+
+<p>Regarding your rating. It's fine. The FEX only scores according to 
+your most recent rating. This is to allow people to update their ratings
+ if the author makes improvements to the submission.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124908">Sandro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry Matt, I am not sure how to 
+remove the first rating. Two comments: "unique" function may be better 
+to be replaced by "consolidator"; It may be good to normalize A,b,etc 
+before the final output(I am not quite sure about its necessity.)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ah, ok.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124908">Sandro</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It is definitely a good job!!! I may mess up the rate submission above. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124908">Sandro</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">06 Apr 2011</td>
+                  <td><p>added LCON2VERT which does the inverse of VERT2CON</p></td>
+                </tr>
+                <tr>
+                  <td class="date">08 Sep 2011</td>
+                  <td><p>Improved the reliability of CON2VERT subroutine, both in terms of performance and of error reporting.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">14 Sep 2011</td>
+                  <td><p>*Further robustness of lcon2vert
+<br>*Improved weeding of non-unique constraints in vert2lcon output
+<br>*Outputs A,Aeq of vert2lcon will now have normalized rows.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Mar 2012</td>
+                  <td><p>Various bug fixes and improvements in robustness. These address failure cases discovered recently by users.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Aug 2012</td>
+                  <td><p>If lcon2vert fails to find an initial interior point after many iterations of the alg it uses, it will now quit with V=[].</p></td>
+                </tr>
+                <tr>
+                  <td class="date">18 Dec 2013</td>
+                  <td><p>* improved error checking in lcon2vert
+<br>* some improved/faster search criteria added to lcon2vert.
+<br>* added qlcon2vert, a faster version of lcon2vert which skips certain checks and precomputations</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Jan 2014</td>
+                  <td><p>added screenshot</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415783458787&amp;cv=7&amp;fst=1415783458787&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=2&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/30892-representing-polyhedral-convex-hulls-by-vertices-or--in-equalities&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D73%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

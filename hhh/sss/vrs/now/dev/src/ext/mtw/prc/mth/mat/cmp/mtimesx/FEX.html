@@ -1,0 +1,3945 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>MTIMESX - Fast Matrix Multiply with Multi-Dimensional Support -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support" rel="canonical">
+<meta content="MTIMESX - Fast Matrix Multiply with Multi-Dimensional Support - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/26650/original.jpg" property="og:image"><meta content="Beats MATLAB 300% - 400% in some cases ... really!" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-rdm-ry" type="text/css"></style><style id="ki-rdm-r3" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/11087" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=25977" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support" class="manifest_title">MTIMESX - Fast Matrix Multiply with Multi-Dimensional Support</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx.m" class="function" title="Function">mtimesx.m</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_build.m" class="function" title="Function">mtimesx_build(x)
+</a><span class="description">mtimesx_build compiles mtimesx.c with BLAS libraries
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_sparse.m" class="function" title="Function">mtimesx_sparse(a,transa,b...</a><span class="description">mtimesx_sparse does sparse matrix multiply of two inputs
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_ddequal.m" class="function" title="Function">mtimesx_test_ddequal</a><span class="description">Test routine for mtimesx, op(double) * op(double) equality vs MATLAB</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_ddspeed.m" class="function" title="Function">mtimesx_test_ddspeed(nn,d...</a><span class="description">Test routine for mtimesx, op(double) * op(double) speed vs MATLAB</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_dsequal.m" class="function" title="Function">mtimesx_test_dsequal
+</a><span class="description">Test routine for mtimesx, op(double) * op(single) equality vs MATLAB
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_dsspeed.m" class="function" title="Function">mtimesx_test_dsspeed(nn,d...</a><span class="description">Test routine for mtimesx, op(double) * op(single) speed vs MATLAB
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_nd.m" class="function" title="Function">mtimesx_test_nd(n)
+</a><span class="description">Test routine for mtimesx, multi-dimensional speed and equality to MATLAB
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_sdequal.m" class="function" title="Function">mtimesx_test_sdequal
+</a><span class="description">Test routine for mtimesx, op(single) * op(double) equality vs MATLAB
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_sdspeed.m" class="function" title="Function">mtimesx_test_sdspeed(nn,d...</a><span class="description">Test routine for mtimesx, op(single) * op(double) speed vs MATLAB
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_ssequal.m" class="function" title="Function">mtimesx_test_ssequal
+</a><span class="description">Test routine for mtimesx, op(single) * op(single) equality vs MATLAB
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content//mtimesx_test_ssspeed.m" class="function" title="Function">mtimesx_test_ssspeed(nn,d...</a><span class="description">Test routine for mtimesx, op(single) * op(single) speed vs MATLAB
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support/content/mtimesx_20110223.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:99.2%;">
+                <p>4.96</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">5.0</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">29</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">158 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 256 KB</span>
+          <span id="fileid">File ID: #25977</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/5044/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">MTIMESX - Fast Matrix Multiply with Multi-Dimensional Support</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      30 Nov 2009
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2011-02-23">23 Feb 2011</span>)
+      </span>
+  </p>
+
+  <p id="summary">Beats MATLAB 300% - 400% in some cases ... really!</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support&amp;watching=25977" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>MTIMESX is a fast general purpose matrix and scalar multiply routine that has the following features:</p>
+
+<p>	- Supports multi-dimensional (nD, n&gt;2) arrays directly
+<br>	- Supports Transpose, Conjugate Transpose, and Conjugate pre-operations
+<br>	- Supports singleton expansion
+<br>	- Utilizes BLAS calls, custom C loop code, or OpenMP multi-threaded C loop code
+<br>	- Can match MATLAB results exactly or approximately as desired
+<br>	- Can meet or beat MATLAB for speed in most cases</p>
+
+<p>MTIMESX has six basic operating modes:</p>
+
+<p>	- BLAS: Always uses BLAS library calls
+<br>	- LOOPS: Always uses C loops if available
+<br>	- LOOPSOMP: Always uses OpenMP multi-threaded C loops if available
+<br>	- MATLAB: Fastest BLAS or LOOPS method that matches MATLAB exactly (default)
+<br>	- SPEED: Fastest BLAS or LOOPS method even if it doesn't match MATLAB exactly
+<br>	- SPEEDOMP: Fastest BLAS, LOOPS, or LOOPOMP method even if it doesn't match MATLAB exactly</p>
+
+<p>MTIMESX inputs can be:</p>
+
+<p>	single
+<br>	double
+<br>	double sparse</p>
+
+<p>The general syntax is (arguments in brackets [ ] are optional):</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;mtimesx( [directive] )
+<br>&nbsp;&nbsp;&nbsp;&nbsp;mtimesx( A [,transa] ,B [,transb] [,directive] )</p>
+
+<p>Where transa, transb, and directive are the optional inputs:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;transa = A character indicating a pre-operation on A:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;transb = A character indicating a pre-operation on B:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The pre-operation can be any of:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'N'
+ or 'n' = No pre-operation (the default if trans_ is missing)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'T' or 't' = Transpose
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'C' or 'c' = Conjugate Transpose
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'G' or 'g' = Conjugate (no transpose)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;directive = One of the modes listed above, or other directives</p>
+
+<p>Examples:</p>
+
+<p>&nbsp;C = mtimesx(A,B) % performs the calculation C = A * B
+<br>&nbsp;C = mtimesx(A,'T',B) % performs the calculation C = A.' * B
+<br>&nbsp;C = mtimesx(A,B,'g') % performs the calculation C = A * conj(B)
+<br>&nbsp;C = mtimesx(A,'c',B,'C') % performs the calculation C = A' * B'
+<br>&nbsp;mtimesx('SPEEDOMP','OMP_SET_NUM_THREADS(4)') % sets SPEEDOMP mode with number of threads = 4</p>
+
+<p>For nD cases, the first two dimensions specify the matrix multiply 
+involved. The remaining dimensions are duplicated and specify the number
+ of individual matrix multiplies to perform for the result. i.e., 
+MTIMESX treats these cases as arrays of 2D matrices and performs the 
+operation on the associated parings. For example:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;If A is (2,3,4,5) and B is (3,6,4,5), then</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;mtimesx(A,B) would result in C(2,6,4,5), where C(:,:,i,j) = A(:,:,i,j) * B(:,:,i,j), i=1:4, j=1:5</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;which would be equivalent to the MATLAB m-code:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;C = zeros(2,6,4,5);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;for m=1:4
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for n=1:5
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C(:,:,m,n) = A(:,:,m,n) * B(:,:,m,n);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+<br>&nbsp;&nbsp;&nbsp;&nbsp;end</p>
+
+<p>The first two dimensions must conform using the standard matrix 
+multiply rules taking the transa and transb pre-operations into account,
+ and dimensions 3:end must match exactly or be singleton (equal to 1). 
+If a dimension is singleton then it is virtually expanded to the 
+required size (i.e., equivalent to a repmat operation to get it to a 
+conforming size but without the actual data copy). This is equivalent to
+ a bsxfun capability for matrix multiplication. </p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices">Mmx   Multithreaded Matrix Operations On N D Matrices</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/27762-small-size-linear-solver">Small Size Linear Solver</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/30764-frontal">Frontal</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/39717-merton-structural-credit-model--matrixwise-solver-">Merton Structural Credit Model (Matrixwise Solver)</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.4 (R2007a)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>A C compiler, such as the built-in lcc compiler. (You 
+don't have to know anything about C to use mtimesx ... it is 
+self-building)</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%224%22" rel="nofollow">4</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%225+for+m14+for+n15+c%22" rel="nofollow">5 for m14 for n15 c</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%226%22" rel="nofollow">6</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22as+the+code+is+pretty+big%22" rel="nofollow">as the code is pretty big</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22blas%22" rel="nofollow">blas</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22bsxfun%22" rel="nofollow">bsxfun</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22but+where+is+this+for+loop+in+your+code%22" rel="nofollow">but where is this for loop in your code</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22is+there+a+simple+way+to+call+openmp+for+example%22" rel="nofollow">is there a simple way to call openmp for example</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22m%22" rel="nofollow">m</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22mtimes%22" rel="nofollow">mtimes</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multiply%22" rel="nofollow">multiply</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22n+a%22" rel="nofollow">n a</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22n+b%22" rel="nofollow">n b</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22n+end+end+we+could+use+openmp+to+send+the+multiplications+on+dif%22" rel="nofollow">n end end we could use openmp to send the multiplications on dif</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22speed%22" rel="nofollow">speed</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22when+doing+c+zeros2%22" rel="nofollow">when doing c zeros2</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="25977" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(129)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">06 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi James,
+<br>I had a question about how the flags 't' and 'c' are used by sparse 
+matrix arguments. I assume that the flags are there to circumvent 
+explicit transposes and its associated overhead. Yet, it doesn't appear 
+that sparse mtimesx operations make use of them. In the test below, I 
+see basically the same execution speeds in all 3 versions. Is it true 
+that sparse operations can't make use of the flags, and is it 
+deliberate/inevitable? It would be a great benefit to be able to avoid 
+transposing tall sparse matrices because of the high memory consumption 
+that comes with that.</p>
+
+<p>J=sprand(3192027,3225,.0001);</p>
+
+<p>tic;
+<br> mtimesx(J,'t',J);
+<br>toc</p>
+
+<p>tic;
+<br> mtimesx(J.',J);
+<br>toc</p>
+
+<p>tic;
+<br> J.'*J;
+<br>toc</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/243531">Julien</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>From my understanding, the file "mex_C_win64.xml" replaces "mexopts.bat". 
+<br>"Error using mtimesx_build (line 169)
+<br>A C/C++ compiler has not been selected with mex -setup". I replaced 
+line 169 by : mexopts = [prefdir '\mex_C_win64.xml'];. It did work with a
+ few warnings...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks, James. This thread describes where the information has moved to</p>
+
+<p>http://www.mathworks.com/matlabcentral/answers/67521#answer_138814</p>
+
+<p>I can post those xml files somewhere, if you like. However, is there 
+no way to get mtimesx to compile simply with the "mex" command, maybe 
+with a small sacrifice in performance?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hmmm ... Well, I don't have access 
+to R2014 so I will have to code in the blind on this. My understanding 
+is that MATLAB will in real time make a guess as to the correct compiler
+ to use based on source code extension. So the information that was in 
+mexopts.bat (user had already selected a compiler) is no longer 
+available for my automatic build stuff. I will put out an update 
+shortly, but may have to ask for info direct from the user for compiler 
+stuff. I will try to get it out there sometime next week.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thought I'd ping again. It doesn't 
+look like mtimesx_build is compatible with R2014, since it looks for 
+mexopts.bat, which is now gone. Can we hope to get a version that 
+supports R2014? James?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have the same problem as Safdar 
+in R2014a. Even after running mex -setup, it appears as though 
+mtimesx_build cannot find mexopts.bat. Possibly, the locations of 
+relevant files/directories may have shifted?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/469602">Stefan</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/458424">Safdar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry for the multiple posts. It seems something went wrong when submitting the post. Sorry</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/458424">Safdar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I got the following message</p>
+
+<p>... Build routine for mtimesx
+<br>... Checking for PC
+<br>... Finding path of mtimesx C source code files
+<br>... Found file mtimesx.c in D:\Documents\Projects\mtimesx_20110223\mtimesx.c
+<br>... Found file mtimesx_RealTimesReal.c in D:\Documents\Projects\mtimesx_20110223\mtimesx_RealTimesReal.c
+<br>Error using mtimesx_build (line 169)
+<br>A C/C++ compiler has not been selected with mex -setup</p>
+
+<p>Error in mtimesx (line 271)
+<br>mtimesx_build;</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/458424">Safdar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi James,</p>
+
+<p>I unzipped the file in my working folder and tries to use mtimesx, I got the following message</p>
+
+<p>... Build routine for mtimesx
+<br>... Checking for PC
+<br>... Finding path of mtimesx C source code files
+<br>... Found file mtimesx.c in D:\Documents\Projects\mtimesx_20110223\mtimesx.c
+<br>... Found file mtimesx_RealTimesReal.c in D:\Documents\Projects\mtimesx_20110223\mtimesx_RealTimesReal.c
+<br>Error using mtimesx_build (line 169)
+<br>A C/C++ compiler has not been selected with mex -setup</p>
+
+<p>Error in mtimesx (line 271)
+<br>mtimesx_build;</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/458424">Safdar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi James,</p>
+
+<p>I unzipped the file in my working folder and tries to use mtimesx, I got the following message</p>
+
+<p>... Build routine for mtimesx
+<br>... Checking for PC
+<br>... Finding path of mtimesx C source code files
+<br>... Found file mtimesx.c in D:\Documents\Projects\mtimesx_20110223\mtimesx.c
+<br>... Found file mtimesx_RealTimesReal.c in D:\Documents\Projects\mtimesx_20110223\mtimesx_RealTimesReal.c
+<br>Error using mtimesx_build (line 169)
+<br>A C/C++ compiler has not been selected with mex -setup</p>
+
+<p>Error in mtimesx (line 271)
+<br>mtimesx_build;</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/458424">Safdar</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi James,
+<br>I unzipped the folder in my working path and then tried to used mtimesx, I got the following error</p>
+
+<p>... Build routine for mtimesx
+<br>... Checking for PC
+<br>... Finding path of mtimesx C source code files
+<br>... Found file mtimesx.c in D:\Documents\Projects\mtimesx_20110223\mtimesx.c
+<br>... Found file mtimesx_RealTimesReal.c in D:\Documents\Projects\mtimesx_20110223\mtimesx_RealTimesReal.c
+<br>Error using mtimesx_build (line 169)
+<br>A C/C++ compiler has not been selected with mex -setup</p>
+
+<p>Error in mtimesx (line 271)
+<br>mtimesx_build;</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/447298">Alireza</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Evan: have you tired blas_lib = 'lmwblas'?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">09 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/440778">Evan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I would like to second Matthieu's question. For blas_lib, I've tried both </p>
+
+<p>blas_lib = '/Applications/MATLAB_R2013b.app/bin/maci64/lapack.spec';</p>
+
+<p>and </p>
+
+<p>blas_lib = '/Applications/MATLAB_R2013b.app/bin/maci64/blas.spec';</p>
+
+<p>With both, I get:</p>
+
+<p>ld: warning: ignoring file /Applications/MATLAB_R2013b.app/bin/maci64/blas.spec, file was built for unsupported file format</p>
+
+<p>Anyone have any ideas?
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/132302">Marc Crapeau</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works well for me on Linux.</p>
+
+<p>If it can helps, I have installed the library libblas.so in my home 
+following the version "shared library" of this page: 
+http://gcc.gnu.org/wiki/GfortranBuild</p>
+
+<p>Then I have compiled the mex file with the command return by the mtimesx routine when the automatic installation failed:
+<br>blas_lib = 'the_actual_path_and_name_of_your_systems_BLAS_library';
+<br>mex('-DDEFINEUNIX','-largeArrayDims','mtimesx.c',blas_lib)</p>
+
+<p>Gained a factor 2 in speed for my 3D matrices multiplications, and a clearer matlab code :)
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/374222">Hannes</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi all,</p>
+
+<p>I tried to locate compliers via mex -setup, but got the answer =&gt; No supported SDK or compiler was found on this computer. 
+<br>I installed Microsoft Windows SDK 7.1 but still not able to work. 
+Does somebody know the path and install directory or what the problem 
+is?
+<br>thanks for help</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/214813">WK</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I don't know why, I did the test 
+again in the linux cluster and the windows one, it works in the parallel
+ computation now. So strange!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/214813">WK</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James, by the way, what version of 
+matlab last time you test this package? I place it in my labtop (windows
+ 64) and linux cluster running matlab 2013, only few operations that 
+mtimesx will beat matlab and it only beat is for less than 10%. I saw 
+that this package was uploaded in 2011 so just wonder if matlab 2013 
+made lots of change to boost the performance.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@WK: I don't have the parallel 
+toolbox, so am unable to give much advice here. My understanding is that
+ each worker in the parallel environment is a separate process, which I 
+would expect would mean that MTIMESX could be used. But since I don't 
+have the toolbox I can't verify this. Have you actually run some tests 
+and gotten wrong results?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/214813">WK</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I just get it compiled and 
+installed in my 64-bit matlab with windows SDK7 as well as the unix 
+cluster. I find that it doesn't work in spmd, doesn't it?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/214813">WK</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the great library. I 
+have two questions. Do I have to compile it to get library? So it means 
+the library is really depending on the machine, right? Also, our lab has
+ a multi-node cluster, each node are equipped with 8 cores. I think this
+ library is based on multi-threading, if I run the matlab code in spmd 
+and in each core, I run your library so will it conflict? Sorry, I 
+didn't have any experience in compiling mex before, I tried but I don't 
+have MSVC installed, I only have mingw. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/181219">JiaDa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How about announce another function
+ for fast matrix inverse with multi-dimensional support?  I wrote a 
+version but I think your version will far fast than mine. :P</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/181219">JiaDa</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/350698">Matthieu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello,</p>
+
+<p>I'm trying to use mtimesx on mac OS 10.8 with matlab R2011b but I don't understand how to compile it. </p>
+
+<p>I tryed several solutions described in comments but none worked. </p>
+
+<p>blas_lib = '/Applications/MATLAB_R2011b.app/bin/maci64'</p>
+
+<p>blas_lib =</p>
+
+<p>/Applications/MATLAB_R2011b.app/bin/maci64</p>
+
+<p>&gt;&gt; mex('-DDEFINEUNIX','mtimesx.c',blas_lib)
+<br>mtimesx.c: In function 'mexFunction':
+<br>mtimesx.c:592: warning: assignment discards qualifiers from pointer target type
+<br>ld: can't map file, errno=22 for architecture x86_64
+<br>collect2: ld returned 1 exit status</p>
+
+<p>    mex: link of ' "mtimesx.mexmaci64"' failed.</p>
+
+<p>Error using mex (line 206)
+<br>Unable to complete successfully.
+<br> </p>
+
+<p>Can you help me ? </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Agustin: It looks like you put the
+ files in the lcc compiler directory. I would advise that you put the 
+files in a work directory instead (not any of the "official" sys or bin 
+etc directories that are installed with MATLAB) and try again. Make sure
+ this work directory is on the MATLAB path. As a side note, in general 
+it is *not* a good idea to put your own files into any of the "official"
+ directories that are installed with MATLAB ... doing so risks breaking 
+built-in MATLAB functions and capabilities.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/330449">agustin darrosa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>thanks james but i have this problem</p>
+
+<p> Build routine for mtimesx
+<br>... Checking for PC
+<br>... Finding path of mtimesx C source code files
+<br>... Found file mtimesx.c in C:\Program Files\MATLAB\R2008a\sys\lcc\mtimesx\mtimesx.c
+<br>... Found file mtimesx_RealTimesReal.c in C:\Program Files\MATLAB\R2008a\sys\lcc\mtimesx\mtimesx_RealTimesReal.c
+<br>... Opened the mexopts.bat file in C:\Users\Gusa\AppData\Roaming\MathWorks\MATLAB\R2008a\mexopts.bat
+<br>... Reading the mexopts.bat file to find the compiler and options used.
+<br>... LCC is the selected compiler
+<br>... OpenMP compiler not detected ... you may want to check this website:
+<br>    http://openmp.org/wp/openmp-compilers/
+<br>... Using BLAS library lib_blas = 'C:\Program Files\MATLAB\R2008a\extern\lib\win32\lcc\libmwblas.lib'
+<br>... Now attempting to compile ...
+<br> 
+<br>mex('C:\Program Files\MATLAB\R2008a\sys\lcc\mtimesx\mtimesx.c',lib_blas,'-DCOMPILER=LCC')
+<br> 
+<br>it can´t find C:\Program Files\MATLAB\R2008a\sys\lcc\mtimesx\mtimesx.exp 
+<br>it cant´find C:\Program Files\MATLAB\R2008a\sys\lcc\mtimesx\mtimesx.lib 
+<br>... mex mtimesx.c build completed ... you may now use mtimesx.</p>
+
+<p>then i introduce:</p>
+
+<p>C = mtimesx(a,b)
+<br>??? Undefined function or method 'mtimesx' for input arguments of type 'double'.</p>
+
+<p>what can i do?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Agustin: For Windows, generally 
+you just put all the files in a directory on the MATLAB path and then 
+type mtimesx at the prompt. For other systems, see other posts below.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/330449">agustin darrosa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi</p>
+
+<p>How can i introduce this "function" in matlab??</p>
+
+<p>I tried it but i have errors</p>
+
+<p>Sorry for my ignorance</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Tonio: No, MTIMESX does not do this. But from your description it sounds like something like this might work for you:</p>
+
+<p>a = cell array of matrices
+<br>b = cell array of vectors
+<br>c = cellfun(@mtimes,a,b,'UniformOutput',false)
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/328186">Tonio</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can I used that for multiplying an 
+(m,n,k) * (n,k) = (m,k) where each k 'slice' needs to be multiplied 
+together and they may contain variables number of elements, i.e. 'm' can
+ vary in each slice? In my code each slice is stored in a cell in 
+matlab.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Robert: Yes, MTIMESX is CPU based, not GPU.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/314978">Robert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello James,</p>
+
+<p>nice work. A basically like to multiply n matrices B (400,400) with 
+one Matrix A (400,400). I used arrayfun before, but your code is about 
+2.5 times faster. Soon I will get a Tesla NVidia graphic card and I 
+would like to ask, is there any possibility to run the calculation on 
+the GPU instead on the CPU?
+<br>I tried to call mtimesx with tww GPU Arrays but as my computation 
+times is still fast (on my slow GPU) I guess he was not using my GPU 
+right now.
+<br>Perhaps I also missed this, but to my understanding mtimesx is using the CPU only, or??</p>
+
+<p>Thanks</p>
+
+<p>Robert</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/230876">Charles</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Michael  Thanks, that did it. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121967">Michael Völker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Charles,</p>
+
+<p>for my own record and to make it machine-searchable, I wrote earlier 
+how I was able to compile mtimesx. Taking the liberties to quote myself:</p>
+
+<p>&gt; On a 64Bit Debian based Linux I managed to compile it with
+<br>&gt; mex -DDEFINEUNIX CFLAGS="\$CFLAGS -march=native" -largeArrayDims -lmwblas -lmwlapack -lgomp mtimesx.c
+<br>&gt; using gcc-4.5.</p>
+
+<p>Can you try that, or did you already try?</p>
+
+<p>Michael</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/230876">Charles</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Sebastian  Thanks for the 
+response.  I think I wasn't linking to the right file.  Now, I seem to 
+be linking to the blas library, but I'm getting a new error.  I am using
+ the code "mex -DEFINEUNIX 'mtimesx.c' -lmwblas"  but I get an error 
+that reads "mtimesx.c:592: warning: assignment discards qualifiers from 
+pointer target type ".  I saw that someone else had gotten this error 
+before and the code was fixed, so I downloaded the files again but I 
+still am getting the error.  When I tried to use mtimesx in my code I 
+get an error and matlab crashes.  I haven't had any problems with other 
+mex files, so it seems to be specific to mtimesx.</p>
+
+<p>Any help is appreciated.  Thanks in advance.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34534">Sebastiaan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Charles: under Unix, the BLAS library linked to is normally mwblas , not blas_lib.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/230876">Charles</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This program is great.  Really 
+useful.  I am having great success with it on my PC.  However, I cannot 
+seem to create the mex file on a UNIX computer.  I am defining the BLAS 
+library as blas_lib.  Then I enter the code 
+"mex('-DDEFINEUNIX','mtimesx.c',blas_lib)".  However, I get a string of 
+errors that are all similar to "mtimesx.c;(.text+0x76a1)undefined 
+reference to `saxpy_'".  It says this for saxpy, sger, sdot, daxpy, 
+dger, ddot, sgemv,ssyrk, ssyr2k, sgemm, dgemv, dsyrk and dgemm.  Can 
+anyone please help me with creating the .mexa64 file?  Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@KSIDHU: Why can't you use .* and 
+./ directly? What are the exact dimensions of your two matrices? If the 
+matrices need singleton expansion, then look at the function bsxfun. 
+What is the overall operation you are trying to do?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290572">KSIDHU</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi 
+<br>How can I perform elementwise multiplication and division of two matrices?
+<br>I have looked through the manual but cannot find any information on it.
+<br>Is there a way to check if BLAS multi-threading is available? Is this better than OpenMP multi-thread</p>
+
+<p>I need to perform .*, ./ on matrices with numel ~3000x100,000 so any 
+tips would be great, and also is there a multi threaded sum function for
+ large matrices (along dim 1 or 2).</p>
+
+<p>MATLAB 2010a
+<br>Thanks in advance
+<br>KS</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I like the reasoning you both have 
+spelled out. I will make logical*other conform to the other, and make 
+logical*logical output a double by default but have an option to do 
+logical AND/OR operations and output a logical instead. Thanks for your 
+inputs.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/273802">John</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I like Michael's reasoning and I 
+think he is right about the 'double' result. So in general I think that 
+the double should be the default. However, given that i enjoy being 
+efficient with data, I would appreciate a 'logical' option. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121967">Michael Völker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Damn, the E-Mail notification stopped to work, so I didn't know you replied to my message.</p>
+
+<p>My spontaneous thought was that (logical matrix) * (logical matrix) 
+should *of course* result in a double output, since matrix 
+multiplication involves a sum, so we should expect to get results 
+different than 0 or 1.</p>
+
+<p>So, as you already guessed, I would like to have an auto-adjust-precision feature.
+<br>This is what I would expect:</p>
+
+<p>[inputA]    *    [inputB]     ==&gt;    [output]
+<br>------------------------------------------
+<br> logical    |     logical    |    double
+<br> logical    |     single      |    single
+<br> logical    |     double      |    double
+<br> single      |     logical    |    single
+<br> double      |     logical    |    double</p>
+
+<p>(I hope it does not get formatted too ugly...)</p>
+
+<p>I also like John's idea to make the behaviour more optional.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/273802">John</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Personally, I do not understand why it should be a 'double' result. So, my vote goes towards a logical result. </p>
+
+<p>However, would it be possible to add this as an option? (e.g.: 
+mtimesx(a,b,'logical') will produce a logical result, if a and b are 
+logical). This way the advanced user can be efficient with data, whereas
+ the less experienced user will still get results that they are familiar
+ with....</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@John: OK, that's two votes. Automatic logical conversion goes into the next version.</p>
+
+<p>Q: Should a (logical matrix) * (logical matrix) give a double matrix 
+result (ala MATLAB), or a logical matrix result (i.e., essentially 
+treating the * - operations as AND OR operations)?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/273802">John</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent code!</p>
+
+<p>I experienced the same 'error' as Michael Völker, so I think 
+automatically converting the logical/sparse data to double might be a 
+good idea as an enhancement!</p>
+
+<p>Nevertheless, great work! Saved me a lot of time/coding.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Michael Völker: The error message 
+you are getting is not a bug. As stated in the doc, using arguments that
+ are not double or single will cause MTIMESX to invoke the built-in 
+mtimes function to do the matrix multiply. If MATLAB will do it then 
+great ... you get that result. But if MATLAB will not do it then you 
+will get whatever error message MATLAB puts out. This is the intended 
+behavior. You can convert the logical to double first, of course, to 
+avoid the error message. If you would like MTIMESX to do this 
+automatically for logical inputs then I can take that as an enhancement 
+request (seems reasonable to me).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121967">Michael Völker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James,</p>
+
+<p>I found a bug with logical input.
+<br>Try:</p>
+
+<p>foo = mtimesx( true(2,2), randn(1,1,5) );</p>
+
+<p>And you probably get this error message:</p>
+
+<p>Error using  * 
+<br>Inputs must be 2-D, or at least one input must be scalar.
+<br>To compute elementwise TIMES, use TIMES (.*) instead.</p>
+
+<p>Error in mtimesx_sparse (line 47)
+<br>        result = a * b;</p>
+
+<p>Michael</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104284">Sam T</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James: </p>
+
+<p>I would like to thank you for coming up with such a brilliant piece of work. An excellent and well written code!! 
+<br> 
+<br>Lately, I have been trying to use MTIMESX code to multiply two big 
+n-dimensional matrices (A = 400x400x400 and B = 400x200). But for 
+simplistic purposes, consider the following example: </p>
+
+<p>A = 3 x 3 x 3
+<br>B = 3 x 2</p>
+
+<p>and C = A*B; 
+<br>such that dimension of C = 3 x 3 x 2</p>
+
+<p>where C(i, j, l) = A(i, j, k) * B(k, l);
+<br>i.e.
+<br>C(:, :, 1) = A(:, :, k) * B(k, 1);
+<br>C(:, :, 2) = A(:, :, k) * B(k, 2);</p>
+
+<p>Now, if I use mtimesx(A, B), then resultant matrix is (3 x 2 x 3) as compared (3 x 3 x 2). </p>
+
+<p>This is because first two dimensions specify the matrix multiply 
+involved. In this case it becomes 1st and 2nd dimension of matrix A 
+while it should ideally be 2nd and 3rd dimension of matrix A to get the 
+desired result. </p>
+
+<p>I am wondering if there is a way around it? I look forward to hearing from you.</p>
+
+<p>Thanks for your help.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Sam T: I don't think I get it yet. In your example you have:</p>
+
+<p>C(:, :, 1) = A(:, :, k) * B(k, 1);</p>
+
+<p>A(:,:,k) is 3x3
+<br>B(k,1) is 1x1</p>
+
+<p>Are you trying to do an nD scalar*matrix multiply here? MTIMESX can 
+do that (with some modifications of the inputs), but I am not quite sure
+ that is really what you want. Can you clarify? Maybe write out an 
+explicit for loop showing how C is to be filled in its entirety?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104284">Sam T</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James: </p>
+
+<p>I would like to thank you for coming up with such a brilliant piece of work. An excellent and well written code!! 
+<br> 
+<br>Lately, I have been trying to use MTIMESX code to multiply two big 
+n-dimensional matrices (A = 400x400x400 and B = 400x200). But for 
+simplistic purposes, consider the following example: </p>
+
+<p>A = 3 x 3 x 3
+<br>B = 3 x 2</p>
+
+<p>and C = A*B; 
+<br>such that dimension of C = 3 x 3 x 2</p>
+
+<p>where C(i, j, l) = A(i, j, k) * B(k, l);
+<br>i.e.
+<br>C(:, :, 1) = A(:, :, k) * B(k, 1);
+<br>C(:, :, 2) = A(:, :, k) * B(k, 2);</p>
+
+<p>Now, if I use mtimesx(A, B), then resultant matrix is (3 x 2 x 3) as compared (3 x 3 x 2). </p>
+
+<p>This is because first two dimensions specify the matrix multiply 
+involved. In this case it becomes 1st and 2nd dimension of matrix A 
+while it should ideally be 2nd and 3rd dimension of matrix A to get the 
+desired result. </p>
+
+<p>I am wondering if there is a way around it? I look forward to hearing from you.</p>
+
+<p>Thanks for your help.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104284">Sam T</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James: </p>
+
+<p>I would like to thank you for coming up with such a brilliant piece of work. An excellent and well written code!! 
+<br> 
+<br>Lately, I have been trying to use MTIMESX code to multiply two big 
+n-dimensional matrices (A = 400x400x400 and B = 400x200). But for 
+simplistic purposes, consider the following example: </p>
+
+<p>A = 3 x 3 x 3
+<br>B = 3 x 2</p>
+
+<p>and C = A*B; 
+<br>such that dimension of C = 3 x 3 x 2</p>
+
+<p>where C(i, j, l) = A(i, j, k) * B(k, l);
+<br>i.e.
+<br>C(:, :, 1) = A(:, :, k) * B(k, 1);
+<br>C(:, :, 2) = A(:, :, k) * B(k, 2);</p>
+
+<p>Now, if I use mtimesx(A, B), then resultant matrix is (3 x 2 x 3) as compared (3 x 3 x 2). </p>
+
+<p>This is because first two dimensions specify the matrix multiply 
+involved. In this case it becomes 1st and 2nd dimension of matrix A 
+while it should ideally be 2nd and 3rd dimension of matrix A to get the 
+desired result. </p>
+
+<p>I am wondering if there is a way around it? I look forward to hearing from you.</p>
+
+<p>Thanks for your help.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/104284">Sam T</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James: </p>
+
+<p>I would like to thank you for coming up with such a brilliant piece of work. An excellent and well written code!! 
+<br> 
+<br>Lately, I have been trying to use MTIMESX code to multiply two big 
+n-dimensional matrices (A = 400x400x400 and B = 400x200). But for 
+simplistic purposes, consider the following example: </p>
+
+<p>A = 3 x 3 x 3
+<br>B = 3 x 2</p>
+
+<p>and C = A*B; 
+<br>such that dimension of C = 3 x 3 x 2</p>
+
+<p>where C(i, j, l) = A(i, j, k) * B(k, l);
+<br>i.e.
+<br>C(:, :, 1) = A(:, :, k) * B(k, 1);
+<br>C(:, :, 2) = A(:, :, k) * B(k, 2);</p>
+
+<p>Now, if I use mtimesx(A, B), then resultant matrix is (3 x 2 x 3) as compared (3 x 3 x 2). </p>
+
+<p>This is because first two dimensions specify the matrix multiply 
+involved. In this case it becomes 1st and 2nd dimension of matrix A 
+while it should ideally be 2nd and 3rd dimension of matrix A to get the 
+desired result. </p>
+
+<p>I am wondering if there is a way around it? I look forward to hearing from you.</p>
+
+<p>Thanks for your help.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/181366">Boaz Schwartz</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/48819">Clay Fulcher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>mtimesx is an awesome code. Besides
+ speeding up my structural dynamics and signal processing applications, 
+it is much easier to apply than using loops. I'm also using a multi-D 
+matrix inverter called multinv that can be downloaded from this forum. 
+The two codes together allow me to operate on matrices of functions as 
+easily as matrices of single values. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/48819">Clay Fulcher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ James Tursa: Thanks James! I greatly appreciate it!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Clay Fulcher: Some options to possibly get more speed:</p>
+
+<p>1) NDFUN by Peter Boettcher. E.g., see this thread:</p>
+
+<p>http://www.mathworks.com/matlabcentral/newsreader/view_thread/294669#861239</p>
+
+<p>2) FEX submissions. E.g., see this submission:</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/31222</p>
+
+<p>3) Wait a couple of months for the next MTIMESX submission, when this
+ capability will be included (along with in-place operations and nD 
+matrix multiply versions of PROD and CUMPROD).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/48819">Clay Fulcher</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James, I need to invert a 3D array 
+of function values. I have to step through each slice of the array in a 
+loop, inverting each slice. Do you know of any way to do this more 
+efficiently?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/120880">Jonathan Sullivan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ James
+<br>The array sizes I'm working with are much larger what I posted. The 
+size of A is 100x33x3. The size of B is 33x1x3x5000x5. That might be why
+ you had trouble recreating it. I'm running on Windows 7, 64 bit, MATLAB
+ 2011b, compiler is cl. If it makes a difference, some of the values in 
+the first matrix are -inf.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Jonathan: Yes, weird indeed. For 
+slices 100x100 in size, MTIMESX will always use BLAS dgemm calls 
+regardless of the method setting (you can verify this by using the 
+'DEBUG' setting). That is, the exact same code path gets executed 
+ragardless of whether 'MATLAB', 'SPEED', or 'SPEEDOMP' is set. That 
+setting should have had no effect on this particular outcome. Also, I 
+have been unable to reproduce this error on a 32-bit WinXP system. Can 
+you provide me some specifics on your MATLAB version, machine OS, 
+compiler used, etc? Does it crash if you restart MATLAB and immediatly 
+try the example?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/120880">Jonathan Sullivan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ James
+<br>So the problem, at least in part, is caused by using the 'SPEEDOMP' flag. I removed the flag, and now it works. Weird, huh?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Jonathan Sullivan: Your first 
+example without repmat should have worked. Looks like I introduced a bug
+ in the latest release. I will look into this right away ...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/120880">Jonathan Sullivan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James,</p>
+
+<p>Fantastic code. It has come in handy. It is well documented, incredibly fast, and extremely useful, especially for N-D arrays.</p>
+
+<p>For the N-D case, this code would be even more powerful if the 
+singleton dimension capability were expanded. Currently, all the 
+dimensions from 3:end must be either the same size (A to B), or must all
+ be singleton for one of the variables. </p>
+
+<p>For example
+<br>A = rand(100,100,3);
+<br>B = rand(100,100,3,5);
+<br>C = mtimesx(A,B); % Does not work. Crashes MATLAB.</p>
+
+<p>You can get around this by using repmat:
+<br>A = rand(100,100,3);
+<br>B = rand(100,100,3,5);
+<br>C = mtimesx(repmat(A,[1 1 1 5]),B); % Works, but slow</p>
+
+<p>Unfortunately, explicitly expanding out large arrays has overhead which is more than I'd like. </p>
+
+<p>Overall code. A+.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121967">Michael Völker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James, thank you for your hint to using 'lapack' from the FEX.
+<br>Indeed it produces the desired result, by calling</p>
+
+<p>  lapack('D=DSDOT(i,s,i,s,i)', length(A), A, 1, A, 1)</p>
+
+<p>with 'A' from my example above. Unfortunately, this is ~5 times slower than calling mtimesx() with double input.</p>
+
+<p>On double input, calling the equivalent 'DDOT' routine from the 
+lapack-package takes more than 10 times longer than your mtimesx (wow, 
+by the way...) to compute the very same result.
+<br>The difference appears to be even worse for complex input.</p>
+
+<p>So I am still hoping that you might somehow get this feature in your code and maintain the speed...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Michael Völker: FYI, another way to use the DSDOT routine is to use this submission:</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/16777-lapack</p>
+
+<p>Not sure if it works on 64-bit systems, but you might give it a try.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Michael Völker: Thanks for the 
+comments. I will look into your request. There is a BLAS routine called 
+DSDOT that does what you request. I will look into how easily I can 
+incorporate this into MTIMESX for BLAS specific results. For the SPEED 
+modes MTIMESX sometimes uses custom code to calculate the dot product 
+(e.g., see function RealKindDotProduct), and in fact the accumulation is
+ done in double precision regardless of input type (calculations 
+themselves are single for single inputs), so it might not be too 
+difficult to adapt this to return the double precision output if 
+requested instead of always converting back to single for single inputs.
+ Thanks for the suggestion.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121967">Michael Völker</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Incredibly great work. Thank you 
+for the elaborate code, the very useful features, the intuitive syntax 
+and behaviour and the docu.</p>
+
+<p>On a 64Bit Debian based Linux I managed to compile it with
+<br>mex -DDEFINEUNIX CFLAGS="\$CFLAGS -march=native" -largeArrayDims -lmwblas -lmwlapack -lgomp mtimesx.c
+<br>using gcc-4.5.</p>
+
+<p>After using mtimesx for a while I currently miss only one feature, 
+which is to define the precision of the output independently from the 
+input variables.
+<br>This would be useful when calculating the sum of squares of a huge 
+single-precision vector where the correct result exceeds 
+realmax('single') and prior casting takes a lot of time.</p>
+
+<p>Example:
+<br>&gt;&gt; A = randn( 1e8, 1,'single');   % plenty of sane values
+<br>&gt;&gt; A(1) = 1e20;  % only few outliers
+<br>&gt;&gt; sos = A' * A  % or sos = mtimesx( A, 'C', A )</p>
+
+<p>sos =</p>
+
+<p>   Inf</p>
+
+<p>Doing A = double(A) beforehand solves the problem:
+<br>&gt;&gt; sos = A' * A</p>
+
+<p>sos =</p>
+
+<p>     1.000000040081755e+40</p>
+
+<p>but
+<br>&gt;&gt; tic, A = double(A); toc
+<br>Elapsed time is 0.472007 seconds.</p>
+
+<p>In fact, that casting to double takes much more time than the actual 
+computation in mtimesx. Since I do this repeatedly in an iteration, the 
+overhead sums up to minutes.</p>
+
+<p>So my wish would be like this:
+<br>C = mtimesx( A, B, 'double' );   % C is double even if A or B are single</p>
+
+<p>Nevertheless, thank you so much for this code.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Gary: Follow-up, ndfun as I recall
+ only works for real variables. If you have complex variables then the 
+only efficient option I could suggest would be a custom mex routine.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Gary: For this type of matrix 
+product you should be using something like ndfun('mprod',a) by Peter 
+Boettcher. You can find the source code here:</p>
+
+<p>http://www.mit.edu/~pwb/matlab/</p>
+
+<p>If you need a 64-bit version of this you can see the hack I posted on this thread:</p>
+
+<p>http://www.mathworks.com/matlabcentral/newsreader/view_thread/294669#791467</p>
+
+<p>Using ndfun will avoid all the array slice copies you are doing in the above example code.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/147288">Gary</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the answer, but I think you misunderstood my problem or me your answer.
+<br>I have eg 10000 matrices and want to calculate the product. By 
+dividing into 2*5000 I can use the advantage of your nD multiply. Here 
+is the code:</p>
+
+<p>a=rand(n,n,L)</p>
+
+<p>tic
+<br>b=a(:,:,1);
+<br>for i=2:L
+<br>    b=a(:,:,i)*b;
+<br>end
+<br>toc</p>
+
+<p>c=a;
+<br>tic
+<br>while(L~=1)
+<br>    L2=floor(L/2)*2; 
+<br>    d=c(:,:,end);
+<br>    c = mtimesx(c(:,:,2:2:L2),c(:,:,1:2:L2-1));
+<br>    if(L2~=L)
+<br>        c(:,:,end+1) = d;
+<br>    end
+<br>    L=size(c,3);
+<br>end
+<br>toc</p>
+
+<p>So will this never be faster than normal multiplies?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Gary: MTIMESX is generally not 
+going to be any faster at generic matrix multiplies than MATLAB since it
+ is calling exactly the same BLAS routines as MATLAB. The exceptions are
+ small (4x4 or less) multiplies, dot products, outer products, and some 
+matrix-vector multiplies since they can sometimes be done faster with 
+inline code which MTIMESX uses in the SPEED or LOOP modes. Also, the nD 
+multiply case is almost always faster with MTIMESX than the equivalent 
+loop(s) in MATLAB for any size since array slice copies are avoided.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/147288">Gary</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi,
+<br>I am trying to compute the product of many matrices (M1*M2*...). I 
+used mtimesx to multiply half of all matrices by the other half until 
+the result(e.g. a=M1*M2, b=M3*M4, a*b). It works very well when the 
+matrix have small size like 4x4 but when for larger size it becomes 
+slower than Matlab. Is that expected?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/135935">Tom</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Was a bit to fast, sorry. Someone already asked this! It works fine now! </p>
+
+<p>Great job!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35784">dm</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great submission! Find it VERY useful for my work!</p>
+
+<p>Also, I think you can change</p>
+
+<p>"Beats MATLAB 300% - 400% in some cases ... really!"</p>
+
+<p>in the title, and multiply the numbers with at least a factor of 25 (based on the results from mtimesx_test_nd).</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Dan Scholnik: Have you tried 
+running the mtimesx_test_nd file yet? That should invoke small OpenMP 
+test cases. For larger test cases it may in fact be the case that later 
+and/or 64-bit versions of MATLAB are hard to improve on for speed. Alas,
+ I don't have a 64-bit system to tinker with.</p>
+
+<p>At the moment I am working on incorporating in-place operations in 
+MTIMESX and that will be in the next major release, but I will put your 
+dense triangular suggestion on the list of potential future 
+improvements.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/133331">Dan Scholnik</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Compiled for Matlab 2011a on Fedora 14 x86_64 using</p>
+
+<p>mex CFLAGS='$CFLAGS -fopenmp' LDFLAGS='$LDFLAGS -fopenmp' -largeArrayDims -O -DUNIX mtimesx.c -lmwblas</p>
+
+<p>Not sure all of that was needed, but it works.  Compiler was gcc 4.5.1.</p>
+
+<p>mtimesx('OPENMP') returns 1 and mtimesx('OMP_GET_NUM_PROCS') returns 4
+ (I have a dual-core i7 w/ hyperthreadding), however mtimesx never 
+reports using anything but the BLAS no matter which flags I pass in.  
+Best I can tell the flags have no effect.  The matlab-provided mwblas is
+ multithreaded, so perhaps there's no improving on it.  Speeds were 
+generally not much different than the matlab multiply, except (as 
+mentioned previously) for cases where the matlab transpose or conjugate 
+operations themselves consumed significant portions of the total time.</p>
+
+<p>I also tried using the fedora-provided BLAS via "-lblas" but it 
+appears to be single-threaded and very slow.  Here again mtimesx never 
+used multiple processors that I could tell.</p>
+
+<p>A possible feature suggestion, albeit one that deviates from the 
+general-purpose nature of the current code:  How about routines for 
+dense triangular-matrix multiplication?  Matlab doesn't seem to have any
+ optimizations for this case (although it does for back-substitution, 
+which is common with triangular matrices).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100343">pink</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>can provide your email address, because my code is too long to post
+<br>wahyoe_slipnot@yahoo.co.id
+<br>wahyoe</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100343">pink</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>yes, it can work, thanks a lot james
+<br>I wanted to ask
+<br>1. if the form below, how do I use mtimesx
+<br>   for i = 1: m
+<br>     A (:,:, i) = B (:,:, i). '* Ex (:,:, i) * C (:,:, i);
+<br>   end
+<br>2. If I compile into an application (exe) files that I have to enter into deploytool, because I saw a lot of files in it
+<br>thanks
+<br>Wahyoe</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ wahyoe Unggul: Did you get the build process to work?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ wahyoe Unggol: The error message is telling you that you need to select a C compiler first. So do this:</p>
+
+<p>mex -setup
+<br>(Then press Enter)
+<br>(Then enter the number of a C compiler such as lcc)
+<br>(Then press Enter again)</p>
+
+<p>Once this is done, try running mtimesx again and see if it builds OK.</p>
+
+<p>To answer your specific question I would need to know the dimensions of each variable. I.e., what is the size of RT and Ex?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Mar 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100343">pink</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>hi all
+<br>I tried running "mtimesx_test_sdspeed.m", but an error occurs</p>
+
+<p>? Error using ==&gt; mtimesx_build at 169
+<br>AC / C + + compiler has not been selected with Mex-setup</p>
+
+<p>Error in ==&gt; mtimesx at 271
+<br>mtimesx_build;</p>
+
+<p>Error in ==&gt; mtimesx_test_sdspeed at 100
+<br>compver = [computer ',' version ', mtimesx mode' mtimesx ', the median of'
+<br>num2str (n) 'runs'];</p>
+
+<p>I wanted to ask, how the use of "mtimesx" in the form like this
+<br>for i = 1:2000
+<br>     Keg (:,:, i) = RT (:,:, i). '* Ex (:,:, i) * RT (:,:, i);
+<br>end
+<br>and I want to ask whether in addition to speed, can also reduce the data to be more efficient?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Daniel Lyddy: Confirmed typo in the prototypes for these functions. Change the int * to mwSignedIndex *. So</p>
+
+<p>void    xSYRK(char *, char *, mwSignedIndex *, mwSignedIndex *, RealKind *, RealKind *,
+<br>              mwSignedIndex *, RealKind *, RealKind *, int*);
+<br>void   xSYR2K(char *, char *, int*, mwSignedIndex *, RealKind *, RealKind *, mwSignedIndex *,
+<br>              RealKind *, mwSignedIndex *, RealKind *, RealKind *, mwSignedIndex *);</p>
+
+<p>becomes</p>
+
+<p>void    xSYRK(char *, char *, mwSignedIndex *, mwSignedIndex *, RealKind *, RealKind *,
+<br>              mwSignedIndex *, RealKind *, RealKind *, mwSignedIndex *);
+<br>void   xSYR2K(char *, char *, mwSignedIndex *, mwSignedIndex *, RealKind *, RealKind *, mwSignedIndex *,
+<br>              RealKind *, mwSignedIndex *, RealKind *, RealKind *, mwSignedIndex *);</p>
+
+<p>Thanks for pointing this out. That being said, these typos in all 
+likelihood should not affect the actual results since in both cases 
+64-bit pointers were being passed and the underlying data is in fact 
+mwSignedIndex in spite of the prototype. I will upload fixed files soon.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/57254">Daniel Lyddy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am getting some warnings about 
+incompatible pointer types when compiling on a 64-bit Centos Linux 5.5 
+system.  For example, in line 4909 referred to below, argument 10 is 
+'LDC' which is #defined to &amp;ldc which is a pointer to mwSignedIndex.
+  In the blas/lapack dsyrk function, argument 10 is also called 'LDC', 
+but it is an integer.  Pointers on 64-bit systems are typically larger 
+than 32 bit ints ... maybe these blas/lapack arguments need to be cast 
+to something else?</p>
+
+<p>mex('-DDEFINEUNIX','-largeArrayDims','mtimesx.c',blas_lib)
+<br>mtimesx.c: In function ‘mexFunction’:
+<br>mtimesx.c:592: warning: assignment discards qualifiers from pointer target type
+<br>In file included from mtimesx.c:1303:
+<br>mtimesx_RealTimesReal.c: In function ‘DoubleTimesDouble’:
+<br>mtimesx_RealTimesReal.c:4209: warning: passing argument 10 of ‘dsyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4211: warning: passing argument 10 of ‘dsyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4212: warning: passing argument 3 of ‘dsyr2k_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4225: warning: passing argument 10 of ‘dsyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4227: warning: passing argument 10 of ‘dsyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4228: warning: passing argument 3 of ‘dsyr2k_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4241: warning: passing argument 10 of ‘dsyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4243: warning: passing argument 10 of ‘dsyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4257: warning: passing argument 10 of ‘dsyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4259: warning: passing argument 10 of ‘dsyrk_’ from incompatible pointer type
+<br>In file included from mtimesx.c:1481:
+<br>mtimesx_RealTimesReal.c: In function ‘FloatTimesFloat’:
+<br>mtimesx_RealTimesReal.c:4209: warning: passing argument 10 of ‘ssyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4211: warning: passing argument 10 of ‘ssyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4212: warning: passing argument 3 of ‘ssyr2k_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4225: warning: passing argument 10 of ‘ssyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4227: warning: passing argument 10 of ‘ssyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4228: warning: passing argument 3 of ‘ssyr2k_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4241: warning: passing argument 10 of ‘ssyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4243: warning: passing argument 10 of ‘ssyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4257: warning: passing argument 10 of ‘ssyrk_’ from incompatible pointer type
+<br>mtimesx_RealTimesReal.c:4259: warning: passing argument 10 of ‘ssyrk_’ from incompatible pointer type</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29906">Bruno Luong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm not using deploytool, just MCC command.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Bruno Luong: Sorry I am not going
+ to be much help here since I do not have a Windows 7 platform to test 
+with. Are you using deploytool, and then the result can't use mtimesx?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29906">Bruno Luong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>There is an annoying compatibility 
+issue with deploying MTIMESX on Window7 platform, The MCR issues an 
+error message "mex file in incorrect". It works fine under Matlab or 
+other OS. I just can't use it when the issue is not resolved.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Matt J: Issue mtimesx without any
+ arguments to find out what the current calculation mode is. If you 
+enter any of the OpenMP directives but mtimesx was not compiled with an 
+OpenMP enabled compiler then mtimesx will revert to the nearest 
+functionality. So SPEEDOMP will revert to SPEED, LOOPSOMP will revert to
+ LOOPS, and the omp_etc functions will revert to substitute functions 
+instead of the actual OpenMP functions. Your above example looks like 
+what would happen if mtimesx was not compiled with an OpenMP enabled 
+compiler. To see how mtimesx thinks it was compiled, issue the 
+mtimesx('OPENMP') command and it will return a 1 (yes OpenMP) or 0 (No 
+OpenMP).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Nov 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James, the latest version of 
+mtimesx doesn't display at the command line any of the new modes (so of 
+course I don't know if they're being used).</p>
+
+<p>&gt;&gt; mtimesx SPEEDOMP</p>
+
+<p>ans =</p>
+
+<p>SPEED
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93689">Kai</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/15233">Jan Simon</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks James! See this thread for applying MTIMESX to calculate a fast 2-norm for the matrix along a specified dimension:
+<br>http://www.mathworks.com/matlabcentral/newsreader/view_thread/293747#787738</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Matt J: I will look into it. 
+Rather than pre-converting I may be able to fake out a call back to 
+MATLAB with a pointer to the interior of the nD array and fudged up 
+dimensions. Highly against the mex rules, but it might work. I should 
+have taken advantage of the simple reshape method you use for the 
+non-transposed cases (I didn't recognize it at the time I was updating 
+the code) and that should not be too hard to implement. But the 
+transpose cases for the 2D slices and the case for the sparse matrix 
+being the right operand is going to be tricky to avoid a data copy.  
+Guess I have a weekend project now ...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James - I appreciate you taking my comments into account in the latest rev, but I'm still seeing weird stuff. From the manual:</p>
+
+<p>"If you combine sparse inputs with full nD (n &gt; 2) inputs, MTIMESX
+ will convert the sparse input to full since MATLAB does not
+<br>support a sparse nD result."</p>
+
+<p>Pre-converting the input from sparse to full leads to very slow 
+performance, certainly slower than regular MATLAB as the comparison 
+below shows. Is it really the only convenient solution? Also, MATLAB not
+ supporting sparse nD is again not the issue, since even for n=2, 
+sparse*full is always full in regular MATLAB. </p>
+
+<p>%fake data
+<br>N=300;M=200;
+<br>A=speye(N);
+<br>B=rand(N,N,M);
+<br>Bs=single(B);</p>
+
+<p>mtimesx SPEED;</p>
+
+<p>tic;
+<br> ans1=mtimesx(A,B);
+<br>toc;
+<br>%Elapsed time is 0.681635 seconds.</p>
+
+<p>tic;
+<br>  ans2=reshape(  A*reshape(B,N,[])  , size(B) );
+<br>toc;
+<br>%Elapsed time is 0.159543 seconds.</p>
+
+<p>isequal(ans1,ans2)%1</p>
+
+<p>"If you combine double sparse and single inputs, MTIMESX will convert
+ the single input to double since MATLAB does not support a single 
+sparse result."</p>
+
+<p>As above, even if MATLAB did support sparse*fullsingle you would 
+expect the result to be full single, not sparse single.  And also, this 
+feature is showing very slow behavior as compared to regular MATLAB, for
+ some reason</p>
+
+<p>tic;
+<br>  ans3=mtimesx(A,Bs);
+<br>toc;
+<br>%Elapsed time is 0.817832 seconds.</p>
+
+<p>tic;
+<br> ans4=single( reshape(  A*reshape(double(Bs),N,[])  ,size(B)) );
+<br>toc;
+<br>%Elapsed time is 0.402111 seconds.</p>
+
+<p>isequal(ans3,ans4),%1</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Matt J: Thanks for the comments. I will get to work on the suggested changes right away.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Just a couple more remarks regarding some of the limitations mentioned in the user manual,</p>
+
+<p>"You cannot combine double sparse and single inputs, since MATLAB does not support a single sparse result."</p>
+
+<p>It would be worthwhile to silently cast the single input to double 
+prior to the matrix multiply. I've never understood why MATLAB doesn't 
+implement the same. It only forces the user to do it manually.</p>
+
+<p>"You also cannot combine sparse inputs with full nD (n &gt; 2) inputs, since MATLAB does not support a sparse nD result."</p>
+
+<p>Don't understand that. Native MATLAB produces a full result when 
+combining sparse matrix multiplicands with full ones. No reason why you 
+couldn't do the same for nD, as far as I can see...
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33036">Matt J</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I like it. The only thing I find a little peculiar is that the output of
+<br>mtimesx('MODE') reports the previous mode rather than the current one.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34534">Sebastiaan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Something like A(A&lt;1e-8) = 0 should automatically remove small numbers from the sparsity pattern.</p>
+
+<p>If this is too slow, have a look at spfun; it may be faster.</p>
+
+<p>However, if you mean if you can remove small elements from the output
+ matrix, you should write something of your own, partially multiplying 
+the matrix and removing small elements. As a tip, use full column 
+vectors of the matrix, this will make the multiplication much faster 
+than square blocks, since sparse matrices are stored by columns. E.g.:
+<br>C = spalloc(size(A,1), size(B,2), 0);
+<br>for j=1:size(B,2)
+<br>  R = A*B(:,j);
+<br>  R(R&lt;1e-8) = 0;
+<br>  C(:,j) = R;
+<br>end
+<br>is (probably) a fast implementation. Try to take multiple columns for speed of course.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/106462">Julio</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Sebastiaan, I never thought 
+to check the density of the resulting matrix and you are absolutely 
+right: the memory blew up! By the way, is there any way to define an 
+“operational zero” for sparse matrices operations in order to 
+automatically make MATLAB assume a zero for numbers say &lt; than 1e-8?
+<br>Thank you again.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34534">Sebastiaan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Could it not be possible that you 
+are really out of memory? Your result is a 460191 by 460191 matrix, 
+which is not necessarily sparse. If the sparsity pattern is poor, the 
+result may even be a dense matrix. Storing a full matrix this size 
+requires 1578GiB of memory, so you have to be sure that the result is 
+~2% sparse. If neither of the input matrices are &lt;1% sparse, this is 
+likely your problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/106462">Julio</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for your prompt reply. 
+“mtimes” at the MATLAB prompt gives exactly the same error so, nothing 
+wrong with “mtimesx”. Is it possible that this is a repetition of the 
+“outer-product” problem? I am going to try partition the matrix “cb” in 
+several chunks and then concatenate the results. Maybe it will work this
+ way.
+<br>Thanks again.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ Julio: MTIMESX does not do 
+generic sparse matrix multiplies internally, it just calls the MATLAB 
+built-in function mtimes.  i.e., it does the same thing as if you had 
+just typed c21 * cb at the MATLAB prompt. Can you verify that c21 * cb 
+works at the MATLAB prompt but mtimesx(c21,cb) does not work? Be sure 
+that you start them both from the same state (e.g., clear all other big 
+variables including ans before attempting the calculation). That would 
+be surprising to me since it would indicate some type of mex limitation 
+that I am currently unaware of.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/106462">Julio</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi, I am new using mtimesx but, so 
+far, I think is great. Meanwile, I am trting to multiply 2 large sparse 
+matrices "ci=mtimesx(c21,cb)". c21 is 460191 by 5579 and cb is 5579 by 
+460191. After several minutes I got a error message (similar to mtimes):
+ 
+<br>======================
+<br>??? Error using ==&gt; mtimes
+<br>Out of memory. Type HELP MEMORY for your options.
+<br>Error in ==&gt; mtimesx_sparse at 47
+<br>        result = a * b;</p>
+
+<p>Error in ==&gt; mtimesx at 277
+<br>[varargout{1:nargout}] = mtimesx(varargin{:});
+<br>======================</p>
+
+<p>I don't think that the problem is lack of memory (I have a 64 bit 
+system with 8 GB of RAM and the memory usage never went above 5 GB). 
+Couls you please comment on this.</p>
+
+<p>Thanks in advance.</p>
+
+<p>Julio</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Also in today's release that I 
+forgot to mention below: Added custom inline code for small matrix 
+multiplies where all of the first two dimensions are &lt;= 4 (in 'SPEED'
+ mode).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103160">D Sen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks! I am seeing about a 3.25x improvement in speed for my application.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ D Sen: In addition, you would need to reshape audio_dft to be 32 x 1 x 4097.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ D Sen:  The E array slicing is 
+not set up the way mtimesx needs. mtimesx needs the array slices to be 
+contiguous in memory (a requirement for the underlying BLAS calls). So 
+your E array would need to be a 25 x 32 x 4097 array, making the 25 x 32
+ slices contiguous in memory (the 2D slices need to be the first two 
+dimensions). The way you currently have it set up, all of your 25 x 32 
+array slices of E are individually scattered throughout memory and are 
+not the first two dimensions, and mtimesx cannot use them that way.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/103160">D Sen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have been trying to use this to multiply a 3D matrix with a 2D matrix.</p>
+
+<p>The matlab code which works is as follows:</p>
+
+<p>        C = zeros ( 25, 4097 );
+<br>        for( i_ = 1:4097 )
+<br>            C(:, i_) = squeeze( E( i_, :, : ) ) * audio_dft( :, i_ );
+<br>        end</p>
+
+<p>Here E and audio_dft have the following sizes:</p>
+
+<p>    size(E)</p>
+
+<p>    ans =
+<br>    
+<br>            4097          25          32</p>
+
+<p>    size( audio_dft)</p>
+
+<p>    ans =</p>
+
+<p>              32        4097</p>
+
+<p>I get:</p>
+
+<p>    mtimesx( E, audio_dft )
+<br>    ??? Error using ==&gt; mtimesx
+<br>    Inner matrix dimensions must agree. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 May 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/217072">Val Schmidt</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Never mind, I found my problem. I have not successfully built mtimesx on Snow Leopard 10.6 with 64 bit MATLAB. </p>
+
+<p>To do so I edited 
+<br>/Applications/MATLAB_R2009b.app/bin/gccopts.sh
+<br>In the section for "maci64" I changed "SDKROOT" and "MACOSX_DEPLOYMENT_TARGET" to reflect a change in OS from 10.5 to 10.6. </p>
+
+<p>Then I selected this opts file with 
+<br>mex -setup
+<br>selecting "1" at the prompt. </p>
+
+<p>Then I compiled everything with:
+<br>mex -v -DDEFINEUNIX -largeArrayDims mtimesx.c -lmwblas -lmwlapack</p>
+
+<p>(look out for the 2 D's in -DDEFINEUNIX - that was my error)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 May 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/217072">Val Schmidt</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm trying to compile on 64bit 
+MATLAB on Mac OSX 10.6 without success. The only changes I've made to 
+the default have been to modify the MATLABROOT/bin/gccopts.sh file such 
+that the SDK and OS Version are set to the 10.6 variety. (and then ran 
+mex -setup)</p>
+
+<p>It seems the linker cannot find the linear algebra packages, but it 
+is not clear to me why. The output is below and I would be thankful for 
+ideas on what to try next.</p>
+
+<p>thanks</p>
+
+<p>---------------snip------------
+<br>-&gt; gcc-4.0 -O -Wl,-twolevel_namespace -undefined error -arch 
+x86_64 -Wl,-syslibroot,/Developer/SDKs/MacOSX10.6.sdk 
+-mmacosx-version-min=10.6 -bundle 
+-Wl,-exported_symbols_list,/Applications/MATLAB_R2009b.app/extern/lib/maci64/mexFunction.map
+ -o  "mtimesx.mexmaci64"  mtimesx.o  
+-L/Applications/MATLAB_R2009b.app/bin/maci64 -lmx -lmex -lmat -lstdc++</p>
+
+<p>Undefined symbols:
+<br>  "_dsyr2k", referenced from:
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>  "_dgemm", referenced from:
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>  "_dgemv", referenced from:
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>  "_sgemm", referenced from:
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>  "_sgemv", referenced from:
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>  "_dsyrk", referenced from:
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>      _DoubleTimesDouble in mtimesx.o
+<br>  "_ssyrk", referenced from:
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>  "_ssyr2k", referenced from:
+<br>      _FloatTimesFloat in mtimesx.o
+<br>      _FloatTimesFloat in mtimesx.o
+<br>  "_sdot", referenced from:
+<br>      _floatcomplexdotproduct in mtimesx.o
+<br>      _floatcomplexdotproduct in mtimesx.o
+<br>      _floatcomplexdotproduct in mtimesx.o
+<br>      _floatcomplexdotproduct in mtimesx.o
+<br>      _floatcomplexdotproduct in mtimesx.o
+<br>  "_ddot", referenced from:
+<br>      _doublecomplexdotproduct in mtimesx.o
+<br>      _doublecomplexdotproduct in mtimesx.o
+<br>      _doublecomplexdotproduct in mtimesx.o
+<br>      _doublecomplexdotproduct in mtimesx.o
+<br>      _doublecomplexdotproduct in mtimesx.o
+<br>ld: symbol(s) not found
+<br>collect2: ld returned 1 exit status</p>
+
+<p>    mex: link of ' "mtimesx.mexmaci64"' failed.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 May 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/91201">Roland Kruse</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The code is suprisingly fast for 
+multiplication of a sparse matrix by a skalar. I really wonder why 
+Matlab is so slow in this (very simple) case.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/217072">Val Schmidt</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>James,
+<br>This is code is proving to be a FANTASTIC speed up to my work. I am so grateful that I thought I would post and comment. </p>
+
+<p>First, I am working on R2008b on an intel mac. I compiled your code with </p>
+
+<p> mex -DEFINEUNIX mtimesx.c</p>
+
+<p>and although I received a handful of warnings about redefined 
+pointers, it compiled fine without error. I also tried compiling the 
+code with a few extra optimizations, out of curiosity:</p>
+
+<p> mex -DEFINEUNIX CFLAGS = '$CFLAGS -O3 -funroll-loops -fexpensive-optimizations -ffast-math' mtimesx.c</p>
+
+<p>The result wasn't significantly faster than the original on my own 
+processing test (I did not take the time to run it through your tests, 
+however.). </p>
+
+<p>I did run mtimesx_test_ddspeed initially to compare with MATLAB 
+native routines, and while I didn't capture the results, I found that 
+most things native MATLAB could do as fast or faster than mtimesx, with 
+the notable exception of math involving complex conjugates, in which 
+mtimesx was far, far faster. </p>
+
+<p>However, the fantastic benefit for me was the native handling of 4D 
+matrices by mtimesx. In my own code in which I am rotating several (8.3)
+ million 3D vectors through a 3x3 rotation matrices, mtimesx increased 
+the speed of my calculations 2100%! </p>
+
+<p>Thanks so much for your time and effort. It is most gratefully appreciated.</p>
+
+<p>-Val</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@ veltz: Thanks for your comments. 
+Regarding openMP, I think the short answer is no. I will give my reasons
+ shortly, but please be advised I don't do any openMP stuff myself so my
+ comments might not be correct.</p>
+
+<p>The basic loop for nd stuff is this loop:</p>
+
+<p>    for( ip=0; ip&lt;p; ip++ ) {</p>
+
+<p>However, this is just the loop for the blocks in the C result. The 
+blocks from the A and B arrays are calculated inside the loop based on 
+the singleton expansion code (which depends on the dimensions of A and 
+B) and are not known ahead of time ... at the end of one iteration the 
+calculation for the A and B blocks for the next iteration takes place 
+(the C block pointer just advances by the same amount each time). So it 
+is not set up for a parallel loop. I would have to change the code and 
+create three new arrays of pointers so that ahead of time all of the 
+individual block starting points are known. *Then* maybe it could be put
+ in a parallel loop.</p>
+
+<p>But I don't think this would do much good. The multi-threaded stuff 
+in MATLAB seems to happen at the BLAS/LAPACK level, so mtimesx is 
+already getting the benefit of multi-threading for those calls without 
+doing anything special in the mtimesx code itself to get it. For 
+example, if you compare a simple matrix multiply timing at the MATLAB 
+prompt using two large matrices, you can see about a 1.6x improvement 
+with 2 threads vs 1 thread. If I code up a very simple mex routine that 
+calls dgemm and does nothing else (no pragma omp etc) I see the exact 
+same timing benefit when switching the number of threads used. So the 
+c-mex code gets the multi-threaded benefit by virtue of the BLAS/LAPACK 
+routines used. Wrapping another layer of threading on top of that will 
+likely not result in any timing benefit, and may (speaking from 
+ignorance here) in fact conflict with the multi-threading that is 
+already going on inside the BLAS/LAPACK routines themselves.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/93616">veltz</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>First, thank you for this marvellous code :)
+<br>Is there a way to use openMP in your code ? For example, when doing 
+<br> C = zeros(2,6,4,5);
+<br>    for m=1:4
+<br>        for n=1:5
+<br>            C(:,:,m,n) = A(:,:,m,n) * B(:,:,m,n);
+<br>        end
+<br>    end
+<br>we could call un pragma omp parallel for. As the code is pretty big, where does such loop appear in your code ?</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/91278">Jon C</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Debian 64-bit compiled right with:
+<br>mex CFLAGS="\$CFLAGS -std=c99" -DDEFINEUNIX -largeArrayDims -lmwblas mtimesx.c
+<br>(the functional syntax of mex did not parse the arguments properly)</p>
+
+<p>The GCC -ansi switch included by the default mexopts apparently 
+refers to C89 (which does not recognize // -- C++ style comments).  I 
+wonder what is wrong with C99 as a default in mexopts?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/91278">Jon C</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/90073">Joshua Dillon</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful code.  Good work.</p>
+
+<p>The following snippet may be useful to those compiling on Ubuntu:
+<br>libblas='/usr/lib/libblas.so';
+<br>if exist(libblas,'file')~=2
+<br>    system('sudo aptitude install libblas-dev');
+<br>end</p>
+
+<p>% This will compile the code on linux
+<br>mex('CFLAGS=-std=c99 -fPIC','-DDEFINEUNIX','-largeArrayDims','-lmwblas','mtimesx.c');
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Fabio: Thanks very much for the 
+64-bit info. I was unaware that gcc did not like the // commenting 
+style, which I prefer over the /* */. However, I will create additional 
+files with changed comments and upload them in the next week or so. I 
+would be very interested in seeing the details of what you had to change
+ to get it to compile and the results of any benchmark tests you happen 
+to run. Feel free to e-mail me at the address listed in the pdf file. 
+Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/89688">Fabio Veronese</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great job!
+<br>Thanks to mtimesx I changed a huge for loop to 3D matrix computation, reducing script execution time from 14 s to 1.5 s!</p>
+
+<p>Tested and compiled on Gentoo Linux (64bit) 2.6.33 on amd64 system. 
+Compiling with gcc 4.3.* (not the deprecated 4.2 as suggested by 
+Mathworks) I had to delete all quotes from C code files. Probably "//" 
+sequence is not friendly to newer gcc compiler, maybe you can replace it
+ with " /*quote*/ " wich is correctly ignored. Also to successfully 
+compile I had to use:</p>
+
+<p>mex('-DDEFINEUNIX','-largeArrayDims', '-lmwblas','mtimesx.c')</p>
+
+<p>wich is something different from default. Both '-lmwlapack', 
+'-lmwblas' are the options suggested for compiling in UNIX systems (see 
+"Building MEX-Files" in doc), but that was enough.  I can say it works 
+correctly, but I didn't run the benchmarks files.</p>
+
+<p>Hope this helps!
+<br>Feel free to ask if some testing on LINUX 64bit is needed. I'm going to run tests soon.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86668">Eric Larrieux</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the quick fix!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Confirmed bug. The bug happens during the following conditions in MATLAB mode:</p>
+
+<p>(row vector) * (non-square matrix)</p>
+
+<p>(non-square matrix transposed) * (column vector)</p>
+
+<p>Sorry about that! This was not caught in testing because I only used 
+square matrices for these particular tests. The bug occurs because the 
+BLAS routines DGEMV and SGEMV do not switch the dimension arguments when
+ a transpose is involved. I had erroneously assumed that they did 
+because that is how the BLAS routines DGEMM and SGEMM arguments work for
+ general matrix multiplies. I have no idea why the interface for these 
+routines is not set up the same. In any event, I will upload a fix 
+tonight. In the meantime, you can manually put the fix in as follows:</p>
+
+<p>Edit the mtimesx_RealTimesReal.c file.</p>
+
+<p>Global replace the following text:</p>
+
+<p>xGEMV(PTRANSA, M, K</p>
+
+<p>with this text:</p>
+
+<p>xGEMV(PTRANSA, &amp;m1, &amp;n1</p>
+
+<p>And then also global replace the following text:</p>
+
+<p>xGEMV(PTRANSB, N, K</p>
+
+<p>with this:</p>
+
+<p>xGEMV(PTRANSB, &amp;m2, &amp;n2</p>
+
+<p>Those replacements will force the DGEMV and SGEMV calls to use the 
+original dimensions of the first matrix argument instead of the switched
+ dimensions.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86668">Eric Larrieux</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks!  Also, FYI: I am running R2009a...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I will look into it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/86668">Eric Larrieux</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi I running matlab on a 32-bit 
+windows machine and I am getting incorrect (all 0) results when i 
+perform some simple 3D matrix multiplication in "matlab' mode only 
+('speed' mode seeps yield the correct results in all the cases i have 
+tested so far).  i.e.</p>
+
+<p>&gt;&gt; % define a and b 
+<br>&gt;&gt; a=2*ones(1,2,2)
+<br>a(:,:,1) =
+<br>     2     2
+<br>a(:,:,2) =
+<br>     2     2
+<br>&gt;&gt; b=3*ones(2,3,2)
+<br>b(:,:,1) =
+<br>     3     3     3
+<br>     3     3     3
+<br>b(:,:,2) =
+<br>     3     3     3
+<br>     3     3     3
+<br>&gt;&gt; 
+<br>&gt;&gt; % verify result using normal matrix multiply
+<br>&gt;&gt; a(:,:,1)*b(:,:,1)
+<br>ans =
+<br>    12    12    12
+<br>&gt;&gt; mtimes(a(:,:,1),b(:,:,1))
+<br>ans =
+<br>    12    12    12
+<br>&gt;&gt; 
+<br>&gt;&gt; % test results using mtimesx
+<br>&gt;&gt; mtimesx(a(:,:,1),b(:,:,1),'matlab')
+<br>ans =
+<br>     0     0     0
+<br>&gt;&gt; mtimesx(a(:,:,1),b(:,:,1),'speed')
+<br>ans =
+<br>    12    12    12</p>
+
+<p>I just downloaded and installed the package yesterday, so I believe 
+the outer-product bug discussed about should be fixed.  Does anyone have
+ any idea what is causing this error?  Thanks!</p>
+
+<p>-eric</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@newpolaris: Thanks for the input! 
+It's hard for me to debug the 64-bit stuff since I don't have a system 
+to test with, so comments like yours are very much appreciated. I have 
+uploaded a new set of files with the largearraydims typo in the build 
+routine fixed.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/85372">newpolaris ?</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>grate! but mis-typing exist on mtimesx_build.m for 64bit Windows</p>
+
+<p>on line 247 -&gt;    largearraydims = '-largearraydims'; 
+<br>it cause error like,
+<br>Warning: MEX could not find the library "argearraydims"  
+<br>         specified with -l option on the path specified  
+<br>         with the -L option. 
+<br>... mex mtimesx.c build completed ... you may now use mtimesx.</p>
+
+<p>so it muse be replace by     "largearraydims = '-largeArrayDims';"</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/85372">newpolaris ?</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/85372">newpolaris ?</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>in my case, result is all zero matrix :)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/81933">Tobias Wood</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Cannot thank you enough for this. 
+Got a huge speed improvement (10 seconds down to 0.6) for a script using
+ this. I'm staggered it's not in the core of Matlab.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29906">Bruno Luong</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It must have some gut to tackle what Matlab pretends to do the best: matrix computation.</p>
+
+<p>The package is nicely presented. This is no doubt a professional 
+quality code using the junk of state-of-art BLAS, an accompaniment PDF 
+document to explain the “why” and the “how” in great detail.</p>
+
+<p>As with any well written MEX-based package, there is an installation 
+file to make conveniently the compilation before the package can be 
+used. Just type the name and the job is done. The main path (no 
+subfolders) of the package is left to user to add to Matlab preference.</p>
+
+<p>Obviously there are 8 separate files that can be used to benchmark 
+with Matlab. Their names tell something that not obvious for new comers,
+ but for those who are familiar with Matlab, there is no doubt: It tests
+ all 4 combination of double/single and one for equality test, another 
+for speed test. I choose the “dd” one (double/double) likely the most 
+used combination, and run the “equal” test. It crashes. Too bad, then 
+despite of the crash I took my chance to run the speed test. Well, a 
+bunch of tests are tic/toc against Matlab, with clear outputs indicating
+ if it’s slower or faster than Matlab and how much in percent the 
+runtimes are comparable. Something strange happened: in some cases, the 
+MTIMESX show few hundred times faster than Matlab. I told: “It cannot be
+ true; why Matlab performs so poorly?”. I decided to go step-by-step the
+ speed-test function, and discovered there may be another bug. I 
+contacted the author, and bingo, I get his explanation and solution few 
+hours later. The bug (just one line missing) is due to last minute 
+change before submission. Followed James’s instruction, I modified the 
+code, rebuilt the Mex file, and run the test code. The results look much
+ more reasonable. And I rerun the “equal” test, there is no longer 
+crash.</p>
+
+<p>One more word on my setup before reading the next: Windows Vista 
+32-bit, 2009B, and an old loyal VS C++ 6.0. It is important because 
+MTIMESX performance will depend greatly on the setup, and this is 
+clearly stated by the author.</p>
+
+<p>The main function MTIMESX can operate on two modes: “MATLAB” 
+(default) and “SPEED”. The first one tries to be as much as compatible 
+with Matlab, and the second one is all about – as the name suggests - 
+speed oriented. In all my first two tests I run “MATLAB” modes, the last
+ one will compare two modes.</p>
+
+<p>PERTINENT:</p>
+
+<p>I.	2D Arrays
+<br>Speed tests run with all possible combination of cases: 
+complex/real; normal, transposed, conjugate, conjugate-transposed; then 
+combinations of matrix/vector/scalar; all that apply for first or second
+ matrix arguments. Each argument might have then 2*4*3=24 states, not 
+counting a vector can be column or row.  Combine both, the test run 
+probably no less than 24^2=576 cases, and for 2D arrays only (ND arrays 
+supported, we’ll be back on that).
+<br>Most of the time, MTIMESX (in Matlab mode) seems to perform more or 
+less a comparable speed with Matlab, except for few cases where speed 
+advantage is clearly significant. Here is one typical of such case:</p>
+
+<p>&gt;&gt; n=2000;
+<br>&gt;&gt; A=rand(n)+1i*rand(n);
+<br>&gt;&gt; B=rand(1,n)+1i*rand(1,n);
+<br>&gt;&gt; tic; C=conj(A)*B.'; toc
+<br>Elapsed time is 0.094847 seconds.</p>
+
+<p>&gt;&gt; tic; C=mtimesx(A,'G',B,'T'); toc
+<br>Elapsed time is 0.034242 seconds.</p>
+
+<p>That about 3 times faster than Matlab. Taking a closer look, it seems
+ Matlab is penalized by carrying out explicitly the transpose and 
+conjugate before the product as show in the next</p>
+
+<p>&gt;&gt; A1=conj(A);
+<br>&gt;&gt; B1=B.';
+<br>&gt;&gt; tic; C=A1*B1; toc
+<br>Elapsed time is 0.030122 seconds.</p>
+
+<p> whereas MTIMESX performs those operations *on-the-fly* during the 
+product. Very good. But I would argue that the speed gain is less in 
+practice. In fact if the product is to be carried out once, careful 
+developers usually manage to build conj(A) and B.’ and not A and B. In 
+this case all the speed gain of MTIMESX is irrelevant. If A and conj(A) 
+are used to perform product once each, then there is speed gain is about
+ 1.5 (3/2). If they are used many times, then the developer might 
+perform CONJ once and store it somewhere before product function MTIMES 
+is invoked, and the speed gain get even closer to 1. Still there is 
+clearly an advantage in MTIMEX, for speed and it avoid storing extra 
+matrix conj(A).</p>
+
+<p>My impression is this is the only (and significant) factor that 
+contributes to the speed gain: performing CONJUGATE on the fly. Recent 
+Matlab (2008A, i.e., v.7.6) benefits smart TRANSPOSE on the fly, 
+according to Tim-Davies.</p>
+
+<p>II.	ND-arrays
+<br>The nicest feature of MTIMESX is the capability to perform multiple 
+matrix products ranged in a ND-array. Previously there is such function 
+available on Matlab File Exchange coded by Peter Boettcher also using 
+BLAS, but it seems this package has now a minimum support, and users has
+ trouble to compile it on 64-platform. So this new feature is very 
+welcome.
+<br>When a Matlab developer wants to make product of multiple matrix of the same size, up to date he has 4 alternatives
+<br>1.	Use for-loop
+<br>2.	use a product based on sparse diagonal block (for example 
+function SliceMultiProd available in 
+http://www.mathworks.com/matlabcentral/fileexchange/24260-multiple-same-size-linear-solver
+<br>3.	Use the package MULTIPROD where the element-wise product and sum 
+are carried out, 
+http://www.mathworks.com/matlabcentral/fileexchange/8773-multiple-matrix-multiplications-with-array-expansion-enabled
+<br>4.	Use BLAS based, such as Peter Boettcher’s ndfun, and now James Tursa’s MTIMESX</p>
+
+<p>Here is a code I use to benchmark the four approaches.  Note that in 
+small matrix size (of less than said 5) are often encountered in 
+practice.</p>
+
+<p>function mprodbench(m,n)
+<br>% Bench mark four approaches of product of n (m x m) matrices
+<br> 
+<br>A=rand(m,m,n);
+<br>B=rand(m,m,n);
+<br> 
+<br>C=zeros(size(A,1),size(B,2),size(B,3));
+<br>tic
+<br>for k=1:size(B,3)
+<br>    C(:,:,k) = A(:,:,k)*B(:,:,k);
+<br>end
+<br>t1=toc;
+<br> 
+<br>tic
+<br>C=SliceMultiProd(A,B);
+<br>t2=toc;
+<br> 
+<br>tic
+<br>C=multiprod(A,B);
+<br>t3=toc;
+<br> 
+<br>tic
+<br>C=mtimesx(A,B);
+<br>t4=toc;
+<br> 
+<br>fprintf('Matrix size=%d, number matrices=%d\n', m, n);
+<br>fprintf('\tfor-loop       = %f, rel speed gain = (%f)\n', t1, t1/t1);
+<br>fprintf('\tSliceMultiProd = %f, rel speed gain = (%f)\n', t2, t1/t2);
+<br>fprintf('\tmultiprod      = %f, rel speed gain = (%f)\n', t3, t1/t3);
+<br>fprintf('\tmtimesx</p>
+
+<p>end</p>
+
+<p>And here is the results:</p>
+
+<p>&gt; mprodbench(3,1e4)
+<br>Matrix size=3, number matrices=10000
+<br>	for-loop       = 0.055119, rel speed gain = (1.000000)
+<br>	SliceMultiProd = 0.014130, rel speed gain = (3.900815)
+<br>	multiprod      = 0.007815, rel speed gain = (7.052806)
+<br>	mtimesx        = 0.006185, rel speed gain = (8.911272)</p>
+
+<p>&gt;&gt; mprodbench(10,1e4)
+<br>Matrix size=10, number matrices=10000
+<br>	for-loop       = 0.074665, rel speed gain = (1.000000)
+<br>	SliceMultiProd = 0.146336, rel speed gain = (0.510228)
+<br>	multiprod      = 0.151051, rel speed gain = (0.494303)
+<br>	mtimesx        = 0.022569, rel speed gain = (3.308258)</p>
+
+<p>That shows MTIMESX is the best and consistent approach of multiple 
+same-size matrix product. It supports inputs with any multiple-trailing 
+dimensions.</p>
+
+<p>III.	SPEED VS MATLAB MODES</p>
+
+<p>From my test, speed mode is faster about 30-50% typically for 
+tensorial product (column vector multiplied row vector). Beside that 
+case, the speed gain is probably not spectacular. </p>
+
+<p>CONCLUSION:
+<br>-	For whom? Developers who are interested in optimizing speed and 
+want to take advantage the last ounce of performance from their 
+computers. I have not tested in older version of Matlab but MTIMES, but 
+it will be more surely pertinent as Matlab makes constant progress such 
+as smart matrix transposition. Those who run on latest Matlab (from 
+2008A) has limited benefits besides saving extra conjugate and transpose
+ operations of their matrices. The syntax of MTIMESX is simple, though 
+quite not lean as Matlab operator is the price to pay.
+<br>-	MTIMESX is clearly a best approach for multiple-product of matrices. Go for it!</p>
+
+<p>Fully justified, until Mathlab catching up.</p>
+
+<p>Bruno
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>As a workaround prior to Monday you can make this change to the mtimesx_RealTimesReal.c file near line 222:</p>
+
+<p>    scalarmultiply = 0;  // &lt;-- add this line
+<br>    if( m1 == 1 &amp;&amp; n1 == 1 ) {
+<br>        scalarmultiply = 1;
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>There is a bug in the outer product code. Will be fixed as soon as TMW posts updated version. Probably Monday Dec 7.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">04 Dec 2009</td>
+                  <td><p>Fixed bug for (scalar) * (sparse) when the 
+scalar contains an inf or NaN (in which case the zeros do not stay 
+zero). Slight update to pdf doc.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Dec 2009</td>
+                  <td><p>Fixed bug in scalar multiply code that was causing incorrect results &amp; crashes.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Dec 2009</td>
+                  <td><p>Added singleton expansion capability for multi-dimensional matrix multiplies.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 Dec 2009</td>
+                  <td><p>Fixed a bug for empty transa or transb inputs. 
+Now treats these the same as 'N'. Also simplified the nD singleton 
+expansion code a bit.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Jan 2010</td>
+                  <td><p>Added the multi-dimensional test routine mtimesx_test_nd.m for speed and equality tests. Added its description to the pdf file.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">16 Feb 2010</td>
+                  <td><p>Fixed a typo in the build routine for 64-bit systems, changed -largearraydims to -largeArrayDims</p></td>
+                </tr>
+                <tr>
+                  <td class="date">23 Feb 2010</td>
+                  <td><p>Fixed a bug for some of the (row vector) * 
+(matrix) and (matrix transposed) * (column vector) operations in MATLAB 
+mode that involved incorrect dimensions in the dgemv and sgemv calls.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Aug 2010</td>
+                  <td><p>Added capability for nD scalar multiplies (i.e., 1x1xN * MxKxN).
+<br>Replaced the buggy mxRealloc API routine with custom code.
+<br>Updated mtimesx_test_nd.m file.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">07 Oct 2010</td>
+                  <td><p>Added OpenMP support for custom code
+<br>Expanded sparse * single and sparse * nD support
+<br>Fixed (nD complex scalar)C * (nD array) bug</p></td>
+                </tr>
+                <tr>
+                  <td class="date">23 Feb 2011</td>
+                  <td><p>Fixed typos in the dsyrk, dsyr2k, ssyrk, and ssyr2k BLAS function prototypes. (These typo fixes should not change any results)</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415949350069&amp;cv=7&amp;fst=1415949350069&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=3&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/%3Fsearch_submit%3Dfileexchange%26query%3Dmtimesx%26term%3Dmtimesx&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

@@ -1,0 +1,659 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MAIN</title><meta name="generator" content="MATLAB 7.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-03-07"><meta name="DC.source" content="MAIN.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">=========================================================================</a></li><li><a href="#4">INPUT SUPERELLIPSOIDS DATA ==============================================</a></li><li><a href="#5">= Show options and constraints set ======================================</a></li><li><a href="#6">Calculation of euler e0 e inv(e1,e2,e3,e4)</a></li><li><a href="#7">Create figure</a></li><li><a href="#8">Create Surfaces (with the parametric equations of the superellipsoids)</a></li><li><a href="#9">Starting point estimate (initial points on the surfaces)</a></li><li><a href="#10">lower and upper bounds</a></li><li><a href="#11">OPTIMIZATION to determine the contact points</a></li><li><a href="#12">Test for distance or penetration</a></li><li><a href="#13">Display Information</a></li><li><a href="#14">Show Solutions</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> ContactOptim
+</pre><pre class="codeinput"><span class="comment">% =========================================================================</span>
+<span class="comment">% This function determines the minimum distance between two superellipsoids</span>
+<span class="comment">% surfaces(or the maximum interference distance), using optimization</span>
+<span class="comment">% techniques. The initial estimate for the contact points is determined</span>
+<span class="comment">% so that the contact points are located on the surfaces.</span>
+<span class="comment">% The visualization of the surfaces, the initial estimate and the</span>
+<span class="comment">% optimization solution for the minimum distance is provided.</span>
+<span class="comment">%</span>
+<span class="comment">% Credits:</span>
+<span class="comment">% Ricardo Fontes Portal / Luis Sousa</span>
+<span class="comment">% IDMEC - Instituto Superior Tecnico - Universidade T&eacute;cnica de Lisboa</span>
+<span class="comment">% ricardo.portal(at)dem(.)ist(.)utl(.)pt</span>
+<span class="comment">%</span>
+<span class="comment">% April 2009 original version</span>
+<span class="comment">% March 2013 updated version</span>
+<span class="comment">%</span>
+<span class="comment">% VERSION 1.0</span>
+<span class="comment">% All rights reserved.</span>
+<span class="comment">%</span>
+<span class="comment">% Authors Acknowledgment:</span>
+<span class="comment">% If you use SuperELLIPSOIDs-OPT in any program or publication, please</span>
+<span class="comment">% acknowledge % the authors by refering The Archive of Mechanical</span>
+<span class="comment">% Engineering paper:</span>
+<span class="comment">% Portal, Ricardo. Sousa, Lu&iacute;s. Dias, Jo&atilde;o. &#8220;Contact Detection between</span>
+<span class="comment">% Convex Superquadric Surfaces&#8221;. The Archive of Mechanical Engineering.</span>
+<span class="comment">% Versita, Warsaw. LVII(2), pp. 165-186, DOI 10.2478/v10180-010-0009-8. 2010.</span>
+<span class="comment">%</span>
+</pre><h2>=========================================================================<a name="3"></a></h2><pre class="codeinput">close <span class="string">all</span>; clear <span class="string">all</span>; clc;
+<span class="keyword">global</span> p1 p2 p3 p4 p5 p6 a1 a2 a3 a4 a5 a6 e1 e2 e3 e4 ConSet;
+<span class="keyword">global</span> n1n n2n TRa TRb xlb xub x0;
+</pre><h2>INPUT SUPERELLIPSOIDS DATA ==============================================<a name="4"></a></h2><pre class="codeinput">p1=1.0; p2=3.2; p3=1.0;           <span class="comment">% position (x,y,z) Surf 1</span>
+p4=2.0; p5=-1.0; p6=1.3;          <span class="comment">% position (x,y,z) Surf 2</span>
+a1=2.0; a2=1.25; a3=1.6;          <span class="comment">% superellipsoid 1 semi-axes</span>
+a4=2.0; a5=1.1; a6=0.6;           <span class="comment">% superellipsoid 2 semi-axes</span>
+e1=4.0; e2=2.2;                   <span class="comment">% implicit indexes Surf 1 (roundness)</span>
+e3=3.2; e4=2.5;                   <span class="comment">% implicit indexes Surf 2 (roundness)</span>
+euler1A=0.0; euler2A=0.1; euler3A=-0.2;   <span class="comment">% Euler param. Surf 1 (orientation)</span>
+euler1B=0.3; euler2B=0.3; euler3B=-0.1;   <span class="comment">% Euler param. Surf 2 (orientation)</span>
+<span class="comment">%==========================================================================</span>
+</pre><h2>= Show options and constraints set ======================================<a name="5"></a></h2><p>Constraints set</p><pre class="codeinput">ConSet=<span class="string">'normals_dot'</span>;
+<span class="comment">% 'surfaces'          % surfaces only       a)</span>
+<span class="comment">% 'normals_cross'     % n1 x n2             b)</span>
+<span class="comment">% 'normals_cross+n1'  % n1 x n2 + n2.r12    c)</span>
+<span class="comment">% 'normals_cross+n2'  % n1 x n2 + n2.r12    d)</span>
+<span class="comment">% 'normals_dot'       % n1.n2               e)</span>
+<span class="comment">% 'normals_dot+n1'    % n1.n2   + n1.r12    f)</span>
+<span class="comment">% 'normals_dot+n2'    % n1.n2   + n2.r12    g)</span>
+<span class="comment">% 'dist_n1_n2'        % n1.r12  + n2.r12    h)</span>
+</pre><h2>Calculation of euler e0 e inv(e1,e2,e3,e4)<a name="6"></a></h2><pre class="codeinput">euler0A=sqrt(1.0 - euler1A^2 - euler2A^2 - euler3A^2);
+euler0B=sqrt(1.0 - euler1B^2 - euler2B^2 - euler3B^2);
+e1(1)=2.0/e1(1);  e2(1)=2.0/e2(1);  e3(1)=2.0/e3(1);  e4(1)=2.0/e4(1);
+
+<span class="comment">% Calculation of the Transformation Matrices A and B</span>
+TRa(1,1)= euler0A^2 + euler1A^2 - euler2A^2 - euler3A^2; <span class="comment">% 1st column = TRA(1)</span>
+TRa(2,1)= 2*(euler1A*euler2A + euler0A*euler3A);         <span class="comment">%            = TRA(2)</span>
+TRa(3,1)= 2*(euler1A*euler3A - euler0A*euler2A);         <span class="comment">%            = TRA(3)</span>
+TRa(1,2)= 2*(euler1A*euler2A - euler0A*euler3A);         <span class="comment">% 2nd column = TRA(4)</span>
+TRa(2,2)= euler0A^2 - euler1A^2 + euler2A^2 - euler3A^2; <span class="comment">%            = TRA(5)</span>
+TRa(3,2)= 2*(euler2A*euler3A + euler0A*euler1A);         <span class="comment">%            = TRA(6)</span>
+TRa(1,3)= 2*(euler1A*euler3A + euler0A*euler2A);         <span class="comment">% 3rd column = TRA(7)</span>
+TRa(2,3)= 2*(euler2A*euler3A - euler0A*euler1A);         <span class="comment">%            = TRA(8)</span>
+TRa(3,3)= euler0A^2 - euler1A^2 - euler2A^2 + euler3A^2; <span class="comment">%            = TRA(9)</span>
+
+TRb(1,1)= euler0B^2 + euler1B^2 - euler2B^2 - euler3B^2; <span class="comment">% 1st column = TRA(1)</span>
+TRb(2,1)= 2*(euler1B*euler2B + euler0B*euler3B);         <span class="comment">%            = TRA(2)</span>
+TRb(3,1)= 2*(euler1B*euler3B - euler0B*euler2B);         <span class="comment">%            = TRA(3)</span>
+TRb(1,2)= 2*(euler1B*euler2B - euler0B*euler3B);         <span class="comment">% 2nd column = TRA(4)</span>
+TRb(2,2)= euler0B^2 - euler1B^2 + euler2B^2 - euler3B^2; <span class="comment">%            = TRA(5)</span>
+TRb(3,2)= 2*(euler2B*euler3B + euler0B*euler1B);         <span class="comment">%            = TRA(6)</span>
+TRb(1,3)= 2*(euler1B*euler3B + euler0B*euler2B);         <span class="comment">% 3rd column = TRA(7)</span>
+TRb(2,3)= 2*(euler2B*euler3B - euler0B*euler1B);         <span class="comment">%            = TRA(8)</span>
+TRb(3,3)= euler0B^2 - euler1B^2 - euler2B^2 + euler3B^2; <span class="comment">%            = TRA(9)</span>
+</pre><h2>Create figure<a name="7"></a></h2><pre class="codeinput">figure1 = figure(<span class="string">'PaperSize'</span>,[20.98 29.68],<span class="string">'Color'</span>,[1 1 1],<span class="keyword">...</span>
+    <span class="string">'NumberTitle'</span>,<span class="string">'off'</span>,<span class="string">'ToolBar'</span>,<span class="string">'figure'</span>,<span class="string">'MenuBar'</span>,<span class="string">'none'</span>,<span class="string">'Units'</span>,<span class="string">'pixels'</span>,<span class="keyword">...</span>
+    <span class="string">'Name'</span>,<span class="string">'Minimum Distance between Superellipsoids Surfaces'</span>);
+annotation(gcf,<span class="string">'textbox'</span>,[0.5 0.99 0 0],<span class="keyword">...</span>
+    <span class="string">'String'</span>,{<span class="string">'Determination of the Minimum Distance between Superellipsoids Surfaces'</span>},<span class="keyword">...</span>
+    <span class="string">'HorizontalAlignment'</span>,<span class="string">'center'</span>,<span class="string">'FontWeight'</span>,<span class="string">'bold'</span>,<span class="string">'FontSize'</span>,14,<span class="keyword">...</span>
+    <span class="string">'FontName'</span>,<span class="string">'Calibri'</span>,<span class="string">'FitBoxToText'</span>,<span class="string">'on'</span>,<span class="string">'EdgeColor'</span>,<span class="string">'none'</span>);
+
+<span class="comment">% Create axes</span>
+axes1 = axes(<span class="string">'Parent'</span>,gcf,<span class="string">'DataAspectRatio'</span>,[1 1 1],<span class="string">'TickDir'</span>,<span class="string">'in'</span>,<span class="keyword">...</span>
+    <span class="string">'FontName'</span>,<span class="string">'Calibri'</span>,<span class="string">'FontWeight'</span>,<span class="string">'light'</span>,<span class="string">'FontSize'</span>,12);
+
+set(gcf,<span class="string">'color'</span>,<span class="string">'white'</span>, <span class="string">'Position'</span>,[20 50 1000 750],<span class="keyword">...</span>
+    <span class="string">'nextplot'</span>,<span class="string">'replacechildren'</span>);
+view([120 20]);
+hold(<span class="string">'all'</span>);
+lighting <span class="string">GOURAUD</span> <span class="comment">% FLAT, GOURAUD, PHONG, NONE</span>
+camlight <span class="string">headlight</span>
+</pre><img vspace="5" hspace="5" src="MAIN_01.png" alt=""> <h2>Create Surfaces (with the parametric equations of the superellipsoids)<a name="8"></a></h2><p>Surface 1</p><pre class="codeinput">nxy = 20; nxz = nxy;
+i=1;
+<span class="keyword">for</span> w=-pi : 2*pi/nxy : pi;
+    j=1;
+    <span class="keyword">for</span> n=-pi/2 : pi/nxz : pi/2;
+        xA(j,i)=a1*sign(cos(n))*abs(cos(n)).^e1*sign(cos(w))*abs(cos(w)).^e2;
+        yA(j,i)=a2*sign(cos(n))*abs(cos(n)).^e1*sign(sin(w))*abs(sin(w)).^e2;
+        zA(j,i)=a3*sign(sin(n))*abs(sin(n)).^e1;
+        j=j+1;
+    <span class="keyword">end</span>
+    i=i+1;
+<span class="keyword">end</span>
+<span class="comment">% Surface 2</span>
+i=1;
+<span class="keyword">for</span> w=-pi : 2*pi/nxy : pi;
+    j=1;
+    <span class="keyword">for</span> n=-pi/2 : pi/nxz : pi/2;
+        xB(j,i)=a4*sign(cos(n))*abs(cos(n)).^e3*sign(cos(w))*abs(cos(w)).^e4;
+        yB(j,i)=a5*sign(cos(n))*abs(cos(n)).^e3*sign(sin(w))*abs(sin(w)).^e4;
+        zB(j,i)=a6*sign(sin(n))*abs(sin(n)).^e3;
+        j=j+1;
+    <span class="keyword">end</span>
+    i=i+1;
+<span class="keyword">end</span>
+
+<span class="comment">% Global coordinates</span>
+xA_global= p1 + xA*TRa(1,1) + yA*TRa(1,2) + zA*TRa(1,3);
+yA_global= p2 + xA*TRa(2,1) + yA*TRa(2,2) + zA*TRa(2,3);
+zA_global= p3 + xA*TRa(3,1) + yA*TRa(3,2) + zA*TRa(3,3);
+xB_global= p4 + xB*TRb(1,1) + yB*TRb(1,2) + zB*TRb(1,3);
+yB_global= p5 + xB*TRb(2,1) + yB*TRb(2,2) + zB*TRb(2,3);
+zB_global= p6 + xB*TRb(3,1) + yB*TRb(3,2) + zB*TRb(3,3);
+
+<span class="comment">% Global Reference Frame</span>
+w=4; h=2*w; LWidth=1.5; arrowlenght=2;
+arrowXX = arrow3([0 0 0],[arrowlenght 0 0],<span class="string">'_K'</span>,w,h); set(arrowXX,<span class="string">'LineWidth'</span>,LWidth);
+arrowYY = arrow3([0 0 0],[0 arrowlenght 0],<span class="string">'_K'</span>,w,h); set(arrowYY,<span class="string">'LineWidth'</span>,LWidth);
+arrowZZ = arrow3([0 0 0],[0 0 arrowlenght],<span class="string">'_K'</span>,w,h); set(arrowZZ,<span class="string">'LineWidth'</span>,LWidth);
+text(1.1*arrowlenght,0,0,<span class="string">'X'</span>,<span class="string">'FontName'</span>,<span class="string">'Calibri'</span>,<span class="string">'FontWeight'</span>,<span class="string">'bold'</span>,<span class="string">'FontSize'</span>,16);
+text(0,1.1*arrowlenght,0,<span class="string">'Y'</span>,<span class="string">'FontName'</span>,<span class="string">'Calibri'</span>,<span class="string">'FontWeight'</span>,<span class="string">'bold'</span>,<span class="string">'FontSize'</span>,16);
+text(0,0,1.1*arrowlenght,<span class="string">'Z'</span>,<span class="string">'FontName'</span>,<span class="string">'Calibri'</span>,<span class="string">'FontWeight'</span>,<span class="string">'bold'</span>,<span class="string">'FontSize'</span>,16);
+
+<span class="comment">% Local Reference Frames</span>
+w=4; h=2*w; LWidth=1.5; delta=1.5;
+arrowxxA = arrow3([p1 p2 p3],[p1+a1*delta*TRa(1,1) p2+a1*delta*TRa(2,1) p3+a1*delta*TRa(3,1)],<span class="string">'_K'</span>,w,h);
+arrowyyA = arrow3([p1 p2 p3],[p1+a2*delta*TRa(1,2) p2+a2*delta*TRa(2,2) p3+a2*delta*TRa(3,2)],<span class="string">'_K'</span>,w,h);
+arrowzzA = arrow3([p1 p2 p3],[p1+a3*delta*TRa(1,3) p2+a3*delta*TRa(2,3) p3+a3*delta*TRa(3,3)],<span class="string">'_K'</span>,w,h);
+set(arrowxxA,<span class="string">'LineWidth'</span>,LWidth);set(arrowyyA,<span class="string">'LineWidth'</span>,LWidth);set(arrowzzA,<span class="string">'LineWidth'</span>,LWidth);
+
+arrowxxB = arrow3([p4 p5 p6],[p4+a4*delta*TRb(1,1) p5+a4*delta*TRb(2,1) p6+a4*delta*TRb(3,1)],<span class="string">'_K'</span>,w,h);
+arrowyyB = arrow3([p4 p5 p6],[p4+a5*delta*TRb(1,2) p5+a5*delta*TRb(2,2) p6+a5*delta*TRb(3,2)],<span class="string">'_K'</span>,w,h);
+arrowzzB = arrow3([p4 p5 p6],[p4+a6*delta*TRb(1,3) p5+a6*delta*TRb(2,3) p6+a6*delta*TRb(3,3)],<span class="string">'_K'</span>,w,h);
+set(arrowxxB,<span class="string">'LineWidth'</span>,LWidth);set(arrowyyB,<span class="string">'LineWidth'</span>,LWidth);set(arrowzzB,<span class="string">'LineWidth'</span>,LWidth);
+
+surfaceA = surf(xA_global,yA_global,zA_global,<span class="string">'Parent'</span>,gca,<span class="keyword">...</span>
+    <span class="string">'EdgeLighting'</span>,<span class="string">'gouraud'</span>,<span class="keyword">...</span>
+    <span class="string">'FaceLighting'</span>,<span class="string">'gouraud'</span>,<span class="keyword">...</span>
+    <span class="string">'LineWidth'</span>,1.5,<span class="keyword">...</span>
+    <span class="string">'FaceColor'</span>,[0.68 0.92 1],<span class="keyword">...</span>
+    <span class="string">'FaceAlpha'</span>,0.6,<span class="keyword">...</span>
+    <span class="string">'EdgeColor'</span>,[0.04 0.14 0.42]);
+
+surfaceB = surf(xB_global,yB_global,zB_global,<span class="string">'Parent'</span>,gca,<span class="keyword">...</span>
+    <span class="string">'EdgeLighting'</span>,<span class="string">'gouraud'</span>,<span class="keyword">...</span>
+    <span class="string">'FaceLighting'</span>,<span class="string">'gouraud'</span>,<span class="keyword">...</span>
+    <span class="string">'LineWidth'</span>,1.5,<span class="keyword">...</span>
+    <span class="string">'FaceColor'</span>,[0.6 1.0 0.6],<span class="keyword">...</span>
+    <span class="string">'FaceAlpha'</span>,0.6,<span class="keyword">...</span>
+    <span class="string">'EdgeColor'</span>,[0.2 0.2 0.2]);
+
+axis <span class="string">equal</span>; axis <span class="string">on</span>; grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="MAIN_02.png" alt=""> <h2>Starting point estimate (initial points on the surfaces)<a name="9"></a></h2><pre class="codeinput">miu0=0.05;
+<span class="comment">% Start with the default options</span>
+options = optimset;
+<span class="comment">% Modify options setting</span>
+options = optimset(options,<span class="string">'Display'</span>,<span class="string">'off'</span>,<span class="keyword">...</span><span class="comment"> % iter none final</span>
+    <span class="string">'MaxFunEvals'</span> ,50,<span class="keyword">...</span>
+    <span class="string">'MaxIter'</span>     ,20,<span class="keyword">...</span>
+    <span class="string">'TolFun'</span>      ,1e-3,<span class="keyword">...</span>
+    <span class="string">'TolX'</span>        ,1e-3,<span class="keyword">...</span>
+    <span class="string">'Jacobian'</span>    ,<span class="string">'off'</span>,<span class="keyword">...</span>
+    <span class="string">'LargeScale'</span>  ,<span class="string">'off'</span>);
+tic
+miuA = fsolve(@startpoint_estimate,miu0,options,a1,a2,a3,e1,e2,TRa);
+miuB = fsolve(@startpoint_estimate,miu0,options,a4,a5,a6,e3,e4,TRb);
+timeStartPoint= toc;
+
+x0(1) = p1 + miuA*(p4-p1); x0(4) = p4 + miuB*(p1-p4);
+x0(2) = p2 + miuA*(p5-p2); x0(5) = p5 + miuB*(p2-p5);
+x0(3) = p3 + miuA*(p6-p3); x0(6) = p6 + miuB*(p3-p6);
+
+Sol1 =line([x0(1) x0(4)],[x0(2) x0(5)],[x0(3) x0(6)],<span class="keyword">...</span>
+    <span class="string">'Parent'</span>,gca,<span class="string">'MarkerFaceColor'</span>,[1 1 1], <span class="string">'MarkerEdgeColor'</span>,[0 0 0],<span class="keyword">...</span>
+    <span class="string">'Marker'</span>,<span class="string">'o'</span>,<span class="string">'MarkerSize'</span>,6.0,<span class="string">'LineWidth'</span>,1.5, <span class="string">'Color'</span>,[0 0 0]);
+</pre><img vspace="5" hspace="5" src="MAIN_03.png" alt=""> <h2>lower and upper bounds<a name="10"></a></h2><pre class="codeinput">aaux1= [a1 a2 a3]; xbound1=max(aaux1);
+aaux2= [a4 a5 a6]; xbound2=max(aaux2);
+
+gap2=1.1;
+xlb(1)=p1-(gap2)*xbound1;   xlb(2)=p2-(gap2)*xbound1;
+xlb(3)=p3-(gap2)*xbound1;   xlb(4)=p4-(gap2)*xbound2;
+xlb(5)=p5-(gap2)*xbound2;   xlb(6)=p6-(gap2)*xbound2;
+xub(1)=p1+(gap2)*xbound1;   xub(2)=p2+(gap2)*xbound1;
+xub(3)=p3+(gap2)*xbound1;   xub(4)=p4+(gap2)*xbound2;
+xub(5)=p5+(gap2)*xbound2;   xub(6)=p6+(gap2)*xbound2;
+</pre><h2>OPTIMIZATION to determine the contact points<a name="11"></a></h2><pre class="codeinput">options = optimset;
+options = optimset(options,<span class="string">'Display'</span>,<span class="string">'off'</span>,<span class="keyword">...</span><span class="comment"> 'off',... 'iter',... 'notify',... 'final',...</span>
+    <span class="string">'Algorithm'</span>,<span class="string">'interior-point'</span>,<span class="keyword">...</span><span class="comment">'Trust-Region-Reflective',... 'interior-point',...'Active-Set',... 'interior-point',...</span>
+    <span class="string">'SubproblemAlgorithm'</span> ,<span class="string">'cg'</span>,<span class="keyword">...</span><span class="comment"> (ldl-factorization,cg,lu-eig-factorization,cg-lu)</span>
+    <span class="string">'AlwaysHonorConstraints'</span>,<span class="string">'none'</span>,<span class="keyword">...</span><span class="comment">'bounds',...</span>
+    <span class="string">'MaxIter'</span>,100,<span class="keyword">...</span>
+    <span class="string">'MaxFunEvals'</span>,1000,<span class="keyword">...</span>
+    <span class="string">'DerivativeCheck'</span>,<span class="string">'off'</span>,<span class="keyword">...</span>
+    <span class="string">'Diagnostics'</span>,<span class="string">'off'</span>,<span class="keyword">...</span>
+    <span class="string">'GradObj'</span>,<span class="string">'on'</span>,<span class="keyword">...</span><span class="comment">      % if on -&gt; consider user obj function gradient</span>
+    <span class="string">'GradConstr'</span>,<span class="string">'off'</span>,<span class="keyword">...</span><span class="comment">  % if on -&gt; consider user contraints function gradient</span>
+    <span class="string">'FinDiffType'</span>,<span class="string">'forward'</span>,<span class="keyword">...</span><span class="comment"> 'central',...</span>
+    <span class="string">'Hessian'</span>,<span class="string">'bfgs'</span>,<span class="keyword">...</span><span class="comment"> 'lbfgs',...</span>
+    <span class="string">'TolX'</span>,  1e-6,<span class="keyword">...</span><span class="comment">       % default 1e-10</span>
+    <span class="string">'TolCon'</span>,1e-6,<span class="keyword">...</span><span class="comment">       % default 1e-06</span>
+    <span class="string">'TolFun'</span>,1e-6);         <span class="comment">% default 1e-06</span>
+<span class="comment">%   'PlotFcns' ,{@plotfval @plotconstrviolation});</span>
+<span class="comment">%                          @optimplotx</span>
+<span class="comment">%                          @optimplotfunccount</span>
+<span class="comment">%                          @optimplotstepsize</span>
+<span class="comment">%                          @optimplotfirstorderopt</span>
+tic <span class="comment">% starts a stopwatch timer</span>
+[x,OBJopt,exitflag,output] = fmincon(@objfun,x0,[],[],[],[],xlb,xub,@constraints,options);
+timeoptMATLAB=timeStartPoint + toc;
+lastiter = output.iterations;
+<span class="comment">%ConViol  = output.constrviolation;</span>
+Fcalls = output.funcCount;
+x1opt=x(1);x2opt=x(2); x3opt=x(3); x4opt=x(4); x5opt=x(5); x6opt=x(6);
+
+[c ceq]=constraints(x); <span class="comment">% to show the nonlinear constraints values ceq</span>
+</pre><h2>Test for distance or penetration<a name="12"></a></h2><p>Compute the dot product between n1 and (x4,x5,x6)-(x1,x2,x3)</p><pre class="codeinput">ContactTest = n1n(1)*(x4opt-x1opt)+n1n(2)*(x5opt-x2opt)+n1n(3)*(x6opt-x3opt);
+<span class="keyword">if</span> (ContactTest &lt;= 0)
+    OBJreport = -sqrt(OBJopt);
+    fprintf(<span class="string">'Contact detected with : %10.6f m of penetration \n'</span>,-OBJreport);
+<span class="keyword">else</span>
+    OBJreport = sqrt(OBJopt);
+    fprintf(<span class="string">'Minimum distance between bodies: %10.6f m \n'</span>,OBJreport);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Minimum distance between bodies:   1.731128 m 
+</pre><h2>Display Information<a name="13"></a></h2><pre class="codeinput">fprintf(<span class="string">'Point on 1st superellipsoid: %10.6f %10.6f %10.6f \n'</span>, x1opt,x2opt,x3opt);
+fprintf(<span class="string">'Point on 2nd superellipsoid: %10.6f %10.6f %10.6f \n\n'</span>, x4opt,x5opt,x6opt);
+fprintf(<span class="string">'Initial estimate and optimization runs in: %6.3f seconds \n'</span>,timeoptMATLAB);
+fprintf(<span class="string">'Opt. Iterations: %5i \n'</span>,lastiter);
+fprintf(<span class="string">'Opt. Fun calls:  %5i \n'</span>,Fcalls);
+G1opt = ceq(1); G2opt = ceq(2);
+<span class="keyword">if</span> (strcmp(ConSet,<span class="string">'surfaces'</span>))
+    fprintf(<span class="string">'Nonlinear Constraints: %10.4g %10.4g\n'</span>,ceq);
+<span class="keyword">elseif</span> (strcmp(ConSet,<span class="string">'normals_dot'</span>))
+    G3opt = ceq(3);
+    fprintf(<span class="string">'Nonlinear Constraints: %10.4g %10.4g %10.4g\n'</span>,ceq);
+<span class="keyword">elseif</span> (strcmp(ConSet,<span class="string">'normals_dot+n1'</span>) || strcmp(ConSet,<span class="string">'normals_dot+n2'</span>) || strcmp(ConSet,<span class="string">'dist_n1_n2'</span>))
+    G3opt = ceq(3); G4opt = ceq(4);
+    fprintf(<span class="string">'Nonlinear Constraints: %10.4g %10.4g %10.4g %10.4g\n'</span>,ceq);
+<span class="keyword">elseif</span> (strcmp(ConSet,<span class="string">'normals_cross'</span>))
+    G3opt = ceq(3); G4opt = ceq(4); G5opt = ceq(5);
+    fprintf(<span class="string">'Nonlinear Constraints: %10.4g %10.4g %10.4g %10.4g %10.4g\n'</span>,ceq);
+<span class="keyword">elseif</span> (strcmp(ConSet,<span class="string">'normals_cross+n1'</span>) || strcmp(ConSet,<span class="string">'normals_cross+n2'</span>))
+    G3opt = ceq(3); G4opt = ceq(4); G5opt = ceq(5); G6opt = ceq(6);
+    fprintf(<span class="string">'Nonlinear Constraints: %10.4g %10.4g %10.4g %10.4g %10.4g %10.4g\n'</span>,ceq);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Point on 1st superellipsoid:   1.912502   1.761475   1.548071 
+Point on 2nd superellipsoid:   2.016728   0.036250   1.645742 
+
+Initial estimate and optimization runs in:  0.742 seconds 
+Opt. Iterations:    20 
+Opt. Fun calls:    142 
+Nonlinear Constraints: 3.078e-012  2.48e-011  2.95e-011
+</pre><h2>Show Solutions<a name="14"></a></h2><pre class="codeinput">figure(1); <span class="comment">% Make the figure h current, visible, and</span>
+<span class="comment">% displayed on top of other figures</span>
+<span class="comment">% set(0,'CurrentFigure',1); % Make the figure h current, but do not</span>
+<span class="comment">% change its visibility or stacking with respect to other figures</span>
+
+<span class="comment">% Show normals of the initial estimate</span>
+ScaleNorm=2;
+NormalA =line([x0(1) (x0(1)+(n1n(1))/ScaleNorm)],<span class="keyword">...</span>
+    [x0(2) (x0(2)+(n1n(2))/ScaleNorm)],<span class="keyword">...</span>
+    [x0(3) (x0(3)+(n1n(3))/ScaleNorm)],<span class="keyword">...</span>
+    <span class="string">'Parent'</span>,gca,<span class="string">'LineWidth'</span>,1.75, <span class="string">'Color'</span>,[0 0 0],<span class="string">'DisplayName'</span>,<span class="string">'Normal A'</span>);
+NormalB =line([x0(4) (x0(4)+(n2n(1))/ScaleNorm)],<span class="keyword">...</span>
+    [x0(5) (x0(5)+(n2n(2))/ScaleNorm)],<span class="keyword">...</span>
+    [x0(6) (x0(6)+(n2n(3))/ScaleNorm)],<span class="keyword">...</span>
+    <span class="string">'Parent'</span>,gca,<span class="string">'LineWidth'</span>,1.75, <span class="string">'Color'</span>,[0 0 0],<span class="string">'DisplayName'</span>,<span class="string">'Normal B'</span>);
+disp(<span class="string">' '</span>)
+disp(<span class="string">'Press any key to continue.'</span>)
+pause
+
+<span class="comment">% show Final Solution</span>
+Solution=line([x1opt x4opt], [x2opt x5opt], [x3opt x6opt],<span class="keyword">...</span>
+    <span class="string">'Parent'</span>,gca,<span class="string">'MarkerFaceColor'</span>,[1 1 0], <span class="string">'MarkerEdgeColor'</span>,[0 0 0],<span class="keyword">...</span>
+    <span class="string">'Marker'</span>,<span class="string">'o'</span>,<span class="string">'MarkerSize'</span>,8.0,<span class="string">'LineWidth'</span>,2, <span class="string">'Color'</span>,[0 0 0]);
+disp(<span class="string">'END.'</span>)
+fclose(<span class="string">'all'</span>);
+</pre><pre class="codeoutput"> 
+Press any key to continue.
+END.
+</pre><img vspace="5" hspace="5" src="MAIN_04.png" alt=""> <pre class="codeinput"><span class="keyword">end</span> <span class="comment">% Function Optim</span>
+</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.13<br></p></div><!--
+##### SOURCE BEGIN #####
+function ContactOptim
+% =========================================================================
+% This function determines the minimum distance between two superellipsoids
+% surfaces(or the maximum interference distance), using optimization
+% techniques. The initial estimate for the contact points is determined
+% so that the contact points are located on the surfaces.
+% The visualization of the surfaces, the initial estimate and the 
+% optimization solution for the minimum distance is provided.
+%
+% Credits:
+% Ricardo Fontes Portal / Luis Sousa
+% IDMEC - Instituto Superior Tecnico - Universidade Técnica de Lisboa
+% ricardo.portal(at)dem(.)ist(.)utl(.)pt
+%
+% April 2009 original version
+% March 2013 updated version
+%
+% VERSION 1.0
+% All rights reserved.
+%
+% Authors Acknowledgment:
+% If you use SuperELLIPSOIDs-OPT in any program or publication, please 
+% acknowledge % the authors by refering The Archive of Mechanical 
+% Engineering paper:
+% Portal, Ricardo. Sousa, Luís. Dias, João. “Contact Detection between 
+% Convex Superquadric Surfaces”. The Archive of Mechanical Engineering. 
+% Versita, Warsaw. LVII(2), pp. 165-186, DOI 10.2478/v10180-010-0009-8. 2010. 
+%
+%% =========================================================================
+close all; clear all; clc;
+global p1 p2 p3 p4 p5 p6 a1 a2 a3 a4 a5 a6 e1 e2 e3 e4 ConSet;
+global n1n n2n TRa TRb xlb xub x0;
+%% INPUT SUPERELLIPSOIDS DATA ==============================================
+p1=1.0; p2=3.2; p3=1.0;           % position (x,y,z) Surf 1
+p4=2.0; p5=-1.0; p6=1.3;          % position (x,y,z) Surf 2
+a1=2.0; a2=1.25; a3=1.6;          % superellipsoid 1 semi-axes
+a4=2.0; a5=1.1; a6=0.6;           % superellipsoid 2 semi-axes
+e1=4.0; e2=2.2;                   % implicit indexes Surf 1 (roundness)
+e3=3.2; e4=2.5;                   % implicit indexes Surf 2 (roundness)
+euler1A=0.0; euler2A=0.1; euler3A=-0.2;   % Euler param. Surf 1 (orientation)
+euler1B=0.3; euler2B=0.3; euler3B=-0.1;   % Euler param. Surf 2 (orientation)
+%==========================================================================
+%% = Show options and constraints set ======================================
+% Constraints set
+ConSet='normals_dot';
+% 'surfaces'          % surfaces only       a)
+% 'normals_cross'     % n1 x n2             b)
+% 'normals_cross+n1'  % n1 x n2 + n2.r12    c)
+% 'normals_cross+n2'  % n1 x n2 + n2.r12    d)
+% 'normals_dot'       % n1.n2               e)
+% 'normals_dot+n1'    % n1.n2   + n1.r12    f)
+% 'normals_dot+n2'    % n1.n2   + n2.r12    g)
+% 'dist_n1_n2'        % n1.r12  + n2.r12    h)
+%% Calculation of euler e0 e inv(e1,e2,e3,e4)
+euler0A=sqrt(1.0 - euler1A^2 - euler2A^2 - euler3A^2);
+euler0B=sqrt(1.0 - euler1B^2 - euler2B^2 - euler3B^2);
+e1(1)=2.0/e1(1);  e2(1)=2.0/e2(1);  e3(1)=2.0/e3(1);  e4(1)=2.0/e4(1);
+
+% Calculation of the Transformation Matrices A and B
+TRa(1,1)= euler0A^2 + euler1A^2 - euler2A^2 - euler3A^2; % 1st column = TRA(1)
+TRa(2,1)= 2*(euler1A*euler2A + euler0A*euler3A);         %            = TRA(2)
+TRa(3,1)= 2*(euler1A*euler3A - euler0A*euler2A);         %            = TRA(3)
+TRa(1,2)= 2*(euler1A*euler2A - euler0A*euler3A);         % 2nd column = TRA(4)
+TRa(2,2)= euler0A^2 - euler1A^2 + euler2A^2 - euler3A^2; %            = TRA(5)
+TRa(3,2)= 2*(euler2A*euler3A + euler0A*euler1A);         %            = TRA(6)
+TRa(1,3)= 2*(euler1A*euler3A + euler0A*euler2A);         % 3rd column = TRA(7)
+TRa(2,3)= 2*(euler2A*euler3A - euler0A*euler1A);         %            = TRA(8)
+TRa(3,3)= euler0A^2 - euler1A^2 - euler2A^2 + euler3A^2; %            = TRA(9)
+
+TRb(1,1)= euler0B^2 + euler1B^2 - euler2B^2 - euler3B^2; % 1st column = TRA(1)
+TRb(2,1)= 2*(euler1B*euler2B + euler0B*euler3B);         %            = TRA(2)
+TRb(3,1)= 2*(euler1B*euler3B - euler0B*euler2B);         %            = TRA(3)
+TRb(1,2)= 2*(euler1B*euler2B - euler0B*euler3B);         % 2nd column = TRA(4)
+TRb(2,2)= euler0B^2 - euler1B^2 + euler2B^2 - euler3B^2; %            = TRA(5)
+TRb(3,2)= 2*(euler2B*euler3B + euler0B*euler1B);         %            = TRA(6)
+TRb(1,3)= 2*(euler1B*euler3B + euler0B*euler2B);         % 3rd column = TRA(7)
+TRb(2,3)= 2*(euler2B*euler3B - euler0B*euler1B);         %            = TRA(8)
+TRb(3,3)= euler0B^2 - euler1B^2 - euler2B^2 + euler3B^2; %            = TRA(9)
+%% Create figure
+figure1 = figure('PaperSize',[20.98 29.68],'Color',[1 1 1],...
+    'NumberTitle','off','ToolBar','figure','MenuBar','none','Units','pixels',...
+    'Name','Minimum Distance between Superellipsoids Surfaces');
+annotation(gcf,'textbox',[0.5 0.99 0 0],...
+    'String',{'Determination of the Minimum Distance between Superellipsoids Surfaces'},...
+    'HorizontalAlignment','center','FontWeight','bold','FontSize',14,...
+    'FontName','Calibri','FitBoxToText','on','EdgeColor','none');
+
+% Create axes
+axes1 = axes('Parent',gcf,'DataAspectRatio',[1 1 1],'TickDir','in',...
+    'FontName','Calibri','FontWeight','light','FontSize',12);
+
+set(gcf,'color','white', 'Position',[20 50 1000 750],...
+    'nextplot','replacechildren');
+view([120 20]);
+hold('all');
+lighting GOURAUD % FLAT, GOURAUD, PHONG, NONE
+camlight headlight
+%% Create Surfaces (with the parametric equations of the superellipsoids)
+% Surface 1
+nxy = 20; nxz = nxy;
+i=1;
+for w=-pi : 2*pi/nxy : pi;
+    j=1;
+    for n=-pi/2 : pi/nxz : pi/2;
+        xA(j,i)=a1*sign(cos(n))*abs(cos(n)).^e1*sign(cos(w))*abs(cos(w)).^e2;
+        yA(j,i)=a2*sign(cos(n))*abs(cos(n)).^e1*sign(sin(w))*abs(sin(w)).^e2;
+        zA(j,i)=a3*sign(sin(n))*abs(sin(n)).^e1;
+        j=j+1;
+    end
+    i=i+1;
+end
+% Surface 2
+i=1;
+for w=-pi : 2*pi/nxy : pi;
+    j=1;
+    for n=-pi/2 : pi/nxz : pi/2;
+        xB(j,i)=a4*sign(cos(n))*abs(cos(n)).^e3*sign(cos(w))*abs(cos(w)).^e4;
+        yB(j,i)=a5*sign(cos(n))*abs(cos(n)).^e3*sign(sin(w))*abs(sin(w)).^e4;
+        zB(j,i)=a6*sign(sin(n))*abs(sin(n)).^e3;
+        j=j+1;
+    end
+    i=i+1;
+end
+
+% Global coordinates
+xA_global= p1 + xA*TRa(1,1) + yA*TRa(1,2) + zA*TRa(1,3);
+yA_global= p2 + xA*TRa(2,1) + yA*TRa(2,2) + zA*TRa(2,3);
+zA_global= p3 + xA*TRa(3,1) + yA*TRa(3,2) + zA*TRa(3,3);
+xB_global= p4 + xB*TRb(1,1) + yB*TRb(1,2) + zB*TRb(1,3);
+yB_global= p5 + xB*TRb(2,1) + yB*TRb(2,2) + zB*TRb(2,3);
+zB_global= p6 + xB*TRb(3,1) + yB*TRb(3,2) + zB*TRb(3,3);
+
+% Global Reference Frame
+w=4; h=2*w; LWidth=1.5; arrowlenght=2;
+arrowXX = arrow3([0 0 0],[arrowlenght 0 0],'_K',w,h); set(arrowXX,'LineWidth',LWidth);
+arrowYY = arrow3([0 0 0],[0 arrowlenght 0],'_K',w,h); set(arrowYY,'LineWidth',LWidth);
+arrowZZ = arrow3([0 0 0],[0 0 arrowlenght],'_K',w,h); set(arrowZZ,'LineWidth',LWidth);
+text(1.1*arrowlenght,0,0,'X','FontName','Calibri','FontWeight','bold','FontSize',16);
+text(0,1.1*arrowlenght,0,'Y','FontName','Calibri','FontWeight','bold','FontSize',16);
+text(0,0,1.1*arrowlenght,'Z','FontName','Calibri','FontWeight','bold','FontSize',16);
+
+% Local Reference Frames
+w=4; h=2*w; LWidth=1.5; delta=1.5;
+arrowxxA = arrow3([p1 p2 p3],[p1+a1*delta*TRa(1,1) p2+a1*delta*TRa(2,1) p3+a1*delta*TRa(3,1)],'_K',w,h);
+arrowyyA = arrow3([p1 p2 p3],[p1+a2*delta*TRa(1,2) p2+a2*delta*TRa(2,2) p3+a2*delta*TRa(3,2)],'_K',w,h);
+arrowzzA = arrow3([p1 p2 p3],[p1+a3*delta*TRa(1,3) p2+a3*delta*TRa(2,3) p3+a3*delta*TRa(3,3)],'_K',w,h);
+set(arrowxxA,'LineWidth',LWidth);set(arrowyyA,'LineWidth',LWidth);set(arrowzzA,'LineWidth',LWidth);
+
+arrowxxB = arrow3([p4 p5 p6],[p4+a4*delta*TRb(1,1) p5+a4*delta*TRb(2,1) p6+a4*delta*TRb(3,1)],'_K',w,h);
+arrowyyB = arrow3([p4 p5 p6],[p4+a5*delta*TRb(1,2) p5+a5*delta*TRb(2,2) p6+a5*delta*TRb(3,2)],'_K',w,h);
+arrowzzB = arrow3([p4 p5 p6],[p4+a6*delta*TRb(1,3) p5+a6*delta*TRb(2,3) p6+a6*delta*TRb(3,3)],'_K',w,h);
+set(arrowxxB,'LineWidth',LWidth);set(arrowyyB,'LineWidth',LWidth);set(arrowzzB,'LineWidth',LWidth);
+
+surfaceA = surf(xA_global,yA_global,zA_global,'Parent',gca,...
+    'EdgeLighting','gouraud',...
+    'FaceLighting','gouraud',...
+    'LineWidth',1.5,...
+    'FaceColor',[0.68 0.92 1],...
+    'FaceAlpha',0.6,...
+    'EdgeColor',[0.04 0.14 0.42]);
+
+surfaceB = surf(xB_global,yB_global,zB_global,'Parent',gca,...
+    'EdgeLighting','gouraud',...
+    'FaceLighting','gouraud',...
+    'LineWidth',1.5,...
+    'FaceColor',[0.6 1.0 0.6],...
+    'FaceAlpha',0.6,...
+    'EdgeColor',[0.2 0.2 0.2]);
+
+axis equal; axis on; grid on;
+%% Starting point estimate (initial points on the surfaces)
+miu0=0.05;
+% Start with the default options
+options = optimset;
+% Modify options setting
+options = optimset(options,'Display','off',... % iter none final
+    'MaxFunEvals' ,50,...
+    'MaxIter'     ,20,...
+    'TolFun'      ,1e-3,...
+    'TolX'        ,1e-3,...
+    'Jacobian'    ,'off',...
+    'LargeScale'  ,'off');
+tic
+miuA = fsolve(@startpoint_estimate,miu0,options,a1,a2,a3,e1,e2,TRa);
+miuB = fsolve(@startpoint_estimate,miu0,options,a4,a5,a6,e3,e4,TRb);
+timeStartPoint= toc;
+
+x0(1) = p1 + miuA*(p4-p1); x0(4) = p4 + miuB*(p1-p4);
+x0(2) = p2 + miuA*(p5-p2); x0(5) = p5 + miuB*(p2-p5);
+x0(3) = p3 + miuA*(p6-p3); x0(6) = p6 + miuB*(p3-p6);
+
+Sol1 =line([x0(1) x0(4)],[x0(2) x0(5)],[x0(3) x0(6)],...
+    'Parent',gca,'MarkerFaceColor',[1 1 1], 'MarkerEdgeColor',[0 0 0],...
+    'Marker','o','MarkerSize',6.0,'LineWidth',1.5, 'Color',[0 0 0]);
+%% lower and upper bounds
+aaux1= [a1 a2 a3]; xbound1=max(aaux1);
+aaux2= [a4 a5 a6]; xbound2=max(aaux2);
+
+gap2=1.1;
+xlb(1)=p1-(gap2)*xbound1;   xlb(2)=p2-(gap2)*xbound1;
+xlb(3)=p3-(gap2)*xbound1;   xlb(4)=p4-(gap2)*xbound2;
+xlb(5)=p5-(gap2)*xbound2;   xlb(6)=p6-(gap2)*xbound2;
+xub(1)=p1+(gap2)*xbound1;   xub(2)=p2+(gap2)*xbound1;
+xub(3)=p3+(gap2)*xbound1;   xub(4)=p4+(gap2)*xbound2;
+xub(5)=p5+(gap2)*xbound2;   xub(6)=p6+(gap2)*xbound2;
+%% OPTIMIZATION to determine the contact points
+options = optimset;
+options = optimset(options,'Display','off',... 'off',... 'iter',... 'notify',... 'final',...
+    'Algorithm','interior-point',...'Trust-Region-Reflective',... 'interior-point',...'Active-Set',... 'interior-point',...
+    'SubproblemAlgorithm' ,'cg',... (ldl-factorization,cg,lu-eig-factorization,cg-lu)
+    'AlwaysHonorConstraints','none',...'bounds',...
+    'MaxIter',100,...
+    'MaxFunEvals',1000,...
+    'DerivativeCheck','off',...
+    'Diagnostics','off',...
+    'GradObj','on',...      % if on -> consider user obj function gradient
+    'GradConstr','off',...  % if on -> consider user contraints function gradient
+    'FinDiffType','forward',... 'central',...
+    'Hessian','bfgs',... 'lbfgs',...
+    'TolX',  1e-6,...       % default 1e-10
+    'TolCon',1e-6,...       % default 1e-06
+    'TolFun',1e-6);         % default 1e-06
+%   'PlotFcns' ,{@plotfval @plotconstrviolation});
+%                          @optimplotx
+%                          @optimplotfunccount
+%                          @optimplotstepsize
+%                          @optimplotfirstorderopt
+tic % starts a stopwatch timer
+[x,OBJopt,exitflag,output] = fmincon(@objfun,x0,[],[],[],[],xlb,xub,@constraints,options);
+timeoptMATLAB=timeStartPoint + toc;
+lastiter = output.iterations;
+%ConViol  = output.constrviolation;
+Fcalls = output.funcCount;
+x1opt=x(1);x2opt=x(2); x3opt=x(3); x4opt=x(4); x5opt=x(5); x6opt=x(6);
+
+[c ceq]=constraints(x); % to show the nonlinear constraints values ceq
+%% Test for distance or penetration
+% Compute the dot product between n1 and (x4,x5,x6)-(x1,x2,x3)
+ContactTest = n1n(1)*(x4opt-x1opt)+n1n(2)*(x5opt-x2opt)+n1n(3)*(x6opt-x3opt);
+if (ContactTest <= 0)
+    OBJreport = -sqrt(OBJopt);
+    fprintf('Contact detected with : %10.6f m of penetration \n',-OBJreport);
+else
+    OBJreport = sqrt(OBJopt);
+    fprintf('Minimum distance between bodies: %10.6f m \n',OBJreport);
+end
+%% Display Information
+fprintf('Point on 1st superellipsoid: %10.6f %10.6f %10.6f \n', x1opt,x2opt,x3opt);
+fprintf('Point on 2nd superellipsoid: %10.6f %10.6f %10.6f \n\n', x4opt,x5opt,x6opt);
+fprintf('Initial estimate and optimization runs in: %6.3f seconds \n',timeoptMATLAB);
+fprintf('Opt. Iterations: %5i \n',lastiter);
+fprintf('Opt. Fun calls:  %5i \n',Fcalls);
+G1opt = ceq(1); G2opt = ceq(2);
+if (strcmp(ConSet,'surfaces'))
+    fprintf('Nonlinear Constraints: %10.4g %10.4g\n',ceq);
+elseif (strcmp(ConSet,'normals_dot'))
+    G3opt = ceq(3);
+    fprintf('Nonlinear Constraints: %10.4g %10.4g %10.4g\n',ceq);
+elseif (strcmp(ConSet,'normals_dot+n1') || strcmp(ConSet,'normals_dot+n2') || strcmp(ConSet,'dist_n1_n2'))
+    G3opt = ceq(3); G4opt = ceq(4);
+    fprintf('Nonlinear Constraints: %10.4g %10.4g %10.4g %10.4g\n',ceq);
+elseif (strcmp(ConSet,'normals_cross'))
+    G3opt = ceq(3); G4opt = ceq(4); G5opt = ceq(5);
+    fprintf('Nonlinear Constraints: %10.4g %10.4g %10.4g %10.4g %10.4g\n',ceq);
+elseif (strcmp(ConSet,'normals_cross+n1') || strcmp(ConSet,'normals_cross+n2'))
+    G3opt = ceq(3); G4opt = ceq(4); G5opt = ceq(5); G6opt = ceq(6);
+    fprintf('Nonlinear Constraints: %10.4g %10.4g %10.4g %10.4g %10.4g %10.4g\n',ceq);
+end
+%% Show Solutions
+figure(1); % Make the figure h current, visible, and
+% displayed on top of other figures
+% set(0,'CurrentFigure',1); % Make the figure h current, but do not
+% change its visibility or stacking with respect to other figures
+
+% Show normals of the initial estimate 
+ScaleNorm=2;
+NormalA =line([x0(1) (x0(1)+(n1n(1))/ScaleNorm)],...
+    [x0(2) (x0(2)+(n1n(2))/ScaleNorm)],...
+    [x0(3) (x0(3)+(n1n(3))/ScaleNorm)],...
+    'Parent',gca,'LineWidth',1.75, 'Color',[0 0 0],'DisplayName','Normal A');
+NormalB =line([x0(4) (x0(4)+(n2n(1))/ScaleNorm)],...
+    [x0(5) (x0(5)+(n2n(2))/ScaleNorm)],...
+    [x0(6) (x0(6)+(n2n(3))/ScaleNorm)],...
+    'Parent',gca,'LineWidth',1.75, 'Color',[0 0 0],'DisplayName','Normal B');
+disp(' ')
+disp('Press any key to continue.')
+pause
+
+% show Final Solution
+Solution=line([x1opt x4opt], [x2opt x5opt], [x3opt x6opt],...
+    'Parent',gca,'MarkerFaceColor',[1 1 0], 'MarkerEdgeColor',[0 0 0],...
+    'Marker','o','MarkerSize',8.0,'LineWidth',2, 'Color',[0 0 0]);
+disp('END.')
+fclose('all');
+end % Function Optim
+
+
+
+
+##### SOURCE END #####
+--></body></html>

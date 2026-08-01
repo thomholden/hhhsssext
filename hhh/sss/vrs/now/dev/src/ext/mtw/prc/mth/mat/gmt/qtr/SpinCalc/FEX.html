@@ -1,0 +1,2289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Function to Convert between DCM, Euler angles, Quaternions, and Euler vectors -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors" rel="canonical">
+<meta content="Function to Convert between DCM, Euler angles, Quaternions, and Euler vectors - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors" property="og:url"><meta content="Function to convert rotation data between 4 types: DCM, Euler Angles, Quaternions, and Euler Param." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/16422" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=20696" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors" class="manifest_title">Function to Convert between DCM, Euler angles, Quaternions, and Euler vectors</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors/content//SpinCalc.m" class="function" title="Function">OUTPUT=SpinCalc(CONVERSIO...</a><span class="description">Function for the conversion of one rotation input type to desired output.
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors/content/SpinCalc.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:92.30760000000001%;">
+                <p>4.61538</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.6</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">13</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">156 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 5.71 KB</span>
+          <span id="fileid">File ID: #20696</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">Function to Convert between DCM, Euler angles, Quaternions, and Euler vectors</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      14 Jul 2008
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-01-25">25 Jan 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">Function to convert rotation data between 4 types: DCM, Euler Angles, Quaternions, and Euler Param.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors&amp;watching=20696" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>SpinCalc is a consolidated matlab function that will 
+convert any rotation data between the 4 types included.  Will also 
+convert between 2 different Euler angle set types.</p>
+
+<p>Multiple orientations can be input.  For N orientations:
+<br>DCM ===&gt;  3x3xN  multidimensional array
+<br>EA### ===&gt;  Nx3  matrix
+<br>Euler Vectors ===&gt;  Nx4 matrix
+<br>Quaternions  ===&gt;   Nx4 matrix</p>
+
+<p>Input includes error check flag that will warn when Euler angles 
+approach singularity or when appropriate values deviate from unity.  
+Fatal errors issued for improper DCM's etc.</p>
+
+<p>*****NOTE TO USERS*****
+<br>I have gotten many questions regarding translation to Euler angle 
+sets.  When converting data to Euler angles, you MUST make sure the 
+orientation you are translating is not near a singularity.  Singular 
+Euler sets are orientations which cannot be uniquely converted to 3 
+variables in that particular rotation order.  The singular sets are as 
+follows:</p>
+
+<p>Type 1 Rotations:  123 - 132 - 213 - 231 - 321 - 312
+<br>Singular if second rotation angle is -90 or 90 degrees.</p>
+
+<p>Type 2 Rotations:  121 - 131 - 212 - 232 - 313 - 323
+<br>Singular if second rotation angle is 0 or 180 degrees.</p>
+
+<p>SpinCalc should now detect when input DCM, EV, or Q correspond to a 
+singular Euler set output.  It will prohibit output in such an event.</p>
+
+<p>Naturally when converting from these singular Euler angle sets to 
+other data types, you will receive a correct answer.  Unfortunately you 
+cannot convert that output back to the correct Euler angle set.  This is
+ why singular Euler input is prohibited.</p>
+
+<p>Some users may need SpinCalc for the very reason of converting 
+singular Euler sets to the other types.  In those cases, removing the 
+prohibiting error check shouldn't be too difficult.  Contact me for help
+ if need be.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/27653-euler-angle--dcm--quaternion--and-euler-vector-conversion-teaching-gui">Euler Angle, Dcm, Quaternion, And Euler Vector Conversion/Teaching Gui</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/41562-spinconv">Spin Conv</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/33341-quaternion-m">Quaternion.M</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.5 (R2007b)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%223d%22" rel="nofollow">3d</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22aerospace%22" rel="nofollow">aerospace</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22coordinate+rotation%22" rel="nofollow">coordinate rotation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22dcm%22" rel="nofollow">dcm</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22direction+cosines%22" rel="nofollow">direction cosines</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22euler+angle%22" rel="nofollow">euler angle</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22euler+parameter%22" rel="nofollow">euler parameter</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22quaternion%22" rel="nofollow">quaternion</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22rotation%22" rel="nofollow">rotation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22some+other+notes+about+your+code%22" rel="nofollow">some other notes about your code</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="20696" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(43)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">16 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/513628">Daniel Lucena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>What am I supposed to add instead of tol and ichk? I replaced with 0.0001 and 0 respectvely but it doesn't work. Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 May 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/472478">Jing</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>it is very helpful</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/141693">spencer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Are the euler angles defined as "body-fixed" or "world-fixed"?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Steve,
+<br>Honestly I just use "eps" for most purposes.  9 times out of 10 it 
+doesn't constrain the problem too much.  When it does fail, you can 
+ratchet it higher for compliance.</p>
+
+<p>Thanks,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/446872">Steve</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hey, thanks so much for sharing this code! It helps me a lot.
+<br>but I have one single question:
+<br>Can you give a recommendation for a tolerance value, for a conversion from rotationmatrix to Eulerangles?
+<br>Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>That's bad. My second last posting was totally deleted by MATLAB Central, possibly because it contained special characters... </p>
+
+<p>I wrote that in your latest release of SpinCalc, you introduced a new bug in line 238. </p>
+
+<p>In that line (which I cannot copy here because it contains special 
+characters), you should use the element-by-element OR operator (single 
+vertical bar), rather than the short-circuit OR operator (double bar) 
+which does not work when N is greater than 1.</p>
+
+<p>In short, you should go back to previous version of line 238. </p>
+
+<p>Please also check my 4 advices posted yesterday.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>MATLAB Central keeps truncating 
+everything I write after special characters. In my latest posting, the 
+logical OR operators and whatever was written after them were deleted. 
+Anyway, you can check previous version of line 238. You should use the 
+element-by-element OR operator (single vertical bar), rather than the 
+short-circuit OR operator (double bar).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have been trying to post this 
+text, but MATLAB Central keeps truncating it. Here is the complete 
+version, with special characters removed:</p>
+
+<p>1) Please update the release version number.</p>
+
+<p>2) Line 388:</p>
+
+<p>OUTPUT=mod([psi,theta,phi]*180/pi,360);</p>
+
+<p>Proposed change:</p>
+
+<p>OUTPUT=[psi,theta,phi]*180/pi;</p>
+
+<p>THETA is computed in your code either using ACOS or ASIN. In MATLAB, 
+both ACOS(X) and ASIN(X) return values within a limited range. For -1 
+=&lt; X =&lt; 1,</p>
+
+<p>ACOS_X = ACOS(X)*(180/pi)</p>
+
+<p>always returns values ranging from 0 to 180 degrees. This almost 
+coincides with the range (from 0.1 to 179.9 degrees) accepted by 
+SpinCalc as input for THETA (with EA type 2 rotations). Similarly, for 
+-1 =&lt; X =&lt; 1,</p>
+
+<p>ASIN_X = ASIN(X)*(180/pi) </p>
+
+<p>always returns angles ranging from -90 to 90 degrees. Again, this 
+almost coincides with the range (from -89.9 to 89.9 degrees) accepted by
+ SpinCalc as input for THETA (with EA type 1 rotations). If X &lt; -1 or
+ X &gt; 1, then the result ACOS_X or ASIN_X is complex, and SpinCalc 
+returns an error message.
+<br>Computing MOD(ACOS_X,360) is useless, because </p>
+
+<p>THETA = MOD(ACOS_X, 360) = ACOS_X</p>
+
+<p>More importantly, computing MOD(ASIN_X,360) is inconsistent with 
+other parts of your code, because for negative values of ASIN_X (i.e. 
+-90 =&lt; ASIN_X &lt; 0 degrees)</p>
+
+<p>THETA = MOD(ASIN_X, 360) == ASIN_X + 360</p>
+
+<p>which means that, for negative values of ASIN_X, THETA will range 
+from 270 =&lt; ASIN_X &lt; 360 degrees, which is considered to be out 
+range when used as input for SpinCalc (with EA type 1 rotations).</p>
+
+<p>3) Line 396:</p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi) &lt; 0.1); ...
+<br>find(abs(theta*180/pi-180) &lt; 0.1);...
+<br>find(abs(theta*180/pi-360)) &lt; 0.1];</p>
+
+<p>Proposed change: </p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi) &lt; 0.1); ...
+<br>find(abs(theta*180/pi-180) &lt; 0.1);...
+<br>find(abs(theta*180/pi-360) &lt; 0.1)];</p>
+
+<p>4) Every time you convert a Nx1 or Nx3 array containing angles in 
+radians into an array containing angles in degrees, or vice versa (and 
+you do it a lot of times in your code, including the above mentioned 
+lines 388 and 396), you use this syntax:</p>
+
+<p>Y = X*180/pi
+<br>or
+<br>Y = X*pi/180</p>
+
+<p>This way, you repeat the division (by PI or by 180) N times. I 
+suggest you to use this sintax, which is much more efficient as it 
+computes the division only once (see also functions deg2rad and 
+rad2deg):</p>
+
+<p>Y = X*(180/pi)
+<br>or
+<br>Y = X*(pi/180).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am trying to post this text, 
+containing a few notes about SpinCalc, but the web site keeps truncating
+ it. Here is the complete version, with a few special characters 
+removed:</p>
+
+<p>1) Please update the release version number.</p>
+
+<p>2) Line 388:</p>
+
+<p>OUTPUT=mod([psi,theta,phi]*180/pi,360);</p>
+
+<p>Proposed change:</p>
+
+<p>OUTPUT=[psi,theta,phi]*180/pi;</p>
+
+<p>THETA is computed in your code either using ACOS or ASIN. In MATLAB, 
+both ACOS(X) and ASIN(X) return values within a limited range. For -1 
+&lt;= X &lt;= 1,</p>
+
+<p>ACOS_X = ACOS(X)*(180/pi)</p>
+
+<p>always returns values ranging from 0 to 180 degrees. This almost 
+coincides with the range (from 0.1 to 179.9 degrees) accepted by 
+SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+2). Similarly, for -1 &lt;= X &lt;= 1,</p>
+
+<p>ASIN_X = ASIN(X)*(180/pi) </p>
+
+<p>always returns angles ranging from -90 to 90 degrees. Again, this 
+almost coincides with the range (from -89.9 to 89.9 degrees) accepted by
+ SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+1). If X &gt; 1 or X &lt; -1, then the result ACOS_X or ASIN_X is 
+complex, and SpinCalc returns an error message.
+<br>Computing MOD(ACOS_X,360) is useless, because </p>
+
+<p>THETA = MOD(ACOS_X, 360) = ACOS_X</p>
+
+<p>More importantly, computing MOD(ASIN_X,360) is inconsistent with 
+other parts of your code, because for negative values of ASIN_X (i.e. 
+-90 &lt;= ASIN_X &lt; 0 degrees)</p>
+
+<p>THETA = MOD(ASIN_X, 360) == ASIN_X + 360</p>
+
+<p>which means that, for negative values of ASIN_X, THETA will range 
+from 270 &lt;= ASIN_X &lt; 360 degrees, which is considered to be out 
+range when used as input for SpinCalc (with "input type" EA### and 
+"Euler type" 1).</p>
+
+<p>3) Line 396:</p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi) &lt; 0.1); ...
+<br>find(abs(theta*180/pi-180) &lt; 0.1);...
+<br>find(abs(theta*180/pi-360)) &lt; 0.1];</p>
+
+<p>Proposed change: </p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi) &lt; 0.1); ...
+<br>find(abs(theta*180/pi-180) &lt; 0.1);...
+<br>find(abs(theta*180/pi-360) &lt; 0.1)];</p>
+
+<p>4) Every time you convert a Nx1 or Nx3 array containing angles in 
+radians into an array containing angles in degrees, or vice versa (and 
+you do it a lot of times in your code, including the above mentioned 
+lines 388 and 396), you use this syntax:</p>
+
+<p>Y = X*180/pi
+<br>or
+<br>Y = X*pi/180</p>
+
+<p>This way, you repeat the division (by PI or by 180) N times. I 
+suggest you to use this sintax, which is much more efficient as it 
+computes the division only once (see also functions deg2rad and 
+rad2deg):</p>
+
+<p>Y = X*(180/pi)
+<br>or
+<br>Y = X*(pi/180).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am trying to post this text, 
+containing a few notes about SpinCalc, but the web site keeps truncating
+ it. Here is the complete version, with a few special characters 
+removed:</p>
+
+<p>1) Please update the release version number.</p>
+
+<p>2) Line 388:</p>
+
+<p>OUTPUT=mod([psi,theta,phi]*180/pi,360);</p>
+
+<p>Proposed change:</p>
+
+<p>OUTPUT=[psi,theta,phi]*180/pi;</p>
+
+<p>THETA is computed in your code either using ACOS or ASIN. In MATLAB, 
+both ACOS(X) and ASIN(X) return values within a limited range. For 
+-1&lt;=X&lt;=1,</p>
+
+<p>ACOS_X = ACOS(X)*(180/pi)</p>
+
+<p>always returns values ranging from 0 to 180 degrees. This almost 
+coincides with the range (from 0.1 to 179.9 degrees) accepted by 
+SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+2). Similarly, for -1&lt;=X&lt;=1,</p>
+
+<p>ASIN_X = ASIN(X)*(180/pi) </p>
+
+<p>always returns angles ranging from -90 to 90 degrees. Again, this 
+almost coincides with the range (from -89.9 to 89.9 degrees) accepted by
+ SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+1). If X&gt;1 or X&lt;-1, then the result ACOS_X or ASIN_X is complex, 
+and SpinCalc returns an error message.
+<br>Computing MOD(ACOS_X,360) is useless, because </p>
+
+<p>THETA = MOD(ACOS_X, 360) = ACOS_X</p>
+
+<p>More importantly, computing MOD(ASIN_X,360) is inconsistent with 
+other parts of your code, because for negative values of ASIN_X (i.e. 
+-90&lt;=ASIN_X&lt;0 degrees)</p>
+
+<p>THETA = MOD(ASIN_X, 360) == ASIN_X + 360</p>
+
+<p>which means that, for negative values of ASIN_X, THETA will range 
+from 270&lt;=ASIN_X&lt;360 degrees, which is considered to be out range 
+when used as input for SpinCalc (with "input type" EA### and "Euler 
+type" 1).</p>
+
+<p>3) Line 396:</p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi)&lt;0.1); ...
+<br>find(abs(theta*180/pi-180)&lt;0.1);...
+<br>find(abs(theta*180/pi-360))&lt;0.1];</p>
+
+<p>Proposed change: </p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi)&lt;0.1); ...
+<br>find(abs(theta*180/pi-180)&lt;0.1);...
+<br>find(abs(theta*180/pi-360)&lt;0.1)];</p>
+
+<p>4) Every time you convert a Nx1 or Nx3 array containing angles in 
+radians into an array containing angles in degrees, or vice versa (and 
+you do it a lot of times in your code, including the above mentioned 
+lines 388 and 396), you use this syntax:</p>
+
+<p>Y = X*180/pi
+<br>or
+<br>Y = X*pi/180</p>
+
+<p>This way, you repeat the division (by pi or by 180) N times. I 
+suggest you to use this sintax, which is much more efficient as it 
+computes the division only once:</p>
+
+<p>Y = X*(180/pi)
+<br>or
+<br>Y = X*(pi/180).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>2) Line 388: </p>
+
+<p>OUTPUT=mod([psi,theta,phi]*180/pi,360);</p>
+
+<p>Proposed change: </p>
+
+<p>OUTPUT=[psi,theta,phi]*180/pi;</p>
+
+<p>THETA is computed in your code either using ACOS or ASIN. In MATLAB, 
+both ACOS(X) and ASIN(X) return values within a limited range. For 
+-1&lt;=X&lt;=1,</p>
+
+<p>ACOS_X = ACOS(X)*(180/pi)</p>
+
+<p>always returns values ranging from 0 to 180 degrees. This almost 
+coincides with the range (from 0.1 to 179.9 degrees) accepted by 
+SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+2). Similarly, for -1&lt;=X&lt;=1, </p>
+
+<p>ASIN_X = ASIN(X)*(180/pi) </p>
+
+<p>always returns angles ranging from -90 to 90 degrees. Again, this 
+almost coincides with the range (from -89.9 to 89.9 degrees) accepted by
+ SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+1).
+<br>If X&gt;1 or X&lt;-1, then the result ACOS_X or ASIN_X is complex, and SpinCalc returns an error message.
+<br>Computing MOD(ACOS_X,360) is useless, because </p>
+
+<p>THETA = MOD(ACOS_X, 360) = ACOS_X</p>
+
+<p>More importantly, computing MOD(ASIN_X,360) is inconsistent with 
+other parts of your code, because for negative values of ASIN_X (i.e. 
+-90&lt;=ASIN_X&lt;0 degrees)</p>
+
+<p>THETA = MOD(ASIN_X, 360) == ASIN_X + 360</p>
+
+<p>which means that, for negative values of ASIN_X, THETA will range 
+from 270&lt;=ASIN_X&lt;360 degrees, which is considered to be out range 
+when used as input for SpinCalc (with "input type" EA### and "Euler 
+type" 1).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A few other advices about your code:
+<br>--------</p>
+
+<p>Please update the release version number.</p>
+
+<p>--------</p>
+
+<p>Line 388: </p>
+
+<p>OUTPUT=mod([psi,theta,phi]*180/pi,360);</p>
+
+<p>Proposed change: </p>
+
+<p>OUTPUT=[psi,theta,phi]*180/pi;</p>
+
+<p>THETA is computed in your code either using ACOS or ASIN. In MATLAB, 
+both ACOS(X) and ASIN(X) return values within a limited range. For 
+-1&lt;=X&lt;=1,</p>
+
+<p>ACOS_X = ACOS(X)*(180/pi)</p>
+
+<p>always returns values ranging from 0 to 180 degrees. This almost 
+coincides with the range (from 0.1 to 179.9 degrees) accepted by 
+SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+2). Similarly, for -1&lt;=X&lt;=1, </p>
+
+<p>ASIN_X = ASIN(X)*(180/pi) </p>
+
+<p>always returns angles ranging from -90 to 90 degrees. Again, this 
+almost coincides with the range (from -89.9 to 89.9 degrees) accepted by
+ SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+1).
+<br>If X&gt;1 or X&lt;-1, then the result ACOS_X or ASIN_X is complex, and SpinCalc returns an error message.
+<br>Computing MOD(ACOS_X,360) is useless, because </p>
+
+<p>THETA = MOD(ACOS_X, 360) = ACOS_X</p>
+
+<p>More importantly, computing MOD(ASIN_X,360) is inconsistent with 
+other parts of your code, because for negative values of ASIN_X (i.e. 
+-90&lt;=ASIN_X&lt;0 degrees)</p>
+
+<p>THETA = MOD(ASIN_X, 360) == ASIN_X + 360</p>
+
+<p>which means that, for negative values of ASIN_X, THETA will range 
+from 270&lt;=ASIN_X&lt;360 degrees, which is considered to be out range 
+when used as input for SpinCalc (with "input type" EA### and "Euler 
+type" 1).</p>
+
+<p>---------</p>
+
+<p>Line 396:</p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi)&lt;0.1); ...
+<br>find(abs(theta*180/pi-180)&lt;0.1);...
+<br>find(abs(theta*180/pi-360))&lt;0.1];</p>
+
+<p>Proposed change: </p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi)&lt;0.1); ...
+<br>find(abs(theta*180/pi-180)&lt;0.1);...
+<br>find(abs(theta*180/pi-360)&lt;0.1)];</p>
+
+<p>--------------------------------</p>
+
+<p>Every time you convert a Nx1 or Nx3 array containing angles in 
+radians into an array containing angles in degrees, or vice versa (and 
+you do it a lot of times in your code, including the above mentioned 
+lines 388 and 396), you use this syntax:</p>
+
+<p>Y = X*180/pi
+<br>or
+<br>Y = X*pi/180</p>
+
+<p>This way, you repeat the division (by pi or by 180) N times. I 
+suggest you to use this sintax, which is much more efficient as it 
+computes the division only once:</p>
+
+<p>Y = X*(180/pi)
+<br>or
+<br>Y = X*(pi/180).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Line 388: </p>
+
+<p>OUTPUT=mod([psi,theta,phi]*180/pi,360);</p>
+
+<p>Proposed change: </p>
+
+<p>OUTPUT=[psi,theta,phi]*180/pi;</p>
+
+<p>THETA is computed in your code either using ACOS or ASIN. In MATLAB, 
+both ACOS(X) and ASIN(X) return values within a limited range. For 
+-1&lt;=X&lt;=1,</p>
+
+<p>ACOS_X = ACOS(X)*(180/pi)</p>
+
+<p>always returns values ranging from 0 to 180 degrees. This almost 
+coincides with the range (from 0.1 to 179.9 degrees) accepted by 
+SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+2). Similarly, for -1&lt;=X&lt;=1, </p>
+
+<p>ASIN_X = ASIN(X)*(180/pi) </p>
+
+<p>always returns angles ranging from -90 to 90 degrees. Again, this 
+almost coincides with the range (from -89.9 to 89.9 degrees) accepted by
+ SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+1).
+<br>If X&gt;1 or X&lt;-1, then the result ACOS_X or ASIN_X is complex, and SpinCalc returns an error message.
+<br>Computing MOD(ACOS_X,360) is useless, because </p>
+
+<p>THETA = MOD(ACOS_X, 360) = ACOS_X</p>
+
+<p>More importantly, computing MOD(ASIN_X,360) is inconsistent with 
+other parts of your code, because for negative values of ASIN_X (i.e. 
+-90&lt;=ASIN_X&lt;0 degrees)</p>
+
+<p>THETA = MOD(ASIN_X, 360) == ASIN_X + 360</p>
+
+<p>which means that, for negative values of ASIN_X, THETA will range 
+from 270&lt;=ASIN_X&lt;360 degrees, which is considered to be out range 
+when used as input for SpinCalc (with "input type" EA### and "Euler 
+type" 1).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A few other advices about your code:
+<br>------------------------------------
+<br>Please update the release version number.
+<br>------------------------------------
+<br>Line 388: </p>
+
+<p>OUTPUT=mod([psi,theta,phi]*180/pi,360);</p>
+
+<p>Proposed change: </p>
+
+<p>OUTPUT=[psi,theta,phi]*180/pi;</p>
+
+<p>THETA is computed in your code either using ACOS or ASIN. In MATLAB, 
+both ACOS(X) and ASIN(X) return values within a limited range. For 
+-1&lt;=X&lt;=1,</p>
+
+<p>ACOS_X = ACOS(X)*(180/pi)</p>
+
+<p>always returns values ranging from 0 to 180 degrees. This almost 
+coincides with the range (from 0.1 to 179.9 degrees) accepted by 
+SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+2). Similarly, for -1&lt;=X&lt;=1, </p>
+
+<p>ASIN_X = ASIN(X)*(180/pi) </p>
+
+<p>always returns angles ranging from -90 to 90 degrees. Again, this 
+almost coincides with the range (from -89.9 to 89.9 degrees) accepted by
+ SpinCalc as input for THETA (with "input type" EA### and "Euler type" 
+1).
+<br>If X&gt;1 or X&lt;-1, then the result ACOS_X or ASIN_X is complex, and SpinCalc returns an error message.
+<br>Computing MOD(ACOS_X,360) is useless, because </p>
+
+<p>THETA = MOD(ACOS_X, 360) = ACOS_X</p>
+
+<p>More importantly, computing MOD(ASIN_X,360) is inconsistent with 
+other parts of your code, because for negative values of ASIN_X (i.e. 
+-90&lt;=ASIN_X&lt;0 degrees)</p>
+
+<p>THETA = MOD(ASIN_X, 360) == ASIN_X + 360</p>
+
+<p>which means that, for negative values of ASIN_X, THETA will range 
+from 270&lt;=ASIN_X&lt;360 degrees, which is considered to be out range 
+when used as input for SpinCalc (with "input type" EA### and "Euler 
+type" 1).</p>
+
+<p>--------------------------------</p>
+
+<p>Line 396:</p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi)&lt;0.1); ...
+<br>find(abs(theta*180/pi-180)&lt;0.1);...
+<br>find(abs(theta*180/pi-360))&lt;0.1];</p>
+
+<p>Proposed change: </p>
+
+<p>sing_chk=...
+<br>[find(abs(theta*180/pi)&lt;0.1); ...
+<br>find(abs(theta*180/pi-180)&lt;0.1);...
+<br>find(abs(theta*180/pi-360)&lt;0.1)];</p>
+
+<p>--------------------------------</p>
+
+<p>Every time you convert a Nx1 or Nx3 array containing angles in 
+radians into an array containing angles in degrees, or vice versa (and 
+you do it a lot of times in your code, including the above mentioned 
+lines 388 and 396), you use this syntax:</p>
+
+<p>Y = X*180/pi
+<br>or
+<br>Y = X*pi/180</p>
+
+<p>This way, you repeat the division (by pi or by 180) N times. I 
+suggest you to use this sintax, which is much more efficient as it 
+computes the division only once:</p>
+
+<p>Y = X*(180/pi)
+<br>or
+<br>Y = X*(pi/180).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Paolo,
+<br>I have incorporated a fix to address that bug, which is largely similar to your snippet.  Thanks for catching this!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>There is a bug in the IF statements
+ used to check for singularities in the input values for Euler angles. 
+These statements are only working correctly if INPUT size is 1x3. They 
+do not work as expected when INPUT size is Nx3 (with N&gt;1). </p>
+
+<p>FIRST EXAMPLE</p>
+
+<p>Suppose that rotation order type for Euler angles is 2 (first and third rotations about same axis). Let </p>
+
+<p>INPUT = [10 -10 10] % (1x3) row vector</p>
+
+<p>The following IF statement, used in SpinCalc (source code lines 
+107,108,109) correctly spots the singularity (second Euler angle is -10,
+ hence out of range) and generates an error message:</p>
+
+<p>if INPUT(:,2)&lt;=zeros(size(INPUT,1),1) |...
+<br>INPUT(:,2)&gt;=180*ones(size(INPUT,1),1)
+<br>error('Error: Second input Euler angle(s) outside 0 to 180 degree range')
+<br>end</p>
+
+<p>SECOND EXAMPLE</p>
+
+<p>Let INPUT be a Nx3 list of row vectors (N&gt;1), such as </p>
+
+<p>INPUT = [10 -10 10
+<br> 10 00 10
+<br> 10 10 10 
+<br>10 180 10 
+<br>10 190 10] % (5x3 row vector list)</p>
+
+<p>The above mentioned IF statement does not spot the singularities in 
+the first, second, fourth and fifth row (where second Euler angle is out
+ of range), and does not generate an error message.</p>
+
+<p>Spincalc contains a group of similar IF statements which contain the same bug (source code lines from 105 to 121).</p>
+
+<p>Here is my solution:</p>
+
+<p>input_size = size(INPUT);
+<br>N = input_size(1);
+<br>…
+<br>% Identify singularities (second Euler angle out of range)
+<br>EA2 = INPUT(:,2); % (Nx1) 2nd Euler angle(s)
+<br>ZEROS = zeros(N,1); % (Nx1)
+<br>ONES  = ones(N,1); % (Nx1)
+<br>    if rot_1_in==rot_3_in % Type 2 rotation (1st and 3rd rotations about same axis)
+<br>        if any(EA2&lt;=ZEROS) || any(EA2&gt;=180*ONES)
+<br>            error('Second input Euler angle(s) outside 0 to 180 degree range')
+<br>        elseif any(abs(EA2)&lt;2*ONES) || any(abs(EA2)&gt;178*ONES)
+<br>            if ichk==1
+<br>                errordlg('Warning: Second input Euler angle(s) near a singularity (0 or 180 degrees).')
+<br>            end
+<br>        end
+<br>    else % Type 1 rotation (rotations about three distinct axes)
+<br>        if any(abs(EA2)&gt;=90*ONES)
+<br>            error('Second input Euler angle(s) outside -90 to 90 degree range')
+<br>        elseif any(abs(EA2)&gt;88*ONES)
+<br>            if ichk==1
+<br>                errordlg('Warning: Second input Euler angle(s) near a singularity (-90 or 90 degrees).')
+<br>            end
+<br>        end
+<br>    end</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Nov 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/121350">J. Hu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>For some rotation matrix INPUT, 
+certain CONVERSION will lead error messages due to singularity. And it 
+has to use other CONVERSION type. It would be helpful if the code can 
+automatically select a error-free CONVERSION for any INPUT.</p>
+
+<p>For example, when rotation matrix INPUT = 
+<br>  [0   0   1;
+<br>   1   0   0;
+<br>   0   1   0]
+<br>The conversion has to be 'DCMtoEA2xx' in which 2 needs to be the first and xx can be 13 or 31.</p>
+
+<p>When the code is called for repetitive computation of many data sets, an auto selected CONVERSION type would be desired.</p>
+
+<p>Thanks...</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/38526">Georg Wiora</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/255292">James Coburn</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Nov 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/195240">zhaopeng QIU</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/186920">Paul</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the code, it works great.</p>
+
+<p>Funny fact: the rotation matrix returned by the procrustes function 
+in the Statistics Toolbox is quite often not orthogonal to eps.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is even better:</p>
+
+<p>"DCM - 3x3xN multidimensional direction cosine matrix which performs 
+coordinate system rotations by pre-multiplying column vectors (V_rot = 
+DCM * V, where V_rot is V resolved in the rotated coordinate system)."</p>
+
+<p>Paolo de Leva</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I suggest this help text:</p>
+
+<p>"All rotation representations used by SpinCalc represent the rotation of the coordinate system."</p>
+
+<p>"DCM - 3x3xN multidimensional matrix which pre-multiplies column 
+vectors to rotate the reference system in which they are represented."</p>
+
+<p>Paolo de Leva</p>
+
+<p>Paolo de Leva</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alright, I don't really have the time to go over semantics in the help text of my code.  I can agree that the following block</p>
+
+<p>%        DCM - 3x3xN multidimensional matrix which pre-multiplies a coordinate
+<br>%              frame column vector to rotate it to the desired new frame.</p>
+
+<p>might be better as </p>
+
+<p>%        DCM - 3x3xN multidimensional matrix which pre-multiplies a coordinate
+<br>%              frame column vector to calculate its coordinates in the desired 
+<br>%              new frame.</p>
+
+<p>But the fact still remains that the input DCM data remains the same. 
+ I wouldn't say it is highly misleading, but that it also can't be 
+expected to teach every user the nuances of rotation linear algebra as 
+you have illustrated.</p>
+
+<p>The code uses input and output in an accepted convention that 'most' 
+serious users in my industry follow and understand, and it stands simply
+ as that.  As with all Matlab FEX code it is very important that the 
+user vets code cautiously before use and knows what goes in and out by 
+external testing.  </p>
+
+<p>I will update the commenting above, but I'm not pursuing further 
+modifications to SpinCalc because I believe it is well-accepted, heavily
+ tested, and straightforward as it is.  If you don't like that, rate it 
+badly and don't use it.</p>
+
+<p>Thanks,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>OK, John, </p>
+
+<p>I GUESS THIS IS OUR COMMON BACKGROUND: </p>
+
+<p>We agree that the rotation from a reference frame A (original) to 
+another reference frame B (rotated) produces an apparent rotation in the
+ opposite direction of a vector v which is fixed in A. This leads to two
+ conventions to describe rotation. Let’s call them:
+<br>1) "FRAME ROTATION" 
+<br>2) “VECTOR ROTATION" (or “vector space rotation”)
+<br>The most important point is that, when we describe a rotation from A
+ to B, we must assume that v is fixed in A (see below). Also, we agree 
+that SpinCalc uses the “FRAME ROTATION” convention, and of course we 
+agree on Rodriguez's rotation formula and all other conversion formulas 
+which are correctly implemented in SpinCalc.</p>
+
+<p>Moreover, as discussed in the previous message, we agree that there 
+are two conventions used to represent rotation with a DCM (pre- or 
+post-multiplication). Your recently updated help text makes clear you 
+are using pre-multiplication of a column vector by the DCM. IF we call R
+ the DCM, and v the original column vector, then R is a matrix such 
+that:</p>
+
+<p>v_rot = R*v.</p>
+
+<p>NOW, HERE'S WHAT WE DISAGREE ABOUT:
+<br> 
+<br>We do not agree about your help text. In your second last message, 
+you explained that you implemented the “FRAME ROTATION” convention, but 
+this is not what you wrote in your help text, which defines the DCM as:</p>
+
+<p>"a multidimensional matrix which pre-multiplies a coordinate frame (column) vector to rotate it to the desired new frame."</p>
+
+<p>Let’s call A the initial frame, and B “the desired new frame“.
+<br>It unequivocally follows from your text that, in the equation  v_rot
+ = R*v,  you describe v as one of the versors of A (i.e., a standard 
+basis vector; i.e., either [1,0,0],  [0,1,0], or  [0,0,1], in 3D). 
+Actually, in this singular case R*v is the same as selecting one of the 
+columns of R, and this description of v is quite questionable, in my 
+opinion, as a (pre- or post-) multiplication by R is typically used to 
+rotate any vector, not only the versors of A. But this is not the most 
+important fault in your definition.</p>
+
+<p>Since your help text describes the rotation of a "column vector", 
+then you unequivocally defined R as a matrix which produces (i.e. 
+represents) a “VECTOR ROTATION”, not a “FRAME ROTATION”. Moreover, the 
+“FRAME ROTATION” convention assumes that v “is fixed in A” (see above). 
+On the contrary, according to your definition, v unequivocally appears 
+fixed in B (not in A).</p>
+
+<p>Most importantly and unfortunately, R does not represent a “FRAME 
+ROTATION” from A to B, but a “FRAME ROTATION” of equal magnitude in the 
+opposite sense, from A to C. Namely, C does not coincide with B, as B 
+rotates together with the vector. For instance, if B is rotated by 45° 
+about z, then C is rotated by -45° about the same axis. Thus, we can 
+rewrite the equation as follows:</p>
+
+<p>vC = R*vA.
+<br>(vB = R*vA would be incorrect).</p>
+
+<p>In short, your help text describes a “FRAME ROTATION” from A to B, 
+which is the same as (not the opposite of) a the “VECTOR ROTATION” 
+rotation produced by R (from v to v_rot, or from vA to vC, if you 
+prefer). But unfortunately R neither produces nor represents the frame 
+rotation from A to B.</p>
+
+<p>However, your axis-angle representation describes the opposite 
+rotation, the “FRAME ROTATION” from A to C, in which v is “fixed in A” 
+and observed from C. This is the frame rotation produced and represented
+ by R, but C is not even mentioned in your help text! In other words, 
+your definition of rotation is inconsistent with your implementation, 
+and this is higly misleading.</p>
+
+<p>Paolo de Leva</p>
+
+<p>Paolo
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Another note, if you take a look at
+ my other submission called SpinCalcVis it will give a good idea of how 
+input/output is processed by SpinCalc as it is all based on the same 
+parent code.</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/27653-euler-angle-dcm-quaternion-and-euler-vector-conversionteaching-gui</p>
+
+<p>Thanks,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Paolo,
+<br>The convention used by SpinCalc is the standard convention where 
+matrix R pre-multiplies the column vector, or R*v.  The "by" in the help
+ section could be a bit ambiguous.  I can change that when I have the 
+master file back in front of me.</p>
+
+<p>The reason for the inconsistency you are seeing deals with the fact 
+that the R matrix format used in SpinCalc is for the DCM which rotates 
+the coordinate frame about the vector, not the vector about the 
+coordinate frame.  Thus, the Euler vector solution corresponds to the 
+vector about which to rotate the frame and by how much.</p>
+
+<p>Your matrix to rotate [1;0;0] 90 degrees about Z is equivalent to 
+rotating the frame -90 about Z, or +90 about -Z.  All data input and 
+output for SpinCalc corresponds to rotation of the frame.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/20584">Paolo de Leva</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The help text of SpinCalc defines a DCM (rotation matrix) as follows:</p>
+
+<p>"3x3xN multidimensional matrix which pre-multiplies by a coordinate frame vector to rotate it to the desired new frame."</p>
+
+<p>The expression “pre-multiplies by” seems ambiguous to me. In my 
+opinion, a rotation matrix R either "pre-multiplies" a column vector v1 
+(R*v1), or "is pre-multiplied by" a row vector v2 (v2*R). </p>
+
+<p>What did you mean? R*v or v*R?
+<br>Would you mind to you make it clear in your help text?</p>
+
+<p>It is quite important to give a crystal clear definition of the DCM. 
+In linear algebra, the most commonly used convention to perform a 
+rotation is by means of a pre-multiplication of a column vector by a 
+DCM. Here's what I get when I follow this convention:</p>
+
+<p>If i, j, k are the versors of a coordinate system xyz, then a 
+rotation matrix R that rotates i [1;0;0] by 90° about the z axis 
+produces a new versor i_new which coincides with j [0;1;0]:</p>
+
+<p>R = [0 -1  0
+<br>     1  0  0
+<br>     0  0  1];
+<br>i = [1; 0; 0]; % Column vector
+<br>i_new = R * i;
+<br>disp(i_new)
+<br>     0
+<br>     1
+<br>     0
+<br> 
+<br>Thus, if I use SpinCalc to compute the axis-angle vector corresponding to R, I expect it to be [0 0 1 90], however:</p>
+
+<p>SpinCalc('DCMtoEV', R, 1e-5, 0)</p>
+
+<p>ans =</p>
+
+<p>     0     0    -1    90</p>
+
+<p>How do you explain this apparent inconsistency? Is this due to the 
+fact that you are not using the above mentioned convention? Again, can 
+you make this clear in your help text? </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Gaetano,
+<br>I reviewed this line and don't see why it would produce an error as it is written:</p>
+
+<p>if abs(det(INPUT(:,:,ii))+1)&lt;0.05, %if determinant is near -1, DCM is improper</p>
+
+<p>The line you have proposed would actually cause errors for proper DCM
+ matrices, as their determinant should be equal to +1.  In your line, 
+the subtraction would cause proper DCMs to be thrown out, and the 
+additional abs function is redundant.</p>
+
+<p>Thanks,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/120134">Gaetano Giulio Violante</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Recently i downloaded this MatLab code, I used it to get euler angles from rotation matrix.</p>
+
+<p>In my opinion there's an error in the code at line 165, and precisely i would modify it in the following way:</p>
+
+<p>" abs(abs(det(INPUT(:,:,ii)))-1)&lt;0.00005"</p>
+
+<p>Anyone can tell me if this observation is correct?</p>
+
+<p>Thank you, 
+<br>Gaetano.</p>
+
+<p>[Student in Telecommunications Engineering , Polythecnic of Bari - Bari, Italy]</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Aug 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/84993">chandrakala Gowda</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29192">Oliver Woodford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very useful. Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/66030">bryan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I found this code to be very useful and it seems to work exactly as described.  Thank you for your excellent contribution.  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29734">James Tursa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>After comparing this submission with others in the FEX, I feel the need to bump my rating up.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62163">Joel</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="3">
+              <div style="width:60%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/61797">Jørgen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Okay, thank you for your feedback.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jørgen,
+<br>The 323 rotation you specified is a singular Euler set, because the 
+middle angle is 0.  Any type 2 rotation where the middle angle is 0 or 
+180 cannot be uniquely resolved by trying to translate Q, DCM, or EV 
+back to Euler angles.  If you plan on translating amongst orientations 
+that are singular when expressed as Euler angles, I would advise you use
+ strictly DCM, Q, or EV because they can uniquely define all 
+orientations.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/61797">Jørgen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>When using the DCM to EA323 I get some unexpected results.</p>
+
+<p>This is my code:</p>
+
+<p>&gt;&gt; R = [0 -1 0; 1 0 0; 0 0 1]
+<br>R =</p>
+
+<p>     0    -1     0
+<br>     1     0     0
+<br>     0     0     1</p>
+
+<p>&gt;&gt; SpinCalc2('DCMtoEA323',R,eps,1)</p>
+
+<p>ans =</p>
+
+<p>     0     0     0</p>
+
+<p>------</p>
+
+<p>The matrix R represents a simple 90 degrees rotation about the z-axis, but the Euler Angles are all zero. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31368">John Fuller</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am uploading an updated version 
+with the boundaries revised on the first and third Euler angles.  They 
+must now be between -360 and 360.  The bounds on the second Euler angles
+ are going to stay since they prevent ambiguous Euler sets.</p>
+
+<p>Thanks for the comments.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 May 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/38083">Stanley</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works well.   Agreed with others 
+that some bounds on inputs, while perhaps obscuring internal code, make 
+implementation into other code more cumbersome.  
+<br>for instance, in this snippet, ea(1) must be in 0-&gt;360.  </p>
+
+<p>SpinCalc('EA321toDCM',ea,eps,0)</p>
+
+<p>Alowing ea(1) = -10 degrees is easier.
+<br>Perhaps a switch to turn of bounds checking?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            John Fuller
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for the comments.  I am 
+editing the code to accommodate notes 2-5.  I'd like to leave the second
+ euler angle constraint between -90 and 90 since reaching these bounds 
+for Type 1 rotations causes singularities.  Allowing angles past those 
+bounds, while correct, makes detecting singularities more obscure.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            James Tursa
+          </span>
+        </td>
+        <td><span class="comment"><p>I spot tested all combinations of 
+input/output type against independent code I happened to have and 
+SpinCalc produced the same results, so I would conclude based on this 
+spot checking that the code generally works as advertised. Thus I gave 
+it a fairly high rating. I did have a few problems, but I think these 
+can easily be improved:</p>
+
+<p>------------------------------------------------------------------------------------
+<br>1) Sometimes the results were not invertible. For example:</p>
+
+<p>&gt;&gt; q = [1 2 3 4]
+<br>q =
+<br>     1     2     3     4
+<br>&gt;&gt; q = q / norm(q)
+<br>q =
+<br>   0.18257418583506   0.36514837167011   0.54772255750517   0.73029674334022
+<br>&gt;&gt; SpinCalc('QtoEA213',q,eps,1)
+<br>ans =
+<br>  1.0e+002 *
+<br>   0.47726310993906   3.52337744339234   0.70346175941947
+<br>&gt;&gt; SpinCalc('EA213toQ',ans,eps,1)
+<br>??? Error using ==&gt; SpinCalc
+<br>Error: Second input Euler angle(s) outside -90 to 90 degree range</p>
+
+<p>In this case, and in other similar cases, the checks for valid Euler 
+Angle input are too tight. Having the second input outside -90 to +90 
+may not make sense for some physical applications, but it is not an 
+invalid input and should not produce an error.</p>
+
+<p>------------------------------------------------------------------------------------
+<br>2) Calculating the euler rotation angle for small angle rotation quaternions is not accurate. The code in question is this line:</p>
+
+<p>MU = 2*acos(Q(:,4));</p>
+
+<p>For example:</p>
+
+<p>&gt;&gt; q = [1 2 3 4e12]
+<br>q =
+<br>  1.0e+012 *
+<br>   0.00000000000100   0.00000000000200   0.00000000000300   4.00000000000000
+<br>&gt;&gt; q = q / norm(q)
+<br>q =
+<br>   0.00000000000025   0.00000000000050   0.00000000000075   1.00000000000000
+<br>&gt;&gt; SpinCalc('QtoEV',q,eps,1)
+<br>ans =
+<br>     1     0     0     0
+<br>&gt;&gt; SpinCalc('EVtoQ',ans,eps,1)
+<br>ans =
+<br>     0     0     0     1</p>
+
+<p>You can see in this case that the small angle was completely lost in 
+the q(4) component, so using only that component to calculate the 
+rotation angle is not a good method for small angle cases. One fix is to
+ use the atan2 function instead. For example, suppose the following code
+ was used instead of the code above:</p>
+
+<p>QV = sqrt(sum(Q(:,1:3).*Q(:,1:3),2));
+<br>MU = 2*atan2(QV,Q(:,4));</p>
+
+<p>Now do the same calculations as above:</p>
+
+<p>&gt;&gt; SpinCalc('QtoEV',q,eps,1)
+<br>ans =
+<br>   0.26726124191242   0.53452248382485   0.80178372573727   0.00000000010719
+<br>&gt;&gt; SpinCalc('EVtoQ',ans,eps,1)
+<br>ans =
+<br>   0.00000000000025   0.00000000000050   0.00000000000075   1.00000000000000</p>
+
+<p>You can see that the small angle is calculated properly. Caveat: The 
+atan2 code above is just shown as an example for improvement. It may not
+ be the best overall way to do this.</p>
+
+<p>------------------------------------------------------------------------------------
+<br>3) Some of the algorithms used are not robust for inputs that 
+deviate from unity, etc.  For example, suppose we start with a proper 
+direction cosine matrix and perturb it a bit:</p>
+
+<p>&gt;&gt; q = [1 2 3 4]
+<br>q =
+<br>     1     2     3     4
+<br>&gt;&gt; q = q / norm(q)
+<br>q =
+<br>   0.18257418583506   0.36514837167011   0.54772255750517   0.73029674334022
+<br>&gt;&gt; dcm=SpinCalc('QtoDCM',q,eps,1)
+<br>dcm =
+<br>   0.13333333333333   0.93333333333333  -0.33333333333333
+<br>  -0.66666666666667   0.33333333333333   0.66666666666667
+<br>   0.73333333333333   0.13333333333333   0.66666666666667
+<br>&gt;&gt; dcm = dcm + 1e-7*(rand(3,3)-0.5)
+<br>dcm =
+<br>   0.13333337834626   0.93333333193158  -0.33333333768657
+<br>  -0.66666669355282   0.33333337246323   0.66666661851703
+<br>   0.73333334401759   0.13333335954302   0.66666669880738
+<br>&gt;&gt; SpinCalc('DCMtoQ',dcm,eps,1)
+<br>Warning: Input DCM(s) matrix not orthogonal to precision tolerance.
+<br>(etc.)
+<br>ans =
+<br>   0.18257415540401   0.36514836686611   0.54772255130155   0.73029676324370
+<br>&gt;&gt; norm(ans)
+<br>ans =
+<br>   1.00000000382748</p>
+
+<p>The algorithm used for the conversion picks up on the fact that the 
+dcm was not quite proper (good), but does not correct the output. So 
+maybe normalizing the returned quaternion might be better in this case. 
+One way to accomplish this efficiently would be to use Markley's 
+algorithm that was recently published in J. Guidance Vol 31 No 2 pp 
+440-442. This algorithm produces a normalized quaternion result using 
+only one square root.</p>
+
+<p>------------------------------------------------------------------------------------
+<br>4) Some of the code could be written more efficiently. For example in this section:</p>
+
+<p>m1=INPUT(:,1); m2=INPUT(:,2); m3=INPUT(:,3); MU=INPUT(:,4)*pi/180;
+<br>if sqrt(m1.^2+m2.^2+m3.^2)-ones(N,1)&gt;tol*ones(N,1),
+<br>    error('Input euler vector(s) components do not constitute a unit vector')            
+<br>end
+<br>if MU&lt;zeros(N,1) | MU&gt;2*pi*ones(N,1),
+<br>    error('Input euler rotation angle(s) not between 0 and 360 degrees')
+<br>end
+<br>Q=[m1.*sin(MU/2),m2.*sin(MU/2),m3.*sin(MU/2),cos(MU/2)];</p>
+
+<p>Why pull out the columns individually in m1, m2, and m3? Why not just
+ use INPUT(:,1:3) in the follow-on calculations? And why calculate 
+sin(MU/2) multiple times? Could recode this to calculate sin(MU/2) only 
+once.  For instance:</p>
+
+<p>Q=[INPUT(:,1:3).*sin(MU/2),cos(MU/2)];</p>
+
+<p>------------------------------------------------------------------------------------
+<br>5) Multiple warning messages appear for systematic problems when one message would suffice. For example:</p>
+
+<p>&gt;&gt; q = [1 2 3 4]
+<br>q =
+<br>     1     2     3     4
+<br>&gt;&gt; q = q / norm(q)
+<br>q =
+<br>   0.18257418583506   0.36514837167011   0.54772255750517   0.73029674334022
+<br>&gt;&gt; q = q + 1.e-7*(rand(1,4)-.5)
+<br>q =
+<br>   0.18257418030539   0.36514838321335   0.54772258669887   0.73029678552152
+<br>&gt;&gt; qq = [q;q;q;q;q;q;q;q;q;q]
+<br>qq =
+<br>   0.18257418030539   0.36514838321335   0.54772258669887   0.73029678552152
+<br>   0.18257418030539   0.36514838321335   0.54772258669887   0.73029678552152
+<br>(etc.)
+<br>&gt;&gt; SpinCalc('QtoDCM',qq,eps,1)
+<br>ans(:,:,1) =
+<br>   0.13333335251383   0.93333342235746  -0.33333337639558
+<br>  -0.66666675533740   0.33333337341210   0.66666670795756
+<br>   0.73333338560076   0.13333335997254   0.66666675384566
+<br>ans(:,:,2) =
+<br>   0.13333335251383   0.93333342235746  -0.33333337639558
+<br>  -0.66666675533740   0.33333337341210   0.66666670795756
+<br>   0.73333338560076   0.13333335997254   0.66666675384566
+<br>(etc.)
+<br>&gt;&gt; SpinCalc('DCMtoQ',ans,eps,1)
+<br>Warning: Input DCM(s) matrix not orthogonal to precision 
+tolerance.Warning: Input DCM(s) matrix not orthogonal to precision 
+tolerance.
+<br>(etc.)
+<br>ans =
+<br>   0.18257418458450   0.36514839177157   0.54772259953620   0.73029676840507
+<br>   0.18257418458450   0.36514839177157   0.54772259953620   0.73029676840507
+<br>(etc.)</p>
+
+<p>So now I have 10 error message boxes to clear. If the array was 1000 
+then I would have 1000 error message boxes to clear. Only one message 
+per function call is needed for these types of cases.</p>
+
+<p>My comments are admittedly a bit picky, but keep in mind that I think
+ these can easily be addressed to improve the code and I gave it a 
+fairly high rating.</p>
+
+<p>James Tursa
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">22 Jul 2008</td>
+                  <td><p>Forgot to include additional capability in description.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">23 Jul 2008</td>
+                  <td><p>Added clarifying comments to help section of file.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">19 Jun 2009</td>
+                  <td><p>Removed bounding constraints on first and third
+ input Euler angles.  Bounds on second angles remain intact due to 
+possibilities of ambiguous input Euler sets.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">26 Jun 2009</td>
+                  <td><p>Revised file description to explain Euler angle singularities</p></td>
+                </tr>
+                <tr>
+                  <td class="date">30 Jun 2009</td>
+                  <td><p>Version 1.3 Now detects when input DCM, Q, or 
+EV are too close to Euler singularity.  Prohibits output to Euler angles
+ when second angle is within 0.1 degree of singular value.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">30 Jun 2009</td>
+                  <td><p>Modified v1.3 description</p></td>
+                </tr>
+                <tr>
+                  <td class="date">22 Apr 2010</td>
+                  <td><p>Updated tags</p></td>
+                </tr>
+                <tr>
+                  <td class="date">22 Apr 2010</td>
+                  <td><p>Updated tags</p></td>
+                </tr>
+                <tr>
+                  <td class="date">04 May 2010</td>
+                  <td><p>Updated description.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">20 May 2010</td>
+                  <td><p>Fixed summary.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">03 Jan 2011</td>
+                  <td><p>Updated help text to clarify DCM convention.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Jan 2011</td>
+                  <td><p>Updated help text.  Again.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">25 Jan 2013</td>
+                  <td><p>Incorporated fix to 2nd Euler Angle checks.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416086102459&amp;cv=7&amp;fst=1416086102459&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/20696-function-to-convert-between-dcm--euler-angles--quaternions--and-euler-vectors&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D128%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

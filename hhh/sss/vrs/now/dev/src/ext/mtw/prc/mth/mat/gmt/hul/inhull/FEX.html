@@ -1,0 +1,1853 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Inhull -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/10226-inhull" rel="canonical">
+<meta content="Inhull - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/10226-inhull" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/39771/original.jpg" property="og:image"><meta content="Efficient test for points inside a convex hull in n dimensions" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F10226-inhull" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F10226-inhull" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/15392" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=10226" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/10226-inhull" class="manifest_title">Inhull</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/10226-inhull/content//inhull.m" class="function" title="Function">inhull(testpts,xyz,tess,tol)</a><span class="description">inhull: tests if a set of points are inside a convex hull</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/10226-inhull/content/inhull.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:92.5%;">
+                <p>4.625</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.6</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">25</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">73 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 3.06 KB</span>
+          <span id="fileid">File ID: #10226</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/7486/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Inhull</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      04 Mar 2006
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2012-09-06">06 Sep 2012</span>)
+      </span>
+  </p>
+
+  <p id="summary">Efficient test for points inside a convex hull in n dimensions</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F10226-inhull&amp;watching=10226" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>Testing if a point is inside a convex hull can be 
+done in a variety of ways. Inhull converts the problem into a dot 
+product. If not supplied, it also computes the convex hull too. Inhull 
+also attempts to avoid memory problems, doing the computation in smaller
+ blocks when appropriate.</p>
+
+<p>Here is a comparison of inhull to tsearchn:
+<br>n = 500;
+<br>m = 100;
+<br>p = 5;
+<br>xyz = rand(m,p);
+<br>testpts = rand(n,p)-.1;</p>
+
+<p>tic
+<br>tess = delaunayn(xyz);
+<br>in0 = ~isnan(tsearchn(xyz,tess,testpts));
+<br>toc
+<br>tic
+<br>in1 = inhull(testpts,xyz);
+<br>toc</p>
+
+<p>tsearchn: Elapsed time is 0.813646 seconds.
+<br>inhull: Elapsed time is 0.242993 seconds.</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      
+      <p><i>This file</i> inspired <a href="https://www.mathworks.com/matlabcentral/fileexchange/48044-3d-mesh-transform-using-sparse-control-points">3 D Mesh Transform Using Sparse Control Points</a>.</p>
+    </td>
+  </tr>
+
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.0.1 (R14SP1)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F10226-inhull">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22convex+hull%22" rel="nofollow">convex hull</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hull%22" rel="nofollow">hull</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22inhull%22" rel="nofollow">inhull</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22tsearch%22" rel="nofollow">tsearch</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22tsearchn%22" rel="nofollow">tsearchn</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="10226" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/10226-inhull" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F10226-inhull">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(47)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">04 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/288288">Jan Froehlich</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very fast, thank you for submitting this.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Andy - there are a few ways to solve your problem.</p>
+
+<p>Once an object is no longer convex, the answer is not as easy. Inhull
+ uses a simple and efficient trick, converting all facets of a convex 
+surface into linear inequalities, so the test becomes not much more than
+ a simple (large &amp; sparse) matrix multiply. However, the linear 
+inequality approach fails when the object is no longer convex, and there
+ is no such thing as only slightly non-convex. So, some simple 
+alternatives are:</p>
+
+<p>- Form a tessellation of the non-convex domain, converting it 
+entirely into a list of simplexes that fill the region. A point is 
+inside the surface if it is inside ANY of the component simplexes. This 
+is doable, although a bit slower than inhull would be. The biggest issue
+ is how one converts a surface into a full tessellation.</p>
+
+<p>- Another scheme is to use a ray. A point is inside the domain if any
+ random ray extending from that point to infinity passes through an odd 
+number of facets of the surface. Clearly you need to be careful if the 
+ray happens to be parallel (and coincident with) a facet or edge, or it 
+passes through a vertex. As well, one needs to write careful code to 
+determine what happened if the point fell exactly on a facet, edge, or 
+vertex.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/473470">Andy Horn</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello everybody!</p>
+
+<p>I love inhull, it really helps a lot! However, I also have some 
+objects that are not necessarily convex and would need to have a 
+generalized version of this, which could e.g. read the outputs of a 
+isosurface function (triangles and points).. Is anyone aware of a 
+similar function to inhull which does exactly this? (testing if points 
+reside within a surface described by points and triangles)?</p>
+
+<p>Thanks a lot for your help!</p>
+
+<p>Yours, Andy</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/330498">Francesco</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very fast and easy to use! I like how it does the tesselation of surfaces for you #lazy</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Sep 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/346086">QIANG LIU</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">29 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Daniella - Sorry, but I really try 
+not to do consulting in the comments, so I won't go any further with 
+this. But ask yourself what you would expect to happen if the three 
+points fell exactly in a straight line?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/372214">Daniela</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi</p>
+
+<p>First of all thanks for your reply, it was very helpful.  Till now 
+the program was running smoothly but now I tried to find the normal of 
+the plane containing the points(rows of X) X=[134 294 59; 136 295 59; 
+122 288 59].  The program is calculating the normal but it is giving out
+ a 3x2 matrix rather than a 3x1 matrix causing the program to generate 
+an error later on when projecting the points in Y to the 2D subplot 
+(line of code: YPProj = YP(inplane,:)*B ). </p>
+
+<p>Can you please guide me in what is causing this to happen?</p>
+
+<p>Thanks for your great help once again.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I KNEW you were going to ask this question, and I'm quite sure I'm not even psychic. :)</p>
+
+<p>Consider three points in R^3, here as rows of X. Clearly they form a 
+triangle. Do the points as rows of Y lie inside that triangle?</p>
+
+<p>X = [1 0 0;0 1 0;0 0 1];
+<br>Y = [1 1 1;.25 -.25 1;.2 .3 .5;4/7 2/7 1/7]</p>
+
+<p>Are the points in Y in the plane of the triangle at all? A plane is 
+defined by a point on the plane, and the normal vector to that plane. We
+ can also define the plane in terms of a point on the plane, and a pair 
+of basis vectors spanning the plane. In fact, we will use both of these 
+forms.</p>
+
+<p>First, choose a point (P) on the plane. Here P=X(1,:) will obviously 
+suffice. Translate the problem so that the point on the plane is the 
+origin. Essentially this means subtracting P from the rows of both X and
+ of Y.</p>
+
+<p>P = X(1,:);
+<br>XP = bsxfun(@minus,X,P)
+<br>YP = bsxfun(@minus,Y,P)</p>
+
+<p>XP =
+<br>     0     0     0
+<br>    -1     1     0
+<br>    -1     0     1</p>
+
+<p>YP =
+<br>            0            1            1
+<br>        -0.75        -0.25            1
+<br>         -0.8          0.3          0.5
+<br>     -0.42857      0.28571      0.14286</p>
+
+<p>Now, compute the normal vector to the plane of the triangle. Since 
+this is a three dimensional problem, I COULD do it using the cross 
+product tool found in MATLAB (as cross), but perhaps a more general 
+solution comes from the function null.</p>
+
+<p>N = cross(XP(2,:),XP(3,:))
+<br>N =
+<br>     1     1     1</p>
+
+<p>N = null(XP)
+<br>N =
+<br>    0.5774
+<br>    0.5774
+<br>    0.5774</p>
+
+<p>In fact, both vectors are essentially the same, although one is 
+transposed compared to the other, and the latter is normalized to have 
+unit norm. Both aspects are irrelevant here. I'll use the result from 
+null to do my tests.</p>
+
+<p>The test for being in-plane is now trivial. If the result of YP*N is 
+zero (to within floating point trash) then the corresponding point is in
+ the plane of the triangle. BE VERY CAREFUL HERE, as unless you take 
+care in the test for zero, it will fail. You need to use an intelligent 
+tolerance.</p>
+
+<p>YP*N
+<br>ans =
+<br>       1.1547
+<br>            0
+<br>            0
+<br>  -4.1633e-17</p>
+
+<p>OK, so points 2 and 3 are in the plane of the triangle. In fact, 
+point 4 is also in the plane of the triangle, but I chose it so that you
+ would see that a tolerance is needed here. A reasonable tolerance might
+ be:</p>
+
+<p>tol = 10*eps(sqrt(sum(YP.*YP,2)))
+<br>tol =
+<br>   2.2204e-15
+<br>   2.2204e-15
+<br>   1.1102e-15
+<br>   1.1102e-15</p>
+
+<p>That tolerance was chosen because N is a UNIT normal vector, so we need only consider the sizes of the numbers in YP.</p>
+
+<p>inplane = find(abs(YP*N) &lt; tol)
+<br>inplane =
+<br>     2
+<br>     3
+<br>     4</p>
+
+<p>So we can see that points [2,3,4] are in the plane of the triangle.</p>
+
+<p>Are those points actually inside the triangle? For this, we need to 
+project the problem into the plane of the triangle. Basis vectors that 
+span the plane of the triangle are given in B:</p>
+
+<p>B = null(N')
+<br>B =
+<br>     -0.57735     -0.57735
+<br>      0.78868     -0.21132
+<br>     -0.21132      0.78868</p>
+
+<p>XPProj = XP*B
+<br>XPProj =
+<br>            0            0
+<br>        1.366      0.36603
+<br>      0.36603        1.366</p>
+
+<p>YPProj = YP(inplane,:)*B
+<br>YPProj =
+<br>     0.024519       1.2745
+<br>      0.59282      0.79282
+<br>      0.44258      0.29973</p>
+
+<p>Here I've dropped out point 1, because it was of no interest as it 
+lies out of plane. The rows of XPProj define a triangle in the subspace 
+of our plane. Do the points as rows of YPProj lie in that triangle?</p>
+
+<p>inplane(inhull(YPProj,XPProj))
+<br>ans =
+<br>     3
+<br>     4</p>
+
+<p>So inhull tells us that points 3 and 4 did lie inside the triangle. In fact, inpolygon tells us the same thing.</p>
+
+<p>inplane(inpolygon(YPProj(:,1),YPProj(:,2),XPProj(:,1),XPProj(:,2)))
+<br>ans =
+<br>     3
+<br>     4</p>
+
+<p>Fairly long winded, but it comes down to only a few short lines of code.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/372214">Daniela</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for your fast reply.  I got 
+the idea of determining whether the point lies on the plane of the 
+triangle or not but I am a bit confused about converting the problem to 
+2D.  Can you guide me to what is meant by this or else indicate me with 
+some useful website?  Thanks for your great help</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Daniella - I'm sorry, but 3 points forms a TRIANGLE. A triangle is not a closed surface in 3 dimensions. </p>
+
+<p>If you have a point in 3-d and wish to test to see if it actually 
+lies inside a triangle, then you would first need to test to see if it 
+even lies inside the plane of the triangle. If it does lie in that 
+plane, then you would need to convert the problem to a 2-d problem by 
+projecting it all into the 2-d subspace defined by the plane of the 
+triangle. Once you have done so, then inpolygon would do as well as 
+inhull for a triangle, as long as you have done the projection into 2-d.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/372214">Daniela</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I am currently using the Inhull 
+code for my project.  I am passing to Inhull my set of testing points 
+together with a 3*3 array.  The 3*3 array contains the coordinates of 
+the 3 vertices which are to form the convex hull.  Upon running the code
+ I am getting an error saying that I did not provide enough points.  </p>
+
+<p>This is the actual error I am getting:
+<br>Error using cgprechecks (line 41)
+<br>Not enough unique points specified.</p>
+
+<p>Error in convhulln (line 42)
+<br>cgprechecks(x, nargin, cg_opt);</p>
+
+<p>Error in inhull (line 81)
+<br>  tess = convhulln(xyz,[]);</p>
+
+<p>What can I do?  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/228246">Swagatika</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/245879">Vincent Jaouen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This code is much faster than the one I used to use. Thank you very much.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/266486">Thomas</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great submission - very fast. Note 
+that it could be even faster: the calls to repmat(false, X,Y) on lines 
+109,113,155 could be replaced with false(X,Y).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Aug 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">24 May 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/34660">Richard Crozier</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Another great tool, I'm using it to select arbitrary regions of a finite element mesh.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116925">Duy</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a great tool, but the 
+advantage of tsearchn is that tsearchn also returns the index of the 
+tetrahedron (for 3d case) consisting of the test point. So, if i want 
+that index, i need to run a loop over all tetrahedron and check 
+everytime if the testpoint is inside or not, which would raise the 
+runtime of inhull in an unacceptable way (number of tetrahdrons * 
+inhull). The speed of a single call of inhull with the result of 
+tsearchn would be awesome.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry. I'll fix it. the example should have read</p>
+
+<p>xy = randn(20,2) 
+<br>tess = convhulln(xy); 
+<br>testpoints = [ 0 0; 10 10]; 
+<br>in = inhull(testpoints,xy,tess)</p>
+
+<p>in =
+<br>     1
+<br>     0
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Apr 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/129316">Roman Voronov</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>there is a problem with the example provided in the code:</p>
+
+<p>%  xy = randn(20,2)
+<br>%  tess = convhull(xy(:,1),xy(:,2));
+<br>%  testpoints = [ 0 0; 10 10];
+<br>%  in = inhull(testpts,xyz,tess)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/125210">vicky</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you John for you valuable suggestions</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Vicky,</p>
+
+<p>So cross gives you a facet normal, but you are unsure if it is 
+outward or inward facing. First of all, you can get all of the normals 
+in one call to cross. Get used to doing these computations in one 
+operation, in a vectorized way. I'll build a test example.</p>
+
+<p>   X = rand(10,3);
+<br>   K = convhulln( X ,  { 'Qt' } );</p>
+
+<p>So K is the list of triangular facets. Build the normal vectors with 
+cross. All we need do is take the cross product of vectors along a pair 
+of edges. I'll pick two edges, in an arbitrary orientation.</p>
+
+<p>   normals = cross(X(K(:,1),:) - X(K(:,2),:),X(K(:,1),:) - X(K(:,3),:));</p>
+
+<p>We could normalize them to have unit length if we wish. I tend to do so for normal vectors.</p>
+
+<p>   normals = bsxfun(@times,normals,1./sqrt(sum(normals.^2,2)));</p>
+
+<p>Are they inward or outward pointing? A simple dot product will tell you the answer.</p>
+
+<p>   C = mean(X,1);
+<br>   D = dot(normals,bsxfun(@minus,X(K(:,1),:),C),2)
+<br>D =
+<br>        -0.319410966973992
+<br>        -0.289171257799806
+<br>        -0.192437832564587
+<br>        -0.220416111145392
+<br>        -0.322367706246851
+<br>        -0.279897929334218
+<br>         -0.23737559253969
+<br>        -0.230111277638159
+<br>        -0.319713264137273
+<br>        -0.285713570370542
+<br>        -0.241935614441904
+<br>        -0.293453534156934
+<br>        -0.239664243215607
+<br>        -0.269863191655601</p>
+
+<p>(I could have done the dot product in other ways too, but this way is clear about what I am doing.)</p>
+
+<p>See that all of these dot products are negative. What does it tell 
+you, if the projection of one vector on another is negative? The answer 
+is the two vectors point in opposite directions. See that I've chosen C 
+in a way such that it MUST be inside the convex hull., then I subtract 
+it from some point on the same facet as each normal.</p>
+
+<p>The negative values indicate every normal vector in this set is 
+inward pointing. If you wanted outward pointing normals, simply negate 
+the normals. If not every normal was consistently pointed in the correct
+ way, then you could as easily correct that.</p>
+
+<p>Regards,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Feb 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/125210">vicky</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello John D'Errico,
+<br>I read your Inhull matlab file on File Exchange of MathWorks.com. I need a small help from you.</p>
+
+<p>K = convhulln( X ,  { 'Qt' } );</p>
+
+<p>each row of K contains the indices to the points defined in X, that makeup the triangular facet of the convex hull.
+<br>I want to find the outward normals to each of triangular facets in a
+ direction pointing outwards from the convex hull. But I am stuck on how
+ to determine the direction of the normal, whether it is outward or 
+inward.</p>
+
+<p>I think the indices in K (to the points of X) are stored in some 
+meaningful manner(probably in counter clockwise). Here this is how am 
+evaluating the outward normals for each triangular facets(not sure if 
+this is correct way).</p>
+
+<p>%outward normal to facet 1:
+<br>temp1 = X( K(1, 2) , : ) - X( K(1, 1) , : );
+<br>temp2 = X( K(1, 3) , : ) - X( K(1, 1) , : );
+<br>normal = cross( temp1, temp2 );</p>
+
+<p>I need your valuable suggestions for this. I felt in your work, you 
+have encountered this situation. Please guide me. I will be very 
+thankfull for your help.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/98127">Antonio Pena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sorry, thanks anyway for your help, i'll try in the forum </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>What is your question here? 
+Regardless, it is inappropriate for the comments on this file to become 
+an extended set of questions by you on a variety of problems that do not
+ really relate to this code anyway. That is not what these comments are 
+for. I won't do consulting through the comments on this file.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/98127">Antonio Pena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>But i did this for 2D with 
+inpolygon, what I want to get with this are the points inside so as then
+ I can refine the mesh in the internal structure:
+<br>x_min=0; x_max = 0.1;
+<br>y_min=0; y_max = 0.1;
+<br>Nx = 20;
+<br>Ny = 20;
+<br>x=linspace(x_min,x_max,Nx);
+<br>dx = (x_max-x_min)/Nx;
+<br>y=linspace(y_min,y_max,Ny);</p>
+
+<p>points = [1 1 x_min 0.158; 2 1 0.053 0.211; 3 1 x_min 0.316; 4 1 0.211 0.526;5 1 0.579 1;6 1 1 0.895;7 1 0.842 0.474;
+<br>8 1 0.368 0.158;9 1 0.158 y_min;10 1 0.105 0.053;11 1 0.053 0.105;12 1 x_min 0.158; 13 2 0.368 0.474; 14 2 0.421 0.579;...
+<br>    15 2 0.474 0.684; 16 2 0.579 0.737; 17 2 0.684 0.632;18 2 0.684 0.526; 19 2 0.579 0.421; 20 2 0.526 0.316;...
+<br>    21 2 0.474 0.263; 22 2 0.421 0.263; 23 2 0.368 0.368; 24 2 0.368 0.474];</p>
+
+<p>points(:,3) = points(:,3)*x_max;
+<br>points(:,4) = points(:,4)*y_max;
+<br>xv_medio1=[];
+<br>yv_medio1=[];
+<br>xv_medio2=[];
+<br>yv_medio2=[];</p>
+
+<p>for i= 1:length(points(:,2))
+<br>    if points(i,2)==1           %MEDIO 1
+<br>        xv_medio1 = [xv_medio1 points(i,3)];
+<br>        yv_medio1 = [yv_medio1 points(i,4)];
+<br>    elseif puntos(i,2)==2       %MEDIO 2
+<br>        xv_medio2 = [xv_medio2 points(i,3)];
+<br>        yv_medio2 = [yv_medio2 points(i,4)];
+<br>    end
+<br>end        </p>
+
+<p>[X,Y] = meshgrid(x,y);
+<br>in_medio1 = inpolygon(X,Y,xv_medio1,yv_medio1);
+<br>in_medio2 = inpolygon(X,Y,xv_medio2,yv_medio2);
+<br>figure
+<br>plot(xv_medio1,yv_medio1,xv_medio2,yv_medio2,X(in_medio1&amp;~in_medio2),Y(in_medio1&amp;~in_medio2),'.r',X(~in_medio1),Y(~in_medio1),'.b',X(in_medio2),Y(in_medio2),'.g')
+<br>axis([x_min x_max y_min y_max]);</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>inhull will NOT solve the question 
+of whether a cell of a rectangular grid is entirely inside a hull. For 
+that matter, neither would inpolygon do that in only two dimensions. It 
+is trivial to show a counterexample.</p>
+
+<p>As far as plotting goes, learn to use the convhull routines in matlab. Then call trisurf to plot a triangulated surface.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/98127">Antonio Pena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>By the way, in this function all i 
+need for define the polygon is the set of vertices, but what if i want 
+to plot it ? how can i do it?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/98127">Antonio Pena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for your explanation. What 
+i'm trying to do is find a version of inpolygon in 3D as i need it just 
+to find out if each cell of a regular mesh is inside or outside of this 
+polygon </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>First of all, I think you 
+misunderstand that this code works with a triangulation, or in higher 
+numbers of dimensions, a tessellation of a domain. Further, you seem to 
+misunderstand how to build those things to define a 
+triangulation/tessellation.</p>
+
+<p>The points in your example define a simple cube in three dimensions. 
+The convex hull of those points is a set of 12 triangles. Each triangle 
+will be given as a set of three INTEGERS. </p>
+
+<p>Before we go any further, let me suggest that you learn to use arrays
+ in matlab, rather than defining separate, numbered variables for every 
+single data point. Thus, define the array variable V, as</p>
+
+<p>V = [0.1 0.1 0.1; 
+<br>       0.1 1 0.1; 
+<br>       0.1 0.1 1; 
+<br>       0.1 1 1; 
+<br>       1 0.1 0.1; 
+<br>       1 1 0.1; 
+<br>       1 0.1 1; 
+<br>       1 1 1];</p>
+
+<p>If you do not learn to do this in matlab, you will find your further 
+work is much more difficult (and VERY SLOW) once you start working with 
+larger sets of data.</p>
+
+<p>Each row of V is ONE vertex of the cube. </p>
+
+<p>tri = convhulln(V)
+<br>tri =
+<br>     6     2     1
+<br>     5     6     1
+<br>     7     5     1
+<br>     3     7     1
+<br>     7     6     5
+<br>     6     7     8
+<br>     2     4     1
+<br>     4     3     1
+<br>     6     4     2
+<br>     4     6     8
+<br>     4     7     3
+<br>     7     4     8</p>
+
+<p>See that each row of this array has numbers that run from 1 to 8. 
+Integers, that refer to points or vertices, that are themselves 
+references to rows of V. So the first TRIANGLE in the hull is [6 2 1], 
+defined by the points stored as V([6 2 1],:). There will be 12 
+triangles, since there are 6 square faces of a cube.</p>
+
+<p>If you will choose to define a triangulation, then you can use 
+inhull. Or, you can let inhull create that triangulation itself. But you
+ cannot create a polyhedron as you have tried to do and try to pass in 
+facets of the cube as 4 sided things, defined in your own arbitrary 
+notation, and hope that inhull will figure out what you mean to do. So, 
+the proper way to call inhull, as already shown in the help, is to do 
+ONE of these things...</p>
+
+<p>% Here, inhull creates the surface triangulation itself.
+<br>inhull(testpoints,V)
+<br>ans =
+<br>     1
+<br>     0</p>
+
+<p>% Here I have used the output of convhulln above.
+<br>inhull(testpoints,V,tri)
+<br>ans =
+<br>     1
+<br>     0</p>
+
+<p>See that either call tells you that the first point is inside the convex hull, and the second is outside the hull.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/98127">Antonio Pena</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>could anyone give an example of using this function with a 3d polygon? I've tried with this:
+<br> %Test in 3D
+<br> clear all,close all,clc;
+<br> v1 = [0.1 0.1 0.1];
+<br> v2 = [0.1 1 0.1];
+<br> v3 = [0.1 0.1 1];
+<br> v4 = [0.1 1 1];
+<br> v5 = [1 0.1 0.1];
+<br> v6 = [1 1 0.1];
+<br> v7 = [1 0.1 1];
+<br> v8 = [1 1 1];
+<br> face1 = [v1 ;v5 ;v6 ;v2 ;v1];
+<br> face2 = [v3; v7; v8; v4; v3];
+<br> face3 = [v5; v6; v8; v7; v5];
+<br> face4 = [v6; v2; v4; v8; v6];
+<br> face5 = [v2; v1; v3; v4; v2];
+<br> face6 = [v1; v3; v7; v5; v1];
+<br>polygon = [face1;face6; face5; face4; face3;face2];
+<br>testpoints = [ 0.5 0.2 0.2; 2 2.3 0.4];
+<br> x = testpoints(:,1);
+<br> y = testpoints(:,2);
+<br> z = testpoints(:,3);
+<br> in = inhull(testpoints,polygon);
+<br> figure
+<br> plot3(polygon(:,1),polygon(:,2),polygon(:,3),x(in),y(in),z(in),'.g',x(~in),y(~in),z(~in),'.r')
+<br>but the first point in testpoints should be inside the cube but it isn't...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/84753">Pierre Bellec</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great code. I've used it for head 
+segmentation in MRI. A simple intensity thresholding left lots of holes 
+in the head, and that function filled them easily. It was a problem in 
+low dimension (3) but quite high resolution (256*256*128). In any case, 
+it saved me a lot of time and I really appreciate it. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 May 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37194">David Gingras</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Another very usefull code provided by John! Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Mar 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/47982">Navid Samavati</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent Code!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33484">Florian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much for this code. Particularly thanks to John for explaining me a  problem I had with the code:</p>
+
+<p>I have tried the following:
+<br> tms=rand(1000,5);
+<br>in = inhull(tms,tms);
+<br>disp(length(find(in==0)))</p>
+
+<p>which gave roughly ~319</p>
+
+<p>as John points out:
+<br>"those 319 points were almost certainly on the surface of the convex hull.</p>
+
+<p>Try this slight modification of your code instead.</p>
+
+<p>tms=rand(1000,5);
+<br>in = inhull(tms,tms,[],1.e-13);
+<br>disp(length(find(in==0)))
+<br>     0</p>
+
+<p>See that I've used a tolerance this time. The linear algebra used in 
+the test is done in floating point arithmetic in matlab, as it must be. 
+Without a tolerance, any test done in floating point arithmetic is 
+suspect. By default that tolerance is zero, but this is also why I 
+allowed the user a tolerance at all. "</p>
+
+<p>Thanks John!!!!!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/38328">Nagarjuna</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>very nice work</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31779">Luigi Giaccari</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very good code, readable, uderstandable and even fast. 
+<br>The n-dimensions also make-it flexible. 
+<br> 
+<br>The thing I like the most is a wonderfull example of dot product 
+vectorization with memory management. It helps a lot to understdand how 
+to make m-code more efficient. 
+<br> 
+<br>The only thing i disagree is the comparison with tsearchn.
+<br> I thing its purpose is to find where a point is located inside the 
+hull and not whether he is inside or not. The nan output values are just
+ a secondary objective which occurs in the worst case when a point lies 
+outside. 
+<br> 
+<br>Anyway a five stars, very good work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Dec 2008</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31779">Luigi Giaccari</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very good code, readable, uderstandable and even fast.
+<br>The n-dimensions also make-it flexible.</p>
+
+<p>The thing I like the most is a wonderfull example of dot product 
+vectorization with memory management. It helps a lot to understdand how 
+to make m-code more efficient.</p>
+
+<p>The only thing i disagree is the comparison with tsearchn, I thing 
+its purpose is to find where a point is located inside the hull and 
+whether he is inside or not. The nan output values are just a secondary 
+objective which occurs in the worst case when a point lies outside.</p>
+
+<p>Anyway a five stars, very good work!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jun 2008</span></td>
+        <td>
+          <span class="author">
+            Titus Edelhofer
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice. Just for ease of use: 
+the example given in the help uses different variable names then the 
+call to the function (and should call convhulln instead of convhull).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            Jayveer Thakoor
+          </span>
+        </td>
+        <td><span class="comment"><p>huge time saver! thank you :)</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Nov 2007</span></td>
+        <td>
+          <span class="author">
+            Lee Shunn
+          </span>
+        </td>
+        <td><span class="comment"><p>Fast and easy to use. Thanks for the great code.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Oct 2007</span></td>
+        <td>
+          <span class="author">
+            Yonas T. Weldeselassie
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent! Great job. Well documented, easy to understand, very similar to inpolygon and what more? Thanks a lot.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Mar 2007</span></td>
+        <td>
+          <span class="author">
+            Jon KoS
+          </span>
+        </td>
+        <td><span class="comment"><p>Great Job! Works really well and 
+does what it says. I'll be using this function a lot. :) Not sure what 
+the other reviewer was looking at but the code is well commented. 
+Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Mar 2007</span></td>
+        <td>
+          <span class="author">
+            John Galt
+          </span>
+        </td>
+        <td><span class="comment"><p>Ever heard of commenting your code? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Oct 2006</span></td>
+        <td>
+          <span class="author">
+            Quan Wen
+          </span>
+        </td>
+        <td><span class="comment"><p>I agree with what Mia Ginsburg said. This code is very helpful. Thanks a lot.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 May 2006</span></td>
+        <td>
+          <span class="author">
+            Mia Ginsburg
+          </span>
+        </td>
+        <td><span class="comment"><p>Just what I wanted. Much faster than tsearchn if you just want to test if a point is inside a convex hull.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Apr 2006</span></td>
+        <td>
+          <span class="author">
+            Liketo Stayanonymous
+          </span>
+        </td>
+        <td><span class="comment"><p>No, sorry! I think you lost me with this one. What (again) is this software about??
+<br>Clear example will be much appreciated!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">13 Mar 2006</td>
+                  <td><p>Added a tolerance on the tests</p></td>
+                </tr>
+                <tr>
+                  <td class="date">17 Mar 2006</td>
+                  <td><p>Version 2.0: Repaired a problem when the hull has degenerate facets.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Apr 2006</td>
+                  <td><p>Fix a problem in 2-d or 3-d, catching degenerate facets</p></td>
+                </tr>
+                <tr>
+                  <td class="date">08 Apr 2011</td>
+                  <td><p>Repaired example in the help</p></td>
+                </tr>
+                <tr>
+                  <td class="date">06 Sep 2012</td>
+                  <td><p>minor changes for a tiny speed boost</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416119491790&amp;cv=7&amp;fst=1416119491790&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/10226-inhull&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D150%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

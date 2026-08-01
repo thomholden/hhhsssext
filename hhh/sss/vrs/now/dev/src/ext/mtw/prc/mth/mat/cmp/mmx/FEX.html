@@ -1,0 +1,1228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>MMX - Multithreaded matrix operations on N-D matrices -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices" rel="canonical">
+<meta content="MMX - Multithreaded matrix operations on N-D matrices - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/47532/original.jpg" property="og:image"><meta content="N-D matrix operations. Like Boettcher's ndfun or Tursa's mtimesx, only faster." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-rdm-ry" type="text/css"></style><style id="ki-rdm-r3" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F37515-mmx-multithreaded-matrix-operations-on-n-d-matrices" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F37515-mmx-multithreaded-matrix-operations-on-n-d-matrices" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/18115" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=37515" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices" class="manifest_title">MMX - Multithreaded matrix operations on N-D matrices</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices/content//mmx_package/html/mmx_web.html" class="example" title="Example">MMX - Multithreaded matri...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices/content//mmx_package/build_mmx.m" class="function" title="Function">build_mmx(verbose)
+</a><span class="description">BUILD_MMX - compiles mmx() for different platforms and provides help
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices/content//mmx_package/matlab_mprod.m" class="function" title="Function">matlab_mprod(a,b)
+</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices/content//mmx_package/mmx.m" class="function" title="Function">mmx(varargin)</a><span class="description">MMX - Multithreaded matrix operations on N-D matrices</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices/content//mmx_package/compare_chol_flops.m" class="script" title="Script">compare_chol_flops.m</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices/content//mmx_package/compare_mult_flops.m" class="script" title="Script">compare_mult_flops.m</a></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices/content/mmx.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">5.0</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">8</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">47 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 460 KB</span>
+          <span id="fileid">File ID: #37515</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/8980/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">MMX - Multithreaded matrix operations on N-D matrices</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31455">Yuval</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      16 Jul 2012
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-07-08">08 Jul 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">N-D matrix operations. Like Boettcher's ndfun or Tursa's mtimesx, only faster.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F37515-mmx-multithreaded-matrix-operations-on-n-d-matrices&amp;watching=37515" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>MMX treats an N-D matrix of double precision values as a set of pages 
+<br>of 2D matrices, and performs various matrix operations on those pages.  
+<br>MMX uses multithreading over the higher dimensions to achieve good
+<br>performance. Full singleton expansion is available for most operations. </p>
+
+<p>C = MMX('mult', A, B) is equivalent to the matlab loop
+<br>for i=1:N,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;C(:,:,i) = A(:,:,i) * B(:,:,i);
+<br>end
+<br>Singleton expansion is enabled on all dimensions so for example if
+<br>A = randn(5,4,3,10,1);
+<br>B = randn(4,6,3,1 ,6);
+<br>C = zeros(5,6,3,10,6);
+<br>then C = mmx('mult',A,B) equivalent to 
+<br>for i = 1:3
+<br>&nbsp;&nbsp;&nbsp;for j = 1:10
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for k = 1:6
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C(:,:,i,j,k) = A(:,:,i,j,1) * B(:,:,i,1,k);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+<br>&nbsp;&nbsp;&nbsp;end
+<br>end</p>
+
+<p>C = MMX('mult', A, B, mod) and where mod is a modifier string, will
+<br>transpose one or both of A and B. Possible values for mod are
+<br>'tn', 'nt' and  'tt' where 't' stands for 'transposed' and 'n' for
+<br>'not-transposed'. For example 
+<br>&gt;&gt; size(mmx('mult',randn(4,2),randn(4,2),'tn'))
+<br>ans =   2     2</p>
+
+<p>C = MMX('square', A, [])     will perform C = A*A'
+<br>C = MMX('square', A, [],'t') will perform C = A'*A</p>
+
+<p>C = MMX('square', A, B)       will perform C = 0.5*(A*B'+B*A')
+<br>C = MMX('square', A, B, 't')  will perform C = 0.5*(A'*B+B'*A)</p>
+
+<p>C = MMX('chol',   A, []) will perform C = chol(A)</p>
+
+<p>C = MMX('backslash', A, B) will perform C = A\B
+<br>Unlike other commands, 'backslash' does not support singleton
+<br>expansion. If A is square, mmx will use LU factorization, otherwise it
+<br>will use QR factorization. In the underdetermined case, (i.e. when
+<br>size(A,1) &lt; size(A,2)), mmx will give the least-norm solution which
+<br>is equivalent to C = pinv(A)*B, unlike matlab's mldivide. </p>
+
+<p>C = MMX('backslash', A, B, 'U') or MMX('backslash', A, B, 'L') will
+<br>perform C = A\B assuming that A is upper or lower triangular,
+<br>respectively.</p>
+
+<p>C = MMX('backslash', A, B, 'P') will perform C = A\B assuming that A
+<br>is symmetric-positive-definite.</p>
+
+<p>MMX(n) does thread control: mmx will automatically start a number of
+<br>threads equal to the number of available processors, however the
+<br>number can be set manually to n using the command mmx(n). mmx(0) will
+<br>clear the threads from memory.</p>
+
+<p>IMPORTANT NOTE: The functions which assume special types of square
+<br>matrices as input ('chol' and 'backslash' for 'U','L' or 'P'
+<br>modifiers) do not check that the inputs are indeed what you say they
+<br>are, and produce no error if they are not. Caveat computator.</p>
+
+<p>COMPILATION: To compile run 'build_mmx'. Type 'help build_mmx' to read
+<br>about compilation issues and options</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/25977-mtimesx-fast-matrix-multiply-with-multi-dimensional-support">Mtimesx   Fast Matrix Multiply With Multi Dimensional Support</a> inspired <i>this file.</i></p>
+      
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.14 (R2012a)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Works better if you can link it to a single-threaded BLAS library</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F37515-mmx-multithreaded-matrix-operations-on-n-d-matrices">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22backslash%22" rel="nofollow">backslash</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multiple+multiplication%22" rel="nofollow">multiple multiplication</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multiply%22" rel="nofollow">multiply</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multiprod%22" rel="nofollow">multiprod</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22multithreaded%22" rel="nofollow">multithreaded</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="37515" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F37515-mmx-multithreaded-matrix-operations-on-n-d-matrices">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(24)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">28 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/489367">Robbert</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Yuval,
+<br>Thanks for the great tool, I would also very much appreciate complex number support.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/440778">Evan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I was able to compile on OSX 10.8 
+on 2013b using XCode 5.0.2 by changing link_dir from 
+'/extern/lib/maci64' to 'bin/maci64.' The comments say that the 
+'mmx_mkl_muli' build uses the BLAS/LAPACK libraries that come with 
+Matlab, but it seems as though it's still trying to use intel mkl 
+libraries. I also had to stop the program from cd-ing out of the mmx 
+package directory so that it wouldn't fail to find mmx.ccp. Works now 
+though!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Mar 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/440778">Evan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yuval, </p>
+
+<p>Sorry if this is a naive question, but I'm trying to follow the 
+instructions to download the Intel MKL, and it appears to be quite an 
+expensive software package. Is there another configuration I can use? 
+Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31455">Yuval</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Syed. Unfortunately I don't have time to add that feature. Just use the identity</p>
+
+<p>(B/A)' = (A'\B')</p>
+
+<p>Remember that transposition is a very cheap operation. You can avoid loops by using
+<br>my_T = @(x) permute(x,[2 1 3 4])</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/198594">Syed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Yuval,</p>
+
+<p>Thank you (and James!) for this wonderfully useful toolbox. I have a 
+question, however. I am trying to run a "forward slash" so I can 
+calculate the product
+<br>B \ A / B = (B \ A) / B = B \ (A / B) = B^{-1} A B^{-1}</p>
+
+<p>Your code does great with B\A and I don't believe it's too hard to do
+ A / B = (B' \ A')'. However, because backslash does not have any 
+transpose flags, I can't force your code to do any tweaked backslash 
+operation.</p>
+
+<p>Is it possible for you to add a "forwardslash" option to mmx.cpp? 
+That would be a small but tremendous addition to the Swiss army 
+matrix-knife you've made. Thanks!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/198594">Syed</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/389001">Johannes</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375627">Rafael Borges</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Yuval,</p>
+
+<p>I'm running the Linux 64 bits edition of Matlab. I've followed the 
+instructions you provided inside build_mmx.m for installing Intel MKL 
+and creating libsingle_mkl_ilp64.so, which was then copied to the Matlab
+ extern/lib/glnxa64 folder as instructed. But when I ran build_mmx 
+afterwards, I got the error message</p>
+
+<p>"Compilation of 'mmx_mkl_single' failed with error:
+<br>ls: cannot access *small_mkl_ilp64.*: No such file or directory"</p>
+
+<p>and building with single-threaded MKL library failed. What has gone wrong?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375202">Jaap</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>works really great! much faster then using for loops. Indeed, support for complex numbers would be great.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/375202">Jaap</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31455">Yuval</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Tamar, I realized what the problem 
+is. LCC is an ANSI C compiler. MMX uses some features of C++ and 
+therefore cannot be compiled with LCC. Both Microsoft and Intel offer 
+free versions of their compilers which matlab recognizes (mex -setup). 
+Try using these.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/258346">Tamar Friedlander</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yuval,</p>
+
+<p>Thanks. It did solve the error message about line 151 (similarly I 
+resolved the error message about lines 238-9), but then I still have the
+ next error messages:</p>
+
+<p>Trying to compile 'mmx_naive', using 
+<br>-DWIN_SYSTEM, 
+<br>Error mmx.cpp: 232  illegal statement termination 
+<br>Error mmx.cpp: 232  skipping `char' 
+<br>Error mmx.cpp: 232  undeclared identifier `commandStr' 
+<br>Error mmx.cpp: 232  type error: pointer expected 
+<br>Error mmx.cpp: 232  operands of = have illegal types `int' and `pointer to char' 
+<br>Error mmx.cpp: 236  type error: pointer expected 
+<br>Error mmx.cpp: 255  type error in argument 1 to `mxFree'; found `int' expected `pointer to void' 
+<br>Error mmx.cpp: 280  illegal statement termination 
+<br>Error mmx.cpp: 280  skipping `char' 
+<br>Error mmx.cpp: 280  undeclared identifier `modifierStr' 
+<br>Error mmx.cpp: 280  type error: pointer expected 
+<br>Error mmx.cpp: 280  operands of = have illegal types `int' and `pointer to char' 
+<br>Error mmx.cpp: 281  type error: pointer expected 
+<br>Error mmx.cpp: 290  type error: pointer expected 
+<br>Error mmx.cpp: 303  type error in argument 1 to `mxFree'; found `int' expected `pointer to void' 
+<br>Warning mmx.cpp: 280   possible usage of modifierStr before definition 
+<br>Error mmx.cpp: 517  illegal statement termination 
+<br>Error mmx.cpp: 517  skipping `int' 
+<br>Error mmx.cpp: 517  undeclared identifier `blksz' 
+<br>Error mmx.cpp: 518  illegal statement termination 
+<br>Error mmx.cpp: 518  skipping `int' 
+<br>Error mmx.cpp: 518  too many errors 
+<br> 
+<br>  C:\PROGRA~1\MATLAB\R2011B\BIN\MEX.PL: Error: Compile of 'mmx.cpp' failed. 
+<br> 
+<br>Compilation of 'mmx_naive' failed with error:
+<br>Unable to complete successfully.</p>
+
+<p>What do you suggest to do?</p>
+
+<p>Thanks,
+<br>--Tamar.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31455">Yuval</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Tamar,</p>
+
+<p>I believe you found a bug. Thank you. The declaration of the variable
+ temp in line 151 is in the middle of the function code. This is 
+standard in C++ but not in C, where declarations are supposed to come 
+before statements. I suppose my compiler (VS) was a little too lenient. </p>
+
+<p>Move line 151 to 129 and you should be fine.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/258346">Tamar Friedlander</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Yuval,</p>
+
+<p>I tried to compile the mmx on Matlab R2011b (7.13) 32-bit and failed to do so.
+<br>My compiler is the default lcc compiler of Matlab (I chose it on mex -setup).</p>
+
+<p>build_mmx failed to compile it on my computer. 
+<br>I tested my compiler with another mex function that I wrote and it worked well.</p>
+
+<p>For the naive compilation I received the following error messages:</p>
+
+<p>Trying to compile 'mmx_naive', using 
+<br>-DWIN_SYSTEM, 
+<br>Error mmx.cpp: .\matrix_fun.c: 151  illegal statement termination 
+<br>Error mmx.cpp: .\matrix_fun.c: 151  skipping `double' 
+<br>Error mmx.cpp: .\matrix_fun.c: 151  undeclared identifier `temp' 
+<br>Warning mmx.cpp: .\matrix_fun.c: 151  Statement has no effect 
+<br>Error mmx.cpp: .\matrix_fun.c: 238  illegal statement termination 
+<br>Error mmx.cpp: .\matrix_fun.c: 238  skipping `double' 
+<br>Error mmx.cpp: .\matrix_fun.c: 238  undeclared identifier `temp' 
+<br>Error mmx.cpp: .\matrix_fun.c: 239  illegal statement termination 
+<br>Error mmx.cpp: .\matrix_fun.c: 239  skipping `int' 
+<br>Error mmx.cpp: .\matrix_fun.c: 239  undeclared identifier `rank' 
+<br>Error mmx.cpp: 232  illegal statement termination 
+<br>Error mmx.cpp: 232  skipping `char' 
+<br>Error mmx.cpp: 232  undeclared identifier `commandStr' 
+<br>Error mmx.cpp: 232  type error: pointer expected 
+<br>Error mmx.cpp: 232  operands of = have illegal types `int' and `pointer to char' 
+<br>Error mmx.cpp: 236  type error: pointer expected 
+<br>Error mmx.cpp: 255  type error in argument 1 to `mxFree'; found `int' expected `pointer to void' 
+<br>Error mmx.cpp: 280  illegal statement termination 
+<br>Error mmx.cpp: 280  skipping `char' 
+<br>Error mmx.cpp: 280  undeclared identifier `modifierStr' 
+<br>Error mmx.cpp: 280  type error: pointer expected 
+<br>Error mmx.cpp: 280  too many errors </p>
+
+<p>Any suggestions what to do?</p>
+
+<p>Many thanks,
+<br>--Tamar.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/312383">Alexandros Iliopoulos</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Yuval,</p>
+
+<p>Indeed, I'm happy to report that the numerical errors were not due to your package, after all.</p>
+
+<p>Interestingly, the errors I was having were not due to MMX giving me 
+the pseudo-inverse solution (which is what I wanted), but rather they 
+were due to MATLAB's pinv() function, whose output I passed to MMX. In 
+particular, I found out that MATLAB does not use 
+symmetric-matrix-specific algorithms for functions such as pinv, svd, or
+ sqrt, which may result in output matrices having non-zero imaginary 
+terms. Of course, this did mess up the MMX output (as noted earlier), 
+but the input was wrong to begin with.</p>
+
+<p>After going around that problem, MMX worked like a charm!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/312383">Alexandros Iliopoulos</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31455">Yuval</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Alexandros,</p>
+
+<p>Thank you so much for your feedback. This is not a bug. As described 
+in the documentation, for rank deficient matrices mmx gives the 
+least-norm (pseudoinverse) solution rather than the maximally-sparse 
+solution. You didn't specify how your matrices were generated but 
+clearly they are not 'in general position'. Try using random A's and you
+ will see no discrepancy (to machine precision). Alternatively, compare 
+mmx's output to pinv(A)*B.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/312383">Alexandros Iliopoulos</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Yuval,</p>
+
+<p>It appears to me that your package suffers from numerical artifacts, at least with respect to 'BACKSLASH' computations.</p>
+
+<p>To check, I ran something like this:
+<br>% A:3x3x1850, B:3x1x1850
+<br>C = mmx( 'backslash', A, B );
+<br>D = zeros( size( C ) );
+<br>for k = 1 : size(D,3)
+<br>  D(:,:,k) = A(:,:,k) \ B(:,:,k);
+<br>end
+<br>E = sum( (C - D).^2, 1 );
+<br>stem( permute( E, [1 3 2] ) )</p>
+
+<p>It is readily visible that E is zero everywhere except for 4-5 indices, where the error is pretty large.</p>
+
+<p>Unfortunately, I haven't been able to consruct a MWE with rand() data
+ or something similar. Please PM me if you want me to send you the data 
+that gave me the errors.</p>
+
+<p>I hope that you have the time to work on this issue (assuming that I 
+haven't done something silly), as I think that this is a very handy 
+package to have! I'd be willing to help if I can.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/312383">Alexandros Iliopoulos</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31455">Yuval</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Adam!
+<br>Please spread the word.
+<br>Adding complex number support should be pretty easy.
+<br>If I see that mmx gets more traction in the community and that more people want it i'd be happy to do it myself.</p>
+
+<p>As it stands it seems that it's buried in a dark corner of file exchange...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/342472">Adam Cooman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The package works great. It all 
+compiled nicely and is a lot faster than everything else out there. 
+Also, the backslash option is really usefull.</p>
+
+<p>Watch out when passing complex numbers though, the function only 
+works on the real part of the data. Would it be possible to extend the 
+function to complex matrices too?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31455">Yuval</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jan, look in the comments inside build_mmx.m</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Sep 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/15233">Jan Simon</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Do you have explicite suggestions for "linking to a single-threaded BLAS library"?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31455">Yuval</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This package's homepage is here 
+<br>http://www.cs.washington.edu/people/postdocs/tassa/code/#mmx</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">08 Jul 2013</td>
+                  <td><p>Some more variable declaration fixes for lcc compiler (not tested).</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415948117614&amp;cv=7&amp;fst=1415948117614&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/37515-mmx-multithreaded-matrix-operations-on-n-d-matrices&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D101%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>
