@@ -1,0 +1,248 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>examplePrincipe</title><meta name="generator" content="MATLAB 7.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2011-03-30"><meta name="DC.source" content="examplePrincipe.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Two information-theoretic tools to assess the performance of multi-class classifiers</a></li><li><a href="#2">Data examples</a></li><li><a href="#3">The entropy triangle (de Finetti entropy diagram) from rawcount contingency matrices (or confusion matrices)</a></li><li><a href="#4">The 2-simplex in a three-dimensional diagram from rawcount contingency matrices (or confusion matrices)</a></li><li><a href="#5">The entropy triangle (de Finetti entropy diagram) from joint distributions</a></li><li><a href="#6">The 2-simplex in a three-dimensional diagram from joint distributions</a></li></ul></div><h2>Two information-theoretic tools to assess the performance of multi-class classifiers<a name="1"></a></h2><p>Entropy_triangle is a function that implements two tools to analyze the behavior of multiple-class, or multi-class, classifiers by means of entropic measures on their confusion matrix or contingency table. First we obtain a balance equation on the entropies that captures interesting properties of the classifier. Second, by normalizing this balance equation we first obtain a 2-simplex in a three-dimensional entropy space and then the de Finetti entropy diagram or entropy triangle.</p><p>A full description can be found in:</p><p>Valverde-Albacete, F. and Pel&aacute;ez-Moreno, C. Two information-theoretic tools to assess the performance of multi-class classifiers. Pattern Recognition Letters (2010) vol. 31 (12) pp. 1665-1671</p><p>Examples for the two tools are given below.</p><pre class="codeinput">clc
+clear <span class="string">all</span>
+close <span class="string">all</span>
+</pre><h2>Data examples<a name="2"></a></h2><p>Examples a, b and c (from Sindhwani, V., Rakshit, S., Deodhare, D., Erdogmus, D., Principe, J., Niyogi, P., 2004. Feature selection in MLPs and SVMs based on maximum output information. IEEE Trans. Neural Networks 15 (4), pp. 937-948.)</p><pre class="codeinput">a=uint16([
+     15     0     5
+      0    15     5
+      0     0    20]);
+Cxy{1} = a;
+
+b=uint16([
+     16     2     2
+      2    16     2
+      1     1    18]);
+Cxy{2} = b;
+
+c=uint16([
+      1     0     4
+      0     1     4
+      1     1    48]);
+Cxy{3} = c;
+</pre><h2>The entropy triangle (de Finetti entropy diagram) from rawcount contingency matrices (or confusion matrices)<a name="3"></a></h2><pre class="codeinput"><span class="comment">%%Different symbols for the aggregated view:</span>
+colours=[<span class="string">'b'</span>,<span class="string">'r'</span>,<span class="string">'g'</span>,<span class="string">'m'</span>,<span class="string">'c'</span>,<span class="string">'k'</span>];
+shapes=[<span class="string">'d'</span>,<span class="string">'p'</span>,<span class="string">'h'</span>,<span class="string">'o'</span>,<span class="string">'s'</span>,<span class="string">'x'</span>,<span class="string">'*'</span>];
+
+[h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{1},<span class="string">'color'</span>,colours(1),<span class="string">'linestyle'</span>,shapes(1));
+title(<span class="string">'Entropy Triangle'</span>)
+[g,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{1},<span class="string">'split'</span>, <span class="string">'color'</span>,colours(1),<span class="string">'linestyle'</span>,shapes(1));
+title(<span class="string">'Split Entropy Triangle'</span>)
+ <span class="keyword">for</span> i=2:3
+    [h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{i},<span class="string">'incremental'</span>,h,<span class="string">'color'</span>,colours(i),<span class="string">'linestyle'</span>,shapes(i));
+    [g,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{i},<span class="string">'incremental'</span>,g, <span class="string">'split'</span>,<span class="string">'color'</span>,colours(i),<span class="string">'linestyle'</span>,shapes(i));
+
+ <span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="examplePrincipe_01.png" alt=""> <img vspace="5" hspace="5" src="examplePrincipe_02.png" alt=""> <h2>The 2-simplex in a three-dimensional diagram from rawcount contingency matrices (or confusion matrices)<a name="4"></a></h2><pre class="codeinput"><span class="comment">%%Different symbols for the aggregated view:</span>
+colours=[<span class="string">'b'</span>,<span class="string">'r'</span>,<span class="string">'g'</span>,<span class="string">'m'</span>,<span class="string">'c'</span>,<span class="string">'k'</span>];
+shapes=[<span class="string">'d'</span>,<span class="string">'p'</span>,<span class="string">'h'</span>,<span class="string">'o'</span>,<span class="string">'s'</span>,<span class="string">'x'</span>,<span class="string">'*'</span>];
+
+[h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{1},<span class="string">'3D'</span>,<span class="string">'color'</span>,colours(1),<span class="string">'linestyle'</span>,shapes(1));
+title(<span class="string">'3D 2-simplex'</span>)
+<span class="keyword">for</span> i=2:3
+    [h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{i},<span class="string">'incremental'</span>,h,<span class="string">'3D'</span>,<span class="string">'color'</span>,colours(i),<span class="string">'linestyle'</span>,shapes(i));
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="examplePrincipe_03.png" alt=""> <h2>The entropy triangle (de Finetti entropy diagram) from joint distributions<a name="5"></a></h2><pre class="codeinput"><span class="comment">% Obtain joint distributions from rawcount contingency or confusion matrices</span>
+<span class="keyword">for</span> i=1:3
+ [Ixy,Pxy{i},MI,Hxy] = pmi(Cxy{i});
+<span class="keyword">end</span>
+
+[h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{1},<span class="string">'color'</span>,colours(1),<span class="string">'linestyle'</span>,shapes(1));
+title(<span class="string">'Entropy Triangle'</span>)
+[g,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{1},<span class="string">'split'</span>, <span class="string">'color'</span>,colours(1),<span class="string">'linestyle'</span>,shapes(1));
+title(<span class="string">'Split Entropy Triangle'</span>)
+
+<span class="keyword">for</span> i=2:3
+    [h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{i},<span class="string">'incremental'</span>,h,<span class="string">'color'</span>,colours(i),<span class="string">'linestyle'</span>,shapes(i));
+    title(<span class="string">'Entropy Triangle'</span>)
+    [g,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{i},<span class="string">'incremental'</span>,g,<span class="string">'split'</span>, <span class="string">'color'</span>,colours(i),<span class="string">'linestyle'</span>,shapes(i));
+    title(<span class="string">'Split Entropy Triangle'</span>)
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="examplePrincipe_04.png" alt=""> <img vspace="5" hspace="5" src="examplePrincipe_05.png" alt=""> <h2>The 2-simplex in a three-dimensional diagram from joint distributions<a name="6"></a></h2><pre class="codeinput"><span class="comment">% Obtain joint distributions from rawcount contingency or confusion matrices</span>
+<span class="keyword">for</span> i=1:3
+ [Ixy,Pxy{i},MI,Hxy] = pmi(Cxy{i});
+<span class="keyword">end</span>
+
+[h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{1},<span class="string">'3D'</span>,<span class="string">'color'</span>,colours(1),<span class="string">'linestyle'</span>,shapes(1));
+title(<span class="string">'3D 2-simplex'</span>)
+
+<span class="keyword">for</span> i=2:3
+    [h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{i},<span class="string">'incremental'</span>,h,<span class="string">'3D'</span>,<span class="string">'color'</span>,colours(i),<span class="string">'linestyle'</span>,shapes(i));
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="examplePrincipe_06.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.11<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Two information-theoretic tools to assess the performance of multi-class classifiers
+%
+% Entropy_triangle is a function that implements two tools to analyze the behavior of 
+% multiple-class, or multi-class, classifiers by means of entropic measures on their confusion
+% matrix or contingency table. First we obtain a balance equation on the entropies that captures 
+% interesting properties of the classifier. Second, by normalizing this balance equation we first
+% obtain a 2-simplex in a three-dimensional entropy space and then the de Finetti entropy
+% diagram or entropy triangle. 
+%
+% A full description can be found in:
+%
+% Valverde-Albacete, F. and Peláez-Moreno, C. Two information-theoretic tools to assess the 
+% performance of multi-class classifiers. Pattern Recognition Letters (2010) vol. 31 (12) 
+% pp. 1665-1671
+%
+% Examples for the two tools are given below.
+clc
+clear all
+close all
+
+
+%% Data examples
+%
+% Examples a, b and c (from Sindhwani, V., Rakshit, S., Deodhare, D., Erdogmus, D., Principe, 
+% J., Niyogi, P., 2004. Feature selection in MLPs and SVMs based on maximum output information.
+% IEEE Trans. Neural Networks 15 (4), pp. 937-948.)
+
+a=uint16([
+     15     0     5
+      0    15     5
+      0     0    20]);
+Cxy{1} = a;
+
+b=uint16([
+     16     2     2
+      2    16     2
+      1     1    18]);
+Cxy{2} = b;
+
+c=uint16([
+      1     0     4
+      0     1     4
+      1     1    48]);
+Cxy{3} = c;
+
+
+%% The entropy triangle (de Finetti entropy diagram) from rawcount contingency matrices (or confusion matrices)
+
+%%Different symbols for the aggregated view: 
+colours=['b','r','g','m','c','k'];
+shapes=['d','p','h','o','s','x','*'];
+
+[h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{1},'color',colours(1),'linestyle',shapes(1));
+title('Entropy Triangle')
+[g,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{1},'split', 'color',colours(1),'linestyle',shapes(1));
+title('Split Entropy Triangle')
+ for i=2:3
+    [h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{i},'incremental',h,'color',colours(i),'linestyle',shapes(i));
+    [g,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{i},'incremental',g, 'split','color',colours(i),'linestyle',shapes(i));
+
+ end
+
+ 
+%% The 2-simplex in a three-dimensional diagram from rawcount contingency matrices (or confusion matrices)
+
+%%Different symbols for the aggregated view: 
+colours=['b','r','g','m','c','k'];
+shapes=['d','p','h','o','s','x','*'];
+
+[h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{1},'3D','color',colours(1),'linestyle',shapes(1));
+title('3D 2-simplex')
+for i=2:3
+    [h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Cxy{i},'incremental',h,'3D','color',colours(i),'linestyle',shapes(i));
+end
+
+ 
+%% The entropy triangle (de Finetti entropy diagram) from joint distributions
+
+% Obtain joint distributions from rawcount contingency or confusion matrices 
+for i=1:3
+ [Ixy,Pxy{i},MI,Hxy] = pmi(Cxy{i});
+end
+
+[h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{1},'color',colours(1),'linestyle',shapes(1));
+title('Entropy Triangle')
+[g,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{1},'split', 'color',colours(1),'linestyle',shapes(1));
+title('Split Entropy Triangle')
+
+for i=2:3
+    [h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{i},'incremental',h,'color',colours(i),'linestyle',shapes(i));
+    title('Entropy Triangle')
+    [g,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{i},'incremental',g,'split', 'color',colours(i),'linestyle',shapes(i));
+    title('Split Entropy Triangle')
+end
+
+%% The 2-simplex in a three-dimensional diagram from joint distributions
+
+% Obtain joint distributions from rawcount contingency or confusion matrices 
+for i=1:3
+ [Ixy,Pxy{i},MI,Hxy] = pmi(Cxy{i});
+end
+
+[h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{1},'3D','color',colours(1),'linestyle',shapes(1));
+title('3D 2-simplex')
+
+for i=2:3
+    [h,H_Pxy, H_Px,H_Py, MI_Pxy]=entropy_triangle(Pxy{i},'incremental',h,'3D','color',colours(i),'linestyle',shapes(i));
+end
+
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,29 @@
+Parallel Distributed Processing of Weka Algorithms in Matlab
+------------------------------------------------------------
+
+The code given shows how Weka algorithms can be run in parallel across 
+distributed computers using Matlab to take advantage of available hardware 
+and quicken algorithm completion time on multiple data sets or parameter sets.
+
+Parallel processing of Weka algorithms is handled here in Matlab as support 
+for parallel processing in Weka does not seem to be fully fledged as yet.  
+
+A timeout can be specified on algorithm/job processing time.  This is useful 
+if algorithms can be potentially long-running or non-terminating, or when 
+there are a large number of experiments to ensure they finish within a 
+reasonable amount of time.
+
+Before the provided code can be executed: 
+* Define a parallel configuration in Matlab.  See "Configuring Parallel 
+Processing.txt". 
+* Assign the configuration name to variable "config" in runParallelWeka.m.
+* Copy the Weka library weka.jar to the folder ParallelWeka. The jar
+file can be found in Weka's program directory.
+* Copy the folder ParallelWeka to the same location on all worker machines.
+
+Matlab must be installed on all machines hosting workers.
+
+To run the code, add the path of the folder ParallelWeka to Matlab's paths
+on the local machine, and at the command line enter "runParallelWeka".  
+
+Author: Jaspar Cahill, jjcahill@gmail.com. 4 October 2011.

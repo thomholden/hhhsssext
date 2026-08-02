@@ -1,0 +1,54 @@
+Configuring Parallel Processing
+--------------------------------
+
+Configurations for parallel processing can be found in the Matlab menu 
+"Parallel". The standard configuration, "local", only allows for jobs to 
+run on the local machine, and it does not allow for a timeout option on a 
+job.  For the code presented here, it is necessary then to define a new 
+configuration.  This requires typically the definition of a job manager 
+and a number of workers.  
+
+An example of how this may be done is described below.  A configuration is
+created for processing on a local machine with 4 cores, and a remote machine 
+with 2 cores, a worker being defined for each available processor core.
+
+At the command prompt, in the <matlab>\toolbox\distcomp\bin directory, the 
+following commands are excuted as administrator: 
+
+C:\Program Files\MATLAB\R2010b\toolbox\distcomp\bin>mdce install
+wrapper  | MATLAB Distributed Computing Server installed..
+
+C:\Program Files\MATLAB\R2010b\toolbox\distcomp\bin>mdce start
+wrapper  | Starting the MATLAB Distributed Computing Server service...
+wrapper  | MATLAB Distributed Computing Server started.
+
+and each of these: 
+
+startjobmanager -name MyJobManager
+startworker -name w1 -jobmanagerhost <computerName>* -jobmanager MyJobManager
+startworker -name w2 -jobmanagerhost <computerName>* -jobmanager MyJobManager
+startworker -name w3 -jobmanagerhost <computerName>* -jobmanager MyJobManager
+startworker -name w4 -jobmanagerhost <computerName>* -jobmanager MyJobManager
+
+* the name of your computer eg John-PC
+
+and these (on local computer) for remote computer (*may need firewall turned off*):
+
+startworker -name w5 -jobmanager MyJobManager -jobmanagerhost <computerName> -remotehost <remoteComputerName>
+startworker -name w6 -jobmanager MyJobManager -jobmanagerhost <computerName> -remotehost <remoteComputerName>
+
+
+In Matlab's Parallel>Manage Configurations... window:
+
+click File>New>jobmanager
+
+In the dialog, apply the following settings:
+
+	Configuration name: localcores
+	Scheduler tab > Job mananger hostname: localhost
+	Scheduler tab > Job mananger name: MyJobManager
+	Jobs tab > Maximum number of workers: 6
+	Jobs tab > Minimum number of workers: 1
+
+To validate the configuration before using it, in the Configurations Manager 
+window select the configuration name and click the "Start Validation" button. 
