@@ -1,0 +1,1583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Feature Extraction Using Multisignal Wavelet Packet Decomposition -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition" rel="canonical">
+<meta content="Feature Extraction Using Multisignal Wavelet Packet Decomposition - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/57109/original.jpg" property="og:image"><meta content="Its simply a feature extraction code using the Wavelet Packet Transform (WPT). " property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F33146-feature-extraction-using-multisignal-wavelet-packet-decomposition" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F33146-feature-extraction-using-multisignal-wavelet-packet-decomposition" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/58014" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=33146" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition" class="manifest_title">Feature Extraction Using Multisignal Wavelet Packet Decomposition</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition/content//getmswpfeat.m" class="function" title="Function">getmswpfeat.m</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition/content//mswpd.m" class="function" title="Function">mswpd.m</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition/content//mswpd_wmtsa.m" class="function" title="Function">mswpd_wmtsa.m</a></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition/content/getmswpfeat.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:96.6666%;">
+                <p>4.83333</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.8</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">7</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">175 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 521 KB</span>
+          <span id="fileid">File ID: #33146</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/7620/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Feature Extraction Using Multisignal Wavelet Packet Decomposition</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      06 Oct 2011
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-08-05">05 Aug 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Its simply a feature extraction code using the Wavelet Packet Transform (WPT). </p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F33146-feature-extraction-using-multisignal-wavelet-packet-decomposition&amp;watching=33146" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>The code represents a generalization of the 
+Multisignal 1-D wavelet decomposition. I have written a simple routine 
+to extract the full tree out of the Matlab "mdwtdec" function available 
+within the wavelet toolbox. 
+<br>The code is efficient and very simple, and is mainly written for 
+feature extraction from the WPT tree using an overlapping windowing 
+approach.
+<br>To use the code: the main function is getmswpfeat, read inside the code for an example.</p>
+
+<p>** Kindly cite either of the following papers if you use this code **</p>
+
+<p>References:</p>
+
+<p>[1] R. N. Khushaba, A. Al-Jumaily, and A. Al-Ani, “Novel Feature 
+Extraction Method based on Fuzzy Entropy and Wavelet Packet Transform 
+for Myoelectric Control”, 7th International Symposium on Communications 
+and Information Technologies ISCIT2007, Sydney, Australia, pp. 352 – 
+357.</p>
+
+<p>[2] R. N. Khushaba, S. Kodagoa, S. Lal, and G. Dissanayake, “Driver 
+Drowsiness Classification Using Fuzzy Wavelet Packet Based Feature 
+Extraction Algorithm”, IEEE Transaction on Biomedical Engineering, vol. 
+58, no. 1, pp. 121-131, 2011.
+<br>&nbsp;
+<br>Notes: 
+<br>-You can use the code on one or multiple signals, these are given as columns of variable x.
+<br>- You can use the matlab wavelet toolbox or the wmtsa wavelet toolbox '<a href="http://www.atmos.washington.edu/wmtsa/">http://www.atmos.washington.edu/wmtsa/</a>'</p>
+
+<p>-Tutorial available within submission.</p></td>
+          </tr>
+
+          
+
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.11 (R2010b)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>The code has a dependency on the "mdwtdec" function from the wavelet toolbox.
+
+</td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F33146-feature-extraction-using-multisignal-wavelet-packet-decomposition">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22dear+dr+rami%22" rel="nofollow">dear dr rami</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22feature+extraction%22" rel="nofollow">feature extraction</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22wavelet+packet+transform%22" rel="nofollow">wavelet packet transform</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="33146" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F33146-feature-extraction-using-multisignal-wavelet-packet-decomposition">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(42)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">02 Nov 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/419500">mira</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Dr,
+<br>Is the feature in this coding is the energy?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/506011">hossein</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Dr</p>
+
+<p>can we use these features in clustering?
+<br>is it possible, for example,  how can we do with kmeans?
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/497315">Ahmed</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Dr.Rami
+<br>Thanks for you support; Currently I am working on the same point of 
+your paper"Driver Drowsiness Classification"; I hope you can guide me to
+ database for EEG data for this issue.Thanks inadvance</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Code updated, a small tutorial and 
+paper added and support for the wmtsa wavelet toolbox also added (in 
+case you don't have the matlab wavelet toolbox). </p>
+
+<p>Please rate this submission if you learned something here or you found it useful.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/435705">behailu regasa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Dr.,
+<br>Thank you for your immediate response. I expect your answer with the
+ supporting document. would you share to me the second reference or how 
+could i get it freely?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">28 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Behailu Regasa</p>
+
+<p>Thanks for your inquiry, I am planing an update to this code within 
+few days, I will also put a supporting document to help understand the 
+process.</p>
+
+<p>Thanks
+<br>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/435705">behailu regasa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear DR. Rami,
+<br>i could not understand how could i extract features from multiple 
+signal. That is from hundred 1-D signal like EEG and use them to train 
+neural network. would you help me. I thank you in advance.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Deepak</p>
+
+<p>Thank you for your inquiry, you are actually right about SF. However,
+ please note the comment in the code, that is you can use the sampling 
+frequency to determine the actual number of decomposition levels J, I 
+remember having a comment in the code about that in the same line where I
+ defined J=7 (comment says you can use J=(log(SF/2)/log(2))-1;). I fixed
+ the decomposition levels in the code sample you mentioned to make it 
+easy for new users to understand it, but you can change that by using 
+the commented equation.</p>
+
+<p>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/378384">Deepak</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Dr. Rami, thank you very much 
+for providing such an useful code. I could not understand the use of 
+sampling frequency (SF)in the getmswpfeat. It asks SF as an argument but
+ does not use it anywhere in the code. Please correct me if I am wrong.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187057">Madi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for the comment.. I just 
+concern It should be same answer for 'feat' at Approximate coefficient..
+ From the example you given, YES the answer are same.. when I go through
+ the  code (getmswtfeat.m) It is look like different in how to determine
+ the last answer.. for code (getmswpfeatV00.m).. I can understand the 
+flow.. but for the 'getmswtfeat.m', I'm confused for term 
+'percentENER(notZER,:) = ...', '[cfs,longs] = wdec2cl(dec,'all')',.. and
+ I hope the final answer for 'tab_ENER' should be same as WP code... 
+sorry to many question...</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Here is a quick proof</p>
+
+<p>Signal = rand(256,1);
+<br>J=2;
+<br>D = mswpd('col',Signal,'db4',J);
+<br>EnergyWPT  = sum(D{3,1}.*D{3,1});
+<br>dec = mdwtdec('col',Signal,J,'db4');
+<br>EnergyWT = sum(dec.ca .* dec.ca);
+<br>disp(sprintf('Energy of WT = %f, \t Energy of WPT = %f',EnergyWT,EnergyWPT))</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Madi, Please check what you did again.</p>
+
+<p>Both of my codes getmswtfeat and getmswpfeatV00 are based on the same
+ function "mdwtdec" so they cant get you different result if you use the
+ exact same settings in both files, which is not the case here because I
+ didn't post this to make them an exact replica of each other, though 
+this is a good point for an update here from my side.</p>
+
+<p>To prove the above to you:</p>
+
+<p>1) make sure you use the same decomposition level J (its 7 in getmswtfeat and 10 in getmswpfeatV00 by default).</p>
+
+<p>2) make sure you use the same wavelet family (its 'db4' in one code and 'Sym8' in the other).</p>
+
+<p>3) Remove the different normalization utilized within both codes (you need to modify both codes in some sections).</p>
+
+<p>Based on the above, it appears to me that its not just changing the log1p that would give you the same result. </p>
+
+<p>I am planning an update to both codes and will unify both codes in terms of every single parameter.</p>
+
+<p>Thanks for your concern and Good Luck :).</p>
+
+<p>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187057">Madi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank You Dr Rami,</p>
+
+<p>I tried the code (getmswtfeat.m (Your WT code)) and try to remove and
+ maintain 'log1p'.. the result for 'energy' approximate coefficient are 
+different when using the code (getmswpfeatV00.m)..</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Correction, for the second point I meant to say its for normalization (I believe I took out the sum up to 1 part).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Madi</p>
+
+<p>For the first point, Yes it should be the same, but I never tried 
+doing that (just check the code in the feature extraction step). Plus, 
+youalready said that you compared with dwt and you got the same answer 
+when commenting the few lines you mentioned above. So, yes it should be 
+fine.</p>
+
+<p>For the second point, the lines you mentioned are for normalization, 
+use it if you want the total energy at each level to sum up to 1. Of 
+course, when you comment these lines you get similar result to dwt and 
+if you use these lines its like you are normalizing the output of WPT 
+features but not the dwt one, so if you do the same on the other 
+features you will end up with similar results.</p>
+
+<p>Kind Regards
+<br>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187057">Madi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for reply..I understand now.. </p>
+
+<p>If I run this code (getmswpfeatV00.m) and I only took the energy at 
+approximation part (Low pass filter part)..  It is the result will be 
+same if I'm using this code (getmswtfeat.m (Your WT code))?</p>
+
+<p>One more thing, actually the code below is for what? Because you said
+ can comment it.. If I comment this code the result is different. </p>
+
+<p>I test for J=1 and comment the code below and I compare with using 
+this code ([CA,CD] = dwt(xx,'sym8');) and took the energy for CA and 
+CD.. and the result is same.</p>
+
+<p>%% You can comment this section
+<br>JJ = J;
+<br>for i=1:J-1
+<br>    T = (2^i):(2^i)+(2^i)-1;
+<br>    feat(:,T) = feat(:,T)./log(JJ);
+<br>    JJ=JJ-1;
+<br>end</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>HI Madi</p>
+
+<p>1) The difference is in the tree structure, WT decomposes only the 
+approximation part and (Low pass filter part) and keeps decomposing 
+that. WPT on the other hand, decomposes both approximation and details 
+parts (LPF and HPF). Depending on your application, either one of these 
+could work well. Look at my thesis for a description 
+(http://www.rami-khushaba.com/phd-thesis.html)</p>
+
+<p>2) The types of features is up to you to decide, you can get energy 
+of coefficients, mean or variance or any other features. In my code 
+above, I set it up as the log scaled energy, but you can change this of 
+course.</p>
+
+<p>Hope the above helps.</p>
+
+<p>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/187057">Madi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Dr Rami,</p>
+
+<p>I'm new in Wavelet Feature extraction, I have two question: :)</p>
+
+<p>1) just to ask what is the different Wavelet Packet Decomposition and Wavelet Transform Decomposition?</p>
+
+<p>2) From you code, feat = WPT features (compete tree without node 
+selection).. actually what is WPT features?.. It is energy based? or 
+median or mean?</p>
+
+<p>Thank You</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ahmed</p>
+
+<p>It looks like you didn't decide on the window size and increment yet, right?</p>
+
+<p>Ok, here is the simplest scenario. Simplest way is to treat each 
+speech  signal independently (though this code was specifically written 
+to help you do that on multiple signals directly). Each wave your 
+recorded is a 1-dimensional vector say x1, x2, x3, ....etc</p>
+
+<p>feat1 = getmswpfeatV00(x1,winsize,wininc,SF)</p>
+
+<p>feat2 = getmswpfeatV00(x2,winsize,wininc,SF)</p>
+
+<p>feat3 = getmswpfeatV00(x3,winsize,wininc,SF)</p>
+
+<p>SF is your sampling frequency, winsize and wininc you have to put 
+based on your own application (cant help you with that, just try some 
+numbers and see which one works best for you). After you get these 
+vectors;</p>
+
+<p>FeaturesW1 = [feat1;feat2;feat3];
+<br>Of course, if the vectors (x1,x2,x3) represent the same word then 
+you should add another last column to FeaturesW1 made of all 1's.</p>
+
+<p>Now if you have another x1,x2,x3 of another words, do the same and get FeaturesW2 and put the last columns as all 2's.</p>
+
+<p>Now combine 
+<br>Features =[Features1;Features2];</p>
+
+<p>Done, you have your feature matrix with class label, do your classification now.</p>
+
+<p>Regards
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Mar 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232330">ahmed alhamdani</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Dr. Rami
+<br> If I have n file(for example five files) for the same speech word 
+(.wave) how can  I extract feature vector for each file   and put it the
+ out put as matrix .
+<br>kind regardes</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Yes, either 
+<br>1- Reshape each image into a vector and apply this code 
+<br>2- Or simply use the 2d version of  the wavelet command.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/313713">Subha</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Sir is it possible to extend it to image processing also??? if so how to do that.. thanks in advance..</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Ahmed</p>
+
+<p>Yes, what you said seems ok. 
+<br>1- Do you need Hamming window if you used wavelet? try both cases and see the difference in accuracy.
+<br>2-Try different window sizes to see which one gives you the best accuracy.</p>
+
+<p>3-On the other hand, LIBSVM library does actually give you a probability output so have a look at it (Google LIBSVM). </p>
+
+<p>4-As for the combination of SVM/HMM, I tried before combining SVM 
+with DBN but SVM actually performed very good in our problem and there 
+was no need for DBN after SVM, but in your application it might work 
+better than SVM alone, just try and see.</p>
+
+<p>The answer to most of your questions is that its actually problem dependent, i.e., unless you try you won't know.</p>
+
+<p>Kind Regards
+<br>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/232330">ahmed alhamdani</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear  Dr. Rami Khushaba;</p>
+
+<p>Thank you for answer.</p>
+
+<p>Summry:</p>
+
+<p>The specific for what I need help is about how I can use the output 
+data from SVM as input to HMM. My project is about  ( ISOLATED WORD 
+speech RECOGNITION Using Hybrid SVM /HMM). </p>
+
+<p>Pre-processing </p>
+
+<p>The data base consists 25 speakers ,male ,female, young and child each speaker the same utter the same 20 words . </p>
+
+<p>The file is saved as (*.wav); </p>
+
+<p>The preprocessing includes sampling, segmentation, framing and windowing. </p>
+
+<p>Sampling frequency=11025Hz </p>
+
+<p>16 – Bit A/D Converter. </p>
+
+<p>Framing the  speech signal is blocked into frames of N samples N=256(which is equivalent to23msec) .</p>
+
+<p>Overlaps between frames =128; </p>
+
+<p>Using Hamming window for windowing each frame. </p>
+
+<p>My question is this procedure right or not???</p>
+
+<p> Processing </p>
+
+<p>Feature extraction </p>
+
+<p>The Discrete wavelet transform(DTW) daubechies filter and 
+pitchdetection used In order to evaluate feature vectors . Used this 
+feature vectors as input to Hybrid SVM/HMM for training and testing 
+system .</p>
+
+<p>I will do all this pre-processing and processing steps and I have a table of feature vector for each word.</p>
+
+<p>My question is this setep procedure right or not??? </p>
+
+<p>Hybrid model of SVM/HMM </p>
+
+<p>The hybrid model includes two parts: training and classification. 
+Firstly , parameters of model can be obtained by training. Secondly, it 
+can be calculated the probability estimate by Viterbi. </p>
+
+<p>But the output of SVM is numerical value. For combined with HMM easily, it should transform the value into probability .</p>
+
+<p>My question how can I do that when I used this feature vector as 
+input to Hybrid SVM/HMM for training and testing system to recognize 
+each word (so I needed algorithm and program to do that using matlab).</p>
+
+<p>       With Best Regards</p>
+
+<p>Ahmed alhamdanil
+<br>ahmeddsa_hamdani@yahoo.com</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/290939">Qasem</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Ahmed
+<br> 
+<br>This function is required to decompose multiple signals together in 
+one go using the discrete wavelet transform. Yes, you can program that 
+yourself using any free library like WAVELAB or UVIWAVE.
+<br> 
+<br>Regards
+<br>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/211578">ahmed amin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Dr.Rami
+<br>Thank you for your interest, what the benefit of this function?Is it possible to be programmed.
+<br>Regards
+<br>Ahmed</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ahmed</p>
+
+<p>Thanks for your inquiry, you need the wavelet toolbox to run this 
+code, and obviously, from the error message you got, Matlab can't find 
+this function on your PC, i.e., it means that you don't have that 
+toolbox (or have old version of that toolbox without this function).</p>
+
+<p>Regards
+<br>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/211578">ahmed amin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Dr.Rami
+<br>i tray to us your code but i have this problem:
+<br>??? Undefined function or variable 'mdwtdec'.
+<br>i don't know why this problem do?
+<br>can you explane to me please.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/282105">Nabila</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much for the update and kind reply, Dr.Rami. This is really helpful for me and everyone.
+<br>I hope I also can make great contributions in the future like you did :)
+<br>Best Regards,
+<br>Nabila</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Nabila, the code is now updated, please download the new version.</p>
+
+<p>Regards
+<br>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It actually depends on how you are 
+going to process the data later on. For simplicity, I would just say put
+ an outer for loop (for j=1:Nsignals)to repeat the process across each 
+dimension of x (the input signal), and then use curwin =(st:en,j);</p>
+
+<p>Or, simply wait for the update, I will do that myself today, then one or two days for mathworks to approve it.</p>
+
+<p>Regards
+<br>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/282105">Nabila</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much for your kind explanation, Dr.Rami. This helps me a lot.
+<br>As for now I'm working with multidimensional signal and I changed the code a bit to this:</p>
+
+<p>for i = 1:numwin
+<br>    temp=[];
+<br>    curwin = x(st:en,:).*repmat(datawin,1,Nsignals);
+<br>    temp = detrend(curwin);
+<br>    feat{1,i} = temp;
+<br>    st = st + wininc;
+<br>    en = en + wininc;
+<br>end</p>
+
+<p>Am I working on the right track?
+<br>Thank you</p>
+
+<p>Regards
+<br>Nabila</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you for your inquiry, the 
+multiplication line was written for the case when you use the code on 
+multidimensional signals rather than one dimensional, it wouldn't affect
+ anything in the current situation, and I will update the code soon for 
+the case when you provide multiple dimensions in the input signal.</p>
+
+<p>As for the detrend command, we usually remove the mean or any linear 
+trend in the signal before spectral analysis so it wouldn't affect the 
+resultant power spectrum. Think about it in terms of FFT, add a constant
+ value of say 100 to your signal and perform FFT and observe how the DC 
+component will be affected, so to avoid such a situation just remove the
+ mean or any trend there before processing.</p>
+
+<p>Hope this help.</p>
+
+<p>Regards
+<br>Rami</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/282105">Nabila</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>First of all thank you very much for this code.
+<br>If I may ask something, why do we need to multiply the signal with ones and then use detrend in this line? :</p>
+
+<p>curwin = x(st:en,:).*repmat(datawin,1,Nsignals);
+<br>feat(1:winsize,i) = detrend(curwin);</p>
+
+<p>Thank you very much</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Best basis selection using fuzzy mutual information is also achievable with this code (ranke features by I_Cx./H_x):</p>
+
+<p>http://www.mathworks.com/matlabcentral/fileexchange/31888-fuzzy-entropy-and-mutual-information</p>
+
+<p>Please cite the following paper if you use this code
+<br>[2] R. N. Khushaba, S. Kodagoa, S. Lal, and G. Dissanayake, “Driver 
+Drowsiness Classification Using Fuzzy Wavelet Packet Based Feature 
+Extraction Algorithm”, IEEE Transaction on Biomedical Engineering, vol. 
+58, no. 1, pp. 121-131, 2011. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Suppose you have a sensor giving 
+you raw data, and the sensor samples at 256 Hz, i.e., you get 256 
+samples or sensor readings per second. Say now you have collected few 
+seconds of data from the sensor, i.e., for example 2048 samples (2048 
+Samples = 256 samples/sec * 8 sec). Now we want to extract features from
+ the corresponding 2048 samples, but say for example you only want to 
+look at windows of size 256 samples and incremented by 32 samples, so 
+lets run the code:</p>
+
+<p>Signal = rand(2048,1)  % one dimensional sensor data for example, 8 seconds with 256 samples/sec
+<br>winsize =256;
+<br>wininc =32;
+<br>SF = 256; %sampling frequency
+<br>feat = getmswpfeatV00(Signal,winsize,wininc,SF);</p>
+
+<p>feat is a matrix of 57 x 255, which means you have extracted 57 
+samples from the total 8 sec worth of data and that each sample had 255 
+features. Now your question will be why 57 and why 255:</p>
+
+<p>no of samples = (data length – winsize)/winin + 1 = (2048-256)/32+1 = 57
+<br>no of features : just look at the figure above, level 0 gives 2^0 features, level 1 gives 2^1 =2 features and so on.</p>
+
+<p>Pay attention that you still have to do feature selection after having the 255 features, as these might be redundant.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/230912">Hari</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>guys please explain me how to execute this code what are the input arguments for this code
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello</p>
+
+<p>All what you need to do is to remove the mean and the log operator to
+ get the coefficients, but pay attention to the dimensionality of the 
+produced coefficients matrix. Let me know if you can't do it and I will 
+rewrite it for you.</p>
+
+<p>Rami
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/177045">Rohtash Dhiman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I need only to extract coeff values to use them for further programm for 8th level wavelet packet decomposition</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/85411">Ali Ali</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks you very much Rami for the code</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/131152">Dr. Rami Khushaba</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Note: you still have to do feature 
+selection to select the most promising feature set for your own problem,
+ as the extracted feature set here represent the complete set with 
+redundant bases.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">03 Oct 2012</td>
+                  <td><p>A newer version added for feature extraction from multiple signals at the same time (if you have enough memory ;-) ).</p></td>
+                </tr>
+                <tr>
+                  <td class="date">01 Aug 2014</td>
+                  <td><p>Code organized and added support for the wmtsa wavelet toolbox (in case you don't have the matlab wavelet toolbox).</p></td>
+                </tr>
+                <tr>
+                  <td class="date">05 Aug 2014</td>
+                  <td><p>Tutorial: typos fixed. </p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415513893355&amp;cv=7&amp;fst=1415513893355&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/33146-feature-extraction-using-multisignal-wavelet-packet-decomposition&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D26%26sort%3Ddate_desc_updated%26term%3D&amp;vis=2"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

@@ -1,0 +1,25 @@
+if (test $# -ne 0)
+then 	echo 'USAGE: all-correlate < file'
+	echo FUNCTION: get univariate correlations between all columns
+	echo and last column
+	exit
+fi
+
+# USES: nfields, dm, nrows, correlate, pearson-p
+# W.Penny June 3 1996
+
+TMP1=/tmp/tmp1$$
+cat > $TMP1
+N=`nrows < $TMP1`
+
+FIELDS=`nfields < $TMP1`
+
+i=1
+while (test $i -lt $FIELDS)
+do	R=`correlate $i $FIELDS < $TMP1`
+	P=`pearson-p $R $N`
+	echo -n $R '('$P
+	echo ')'
+	i=`expr $i + 1`
+done
+rm $TMP1

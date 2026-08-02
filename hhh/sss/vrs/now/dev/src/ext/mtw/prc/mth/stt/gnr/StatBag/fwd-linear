@@ -1,0 +1,30 @@
+if (test $# -ne 4)
+then 	echo USAGE: fwd-linear train test ptoenter descriptive
+	echo FUNCTION: linear regression with fwd stepwise selection of vars
+	echo DATA FILE FORMAT: Each row of the data files takes the form 
+	echo X1 X2 XN Y where X1 to XN are inputs and Y is the output
+	exit
+fi
+
+train=$1
+test=$2
+outs=1
+out=1
+ptoenter=$3
+desc=$4
+
+TMP=/tmp/tmp$$
+TMP2=/tmp/tmp2$$
+TRAI=/tmp/train$$
+TES=/tmp/test$$
+
+cp $train $TRAI
+cp $test  $TES
+
+# ADD COLUMN OF 1's TO TRAINING DATA
+
+forward $TRAI $TES $outs $out $ptoenter $desc
+
+rm $TRAI
+rm $TES
+

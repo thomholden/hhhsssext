@@ -1,0 +1,106 @@
+Author of software: Clay Scott, cscott@rice.edu
+
+Based on:  Clayton Scott and Robert Nowak, Template learning from atomic
+representations: A wavelet-based approach to pattern analysis, Workshop on
+SCTV, 2001, available at http://www.dsp.rice.edu/publications.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Directory structure
+
+     templar
+	|
+	|______1-D
+	|	|
+	|	|_______tools
+	|
+	|______2-D
+		|	
+		|_______tools
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Description of directories
+
+    1-D  - contains routines for implementing the learning and 
+		classification algorithms on 1-dimensional signals
+	tools - various subroutines
+    2-D  - contains routines for implementing the learning and 
+		classification algorithms on 2-dimensional signals
+	tools - various subroutines
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Description of M-files in 1-D/2-D directories
+
+	templar.m - given some training data, and a specified range of
+transformations, learn a template.  type 'help templar' for more info.
+
+        likelihood.m - given a template and a test signal/image, calculate
+the most likely transformation mapping the template to the signal/image,
+and return the transformation and the likelihood value.
+
+	update_marginals.m - compute the most likely values for the means
+and variances of the significant coefficients, and the common variance of
+the insiginificant coefficients.
+
+	update_states.m - update which wavelet coefficients are
+significant by maximizing the penalized log-likelihood
+
+	update_transforms.m - for each training image, determine the most
+likely transformation mapping the template to that image
+
+	classify.m - given some templates, classify a batch of test 
+signals/images.  see 2-D/example_cl.m
+
+	mostlikely.m - determine which template best matches a given 
+signal/image
+
+	atomic_rep.m - atomic representation to be used (default: full 
+haar wavelet transform).  dont' forget to change inverse, too, if you 
+make a change!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Description of M-files in tools directories
+
+	display_template.m - displays the mean, spatial variance, and a 
+map of the significant states of the final template, and a synthesized 
+image.
+
+	display_training_data.m - displays training data.
+
+	display_registered_data.m - displays training data after applying 
+the inverse of the transform leaned by TEMPLAR
+
+	synthesize.m - use template to synthesize T images.
+
+	display_synth_data.m - Display the data synthesized by the 
+previous command 
+
+	eval_pll.m - evaluate the penalized log-likelihood at any given 
+configuration for the template and transforms
+
+	load_data.m - a convenient program for loading training data.  
+type "help load_data" for instructions.
+
+	display_stats.m - display info about TEMPLAR while it's running.  
+type "help templar for more
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Usage
+
+If you are using the two-dimenstional version, make sure your path 
+includes
+	\2-D
+	\2-D\tools
+but does not include
+	\1-D
+	\1-D\tools.
+and vice-versa if using the 1-d version.	
+
+Now look at files named example*.m for some simple examples of how to use 
+the software.
+
+Be sure to modify atomic_rep.m before you begin, to 
+specify which atomic rep you'll be using.  (default: haar wavelet)
+
+Contact Clay Scott at cscott@rice.edu with questions.

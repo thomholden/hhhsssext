@@ -1,0 +1,1515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Mann-Kendall Tau-b with Sen's Method (enhanced) -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/11190-mann-kendall-tau-b-with-sen-s-method--enhanced-" rel="canonical">
+<meta content="Mann-Kendall Tau-b with Sen's Method (enhanced) - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/11190-mann-kendall-tau-b-with-sen-s-method--enhanced-" property="og:url"><meta content="A non-parametric trend test including Sen's slope method using Mann-Kendall Tau-b technique" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-kh1-kh" type="text/css"></style><style id="ki-kh1-kc" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F11190-mann-kendall-tau-b-with-sen-s-method--enhanced-" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F11190-mann-kendall-tau-b-with-sen-s-method--enhanced-" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/18625" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=11190" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/11190-mann-kendall-tau-b-with-sen-s-method--enhanced-" class="manifest_title">Mann-Kendall Tau-b with Sen's Method (enhanced)</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/11190-mann-kendall-tau-b-with-sen-s-method--enhanced-/content//ktaub.m" class="function" title="Function">ktaub.m</a></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/11190-mann-kendall-tau-b-with-sen-s-method--enhanced-/content/ktaub.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:93.0%;">
+                <p>4.65</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.7</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">23</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">91 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 37 KB</span>
+          <span id="fileid">File ID: #11190</span>
+        </div>
+
+          
+
+
+<div id="details">
+  <h1 itemprop="name">Mann-Kendall Tau-b with Sen's Method (enhanced)</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/23983">Jeff Burkey</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      25 May 2006
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-08-21">21 Aug 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">A non-parametric trend test including Sen's slope method using Mann-Kendall Tau-b technique</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F11190-mann-kendall-tau-b-with-sen-s-method--enhanced-&amp;watching=11190" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>The Mann-Kendall Tau-b non-parametric function 
+computes a coefficient representing strength and direction of a trend 
+for equally spaced data.  While you do not need the Statistics Toolbox 
+to compute Taub, you do need it to test for significance.  This function
+ will compute Tau-b (now tau-a as well), significance (and the various 
+supporting statistics), and also a non-parametric slope method: Sens 
+Method. </p>
+
+<p>Note: Statistics Toolbox is only needed in this function to test for 
+significance.  Otherwise, there is nothing required beyond Matlab 
+itself.</p>
+
+<p>Enhancements include: now supports a seasonal kendall trend test 
+recently submitted (sktt.m).  Will allow for multiple observations in 
+the same time index.  Confidence intervals are added for Sens slope.  
+Also a plot can be turned on/off.</p>
+
+<p>Second enhancement:  test for anomalies in trends, fixes, and notifies the user.  Reference is in the comments of the function.</p>
+
+<p>Given the speed of computers today, avoiding loops in Matlab is not 
+as important for some computations as it has been in the past. 
+Nevertheless, writing functions without loops is a form of elegance I 
+think some people may appreciate.  As such, this function is written 
+without any loops.  Example syntax to use the function is:
+<br>[taub tau h sig Z S sigma sen n senplot cilower ciupper] = ktaub(datain, alpha,wantplot)</p></td>
+          </tr>
+
+          
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/matlab/" id="product_link_MATLAB">MATLAB</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.9 (R2009b)
+            </td>
+          </tr>
+
+
+            <tr>
+              <td class="label">Other requirements</td>
+              <td>Testing for significance does require the Statistical Toolbox. </td>
+            </tr>
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F11190-mann-kendall-tau-b-with-sen-s-method--enhanced-">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hydrology%22" rel="nofollow">hydrology</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22kendall%22" rel="nofollow">kendall</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22mann%22" rel="nofollow">mann</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22mannkendall%22" rel="nofollow">mannkendall</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22monotonic+trend%22" rel="nofollow">monotonic trend</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22seasonally+adjustment%22" rel="nofollow">seasonally adjustment</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22sens%22" rel="nofollow">sens</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22sens+slope%22" rel="nofollow">sens slope</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22statistics%22" rel="nofollow">statistics</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22t%22" rel="nofollow">t</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22tau+a%22" rel="nofollow">tau a</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22tau+b%22" rel="nofollow">tau b</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22taub%22" rel="nofollow">taub</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22trend+test%22" rel="nofollow">trend test</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="11190" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/11190-mann-kendall-tau-b-with-sen-s-method--enhanced-" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F11190-mann-kendall-tau-b-with-sen-s-method--enhanced-">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(45)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">03 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/23983">Jeff Burkey</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm not sure which variable you are
+ referring to with ans = 0.03. But to get a plot, you need to include a 
+non-zero value for the third input variable for the function. Also, the 
+plot will only be created if the significance is below your specified 
+threshold. I hope this helps.
+<br>- Jeff</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Oct 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/484666">jam ][pokj</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>after running the code I am not 
+getting the plot ...the only thing that I am getting is the a value in 
+the form 'ans=.03'. What I need to do to the plot </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Sep 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/484666">jam ][pokj</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>bro , I am new to matlab and thus could not able to figure out  how to weed out the error mentioned below 
+<br>Error: File: taub.m Line: 148 Column: 1
+<br>Function definitions are not permitted in this context.
+<br>help me out  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/82860">Mojgan Rostaminia</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is great! Thanks.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/456118">ravi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>sir but i have (1*95) 95 years time
+ series .i am asking that how will use this code in this time series.how
+ will convert this in (2*95).i have not (2*95) time series.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/23983">Jeff Burkey</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Rodrigo, It would be possible, but I'm leaving that for someone else to do. At this time I don't have a need.</p>
+
+<p>Ravi, if I'm interpreting your question correctly, your data is a 
+single column time series of data. You need to have a time index along 
+with the data (i.e. 2*95). And I think I've written the code to process 
+data as 95*2, not 2*95, but I don't remember for sure.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/456118">ravi</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>sir i want use this for time series
+ of rainfall frequency.data(time series) size is (1*95).how will use 
+this for my time series.i am trying last few months but still unable to 
+do this.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/300313">Rodrigo</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Jeff, it would be possible to run this function in a loop for different time series?</p>
+
+<p>:-)</p>
+
+<p>thanks</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Aug 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/379421">Jeffery Thompson</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent function - did just what I needed, and I didn't have to write it!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/33443">Wu Zhiyong</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/124229">Chris</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100138">Patrick</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Oct 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/100138">Patrick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>works fine and is well documented, thus nothing to complain about
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/137168">kifayat ullah</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Dec 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/208681">Antoniya</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks Jeff! I find this function quite useful.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Sep 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122128">Jonathan Dyke</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi.. How might I expand this routine to incorporate a multivariate regression fit?  i.e. 5 columns in X...</p>
+
+<p>Thanks, 
+<br>  Jon</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/23983">Jeff Burkey</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Arvind,
+<br>I'm guessing you're using an older version of matlab that does not accept the tilda '~'.  Try replacing them with a variable.
+<br>- Jeff</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jul 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/90811">Arvind Iyer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The version of the code (ktaub.m) downloaded on July 20 2011, gives a parse error for the following lines.
+<br>[~,b] = unique(ro1);
+<br>[~,e] = unique(ro2);
+<br>How can this parse error be fixed?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/143781">quang nguyen</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/152440">Kazungu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jeff Burkey has giving us an 
+excellently-written matlab-based software. Thanks for your comments 
+which improves readability and ease of reference. Excellent and reliable
+ resource.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/152440">Kazungu</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Oct 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/23983">Jeff Burkey</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jorge,
+<br>Sorry it took me so long to respond.  I just saw this. In 
+Mann-Kendall (ktaub), missing data versus not will make a difference, 
+and the calculations account for missing data.  However, for seasonal 
+kendall (sktt), missing data are filled in with mid-ranks.  So to answer
+ your question, missing data versus not will make a difference, but 
+missing data will not invalidate your results, unless you have a lot of 
+missing data, but that's a different story then.  </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Sep 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/107510">Jorge</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Jeff,</p>
+
+<p>Thanks for this. I am using it in my PhD research. I am a not quite 
+familiar with matlab but I am getting there. I used the sktt code with 
+monthly streamflow and rainfall data. Now I have new data with gaps. 
+Would this affect the computations (n&gt;10 in all cases and no bias)? I
+ tried and got results. I also checked for bias in the raw data and it 
+seems OK. Thanks for you help.</p>
+
+<p>Cheers,</p>
+
+<p>Jorge</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/23983">Jeff Burkey</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Units for Sen's slope are what ever units you feed into it per time increment you feed into it.  Example:  cfs/year.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/53263">Kristina</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>What are the units for Sen's slope for a time series with annual observations?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Aug 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/53263">Kristina</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/23983">Jeff Burkey</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I've included a MAT file with 
+example data to run the function. I hope this helps.  I also added an 
+example dataset file for ktaub, sktt, b17, globaltrends functions as 
+well.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Feb 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/46340">Ian Chien</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Could you give me a example how to build up the "datain" file used in sktt.m and ktaub.m, and Globaltrends.m in Matlab? THANKS.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            Jeff Burkey
+          </span>
+        </td>
+        <td><span class="comment"><p>Nicholas,
+<br>When I was validating my code to other stat packages, I noticed they
+ were returning S unadjusted. So while S is adjusted to s, the return in
+ my matlab function is S unadjusted. If you prefer to return the 
+adjusted, just change in the S to s in the function[...] = ktaub(). 
+<br>For your memory problem, I'm not sure what Matlab is suggesting, 
+I've not had the luxury of having such a large data set to compute 
+trends on.  But maybe try casting (boxing, etc) the A# and B# matrices 
+to single precision if you don't need double. What I'm not sure of is 
+does Matlab require the subsequent function calls to work with double or
+ will it box on the fly...don't know. You could pull the age old binary 
+trick of scaling your doubles to long ints. Then scale back at the end 
+tracking the precision needed. 
+<br>Per your tied Rank function:  I didnt know about that one, but 
+looking at the help textcan it be as simple as those are the three 
+variables to adjust the denominator?  If true, in my code those three 
+would be: L1, t1a, t2a.  Of course your S would be the adjusted S if 
+necessary.  If you want to compute your Z statistic you also need to 
+then use the L1 variable and your ties.
+<br>Hopefully this helps, and without looking deeper into the tiedrank(x,1) function I cant be more certain of what it does.
+<br>Regards,
+<br>Jeff.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jul 2008</span></td>
+        <td>
+          <span class="author">
+            Nicholas Cutler
+          </span>
+        </td>
+        <td><span class="comment"><p>The program seems quite nice.
+<br>The latest version you download (4 July 2008) still doesn't have the correction to make s = S for small data sets.
+<br>I would like to make the taub calculation on a data set of length 
+8000. Unfortunately I keep getting the OUT OF MEMORY error. Any 
+suggestions on this (besides the automatic suggestions Matlab gives - 
+I've tried all of those).
+<br>One possibility - I've made a ktaub-a function which works quite 
+quickly which is nice. I only have a handful of equal values for one of 
+my 2 data sets - and when I perform the Matlab calculation 
+[R,TIEADJ]=TIEDRANK(datain,1) I get</p>
+
+<p>TIEADJ = 8 0 144</p>
+
+<p>and this is also in a quick time.</p>
+
+<p>Does anyone know how I can use these adjustment values for ties required in the 
+<br>computation of Kendall's tau-b, as the Matlab documentation says? I cannot find any further documentation on it.</p>
+
+<p>Thanks - and much appreciated, in advance.</p>
+
+<p>Nick</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jun 2008</span></td>
+        <td>
+          <span class="author">
+            Izi Krneki
+          </span>
+        </td>
+        <td><span class="comment"><p>Is this the Kendall rank correlation? Because datain is Nx2. How do i compute Mann-Kendall trend test? Please help! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 Jun 2008</span></td>
+        <td>
+          <span class="author">
+            Hakan Moral
+          </span>
+        </td>
+        <td><span class="comment"><p>Till Ruprecht(till.ruprecht@nexgo.de)
+<br>Is there an improvement in the code for the 
+<br>large time series. if there is i will invaluably thank you for the 
+improvement for a phd study of one of my friends i need this .
+<br>thanks in advance.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Jun 2008</span></td>
+        <td>
+          <span class="author">
+            Hakan Moral
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">23 May 2008</span></td>
+        <td>
+          <span class="author">
+            Jeff Burkey
+          </span>
+        </td>
+        <td><span class="comment"><p>ok.  Type-o on apologize. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">23 May 2008</span></td>
+        <td>
+          <span class="author">
+            Jeff Burkey
+          </span>
+        </td>
+        <td><span class="comment"><p>I appologize. I did not see this 
+comment until today (May 22, 2008).  After conversing with Dr. Zhi, we 
+agreed that the discrepancy was with the adjustments to S based on data 
+set size.  While my code adjusts S when n &lt;= 10, it should adjust S 
+when n &gt;= 10.  I also did note that many of the statistic packages 
+out there adjust S regardless of dataset size (users choice at that 
+point).  This error does affect Z and p (at about the 3 significant 
+digits or smaller).  The correction has be uploaded. It should be live 
+in a day or two. - Jeff (author)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">24 Apr 2008</span></td>
+        <td>
+          <span class="author">
+            Li Zhi
+          </span>
+        </td>
+        <td><span class="comment"><p>There may be something wrong with your program, the calculated result of Zc and Sen's Slope are incorrect!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Apr 2008</span></td>
+        <td>
+          <span class="author">
+            Jeff Burkey
+          </span>
+        </td>
+        <td><span class="comment"><p>I would like to thank everyone that
+ has commented. I'm close to the seasonal kendall, homogeneity, global 
+trend, others. I'm in the process of validating the code for the 
+statistics. - Jeff (author)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Apr 2008</span></td>
+        <td>
+          <span class="author">
+            qassi tarawne
+          </span>
+        </td>
+        <td><span class="comment"><p>I need to know how mann kendall trend can be done</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Feb 2008</span></td>
+        <td>
+          <span class="author">
+            Domingo ALCARAZ-SEGURA
+          </span>
+        </td>
+        <td><span class="comment"><p>It's great that it works without 
+loops. Besides, now that W Vista allows to add RAM with flash-drives, 
+the memory issue mentioned above does not seem such a problem. I'm 
+excited about seeing the seasonal version of it.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Jul 2007</span></td>
+        <td>
+          <span class="author">
+            R Peterson
+          </span>
+        </td>
+        <td><span class="comment"><p>I used part of it in an in-house implementation of the mann-kendall test. the calculation of the ties sum was ingenious.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Jun 2007</span></td>
+        <td>
+          <span class="author">
+            Ryan Galley
+          </span>
+        </td>
+        <td><span class="comment"><p>Very simple and straightforward.
+<br>Easy to use.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            Jeff Bukkey
+          </span>
+        </td>
+        <td><span class="comment"><p>I would like to extend any and all 
+CONSTRUCTIVE criticism, like Till Reprecht above.  However, it is not 
+very useful when someone submits a poor rating, and gives no comments. 
+I?ve tried contacting Mr. Elhameed as to why he gave such a poor rating 
+(and if possible address his concerns).  I?ve received no response.  In 
+fact, Mr. Elhameed was kind enough to actually submit two ratings both 
+with 1 star (what is the reason for that?).  Mathworks was kind enough 
+to remove one of his ratings since it seems a little disrespectful to 
+submit the poorest rating twice, especially with no comments. 
+<br>In response to Till Reprecht, I acknowledge the memory limitation in
+ the source code with comments.  My goal when submitting code to 
+Mathworks is to provide an efficient method for performing computations.
+ Given the way I maximized use of arrays and no circular logic, it comes
+ at a cost of memory space.  Some day when the need arises, I?ll submit a
+ seasonal mann-kendall, heterogeneity, and maybe a few others to 
+compliment the tau-b.  But I really don?t plan on re-writing the code 
+with loops. 
+<br>Since I can get no response to Elhameed?s rating, I?m not sure it 
+would be legitimate if I submitted this response with a rating, so I 
+didn?t.  I?m hoping other people will submit ratings (hopefully, 4~5 
+star) and comments, to offset Mr. Elhameed.
+<br>Regards,
+<br>Jeff (author).
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Apr 2007</span></td>
+        <td>
+          <span class="author">
+            mostafa abd elhameed
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="1">
+              <div style="width:20%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Nov 2006</span></td>
+        <td>
+          <span class="author">
+            Till Ruprecht
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear Jeff Burkey,
+<br>thank you for providing a Mann-Kendall-algorithm based on Matlab.
+<br>A disadvantage of the algorithm obviously
+<br>is, that for large time series (i.e. 25.0000 units) the ram gets out of memory easily.
+<br>(In the example 25.000 x 25.000 x 8Byte (Double Precision) = 5 GB 
+are required to store the replicated matrix). It would be great, having a
+ alternative algorithm in
+<br>your method, taking into account the size
+<br>of the input data.</p>
+
+<p>Greetings </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">09 Oct 2006</span></td>
+        <td>
+          <span class="author">
+            Gerald Corzo
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">27 May 2008</td>
+                  <td><p>Bug Fix:  S statistic should have been adjusted for datasets with n &gt;= 10, not n &lt;= 10.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">27 May 2008</td>
+                  <td><p>After making correction, I wanted to output S unadjusted. This version has the correction, but still outputs S unadjusted.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">16 Jun 2008</td>
+                  <td><p>When maintaining S I forgot to assign s = S for
+ small datasets. Also trap error if user enters in NaNs. Added plotting 
+routine at the end of the function to display a figure if the trend is 
+significant. Uncomment this to get this utility.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">10 Dec 2008</td>
+                  <td><p>Updated the function to account for multiple 
+observations per time index, also modifed outputs to support the newly 
+added Seasonal Kendall trend test- sktt.m.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 Dec 2008</td>
+                  <td><p>Try number 3. The webpage timed out on my try 2.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">12 Dec 2008</td>
+                  <td><p>Sorry type-o in the description.  This enhanced
+ function WILL allow for multiple observations in the time index, ties, 
+mission values, etc. </p></td>
+                </tr>
+                <tr>
+                  <td class="date">12 Dec 2008</td>
+                  <td><p>I need to get used to uploading files. I 
+uploaded the wrong version. Sorry. The version previously uploaded had a
+ glitch in the Confidence interval calculations. Same glitch is in the 
+seasonal kendall (sktt.m). Fixed now.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">16 Jan 2009</td>
+                  <td><p>Now will test for anomalies in trend estimates.
+  Fixes and notifies the user.  See comments in function for more detail
+ and the paper used for this enhancement.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">19 Feb 2009</td>
+                  <td><p>I've gotten a couple of inquiries asking for example dataset to use.  I've included a MAT file that can be used with the m-file.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">14 Oct 2009</td>
+                  <td><p>Updated comments.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">15 Jun 2011</td>
+                  <td><p>Updated calculation of confidence intervals on Sens slope. </p></td>
+                </tr>
+                <tr>
+                  <td class="date">23 Jul 2011</td>
+                  <td><p>Added a test for matlab version.  When people 
+get errors, it is generally because their version of matlab is too old 
+and the syntax is not valid.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">24 Sep 2012</td>
+                  <td><p>Enough inquiries about citation, I've added a 
+suggested citation to the comments. Also included an HTML created from 
+MATLAB Publish function.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">21 Aug 2013</td>
+                  <td><p>Added citation supporting method for computing confidence intervals for Sen's slope. Thanks goes to Dr. Jeff Thompson.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1415907892177&amp;cv=7&amp;fst=1415907892177&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/11190-mann-kendall-tau-b-with-sen-s-method--enhanced-&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D93%26sort%3Ddate_desc_updated%26term%3D&amp;vis=2"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div><ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+</body></html>

@@ -1,0 +1,2486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>HOSA - Higher Order Spectral Analysis Toolbox -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F3013-hosa-higher-order-spectral-analysis-toolbox" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F3013-hosa-higher-order-spectral-analysis-toolbox" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/3013-hosa-higher-order-spectral-analysis-toolbox?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      No BSD License
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#nolicense" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/3013-hosa-higher-order-spectral-analysis-toolbox" class="manifest_title">HOSA - Higher Order Spectral Analysis Toolbox</a>
+    </h3>
+
+
+    <ul class="manifest">
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/3013-hosa-higher-order-spectral-analysis-toolbox/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:90.0%;">
+                <p>4.5</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              4.5
+              <span class="divider"> | </span>
+              <a href="#feedback">73 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">123 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 2.92 MB</span>
+          <span id="fileid">File ID: #3013</span>
+        </div>
+
+        <div id="details">
+          <h1>HOSA - Higher Order Spectral Analysis Toolbox</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/7706">Ananthram Swami</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">12 Feb 2003 </span>
+              <span id="date_updated">(Updated 13 Feb 2003)</span>
+          </p>
+
+
+
+          <p id="summary">Spectral and polyspectral analysis, and time-frequency distributions.</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F3013-hosa-higher-order-spectral-analysis-toolbox&amp;watching=3013" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>There is much more information in a stochastic 
+non-Gaussian or deterministic signal than is conveyed by its 
+autocorrelation and power
+<br>spectrum.  Higher-order spectra which are defined in terms of the 
+higher-order moments or cumulants of a signal, contain this additional 
+information. The Higher-Order Spectral Analysis (HOSA) Toolbox provides 
+comprehensive higher-order spectral analysis capabilities for signal 
+processing applications. The toolbox is an excellent resource for the 
+advanced researcher and the practicing engineer, as well as the novice
+<br>student who wants to learn about concepts and algorithms in statistical signal processing. </p>
+
+<p>The HOSA Toolbox is a collection of M-files that implement a variety 
+of advanced signal processing algorithms for the estimation of cross- 
+and auto-cumulants (including correlations), spectra and 
+olyspectra,bispectrum, and bicoherence, and omputation of time-frequency
+<br>distributions. Based on these, algorithms for parametric and 
+non-parametric blind system identification, time-delay estimation, 
+harmonic retrieval, phase-coupling, direction of arrival estimation, 
+parameter estimation of Volterra (non-linear) models, and adaptive 
+linear prediction are implemented. Also included are algorithms for 
+testing of Gaussianity and Linearity of a time series.  A full tutorial 
+and demo set are included in the toolbox.</p></td>
+          </tr>
+  
+        
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="http://www.mathworks.com/products/signal/" id="product_link_Signal Processing Toolbox">Signal Processing Toolbox</a><br>
+              </td>
+            </tr>
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 6.5 (R13)
+            </td>
+          </tr>
+  
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence(10)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bispctrum%22" rel="nofollow">bispctrum(3)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cumulants%22" rel="nofollow">cumulants(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22does+anybody+have+the+experience+to+use+tdem+i+encounter+some+pr%22" rel="nofollow">does anybody have the experience to use tdem i encounter some pr</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22help+why+the+bispectrum+of+the+gaussian+noise+does+not+equal+zer%22" rel="nofollow">help why the bispectrum of the gaussian noise does not equal zer(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22hos%22" rel="nofollow">hos(3)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22it+is+also+my+emaili+would+like+to+make+friends+with+anyone+of+y%22" rel="nofollow">it is also my emaili would like to make friends with anyone of y</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22it+is+good+and+helpful%22" rel="nofollow">it is good and helpful</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22nonlinear+systems%22" rel="nofollow">nonlinear systems</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22probability%22" rel="nofollow">probability</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22share+our+knowledge+and+be+brilliant+together%22" rel="nofollow">share our knowledge and be brilliant together</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22statistics%22" rel="nofollow">statistics(2)</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/3013-hosa-higher-order-spectral-analysis-toolbox">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(111)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">08 Dec 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/207577">Damon Bradley</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Also, to remove the annoyance of 
+inexact case matches when you use the any of the HOSA functions, I'd 
+recommend putting this line of code at the top of your script:</p>
+
+<p>warning('off','MATLAB:dispatcher:InexactCaseMatch').</p>
+
+<p>For some strange reason, all of the HOSA function file names are written in all caps.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="3">
+            <div style="width:60%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">13 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/205534">Lyuboslav Petrov</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Convert from upper to lower all files in both folder using this script:</p>
+
+<p>files = dir;
+<br>for i = 3:length(files)
+<br>    system(['REN ',lower(files(i).name),' ',lower(files(i).name)]);
+<br>end</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/205534">Lyuboslav Petrov</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="3">
+            <div style="width:60%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">25 Sep 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/168223">Wolfgang</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi,</p>
+
+<p>i have tried as described in the readme.txt. Unfortunately all file names and extentions are in uppercase after extracting !</p>
+
+<p>Because of that no chance to use anything (like hosaver or hosademo).</p>
+
+<p>Please advice what to do.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">03 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/263237">Russell</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I have the HOSA pack working, but I 
+run out of memory with the WIG2C function when using a array of 2500 
+rows and 1 column. Can the function not handle a array like this?
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">07 Mar 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/229197">MIAO DU</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi,all, I tried to use the function bispecd.m on my data, but it always shows
+<br>??? Subscript indices must either be real positive integers or logicals.</p>
+
+<p>Error in ==&gt; BISPECD at 123
+<br>        xseg   = y(locseg);
+<br> 
+<br>How can I fix this problem?
+<br>Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">18 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/215866">Keith Thornicroft</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi All,</p>
+
+<p>I can't seem to get the toolbox installed having followed the text 
+file to the T. I am using MATLAB Student Version 7.12.0.635 (R2011a) 
+with an additional wavelet toolbox. Any ideas? Does it even work for a 
+student licence?</p>
+
+<p>Cheers!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Sep 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/123996">Jered  Wells</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>For those who get an error due to the
+ info.xml file: to fix the error in hosa\info.xlm, the line containing 
+matlab should be changed to matlab. Now, to try HOSA...</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Apr 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/113200">XIAYANG xiayang</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>It is good and helpful.
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">22 Apr 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/133921">MD. TANJIMUDDIN</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>The installation seems to have worked incompletely. I get the following error:
+<br>&gt;&gt; HOSADEMO
+<br>??? Undefined function or method 'choices' for input arguments of type 'char'.
+<br>Error in ==&gt; HOSADEMO at 68
+<br>choices('HoSatDemo', 'HOSA Demo', labels, callbacks, interruptible);
+<br>My Matlab cannot find the command/function "choices".
+<br>I have MATLAB Version 7.8.0.347 (R2009a)
+<br>Signal Processing Toolbox Version 6.11 (R2009a)
+<br>Can you please help me solve this?
+<br>Thanks
+<br>please tell me how to use these toolboxes.please reply on my email tanjii023@yahoo.com</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">21 Apr 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/135093">Evan</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>For those in need of choices.m</p>
+
+<p>http://www.maths.lth.se/matstat/wafo/documentation/wafodoc/wafo/misc/choices.html</p>
+
+<p>has the source code.</p>
+
+<p>Create a new .m, paste in code, delete all code line numbers :)</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">06 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/128330">henry gorx</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>sorry, I was wrong. The comment was for other function (MATS).</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/128330">henry gorx</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi, I tested the function 
+Bicorrelation(xV,tauV,flag), how I must to interpret the results? for 
+example, bicV=-0.18738 and cumbicV=0.70683. Many thanks for your help.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/123811">leo</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>it is grateful</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/97965">wu</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>File "choices.m" is lost. Is the problem of version of matlab, and mine is 7.1?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">12 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/97965">wu</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>great tool of researchers whose major is signal processing </p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">07 Jan 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/119992">andrea ruju</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Why the window specification for frequency-domain smoothing is differetn in bispectrum and bicoherence estimation?</p>
+
+<p>Hi, i'm a phd student in coastal oceanography. My e-mail is matumaloa@gmail.com</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">04 Dec 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/60612">asandu asandu</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Help: why the bispectrum of the gaussian noise does not equal zero in HOSA
+<br>Hi :
+<br>    I am a student from Wuhan, China. I have download the toolbox of
+ HOSA. Thank you very much of your job. BUt I have met a problem in 
+compute the bispectrum of the gaussian noise, because the result of it 
+does not equal to zero. I can not find the solution of it. can you help 
+me? and thanks.
+<br>   The signal of gaussian noise is given by the commad 'rand'.
+<br>my e_mail:  xhdu1981@yahoo.com.cn
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/115072">Sayan</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>having errors please help 
+<br>&gt;&gt; hosademo
+<br>??? Undefined function or method 'choices' for input arguments of type 'char'.</p>
+
+<p>Error in ==&gt; HOSADEMO at 68
+<br>choices('HoSatDemo',  'HOSA Demo',   labels,  callbacks, interruptible);</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">02 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/108881">wang ?</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>thank you</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">12 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/106241">Rafael J.</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Great toolbox, but there are clearly 
+some typos and errors. Capitalized filenames causes warnings (or the 
+fact that they don't match the functions calls with respective to caps).</p>
+
+<p>Also, why does bicoherx and bispecdx have three inputs when most 
+people only have two inputs for a cross-bicoherence or cross-bispectrum 
+analysis? Anyone figure this issue out? Which two inputs should we use? 
+(eg x-x-y, x-y-x, etc)</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 May 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/75496">Salai Selvam V</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Excellent!!!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">18 May 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/85411">Ali Ali</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thanks alot. fantastic tool</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">06 Nov 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/75384">zamrud fathima</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>The installation seems to have worked incompletely. I get the following error: 
+<br>&gt;&gt; HOSADEMO 
+<br>??? Undefined function or method 'choices' for input arguments of type 'char'. 
+<br>Error in ==&gt; HOSADEMO 
+<br>choices('HoSatDemo', 'HOSA Demo', labels, callbacks, interruptible); 
+<br>My Matlab cannot find the command/function "choices". 
+<br>Can you please help me solve this? 
+<br>Thanks.
+<br>please send reply to my e-mail</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">03 Nov 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/75030">Rae</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Is there a simple way to edit bicoher
+ to normalize it such that it's giving the bounded (0-1) version rather 
+than the current skewness version?  </p>
+
+<p>I can't access the Kim and Powers paper and if others have sucessfully done this, I'd love to know how!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">11 Aug 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/61962">Paul</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>The installation seems to have worked incompletely. I get the following error:
+<br>&gt;&gt; HOSADEMO
+<br>??? Undefined function or method 'choices' for input arguments of type 'char'.
+<br>Error in ==&gt; HOSADEMO at 68
+<br>choices('HoSatDemo',  'HOSA Demo',   labels,  callbacks, interruptible);
+<br>My Matlab cannot find the command/function "choices".
+<br>I have MATLAB Version 7.8.0.347 (R2009a)
+<br>Signal Processing Toolbox   Version 6.11       (R2009a)
+<br>Can you please help me solve this?
+<br>Thanks,
+<br>Paul Axon, Sydney, Australia
+<br>paul.axon@thalesgroup.com.au</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">11 Jun 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/60326">David Gagnon</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I meant to submit this post first...
+<br>(Both posts refer to BICOHER.m)</p>
+
+<p>Beware that there are multiple ways to normalize the bispectrum, and 
+they are all referred to as the "bicoherence."  The formula that this 
+m-file uses is NOT the one that bounds the bicoherence between 0 and 1. 
+ If you are looking for that one, check out Kim and Powers' 1979 paper 
+"Digital Bispectral Analysis and Its Applications to Nonlinear Wave 
+Interactions."  They provide an explanation of how to code that version,
+ and it has worked reasonably well for me.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">11 Jun 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/60326">David Gagnon</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>By the way, "segsamp" (actually 
+implemented as "nsamp") is the number of samples per segment, that is, 
+the number of points in each chunk of data that you're throwing into the
+ bicoherence.  You can use datasets of any length, and the program will 
+typically calculate fft's with a length that is a power of two and is 
+greater than or equal to "segsamp."  It does this by adding zeros to the
+ data record.  However, you can specify "nfft" to tell the program how 
+many points you want the fft to use.  If you set "segsamp" and "nfft" to
+ be equal, then you can avoid zero-padding.  Powers of two are 
+calculated faster, but MATLAB can handle fft's of any length.</p>
+
+<p>As for the frequency axis, "waxis" is based on the number of points 
+that are used in the fft.  As a result, "0.5" on the axis corresponds to
+ the highest frequency that can be resolved with that number of points, 
+also known as the Nyquist frequency.  Exactly how you want to scale the 
+axis will depend on the nature of your data.</p>
+
+<p>On an unrelated note, the demo gives me errors, too.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Jun 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/59520">Rakesh</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I have tried WIG2.m function on a 
+times series on 28800 samples (288 sec signal sampled at 100Hz) but 
+function doesnt seem to handle this big signal. However, I have also 
+tried it on chunks of this signal but it takes forever to complete. Is 
+it my computer or the program itself? any help?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">08 Apr 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49866">Gabriel Akira Schreiber</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>But, however, lowercase filenames would be a great improvement.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Apr 2009</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49866">Gabriel Akira Schreiber</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>This toolbox is greatly appreciated. Is this still developed/maintained?</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Oct 2008</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/32877">Edwin Wu</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Does anybody have the experience to 
+use TDE.M? I encounter some problem when I use it as a way to estimate 
+the time delay of 2 channels of signal. I would be so appreciated for 
+your helps.My msn is wjr0529@gmail.com,it is also my E-mail.I would like
+ to make friends with anyone of you.join me , share our knowledge and be
+ brilliant together.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">21 Oct 2008</span></td>
+      <td>
+        <span class="author">
+          Bessie Bao
+        </span>
+      </td>
+      <td><span class="comment"><p>EEG</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Oct 2008</span></td>
+      <td>
+        <span class="author">
+          elahe alavi
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Aug 2008</span></td>
+      <td>
+        <span class="author">
+          Yue ZHOU
+        </span>
+      </td>
+      <td><span class="comment"><p>To identify whether one time serial is norm-distribution</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">04 Aug 2008</span></td>
+      <td>
+        <span class="author">
+          Femi Osunnuyi
+        </span>
+      </td>
+      <td><span class="comment"><p>I've had some problems using the 
+'bicoher' function. With most industrial data sets, i obtain bicoherence
+ values greater than 1, which in theory is not meant to be possible.
+<br>Any ideas?
+<br>Also is 'segasamp' meant to be square root of no. of data set (which must be even powers of 2 [4,16,64,256,1024], right?)?
+<br>  </p></span></td>
+      <td width="80">
+          <div class="starrating" title="3">
+            <div style="width:60%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">28 Jul 2008</span></td>
+      <td>
+        <span class="author">
+          Alex Yakubovich
+        </span>
+      </td>
+      <td><span class="comment"><p>Does anybody what the frequency units
+ are in BICOHER and BISPECD? Some of the examples in the tutorial 
+suggest it is in Hz, but that doesn't make sense given the plot I get 
+with my signal.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Jun 2008</span></td>
+      <td>
+        <span class="author">
+          Guy Incognito
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">26 May 2008</span></td>
+      <td>
+        <span class="author">
+          jason yun
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 May 2008</span></td>
+      <td>
+        <span class="author">
+          Kacimi Abderrahmane
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">01 May 2008</span></td>
+      <td>
+        <span class="author">
+          Vinayak swarnkar
+        </span>
+      </td>
+      <td><span class="comment"><p>I downloaded it..but facing problem 
+in running it. Even 'hosademo.m' dosent work...it gives error saying 
+'Undefined function or method 'choices' for input arguments of type 
+'char'.'. Can some please help in this. 
+<br>Thanks you</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">26 Jan 2008</span></td>
+      <td>
+        <span class="author">
+          as as
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Dec 2007</span></td>
+      <td>
+        <span class="author">
+          bahman abc
+        </span>
+      </td>
+      <td><span class="comment"><p>thx!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">07 Nov 2007</span></td>
+      <td>
+        <span class="author">
+          Alhade Mohamed
+        </span>
+      </td>
+      <td><span class="comment"><p>hi</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">11 Oct 2007</span></td>
+      <td>
+        <span class="author">
+          guang yang
+        </span>
+      </td>
+      <td><span class="comment"><p>it's good</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">30 Sep 2007</span></td>
+      <td>
+        <span class="author">
+          Morteza Dardel
+        </span>
+      </td>
+      <td><span class="comment"><p>I want some more description about 
+nlpow command (estimation with volterra serises). If this command can 
+be used for more than one input and output cases? </p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">11 Sep 2007</span></td>
+      <td>
+        <span class="author">
+          navya showry
+        </span>
+      </td>
+      <td><span class="comment"><p>I have downloaded this file, but .exe
+ file is missing from the extracted one.. plz advice how to proceed 
+further or email me the latest updated one.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">07 Sep 2007</span></td>
+      <td>
+        <span class="author">
+          Ali Ozgur Argunsah
+        </span>
+      </td>
+      <td><span class="comment"><p>hi,
+<br>?s there any linux matlab version of this toolbox? </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Aug 2007</span></td>
+      <td>
+        <span class="author">
+          ahmed badawy
+        </span>
+      </td>
+      <td><span class="comment"><p>pls I hope to make good relation in working 
+<br>in HOSA and Signal Separation Using HOSA</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">13 Jun 2007</span></td>
+      <td>
+        <span class="author">
+          yhaofly yhaofly
+        </span>
+      </td>
+      <td><span class="comment"><p>your work is execellent,thank you very much,
+<br>I will support you for ever.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">01 Jun 2007</span></td>
+      <td>
+        <span class="author">
+          song jianjiang
+        </span>
+      </td>
+      <td><span class="comment"><p>good article</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 May 2007</span></td>
+      <td>
+        <span class="author">
+          Chang David
+        </span>
+      </td>
+      <td><span class="comment"><p>I want to know if the software is only compliant with Matlab 6.0(R12 version)</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Jan 2007</span></td>
+      <td>
+        <span class="author">
+          Florencio Calle
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Jan 2007</span></td>
+      <td>
+        <span class="author">
+          Vishnuvenkatesh Dhage
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Dec 2006</span></td>
+      <td>
+        <span class="author">
+          liu xiangle
+        </span>
+      </td>
+      <td><span class="comment"><p>the help system is not covinent.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Sep 2006</span></td>
+      <td>
+        <span class="author">
+          Frederico Melo
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Jun 2006</span></td>
+      <td>
+        <span class="author">
+          Scott Miller
+        </span>
+      </td>
+      <td><span class="comment"><p>How do you open this thing?  I have tried to extract it and nothing happens.  It seems corrupted.</p>
+
+<p>to reply take out chinese food</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">02 Jun 2006</span></td>
+      <td>
+        <span class="author">
+          M Nage
+        </span>
+      </td>
+      <td><span class="comment"><p>not see yet</p></span></td>
+      <td width="80">
+          <div class="starrating" title="3">
+            <div style="width:60%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 May 2006</span></td>
+      <td>
+        <span class="author">
+          ali dashti
+        </span>
+      </td>
+      <td><span class="comment"><p>needed box</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">20 Apr 2006</span></td>
+      <td>
+        <span class="author">
+          Mohsen Afrasiabi
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">19 Apr 2006</span></td>
+      <td>
+        <span class="author">
+          Sivaganesh Mullapudi
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">23 Mar 2006</span></td>
+      <td>
+        <span class="author">
+          Jon Hobbs
+        </span>
+      </td>
+      <td><span class="comment"><p>Great Box</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Dec 2005</span></td>
+      <td>
+        <span class="author">
+          meng yusong
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">22 Dec 2005</span></td>
+      <td>
+        <span class="author">
+          Ghassan Maalouli
+        </span>
+      </td>
+      <td><span class="comment"><p>Excellent toolbox.  Very good documentation.
+<br>Brilliant author.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Dec 2005</span></td>
+      <td>
+        <span class="author">
+          Jon-Fredrik Hopperstad
+        </span>
+      </td>
+      <td><span class="comment"><p>Excellent toolbox with very good documentation.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">01 Dec 2005</span></td>
+      <td>
+        <span class="author">
+          essam anwer
+        </span>
+      </td>
+      <td><span class="comment"><p>i can not run this toolbox how can download and who can help me</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Nov 2005</span></td>
+      <td>
+        <span class="author">
+          xu guisen
+        </span>
+      </td>
+      <td><span class="comment"><p>how to download? who teach me!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">15 Nov 2005</span></td>
+      <td>
+        <span class="author">
+          Neil L Scott
+        </span>
+      </td>
+      <td><span class="comment"><p>Demo fails.
+<br>Crashes with GUI callback issues.
+<br>Uppercase file names???
+</p></span></td>
+      <td width="80">
+          <div class="starrating" title="2">
+            <div style="width:40%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">09 Oct 2005</span></td>
+      <td>
+        <span class="author">
+          Bruce Lena
+        </span>
+      </td>
+      <td><span class="comment"><p>great tools for me </p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Aug 2005</span></td>
+      <td>
+        <span class="author">
+          xunkai wei
+        </span>
+      </td>
+      <td><span class="comment"><p>great</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">07 May 2005</span></td>
+      <td>
+        <span class="author">
+          xjtuljp Lin
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Apr 2005</span></td>
+      <td>
+        <span class="author">
+          chen xushuang
+        </span>
+      </td>
+      <td><span class="comment"><p>very good</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">10 Apr 2005</span></td>
+      <td>
+        <span class="author">
+          ZHONGCHAO HUANG
+        </span>
+      </td>
+      <td><span class="comment"><p>It is really good and very helpful to me</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">11 Mar 2005</span></td>
+      <td>
+        <span class="author">
+          Marcin J...
+        </span>
+      </td>
+      <td><span class="comment"><p>I would be thankfull if you can send me more informations about high order moments. Thank for help.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Mar 2005</span></td>
+      <td>
+        <span class="author">
+          farzaneh shayegh
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">15 Jan 2005</span></td>
+      <td>
+        <span class="author">
+          hawk wei
+        </span>
+      </td>
+      <td><span class="comment"><p>Anyway but can you share it ?
+<br>It's really great</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">10 Jan 2005</span></td>
+      <td>
+        <span class="author">
+          Chuanshuang Hu
+        </span>
+      </td>
+      <td><span class="comment"><p>It looks great. I need HOSA. Also, could you tell me whether it is possible to compute Auto-and cross-spectra or not using HOSA?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">11 Dec 2004</span></td>
+      <td>
+        <span class="author">
+          Wei Zhang
+        </span>
+      </td>
+      <td><span class="comment"><p>why this toolbox is not concluded in Matlab 7 ?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">22 Nov 2004</span></td>
+      <td>
+        <span class="author">
+          Nej Nej
+        </span>
+      </td>
+      <td><span class="comment"><p>Kindly send me a HOSA tool box for study purpose</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Nov 2004</span></td>
+      <td>
+        <span class="author">
+          Kim Gunnium
+        </span>
+      </td>
+      <td><span class="comment"><p>I need HOSA for learning.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="1">
+            <div style="width:20%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Nov 2004</span></td>
+      <td>
+        <span class="author">
+          Kianoush Nazarpour
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Nov 2004</span></td>
+      <td>
+        <span class="author">
+          Jim Green
+        </span>
+      </td>
+      <td><span class="comment"><p>I need much higher order spectral analysis toolbox</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">14 Aug 2004</span></td>
+      <td>
+        <span class="author">
+          sina niki
+        </span>
+      </td>
+      <td><span class="comment"><p>Dear Sir,
+<br>Problem:
+<br> We want simulate by matlab "Passive Radar localization by time difference of arrival esimator".
+<br>For this purpose we have two site on the ground and we want by two 
+widwband receivers estimate two same received pulse at separate station.
+<br>could you help me to send m.files for this purpose.
+<br>thanks your helps.
+<br>Regards.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Aug 2004</span></td>
+      <td>
+        <span class="author">
+          Feng Changjian
+        </span>
+      </td>
+      <td><span class="comment"><p>I have like this toolbox because it can help me to complete my school work. </p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Aug 2004</span></td>
+      <td>
+        <span class="author">
+          abdelali belabassi
+        </span>
+      </td>
+      <td><span class="comment"><p>i'm etudiant ,i need it to complet my thesis , thanks</p></span></td>
+      <td width="80">
+          <div class="starrating" title="2">
+            <div style="width:40%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Jun 2004</span></td>
+      <td>
+        <span class="author">
+          Jianwen Luo
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">18 Jun 2004</span></td>
+      <td>
+        <span class="author">
+          Marcus Kruger
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">15 Jun 2004</span></td>
+      <td>
+        <span class="author">
+          xnkj xnkj
+        </span>
+      </td>
+      <td><span class="comment"><p>hao dong dong</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">11 Jun 2004</span></td>
+      <td>
+        <span class="author">
+          zheng qing
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">30 May 2004</span></td>
+      <td>
+        <span class="author">
+          wang shenghui
+        </span>
+      </td>
+      <td><span class="comment"><p>ok</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">29 Apr 2004</span></td>
+      <td>
+        <span class="author">
+          Dr. Abdul-Bary Sulaiman
+        </span>
+      </td>
+      <td><span class="comment"><p>A very useful toolbox, but i\I surprised that it is only found in V5.3 Matlab and has been cancelled in the uper versions !!!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">28 Feb 2004</span></td>
+      <td>
+        <span class="author">
+          Camilo Londoño
+        </span>
+      </td>
+      <td><span class="comment"><p>Nice work!!!!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">22 Dec 2003</span></td>
+      <td>
+        <span class="author">
+          Brian Powell
+        </span>
+      </td>
+      <td><span class="comment"><p>Excellent toolbox.  The only negative
+ is that it is distributed as an EXE.  If you distribute as a tar, it 
+should work everywhere.  After unpacking on a borrowed windows box, I 
+use it on Solaris and MacOSX.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">18 Dec 2003</span></td>
+      <td>
+        <span class="author">
+          Norbert Marwan
+        </span>
+      </td>
+      <td><span class="comment"><p>Why this toolbox is not provided as a
+ zip-package or Matlab-installation file (eg. created with Makeinstall).
+ Moreover, all filenames are upperletter. The exe-package as well as the
+ upperletter filenames make it hard for a Unix user to use this toolbox.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="3">
+            <div style="width:60%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">11 Nov 2003</span></td>
+      <td>
+        <span class="author">
+          Jaime Aviles
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">10 Sep 2003</span></td>
+      <td>
+        <span class="author">
+          qiang xueming
+        </span>
+      </td>
+      <td><span class="comment"><p>excellent</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">26 Aug 2003</span></td>
+      <td>
+        <span class="author">
+          Dale Clifford
+        </span>
+      </td>
+      <td><span class="comment"><p>This IS a matlab toolbox and installs
+ the same even as far as the icon in the view window of Matlab. 
+Previously not available as a student edition, but now free.This toolbox
+ provides much information on signals, especially if the researcher is 
+looking for non-linear dynamics. Works well when used along the side of 
+wavelets.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">12 Aug 2003</span></td>
+      <td>
+        <span class="author">
+          w w
+        </span>
+      </td>
+      <td><span class="comment"><p>very good</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Aug 2003</span></td>
+      <td>
+        <span class="author">
+          Moh Al-jebori
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">06 Jul 2003</span></td>
+      <td>
+        <span class="author">
+          Mokrane Malek
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Jun 2003</span></td>
+      <td>
+        <span class="author">
+          dylan mckay
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">01 Jun 2003</span></td>
+      <td>
+        <span class="author">
+          extra ll
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 May 2003</span></td>
+      <td>
+        <span class="author">
+          Ma Yongfeng
+        </span>
+      </td>
+      <td><span class="comment"><p>It is good and helpful.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">10 Apr 2003</span></td>
+      <td>
+        <span class="author">
+          x yg
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">20 Mar 2003</span></td>
+      <td>
+        <span class="author">
+          guojun yang
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">19 Mar 2003</span></td>
+      <td>
+        <span class="author">
+          Usama Zaher
+        </span>
+      </td>
+      <td><span class="comment"><p>Excellent application</p>
+
+<p>If there are more examples it would be nice.Especially if it is concerned with some application of sensor validation
+</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">05 Mar 2003</span></td>
+      <td>
+        <span class="author">
+          D. Gansawat
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">28 Feb 2003</span></td>
+      <td>
+        <span class="author">
+          Dr. Cornelis Los
+        </span>
+      </td>
+      <td><span class="comment"><p>This the best non-wavelet, 
+higher-order time-frequency analysis of time series and the only one 
+freely available. Use it closely together with the excellent book for 
+the best results and for easy and accurate interpretation.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">21 Feb 2003</span></td>
+      <td>
+        <span class="author">
+          George Barakos
+        </span>
+      </td>
+      <td><span class="comment"><p>Pity it is not part of the main MatLab release!</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">17 Feb 2003</span></td>
+      <td>
+        <span class="author">
+          - -
+        </span>
+      </td>
+      <td><span class="comment"><p>Is this the same as TMW's HOSA Toolbox?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Feb 2003</span></td>
+      <td>
+        <span class="author">
+          John Brown
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/3013-hosa-higher-order-spectral-analysis-toolbox">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22statistics%22" rel="nofollow">statistics</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/7706">Ananthram Swami</a></td>
+        <td>22 Oct 2008 06:56:35</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22probability%22" rel="nofollow">probability</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/7706">Ananthram Swami</a></td>
+        <td>22 Oct 2008 06:56:35</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22hos%22" rel="nofollow">hos</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/7706">Ananthram Swami</a></td>
+        <td>22 Oct 2008 06:56:35</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cumulants%22" rel="nofollow">cumulants</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/7706">Ananthram Swami</a></td>
+        <td>22 Oct 2008 06:56:35</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/7706">Ananthram Swami</a></td>
+        <td>22 Oct 2008 06:56:35</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bispctrum%22" rel="nofollow">bispctrum</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/7706">Ananthram Swami</a></td>
+        <td>22 Oct 2008 06:56:35</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22nonlinear+systems%22" rel="nofollow">nonlinear systems</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/7706">Ananthram Swami</a></td>
+        <td>22 Oct 2008 06:56:35</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22share+our+knowledge+and+be+brilliant+together%22" rel="nofollow">share our knowledge and be brilliant together</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/32877">Edwin Wu</a></td>
+        <td>27 Oct 2008 10:01:16</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22it+is+also+my+emaili+would+like+to+make+friends+with+anyone+of+y%22" rel="nofollow">it is also my emaili would like to make friends with anyone of y</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/32877">Edwin Wu</a></td>
+        <td>27 Oct 2008 10:01:16</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22does+anybody+have+the+experience+to+use+tdem+i+encounter+some+pr%22" rel="nofollow">does anybody have the experience to use tdem i encounter some pr</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/32877">Edwin Wu</a></td>
+        <td>27 Oct 2008 10:01:16</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/37612">ajeesh Kurian</a></td>
+        <td>28 Nov 2008 18:49:12</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/47472">Yael Etzion</a></td>
+        <td>26 Feb 2009 07:02:16</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/36599">Sreenivas Yelneedi</a></td>
+        <td>17 Sep 2009 04:39:39</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/69801">UFBA Teuxeira</a></td>
+        <td>20 Sep 2009 18:24:09</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/78015">Donald</a></td>
+        <td>29 Nov 2009 13:57:28</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/29205">Jason Farquhar</a></td>
+        <td>07 Apr 2010 07:44:30</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bispctrum%22" rel="nofollow">bispctrum</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/29205">Jason Farquhar</a></td>
+        <td>07 Apr 2010 07:44:34</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/54523">Fabio Rotondi</a></td>
+        <td>16 Apr 2010 04:54:52</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22help+why+the+bispectrum+of+the+gaussian+noise+does+not+equal+zer%22" rel="nofollow">help why the bispectrum of the gaussian noise does not equal zer</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/60612">asandu asandu</a></td>
+        <td>04 Dec 2010 21:51:27</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/113313">Brian</a></td>
+        <td>20 Jan 2011 17:52:54</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22hos%22" rel="nofollow">hos</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/38364">Giuseppe Alonge</a></td>
+        <td>08 Apr 2011 04:09:00</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22it+is+good+and+helpful%22" rel="nofollow">it is good and helpful</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/113200">XIAYANG xiayang</a></td>
+        <td>27 Apr 2011 05:00:14</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22statistics%22" rel="nofollow">statistics</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/154318">Sébastien</a></td>
+        <td>17 Jun 2011 06:07:46</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bispctrum%22" rel="nofollow">bispctrum</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/166709">Saman Haghgooie</a></td>
+        <td>20 Sep 2011 09:37:28</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22help+why+the+bispectrum+of+the+gaussian+noise+does+not+equal+zer%22" rel="nofollow">help why the bispectrum of the gaussian noise does not equal zer</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/172482">Di Pi</a></td>
+        <td>21 Nov 2011 07:59:53</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22cumulants%22" rel="nofollow">cumulants</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/183980">Jagmal Singh</a></td>
+        <td>06 Dec 2011 06:17:56</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22hos%22" rel="nofollow">hos</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/32543">Jan Van den Bulcke</a></td>
+        <td>04 Jan 2012 11:20:30</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22bicoherence%22" rel="nofollow">bicoherence</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/262371">KAMAL</a></td>
+        <td>29 Jun 2012 05:19:43</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

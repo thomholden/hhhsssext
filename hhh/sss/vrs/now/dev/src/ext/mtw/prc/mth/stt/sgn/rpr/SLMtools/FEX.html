@@ -1,0 +1,3774 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>SLM - Shape Language Modeling -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/24443-slm-shape-language-modeling" rel="canonical">
+<meta content="SLM - Shape Language Modeling - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/24443-slm-shape-language-modeling" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/54941/original.jpg" property="og:image"><meta content="Least squares spline modeling using shape primitives" property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24443-slm-shape-language-modeling" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24443-slm-shape-language-modeling" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/55895" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=24443" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling" class="manifest_title">SLM - Shape Language Modeling</a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/html/slm_tutorial.html" class="example" title="Example">slm_tutorial</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/hermite2slm.m" class="function" title="Function">hermite2slm(harray)</a><span class="description">hermite2slm: converts an array of coefficients in Hermite form to a slm</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/private/lse.m" class="function" title="Function">lse(A,b,C,d,solverflag,we...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/private/parse_pv_pairs.m" class="function" title="Function">params=parse_pv_pairs(par...</a><span class="description">parse_pv_pairs: parses sets of property value pairs, allows defaults</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/plotslm.m" class="function" title="Function">plotslm(slm)</a><span class="description">plotslm: plots a Shape Language Model (slm) or its derivatives</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/slmset.m" class="function" title="Function">prescription=slmset(varar...</a><span class="description">slmset: defines the shape prescription for a model</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/slm2pp.m" class="function" title="Function">slm2pp(slm)</a><span class="description">slm2pp: converts a piecewise hermite ('slm') form into a pp form</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/slmengine.m" class="function" title="Function">slmengine(x,y,varargin)</a><span class="description">slmengine: estimates a spline function from data plus a fit prescription</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/slmeval.m" class="function" title="Function">slmeval(x,slm,evalmode)</a><span class="description">slmeval: evaluates a Hermite function, its derivatives, or its inverse</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/slmfit.m" class="function" title="Function">slmfit(x,y,varargin)</a><span class="description">slmfit: GUI tool to estimate a spline function (Shape Langauge Model) from data</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content//SLMtools/slmpar.m" class="function" title="Function">slmpar(model,parameter,do...</a><span class="description">slmpar: Compute a given parameter of a slm or pp function (integral, max, min) over a defined domain</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling/content/SLMtools.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:100.0%;">
+                <p>5.0</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">5.0</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">52</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">196 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 370 KB</span>
+          <span id="fileid">File ID: #24443</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/21102/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">SLM - Shape Language Modeling</h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      15 Jun 2009
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2014-04-29">29 Apr 2014</span>)
+      </span>
+  </p>
+
+  <p id="summary">Least squares spline modeling using shape primitives</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F24443-slm-shape-language-modeling&amp;watching=24443" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>If you could only download one curve fitting tool to your laptop on a desert island, this should be it.
+<br>For many years I have recommended that people use least squares 
+splines for their curve fits, with a caveat. Splines offer tremendous 
+flexibility to build a curve in any shape or form. They can nicely fit 
+almost any set of data you will throw at them. This same flexibility is 
+their downfall at times too. Like polynomial models, splines can be too 
+flexible if you are not careful. The trick is to bring your knowledge of
+ the system under study to the problem.</p>
+
+<p>As a scientist, engineer, data analyst, etc., you often have 
+knowledge of a process that you wish to model. Sometimes that knowledge 
+comes from physical principles, sometimes it arises from experience, and
+ sometimes the knowledge just comes from looking at a plot of the data. 
+Regardless of the source, we often want to build in this prior knowledge
+ of a process into our modeling efforts. This is perhaps the biggest 
+reason why nonlinear regression tools are used, and I'll argue, the 
+worst reason. If you are fitting a sigmoid function to your data only 
+because it happens to be monotone and your data appear to have that 
+property, then you have made the wrong choice of modeling tool. (If you 
+are fitting a sigmoid because this is known to be the proper model for 
+your process, then go ahead and fit the sigmoid.)</p>
+
+<p>I'll argue the proper tool when you merely need a monotonic curve fit
+ is a least squares spline, but a spline that is properly constrained to
+ have the fundamental shape you know to be there. This is a very 
+Bayesian approach to modeling, and a very useful one in my experience.</p>
+
+<p>The SLM tools provided here give you an easy to use interface to 
+build an infinite number of curve types from data. SLM stands for Shape 
+Language Modeling. The idea is to provide a prescription for a curve fit
+ using a set of shape primitives. If your curve is monotone, then build 
+that information into the model, so you can estimate the monotone curve 
+that best fits your data. What you will find is that once you employ the
+ proper set of constraints, you will wonder why you ever used nonlinear 
+regression in the past!!!</p>
+
+<p>For example, the screenshot for this file was generated for the following data:</p>
+
+<p>x = (sort(rand(1,100)) - 0.5)*pi;
+<br>y = sin(x).^5 + randn(size(x))/10;</p>
+
+<p>slm = slmengine(x,y,'plot','on','knots',10,'increasing','on', ...
+<br>'leftslope',0,'rightslope',0)
+<br>slm = 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form: 'slm'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;degree: 3
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;knots: [10x1 double]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coef: [10x2 double]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;prescription: [1x1 struct]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: [100x1 double]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y: [100x1 double]</p>
+
+<p>You can evaluate the spline or its derivatives using slmeval.</p>
+
+<p>slmeval(1.3,slm)
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.79491</p>
+
+<p>You plot these splines using plotslm.</p>
+
+<p>plotslm(slm)</p>
+
+<p>The plotslm function is nice because it is a simple gui, allowing you
+ to plot the curve, residuals, its derivatives or the integral. You can 
+also evaluate various parameters of the spline, such as the maximum 
+function value over an interval, the minimum or maximum slope, etc. </p>
+
+<p>slmpar(slm,'maxslope')
+<br>ans =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.5481</p>
+
+<p>You provide all this information to slmengine using a property/value 
+pair interface. slmset mediates this interaction, so you can use it to 
+create the set of properties that will be used. The default set of 
+properties and their values are given by slmset. Everything about the 
+shape, slopes, curvature, values, etc., about your function can be 
+controlled by a simple command. SLMENGINE also offers the ability to 
+generate splines of various orders, as well as free knot splines.</p>
+
+<p>For a complete set of examples of the SLM tools in action, see the 
+included published tutorial with this submission. There is also a small 
+treatise included on the concept of Shape Language Modeling for curve 
+fitting.</p>
+
+<p>The SLM toolkit will be considerably improved at some time in the 
+future. I will add a graphical interface. As well, if I have missed any 
+natural shape primitives, please let me know. While I have tried to be 
+very inclusive, surely there is something I've missed. If I can add your
+ favorite to the list above I will try to do so.</p>
+
+<p>Finally, the SLM tools require the optimization toolbox to solve the various estimation problems.</p></td>
+          </tr>
+
+          
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/optimization/" id="product_link_Optimization Toolbox">Optimization Toolbox</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.5 (R2007b)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24443-slm-shape-language-modeling">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22approximation%22" rel="nofollow">approximation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22breaks%22" rel="nofollow">breaks</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22concave%22" rel="nofollow">concave</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22convex%22" rel="nofollow">convex</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22cubic%22" rel="nofollow">cubic</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22detrend%22" rel="nofollow">detrend</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22hermite%22" rel="nofollow">hermite</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22interp1%22" rel="nofollow">interp1</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22interp2%22" rel="nofollow">interp2</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22interpolation%22" rel="nofollow">interpolation</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22knots%22" rel="nofollow">knots</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22least+squares%22" rel="nofollow">least squares</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22monotone%22" rel="nofollow">monotone</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22monotonic%22" rel="nofollow">monotonic</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22piecewise%22" rel="nofollow">piecewise</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22piecewise+constant%22" rel="nofollow">piecewise constant</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22piecewise+linear%22" rel="nofollow">piecewise linear</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22shape+language+modeling%22" rel="nofollow">shape language modeling</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22shape+preserving%22" rel="nofollow">shape preserving</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22slm%22" rel="nofollow">slm</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22smoothing%22" rel="nofollow">smoothing</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22spline%22" rel="nofollow">spline</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22splines%22" rel="nofollow">splines</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22toolbox%22" rel="nofollow">toolbox</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="24443" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/24443-slm-shape-language-modeling" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F24443-slm-shape-language-modeling">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(117)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">25 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Eshwar - I considered offering a 
+5th order or higher fit when I wrote the code. I did not do so however, 
+for valid reasons, at least what I considered valid ones.</p>
+
+<p>  - I've only rarely ever needed more than 3rd order. In one such 
+case we were modeling paper paths through a copier, and the path needed 
+to be smoother than a cubic spline could offer.</p>
+
+<p>  - Higher orders than a cubic are a serious problem for many of the 
+most useful constraints one may want to apply. Monotonicity for example,
+ is done using a set of necessary constraints based on an inequality 
+from a Fritsch and Carlson paper. Higher orders than cubic however will 
+not allow such a nice solution, so we would have problems ensuring true 
+monotonicity. The curvature constraints would also be more difficult to 
+satisfy.</p>
+
+<p>So in the end, I chose not to implement higher orders than cubic. Sorry.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/481721">eshwar kannan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,</p>
+
+<p>What can I do, if I wanted to make the order  more than '3'? I could find the order only until '3' from you tool.</p>
+
+<p>Regards,</p>
+
+<p>Raja</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">07 Aug 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65674">J. PV</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hello John,</p>
+
+<p>Thanks for this great tool. </p>
+
+<p>I do have a question, I am not sure if it has been already answered. I
+ would like pre-define the knots to be the points where the derivative 
+of the curve changes sign. Is there an option for that? I am using the 
+piecewise linear SLM fit, I can send you an example of my data if 
+needed. </p>
+
+<p>Thanks,
+<br>Judith</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Mustafa - I'm glad you like it.</p>
+
+<p>The initial knot placement is as you supply it, or if you supplied 
+nothing, then the default is used. By default, the knots chosen are 
+equally spaced from min(x) to max(x), with 6 knots in total, so there 
+would be 4 interior knots to vary. The optimizer then varies only those 
+interior knots.</p>
+
+<p>There is no overt randomness in the optimization or the initial values though. For example:</p>
+
+<p>x = rand(100);
+<br>y = exp(x);</p>
+
+<p>clear functions
+<br>tic,slm = slmengine(x,y,'knots',6,'interiorknots','free');toc
+<br>Elapsed time is 1.369497 seconds.</p>
+
+<p>tic,slm = slmengine(x,y,'knots',6,'interiorknots','free');toc
+<br>Elapsed time is 0.176209 seconds.</p>
+
+<p>tic,slm = slmengine(x,y,'knots',6,'interiorknots','free');toc
+<br>Elapsed time is 0.127645 seconds.</p>
+
+<p>tic,slm = slmengine(x,y,'knots',6,'interiorknots','free');toc
+<br>Elapsed time is 0.123504 seconds.</p>
+
+<p>tic,slm = slmengine(x,y,'knots',6,'interiorknots','free');toc
+<br>Elapsed time is 0.121428 seconds.</p>
+
+<p>tic,slm = slmengine(x,y,'knots',6,'interiorknots','free');toc
+<br>Elapsed time is 0.123522 seconds.</p>
+
+<p>tic,slm = slmengine(x,y,'knots',6,'interiorknots','free');toc
+<br>Elapsed time is 0.126947 seconds.</p>
+
+<p>The difference in time for the subsequent calls is small, but 
+non-zero. That variability is purely due to your CPU as it is constantly
+ running various other things in the background.</p>
+
+<p>ALWAYS do such time tests multiple times, and ignore the first couple
+ of calls from your sample, as the first time a function is called, 
+MATLAB takes extra time to cache the JIT parsed code. Above, see that I 
+did a clear functions first to clear the function cache. The first call 
+was quite slow, then after the second call, the time needed was far 
+less, and quite consistent.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm confused. If you found this 
+page, you should be able to click on the "Download Submission" button. 
+Once you have done that, unzip the file, and add the resulting directory
+ to your search path using either addpath &amp; savepath or pathtools.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/481979">yunt tian</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Nice ,but how can i download it?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jul 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/415562">Mustafa</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John 
+<br>This is an amazing tool , thanks a lot, and definitely gonna be 
+referenced in my journal. I have one question regarding piecewise linear
+ fitting using free , 'interierknots' : I could not find how it initiate
+ the first values of the knots to be optimized , and I am trying to 
+figure this out in order to implement it on a microcontroller board , I 
+would much appreciated if you could tell me, how the initial guesses 
+were chosen based on the fmincon function so I can evaluate the 
+complexity and how much time it will take on a printed board. Also when 
+does the fitting stops, I noticed that the time it takes to reach to 
+some certain fit varies every time ( for the same options ) which means 
+the initial points differs , right ? 
+<br>Regards, </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Oh, and yes, piecewise linear segments are there. set the degree 'property' to either 1 or 'linear'.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Cyril,</p>
+
+<p>If you mean the ability for SLM to choose a knot placement for the 
+piecewise linear case, it is in there. You can set the 'interiorknots' 
+property to be 'free'.</p>
+
+<p>If you want the end points themselves to be free, I don't see the 
+need, as long as those knots contain the data and are placed as far out 
+as you need them.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Jun 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/436505">cyril</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John</p>
+
+<p>should be "xev = (0:.001:1)';" in the tutorial 2nd cell</p>
+
+<p>Would there be a way to determine automatically the length of bins in
+ piecewise linear fit? they could have any length, but ends hen the data
+ change significantly, any idea, interesting work else</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Joseph,</p>
+
+<p>The point is that the knots MUST contain the data. It will throw an 
+error if that is not true, telling you something to that effect. In 
+fact, I don't know where you got the idea that the knots should lie 
+wholly inside the range of the data, as that is not something I have 
+shown in any example in the tutorials. Note that the default for 'knots'
+ is a set of 6 equally spaced points that COMPLETELY span the data.</p>
+
+<p>If the knots were to fall entirely inside the data, with data points 
+that lie outside, then slmengine would be forced to extrapolate, 
+something which I am strongly opposed to doing with a spline, since 
+extrapolation of a cubic polynomial segment will give virtually random 
+crap.</p>
+
+<p>If however, I force you to contain the data inside knots of the 
+spline, then you can control the shape of the spline over the entire 
+knot range. This is how the tool works. It does so for very good 
+reasons. Note that if you DO wish to extrapolate, then since you can 
+control the shape of the spline out as far as the knots go, then you can
+ force the tool to extrapolate intelligently, at least within the bounds
+ of the knots.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/59021">Joseph</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,</p>
+
+<p>Greatly appreciate your fast response.</p>
+
+<p>Turning C2 off at specific points is probably what I needed, but I am
+ not complaining that it isnt there. Also, I didn't realize the concave 
+up/down can be applied to more than one region, but other aspects of my 
+simulations don't keep the concavity the same. I do appreciate those 
+suggestions.</p>
+
+<p>I kinda knew I would have to overcome my lazyness and start using 
+custom placed knots for each of intervals to capture the inflections and
+ avoid overfitting certain regions.</p>
+
+<p>However I am a little confused by lines 176-178 of slmengine.m.</p>
+
+<p>if (knots(1)&gt;min(x)) || (knots(end)&lt;max(x))
+<br>error(... 'Knots do not contain the data. Data range: ',num2str([min(x),max(x)])])</p>
+
+<p>Suppose my data is just x = 1:10 with the knots = [2, 5, 7] (i.e. 
+knots contained in the data range). That would cause line 176 to 
+evaluate to true and then throw an error.</p>
+
+<p>(2 &gt; 1) || (7 &lt; 10) =&gt; true || true =&gt; true</p>
+
+<p>(If I am not mistaken or confused; but probably just confused) 
+Shouldn't that knot placement for the data set be acceptable because all
+ knots are interior to the data set?</p>
+
+<p>Or is it that the range of the knots must include the data range as subset?</p>
+
+<p>Sorry if this is a basic question, but I don't understand what the 
+significance of having knots placed outside the range of data would be.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">08 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Joseph,</p>
+
+<p>I had thought about allowing a user to turn off C2 continuity at 
+specific knots, but it seemed a bit klugy in terms of the interface.</p>
+
+<p>If you have a decent idea of where those breaks occur, then you could
+ add a spare knot or two in those areas. If you are trying to do it 
+semi-automatically, then you might need to do it in two passes, using 
+the first fit to find roughly where those second derivative breaks live.
+ So the first pass would employ lots of knots in the fit.</p>
+
+<p>You can also specify a region or set of regions where the curve will 
+be concave down or up. Make sure those regions don't overlap, else the 
+fit will be too strongly constrained to be useful, and make sure there 
+are a couple of knots between each pair of consecutive regions.</p>
+
+<p>Finally, remember that derivative estimation is an ill-posed process. So it tends to be a noise amplification process.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">07 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/59021">Joseph</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,</p>
+
+<p>I very much appreciate your SLM tool (plus all your other submissions and useful tips).</p>
+
+<p>I have a question regarding fitting a monotonic increasing data (gas 
+effusion data) that will have inflections (due to increasing or holding 
+the temperature during simulation with time that has an exponential 
+scaling on effusion rate). I am able to get a good fit to the raw data 
+but I am more interested in derivative of the spline because that gives 
+me information about the effusion rate.</p>
+
+<p>I expect the derivative to always be positive (due to monotonicity) 
+and there to be sharp peaks in the derivative due to the inflections in 
+the raw data at temperature changes. Essentially, exponentially 
+increasing then exponentially decreasing, followed by exponentially 
+increasing and exponentially decreasing, etc.</p>
+
+<p>If I was to fit the original data with separate splines defined over 
+intervals of constant temperature behavior I would have jump 
+discontinuities in the first derivatives at the boundary of the 
+temperature intervals which is unacceptable.</p>
+
+<p>To give a pseudo-example to what I expect from the first derivative:</p>
+
+<p>d = [exp(0:0.1:1) exp(0.9:-0.1:0.5) exp(0.4:0.1:1.5) exp(1.4:-.1:1)];</p>
+
+<p>plot(d);</p>
+
+<p>I am fine with the peaks being smoothed a bit due to the smoothness 
+conditions of the spline fit of the original data. I did try changing 
+the C2 to 'off' but then each interval of the derivative was not 
+sufficiently smooth.</p>
+
+<p>Any suggestions on what prescriptions to use when I know my first 
+derivative should be smooth in an interval but have a sharp peak? </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Peter,</p>
+
+<p>Yes, I'm afraid that you did misunderstand the intent, although I can understand your confusion.</p>
+
+<p>SLMEVAL does not look at the prescription you have provided to know 
+how to extrapolate. In fact, it looks only at the spline itself. (The 
+prescription field is returned to you as a field of the model for 
+several reasons. For example, you can use that prescription field to fit
+ a similar spline to other sets of data, passing the prescription itself
+ into slmengine. It also represents a form of documentation for what you
+ had done to build the spline itself.)</p>
+
+<p>From the help for slmeval, I quote:</p>
+
+<p>"As opposed to extrapolation as I am, slmeval will not
+<br>  extrapolate. If you wanted to extrapolate, then you
+<br>  should have built the spline differently."</p>
+
+<p>The point is, if you provide a point that lies outside of the support
+ of the spline, it uses the value of the spline at the end point knot 
+for the value it returns. I suppose you can view this as constant 
+extrapolation.</p>
+
+<p>My point about needing to build the spline "differently" is that you 
+need to supply knots that extend over the region where you will expect 
+to extrapolate. When you do this, now you can tell slmengine how to 
+build the spline over those regions, especially if there is no data out 
+there. Your knowledge as the user is of paramount importance where no 
+data exists to fill a void.</p>
+
+<p>For example, since you are building a purely linear spline (as 
+opposed to a piecewise linear spline), there is no need to use even the 
+default set of 6 equally spaced knots. So you might have done this:</p>
+
+<p>X = linspace(5, 10, 100); 
+<br>Y = 0.5 + 2*X + 0.001*X.^2; </p>
+
+<p>slm = slmengine( X, Y,'plot','on','knots',[-50,50],'degree','linear');
+<br>slmeval( -10, slm )
+<br>ans =
+<br>      -19.704</p>
+
+<p>See that now slmeval can evaluate the function at any point in the desired region.</p>
+
+<p>Or you might have specified the end conditions for the spline. The 
+natural end conditions indicate a spline that has zero second 
+derivatives at each end of the spline. Since this is a two knot cubic 
+spline, that forces the spline to be linear over the entire range, 
+although it is still explicitly cubic. Again, as long as the knots go 
+all the way to where you will need it evaluated, slmeval has no problem.</p>
+
+<p>slm = slmengine( X, Y,'plot','on','knots',[-50,50],'endc','natural');
+<br>slmeval( -10, slm )
+<br>ans =
+<br>      -19.704</p>
+
+<p>Even here though, SLMEVAL willl not extrapolate beyond the knots of 
+the spline, except as a constant. So if I try to force it to do so, 
+SLMEVAL will refuse to cooperate:</p>
+
+<p>slmeval( -100:20:100, slm )
+<br>ans =
+<br>   -100.3  -100.3  -100.3  -80.154  -39.854  0.44588  40.746  81.046  101.2  101.2  101.2</p>
+
+<p>No warnings of this behavior are generated, although I suppose I 
+could have built that into SLM too. So the next time I update SLM, I 
+might consider adding an "extrapolation" option. The options available 
+to the user might then arguably be:</p>
+
+<p>{'error', 'warning', 'constant', 'linear', 'cubic'}</p>
+
+<p>Thus 'error' would produce an error whenever any extrapolation is 
+done. 'warning' would issue a warning message, but then extrapolate as a
+ constant. 'constant' is what is currently done. 'linear' would 
+extrapolate linearly form the end knots, etc.</p>
+
+<p>I suppose the most logical default would be 'warning' to tell the 
+user something strange is being done, although for consistency, 
+'constant' seems right.</p>
+
+<p>A final note, deep in my past, I once wrote a tool that would allow 
+you to extrapolate an existing spline, based on ideas not unlike those 
+in the SLM tools. That is, given a spline, it would attach new knots to 
+that spline, and a shape for the spline that was consistent with any 
+goals that the user supplied. So could specify a new spline that 
+maintained the shape at the end of the old curve, smoothly extrapolating
+ out to a specific point, AND such that the spline was monotonic over 
+that region, or linear over that region, etc. I included ways to specify
+ that the spline could not go above a maximum, below a minimum, have a 
+given slope at the ends, etc. Essentially anything you wanted to do, it 
+allowed you do to it over the extrapolated region. I suppose one day 
+I'll write a tool like that to work with SLM.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/29319">Peter Cotton</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Tutorial gave me the impression 
+that setting a LinearRegion would allow for linear extrapolation outside
+ the knot points. Did I mistake the intent?</p>
+
+<p>&gt;&gt; X = linspace(5, 10, 100);
+<br>Y = 0.5 + 2*X + 0.001*X.^2;
+<br>slm = slmengine( X, Y,'plot','on','LinearRegion',[-50,50]);
+<br>slmeval( -10, slm )</p>
+
+<p>ans =</p>
+
+<p>   10.5209</p>
+
+<p>&gt;&gt; slm.prescription.LinearRegion</p>
+
+<p>ans =</p>
+
+<p>   -50    50
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/271446">Franz Houston</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Leonid - Yes, in the past I have 
+had a few problems with errors in variables, easily enough solvable when
+ the problem is purely linear. It gets a bit nasty when you have splines
+ though. Sorry, but it is not something that SLM can solve. John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Dec 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/411263">Leonid Peshkin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much for putting together and sharing Shape Language Modeling ! </p>
+
+<p>I hope you could answer one question for me. When you fit a spline into a given data (or part of it) using MLS penalty
+<br>the data is divided by X coordinate and penalty is calculated in Y coordinate. 
+<br>But for many datasets, X and Y are symmetric and what I'd see as a natural penalty in these cases would be 
+<br>the Minimal Least Squares of a distance from each point to the 
+curve/spline, calculated as length of orthogonal projection of a point 
+onto that curve.  Is there a way to use slmengine to find optimal fit 
+this way ? 
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Markus - your question refers to 
+the free knot solver in SLM. This uses fmincon because the problem is a 
+(partly) nonlinear one in that case. The knot placement parameters enter
+ nonlinearly here, although some of the parameters are still solved 
+using a direct linear solver.</p>
+
+<p>However the link that you show is a link for an LP solver. I did not 
+see a nonlinear code there, although there are references to the ability
+ to solve quadratic problems, thus least squares. (I admittedly know 
+nothing about CPLEX.) So CPLEX could not be used to replace a call to 
+fmincon as far as I could see.</p>
+
+<p>When SLM is called for a fixed knot problem, I believe that CPLEX 
+could probably be used to replace either of the calls to LSQLIN or LSE, 
+but that does not appear to be your problem.</p>
+
+<p>If anyone can offer a more intelligent response, feel free to help.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/409416">Markus</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Wow that is really a great tool.
+<br>Is there a possibility to change the used optimizer from fmincom to 
+CPLEX Solver? I hope to have an increased speed using that one. Somehow I
+ have no idea how to deal with line "intknots = 
+fmincon(@free_knot_obj,intknots,A,b, ... 
+<br>[],[],[],[],[],fminconoptions,x,y,prescrip);" and especially with 
+the free_knot_obj function because CPLEX expects to have a matrix 
+concerning 
+http://pic.dhe.ibm.com/infocenter/cosinfoc/v12r2/index.jsp?topic=%2Filog.odms.cplex.help%2FContent%2FOptimization%2FDocumentation%2FCPLEX%2F_pubskel%2FCPLEX1131.html
+ at that point. Is there someone who can give me a hint??</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The knots are only equally divided 
+IF you only tell it the number of knots. If you provide a vector of 
+knots, then they are as you indicate in the vector. (Read the help!)</p>
+
+<p>As far as optimal locations, the option is provided to optimize the 
+interior knots. Look at the option for 'interiorknots'. If you specify 
+'free', then it will use an optimizer on the knot locations. Again, you 
+will learn this by reading the help. (Note that this is only an 
+optimization. Any optimizer can fail if it is provided with poor 
+starting values, so if you have a good idea of where the knots might 
+belong, it will help to provide some direction with the starting choice 
+of knots.)</p>
+
+<p>The advice to read the help is quite important to follow, since there
+ are so many options in this tool. You might be surprised at what you 
+find in there. SLM_tutorial.html is worth reading.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/356212">Deepesh upadrashta</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,</p>
+
+<p>Very good tool. </p>
+
+<p>I want to know how can we get optimal piecewise linear functions 
+using this tool. Right now, I think Xrange is equally divided based 
+number of knots. For the given number knots, how to get the optimal 
+locations of X which give best fit to data?</p>
+
+<p>If this tool doesn't have the capability, can you suggest any other option.</p>
+
+<p>Thanks,
+<br>Deepesh.
+</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/38111">Zheng</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">03 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Maria - a good question. While the 
+Hermite form is MOST commonly a cubic, the generic idea extends to other
+ odd orders too, thus 1st, 5th, even 7th order.</p>
+
+<p>A piecewise linear Hermite will be a continuous function, given by 
+the fact that the Hermite form shares a function value across knot 
+boundaries. It must perforce be continuous.</p>
+
+<p>When we step up two orders to a cubic Hermite, the cubic segments 
+share both a function value and the first derivative across knot 
+boundaries. Again, the result is perforce both continuous and 
+differentiable. So we can build an entire family of functions that are 
+everywhere differentiable merely by specifying the value of the function
+ and its derivative at each knot of the spline. (Artful choice of those 
+numbers is what SLM achieves to fit your data while including your goals
+ in the fitting process.)</p>
+
+<p>In theory, I could have allowed the user to choose a 5th degree 
+Hermite (or any odd degree) too. Here we would specify the values of the
+ function and its first and second derivatives at each knot. There would
+ be problems that would then arise, since monotonicity is no longer so 
+easily constrained for such a problem. (For anyone that wants me to do 
+so, sorry, but there is little gain that would arise from a higher order
+ spline than what I have offered, certainly compared to the effort that 
+it would entail on my part to write it. Again, things like monotonicity 
+would become a bit more difficult to constrain. If you need additional 
+flexibility in a spline, then use more knots.)</p>
+
+<p>The point is, a general Hermite form can exist for any odd order, 
+although few authors choose to do so. In this code, I do also offer a 
+piecewise constant form, which personally I don't think terribly 
+valuable, but it was easy enough to include even though it is not a 
+classical Hermite form. Anyway, I'm sure some of my users have used it.</p>
+
+<p>Should I have written this code to use a B-form? Arguably so, since 
+then I could have offered quadratic splines too without much effort. But
+ I've always liked the general Hermite form, since I can look at the 
+coefficients and easily visualize the shape of the spline directly from 
+the function values and derivatives. As well, it was quite easy to write
+ the code for the various constraints. Oh well, my code, my subtle bias.</p>
+
+<p>I hope this rambling answer helps.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Nov 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/398915">Maria</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Excellent toolbox, thank you for sharing.</p>
+
+<p>I have a question about the piecewise linear fit. In smlset it specifies: 
+<br>'degree' = 'linear' --&gt; Use a piecewise linear Hermite </p>
+
+<p>Can a piecewise linear fit be Hermite? I searched for the definition 
+of Hermite fit and it always comes up as cubic. Any ideas would be 
+helpful!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Oct 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/43596">Sven</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>When I grow up I want to make intuitive and unbelievably useful tools like John D'Errico.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">26 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/373342">Zhexuan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I haven't figured out how to do this. Can anyone help me out? 
+<br>What I want is how to make a 3-piecewise linear curve fitting with free knots, with one of the 3 pieces having fixed slope. 
+<br>For example, I would like to have linear, constant, linear curve, 
+where the two intersections are unknown. Is there a built in option that
+ I can use? Thank you in advance. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">26 Jul 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/373342">Zhexuan Zhang</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/367123">SantiagoRojas</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">06 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A long time ago, I wrote a tool 
+that would take an existing spline, and rather than simply evaluate the 
+first or last segments of the spline for extrapolation, I added a new 
+segment that had all desired properties, like monotonicity, concavity, 
+endpoint slope or value constraints, etc. Of course the new segments 
+were fully consistent with the old end points of the spline and the 
+shape at that point. If necessary to meet the specified constraints, I 
+added several segments. The interface for this code was similar to that 
+for SLM, with many possible property/value pairs for any possible shape.</p>
+
+<p>I'll claim that this tool fully met with the SLM philosophy, in that 
+it encouraged the user to explicitly specify information about the shape
+ of the extrapolated curve. While I'd like to provide such a tool, more 
+important in my opinion is to write a GUI wrapper for SLM.</p>
+
+<p>To a large extent you can do that form of extrapolation already, when
+ you first build the curve. Simply specify knots that go out as far as 
+you need the curve to go. The knots need not always be tight up to the 
+end points of the data. (That is the default for SLM, but you can choose
+ your own knots.) This allows you to directly apply any pertinent shape 
+information about that extrapolated region.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">06 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160812">neutrino4242</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,</p>
+
+<p>thanks for your rapid answer. Your reference to Mark Twain gave me a 
+new inside view about his mathematical abilities :-). You are right, 
+it's a bit philosophical question and of course, extrapolation may 
+results in unexpected results. But my background is numerical/physical 
+motivated. I'm interest in of deconvolution of a given time series. The 
+frequency response = susceptibility in fourier space is known. It's is 
+well known, extending the data set = padding is mandatory to avoid 
+boundary effects like ringing. In case of image deconvolution, used as 
+deblurring see e.g. R. Liu, "REDUCING BOUNDARY ARTIFACTS IN IMAGE 
+DECONVOLUTION" + google. The suggestion in the book Numerical Recipes, 
+Chapter 13.1.1 is zero padding. This is fine is the data set starts and 
+ends with zeros but fails in all other cases. Zero padding leads to 
+strong ringing at the beginning and end of the deconvoluted  time 
+series, independently of the padding length. The reason is the 
+discontinuity in the data set before deconvolution. A better idea is the
+ padding with constants to avoid the discontinuity. Next better idea is a
+ extrapolation in the (unphysical) padded region where is no jump in 
+first and second derivative. If i perform the deconvolution with such 
+extrapolation, the ringing artifacts disappears. Of course, after 
+deconvolution, only the time span without the padding regions in front 
+and the end of the data set has a physical interpretation. I hope it 
+explains my physical/numerical motivation of extrapolation with the 
+first and last spline.</p>
+
+<p>BTW: i) I'm a German and my surname is John :-).
+<br>ii) I use the slmengine mostly to obtain the numerical derivative of
+ noisy data. From my point of view, the slmengine has many advantages in
+ control of the necessary smoothing of the noisy data set, e.g. 
+concaveup or integral. It's not possible to implement such (physical 
+motivated) features in more sophisticated algorithms like higher order 
+methods or Savitzky-Golay-filters.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Neutrino,</p>
+
+<p>You might call it an inconsistency. I choose to call it a strongly 
+held difference of opinion. Really,  it all comes down to my philosophy 
+about extrapolation as opposed to that embodied in PPVAL.</p>
+
+<p>I don't let you extrapolate a spline outside of its support using 
+SLMEVAL. Extrapolation does foolish things, just when you least want it 
+to happen. Perhaps my favorite mathematical quote (that hardly anybody 
+else ever seems to know about) is by Mark Twain, from Life on the 
+Mississippi.</p>
+
+<p>“In the space of one hundred and seventy six years the Lower 
+Mississippi has shortened itself two hundred and forty-two miles. That 
+is an average of a trifle over a mile and a third per year. Therefore, 
+any calm person, who is not blind or idiotic, can see that in the Old 
+Oölitic Silurian Period, just a million years ago next November, the 
+Lower Mississippi was upwards of one million three hundred thousand 
+miles long, and stuck out over the Gulf of Mexico like a fishing-pole. 
+And by the same token any person can see that seven hundred and 
+forty-two years from now the Lower Mississippi will be only a mile and 
+three-quarters long, and Cairo [Illinois] and New Orleans will have 
+joined their streets together and be plodding comfortably along under a 
+single mayor and a mutual board of aldermen. There is something 
+fascinating about science. One gets such wholesale returns of conjecture
+ out of such a trifling investment of fact.”</p>
+
+<p>The point is, extrapolation does nasty things, so SLMEVAL does NOT 
+allow you to do anything but extrapolate as a constant function beyond 
+the support of the spline. PPVAL does do so. That is a problem of PPVAL,
+ IMHO.</p>
+
+<p>So what should you do if you truly do NEED to extrapolate? You should
+ have done a better job fitting the spline! Use the capabilities of the 
+SLM tool to fit a spline that goes out as far as you want it to go. Now 
+you have total control over the shape, and you should be monitoring the 
+results to make sure that you get something intelligent, instead of 
+something virtually random as you would get from PPVAL.</p>
+
+<p>To put it another way, if you don't know what the curve should be 
+doing out there beyond the data, or will not choose to deal with 
+controlling the extrapolated shape, then you should not be extrapolating
+ your curve out into those nether regions. Again, this is my opinion, 
+but it seems a very logical one, and it is one that is fully consistent 
+with the philosophies of SLM.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jun 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/160812">neutrino4242</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John, excellent tool, I use it extensively in my daily work with noisy data. A reference in the next paper will be given. </p>
+
+<p>May be, i found a tiny inconsistency regarding the extrapolation of data set. Have a look on this sample code: </p>
+
+<p>% aim: find a good extrapolation of noisy data, green line in final plot
+<br>clear all;close all;
+<br>x=0:0.01:1.5*pi;
+<br>y=sin(x)+rand(size(x))*0.1;
+<br>xinterp=-2:0.01:3*pi;
+<br>% matlab interp1 is not designed for noisy data, fails
+<br>yinterp=interp1(x,y,xinterp,'pchip','extrap');
+<br>figure(1);plot(xinterp,yinterp);
+<br>% first try with slm, only the first and last data point are padded in extrapolation
+<br>yslm=slmengine(x,y,'endconditions','estimate','plot','on');
+<br>yslmeval=slmeval(xinterp,yslm);
+<br>figure(1);hold on;plot(xinterp,yslmeval,'-r');ylim([-3 3]);
+<br>% second try, this works, calulation of the polynomial in the extrapolated regions
+<br>ypp=slmengine(x,y,'endconditions','estimate','plot','on','result','pp');
+<br>yppeval=ppval(xinterp,ypp);
+<br>figure(1);hold on;plot(xinterp,yppeval,'-g');ylim([-3 3]);
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you, John. According to your 
+suggestion, I have fitted my data again, but unfortunately, the results 
+is worse than seperately fitting the two parts of the curve. I made a 
+simple simulation, but I still got the similar result. Would you please 
+take a few minutes to have a look at my simulation data, I will send it 
+to you by email. Thank you.</p>
+
+<p>I found the code written by Meyer on this web site 
+"http://www.stat.colostate.edu/~meyer/srrs.htm", but it was written in R
+ code, not matlab. I think I should learn R code these days. Meyer also 
+did not give out how to fit the data with half convex and half concave, 
+it seems still a long way for me to get out. Would you please give me 
+some suggestion? Thank you.</p>
+
+<p>I am looking forward to your new reply, Thank you again.</p>
+
+<p> </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>No. SLM does NOT use truncated 
+power functions! These are generally a numerically poor way to implement
+ a spline, even only a cubic spline.</p>
+
+<p>SLM uses a Hermite formulation, which personally, I've always 
+preferred as they are easy to look at and understand the shape just by 
+looking at the parameters since they are parameterized by function 
+values and derivatives at the knots. Its just my personal preference 
+though, since a spline by any other basis is still a spline.</p>
+
+<p>As far as monotonicity or concavity applying only over a restricted 
+range, you can do so using SLM directly. Read the help for slmset. It 
+says (in part):</p>
+
+<p>  'increasing' - controls monotonicity of the function
+<br>          = 'off'  --&gt; No part of the spline is constrained to be an
+<br>            increasing function.
+<br>          = 'on' --&gt; the function will be increasing over its entire domain.
+<br>          = vector of length 2 --&gt; denotes the start and end points of a
+<br>            region of the curve over which it is monotone increasing.
+<br>          = array of size nx2 --&gt; each row of which denotes the start
+<br>            and end points of a region of the curve over which it is
+<br>            monotone increasing.</p>
+
+<p>So if you wish a constraint to apply only over a portion of the 
+curve, you can specify the interval. This same approach applies to the 
+concavity constraints. If that constraint would indicate the curve be 
+monotonic over only part of a knot interval, I do stretch it to require 
+monotonicity over a complete knot interval. So you cannot stop midway 
+between a pair of knots. In that case, simply add a knot.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John, would you please tell me if 
+it is possible to fit such kind of curve as below: monotonic 
+'increasing', 'concaveup' in its first half, 'concavedown' in its second
+ half. </p>
+
+<p>To fit the above curve use slm tool, I splited the  curve into 
+halves. Then I use slm tool twice to seperately fit the two parts of the
+ curve. The result is not so good.</p>
+
+<p>Can slm tool solve this problem? I am looking forword to you early reply. </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John, I think I have got the answers to my questions. </p>
+
+<p>First, I thnik the basis spline you used in SLM toolis the truncated 
+power functions, this kind of function is effective for low degree of 
+spline(e.g. degree 2 or 3). In Ramsay's paper, he suggested that 
+I-spline would be a more suitable set of basis splines that can be 
+combined linearly to yield any other spline associated with knot 
+sequence. I wonder if it is possible to add the application by I-spline 
+in slm tool in its latter versions.</p>
+
+<p>Second, Is "slm.stats.finalRP" the smoothing parameter for regression
+ splines? According to the example in "slm_tutorial.m", I can get many 
+"RP", and the last one is about 8.9. </p>
+
+<p>I think you must be busy these days. Wish you good luck all the time. Thank you.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John, I think I have misunderstand 
+"cubic spline". "Cubic spline" only means the spline has degree 3. I can
+ choose different spline basis function to form cubic spline, such as 
+M-spline, B-spline or I-spline. In Ramsay's paper, he gave out some 
+examples of monotonic cubic spline fitting by linear combination of 
+I-splines with degree 3.</p>
+
+<p>John, Would you tell me what is the spline basis function you choosed
+ in SLM tool if I use cubic spline of drgree 3 for curve fitting?</p>
+
+<p>Looking forward to your early reply, Thank you again. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you, John. I got many answers from your comment.</p>
+
+<p>I have a little confused about "A cubic spline means you have a curve
+ that is composed of piecewise segments". In Ramsay's paper, he give out
+ an example (see figure 1 of Ramsay's paper) of combining of six 
+I-splines to form the final spline. Can I regard the "piecewise 
+segments" as "I-spline" or "other-spline" basis functions in SLM tool? </p>
+
+<p>Thank you for your new update, would you please give some 
+explaination on "slm.stats.finalRP "? It will be best if you can give an
+ example on "slm.stats.finalRP " in "slm_tutorial.m".</p>
+
+<p>Thank you again. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Erick - sorry, but I don't have Meyer's paper to know what their terminology is. Degree 3 is a cubic spline in SLM.</p>
+
+<p>I do now recall the Ramsey paper as a useful one, but most of my old 
+collection of papers was left behind when I retired from Kodak.</p>
+
+<p>If you set 30 knots, then the result is ONE cubic spline. A cubic 
+spline means you have a curve that is composed of piecewise segments, 
+thus 30 pieces, that are each connected at the knots, so they are 
+adequately smooth across those tie points.</p>
+
+<p>The current version of SLM did not return the final parameter 
+generated from cross validation, but I've modified it so that it will do
+ so. slm.stats.finalRP will now contain that value. I'll upload the new 
+version in the morning. It was due for an update anyway.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">13 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you, John. Thank you, Peter.
+<br>I have read the paper written by J.O. Ramsay, and after comparison I feel more about the excellence of Slm tool.</p>
+
+<p>John, I have a few questions left about slm tools, would you please give me some idea?
+<br>Firstly, if I choose degree 3 in "slmengine", does it mean that I 
+choose the cubic spline for curve fitting? I read the paper by Meyer, he
+ said that I-spline was the integration of M-spline, and C-spline is the
+ integration of I spline. Is C-spline another name of cubic spline?</p>
+
+<p>Secondly, if I set 30 knots and degree 3 for my data, is the output 
+curve by Slm tool composed by the combination of 30 cubic splines? And 
+are the positions of these cubic splines decided by the position of 
+knots?</p>
+
+<p>Last question, I found that your Slm tool provide "cross validation" 
+to help smooth the curve. Can I get the optimal smooth parameter by set 
+"cross validation" in "slmengine"?</p>
+
+<p>Looking forward to your early reply,  Thank you again.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37633">Peter Simon</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@erick:  A good entry to the 
+literature on regression splines might be J.O. Ramsay, "Monotone 
+regression splines in action", which is heavily cited by later works.  A
+ copy can be obtained for free from  http://tinyurl.com/cqekokb</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Erick - sorry, but I'm not doing 
+active research in this area, and I don't have access to any new papers.
+ I recall a paper by Wright and Wegman about constrained regression 
+splines, but that dates back over 30 years. The work I did in developing
+ SLM was mainly my own, based on my consulting activities, though I 
+never published any papers on the topic.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you, John. I think I get some
+ answer from your comment. Fritsch and Carlson gave out the theory for 
+interpolating, while SLM is a tool for regression. My data is noisy, so I
+ need a tool for regression not for interpolating. Thank you again.</p>
+
+<p>Another question, Can you give me some references about SLM tools on 
+the theory of “monotone piecewise cubic regression”, I found a paper 
+written by meyer, that is "Inference using shape-restricted regression 
+splines". But Meyer said little about "monotone piecewise cubic 
+regression", would you please recommend me some references, Thank you.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Erick - Yes, that paper is where I 
+(long ago) read about the region of monotonicity for a cubic. I use a 
+multi-sided (6 or 7 sides, I can't recall the exact number at the 
+moment) polygonal approximation to the region that contains all 
+monotonic cubic segments.</p>
+
+<p>So is the theory used in SLM exactly that set forth by Fritsch and 
+Carlson? Not exactly, because they describe an interpolating spline, and
+ because I use a different, slightly more inclusive region than they 
+implemented.</p>
+
+<p>As far as knot placement goes, this is traditionally the biggest 
+problem of this class os spline. A knot belongs where the third 
+derivative changes, but that is quite difficult to identify. The idea 
+behind SLM is typically to use generally more knots than you really 
+need, but then to apply artful constraints on the shape of the curve, 
+based on your knowledge of the process. This is where SLM excels, in 
+allowing you to bring virtually any information that you may have about 
+the relationship into the modeling process.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Really excellent work. Thank you.
+<br>I have two questions about monotonic data fitting. First one:I find a
+ paper "Monotone Piecewise Cubic Interpolation(SIAM J. Numer. Anal., 
+17(2), 238–246 
+<br>)".  If I use your SLM tool for monotonic data fitting, is the theory under your slm tool similar with that in this paper.
+<br>Seond question: I don't know how many knots should I choose for data
+ fitting, my curve is a smoothed step curve, If I choose too many knots,
+ the result is wrong. But if I choose not enough knots, the result is 
+not good. I just choose equal intervals to set knots position.
+<br>Looking forward to your early reply, Thank you again.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72415">erick</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Really excellent work. Thank you.
+<br>I have two questions about monotonic data fitting. First one:I find a
+ paper "Monotone Piecewise Cubic Interpolation(SIAM J. Numer. Anal., 
+17(2), 238–246 
+<br>)".  If I use your SLM tool for monotonic data fitting, is the theory under your slm tool similar with that in this paper.
+<br>Seond question: I don't know how many knots should I choose for data
+ fitting, my curve is a smoothed step curve, If I choose too many knots,
+ the result is wrong. But if I choose not enough knots, the result is 
+not good. I just choose equal intervals to set knots position.
+<br>Looking forward to your early reply, Thank you again.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Apr 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/342456">C J</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/165568">Santosh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Assuming, derivative singularity 
+means discontinuity in the derivative function, I was wondering if there
+ is a way a spline can be made to fit a step function reasonably.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">12 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/165568">Santosh</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I have a question regarding an example in your tutorial. 
+<br>What is the meaning of derivative singularity? It may be a naive question but I have not seen a definition of this anywhere.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">12 Feb 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/165568">Santosh</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Jan 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/126136">none</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">31 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/269281">Jeff</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This package is perhaps the most 
+useful that I have downloaded from Mathworks. Before discovering it, I 
+had worked on the problem myself for some specific cases (fitting a 
+monotonic function, fitting one with a simple peak), with just limited 
+success. Thank you John.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">28 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Tim - yes, by default SLM does 
+yield a C2 (twice continuously differentiable) approximation. You can 
+change that of course as you desire.</p>
+
+<p>And, yes, the entire idea behind SLM is it gives you a good fit that 
+allows you to build your own information into a problem, while not 
+requiring the user to provide an explicit model.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Jul 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/268660">Tim</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I find this whole idea of 
+nonparametric "fitting" very intriguing, as I have some data for which I
+ do not have a function to fit to the data. I have position vs. time 
+data points, and I need to get the acceleration vs. time. I have found 
+that different fit functions certainly have different derivative 
+behaviors, so will SLM give a reliable fit that is twice differentiable?
+ You indicate it gives the fit plus derivatives.</p>
+
+<p>If this could work in a way I could have confidence in, it would be a godsend!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">05 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Marc - the problem is interesting, 
+but difficult to solve where cubic polynomials are involved using the 
+class of optimizer that is employed. I'll start by talking about how a 
+simpler constraint is achieved. For example, suppose you define a bound 
+constraint on the value of the function at the left end of the curve, so
+ perhaps you provide a prescription for LeftMinValue.</p>
+
+<p>This is equivalent to setting a single inequality constraint on the 
+parameters of the spline. More importantly, I can write that inequality 
+constraint in a linear form, so those parameters enter linearly into the
+ equation. Since the SLM tool will use a linear solver (in this case, 
+LSQLIN) to solve the problem, this is necessary. LSQLIN is a fast, 
+efficient optimizer, and it returns your answer quickly and 
+consistently. As importantly, you should appreciate that LSQLIN has no 
+need for a starting value like many other optimizers.</p>
+
+<p>Monotonicity is a more difficult class of constraint to define. The 
+trick is to return to how PCHIP works. PCHIP is based on the work of 
+Fritsch and Carlson, where they showed how to set bounds on the set of 
+parameters of a cubic polynomial, such that it will be monotone over a 
+fixed interval. As it turns out, the set of parameters reduces to a 
+region with a convex but curved boundary in the relevant parameter 
+space. I approximate that curved boundary with a slightly smaller 
+polygonal boundary. The nice thing is a polygonal domain can be defined 
+using the linear inequality constraints that LSQLIN allows. Effectively,
+ SLM searches over a slightly smaller set of possible splines that 
+ALWAYS satisfy the required monotonicity constraints. This is what I 
+mean when I say that SLM uses a sufficient set of constraints for that 
+case. There MAY be other splines that would fit the data slightly 
+better, but I cannot find them. The difference is slight and subtle 
+here, but in general not that important. Effectively, the sufficient 
+constraint makes the spline slightly less flexible. So if you really 
+desperately need a more flexible spline, you just use an extra knot or 
+two. No problem.</p>
+
+<p>Global constraints on MinSlope or MaxSlope are reduced by a transformation into the monotonicity problem, so they are also easy.</p>
+
+<p>Ok, so now what happens when you want to enforce a general MaxValue 
+or MinValue prescription? This is the only case where I had to employ 
+these necessary but not truly sufficient constraints. There is no 
+solution (that I know of, and I have looked) for the minimum value of a 
+cubic polynomial over an interval that allows me to enforce that 
+constraint using linear algebra and linear inequality constraints. So 
+whereas I was able to solve the monotonicity problem using a call to 
+LSQLIN, I must employ what are at best necessary constraints for a 
+global max or min value. Essentially, I sample the function at a set of 
+fixed points on each knot interval, constraining the function from 
+exceeding that desired value. As the points are reasonably close, then 
+the function will not exceed your global bound by much, but this is as 
+much as I can realistically do.</p>
+
+<p>The alternative would be to force SLM to use a different solver, 
+perhaps FMINCON. FMINCON puts the problem into an entirely different 
+class, a place that in general you do not wish to go. FMINCON will be 
+MUCH slower in convergence properties. It will require starting values 
+for the parameters. And sometimes FMINCON will not converge to a 
+solution that you like. You don't want to use FMINCON unless that is 
+absolutely necessary here. LSQLIN is a better solver for these problems,
+ but the use of LSQLIN forces me to use purely necessary constraints. 
+They can allow the bound to be exceeded by a small amount. Such is life.</p>
+
+<p>Having explained (with much hand waving, but I hope I got the point 
+across) why I cannot solve your problem exactly in SLM, you are not 
+completely lost. Very often such global bound constraints are a 
+reflection of something a bit deeper. For example, if you know 
+absolutely that your function can never go negative, it may be because 
+you are really working in the wrong domain. That is, if Y may never be 
+negative (OR zero), then why not work in the domain log(Y)?</p>
+
+<p>Effectively, I am suggesting one might build the model log(Y) = f(X),
+ or Y = exp(f(X)). This is simple to do. You merely log your Y variable 
+before passing it into slmengine. Some constraints may need to be 
+adjusted to stay in context. Because this is a nice transformation of 
+the problem, monotonicity is not even affected. If the curve was 
+monotonic before, it still is. And a MinValue constraint at zero need 
+not even be provided. That global minimum value is built into your 
+transformation. Of course, if you had a point with an exactly zero Y 
+value this will fail, but otherwise, it should work nicely.</p>
+
+<p>The point is that very often such a global bound constraint on value 
+is a reflection of a problem with domain. It is a sign that you really 
+are working in the wrong domain anyway. The transformation just brings 
+you into the correct place to work.</p>
+
+<p>Is such a transformation always the best solution? Not for all 
+problems. Remember that when you transform Y, you also muck with the 
+error structure. Logging Y effectively means that you are now assuming a
+ lognormal error structure, so your errors are now proportional. Data 
+points near zero will now assert more influence on the solution. A tiny 
+error in a point very near zero will be massive once you log things. 
+That may or may not be appropriate.</p>
+
+<p>Now, you mention a case where you have both a global MinValue AND a 
+global MaxValue. A logical transformation here is based on a sigmoid 
+function of some ilk. For example, suppose your problem is known to lie 
+in the bounds -1 and 1. Simply transform the problem such that</p>
+
+<p>   Y = erf(f(X))</p>
+
+<p>You would then pass into slmengine the variables X and erfinv(Y). 
+Similar transformations work for a true sigmoid, of the general form 
+1./(1+exp(u)), or for the relation atan(u). Any monotone bounded 
+transformation that has an analytic inverse will work in theory.</p>
+
+<p>Again, these transformations may wreck complete havoc on your error 
+structure. One solution is to employ weights that are based on the local
+ derivative of the transformation you have employed. This is easy enough
+ to implement by passing in the appropriate vector of weights.</p>
+
+<p>The only other potential alternative is to provide a MinValue or 
+MaxValue that is conservative by a bit. This gives the necessary 
+constraint some room before the function exceeds you real bound. The 
+problem is how much headroom to give it, and that is an unanswerable 
+problem. (Sorry.)</p>
+
+<p>So, if you have managed to read all of this without falling soundly 
+asleep, I'll apologize that I cannot provide a perfect solution, but 
+there are some ideas that may work for you. - John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">05 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/253445">Marc</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Really good code, thank you John.
+<br>just one question, I want to have a constrained spline between a max
+ and min values but with 'maxvalue' and 'minvalue' you say (and I try it
+ and it happens): "This constraint is only a necessary constraint. It is
+ not sufficient. In some circumstances the spline may pass slightly 
+above this maximum value". Is there a way to avoid that?
+<br>And why is not exactly? is it a fomulation problem or a numerical? because if is numerical i think i can work with that.</p>
+
+<p>Thanks</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Jun 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/109315">Andrew Stamps</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John, 
+<br>Thanks for this excellent tool.  I wish I had discovered it sooner. 
+ I have been writing custom quadratic programs to fit polynomials with 
+various constraints (monotonicity, concavity, endpoint slopes, etc.) for
+ years, but it seemed like every time required a slight variation on 
+what I had done previously.  This tool captures all of those things I 
+was doing (and many more).</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">27 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Matt- that would not be an 
+uncertainty on the prediction, but on the parameters themselves, and in 
+that case on a knot position. In order to do that you might want to try a
+ bootstrap estimator.</p>
+
+<p>http://en.wikipedia.org/wiki/Bootstrapping_(statistics)</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">25 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/245014">Matt</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John.  This is an excellent 
+tool!  I have a question.  The .rtf accompanying the file lists 
+'prescription.PredictionUncertainty' as an option.  The file itself, 
+however, does not.  Is there any way to tease out the 
+uncertainty/confidence interval for the 'x' value  chosen for a free 
+knot?  The verbose output lists 'Range of prediction errors', but this 
+appears to be in 'y'.  I'm using a linear 3-knot fit.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Actually, 'rmse' is not a property,
+ although you can do what you desire. I wrote that doc before the code 
+itself, and then missed changing the doc to reflect a minor change in 
+design. I simply folded that ability into the 'regularization' property.
+ IF a negative value (-r) is supplied for that property, then a spline 
+is fit using r as a goal for the RMSE. The help correctly tells you 
+this, but then the help is long and it could easily be missed.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/242802">Philipp Rauch</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John,
+<br>thank you for providing this great tool. I use it to fit deformed 
+polymer filaments and it does a great job. I tried to use the 'rmse' 
+parameter described in your documentation. However, there seems to be no
+ such property in the code. Has it been removed (due to frequent sky 
+downfalling events) or do I have to set the rmse property in a different
+ way than other properties? E.g. setting the 'endconditions' property 
+works fine.
+<br>Thanks a lot,
+<br>Philipp</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Per - SPLINEFIT and SLM are different tools completely, with somewhat different design goals.</p>
+
+<p>The basic philosophy of SLM is that you as a user have knowledge 
+about a system to be modeled, and that you will get a far better model 
+as a result by including that knowledge. SLM provides a tool to 
+efficiently and intelligently bring that knowledge into the modeling 
+process. As a spline, SLM is a regularized one, so that the knot 
+locations in SLM are less important than they are for SPLINEFIT. Even if
+ you have more knots than data points, SLM will STILL yield a nice 
+looking result if at all possible. For example, try this with both 
+tools:</p>
+
+<p>x = rand(5,1);
+<br>y = sin(x);
+<br>pp = splinefit(x,y,10);
+<br>fnplt(pp)      % fnplt is in the curvefitting toolbox
+<br>slm = slmengine(x,y,'plot','on','knots',10);</p>
+
+<p>As well, the number of constraints you may apply with SPLINEFIT is 
+quite limited, whereas the use of regularization allows that to not be a
+ problem. Again, this effectively prevents you from even trying to build
+ a truly monotonic cubic spline.</p>
+
+<p>SPLINEFIT offers only a very limited set of constraints on function 
+values and derivatives at specified locations. This makes true 
+monotonicity impossible to assure for a cubic (or higher order) spline. 
+The wide variety of constraints in SLM and natural interface to those 
+constraints make it (IMHO) far more useful.</p>
+
+<p>On the other end, splinefit offers higher order splines for those who
+ truly need a high order of differentiability. Of course, it is also 
+true that estimation of high order derivatives is nearly impossible from
+ data with any noise in it, so you are probably kidding yourself if you 
+try to do so. SPLINEFIT also allows a robust fitting option, a useful 
+idea I have already been encouraged to offer in my next release.</p>
+
+<p>Another thing that SPLINEFIT offers is the ability to solve multiple 
+problems in one call, whereas I think an external loop is an adequate 
+solution to that. Anyway, since every problem is different, I recommend 
+that you build a model and decide if you are happy before going on.</p>
+
+<p>In the end, both tools are useful, and offer the ability to fit a 
+spline to your data. Personally, I think SLM is by far my favorite, but 
+then you cannot blame me for being biased in that direction.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">19 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/122852">Per Nordlöw</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How does SLM compare to the FEX splinefit package?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Matthew,</p>
+
+<p>SLM has some neat abilities. I've tried to put everything in it that 
+anyone will need, although I'll never succeed completely at that goal. 
+You can essentially get your wish here, but you need to explore the 
+options of SLM. Try this example:</p>
+
+<p>x = rand(50,1)*6 - 3;
+<br>y = erf(x);
+<br>slm = slmengine(x,y,'plot','on','knots',[-3 -1.5 1.5 3],'increasing','on');</p>
+
+<p>With 3 segments, a purely cubic spline does not do terribly well. 
+Suppose we provide some information that the function should be linear 
+over the first and last segments? The 'linearregion' property does that.
+ Be careful at the knots so that it does not get confused and try to 
+force the central region to also be linear.</p>
+
+<p>slm = slmengine(x,y,'plot','on','knots',[-3 -1.5 1.5 3], 'increasing','on', 'linearregion',[-3 -1.6;1.6 3]);</p>
+
+<p>Why did this fail? Because SLM by default is a C2 (twice continuously
+ differentiable) function. So the second derivatives are continuous. 
+That is too much of a constraint at those interior knots here with only 3
+ segments. By relaxing the C2 continuity, we can do considerably better.</p>
+
+<p>slm = slmengine(x,y,'plot','on','knots', [-3 -1.5 1.5 3], 'increasing','on', 'linearregion',[-3 -1.6;1.6 3], 'c2','off');</p>
+
+<p>If you explored the coefficients of the resulting segments, you would
+ find that indeed the first and last segments were linear, although they
+ are represented as cubics. The first two coefficients are zero (to 
+within floating point trash.) In fact here the first segment reduced to a
+ constant. </p>
+
+<p>pp = slm2pp(slm);
+<br>pp.coefs
+<br>ans =
+<br>-5.8146e-16  1.3602e-15  -5.8398e-16   -0.99183
+<br>   -0.14716      0.6624  -4.2825e-16   -0.99183
+<br> 2.7139e-16  -6.6613e-16   0.0011762    0.99655</p>
+
+<p>Throw in a spare knot at zero, and the curve fit starts to look much more like an erf.</p>
+
+<p>slm = slmengine(x,y,'plot','on','knots',[-3 -1.5 0 1.5 3], 'increasing','on', 'linearregion',[-3 -1.6;1.6 3], 'c2','off');</p>
+
+<p>Admittedly, just throwing plenty of knots at it works nicely too.</p>
+
+<p>slm = slmengine(x,y,'plot','on','knots',[-3:.25:3], 'increasing','on');</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Apr 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/242163">Matthew Foreman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John,</p>
+
+<p>This tool is great.  I have been using it to perform piecewise regression on movement data from motion capture cameras.</p>
+
+<p>I have one question.  I have searched the forums high and low (I'm 
+sure it exists somewhere and I'm just missing it) and have been unable 
+to find a simple way to vary the degree of the splines for a single fit.</p>
+
+<p>For example, I would like to use 4 knots to produce three different 
+segments, and be able to vary the degree of the segments such that the 
+beginning is linear, the middle is cubic, and the end is linear.</p>
+
+<p>Thanks in advance for your help!  And again, this tool is great!</p>
+
+<p>Matt</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/207850">SHEIKH</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A brilliant work! 
+<br>Thanks John for re-posting SLM.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Chris - Sorry. It was a typo in the
+ code, repaired and re-submitted, to appear this morning. It only would 
+have manifested when certain combinations of constraints were used, so I
+ missed it in the testing.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">22 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73238">Chris van der Togt</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,
+<br>i get an error when using
+<br> slmengine in the following way;</p>
+
+<p>slmengine(x,y,'degree',1,'interiorknots', 'free','knots', 3, 'leftslope', 0, 'rightminslope', 0);</p>
+
+<p>??? Error using ==&gt; lsqlin at 202
+<br>The number of rows in A must be equal to the length of b.</p>
+
+<p>Error in ==&gt; slmengine&gt;solve_slm_system at 2333
+<br>  [coef,junk,junk,exitflag,junk,lambda] = ...</p>
+
+<p>when I look at the call to lsqlin, Mineq has three values and rhsineq only two.
+<br>Mineq = [0 0.5 -0.5];
+<br>rhsineq = [0 0];</p>
+
+<p>Is this a bug, or am I calling slmengine incorrectly.</p>
+
+<p>regards,</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">18 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>DF: I'm sorry, but not at this 
+time. Some constraints (such as monotonicity) become more difficult to 
+encode for higher order splines. While they can be formulated in a 
+necessary form, it does not truly constrain the curve to have the 
+desired properties.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">18 Feb 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/109020">DF</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Can SLM use splines of any order? I would like to use it with 4 and 5th order splines.
+<br>Thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/171160">Britnee crawford</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John,</p>
+
+<p>I just sent you an email regarding a question about fitting a 
+piecewise constant curve to an approximately normal distribution.  But, I
+ thought I would post the question here as well. I need the pw const 
+curve to have 13 pieces, but I want the knots to be freely spaced, but I
+ noticed in your comments that pw constant curves have trouble with 
+this.  Is there any way around it?  </p>
+
+<p>If not, is there a way to make the last interior knot to be at the 
+start of the flat part of the distribution (the right tail) and then the
+ other pieces are fit to the central part of the curve where the curve 
+is changing rapidly.</p>
+
+<p>Thank you again for your great contributions! I have used your tools in several parts of my dissertation.</p>
+
+<p>Thank you,
+<br>Britnee</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">01 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Ron - Thanks for finding the 
+weights bug. I'll post a new version with a fix. As far as references 
+go, I don't really know of any. The basic philosophy is a somewhat 
+Bayesian one, wherein one uses knowledge of the physical system to be 
+modeled to yield a viable model consistent with your prior information. 
+In practice, I have found it to work splendidly, and have used similar 
+schemes for over 20 years. I've given many talks on that modeling 
+philosophy, but no published papers. I'll argue that what makes SLM work
+ as well as it does is the use of a simple scheme to encode your 
+knowledge of the system into a set of well defined parameters describing
+ the shape of the curve.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 May 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/21154">Ron Abileah</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>These routines are very useful.  
+Would like to read more on the mathematical foundation of these 
+routines.  Can you recommend reading beyond the basic  least square 
+splines references?</p>
+
+<p>Also, I made the following correction concerning handling of weights...</p>
+
+<p>% were there any NaN or inf elements in the data?
+<br>k = isnan(x) | isnan(y) | isinf(x) | isinf(y);
+<br>if any(k)
+<br>  % drop them from the analysis
+<br>  x(k) = [];
+<br>  y(k) = [];
+<br>  prescription.Weights(k) = [];    %  ALSO drop corresponding weights, May 2011
+<br>  n = length(x);
+<br>end</p>
+
+<p>% if weights or errorbars were set, verify the sizes of these
+<br>% parameters, compared to the number of data points.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Jan 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/81569">Pete</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Aside from all the awfully clever 
+(advanced) stuff, also a really handy way to find the inflection point 
+in a piecewise linear regression. Neat =)</p>
+
+<p>see: http://www.mathworks.com/matlabcentral/newsreader/view_thread/298989</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It sounds like you want to allow 
+the knots to vary, but only within set bounds? If so, I might suggest 
+putting the call to slmengine inside a wrapper, an objective function 
+for fmincon. Use it to vary the knot placement, with slmengine now 
+seeing a fixed list of knots.</p>
+
+<p>In fact, this is all slmengine does to vary the knots when you 
+specify free interior knots, so one might argue that I could have 
+offered this as yet another option for slm. The problem is, the 
+interface would be a bit messy, coming up with a way to allow the user 
+to specify bounds on some or all of the knots.</p>
+
+<p>If you read through the code, you will see in the beginning how I 
+call fmincon in that case. Note that I constrain the knots to be 
+distinct.</p>
+
+<p>Ask again if I am mistaken about your goal here.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">04 Dec 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/108482">Kevin stephens</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Brilliant package, it does almost 
+everything I need as it is, but just wondering how could I insert a 
+radius at the knots in a free piecewise linear hermite? Obviously I 
+could do it post optimisation but there would be a significant error for
+ a larger radius.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35431">Royi Avital</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>John, Thank you for your response.
+<br>I will cite as you advised me to.</p>
+
+<p>I'll try to have a look at De Boor's book.
+<br>I just wanted the solid math behind the tool.
+<br>Hopefully I'll get from there.</p>
+
+<p>One day, If you do write an article or notes about it I'd be happy to read and learn.</p>
+
+<p>Thank you.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">30 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I wish I had written a paper on 
+this topic years ago when I wrote the first version of this tool. I did 
+not do so then, although I have given a few talks on the underlying 
+modeling philosophy of these tools.</p>
+
+<p>The basic idea is simply that of a least squares spline, augmented by
+ a smoothness penalty like a smoothing spline. The smoothness penalty 
+solves the problem of arbitrary (poor) knot selection in many cases.</p>
+
+<p>General least squares splines are covered in depth in the literature,
+ as are smoothing splines. For these fundamental ideas, de Boor is of 
+course the classic reference, a book worth reading for any user of 
+splines.</p>
+
+<p>What the SLM tools add though is something that I've never really 
+seen written about in the literature. This is the idea that 
+intelligently chosen constraints on the curve shape can act as a strong,
+ useful regularizer on your result. They allow you to build your own 
+knowledge about a system into the model, using a simple vocabulary to 
+describe the desired shape of that curve.</p>
+
+<p>I wrote these tools after some years of seeing people using strange 
+nonlinear regression models to fit curves, just because they needed a 
+curve with a given shape. So the user picks some nonlinear sigmoidal 
+form, a Gaussian, etc., for no better reason than that it fits some 
+fundamental desired shape. And of course, nonlinear regression has its 
+own problems, like poor starting values, lack of convergence, etc. 
+Worse, the user finds that the curve shape they chose is not really the 
+correct shape, so they end up with significant lack of fit. Once a 
+viable tool becomes available to fit those curves, I find that far fewer
+ people end up using nonlinear regression models for the wrong reasons.</p>
+
+<p>There are a couple of files that discuss some of these ideas 
+"slm_tutorial.html" and "shape prescriptive modeling.rtf" in the zip 
+file, but that is all I can offer. We also suggested a citation format 
+for tools from the file exchange, if you do need an explicit reference. 
+You can find our recommendations here:</p>
+
+<p>http://matlabwiki.mathworks.com/Citing_Files_from_the_File_Exchange</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35431">Royi Avital</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Is there any article which could be used as reference to this kind of fitting?
+<br>I'd like to use this tool in my project and would like to back it up with some background info.</p>
+
+<p>Thanks for this amazing tool.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102938">Vitaly Koissin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John, thank you very much in advance! </p>
+
+<p>- If by chance you'll have time to apply this 2nd derivative 
+constraint until the next week, this would be great :-) Then I'll 
+include the better approximation in a coming conference paper.</p>
+
+<p>- you are right; I was just confused by several plateaus observed in 
+the 1st derivative. But as it is already emphasized in the help-file, 
+this means the monotonicity in the sense "=&gt;0' (or "&lt;=0"), not 
+just "&gt;" or "&lt;".</p>
+
+<p>- OK, the total arc length constraint is not vitally important while I
+ have a good number of points to interpolate (and for me it is not a 
+problem to take many points from the test data).</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">20 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>- I should be able to add a 
+constraint on the trend of the curvature. Really, what I'll do is allow 
+the user to constrain the sign of the third derivative. In combination 
+with constraints on the sign of the second derivative, this will allow 
+you to create a function with increasing or decreasing curvature as 
+desired.</p>
+
+<p>- Constraints on monotonic behavior for the first derivative 
+(increasing or decreasing) are already present, in the form of the 
+concaveup or concavedown properties. I'll add a comment in the help to 
+emphasize this fact.</p>
+
+<p>- A constraint on the total arc length of the curve is difficult, 
+since this is a nonlinear constraint. This would force the use of a 
+nonlinear optimizer like fmincon when that constraint is applied.</p>
+
+<p></p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jul 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/102938">Vitaly Koissin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much for this tool! I
+ use it to fit the test data for the bent shape of a textile stripe 
+loaded by its own weight, and SLM the best fitting I used for this!</p>
+
+<p>However :-) I would be happy yet more if you extend the files to include the following properties:</p>
+
+<p>1) monotonic increase/decrease of the curvarure (in my case the 
+condition of decreasing curvarure is very important, since I take the 
+2nd derivative to calculate the bending stiffness of the stripe). Now I 
+need to make a double fiitting: first for the bent shape and then for 
+the slope; otherwise the curvature has too large jumps. But even after 
+this the result is still not perfect :-(</p>
+
+<p>2) controlled length of the curve (similarly to the integral option).
+ This is not so important in my case but could improve the fitting, 
+since this condition has a sound physical sense in my problem).</p>
+
+<p>Property of the monotonic increase/decrease of the 1st derivative could also be useful IMHO.</p>
+
+<p>Best regards,
+<br>Vitaly</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">02 Jun 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/80955">mathworks2011</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>very powerful. </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>No, the attached e-mail address is 
+correct. I don't recall seeing an e-mail from you, but I do get large 
+amounts of e-mail, so your mail may have been lost.</p>
+
+<p>If by ground truth, you intend to force the curve through a given set
+ of points, this is in there already. You force the curve by setting the
+ 'xy' property. Each row of the supplied array defines one point, as an 
+(x,y) pair. Beware that it may be impossible to solve a problem if you 
+specify several points in a single knot interval.</p>
+
+<p>Since slmengine always returns a spline model, it makes sense that 
+any easy operation mode is best achieved by creating a wrapper for 
+slmengine, that then calls slmeval.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35431">Royi Avital</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>This is a great tool.
+<br>Yet I'm missing 2 options:
+<br>1. "Easy Operation Mode" - insert 3 vectors - x, f(x), x'. The result is the Extrapolated f(x').
+<br>2. Setting "Ground Truth" on some data points.</p>
+
+<p>I tried emailing you on something regarding it.
+<br>Might be the email address in your profile is wrong.</p>
+
+<p>Thanks for sharing this great tool.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Apr 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/35431">Royi Avital</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31809">Pete sherer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Are you planning to extend this 
+excellent tool to more than one input parameters.  Something similar to 
+MARS or simpler would provide users with great data surfacing fitting 
+tool.
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Mar 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/84597">Andre Guy Tranquille</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>My thanks to Mark Shore for 
+catching a problem with the curvature constraints that only appeared in 
+some circumstances. The repair has been submitted.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Feb 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Kay - While I would like to help 
+you (and the many others who have requested confidence intervals) and 
+provide confidence intervals for this tool, they would not be valid much
+ of the time. Whenever any inequality constraints are involved, the 
+standard methods for confidence intervals for a linear regression become
+ inappropriate. And many of the most useful aspects of this tool involve
+ inequality constraints. Worse, things become nastier yet if free knots 
+are estimated.</p>
+
+<p>While I could, in theory, use more sophisticated techniques to 
+provide confidence intervals, these techniques would become quite time 
+consuming.</p>
+
+<p>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">31 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/55180">Kay</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>can the program determine 95% cofidence interval of the estimated parameters?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">11 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74597">Mark Shore</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks John, that's just what I was looking for. Didn't think of checking the FAQs.</p>
+
+<p>To add to my previous comments, the command-line arguments for the 
+SLM functions are terse but logical and intuitive. I needed very 
+accurately interpolated fits to densely measured noisy data with 
+multiple inflection points, and was able to get highly satisfactory 
+results on my first day using these tools.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">11 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Citing files on the FEX seems to come up often enough. We came up with a couple of ideas, and put them on this link:</p>
+
+<p>http://matlabwiki.mathworks.com/Citing_Files_from_the_File_Exchange</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Jan 2010</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74597">Mark Shore</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very impressive indeed. Fast, very 
+flexible and easy to use. And - not a small point - the results respect 
+the data... After just a couple of hours' trial, this has convinced me 
+to purchase the optimization toolbox.</p>
+
+<p>A quick question to John or other FEX veterans, what's the generally accepted way to reference FEX submissions?</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/30173">Johannes Korsawe</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>It's really great work. I found it very simple to use and very powerful in the results. Thanks again, John!
+</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">21 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/55180">Kay</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>How best can one determine the uncertainity or error in the fitted line?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">13 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72914">Xavier Xavier</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dave - you found a bug in slmeval. I've just submitted the fix. Thanks for telling me about it.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/62334">David Heslop</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you John this is wonderful 
+package, but I think there may be an issue with slmeval when using the 
+inverse of a spline which is monotonically decreasing.</p>
+
+<p>As a simple example, when I work with data with a positive relationship everything is okay:</p>
+
+<p>%first working with a simple positive relationship
+<br>X=sort(randn(20,1));
+<br>Y=X+10;
+<br>slm = slmengine(X,Y,'plot','on');</p>
+
+<p>%find the Y value for X=0.5
+<br>Yhat=slmeval(0.5,slm,0);</p>
+
+<p>%and work in the opposite direction
+<br>Xhat=slmeval(Yhat,slm,-1)</p>
+
+<p>Xhat =</p>
+
+<p>    0.5000</p>
+
+<p>But when I try them same thing for a negative relationship a NaN is returned:</p>
+
+<p>%now work with a negative relationship
+<br>X=sort(randn(20,1));
+<br>Y=-X-10;
+<br>slm = slmengine(X,Y,'plot','on');</p>
+
+<p>%find the Y value for X=0.5
+<br>Yhat=slmeval(0.5,slm,0)</p>
+
+<p>%and work in the opposite direction
+<br>Xhat=slmeval(Yhat,slm,-1)</p>
+
+<p>Xhat =</p>
+
+<p>   NaN</p>
+
+<p>Of course this is just a simply example and the problem I'm working 
+involves more complex relationships. Maybe I've misunderstood the use of
+ slmeval, but any advice you could offer would be great,
+<br>thanks, Dave</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Dec 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/78456">Juho Jalava</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you John, I'm very, very pleased with the results!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">21 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/72052">Raymond Cheng</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thanks for your sharing.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">02 Nov 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/56906">James</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">29 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The new version just got uploaded to repair the 'active-set' problems incurred with the newer optimization toolbox releases.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">20 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/73238">Chris van der Togt</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Very nice John, I will cite you in our papers.</p>
+
+<p>I also got this warning:
+<br>Warning: Options LargeScale = 'off' and Algorithm = 'trust-region-reflective' conflict.
+<br>Ignoring Algorithm and running active-set method. To run trust-region-reflective, set
+<br>LargeScale = 'on'. To run active-set without this warning, use Algorithm = 'active-set'. </p>
+
+<p>and added this line after line numer 158 in your slmengine.m file;
+<br>fminconoptions.Algorithm = 'active-set';</p>
+
+<p>now I don't get the warning anymore.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>The warning message that fmincon 
+returns is new, due apparently to a change in the optimization toolbox. 
+It is only a warning though, that does not hurt the operation of the 
+code itself.</p>
+
+<p>I'll fix the problem.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">16 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/65950">Didi Cvet</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi
+<br>I think that this kind of toolbox is great idea and I am doing some 
+tests over this file. I have very specific data points and while doing 
+my experiments I've tried to use 'knots', 'free' option but I get this 
+warning message:</p>
+
+<p>Warning: Options LargeScale = 'off' and Algorithm = 'trust-region-reflective' conflict.
+<br>Ignoring Algorithm and running active-set method. To run trust-region-reflective, set
+<br>LargeScale = 'on'. To run active-set without this warning, use Algorithm = 'active-set'.</p>
+
+<p>I've tried to add this row
+<br>&gt;&gt;fminconoptions.Algorithm = 'Active-set';
+<br>in your slmengine.m code but it doesn't work.</p>
+
+<p>Thanks for shearing this!
+<br>Best wishes
+<br>Dijana</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">04 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fabian - This is more difficult to 
+solve. Ordinarily, one would simply fit x(t) and y(t) independently. 
+However, your constraint is on the term</p>
+
+<p>sqrt((dx/dt)^2 + (dy/dt)^2)</p>
+
+<p>Do you need a cubic result? If so, then it is more complex yet, since
+ any overall slope type of constraint is bad enough to formulate for a 
+cubic.</p>
+
+<p>I might use a brute force approach. Use a pair of independent models,
+ x(t), y(t). You can put a global constraint on dx/dt and dy/dt on these
+ models, limiting the maximum and minimum slopes attained.</p>
+
+<p>Now, go back, and test the actual velocity when the two curves are 
+united into a parametric path in the (x,y) plane. If sqrt((dx/dt)^2 + 
+(dy/dt)^2) never exceeds your velocity limit, then you are done. 
+Otherwise, you will now need to use fmincon to perturb the parameters of
+ the splines, while minimizing the global sum of squares of errors to 
+(x(t), y(t)).</p>
+
+<p>The constraints for this will clearly be nonlinear. You might set one
+ constraint at every point, but this will not constrain the true maximum
+ velocity attained. So you might sample each curve at perhaps 1000 
+points, returning 1000 nonlinear constraints along the curve. This will 
+give you a necessary condition on the velocity, but it need not be truly
+ sufficient. Thus it might exceed the aim max velocity by a tiny amount.</p>
+
+<p>Finally, the optimization over the spline parameter space will also 
+have other linear constraints on those parameters. I suppose one could 
+(if you were adventuresome) go into the SLM code to extract (and return)
+ the actual equations used to estimate the model as it is sent to 
+lsqlin. Fmincon would need to employ those constraints too.</p>
+
+<p>HTH,
+<br>John</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">03 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/26226">Fabian Kloosterman</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Dear John,</p>
+
+<p>I wonder if it is possible with your functions to fit a spline to a 
+set of (x,y) coordinates over time (each data point also has an 
+associated weight). I want to constrain the velocity of the fitted 
+spline trajectory, which means I can't just fit (x,t) and (y,t) 
+separately. If this is not possible with your SLM tools, do you have any
+ suggestions how to approach this problem?</p>
+
+<p>Thanks, Fabian</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">01 Oct 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/70327">Jeem79 Olsen</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I just used your package to fit my 
+stress-strain curves obtained from image acquisition and processing, and
+ it works perfectly. Thanks for a great job! However, is it possible to 
+extract only the fitted curve? I didn't see an obvious option for that 
+in your documentation.</p>
+
+<p>Jeem79  </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">17 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/69543">Joshua</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">16 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Pete - A goal to be finished as 
+soon as I can is to write a gui that will wrap SLM inside. Note that the
+ computational tool in SLM is called SLMENGINE. This was purposeful, 
+since my expectation is that most users would use the gui form when I am
+ able to offer it. So I have definitely been planning for a gui wrapper.</p>
+
+<p>Even at that though, SLM would not have allowed you to just draw a 
+curve through your data freehand, and then return the coefficients of 
+that curve. A freehand drawn curve may be arbitrarily complex, or not 
+even a single-valued function. SLM is best when you fit the curve, then 
+apply your own special knowledge of a system to be modeled, in the form 
+of constraints on the overall shape of the underlying functional form. 
+But a drawn curve to follow is too broad of a constraint to follow. So 
+SLM might not be capable in general of returning such a functional form 
+in that eventuality.</p>
+
+<p>As well, this becomes a unique problem. Is the problem then to find 
+the curve that fits the original data, and has the general shape of the 
+freehand drawn curve? This involves two separate problems of 
+approximation. It seems one must use a tool to smooth and approximate 
+the drawn curve. Then take that same tool and try to fit the drawn curve
+ through the data? This task would take some serious amount of effort, 
+and would never be possible to do so where it would be transparent to 
+the user. Worse, suppose the curve in the end had some lack of fit to 
+the data (as perceived by the user?) Where did the lack of fit arise? Is
+ it lack of fit to the freehand drawn curve? Or is it lack of fit to the
+ data itself?</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Sep 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/31809">Pete sherer</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Would it be possible to add the GUI
+ such that users can simply drag/adjust the fitted line in the way they 
+want. The scripts then return the functional form and coefficients of 
+the adjusted line.  Maybe as an additional script or something.</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">30 Jul 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/37633">Peter Simon</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>A superb package.  Well done!  It 
+is perfect for fitting a curve to in-orbit test (IOT) antenna pattern 
+measured data points, used in validating the performance of our 
+satellite antennas.  Thanks very much.</p>
+
+<p>Peter Simon
+<br>Space Systems/Loral
+<br>Antenna Subsystems Operations</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">19 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/40993">wee</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">17 Jun 2009</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/17355">S B</a>
+          </span>
+        </td>
+        <td><span class="comment">&nbsp;</span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">22 Feb 2012</td>
+                  <td><p>Bug fix for inequality constraints, typo when certain equalities were also specified.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">29 Apr 2014</td>
+                  <td><p>Added extrapolation options to slmeval.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416121785830&amp;cv=7&amp;fst=1416121785830&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=1&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fterm%3Dauthorid%253A679&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

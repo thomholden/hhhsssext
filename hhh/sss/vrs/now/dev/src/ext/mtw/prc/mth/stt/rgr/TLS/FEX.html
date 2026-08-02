@@ -1,0 +1,1035 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      	<script src="FEX_files/ahy.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="FEX_files/quant.js"></script><script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>Total Least Squares Method  -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link href="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/31109-total-least-squares-method" rel="canonical">
+<meta content="Total Least Squares Method  - File Exchange - MATLAB Central" property="og:title"><meta content="website" property="og:type"><meta content="http://www.mathworks.com/matlabcentral/fileexchange/file_infos/31109-total-least-squares-method" property="og:url"><meta content="/matlabcentral/fileexchange/screenshots/45329/original.jpg" property="og:image"><meta content="Mathematical method known as total least squares or orthogonal regression or error-in-variables." property="og:description">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="https://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  <style id="ki-mvc-mv" type="text/css"></style><style id="ki-mvc-mf" type="text/css"></style></head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="https://www.mathworks.com/matlabcentral/?s_tid=gn_mlc_logo" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="https://www.mathworks.com/accesslogin/createProfile.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F31109-total-least-squares-method" id="create_account_link">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F31109-total-least-squares-method" id="login_link">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/answers/?s_tid=gn_mlc_an">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/newsreader/?s_tid=gn_mlc_ng">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/linkexchange/?s_tid=gn_mlc_lx">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/?s_tid=gn_mlc_blg">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/trendy/?s_tid=gn_mlc_tnd">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/cody/?s_tid=gn_mlc_cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="https://www.mathworks.com/matlabcentral/contest/?s_tid=gn_mlc_cn">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="https://www.mathworks.com/?s_tid=gn_mlc_main">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  
+
+  <div itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    <div class="manifest">
+
+    <div id="download_submission_button">
+            <div class="btnCont ctaBtn ctaBlueBtn btnSmall">
+              <div class="btn download"><a href="https://www.mathworks.com/matlabcentral/fileexchange/downloads/17286" class="link--download  nologin" title="Download Now">Download Zip</a></div>
+            </div>
+          </div>
+
+
+      <p class="license">
+      Code covered by the <a href="https://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=31109" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext preview_help" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+
+  
+  <h3 class="highlights_title">Highlights from <br>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method" class="manifest_title">Total Least Squares Method </a>
+  </h3>
+  <ul class="manifest">
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//numerFminD.m" class="function" title="Function">[Err, min_param]=numerFmi...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//numerFminS.m" class="function" title="Function">[Err, min_param]=numerFmi...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//statindexes.m" class="function" title="Function">[F, Srez, Scel]=statindex...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//dist_dsearch.m" class="function" title="Function">[min_dist,CP]=dist_dsearc...</a><span class="description">% Search minimum distance between the points
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//corrindex.m" class="function" title="Function">corrindex(XData, YData, Y...</a><span class="description">% Function for calculation of the correlation index
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//distance_nD.m" class="function" title="Function">distance_nD(Point1, Point2)
+</a><span class="description">% Euclidean distance between two points in nD
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//dmodel2D.m" class="function" title="Function">dmodel2D(t,y,a)
+</a><span class="description"></span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//fit_2D_data.m" class="function" title="Function">fit_2D_data(XData, YData,...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//fit_2D_data_SVD.m" class="function" title="Function">fit_2D_data_SVD(XData, YD...</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//model.m" class="function" title="Function">model(xm, a)</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//orm.m" class="function" title="Function">orm(XData, YData, order)
+</a></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//requireFEXpackage.m" class="function" title="Function">requireFEXpackage(FEXSubm...</a><span class="description">Function requireFEXpackage - </span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//demo3Dplane.m" class="script" title="Script">demo3Dplane.m</a><span class="description">Demo on fitting data in 3D via TLS method
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//demoIdent.m" class="script" title="Script">demoIdent.m</a><span class="description">Demo on parameters identification via TLS method
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//demoLRM.m" class="script" title="Script">demoLRM.m</a><span class="description">Demo on Linear regression models via TLS and classical LS method
+</span></li>
+      <li class="manifest"><a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content//demoNRM.m" class="script" title="Script">demoNRM.m</a><span class="description">Demo on Nonlinear regression models via TLS and classical LS method
+</span></li>
+    <li class="manifest_allfiles">
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method/content/TLS.zip" id="view_all_files">View all files</a>
+    </li>
+  </ul>
+
+</div>
+
+
+    <table class="details file" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <th class="maininfo">
+          
+        <div id="rankinfo">
+
+            <div class="starrating">
+              <div style="width:95.0%;">
+                <p>4.75</p>
+              </div>
+            </div>
+            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" class="numberrating">
+              <span itemprop="ratingValue">4.8</span>
+              <span class="divider"> | </span>
+              <a href="#feedback"><span itemprop="ratingCount">4</span> ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">162 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 14.8 KB</span>
+          <span id="fileid">File ID: #31109</span>
+        </div>
+
+          
+  <div id="thumbnail" style="padding-bottom: 3px;">
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/screenshots/8505/original.jpg" border="0"><img itemprop="image" src="FEX_files/preview.jpg" alt="image thumbnail" width="100"></a>
+  </div>
+
+
+<div id="details">
+  <h1 itemprop="name">Total Least Squares Method </h1>
+  <p id="author">
+    by 
+    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span itemprop="name"><a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/25416">Ivo Petras</a></span>
+    </span>
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <span id="submissiondate">
+      19 Apr 2011
+    </span>
+      <span id="date_updated">(Updated 
+        <span itemprop="datePublished" content="2013-04-11">11 Apr 2013</span>)
+      </span>
+  </p>
+
+  <p id="summary">Mathematical method known as total least squares or orthogonal regression or error-in-variables.</p>
+
+
+  <p id="filetools">
+  <span class="divider"> | </span>
+    <a href="https://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F31109-total-least-squares-method&amp;watching=31109" class="addwatch" title="Watch this file">Watch this File</a>
+</p>
+
+</div>
+
+        </th>
+      </tr>
+      <tr>
+        <td class="file">
+          <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>We present a Matlab toolbox which can solve basic 
+problems related to the Total Least Squares (TLS) method in the 
+modeling. By illustrative examples we show how to use the TLS method for
+ solution of:
+<br>- linear regression model
+<br>- nonlinear regression model
+<br>- fitting data in 3D space
+<br>- identification of dynamical system</p>
+
+<p>This toolbox requires another two functions, which are already 
+published in Matlab Central File Exchange. Those functions will be 
+installed to computer via supporting install package 'requireFEXpackage'
+ included in TLS package. For more details see ReadMe.txt file.</p>
+
+<p>Authors: Ivo Petras, Dagmar Bednarova, Tomas Skovranek, and Igor Podlubny
+<br>(Technical University of Kosice, Slovakia)</p>
+
+<p>Detailed description of the functions, examples and demos can be found at the link:</p>
+
+<p>Ivo Petras and Dagmar Bednarova: Total Least Squares Approach to 
+Modeling: A Matlab Toolbox, Acta Montanistica Slovaca, vol. 15, no. 2, 
+2010, pp. 158-170.
+<br>(<a href="http://actamont.tuke.sk/pdf/2010/n2/8petras.pdf">http://actamont.tuke.sk/pdf/2010/n2/8petras.pdf</a>)
+</p></td>
+          </tr>
+
+            <tr>
+    <td class="label">Acknowledgements</td>
+    <td>
+      <p><a href="https://www.mathworks.com/matlabcentral/fileexchange/8277-fminsearchbnd--fminsearchcon">Fminsearchbnd, Fminsearchcon</a>, <a href="https://www.mathworks.com/matlabcentral/fileexchange/12395-orthogonal-linear-regression-in-3d-space-by-using-principal-components-analysis">Orthogonal Linear Regression In 3 D Space By Using Principal Components Analysis</a>, and <a href="https://www.mathworks.com/matlabcentral/fileexchange/31069-require-fex-package">Require Fex Package</a> inspired <i>this file.</i></p>
+      
+    </td>
+  </tr>
+
+
+            <tr>
+              <td class="label"> Required Products </td>
+              <td>
+                  <a href="https://www.mathworks.com/products/statistics/" id="product_link_Statistics Toolbox">Statistics Toolbox</a><br>
+              </td>
+            </tr>
+
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.11 (R2010b)
+            </td>
+          </tr>
+
+
+
+        </tbody></table>
+
+          <table class="fileview section" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="3">
+      <span class="heading">Tags for This File </span>
+      <a href="https://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+      <span class="tags-add-link">
+        <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F31109-total-least-squares-method">Please login</a> to tag files.
+      </span>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div id="all_tags" class="tag-list">
+        <ul><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22errorinvariables%22" rel="nofollow">errorinvariables</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22orthogonal+regression%22" rel="nofollow">orthogonal regression</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22pca%22" rel="nofollow">pca</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22qr%22" rel="nofollow">qr</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22svd%22" rel="nofollow">svd</a><span class="separator"></span></li><li><a href="https://www.mathworks.com/matlabcentral/fileexchange/?term=tag%3A%22total+least+squares%22" rel="nofollow">total least squares</a></li></ul>
+
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <div class="add_tags_form">
+      <form accept-charset="UTF-8" action="/matlabcentral/fileexchange/tags/new" data-remote="true" id="add_new_tags_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+        <input name="id" value="31109" type="hidden">
+        <div class="multicomplete"><input autocomplete="off" class="text multicomplete-input ui-autocomplete-input" id="add_tags" type="text"></div>
+        <div class="buttons">
+          <input value="Save" type="submit">
+          <a href="https://www.mathworks.com/matlabcentral/fileexchange/file_infos/31109-total-least-squares-method" rel="nofollow">Cancel</a>
+        </div>
+</form>      </div>
+    </td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+  $("#add_tags").multicomplete({
+    data_source: { url: "/matlabcentral/fileexchange/tags" }
+  });
+
+  $(".add_tags").click(function() {
+    $(".add_tags_form").show();
+    $("#add_tags").focus();
+    return false;
+  });
+
+  $(".add_tags_form .buttons a").click(function() {
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+  $("#add_new_tags_form").on('ajax:complete', function(){
+    $('.multicomplete > .multicomplete-selected-item').remove()
+    $("#add_tags").val('').blur();
+    $(".add_tags_form").hide();
+    return false;
+  });
+
+</script>
+
+                  <a name="comments"></a>
+        <div id="comment_block">
+          <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td>
+                  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=https%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F31109-total-least-squares-method">Please login</a> to add a comment or rating.
+                </td>
+              </tr>
+          </tbody></table>
+        </div>
+
+
+          <a name="feedback"></a>
+          <div id="feedbacks_table">
+                
+<table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+
+  <thead>
+    <tr class="title">
+      <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(12)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="date"><span class="date">17 Apr 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/456131">haifeng zhang</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Extremely useful!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">15 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/255662">Chi-Fu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John, very appreciate for your 
+detailed explain and pointing out my misunderstanding of R^2 in 
+regression. Your suggestions really helps me, thanks you very much.
+<br>Chi-Fu</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">15 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>I'm sorry, but you seem to think 
+that even for a normal regression, that R^2 offers some "objective" 
+measure of the regression, that it can offer a pass/fail rule for the 
+regression. This is a classic misimpression I think.</p>
+
+<p>There is no simple measure that I know of (including R^2) that will 
+reliably tell you that a regression model is adequate for a general set 
+of data. This will still be true for the TLS case. Nothing changes in 
+that respect. That applies to a general model, and for a completely 
+arbitrary set of data.</p>
+
+<p>Nothing stops you from constructing some simple measure however, 
+based on a subset of your many sets of data. For example, extract some 
+subset of size N of those sets at random, and perform a careful analysis
+ of the resulting models. Look at the residual plots for every one of 
+those models. Compute various measures of fit (I'll offer a couple of 
+example measures later.)</p>
+
+<p>Choose a large enough subset of models such that there will be at 
+least a few of the regression models that would be deemed inadequate. 
+Now find a decision point for some parameter P, such that it reasonably 
+predicts when the regression would have failed, in YOUR opinion, based 
+on that subset of analyses.</p>
+
+<p>Essentially I m suggesting that you choose some parameter P and a set
+ point such that it offers a way to discriminate between "good" and 
+"bad" models.</p>
+
+<p>I can't tell you in advance that any given R^2 analogue, if it is 
+greater than perhaps 0.975 (or any magic number) that it will offer the 
+discriminant you desire. But the point is that you can choose some 
+parameter, and essential calibrate things so that it might indicate when
+ there MIGHT be a problem. Even so, any single number can be fooled by 
+lack of fit masquerading as noise, but you seem insistent on having a 
+magic measure.</p>
+
+<p>So two such measures that would be appropriate for a TLS model might be:</p>
+
+<p>  1. Root Mean Square Total Error.</p>
+
+<p>  2. One minus the ratio of singular values. (Or maybe squared 
+singular values. It is early in the morning for me, and my brain is a 
+bit foggy now about which would be the proper analogue.)</p>
+
+<p>So the first measure is simply an analogue of mean square error, so 
+you compute the squared normal distance to the line for each point. 
+Compute the sqrt of the mean of all of those squared distances, so 
+RMSTE.</p>
+
+<p>The second measure I listed is based on the idea of how the SVD works
+ to generate a TLS model itself. You can think of the singular values as
+ measuring the size of the point cloud in each of two directions, along 
+the regression line, and normal to that line. So the ratio of the 
+smaller singular value divided by the larger one will yield a number 
+between 0 and 1. Subtract that from 1, and we get a number that will 
+mimic R^2. A visual way of thinking about it is as if we are measuring 
+the ratio of the axis lengths of an ellipse around your data. If that 
+ellipse around your data formed a perfect circle, then this measure 
+would return 0. If the data fell on a perfect straight line with no 
+error, then this measure would return 1.</p>
+
+<p>I'm now done consulting in the comments, with my apologies to the authors of this submission.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/255662">Chi-Fu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi John,
+<br>Thanks for letting me know to trust my eye more than a number. My 
+problem is I have more than ten thousands curves and I want to rule out 
+some data that fit really bad before I start to select data manually. So
+ if there is any objective value that represent the goodness of fitting 
+in TLS, it would be useful to me.
+<br>Best,
+<br>Chi-Fu</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">14 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/679">John D'Errico</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>@Chi-Fu: The classic R^2 formula is not appropriate for TLS, since it fails to utilize the errors in both variables.</p>
+
+<p>You COULD cobble up a scheme that mimics R^2, in the sense that as it
+ approaches 1, the fit becomes perfect, and at zero the fit is random. 
+However, IF you are a chronic user of R^2 such that you rely on it to 
+know when your fit is adequate, any such measure will not satisfy your 
+internal calibration for the resulting number. You will simply get a 
+number out, but without any meaning behind that number. For example, is 
+0.9 a good enough value for R^2? For some systems, maybe any R^2 over 
+0.5 might be as good as we can expect. For others, any R^2 under 0.99 
+might reflect a worthless model.</p>
+
+<p>Is the error in the model lack of fit? Or is it noise? Looking at the
+ residuals can help you learn things like this, but a simple number will
+ be completely fooled.</p>
+
+<p>In the end, DON'T rely on a simple measure like R^2 anyway. It is a 
+crutch. Instead, look at the fit. Look at the residuals. If the result 
+seems adequate for your purposes, then it is. Your eyes and your brain 
+will provide a far better measure of the fit than any single number.</p>
+
+<p>Look at it another way. I (or any random person) might fit your set 
+of data with a line. Without knowing your goals, without your knowledge 
+of the process, your knowledge of the noise structure, I might deem the 
+fit adequate. Hey, it might look like a reasonable fit to me! Only you 
+know how good of a fit you need to obtain. WHAT ARE YOUR GOALS FOR THIS 
+FIT? Only you can use your knowledge of the system to know if the fit is
+ adequate.</p>
+
+<p>Of course, if you have no knowledge of the process that generated 
+your data, if you have no understanding of that system, if you are just 
+pushing numbers through a formula to get a number out, then you are the 
+wrong person to be doing the job! Don't use a number to provide a 
+substitute for good judgment. If you lack that skill or any basis for 
+judgment, then find someone who has the necessary knowledge.</p>
+
+<p>So throw away the crutch of R^2. Please.</p>
+
+<p>I'll get off my soapbox now, end my rant.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">14 Jan 2014</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/255662">Chi-Fu</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Great code! it works perfectly to me. 
+<br>One little thing need help. After fitting, how to evaluate the 
+goodness of fitting? I am dividing the err by number of data points 
+(like MSE). I would like to calculate R-square value, can someone give 
+me a hint how to do that? thanks in advance! </p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">22 May 2013</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/130763">Scarlett</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Fantastic code, thank you! I am running into a bug when I run it for my model. If you could help that would be amazing.</p>
+
+<p>??? Subscripted assignment dimension mismatch.</p>
+
+<p>Error in ==&gt; numerFminS&gt;calculation at 80
+<br>    points(:,2)=y';</p>
+
+<p>Error in ==&gt; fminsearchbnd&gt;intrafun at 259
+<br>fval =
+<br>feval(params.fun,reshape(xtrans,params.xsize),params.args{:});</p>
+
+<p>Error in ==&gt; fminsearch at 205
+<br>fv(:,1) = funfcn(x,varargin{:});</p>
+
+<p>Error in ==&gt; fminsearchbnd at 229
+<br>[xu,fval,exitflag,output] =
+<br>fminsearch(@intrafun,x0u,options,params);</p>
+
+<p>Error in ==&gt; numerFminS at 63
+<br>[a,fval,exitflag,output] =
+<br>fminsearchbnd(@calculation,a0,LBa,UBa,options);
+<br>%#ok&lt;*ASGLU&gt;</p>
+
+<p>Error in ==&gt; inFxnEst at 257
+<br>[err, fun] =
+<br>numerFminS(@expHandle,2,[0,0],[maxODabs+1,2],(0:length(A1(:,3))-1),A1(:,3)); </p>
+
+<p>The input parameters are the same size so I'm not sure what the error would be. Any help is greatly appreciated, thank you!</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">25 Mar 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/234844">Alex Vaughan</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Lovely code.  I found one bug, 
+which I believe is the same as the one Martin points out; his fix didn't
+ work for me, though.  In numerFminS, the 'fun' parameter is never used,
+ and the fit is always evaluated based on whatever is in model.m.  This 
+can be fixed as:</p>
+
+<p>- 65: [yy]=model(xdata, a);
+<br>+ 65: [yy] = @(xdata,a)fun(xdata,a)</p>
+
+<p>Following this, I can then call the function without using model.m as:</p>
+
+<p>fun = @(a,x)(a(1) .* ( x.^a(2) ) ./ (x.^a(2) + a(3).^a(2))); %or whatever.
+<br>[ErrTLS,P_TLS] = numerFminS( fun , 3 , lowerBounds, upperBounds, x, y)</p>
+
+<p>Cheers,
+<br>Alex</p></span></td>
+        <td width="80">
+            <div class="starrating" title="4">
+              <div style="width:80%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">10 Jan 2012</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/213894">Martin</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Hi Ivo!</p>
+
+<p>I used numerFminS.m which works very well.</p>
+
+<p>I just want to suggest a minor correction: When you replace 'model' 
+with 'fun' in lines 65 and 77, you can make use of the 'fun' parameter 
+and need no longer rely on the 'model.m'-file. I think that's what you 
+intended anyway, when you created the 'fun' parameter.</p>
+
+<p>Cheers,</p>
+
+<p>Martin</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">08 Oct 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/162236">trison</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Thank you very much for you sharing with your package on TLS.
+<br>I tested it, and found some mistakes on function [Err, P]  = orm(X, Y, order). 
+<br>They were listed the following:
+<br>line 21    kx=length(X); instead of kx=length(Xdata);
+<br>line 22    ky=length(Y); instead of ky=length(Ydata);
+<br>line 28    P = R/(Q'.*X.^order); When matlab run it, matlab always sent an Error message"
+<br>Matrix dimensions must agree".
+<br>And the followed line 29 30 may meet the same Error. But I can not get your mean and have not any advise.</p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="date"><span class="date">27 Aug 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/116792">Charles Nelatury</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>Works great!</p></span></td>
+        <td width="80">
+            <div class="starrating" title="5">
+              <div style="width:100%;
+                ">
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr class="&quot;odd&quot;">
+        <td class="date"><span class="date">10 Jun 2011</span></td>
+        <td>
+          <span class="author">
+            <a href="https://www.mathworks.com/matlabcentral/fileexchange/authors/74723">Oleg Nazarevych</a>
+          </span>
+        </td>
+        <td><span class="comment"><p>??? Undefined function or variable "Yhat".</p>
+
+<p>Error in ==&gt; fit_2D_data at 49
+<br>alpha = atan(abs((Yhat-YData)./(Xhat-XData)));
+<br> </p></span></td>
+        <td width="80">
+            <div class="starrating commentonly" title="Comment only" align="center"></div>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+          </div>
+
+            <table class="fileview section" cellpadding="0" cellspacing="0" border="0">
+              <tbody><tr class="title">
+                <th colspan="2"><span class="heading">Updates</span></th>
+              </tr>
+                <tr>
+                  <td class="date">09 Oct 2011</td>
+                  <td><p>Updated function orm(). Fixed error discovered by 'Trison'.</p></td>
+                </tr>
+                <tr>
+                  <td class="date">11 Apr 2013</td>
+                  <td><p>Fixed bug discovered by Martin and Alex.</p></td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    
+    <script src="FEX_files/show.js" type="text/javascript"></script>
+  </div>
+
+<p id="contactus"><a href="https://www.mathworks.com/company/feedback/">Contact us</a></p>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+function p2l(pathname,query,hash){
+pathname = pathname.replace(/\//gi,"__")
+if(pathname === "__") {
+pathname = "homepage";
+}
+pathname = pathname.replace(/\./gi,"_");
+query = query.replace(/\?/gi,'-');
+params = query.split('&');
+args = []
+for(arg = 0; arg < params.length; arg++){
+args.push(params[arg].split('=')[0]);
+}
+pathname += args.join('-');
+pathname += hash.replace(/#/gi,"-");
+return pathname;
+};
+_qevents.push({
+qacct:"p-zfNtLVVEHXE-1",
+labels: "_fp.event." + p2l(document.location.pathname,
+document.location.search, document.location.hash)
+});
+</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-zfNtLVVEHXE-1.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- BEGIN Google Code for UK and .COM Domains-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1023777138;
+var google_conversion_label = "SVIBCMq3xwIQ8rKW6AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="FEX_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" src="FEX_files/a.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?frame=0&amp;random=1416013006209&amp;cv=7&amp;fst=1416013006209&amp;num=1&amp;fmt=1&amp;label=SVIBCMq3xwIQ8rKW6AM&amp;guid=ON&amp;u_h=900&amp;u_w=1600&amp;u_ah=865&amp;u_aw=1600&amp;u_cd=24&amp;u_his=2&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=11&amp;u_nmime=166&amp;frm=0&amp;url=https%3A//www.mathworks.com/matlabcentral/fileexchange/31109-total-least-squares-method&amp;ref=https%3A//www.mathworks.com/matlabcentral/fileexchange/index%3Fpage%3D115%26sort%3Ddate_desc_updated%26term%3D&amp;vis=1"
+ /&gt;</iframe>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023777138/?value=0&label=SVIBCMq3xwIQ8rKW6AM&guid=ON&script=0"/>
+</div>
+</noscript>
+<!-- END Google Code for UK and .COM Domains-->
+
+      
+
+	
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2014 The MathWorks, Inc.</li>
+        <li class="first"><a href="https://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="https://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="https://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="https://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_lkd&amp;url=http://www.linkedin.com/company/the-mathworks_2" title="LinkedIn" class="linkedin" rel="nofollow" target="_blank"></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow" target="_blank"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow" target="_blank"><span class="text">Facebook</span></a></li>
+        		<li class="last icon"><a href="https://www.mathworks.com/programs/bounce_hub_generic.html?s_tid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow" target="_blank"><span class="text">Twitter</span></a></li>        
+        
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="https://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="https://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="https://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="https://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="https://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="https://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="https://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="https://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+if (typeof mboxLoadSCPlugin == 'function') {
+	mboxLoadSCPlugin(s); 
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->
+
+
+  
+
+    
+  
+<!-- BEGIN Qualaroo --> 
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+			var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+			s.async = true; s.src = '//s3.amazonaws.com/ki.js/49559/ahy.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+<!-- END Qualaroo --> 
+
+    
+
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content"></ul><span class="ui-helper-hidden-accessible" aria-relevant="additions" aria-live="assertive" role="status"></span></body></html>

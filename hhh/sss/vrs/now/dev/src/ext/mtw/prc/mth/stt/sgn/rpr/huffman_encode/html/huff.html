@@ -1,0 +1,531 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>Huffman Encoding Example</title>
+      <meta name="generator" content="MATLAB 7.5">
+      <meta name="date" content="2008-05-07">
+      <meta name="m-file" content="huff"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>Huffman Encoding Example</h1>
+         <introduction>
+            <p>The goal of this program is to demonstrate the construction of a huffman encoding tree. The tree is represented as a binary
+               tree using MATLAB's built in treeplot commands. Contruction of the tree as well as the huffman code book will be described
+               in later sections.
+            </p>
+         </introduction>
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#1">Initial Setup</a></li>
+               <li><a href="#2">User-Defined Input</a></li>
+               <li><a href="#3">Probability Calculation Flag</a></li>
+               <li><a href="#4">Encoding Bit Calculation</a></li>
+               <li><a href="#5">Console Output - Initial Characters and Their Respective Probabilties</a></li>
+               <li><a href="#6">Initialize The Encoding Array</a></li>
+               <li><a href="#7">Huffman Encoding Process</a></li>
+               <li><a href="#8">Form Huffman Tree Data</a></li>
+               <li><a href="#9">Calculate Tree Parameters</a></li>
+               <li><a href="#10">Plot the Huffman Tree</a></li>
+               <li><a href="#11">Console Output - Tree Symbols and Their Probabilities</a></li>
+               <li><a href="#12">Tree Parameter Extraction</a></li>
+               <li><a href="#13">Label Tree Nodes</a></li>
+               <li><a href="#14">Label Tree Edges</a></li>
+               <li><a href="#15">Huffman Codebook Calculation</a></li>
+               <li><a href="#16">Console Output - Huffman Codebook</a></li>
+            </ul>
+         </div>
+         <h2>Initial Setup<a name="1"></a></h2>
+         <p>The first piece of code in this program initializes the MATLAB console by clearing all existing state (variables, figures,
+            etc.)
+         </p><pre class="codeinput"><span class="comment">% ************************</span>
+<span class="comment">% Hufmman Coding Example</span>
+<span class="comment">%</span>
+<span class="comment">%  By Jason Agron</span>
+<span class="comment">% ************************</span>
+
+<span class="comment">% Setup the MATLAB console</span>
+clc;
+clear <span class="string">all</span>;
+close <span class="string">all</span>;
+</pre><h2>User-Defined Input<a name="2"></a></h2>
+         <p>The user is able to define the string that they wish to huffman encode. The probability distribution for individual characters
+            can either be automatically calculated based on the character's ASCII values, or can be manually inputted by the user
+         </p><pre class="codeinput"><span class="comment">% Define the character string</span>
+my_str = <span class="string">'jason'</span>;
+</pre><h2>Probability Calculation Flag<a name="3"></a></h2>
+         <p>Flag used to enable auto-calculation of probabilities * 1 = Auto-calculate * 0 = User-defines probabilities manually</p><pre class="codeinput">auto_prob = 1;
+
+<span class="keyword">if</span> (auto_prob == 1)
+    <span class="comment">% Automatically calculate the probability distribution</span>
+    <span class="comment">% Get ASCII version of each character</span>
+    <span class="comment">%	Each ASCII value represents the probability of finding the character</span>
+    prob_dist = double(my_str);
+<span class="keyword">else</span>
+    <span class="comment">% Manually define the probability distribution</span>
+    prob_dist = [10 19 30 40 50];
+<span class="keyword">end</span>
+</pre><h2>Encoding Bit Calculation<a name="4"></a></h2>
+         <p>Calculate the number of bits to encode with.  In a binary system it takes n-bits to encode 2^n items, so the number of bits
+            to use in the huffman encoder is simply the log-base2 of the number of items to encode.
+         </p><pre class="codeinput">num_bits = ceil(log2(length(prob_dist)))
+</pre><pre class="codeoutput">
+num_bits =
+
+     3
+
+</pre><h2>Console Output - Initial Characters and Their Respective Probabilties<a name="5"></a></h2>
+         <p>Display character vs. probability</p><pre class="codeinput">disp(<span class="string">'Character Probability:'</span>);
+<span class="keyword">for</span> i = 1:length(prob_dist)
+	display(strcat(my_str(i),<span class="string">' --&gt;  '</span>,num2str(prob_dist(i))));
+<span class="keyword">end</span>
+total = sum(prob_dist)
+</pre><pre class="codeoutput">Character Probability:
+j --&gt;106
+a --&gt;97
+s --&gt;115
+o --&gt;111
+n --&gt;110
+
+total =
+
+   539
+
+</pre><h2>Initialize The Encoding Array<a name="6"></a></h2>
+         <p>A cell array is used to hold the groups of symbols for encoding.  The process of huffman encoding combines characters into
+            larger symbols, and a cell is the ideal type of container for managing this type of data in MATLAB. Initialize a cell array
+            (where each cell is a symbol)
+         </p><pre class="codeinput"><span class="keyword">for</span> i = 1:length(my_str)
+	sorted_str{i} = my_str(i);
+<span class="keyword">end</span>
+
+<span class="comment">% Save initial set of symbols and probabilities for later use</span>
+init_str = sorted_str;
+init_prob = prob_dist;
+</pre><h2>Huffman Encoding Process<a name="7"></a></h2>
+         <p>Iteratively sort and combine symbols based on their probabilities. Each iteration sorts the available symbols and then takes
+            the two symbols with the "worst" probabilties and combines them into a single symbol for the next iteration.  The loop halts
+            when only a single symbol remains.
+         </p><pre class="codeinput">sorted_prob = prob_dist;
+rear = 1;
+<span class="keyword">while</span> (length(sorted_prob) &gt; 1)
+	<span class="comment">% Sort probs</span>
+	[sorted_prob,indeces] = sort(sorted_prob,<span class="string">'ascend'</span>);
+
+	<span class="comment">% Sort string based on indeces</span>
+	sorted_str = sorted_str(indeces);
+
+	<span class="comment">% Create new symbol</span>
+	new_node = strcat(sorted_str(2),sorted_str(1));
+	new_prob = sum(sorted_prob(1:2));
+
+	<span class="comment">% Dequeue used symbols from "old" queue</span>
+	sorted_str =  sorted_str(3:length(sorted_str));
+	sorted_prob = sorted_prob(3:length(sorted_prob));
+
+	<span class="comment">% Add new symbol back to "old" queue</span>
+	sorted_str = [sorted_str, new_node];
+	sorted_prob = [sorted_prob, new_prob];
+
+	<span class="comment">% Add new symbol to "new" queue</span>
+	newq_str(rear) = new_node;
+	newq_prob(rear) = new_prob;
+	rear = rear + 1;
+<span class="keyword">end</span>
+</pre><h2>Form Huffman Tree Data<a name="8"></a></h2>
+         <p>Get all elements for the tree (symbols and probabilities) by concatenating the original set of symbols with the new combined
+            symbols and probabilities
+         </p><pre class="codeinput">tree = [newq_str,init_str];
+tree_prob = [newq_prob, init_prob];
+
+<span class="comment">% Sort all tree elements</span>
+[sorted_tree_prob,indeces] = sort(tree_prob,<span class="string">'descend'</span>);
+sorted_tree = tree(indeces);
+</pre><h2>Calculate Tree Parameters<a name="9"></a></h2>
+         <p>Calculate parent relationships for all tree elements. This will allow the treeplot command to realize the correct tree structure.</p><pre class="codeinput">parent(1) = 0;
+num_children = 2;
+<span class="keyword">for</span> i = 2:length(sorted_tree)
+	<span class="comment">% Extract my symbol</span>
+	me = sorted_tree{i};
+
+	<span class="comment">% Find my parent's symbol (search until shortest match is found)</span>
+	count = 1;
+	parent_maybe = sorted_tree{i-count};
+	diff = strfind(parent_maybe,me);
+	<span class="keyword">while</span> (isempty(diff))
+		count = count + 1;
+		parent_maybe = sorted_tree{i-count};
+		diff = strfind(parent_maybe,me);
+	<span class="keyword">end</span>
+	parent(i) = i - count;
+<span class="keyword">end</span>
+</pre><h2>Plot the Huffman Tree<a name="10"></a></h2>
+         <p>This is easily done using the treeplot command whose argument is the array that contains the parent relationships for each
+            node.
+         </p><pre class="codeinput">treeplot(parent);
+title(strcat(<span class="string">'Huffman Coding Tree - "'</span>,my_str,<span class="string">'"'</span>));
+</pre><img vspace="5" hspace="5" src="huff_01.png"> <h2>Console Output - Tree Symbols and Their Probabilities<a name="11"></a></h2>
+         <p>Print out tree in text form</p><pre class="codeinput">display(sorted_tree)
+display(sorted_tree_prob)
+</pre><pre class="codeoutput">
+sorted_tree = 
+
+    'jason'    'jas'    'on'    'ja'    's'    'o'    'n'    'j'    'a'
+
+
+sorted_tree_prob =
+
+   539   318   221   203   115   111   110   106    97
+
+</pre><h2>Tree Parameter Extraction<a name="12"></a></h2>
+         <p>Extract binary tree parameters.  These parameters include the (x,y) coordinates of each node so that we can accurately place
+            label on the tree.
+         </p><pre class="codeinput">[xs,ys,h,s] = treelayout(parent);
+</pre><h2>Label Tree Nodes<a name="13"></a></h2>
+         <p>Place labels on each tree node</p><pre class="codeinput">text(xs,ys,sorted_tree);
+</pre><img vspace="5" hspace="5" src="huff_02.png"> <h2>Label Tree Edges<a name="14"></a></h2>
+         <p>Put weights on the tree.  The slope of each edge indicates whether it is a left-branch or a right-branch.  Left-branches have
+            positive slope and are labelled with a '1', while right-branches have negative slope and are labelled with a '0'.  The labels
+            for the weights are placed at the midpoint of each edge. Calculate mid-points for each node
+         </p><pre class="codeinput"><span class="keyword">for</span> i = 2:length(sorted_tree)
+	<span class="comment">% Get my coordinate</span>
+	my_x = xs(i);
+	my_y = ys(i);
+
+	<span class="comment">% Get parent coordinate</span>
+	parent_x = xs(parent(i));
+	parent_y = ys(parent(i));
+
+	<span class="comment">% Calculate weight coordinate (midpoint)</span>
+	mid_x = (my_x + parent_x)/2;
+	mid_y = (my_y + parent_y)/2;
+
+	<span class="comment">% Calculate weight (positive slope = 1, negative = 0)</span>
+	slope  = (parent_y - my_y)/(parent_x - my_x);
+	<span class="keyword">if</span> (slope &gt; 0)
+		weight(i) = 1;
+	<span class="keyword">else</span>
+		weight(i) = 0;
+	<span class="keyword">end</span>
+	text(mid_x,mid_y,num2str(weight(i)));
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="huff_03.png"> <h2>Huffman Codebook Calculation<a name="15"></a></h2>
+         <p>A huffman codebook can be calculated by traversing the huffman tree while recording the weights encountered while travelling
+            to each node. Calculate codebook
+         </p><pre class="codeinput"><span class="keyword">for</span> i = 1:length(sorted_tree)
+	<span class="comment">% Initialize code</span>
+	code{i} = <span class="string">''</span>;
+
+	<span class="comment">% Loop until root is found</span>
+	index = i;
+	p = parent(index);
+	<span class="keyword">while</span>(p ~= 0)
+		<span class="comment">% Turn weight into code symbol</span>
+		w = num2str(weight(index));
+
+		<span class="comment">% Concatenate code symbol</span>
+		code{i} = strcat(w,code{i});
+
+		<span class="comment">% Continue towards root</span>
+		index = parent(index);
+		p = parent(index);
+	<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><h2>Console Output - Huffman Codebook<a name="16"></a></h2>
+         <p>Display code book in textual form</p><pre class="codeinput">codeBook = [sorted_tree', code']
+</pre><pre class="codeoutput">
+codeBook = 
+
+    'jason'       ''
+    'jas'      '1'  
+    'on'       '0'  
+    'ja'       '11' 
+    's'        '10' 
+    'o'        '01' 
+    'n'        '00' 
+    'j'        '111'
+    'a'        '110'
+
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.5<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% Huffman Encoding Example
+% The goal of this program is to demonstrate the construction of a huffman encoding tree.
+% The tree is represented as a binary tree using MATLAB's built in treeplot commands.
+% Contruction of the tree as well as the huffman code book will be described in later sections.
+
+%% Initial Setup 
+% The first piece of code in this program initializes the MATLAB console by clearing
+% all existing state (variables, figures, etc.)
+
+% ************************
+% Hufmman Coding Example
+%
+%  By Jason Agron
+% ************************
+
+% Setup the MATLAB console
+clc;
+clear all;
+close all;
+
+%% User-Defined Input
+% The user is able to define the string that they wish to huffman encode.
+% The probability distribution for individual characters can either be automatically calculated
+% based on the character's ASCII values, or can be manually inputted by the user
+
+% Define the character string
+my_str = 'jason';
+
+%% Probability Calculation Flag
+% Flag used to enable auto-calculation of probabilities
+% * 1 = Auto-calculate
+% * 0 = User-defines probabilities manually
+auto_prob = 1;
+
+if (auto_prob == 1) 
+    % Automatically calculate the probability distribution
+    % Get ASCII version of each character
+    %	Each ASCII value represents the probability of finding the character
+    prob_dist = double(my_str);
+else
+    % Manually define the probability distribution
+    prob_dist = [10 19 30 40 50];
+end
+
+%% Encoding Bit Calculation
+% Calculate the number of bits to encode with.  In a binary system it takes n-bits to encode 2^n items, 
+% so the number of bits to use in the huffman encoder is simply the log-base2 of the number of items to encode.
+num_bits = ceil(log2(length(prob_dist)))
+
+%% Console Output - Initial Characters and Their Respective Probabilties
+% Display character vs. probability
+disp('Character Probability:');
+for i = 1:length(prob_dist)
+	display(strcat(my_str(i),' REPLACE_WITH_DASH_DASH>  ',num2str(prob_dist(i))));
+end
+total = sum(prob_dist)
+
+%% Initialize The Encoding Array
+% A cell array is used to hold the groups of symbols for encoding.  The process of huffman encoding combines characters into larger symbols,
+% and a cell is the ideal type of container for managing this type of data in MATLAB.
+% Initialize a cell array (where each cell is a symbol)
+for i = 1:length(my_str)
+	sorted_str{i} = my_str(i);
+end
+
+% Save initial set of symbols and probabilities for later use
+init_str = sorted_str;
+init_prob = prob_dist;
+
+%% Huffman Encoding Process
+% Iteratively sort and combine symbols based on their probabilities.
+% Each iteration sorts the available symbols and then takes the two symbols
+% with the "worst" probabilties and combines them into a single symbol for the
+% next iteration.  The loop halts when only a single symbol remains.
+sorted_prob = prob_dist;
+rear = 1;
+while (length(sorted_prob) > 1)
+	% Sort probs
+	[sorted_prob,indeces] = sort(sorted_prob,'ascend');
+
+	% Sort string based on indeces
+	sorted_str = sorted_str(indeces);
+
+	% Create new symbol
+	new_node = strcat(sorted_str(2),sorted_str(1));
+	new_prob = sum(sorted_prob(1:2));
+
+	% Dequeue used symbols from "old" queue
+	sorted_str =  sorted_str(3:length(sorted_str));
+	sorted_prob = sorted_prob(3:length(sorted_prob));
+
+	% Add new symbol back to "old" queue
+	sorted_str = [sorted_str, new_node];
+	sorted_prob = [sorted_prob, new_prob];
+
+	% Add new symbol to "new" queue
+	newq_str(rear) = new_node;
+	newq_prob(rear) = new_prob;
+	rear = rear + 1;
+end
+
+%% Form Huffman Tree Data
+% Get all elements for the tree (symbols and probabilities) by concatenating
+% the original set of symbols with the new combined symbols and probabilities
+tree = [newq_str,init_str];
+tree_prob = [newq_prob, init_prob];
+
+% Sort all tree elements
+[sorted_tree_prob,indeces] = sort(tree_prob,'descend');
+sorted_tree = tree(indeces);
+
+%% Calculate Tree Parameters
+% Calculate parent relationships for all tree elements.
+% This will allow the treeplot command to realize the correct tree structure.
+parent(1) = 0;
+num_children = 2;
+for i = 2:length(sorted_tree)
+	% Extract my symbol
+	me = sorted_tree{i};
+
+	% Find my parent's symbol (search until shortest match is found)
+	count = 1;
+	parent_maybe = sorted_tree{i-count};
+	diff = strfind(parent_maybe,me);
+	while (isempty(diff))
+		count = count + 1;
+		parent_maybe = sorted_tree{i-count};
+		diff = strfind(parent_maybe,me);
+	end
+	parent(i) = i - count;
+end
+
+%% Plot the Huffman Tree
+% This is easily done using the treeplot command whose argument is
+% the array that contains the parent relationships for each node.
+treeplot(parent);
+title(strcat('Huffman Coding Tree - "',my_str,'"'));
+
+%% Console Output - Tree Symbols and Their Probabilities
+% Print out tree in text form
+display(sorted_tree)
+display(sorted_tree_prob)
+
+%% Tree Parameter Extraction
+% Extract binary tree parameters.  These parameters include the (x,y) coordinates
+% of each node so that we can accurately place label on the tree.
+[xs,ys,h,s] = treelayout(parent);
+
+%% Label Tree Nodes
+% Place labels on each tree node
+text(xs,ys,sorted_tree);
+
+%% Label Tree Edges
+% Put weights on the tree.  The slope of each edge indicates whether it is a 
+% left-branch or a right-branch.  Left-branches have positive slope and are
+% labelled with a '1', while right-branches have negative slope and are labelled
+% with a '0'.  The labels for the weights are placed at the midpoint of each edge. 
+% Calculate mid-points for each node
+for i = 2:length(sorted_tree)
+	% Get my coordinate
+	my_x = xs(i);
+	my_y = ys(i);
+
+	% Get parent coordinate
+	parent_x = xs(parent(i));
+	parent_y = ys(parent(i));
+
+	% Calculate weight coordinate (midpoint)
+	mid_x = (my_x + parent_x)/2;
+	mid_y = (my_y + parent_y)/2;
+
+	% Calculate weight (positive slope = 1, negative = 0)
+	slope  = (parent_y - my_y)/(parent_x - my_x); 
+	if (slope > 0)
+		weight(i) = 1;
+	else
+		weight(i) = 0;
+	end
+	text(mid_x,mid_y,num2str(weight(i)));
+end
+
+%% Huffman Codebook Calculation
+% A huffman codebook can be calculated by traversing the huffman tree while recording
+% the weights encountered while travelling to each node.
+% Calculate codebook
+for i = 1:length(sorted_tree)
+	% Initialize code
+	code{i} = '';
+
+	% Loop until root is found
+	index = i;
+	p = parent(index);
+	while(p ~= 0)
+		% Turn weight into code symbol
+		w = num2str(weight(index));
+
+		% Concatenate code symbol
+		code{i} = strcat(w,code{i});
+
+		% Continue towards root
+		index = parent(index);
+		p = parent(index);	
+	end
+end
+
+%% Console Output - Huffman Codebook
+% Display code book in textual form
+codeBook = [sorted_tree', code']
+
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

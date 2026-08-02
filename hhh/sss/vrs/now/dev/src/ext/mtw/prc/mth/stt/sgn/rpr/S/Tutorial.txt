@@ -1,0 +1,163 @@
+% 
+% The main function of this toolbos is computeS.
+%  
+% S=computeS(TS,Idx);
+% S=computeS(TS,Idx,ED);
+%    
+% It computes S estimator given a set of multivariate measurements TS
+% and a matrix Idx, each column representing the indexes of recording
+% sites among whose you want to assess synchronization phenomena.
+% S estimator values is then returned, one value for each cluster. You
+% can choose of computing S estimator without or with embedded time
+% series, if you specify an additional input ED (the parameters for
+% embedding).
+% Certainly, you can define Idx by hand, and TS too. However, we make
+% available functions to make life much easier.
+%
+% Henceforth, we present an example we hope will help to show the
+% features of this toolbox. It concerns an application to EEG recordings.
+% Specifically, here, a 128 EEG/ERP Geodesic setup is considered.
+%
+% Let we start with the collection of recorded data (matrix TS).
+% If you have to work with more than one trial for your experiment,
+% you should organize the matrix of data merging the different trials
+% and separate the trials with NaNs.
+% In order to do that, two functions are available.
+% fileSelector merges data stored in distinct files, one for each trial
+% (check its help for more details on in/output and constraints).
+% For this example, we have 40 trials to load in the directory DataTest.
+% You may also specify bad trials, which will not be processed. In our
+% example let assume the trial 12 and 33 are bad.
+% The command to enter would be then the following:
+%
+% TS=fileSelector('DataTest/Test_','mat',2,1,40,[12 33],'EEG');
+%
+% If you want to merge data you have already loaded and are in you
+% workspace, you may use the function compose (it works similarly to
+% fileSelector).
+%
+% Now, we need to compute Idx. You can define clusters of electrodes by
+% hand, otherwise you can generate clusters using the topology of the
+% recording sites, if available. In this example, the 129 electrodes
+% (128 + 1 reference electrode)  has some topology we can use.
+% You may start by loading the coordinates of the electrodes setup.
+% A simplified 2-D version of 128 EEG Geodesic setup coordinates
+% is stored in the file CoordInterp.mat
+%
+% Let we load it, and get the matrix of polar coordinates CO
+%
+% load CoordInterp
+%
+% To get the topological arrengement of this electrodes net, we compute
+% their incidence matrix A. Let we do it by
+%
+% A=IncidenceMatrix(CO);
+%
+% You can compute clusters with the function
+% getClusters. This function computes a cluster for each electrode
+% sas the set of k-step neighbors of that electrode. To compute 129
+% clusters (128 electrodes + reference electrode) defined from 1st
+% step neighbors you may write
+%
+% % all electrodes, 1st step neighbors
+% Idx=getClusters(A,1);
+% 
+% Moreover, you may specify a region of electrodes of
+% interest as a third input (the default case is all 129
+% electrodes as seen earlier). Only electrodes indexed in area will be taken into
+% account to form the clusters. For example, if you want to compute
+% clusters on 50 electrodes, e.g. the ones from 40 to 89, then you may
+% write
+%
+% area=[40:89];
+% Idx_a=getClusters(A,1,area);
+% 
+% There is a third possibility to compute clusters with
+% getSpots. Imagine you may want to compute two clusters, composed
+% by the 1st nearest neighbors of two distant electrodes, e.g. 51 and 98. 
+% In order to do that, you may write
+%
+% intsite=[51 98];
+% Idx_s=getSpots(A,1,intsite);
+%
+% A last possibility is only given when you are dealing with EEG setups.
+% You can get clusters indexes of a priori defined brain areas. To get indexes 
+% corresponding to the left occipital area (see help getRegionEEG for other
+% predefined areas), write simply
+%
+% Idx_OL=getRegionEEG('OL');
+%
+% If there's a set of known bad sites, you can clean your
+% index from these so that the corresponding values will not
+% be taken into account when computing S. In this example, if [15
+% 122 123] are bad electrodes
+%
+% Idx=clearBad(Idx, [15 122 123]);
+%
+% Also, you must mark as bad the reference electrode. 
+%
+% Idx=clearBad(Idx, [129]);
+%
+% We can now compute S for the non-embedded time series. 
+%
+% S=computeS(TS,Idx);
+% S_a=computeS(TS,Idx_a);
+% S_OL=computeS(TS,Idx_OL);
+%
+% If you want to use embedded time series, you should first compute 
+% parameters for embedding (ED matrix). This can be done by using the 
+% function computeED.
+%
+% ED=computeED(TS);
+% (please, take into account that this operation may last several minutes 
+% of computation time)
+%    
+% Now, S estimator can be computed on embedded time series with 
+% the following command
+%
+% S_ed=computeS(TS,Idx,ED);
+%%%%%%%%%%%%%%%%%%%%%
+% A few words of comment about using embedded time series. You should be
+% aware that using this technique is not a 'plug and play' way of
+% working with data. We have set several parameters (that play a role in
+% the computation of embedding) to default values you may change depending 
+% on your data. Please, read computeED's help for further details.
+%%%%%%%%%%%%%%%%%%%%%
+%
+% Once S has been computed, you may want to visualize it. 
+%     
+% If you want to visualize S estimator computed over the whole brain
+% you may use the function plotS
+%
+% plotS(S);
+%
+% Furthermore, you may plot S estimator (S_a) computed over a subset of 
+% electrodes (area).
+%
+% plotS(S_a,area);
+%      
+% plotS can be extended in order to make plots when you have other (no EEG) recording 
+% setups (please check the help of plotS).   
+%
+%     
+% Finally, the last possibility offered by the toolbox is a statistical test 
+% to compare S estimator computed over, e.g., two different experimental conditions. 
+% In our example, we have two data sets, stored respectively
+% in DataTest and DataTest1 (for details about the data, please readme.txt 
+% in the directories). We have already computed S estimator for the
+% data set in DataTest. Let compute S estimator for the second one
+% stored in DataTest1. (hp. same bad channels for the two experiments)
+% The commands can be the following:
+%
+% % get the data 
+% TS_1=fileSelector('DataTest1/Test_','mat',2,1,40,[],'EEG');
+% % compute S over all the electrodes
+% S_1=computeS(TS_1,Idx);
+%
+% Now, you can assess if statistical differences are in the mean (over trials) 
+% between S and S_1. You get the p-value to which you the null 
+% hp. that S and S_1 are equal in mean is tenable by 
+%
+% intsite=[66 70 71 84 85 90];
+% pv=MultiTest(S(:,intsite),S_1(:,intsite))
+%
