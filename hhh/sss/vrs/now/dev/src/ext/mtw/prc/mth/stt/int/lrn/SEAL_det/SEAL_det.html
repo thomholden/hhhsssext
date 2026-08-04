@@ -1,0 +1,339 @@
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>SEAL_det</title>
+      <meta name="generator" content="MATLAB 7.0.1">
+      <meta name="date" content="2006-08-23">
+      <meta name="m-file" content="SEAL_det_doc"><style>
+body {
+  background-color: white;
+  margin:10px;
+}
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+pre.codeinput {
+  margin-left: 30px;
+}
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.showbuttons {
+  margin-left: 30px;
+  border: solid black 2px;
+  padding: 4px;
+  background: #EBEFF3;
+}
+
+pre.codeoutput {
+  color: gray;
+  font-style: italic;
+}
+pre.error {
+  color: red;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows.  On Gecko-based browsers, the shrink-to-fit doesn't work. */ 
+p,h1,h2,div {
+  /* for MATLAB's browser */
+  width: 600px;
+  /* for Mozilla, but the "width" tag overrides it anyway */
+  max-width: 600px;
+  /* for IE */
+  width:expression(document.body.clientWidth > 620 ? "600px": "auto" );
+}
+
+    </style></head>
+   <body>
+      <h1>SEAL_det</h1>
+      <introduction>
+         <p>A stack-based sequential depth-first decoder that returns Maximum-Likelihood solutions to spherical LAST coded MIMO system-type
+            problems, i.e., a lattice decoder with spherical boundary control.  In such problems, the depth of the search tree is known
+            but the number of children per node is not fixed. The number of children and their associated symbol decisions are governed
+            by the structure of the spherical LAST code.  <tt>SEAL_det</tt> enforces boundary control by decomposing the code generator matrix in a manner that is like a dual to the standard sequential
+            decoding procedure itself.
+         </p>
+				 <p>Note that inputs to <tt>SEAL_det</tt> must be real.  The
+				 depth-first search is effected by applying the <b>Schnorr-Euchner
+				 (Adaptive radius)</b> enumeration to traverse the nodes of the tree.
+				 Exclusive of spherical boundary control, its operation is identical to
+				 that of a sphere decoder based on this enumeration.
+         </p>
+         <p>Please send comments and bug reports to <a href="mailto:karen.su@utoronto.ca">karen.su@utoronto.ca</a>.
+         </p>
+      </introduction>
+      <h2>Contents</h2>
+      <div>
+         <ul>
+            <li><a href="#1">Basic Operation</a></li>
+            <li><a href="#2">Solution Validation</a></li>
+            <li><a href="#3">Detailed Parameter Specification</a></li>
+            <li><a href="#4">Usage Example</a></li>
+            <li><a href="#5">References</a></li>
+         </ul>
+      </div>
+      <h2>Basic Operation<a name="1"></a></h2>
+      <p>This real-valued depth-first stack-based sequential decoding algorithm uses a decoding tree of <tt>m+1</tt> levels where each node has an arbitrary and unknown number of children.  At each stage, the node under consideration is expanded
+         if its weight is less than the squared distance to nearest currently known lattice point.  This distance threshold is initially
+         set to infinity.
+      </p>
+      <p>Because it is a depth-first traversal, we expand a node by computing its first child.  If it is a leaf node, clearly it cannot
+         be further expanded. In this case, we will have found a closer lattice point than that previously known. Therefore we can
+         adaptively reduce the distance threshold to reflect this new discovery.
+      </p>
+      <p>If the weight of the node under consideration is larger than this distance threshold, then the current search path is terminated
+         because it cannot possibly lead to a closest lattice point. Upon path termination, the next node to be considered is the next
+         sibling of its parent.
+      </p>
+      <p>Note that it is possible for a node to have no children, and also for the next sibling to be invalidated by means of boundary
+         control.
+      </p>
+      <h2>Solution Validation<a name="2"></a></h2>
+      <p>In some cases, the LAST codebook may be punctured, i.e., not all lattice points lying inside the shaping region are in fact
+         valid codewords. Some of the so-called outer shell codewords, i.e., those requiring the greatest transmitted power, may be
+         removed the codebook.  Unfortunately the depth-first nature of the search performed by <tt>SEAL_det</tt> does not lend itself easily to solution validation. If it is an important feature for the desired application, please consider
+         the priority first LAST decoder <tt>LAST_dec</tt>, which is also available via the Matlab File Exchange.
+      </p>
+      <h2>Detailed Parameter Specification<a name="3"></a></h2>
+      <p>Complex to real conversion by stacking should be done prior to calling <tt>SEAL_det</tt>. In addition, if either lattice reduction assistance or MMSE pre-processing are desired, these operations should also be
+         applied in advance.
+      </p>
+      <p>Notes:</p>
+      <p>- <tt>size(H,1)</tt> is expected to be equal to <tt>length(y)</tt>.
+      </p>
+      <p>- <tt>size(H,1)</tt> is expected to be greater than or equal to <tt>size(H,2)</tt>.
+      </p>
+      <p>- <tt>size(H,2)</tt> is expected to be equal to <tt>m</tt>.
+      </p>
+      <p>- The solution <tt>zHat</tt> is an integer vector; be sure to apply any necessary   scaling prior to calling <tt>SEAL_det</tt> so that this solution is appropriate.
+      </p>
+      <h2>Usage Example<a name="4"></a></h2><pre class="codeinput">mPhy  = 2;                   <span class="comment">% 2x2 MIMO system</span>
+L     = 2;                   <span class="comment">% code spans 2 time periods</span>
+m     = 2*mPhy*L;            <span class="comment">% code matrix size is governed by the number of</span>
+                             <span class="comment">% real space-time dimensions</span>
+y     = randn(m,1);          <span class="comment">% generate random target vector</span>
+HPhyC = randn(mPhy,mPhy)+i*randn(mPhy,mPhy);
+HPhyR = [real(HPhyC) -imag(HPhyC); imag(HPhyC) real(HPhyC)];
+H     = kron(eye(L),HPhyR);  <span class="comment">% construct space-time x space-time channel</span>
+
+load <span class="string">optimizedLASTcode</span>;      <span class="comment">% get LAST code specification: G,u,D</span>
+[zHat,wHat,nv,nf] = SEAL_det(mPhy,y,G,u,D,H,L);
+
+fprintf(<span class="string">'Solution                   [zHat] = '</span>);
+disp([zHat]);
+fprintf(<span class="string">'Search distance            [wHat] = '</span>);
+disp([wHat]);
+fprintf(<span class="string">'# of expansions              [nv] = '</span>);
+disp([nv]);
+fprintf(<span class="string">'# of flops (approx.)         [nf] = '</span>);
+disp([nf]);
+
+wHatML = Inf;
+nwords = size(COORDINATES,2);
+<span class="keyword">for</span> jj = 1:nwords
+  zHatTest = COORDINATES(:,jj);
+  wHatTest = norm(y-H*G*zHatTest)^2;
+  <span class="keyword">if</span> wHatTest &lt; wHatML
+    wHatML = wHatTest;
+    zHatML = zHatTest;
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+fprintf(<span class="string">'Verify solution          [zHatML] = '</span>);
+disp([zHatML]);
+fprintf(<span class="string">'Verify squared distance  [wHatML] = '</span>);
+disp([wHatML]);
+</pre><pre class="codeoutput">Solution                   [zHat] =          0
+                                             1
+                                             0
+                                             0
+                                             0
+                                             0
+                                             0
+                                             0
+
+Search distance            [wHat] =     1.9670
+
+# of expansions              [nv] =          7
+
+# of flops (approx.)         [nf] =        384
+
+Verify solution          [zHatML] =          0
+                                             1
+                                             0
+                                             0
+                                             0
+                                             0
+                                             0
+                                             0
+
+Verify squared distance  [wHatML] =     1.9670
+
+</pre><h2>References<a name="5"></a></h2>
+      <p>The author would like to acknowledge the following work on the design and optimization of spherical LAST codes by means of
+         which the sample 2x2x2 code provided along with this distribution in <tt>optimizedLASTcode.mat</tt> was generated:
+      </p>
+      <p>I. Berenguer, X. Wang, N. Prasad, J. Wang, and M. Madihian, <b>Design of minimium-error-rate lattice (space-time) codes via stochastic optimization and gradient estimation</b>, IEEE Global Communications Conference (Globecom), St. Louis, MO, Dec. 2005.
+      </p>
+      <p>For more details on the <tt>SEAL_det</tt> algorithm and boundary control for spherical LAST decoding, please see the following paper:
+      </p>
+      <p>K. Su, I. Berenguer, I.J. Wassell, X. Wang, <b>Efficient maximum-likelihood decoding of spherical lattice space-time codes</b>, IEEE International Conference on Communications (ICC), Istanbul, Turkey, June 2006.
+      </p>
+      <p>and its companion website:</p>
+      <p><a href="http://www.comm.utoronto.ca/~karen/seqdecLs.php">A Depth-First (Space-Time) Lattice Decoder with Spherical Boundary Control</a>.</p>
+      <p class="footer"><br>
+         Published with MATLAB&reg; 7.0.1<br></p>
+      <!--
+##### SOURCE BEGIN #####
+%% SEAL_det
+% A stack-based sequential depth-first decoder that returns Maximum-Likelihood
+% solutions to spherical LAST coded MIMO system-type problems, i.e., a lattice
+% decoder with spherical boundary control.  In such problems, the depth of the
+% search tree is known but the number of children per node is not fixed. The
+% number of children and their associated symbol decisions are governed by the
+% structure of the spherical LAST code.  |SEAL_det| enforces boundary control
+% by decomposing the code generator matrix in a manner that is like a dual to
+% the standard sequential decoding procedure itself.
+%
+% Note that inputs to |SEAL_det| must be real.  The depth-first search is
+% effected by applying the *Schnorr-Euchner (Adaptive radius)* enumeration to
+% explore the nodes of the tree.  Its operation is identical to that of a
+% sphere decoder based on this enumeration.
+%
+% Please send comments and bug reports to karen.su@utoronto.ca.
+
+%% Basic Operation
+% This real-valued depth-first stack-based sequential decoding algorithm uses a
+% decoding tree of |m+1| levels where each node has an arbitrary and unknown
+% number of children.  At each stage, the node under consideration is expanded
+% if its weight is less than the squared distance to nearest currently known
+% lattice point.  This distance threshold is initially set to infinity.
+%
+% Because it is a depth-first traversal, we expand a node by computing its
+% first child.  If it is a leaf node, clearly it cannot be further expanded.
+% In this case, we will have found a closer lattice point than that previously
+% known. Therefore we can adaptively reduce the distance threshold to reflect
+% this new discovery.
+%
+% If the weight of the node under consideration is larger than this distance
+% threshold, then the current search path is terminated because it cannot
+% possibly lead to a closest lattice point. Upon path termination, the next
+% node to be considered is the next sibling of its parent.
+%
+% Note that it is possible for a node to have no children, and also for the
+% next sibling to be invalidated by means of boundary control.
+
+%% Solution Validation
+% In some cases, the LAST codebook may be punctured, i.e., not all lattice
+% points lying inside the shaping region are in fact valid codewords. Some of
+% the so-called outer shell codewords, i.e., those requiring the greatest
+% transmitted power, may be removed the codebook.  Unfortunately the
+% depth-first nature of the search performed by |SEAL_det| does not lend itself
+% easily to solution validation. If it is an important feature for the desired
+% application, please consider the priority first LAST decoder |LAST_dec|,
+% which is also available via the Matlab File Exchange.
+
+%% Detailed Parameter Specification
+% Complex to real conversion by stacking should be done prior to calling 
+% |SEAL_det|. In addition, if either lattice reduction assistance or MMSE
+% pre-processing are desired, these operations should also be applied in 
+% advance.
+%
+% Notes:
+%
+% - |size(H,1)| is expected to be equal to |length(y)|.
+%
+% - |size(H,1)| is expected to be greater than or equal to |size(H,2)|.
+%
+% - |size(H,2)| is expected to be equal to |m|.
+%
+% - The solution |zHat| is an integer vector; be sure to apply any necessary 
+%   scaling prior to calling |SEAL_det| so that this solution is appropriate.
+
+%% Usage Example
+mPhy  = 2;                   % 2x2 MIMO system
+L     = 2;                   % code spans 2 time periods
+m     = 2*mPhy*L;            % code matrix size is governed by the number of 
+                             % real space-time dimensions
+y     = randn(m,1);          % generate random target vector
+HPhyC = randn(mPhy,mPhy)+i*randn(mPhy,mPhy);
+HPhyR = [real(HPhyC) -imag(HPhyC); imag(HPhyC) real(HPhyC)];
+H     = kron(eye(L),HPhyR);  % construct space-time x space-time channel
+
+load optimizedLASTcode;      % get LAST code specification: G,u,D
+[zHat,wHat,nv,nf] = SEAL_det(mPhy,y,G,u,D,H,L);
+
+fprintf('Solution                   [zHat] = ');
+disp([zHat]);
+fprintf('Search distance            [wHat] = ');
+disp([wHat]);
+fprintf('# of expansions              [nv] = ');
+disp([nv]);
+fprintf('# of flops (approx.)         [nf] = ');
+disp([nf]);
+
+wHatML = Inf;
+nwords = size(COORDINATES,2);
+for jj = 1:nwords
+  zHatTest = COORDINATES(:,jj);
+  wHatTest = norm(y-H*G*zHatTest)^2;
+  if wHatTest < wHatML
+    wHatML = wHatTest;
+    zHatML = zHatTest;
+  end
+end
+
+fprintf('Verify solution          [zHatML] = ');
+disp([zHatML]);
+fprintf('Verify squared distance  [wHatML] = ');
+disp([wHatML]);
+
+%% References
+% The author would like to acknowledge the following work on the design and
+% optimization of spherical LAST codes by means of which the sample 2x2x2 code
+% provided along with this distribution in |optimizedLASTcode.mat| was
+% generated:
+%
+% I. Berenguer, X. Wang, N. Prasad, J. Wang, and M. Madihian, *Design of
+% minimium-error-rate lattice (space-time) codes via stochastic optimization
+% and gradient estimation*, IEEE Global Communications Conference (Globecom),
+% St. Louis, MO, Dec. 2005.
+%
+% For more details on the |SEAL_det| algorithm and boundary control for
+% spherical LAST decoding, please see the following paper:
+%
+% K. Su, I. Berenguer, I.J. Wassell, X. Wang, *Efficient maximum-likelihood
+% decoding of spherical lattice space-time codes*, IEEE International Conference
+% on Communications (ICC), Istanbul, Turkey, June 2006.
+%
+% and its companion website:
+%
+% http://www.comm.utoronto.ca/~karen/seqdecLs.php
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

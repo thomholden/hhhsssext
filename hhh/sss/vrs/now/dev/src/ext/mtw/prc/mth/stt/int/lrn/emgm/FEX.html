@@ -1,0 +1,1964 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      	<script type="text/javascript" src="FEX_files/jquery-latest.js"></script>
+      <!-- START OF GLOBAL NAV -->
+  <link rel="stylesheet" href="FEX_files/sitewide.css" type="text/css">
+  <link rel="stylesheet" href="FEX_files/mlc.css" type="text/css">
+  <!--[if lt IE 7]>
+  <link href="/matlabcentral/css/ie6down.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+      
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="file exchange, matlab answers, newsgroup access, link exchange, matlab blog, matlab central, simulink blog, matlab community, matlab and simulink community">
+<meta name="description" content="File exchange, MATLAB Answers, newsgroup access, Links, and Blogs for the MATLAB &amp; Simulink user community">
+<link rel="stylesheet" href="FEX_files/fileexchange.css" type="text/css">
+<link rel="stylesheet" type="text/css" media="print" href="FEX_files/print.css">
+<title>EM algorithm for Gaussian mixture model -  File Exchange - MATLAB Central</title>
+<script src="FEX_files/jquery_ujs.js" type="text/javascript"></script>
+<script src="FEX_files/application.js" type="text/javascript"></script>
+<script src="FEX_files/searchfield.js" type="text/javascript"></script>
+<link href="FEX_files/application.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="search" type="application/opensearchdescription+xml" title="Search File Exchange" href="http://www.mathworks.com/matlabcentral/fileexchange/search.xml">
+
+
+  </head>
+    <body>
+      <div id="header">
+  <div class="wrapper">
+  <!--put nothing in left div - only 11px wide shadow --> 
+    <div class="main">
+        	<div id="logo"><a href="http://www.mathworks.com/matlabcentral/" title="MATLAB Central Home"><img src="FEX_files/mlclogo-whitebgd.gif" alt="MATLAB Central"></a></div>
+      
+        <div id="headertools">
+        
+
+<script language="JavaScript1.3" type="text/javascript">
+
+function submitForm(query){
+
+	choice = document.forms['searchForm'].elements['search_submit'].value;
+	
+	if (choice == "entire1" || choice == "contest" || choice == "matlabcentral" || choice == "blogs"){
+	
+	   var newElem = document.createElement("input");
+	   newElem.type = "hidden";
+	   newElem.name = "q";
+	   newElem.value = query.value;
+	   document.forms['searchForm'].appendChild(newElem);
+	      
+	   submit_action = '/searchresults/';
+	}
+	
+	switch(choice){
+	   case "matlabcentral":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "matlabcentral";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 0;
+	      break
+	   case "fileexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/fileexchange/";
+	      selected_index = 1;
+	      break
+	   case "answers":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/answers/";
+	      selected_index = 2;
+	      break
+	   case "cssm":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search_string";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+		  submit_action = "/matlabcentral/newsreader/search_results";
+	      selected_index = 3;
+	      break
+	   case "linkexchange":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/linkexchange/";
+	      selected_index = 4;
+	      break
+	   case "blogs":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "blogs";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 5;
+	      break
+	   case "trendy":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "search";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/trendy";
+	      selected_index = 6;
+	      break
+	   case "cody":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "term";
+	      newElem.value = query.value;
+	      newElem.classname = "formelem";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      submit_action = "/matlabcentral/cody/";
+	      selected_index = 7;
+	      break
+	   case "contest":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "contest";
+	      document.forms['searchForm'].appendChild(newElem);
+	
+	      selected_index = 8;
+	      break
+	   case "entire1":
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	      
+	      selected_index = 9;
+	      break
+	   default:
+	      var newElem = document.createElement("input");
+	      newElem.type = "hidden";
+	      newElem.name = "c[]";
+	      newElem.value = "entiresite";
+	      document.forms['searchForm'].appendChild(newElem);
+	   
+	      selected_index = 9;
+	      break
+	}
+
+	document.forms['searchForm'].elements['search_submit'].selectedIndex = selected_index;
+	document.forms['searchForm'].elements['query'].value = query.value;
+	document.forms['searchForm'].action = submit_action;
+}
+
+</script>
+
+
+  <form name="searchForm" method="GET" action="" style="margin:0px; margin-top:5px; font-size:90%" onsubmit="submitForm(query)">
+          <label for="search">Search: </label>
+        <select name="search_submit" style="font-size:9px ">
+         	 <option value="matlabcentral">MATLAB Central</option>
+          	<option value="fileexchange" selected="selected">&nbsp;&nbsp;&nbsp;File Exchange</option>
+          	<option value="answers">&nbsp;&nbsp;&nbsp;Answers</option>
+            <option value="cssm">&nbsp;&nbsp;&nbsp;Newsgroup</option>
+          	<option value="linkexchange">&nbsp;&nbsp;&nbsp;Link Exchange</option>
+          	<option value="blogs">&nbsp;&nbsp;&nbsp;Blogs</option>
+          	<option value="trendy">&nbsp;&nbsp;&nbsp;Trendy</option>
+          	<option value="cody">&nbsp;&nbsp;&nbsp;Cody</option>
+          	<option value="contest">&nbsp;&nbsp;&nbsp;Contest</option>
+          <option value="entire1">MathWorks.com</option>
+        </select>
+<input name="query" size="10" class="formelem" type="text">
+<input value="Go" class="formelem gobutton" type="submit">
+</form>
+
+		  <ol id="access2">
+  <li class="first">
+    <a href="http://www.mathworks.com/accesslogin/createProfile.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F26184-em-algorithm-for-gaussian-mixture-model" id="create_account_link" rel="nofollow">Create Account</a>
+  </li>
+  <li>
+    <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http%3A%2F%2Fwww.mathworks.com%2Fmatlabcentral%2Ffileexchange%2F26184-em-algorithm-for-gaussian-mixture-model" id="login_link" rel="nofollow">Log In</a>
+  </li>
+</ol>
+
+
+      </div>
+	  
+        <div id="globalnav">
+        <!-- from includes/global_nav.html -->
+        <ol>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/fileexchange/">File Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/answers/">Answers</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/newsreader/">Newsgroup</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/linkexchange/">Link Exchange</a> 
+                </li>
+                <li class=";">
+                        <a href="http://blogs.mathworks.com/">Blogs</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/trendy">Trendy</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/cody">Cody</a> 
+                </li>
+                <li class=";">
+                        <a href="http://www.mathworks.com/matlabcentral/contest/">Contest</a> 
+                </li>
+                <li class="icon mathworks">
+                        <a href="http://www.mathworks.com/">MathWorks.com</a> 
+                </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="middle">
+  <div class="wrapper">
+
+    <div id="mainbody" class="columns2">
+
+  <div class="manifest">
+    <div class="ctaBtn ctaBlueBtn btnSmall">
+      <div class="btnCont">
+        <div class="btn download">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/26184-em-algorithm-for-gaussian-mixture-model?download=true" title="Download Now">Download Submission</a>
+        </div>  
+      </div>
+    </div>
+
+
+  <p class="license">   
+      Code covered by the <a href="http://www.mathworks.com/matlabcentral/fileexchange/view_license?file_info_id=26184" popup="new_window height=500,width=640,scrollbars=yes">BSD License</a>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_license#bsd" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+  </p>
+
+
+    <h3 class="highlights_title">
+      Highlights from<br>
+      <a href="http://www.mathworks.com/matlabcentral/fileexchange/26184-em-algorithm-for-gaussian-mixture-model" class="manifest_title">EM algorithm for Gaussian mixture model</a>
+    </h3>
+
+
+    <ul class="manifest">
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/26184-em-algorithm-for-gaussian-mixture-model/content/emgm/emgm.m" class="function" title="Function">emgm(X, init)
+</a>
+            <span class="description">Perform EM algorithm for fitting the Gaussian mixture model.
+</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/26184-em-algorithm-for-gaussian-mixture-model/content/emgm/logsumexp.m" class="function" title="Function">logsumexp(x, dim)</a>
+            <span class="description">Compute log(sum(exp(x),dim)) while avoiding numerical underflow.</span>
+          </li>
+          <li class="manifest">
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/26184-em-algorithm-for-gaussian-mixture-model/content/emgm/spread.m" class="function" title="Function">spread(X, label)
+</a>
+            <span class="description">Plot samples of different labels with different colors.
+</span>
+          </li>
+      <li class="manifest_allfiles">
+        <a href="http://www.mathworks.com/matlabcentral/fileexchange/26184-em-algorithm-for-gaussian-mixture-model/all_files">View all files</a></li>
+    </ul>
+</div>
+
+
+  <table class="details file" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th class="maininfo"> 
+        <div id="rankinfo">
+          
+            <div class="starrating">
+              <div style="width:92.4138%;">
+                <p>4.62069</p>
+              </div>
+            </div>
+            <span class="numberrating">
+              4.6
+              <span class="divider"> | </span>
+              <a href="#feedback">30 ratings</a>
+            </span>
+            <a id="ratelink" href="#comments">Rate this file</a>
+          <span id="downloads">431 Downloads (last 30 days)</span>
+          <span id="filesize">File Size: 19.5 KB</span>
+          <span id="fileid">File ID: #26184</span>
+        </div>
+          <div id="thumbnail" style="padding-bottom: 3px;">
+            <a href="http://www.mathworks.com/matlabcentral/fx_files/26184/17/untitled.jpg" border="0"><img src="FEX_files/preview.jpg" alt="image thumbnail"></a>
+          </div>
+
+        <div id="details">
+          <h1>EM algorithm for Gaussian mixture model</h1>
+          <p id="author">
+            by <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            <span id="submissiondate">23 Dec 2009 </span>
+              <span id="date_updated">(Updated 29 Feb 2012)</span>
+          </p>
+
+
+
+          <p id="summary">EM algorithm for Gaussian mixture. Works on arbitray dimensions with high speed and precision.</p>
+          
+          
+          
+          <p id="filetools">
+            <span class="divider"> | </span>
+      				<a href="http://www.mathworks.com/matlabcentral/fileexchange/watchlists/new?type=file&amp;uri=%2Fmatlabcentral%2Ffileexchange%2F26184-em-algorithm-for-gaussian-mixture-model&amp;watching=26184" class="addwatch" title="Watch this file">Watch this File</a>
+            </p>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td class="file">
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2"><span class="heading">File Information</span></th>
+          </tr>
+          <tr>
+            <td class="label">Description</td>
+            <td><p>This is a function tries to obtain the maximum 
+likelihood estimation of Gaussian mixture model by expectation 
+maximization (EM) algorithm.</p>
+
+<p>It works on data set of arbitrary dimensions. Several techniques are 
+applied to avoid the float number underflow problems that often occurs 
+on computing probability of high dimensional data. Also the code is 
+carefully tuned to be efficient by utilizing vertorization and matrix 
+factorization.</p>
+
+<p>This is a widely used algorithm. The detail of this algorithm can be 
+found in many textbooks or tutorials online. Just google EM Gaussian 
+Mixture or you can read the wiki page:
+<br><a href="http://en.wikipedia.org/wiki/Expectation-maximization_algorithm">http://en.wikipedia.org/wiki/Expectation-maximization_algorithm</a></p>
+
+<p>This function is robust and efficient yet the code structure is organized so that it is easy to read. </p>
+
+<p>example:
+<br>load data;
+<br>label = emgm(x,3);
+<br>spread(x,label);</p>
+
+<p>Besides using EM to fit GMM, I highly recommend you to try another 
+submission of mine: Variational Bayesian Inference for Gaussian Mixture 
+Model
+<br>(<a href="http://www.mathworks.com/matlabcentral/fileexchange/35362-variational-bayesian-inference-for-gaussian-mixture-model">http://www.mathworks.com/matlabcentral/fileexchange/35362-variational-bayesian-inference-for-gaussian-mixture-model</a>)
+ which perform Bayesian inference on GMM. It has the advantage that the 
+number of mixture components can be automatically identified by the 
+algorithm.</p>
+
+<p>For all the question regarding to use the code for image 
+segmentation, you have to orgnize the image into a matrix, where each 
+column is the feature vector of one pixel of the image. For example, if 
+RGB value is used, for a 10x10 image the data matrix is a 3x100 matrix 
+where each column is a vector of RGB value of a pixel.</p></td>
+          </tr>
+  
+            <tr>
+              <td class="label">Acknowledgements</td>
+              <td>
+                  <p>The author wishes to acknowledge the following in the creation of this submission:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/35362-variational-bayesian-inference-for-gaussian-mixture-model">Variational Bayesian Inference for Gaussian Mixture Model </a>
+                <br>
+                  This submission has inspired the following:<br>
+                  <a href="http://www.mathworks.com/matlabcentral/fileexchange/36721">EM algorithm for Gaussian mixture model with background noise</a>
+              </p></td>
+            </tr>
+        
+          
+          <tr>
+            <td class="label">MATLAB release</td>
+            <td>
+              MATLAB 7.9 (R2009b)
+            </td>
+          </tr>
+  
+
+        </tbody></table>
+  
+        <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr class="title">
+            <th colspan="2">
+              <span class="heading">Tags for This File </span>
+              <a href="http://www.mathworks.com/matlabcentral/fileexchange/help_tags" class="info notext" onclick="window.open(this.href,'small','toolbar=no,resizable=yes,status=yes,menu=no,scrollbars=yes,width=600,height=550');return false;">&nbsp;</a>
+            </th>
+          </tr>
+          <tr>
+            <td class="label">Everyone's Tags</td>
+            <td>
+              <div id="all_tags">
+                <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22clustering%22" rel="nofollow">clustering(6)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em(10)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gaussian%22" rel="nofollow">gaussian(2)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gmm%22" rel="nofollow">gmm(3)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mixture%22" rel="nofollow">mixture(3)</a></span>, <span><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mle%22" rel="nofollow">mle(3)</a></span>   
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+
+</script>
+       
+              </div>
+            </td>
+  
+          </tr>
+            <tr>
+              <td class="label">Tags I've Applied</td>
+              <td>
+                <div id="my_tags">
+                  <span>
+                    
+
+<script language="JavaScript" type="text/javascript">
+  var toggleLoading = function() { $("#tag_loading").toggle() };
+  
+</script>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <tr>
+  
+          <td class="label">Add New Tags</td>
+            <td>
+  						  <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/26184-em-algorithm-for-gaussian-mixture-model">Please login</a> to tag files.						
+            </td>
+          </tr>
+        </tbody></table>
+  
+        <a name="feedback"></a>
+        <div id="feedbacks_table">
+              
+<table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr class="title">
+    <th colspan="4"><span class="heading">Comments and Ratings</span> <span class="info">(67)</span></th>
+  </tr>
+    <tr>
+      <td class="date"><span class="date">19 Dec 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/277793">chandra shekhar</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Fantastic code.In fact i am getting following error when i execute in MATLAB 2009a.</p>
+
+<p>??? Error: File: emgm.m Line: 9 Column: 3
+<br>Expression or statement is incorrect--possibly unbalanced (, {, or
+<br>[.</p>
+
+<p>Please tell me any one how to correct it.
+<br> </p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">30 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/300816">siyam</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>hi is there anyway to set the covariance matrix to diagonal in this code?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">14 Nov 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/216094">chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi, </p>
+
+<p>I wanna ask what does this eye(d)*1e-6.
+<br>You said this is for numerical stability.
+<br>Could you explain a little bit?</p>
+
+<p>cyklucifer</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">24 Oct 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/289173">hgyfgh</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Oct 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/280964">bubbas</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">08 Oct 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/283827">Yang Liu</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Aug 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/273653">Tom Hall</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Fantastic. Does a much better job at 
+fitting than the built-in Signal Processing gaussian mixtures function, 
+which commonly fits an obviously bimodal dist with a unimodal function.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">25 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/268041">Bayarbadrakh Baramsai</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">12 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/114017">Nikolay S.</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Those missing the Statistics Toolbox and getting an error:
+<br>"??? Undefined function or method 'randsample' for input arguments 
+of type 'double'." can use the following code as a substitute for 
+randsample function.</p>
+
+<p>function y = randsample(n, k)
+<br>y=round(1+ (n-1)*rand(k, 1) );</p>
+
+<p>Mo (Michael), thanks for the submission, but a few comments I have:
+<br>1) You should have mentioned that Statistics Toolbox is needed.
+<br>2) when applied following command:  label = emgm(x, 10); 
+<br>where size(x)= 2 84480 , it did not converge in 500 interations, 
+(which took about 2 minutes), as opposed to k_means by Yi Cao, which 
+worked juts fine... 
+<br>label = emgm(x, 3); worked fine btw...</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Jul 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/263080">Alex</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">26 Jun 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/211681">zalayeto</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">18 May 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/145220">marouane ayech</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Michael,
+<br>I want to know wheither there is a theoretical proof for the technique you have used in logsumexp to avoid numerical underflow ?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">30 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/169989">Bogdan Dzyubak</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Simple to use, fast, and doesn't crash.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/241820">Cong</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Excellent Work! Thank you !</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Apr 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/241779">fateme</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>hello,I want to apply emgm on adult 
+dataset,which it's attributes are both categorical and numerical,I tried
+ to apply clustering on data saved in dataset and in cell array,but this
+ data types are not defined for emgm. can emgm be used for string 
+array?pleas help me.tnx </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">18 Mar 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/232630">keerthi</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>hello sir, we are using em algorithm 
+for detecting resampling (tampering of images). for this we need to get 
+the fourier transform of the probability map. how can we modify this 
+code for the above purpose. kindly help.
+<br>my mail id : keerthi2412@gmail.com </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">14 Mar 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/231374">shamla</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>i need to apply gmm to iris dataset 
+and obtain 3 clusters.i need to display the (index of 
+datapoints)datapoints in each cluster.please help me.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">14 Mar 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/231374">shamla</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              float:left;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">14 Mar 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/231354">zheng zhou</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Michael,
+<br>I have a 65*100matrix,can I use this code to get the two-dimension 
+GMM,in which the mu sigma and weight are two dimension.(z=f(x,y),f is 
+the function for GMM)</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">22 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>For all the questions about how to use is for image segmentation:
+<br>You have to organize the image into a matrix where each column is the feature of a pixel(say rgb) </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">20 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/212040">Adili neila</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Michael,
+<br>how can I use your code for images?
+<br>thanks</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">14 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/215957">Prasath</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>we doing project on statistical pixel intensity segmentation of clsm images..
+<br>we need coding for gaussian mixture, normal distribution, poisson... 
+<br>plss mail coding to tis mail id vinodhinybtech@gmail.com</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">08 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Andreas, that function is in statistics toolbox. It random sample k integers between 1 to n.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">08 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/210148">Andreas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Michael,</p>
+
+<p>A small question: the randsample function called at line 44 seemingly
+ does not exist, as I get an error. I am running R2011b. Are other, 
+non-native, files required to run emgm? Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">07 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>
+Nicolas:
+<br>I dont see problem</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">07 Feb 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>For any one having question about changing result:</p>
+
+<p>Please read wiki page. EM is only finding local minimal, which means the result depend on initialization.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/212151">AISSA BOULMERKA</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank You for this Excellent Work,
+<br>is there any paper that may help to understand the program?
+<br>thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">13 Jan 2012</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/129871">Mark</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>For people getting different results 
+on each run, this is due to the use of psuedorandom number generators in
+ initialization. Try setting the psuedorandom number seed:
+<br>http://www.mathworks.com/help/techdoc/ref/rng.html</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Dec 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/210650">Nicolas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi, I try with  1 D array, and I have this problem</p>
+
+<p>&gt;&gt; label = emgm(a,1);
+<br>EM for Gaussian mixture: running ... 
+<br>Converged in 2 steps.
+<br>&gt;&gt; spread(a,label);
+<br>??? Error using ==&gt; spread at 33
+<br>ERROR: only support data of 2D or 3D.</p>
+
+<p>How I can solve it</p>
+
+<p>thanks</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">06 Aug 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/170394">Michael</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Very easy to use and fast, but like 
+some of the above posters, I am getting different results every time I 
+run it on the same data.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Jul 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/129768">Amish</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Fixed seed for random generator and got the same plot. This is a very useful utility. Many Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">25 Jul 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/129768">Amish</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Same question as Ting:
+<br>"converging steps are changing for the same data" 
+<br>Must have to do with the latest Matlab release. I am using R2011b.
+<br>Michael, can you confirm?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">25 Jul 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/129768">Amish</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">05 Jul 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/82217">HONGJING</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">29 Jun 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/160761">Ting</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Dear Chen, 
+<br>When I using EM to analysis my data, the result is always changing, 
+and converge step is changing too, is there any way to make it stable? 
+<br>Thank you</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">23 Jun 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/113528">dattatray</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>I have a small Question,
+<br>suppose i have modeled a data.
+<br>it has 100 vectors each having 36 features.
+<br>so my input is 36 x 100
+<br>now i have given 5 clusters,model is trained now.
+<br>now i have set of 5 mu(36 x 1) and 5 sigma(36 x 36 x 5).
+<br>lets us say i have a unknown vector x of size(36 x 1)
+<br>now how to find out,in which cluster this particular vector fits..?
+<br>for each cluster we have only mu,and sigma,and for a single vector matlab gives sigle value of mean,and cov()
+<br>can you help me in this..?
+<br>if it would have been k-means,its easy to calculate euclidean 
+distance with cluster centroid,which ever is minimum,that is answer..</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">12 Jun 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/154891">minni sharma</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>To chen
+<br>can u send me a code for image fusion using EM algorithm please.</p>
+
+<p>thanking you</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">10 Jun 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>To Venkat R,</p>
+
+<p>This code uses general form ofthe multivariable Gaussian 
+distribution, not the one in your comment, which is simply the 1d 
+special case.</p>
+
+<p>You cannot arbitrayly add a parameter there. You have to ensure the 
+density function is actually a valid density function (means it has to 
+integrate to 1). Otherwise, EM does not work.
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">10 Jun 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>To Brian,
+<br>"Furthermore since you draw the centers from the points themselves, 
+there will always be at least 1 point in each cluster, making even the 
+intended code pointless."
+<br>If the initialized k centers are very close, after one iteration of the EM, there will be only one cluster there.
+<br>This piece of code simply prevent this from happening. It ensure 
+that there is no more than two initialized centers belong to one 
+cluster.
+</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">20 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/36730">Venkat R</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Dear Chen,
+<br>Very good and fast implementation.
+<br>I guess the normal distribution you are using is exp( -(x-mu)^2/2*sigma^2 )/sqrt(2*pi*sigma^2)</p>
+
+<p>In that case, if I were to slightly modify the sigma by w*sigma(or mu
+ by w*mu), where 'w' is another design parameter, Can you help me which 
+functions I need to change to utilize your code.</p>
+
+<p>Thanking you very much.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">15 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/99495">Anathea Pepperl</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">04 May 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/64498">Brian</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Found this pointless piece of code in the initialization:</p>
+
+<p>while k ~= unique(label)
+<br>        idx = randsample(n,k);
+<br>        m = X(:,idx);
+<br>        [~,label] = max(bsxfun(@minus,m'*X,sum(m.^2,1)'/2),[],1);
+<br>end</p>
+
+<p>Unless I am missing something, I'm assuming you were trying to make 
+sure at least one point is assigned to each cluster?  Well, this just 
+checks if at least 1 point is assigned to the kth cluster.  E.g. try:
+<br>k=5;
+<br>if k ~= unique([5;5;5;5])
+<br>disp('Bad!');
+<br>else
+<br>disp('OK');
+<br>end
+<br>it will say that label assignment is OK.</p>
+
+<p>Furthermore since you draw the centers from the points themselves, 
+there will always be at least 1 point in each cluster, making even the 
+intended code pointless.</p>
+
+<p>You may want to use another strategy to ensure centers are chosen that take more than a single point for instance.</p>
+
+<p>Another common initialization strategy is to partition the points randomly into k clusters.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Apr 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/136432">Neha</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>k = 1;
+<br>X = imread('image.png');
+<br>label = emgm(X,3);
+<br>spread(X,label);</p>
+
+<p>Please tell me how to fix the errors listed below:</p>
+
+<p>EM for Gaussian mixture: running ...
+<br>??? Error using ==&gt; mtimes
+<br>Integer data types are not fully supported for this operation.
+<br>At least one operand must be a scalar.</p>
+
+<p>Error in ==&gt; emgm&gt;initialization at 46
+<br>    [dum,label] = max(bsxfun(@minus,m'*X,sum(m.^2,1)'/2),[],1);</p>
+
+<p>Error in ==&gt; emgm at 8
+<br>R = initialization(X,init);</p>
+
+<p>Error in ==&gt; Untitled at 2
+<br>label = emgm(X,3);
+<br>  </p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Apr 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/102736">Enrique Martí</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">13 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Silvina,
+<br>Hi, I will upload a new version. Please try it and tell me if it still happens.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">07 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/128561">Silvina</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Dear Michael,
+<br>I'm trying to use your code on images (using reshape to give them a 
+vector structure) and I'm getting the following error message:
+<br>Error using ==&gt; loggausspdf at 10
+<br>ERROR: sigma is not SPD.</p>
+
+<p>Interestingly, after calling the command many times, the function eventually works. </p>
+
+<p>Any feedback on this issue will be greatly appreciated!</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Mar 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/91529">Michael Davis</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>A couple of minor bugs:</p>
+
+<p>1. I came across the same problem as Nofil Barlas above when the size
+ of the input vector is [ N 1 ]. Reshape to [ 1 N ] and it works.</p>
+
+<p>2. If you tell it to find only 1 mixture, it keeps going until it 
+runs out of memory. The code should either disallow an init parameter of
+ 1, or else have a short function to handle this trivial case.</p>
+
+<p>Otherwise, great, very useful! Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="4">
+            <div style="width:80%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Feb 2011</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/36040">Daniel Zoran</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">23 Dec 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/120532">Nevine</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Michael, 
+<br>The email address in the file bounced. Please send me your address so that I can email you the data file.
+<br>Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">23 Dec 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/120532">Nevine</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Michael,
+<br>I am getting the error:
+<br>??? Error using ==&gt; loggausspdf at 10
+<br>ERROR: sigma is not SPD.
+<br>I am using matlab Release R2010a.
+<br>The input data X is 24x57600 with 2 clusters.</p>
+
+<p>labels = emgm(X, 2);</p>
+
+<p>I will send you the data via email.</p>
+
+<p>Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">04 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/114373">Giang Le</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>i see now, I have tried with 2009a 
+and earlier version and it gave me error when i increased number of 
+clusters. Work fine with 2009b although it is not converge.
+<br>I am very thankful for your reply.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Not happened here. which version of matlab are your using?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">03 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/114373">Giang Le</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi Michael, 
+<br>Thanks for a quick reply. Here is the problem, I am try to clustering 11208 samples to 128 with dim is 14.
+<br>&gt; x = rand(14,11208);
+<br>&gt;[est_label,model] = emgm(x,128);
+<br>EM for Gaussian mixture: running ... ??? Error using ==&gt; loggausspdf at 7
+<br>ERROR: sigma is not SPD.</p>
+
+<p>Error in ==&gt; emgm&gt;expectation at 65
+<br>    R(:,i) = loggausspdf(X,mu(:,i),Sigma(:,:,i));</p>
+
+<p>Error in ==&gt; emgm at 16
+<br>    [R, llh(t)] = expectation(X,model);
+<br>I have tried to increase the sigma0 but the problem is still there.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">03 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Giang Le,
+<br>How does it happen? The function can hardly produce a non positive definite sigma. 
+<br>However, if it does, you may try to change the sigma0 in line 76 to be a larger value.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">02 Nov 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/114373">Giang Le</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Can you please let me know how to fix the ERROR: sigma is not SPD?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">28 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/113528">dattatray</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Thank you Very much sir..!!</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi, Nofil Barlas,
+<br>Maybe you forget clear your memory before load the data.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi dattatray,
+<br>Take a look at the comment in the code of 
+<br>http://www.mathworks.com/matlabcentral/fileexchange/24616-kmeans-clustering
+<br>You may get the idea.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">27 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Hi, Patrick
+<br>Sigma(:,:,1) is the covariance matrix of the first gaussian mixture component.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">27 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/113528">dattatray</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Can You please tell me..about initialization which you have made.
+<br>generating random values is fine..
+<br>but i havent understood</p>
+
+<p>use of  maxVal=bsxfun(@minus,m'*X,  sum(m.^2,1)'/2 )
+<br>[dum,label] = max(bsxfun(@minus,m'*X,sum(m.^2,1)'/2));
+<br>can you please tell me that...?
+<br>code is really wonderful,
+<br>but if i could get any theory  material regarding functions you have
+ written,especially for expectation,maximization,and log gaussian pdf..
+<br>please mail me on d.dattatray@gmail.com 
+<br>thank you in advance...</p>
+
+<p></p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">19 Oct 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/112591">Nofil Barlas</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Quick question. I ran the code and what the error:</p>
+
+<p>&gt;&gt; load data;
+<br>label = emgm(x,3);
+<br>scatterd(x,label); 
+<br>EM for Gaussian mixture: running ... ??? Error using ==&gt; randsample at 117
+<br>K must be less than or equal to N for sampling without replacement.</p>
+
+<p>Error in ==&gt; emgm&gt;initialization at 36
+<br>    idx = randsample(n,k);</p>
+
+<p>Error in ==&gt; emgm at 9
+<br>R = initialization(X,init);</p>
+
+<p>Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">22 Sep 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/33445">Patrick</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Apologize for the following simple 
+question. What exactly does the sigma data mean from the example given? 
+The first Sigma (1,1) is the sigma for the first estimated cluster and 
+the second sigma (2,2) is for the first estimated cluster on the second 
+row ?? </p>
+
+<p>Could you please clarify?  Thanks.</p>
+
+<p>&gt;&gt; model.Sigma</p>
+
+<p>ans(:,:,1) =</p>
+
+<p>    0.7227    0.8439
+<br>    0.8439    1.8252</p>
+
+<p>ans(:,:,2) =</p>
+
+<p>    0.2629   -0.1116
+<br>   -0.1116    0.2411</p>
+
+<p>ans(:,:,3) =</p>
+
+<p>    0.4209   -0.0600
+<br>   -0.0600    0.0967</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">24 Jun 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/100791">Tianfan XUE</a>
+        </span>
+      </td>
+      <td><span class="comment">&nbsp;</span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">16 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Can you send me your data via email?</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">16 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/85769">Daniil Kocharov</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Sorry for asking such a silly question:
+<br>I got an error trying to use 1d data.
+<br>Error using ==&gt; loggausspdf at 7 ERROR: sigma is not SPD.
+<br>Error in ==&gt; emgmm&gt;expectation at 68
+<br>    R(i,:) = loggausspdf(X,mu(:,i),Sigma(:,:,i));
+<br>I think that's because Sigma is:
+<br>Sigma(:,:,1) = NaN
+<br>Sigma(:,:,2) = NaN
+<br>Sigma(:,:,3) = 7.0826e-005
+<br>But why is it NaN I cannot understand, or is there anything else wrong?
+<br>Thanks.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="5">
+            <div style="width:100%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+    <tr class="&quot;odd&quot;">
+      <td class="date"><span class="date">09 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Before you give any bad rating, you should really notice that this function require MATLAB 7.9 (2009b).
+<br>It use a new feature of matlab.
+<br>upgrade your matlab, or you can modify all
+<br>[~,x]=fun();
+<br>to
+<br>[dum,x]=fun();</p></span></td>
+      <td width="80">
+          <div class="starrating commentonly" title="Comment only" align="center"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="date"><span class="date">09 Feb 2010</span></td>
+      <td>
+        <span class="author">
+          <a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/58906">Gayathri</a>
+        </span>
+      </td>
+      <td><span class="comment"><p>Produces the following error with the above steps.</p>
+
+<p>label = emgmm(x,3);
+<br>??? Error: File: emgmm.m Line: 21 Column: 7
+<br>Expression or statement is incorrect--possibly unbalanced (, {, or [.</p></span></td>
+      <td width="80">
+          <div class="starrating" title="1">
+            <div style="width:20%;
+              ">
+            </div>
+          </div>
+      </td>
+    </tr>
+</tbody></table>
+        </div>
+  
+        <a name="comments"></a>
+        <table class="fileview inlineform" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+              <td>
+                <a href="https://www.mathworks.com/accesslogin/index_fe.do?uri=http://www.mathworks.com/matlabcentral/fileexchange/26184-em-algorithm-for-gaussian-mixture-model">Please login</a> to add a comment or rating.
+              </td>
+            </tr>
+        </tbody></table>
+      
+          <table class="fileview section" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr class="title">
+              <th colspan="2"><span class="heading">Updates</span></th>
+            </tr>
+              <tr>
+                <td class="date">25 Dec 2009</td>
+                <td><p>fix missing files</p></td>
+              </tr>
+              <tr>
+                <td class="date">28 Dec 2009</td>
+                <td><p>add missing files</p></td>
+              </tr>
+              <tr>
+                <td class="date">24 Jan 2010</td>
+                <td><p>update description</p></td>
+              </tr>
+              <tr>
+                <td class="date">27 Jan 2010</td>
+                <td><p>Fixed missing file</p></td>
+              </tr>
+              <tr>
+                <td class="date">04 Mar 2010</td>
+                <td><p>fix bug for 1d data</p></td>
+              </tr>
+              <tr>
+                <td class="date">04 Mar 2010</td>
+                <td><p>fix bug for 1d data</p></td>
+              </tr>
+              <tr>
+                <td class="date">30 Sep 2010</td>
+                <td><p>reorganize and clean the code a bit</p></td>
+              </tr>
+              <tr>
+                <td class="date">03 Nov 2010</td>
+                <td><p>update loggausspdf due to api change of matlab</p></td>
+              </tr>
+              <tr>
+                <td class="date">13 Mar 2011</td>
+                <td><p>Fix several minor bugs and reorganize the code structure a bit.</p></td>
+              </tr>
+              <tr>
+                <td class="date">04 Feb 2012</td>
+                <td><p>tuning</p></td>
+              </tr>
+              <tr>
+                <td class="date">29 Feb 2012</td>
+                <td><p>Update description</p></td>
+              </tr>
+          </tbody></table>
+        
+        <div id="tag_details">
+            <table id="tag_details" class="fileview datatable_full" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="3" class="tabletools-top lower left"><span class="heading">Tag Activity for this File</span></th>
+    </tr>
+    <tr>
+      <th>Tag</th>
+      <th>Applied By</th>
+      <th>Date/Time</th>
+    </tr>
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a></td>
+        <td>23 Dec 2009 16:06:54</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gmm%22" rel="nofollow">gmm</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a></td>
+        <td>23 Dec 2009 16:06:54</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mle%22" rel="nofollow">mle</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a></td>
+        <td>23 Dec 2009 16:06:54</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gaussian%22" rel="nofollow">gaussian</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a></td>
+        <td>25 Dec 2009 07:22:31</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mixture%22" rel="nofollow">mixture</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a></td>
+        <td>25 Dec 2009 07:22:39</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22clustering%22" rel="nofollow">clustering</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/49739">Mo Chen</a></td>
+        <td>28 Dec 2009 13:38:56</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mixture%22" rel="nofollow">mixture</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/96218">jose avila</a></td>
+        <td>11 May 2010 22:45:45</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/96218">jose avila</a></td>
+        <td>11 May 2010 23:23:02</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/113528">dattatray</a></td>
+        <td>27 Oct 2010 06:34:53</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22clustering%22" rel="nofollow">clustering</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/115100">li li</a></td>
+        <td>09 Nov 2010 02:15:58</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gmm%22" rel="nofollow">gmm</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/115100">li li</a></td>
+        <td>09 Nov 2010 02:31:39</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/115100">li li</a></td>
+        <td>09 Nov 2010 02:31:48</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gaussian%22" rel="nofollow">gaussian</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/134673">xin sun</a></td>
+        <td>21 Apr 2011 04:13:12</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22clustering%22" rel="nofollow">clustering</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/146274">yuki</a></td>
+        <td>25 Jun 2011 10:46:04</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22clustering%22" rel="nofollow">clustering</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/171165">uunnaa</a></td>
+        <td>10 Aug 2011 01:43:57</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/171165">uunnaa</a></td>
+        <td>10 Aug 2011 01:44:00</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/175420">satyasis</a></td>
+        <td>29 Aug 2011 00:44:00</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/105435">Przemyslaw</a></td>
+        <td>20 Sep 2011 08:08:23</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/45994">z cn</a></td>
+        <td>07 Dec 2011 01:09:22</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22gmm%22" rel="nofollow">gmm</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/90064">kamil kamil</a></td>
+        <td>16 May 2012 10:34:35</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mle%22" rel="nofollow">mle</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/112014">Boguslaw Obara</a></td>
+        <td>30 May 2012 08:31:53</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/258237">aj-bear</a></td>
+        <td>12 Jun 2012 04:45:55</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mixture%22" rel="nofollow">mixture</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/263080">Alex</a></td>
+        <td>03 Jul 2012 04:39:36</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22mle%22" rel="nofollow">mle</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/256219">gil</a></td>
+        <td>11 Jul 2012 12:57:40</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22clustering%22" rel="nofollow">clustering</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/217701">Anderson Rincón</a></td>
+        <td>12 Jul 2012 00:31:19</td>
+      </tr>   
+      <tr>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22clustering%22" rel="nofollow">clustering</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/268041">Bayarbadrakh Baramsai</a></td>
+        <td>25 Jul 2012 17:02:05</td>
+      </tr>   
+      <tr class="&quot;odd&quot;">
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/index?term=tag%3A%22em%22" rel="nofollow">em</a></td>
+        <td><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/229871">Jani</a></td>
+        <td>05 Dec 2012 12:02:54</td>
+      </tr>   
+  </tbody></table>
+    
+        </div>        
+
+      </td>
+    </tr>
+  
+  </tbody></table>
+
+
+<p id="contactus"><a href="http://www.mathworks.com/company/feedback/">Contact us</a></p>
+
+      
+</div>
+<div class="clearboth">&nbsp;</div>
+</div>
+</div>
+<!-- footer.html -->
+<!-- START OF FOOTER -->
+
+<div id="mlc-footer">
+  <script type="text/javascript">
+function clickDynamic(obj, target_url, tracking_code) {
+	var pos=target_url.indexOf("?");
+	if (pos<=0) { 
+		var linkComponents = target_url + tracking_code;
+		obj.href=linkComponents;
+	} 
+}
+</script>
+  <div class="wrapper">
+    <div>
+      <ul id="matlabcentral">
+        <li class="copyright first">© 1994-2013 The MathWorks, Inc.</li>
+        <li class="first"><a href="http://www.mathworks.com/help.html" title="Site Help">Site Help</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/patents.html" title="patents" rel="nofollow">Patents</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/trademarks.html" title="trademarks" rel="nofollow">Trademarks</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/" title="privacy policy" rel="nofollow">Privacy Policy</a></li>
+        <li><a href="http://www.mathworks.com/company/aboutus/policies_statements/piracy.html" title="preventing piracy" rel="nofollow">Preventing Piracy</a></li>
+        <li class="last"><a href="http://www.mathworks.com/matlabcentral/termsofuse.html" title="Terms of Use" rel="nofollow">Terms of Use</a></li>
+        <li class="icon"><a href="http://www.mathworks.com/company/rss/" title="RSS" class="rssfeed" rel="nofollow"><span class="text">RSS</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=https://plus.google.com/117177960465154322866?prsrc=3" title="Google+" class="google" rel="nofollow"><span class="text">Google+</span></a></li>
+        <li class="icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_fbk&amp;url=http://www.facebook.com/MATLAB" title="Facebook" class="facebook" rel="nofollow"><span class="text">Facebook</span></a></li>
+        <li class="last icon"><a href="http://www.mathworks.com/programs/bounce_hub_generic.html?s_cid=mlc_twt&amp;url=http://www.twitter.com/MATLAB" title="Twitter" class="twitter" rel="nofollow"><span class="text">Twitter</span></a></li>
+      </ul>
+      <ul id="mathworks">
+        <li class="first sectionhead">Featured MathWorks.com Topics:</li>
+        <li class="first"><a href="http://www.mathworks.com/products/new_products/latest_features.html" onclick="clickDynamic(this, this.href, '?s_cid=MLC_new')">New Products</a></li>
+        <li><a href="http://www.mathworks.com/support/" title="support" onclick="clickDynamic(this, this.href, '?s_cid=MLC_support')">Support</a></li>
+        <li><a href="http://www.mathworks.com/help" title="documentation" onclick="clickDynamic(this, this.href, '?s_cid=MLC_doc')">Documentation</a></li>
+        <li><a href="http://www.mathworks.com/services/training/" title="training" onclick="clickDynamic(this, this.href, '?s_cid=MLC_training')">Training</a></li>
+        <li><a href="http://www.mathworks.com/company/events/webinars/" title="Webinars" onclick="clickDynamic(this, this.href, '?s_cid=MLC_webinars')">Webinars</a></li>
+        <li><a href="http://www.mathworks.com/company/newsletters/" title="newsletters" onclick="clickDynamic(this, this.href, '?s_cid=MLC_newsletters')">Newsletters</a></li>
+        <li><a href="http://www.mathworks.com/programs/trials/trial_request.html?prodcode=ML&amp;s_cid=MLC_trials" title="MATLAB Trials">MATLAB Trials</a></li>
+        
+        		<li class="last"><a href="http://www.mathworks.com/company/jobs/opportunities/index_en_US.html" title="Careers" onclick="clickDynamic(this, this.href, '?s_cid=MLC_careers')">Careers</a></li>
+                 
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END OF FOOTER -->
+
+
+      
+      
+<!-- SiteCatalyst code version: H.24.4.
+Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="FEX_files/s_code.js"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+
+
+
+<!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.24.4. -->    
+
+</body></html>

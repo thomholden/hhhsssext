@@ -1,0 +1,58 @@
+function [mTxP,L]=marginchain(LagOp,TxP,K,Gamma,t)
+% integrate out parent and children influcences of neighbouring chains 
+% and return effective 2-D state transition probability and likelihoods 
+% for chain in question
+%
+% INPUT
+% LagOp    LagOperator for topological calucations
+% TxP      transition prob of each chain
+% K        state space dimensions of chains
+% Gamma    Marginal of hidden states
+% t        time and chain index of current state
+%
+% OUTPUT
+% mTxP     transition prob. after integarting out neighbouring chains
+% L        likelihood messages from neighbouring chains
+        
+% current transition prob
+curP=log(TxP{t.ch});		
+
+% get parents 
+parents=LagOp*t;
+% indeces over which to integrate
+pndxvec=[];
+
+for p=1:length(parents),
+    % parent time/chain index
+    pndx=parents{p};
+    if pndx~=prevt(t);,			% parent of other chain?
+        pndxvec=cat(2,pndxvec,p+1);
+        % multiply with no integration
+        curP=mdvecprod(curP,Gamma{pndx.tc},...
+            pndxvec(end),0); 
+    end
+end					% parent loop
+% now integrate out 
+mTxP=exp(mdsum(curP,pndxvec));			
+
+L=zeros(K(t.ch),1);			% Likelihoods of neighbours
+children=inv(LagOp)*t;
+for c=1:length(children),
+    cndx=children{c};
+    if cndx~=nextt(t),			% child of annother chain?
+        cP=log(TxP{cndx.ch});		% transition prob to child
+        childparents=LagOp*cndx;	% childrens' parents
+        cpndxvec=[1];			    % indeces over which to integrate
+        cP=mdvecprod(cP,Gamma{cndx.tc},cpndxvec(end),0);
+        for cp=1:length(childparents),
+            cpndx=childparents{cp};	% childrens' parents  time/chain index
+            if ~(cpndx==t),		% parent is current state
+                cpndxvec=cat(2,cpndxvec,cp+1);
+                cP=mdvecprod(cP,Gamma{cpndx.tc},cpndxvec(end),0);
+            end
+        end
+        cP=mdsum(cP,cpndxvec);		% now integrate out
+        L=L+reshape(cP,K(t.ch),1);
+    end
+end
+L=exp(L);

@@ -1,0 +1,67 @@
+The routines use a common data structure 'chmm' with fields:
+
+
+chmm.P                  transition probability
+    .Pi                 initial state probability
+    .K                  dimension of state space (vector)
+    .LPtrain            final training log-posterior
+    .priors.Dir2d_alpha   2-D Dirichlet prior counts for Tx Probabilities
+           .Dir_alpha     Dirichlet prior counts for hidden Probabilities @t=0
+
+
+chmm.train.cyc		max number of cycles through data
+	  .tol		termination tolerance of likelihood
+
+chmm.data.Xtrain	training data, 1st channel
+         .Ytrain        training data, 2nd channel
+	 .T		length of training sequence
+		
+
+chmm.hmmone and chmm.hmmtwo
+           .obsmodel	name of observation model
+			'Gauss'		- Gaussian
+			'GaussCom'	- Gaussian with common cov
+			'LIKE'          - observations are likelihoods
+	   .K		dimension of state-space
+	   .obsupdate	update observation model
+	   .updatep	update state transition matrix
+           .Pi 		initial state probability 
+           .P		state transition probabilities 
+                        (3D array b/c 2 parent nodes) 
+
+	   .init	initialised (1 or 0)
+           .gmmll	log-likelihood of gmm model used for initialisation
+           .mix		Gaussian mixture model trained on same data
+
+	   .train.init   	initialisation flag
+                 .obsupdate	update observation model (1 or 0)
+                 .pupdate	update transition matrix (1 or 0)
+	   
+          .priors.Dir3d_alpha   3-D Dirichlet prior for Tx probabilities
+                 .Dir_alpha     Dirichlet prior for initial state probability
+
+
+
+For 'Gauss' and 'GaussCom' observation models we also have:
+chmm.hmmone.state(k).Mu		mean vector for state k
+                    .Cov	mean covariance matrix for state k
+                    .a		ar coefficients for state k
+	            .priors     priors for each state
+                             .norm_Mu     Prior for mean: mean (1,dimension(data))
+                             .norm_Cov    Prior for mean: covariance
+                             .norm_Prec   Prior for mean: precision
+                             .Wish_alpha  Prior for Covariance: scale parameter
+                             .Wish_B      Prior for Covariance: shape matrix
+                             .Wish_k      Prior for Covariance: dimension of shape matrix
+
+
+
+For 'AR' observation models we have:
+
+chmm.hmmone.state(k).p          order of AR model
+chmm.hmmone.state(k).a          parameter vector for AR model
+chmm.hmmone.state(k).v          noise variance for AR model
+
+For 'LIKE' observation models, there are no extra parameters.
+
+

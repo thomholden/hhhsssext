@@ -1,0 +1,305 @@
+2005-02-27  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* logsig2: Added a new function
+
+	* softmax2: Added a new function
+
+2005-02-07  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* gp2b_mc: Fixed bug in the HMC sampling. Added line  
+	gp = gp2unpak(gp, w); 
+
+
+2005-02-07  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* gp2b_g: Fixed couple of typos in the help text
+
+2005-01-24  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* gp2r_mc: Before the creation of function handle "noisef" added
+	checking "if opt.sample_variances & ~isempty(gp.p.noiseSigmas)"
+	
+2005-01-20  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* demo_tgp: Changed so that demo can be run from any
+	directory. (Earlier demo had to be run from directory
+	.../mcmcstuff in order to be able to load the needed data.)
+
+	* demo_2ingp: Changed so that demo can be run from any directory.
+
+	* demo_2classgp: Changed so that demo can be run from any
+	directory.
+
+	* demo_rjmcmcgp: Changed so that demo can be run from any
+	directory.
+
+	* demo_2input: Changed so that demo can be run from any directory.
+
+	* demo_2class: Changed so that demo can be run from any directory.
+
+	* demo_3class: Changed so that demo can be run from any directory.
+
+	* demo_rjmcmc: Changed so that demo can be run from any directory.
+
+	* demo_tmlp: Changed so that demo can be run from any directory.
+	
+2005-01-18  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* gp2fwds.c: Fixed bug in checking for ARD. Line 97 changed to
+	following: 
+	lr=dims[1];                       /* lr>1 is ARD is used */
+	
+	* gp2fwds.c: Comments added to the code
+
+	* linuxCsource/compile.m: gpvalues.c changed to be compiled to
+	gpvalues (used to be compiled to gpvalues2): 
+	mex -O -output gpvalues gpvalues.c 
+
+	* windowsCsource/compile_windows.m: gpvalues.c changed to be
+	compiled to gpvalues (used to be compiled to gpvalues2): 
+
+	* wdist2.m: Fixed a bug in handling models without ARD	
+	
+	* gp2fwd.c: segmentation violation fixed.
+	  On the line 199. Now: 
+	dgemv_(trans, &m2, &m, &done, K, &m, b, &one, &dzero, y, &one); 
+	Before: 
+	dgemv_(trans, &m, &m2, &done, K, &m, b, &one, &dzero, y, &one); 
+	
+	* gp2fwd.c: Comments added to the code
+
+2006-01-17  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* gp2b_mc.m: Fixed recappend for gp.latentValues, and removed
+	unnecessary call to gpvalues.
+
+2005-08-24  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* scg2_opt.m: Added to Contents.m 
+
+	* scg2.m: Added to Contents.m 
+
+2006-01-09  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* gpcov.m: Linear part in covariance function not currently
+	supported.
+
+2006-01-05  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* demo_tgp.m: Fixed, Jarno will test this soon.
+
+2005-12-09  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* linuxCsource/digamma1.c: New function.
+
+	* winCsource/digamma1.c: New function.
+
+2005-12-04  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* sls_opt.m: Fixed max_iter -> maxiter;
+
+2005-12-01  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* mnorm_pdf.m: Fixed (returned lpdf).
+
+2005-11-30  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* scg2_opt.m: New function. scg with new options structure.
+
+	* scg2.m: New function. scg with new options structure.
+
+	* scges_opt.m: Fixed help text.
+
+	* scges.m: Updated according to Netlab2.
+
+	* demo_rjmcmc.m: Fixed prior after early-stop.
+
+	* demo_3class.m: Fixed prior after early-stop.
+
+	* demo_2input.m: Fixed prior before early-stop.
+
+	* demo_2class.m: Fixed prior before early-stop.
+
+2005-11-16  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* demo_rjmcmc.m: Fixed prior after early-stop.
+
+	* demo_3class.m: Fixed prior after early-stop.
+
+	* demo_2class.m: Fixed prior after early-stop.
+
+2005-11-13  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* mlp2r_mc.m (recappend): Normalize train and test errors.
+
+2005-11-12  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* Contents.m: Added missing % to get contents with help command.
+
+2005-11-07  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* demo_2classgp.m: opt.hmc_opt.window=5; -> opt.hmc_opt.window=2;
+
+	* mlp2r_mc.m (recappend): Check isfield inputii (line 819)
+
+2005-08-25  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* demo_tgp.m: New demo 
+	
+2005-08-24  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	*gp2r_mc.m: corrected the error calculation in RJMCMC
+
+2005-08-17  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	* demo_tmlp.m: New demo
+
+2005-08-10  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	* gam_cdf.m: added to Contents.m
+
+	* gam_pdf.m: added to Contents.m
+
+	* gam_lpdf.m: added to Contents.m
+
+2005-08-10  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* gam_cdf.m: New function.
+
+	* gam_pdf.m: New function.
+
+	* gam_lpdf.m: New function.
+
+2005-08-03  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	* demo_rjmcmcgp.m: New demo.
+
+2005-08-02  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+
+	*gp2b_mc.m: corrected the error calculation in RJMCMC
+	
+2005-07-27  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	* demo_2classgp.m: New demo.
+	
+2005-07-27  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	* beta_lpdf.m: added to Contents.m.
+
+	* beta_pdf.m: added to Contents.m.
+	
+2005-07-27  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* beta_lpdf.m: New function.
+
+	* beta_pdf.m: New function.
+
+2005-07-27  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	*gpvalues.m: added "lcov=(lcov+lcov')/2;" on line 29
+	
+2005-07-14  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	*gp2bfwds.m: removed
+
+	*gp2fwds.m: modified so that it can handle GP:s with latent values
+	also
+
+	*gp2fwds.c: modified so that it can handle GP:s with latent values
+	also
+
+2005-07-12  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	*gp2bfwds.m: added. This differs from gp2fwds.m only by few lines.
+	If gp2fwds.c is updated to take account latent values this can be
+	deleted.
+	
+2005-07-08  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	*demo_rjmcmc.m: added
+	
+2005-07-08  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	*mlp2c_mc.m: Corrected the calculation of error terms e and ed.
+	
+	* mlp2c_mc.m: Loop while psi > rand(1) added to case 
+	opt.sample_inputs == 2
+	
+	* mlp2c_mc.m: possibility for switch added to case
+	opt.sample_inputs == 2
+
+2005-06-29  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	* mlp2c_mc.m: RJMCMC model jumping probabilities checked
+
+	* mlp2normp.m added net.p.pw = pw; for storing the information
+	about given start values for prior structure.
+	
+	* mlp2c_mc.m: RJMCMC corrected index creation and hyperparameter 
+	scaling after number of inputs is changed.
+
+2005-06-09  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	* demo_3class.m: added to software package
+
+2005-06-09  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	* demo_2class.m: added to software package
+
+	* demo/: directory added to mcmcstuff directory. 
+	Here are stored all the saved data and record structures 
+	of demos.
+
+	* demo_2input,m: modified to be similar to demo_2class.
+
+	* mlp2c_mc.m: fixed some bugs in prior structure handling.
+	
+2005-06-01  Jarno Vanhatalo <Jarno.Vanhatalo@tkk.fi>
+	* unifrand.m added to Contents.m
+	
+	* laplace_lpdf.m added to Contents.m 
+
+	* laplace_pdf.m added to Contents.m 
+
+	* mlp2b_sim.m: added to Contents.m 
+
+	* mlp2c_sim.m: added to Contents.m
+
+2005-05-24  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* unifrand.m: New function.
+
+2005-05-19  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* laplace_lpdf.m: New function.
+
+	* laplace_pdf.m: New function.
+	
+2005-05-03  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* mlp2b_mc.m (recappend): Additional check for existing field,
+	                          before trying to use one.
+
+2005-04-27  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* mlp2b_mc.m: Create function handle `pw1pspsf' only if doing
+	              RJMCMC sampling of inputs
+
+2005-02-09  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* Contents.m: Version 1.0.2 2005-02-09
+
+	* mlp2b_mc.m: Clean up.
+
+	* mlp2c_mc.m: Clean up.
+
+	* mlp2b_e.m: Doc fix.
+
+	* mlp2b_g.m: Doc fix.
+
+	* mlp2c_e.m: Doc fix.
+
+	* mlp2c_g.m: Doc fix.
+
+	* mlp2b_steps.m: Doc fix.
+
+	* mlp2c_steps.m: Doc fix.
+
+	* mlp2b_sim.m: This function was missing from the package.
+
+	* mlp2c_sim.m: This function was missing from the package.
+
+2005-02-08  Aki Vehtari  <Aki.Vehtari@hut.fi>
+
+	* scges.m: New function.
+
+	* scges_opt.m: New function.
+
